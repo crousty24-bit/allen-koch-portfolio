@@ -14,34 +14,23 @@ export function StackSection() {
         </p>
       </div>
 
-      <div className="stack-layout">
-        <div className="stack-grid">
-          {stack.map((category, index) => (
-            <article
-              className={`stack-card stack-card--${category.tone} reveal`}
-              key={category.title}
-              style={{ '--index': index } as CSSProperties}
-            >
-              <span className="stack-card__icon" aria-hidden="true" />
-              <h3>{category.title}</h3>
-              <p>{category.summary}</p>
-              <ul>
-                {category.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-
-        <aside className="mindset-panel reveal">
-          <p className="eyebrow">Approche</p>
-          <h3>Comprendre d'abord. Construire ensuite.</h3>
-          <p>
-            Le code sert le besoin utilisateur. L'objectif est de livrer petit,
-            clair, testable, puis d'améliorer avec des retours concrets.
-          </p>
-        </aside>
+      <div className="stack-grid">
+        {stack.map((category, index) => (
+          <article
+            className={`stack-card stack-card--${category.tone} reveal`}
+            key={category.title}
+            style={{ '--index': index } as CSSProperties}
+          >
+            <span className="stack-card__icon" aria-hidden="true" />
+            <h3>{category.title}</h3>
+            <p>{category.summary}</p>
+            <ul>
+              {category.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
 
       <div className="skills-grid">

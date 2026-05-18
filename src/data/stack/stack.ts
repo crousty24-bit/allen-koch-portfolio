@@ -30,10 +30,4 @@ export const stack: StackItem[] = [
     items: ['GitHub', 'Vercel', 'Tauri'],
     tone: 'neutral',
   },
-  {
-    title: 'AI Workflow',
-    summary: "Utiliser l'IA pour accélérer sans perdre la maîtrise technique.",
-    items: ['Codex', 'OpenClaw Agents'],
-    tone: 'primary',
-  },
 ]

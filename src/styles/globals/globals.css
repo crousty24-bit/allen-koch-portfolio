@@ -421,7 +421,6 @@ select {
 .section-heading p,
 .about-copy,
 .contact-panel p,
-.mindset-panel p,
 .stack-card p,
 .skill-card p,
 .project-card__description {
@@ -461,7 +460,6 @@ select {
 
 .project-card,
 .stack-card,
-.mindset-panel,
 .skill-card,
 .portrait-card,
 .contact-panel {
@@ -550,7 +548,6 @@ select {
 
 .project-card h3,
 .stack-card h3,
-.mindset-panel h3,
 .skill-card h3 {
   margin: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -671,20 +668,13 @@ select {
   margin-left: auto;
 }
 
-.stack-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(280px, 0.85fr);
-  gap: 1.5rem;
-}
-
 .stack-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
 .stack-card,
-.mindset-panel,
 .skill-card {
   padding: 1.6rem;
   border-radius: var(--radius-lg);
@@ -725,13 +715,11 @@ select {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.stack-card h3,
-.mindset-panel h3 {
+.stack-card h3 {
   font-size: 1.35rem;
 }
 
-.stack-card p,
-.mindset-panel p {
+.stack-card p {
   margin: 0.75rem 0 1.25rem;
 }
 
@@ -758,20 +746,6 @@ select {
   content: "";
   background: var(--primary);
   border-radius: 999px;
-}
-
-.mindset-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
-  background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(84, 213, 255, 0.14),
-      transparent 12rem
-    ),
-    rgba(25, 28, 34, 0.72);
 }
 
 .skills-grid {
@@ -1063,7 +1037,6 @@ select {
     padding-top: 8.5rem;
   }
 
-  .stack-layout,
   .about-layout {
     grid-template-columns: 1fr;
   }
@@ -1072,12 +1045,9 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .stack-grid,
   .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .mindset-panel {
-    min-height: auto;
   }
 }
 
