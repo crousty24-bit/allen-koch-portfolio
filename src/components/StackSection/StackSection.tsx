@@ -2,6 +2,9 @@ import type { CSSProperties } from 'react'
 import { skills } from '../../data/skills/skills'
 import { stack } from '../../data/stack/stack'
 
+const iconUrl = (icon: string, color?: string) =>
+  `https://cdn.simpleicons.org/${icon}${color ? `/${color}` : ''}`
+
 export function StackSection() {
   return (
     <section className="section stack-section" id="stack">
@@ -21,12 +24,28 @@ export function StackSection() {
             key={category.title}
             style={{ '--index': index } as CSSProperties}
           >
-            <span className="stack-card__icon" aria-hidden="true" />
+            <span className="stack-card__icon" aria-hidden="true">
+              <img
+                alt=""
+                height="24"
+                loading="lazy"
+                src={iconUrl(category.icon, category.iconColor)}
+                width="24"
+              />
+            </span>
             <h3>{category.title}</h3>
-            <p>{category.summary}</p>
             <ul>
               {category.items.map((item) => (
-                <li key={item}>{item}</li>
+                <li className="stack-badge" key={item.label}>
+                  <img
+                    alt=""
+                    height="16"
+                    loading="lazy"
+                    src={iconUrl(item.icon, item.iconColor)}
+                    width="16"
+                  />
+                  <span>{item.label}</span>
+                </li>
               ))}
             </ul>
           </article>
