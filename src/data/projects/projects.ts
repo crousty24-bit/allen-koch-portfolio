@@ -36,6 +36,16 @@ export const projects: Project[] = [
     status: 'Prototype',
   },
   {
+    title: 'Rubber Duck IA',
+    description:
+      '“AI-assisted learning without solution dumping”. Une IA qui n’écrit pas la solution à ta place, mais t’aide à apprendre à la trouver.',
+    imageAlt:
+      'Interface sombre de mentor IA avec code, bulles de guidance et signaux de workflow.',
+    imageSrc: '/projects/rubber-duck-ia.svg',
+    stack: ['React', 'TypeScript', 'Prisma', 'AI Workflow'],
+    status: 'En cours',
+  },
+  {
     title: 'Kane',
     description:
       "Assistant IA local orienté confidentialité, pensé pour automatiser le tri, l'analyse et les tâches répétitives sans perdre le contrôle technique.",

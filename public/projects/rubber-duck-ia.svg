@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Rubber Duck IA project preview</title>
+  <desc id="desc">Dark developer interface with code, chat guidance, and AI workflow signals.</desc>
+  <defs>
+    <radialGradient id="bgGlow" cx="18%" cy="18%" r="72%">
+      <stop offset="0" stop-color="#2e5bff" stop-opacity=".34"/>
+      <stop offset=".42" stop-color="#111827" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#080b12"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1d2432" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#10131a" stop-opacity=".98"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#54d5ff"/>
+      <stop offset="1" stop-color="#d4bbff"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="30" flood-color="#020617" flood-opacity=".52"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bgGlow)"/>
+  <path d="M0 650c190-55 324-60 486-20 198 49 358 45 520-28 110-50 194-62 274-42v240H0z" fill="#080b12" opacity=".72"/>
+
+  <g stroke="#ffffff" stroke-opacity=".045">
+    <path d="M80 0v800M200 0v800M320 0v800M440 0v800M560 0v800M680 0v800M800 0v800M920 0v800M1040 0v800M1160 0v800"/>
+    <path d="M0 80h1280M0 200h1280M0 320h1280M0 440h1280M0 560h1280M0 680h1280"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="104" y="96" width="1072" height="608" rx="28" fill="url(#panel)" stroke="#ffffff" stroke-opacity=".12"/>
+    <rect x="104" y="96" width="1072" height="72" rx="28" fill="#151a24" opacity=".98"/>
+    <circle cx="146" cy="132" r="8" fill="#ff4d6d"/>
+    <circle cx="174" cy="132" r="8" fill="#ffd166"/>
+    <circle cx="202" cy="132" r="8" fill="#54d5ff"/>
+    <rect x="252" y="122" width="180" height="20" rx="10" fill="#ffffff" opacity=".1"/>
+
+    <rect x="144" y="208" width="478" height="428" rx="22" fill="#0d111a" stroke="#ffffff" stroke-opacity=".09"/>
+    <rect x="664" y="208" width="472" height="428" rx="22" fill="#0d111a" stroke="#ffffff" stroke-opacity=".09"/>
+
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" fill="#c4c5d9">
+      <text x="182" y="270" fill="#54d5ff">function</text>
+      <text x="300" y="270">solveStep(problem) {</text>
+      <text x="214" y="320" fill="#d4bbff">return</text>
+      <text x="314" y="320">askBetterQuestion()</text>
+      <text x="182" y="370">}</text>
+    </g>
+
+    <g opacity=".88">
+      <rect x="184" y="430" width="358" height="18" rx="9" fill="#2e5bff" opacity=".58"/>
+      <rect x="184" y="476" width="274" height="18" rx="9" fill="#54d5ff" opacity=".46"/>
+      <rect x="184" y="522" width="322" height="18" rx="9" fill="#d4bbff" opacity=".42"/>
+      <rect x="184" y="568" width="214" height="18" rx="9" fill="#ffffff" opacity=".12"/>
+    </g>
+
+    <g>
+      <rect x="712" y="252" width="334" height="74" rx="20" fill="#171d29" stroke="#54d5ff" stroke-opacity=".24"/>
+      <rect x="742" y="276" width="232" height="14" rx="7" fill="#eff1ff" opacity=".72"/>
+      <rect x="742" y="302" width="176" height="10" rx="5" fill="#c4c5d9" opacity=".32"/>
+
+      <rect x="754" y="382" width="290" height="74" rx="20" fill="#141923" stroke="#d4bbff" stroke-opacity=".22"/>
+      <rect x="784" y="406" width="198" height="14" rx="7" fill="#eff1ff" opacity=".58"/>
+      <rect x="784" y="432" width="146" height="10" rx="5" fill="#c4c5d9" opacity=".28"/>
+
+      <rect x="712" y="512" width="366" height="74" rx="20" fill="#171d29" stroke="#2e5bff" stroke-opacity=".26"/>
+      <rect x="742" y="536" width="248" height="14" rx="7" fill="#eff1ff" opacity=".68"/>
+      <rect x="742" y="562" width="184" height="10" rx="5" fill="#c4c5d9" opacity=".3"/>
+    </g>
+
+    <circle cx="621" cy="400" r="42" fill="#0f1724" stroke="url(#accent)" stroke-width="3"/>
+    <path d="M608 388c13-12 34-7 39 11 4 17-9 34-27 32-17-2-26-20-17-34" fill="none" stroke="#54d5ff" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="641" cy="386" r="7" fill="#ffd166"/>
+    <path d="M622 442v58M622 300v58M564 400h-58M738 400h-58" stroke="url(#accent)" stroke-width="3" stroke-linecap="round" opacity=".72"/>
+  </g>
+</svg>
