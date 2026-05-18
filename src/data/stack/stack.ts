@@ -1,6 +1,13 @@
+export type StackTech = {
+  icon: string
+  iconColor?: string
+  label: string
+}
+
 export type StackItem = {
-  items: string[]
-  summary: string
+  icon: string
+  iconColor?: string
+  items: StackTech[]
   title: string
   tone: 'primary' | 'secondary' | 'tertiary' | 'neutral'
 }
@@ -8,32 +15,46 @@ export type StackItem = {
 export const stack: StackItem[] = [
   {
     title: 'Frontend',
-    summary: 'Interfaces React lisibles, rapides et faciles à faire évoluer.',
-    items: ['React', 'Vite', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
+    icon: 'react',
+    items: [
+      { label: 'React', icon: 'react' },
+      { label: 'Vite', icon: 'vite' },
+      { label: 'TypeScript', icon: 'typescript' },
+      { label: 'JavaScript', icon: 'javascript' },
+      { label: 'Tailwind CSS', icon: 'tailwindcss' },
+    ],
     tone: 'primary',
   },
   {
     title: 'Backend',
-    summary: 'APIs et applications web construites avec une logique produit.',
-    items: ['Ruby on Rails', 'Node.js', 'Express', 'NestJS'],
+    icon: 'rubyonrails',
+    items: [
+      { label: 'Ruby on Rails', icon: 'rubyonrails' },
+      { label: 'Node.js', icon: 'nodedotjs' },
+      { label: 'Express', icon: 'express', iconColor: 'E8ECF5' },
+      { label: 'NestJS', icon: 'nestjs' },
+    ],
     tone: 'secondary',
   },
   {
     title: 'Database',
-    summary: 'Modélisation simple, migrations propres et données exploitables.',
-    items: ['SQLite', 'PostgreSQL', 'Prisma'],
+    icon: 'postgresql',
+    items: [
+      { label: 'SQLite', icon: 'sqlite' },
+      { label: 'PostgreSQL', icon: 'postgresql' },
+      { label: 'Prisma', icon: 'prisma', iconColor: '8FA6C8' },
+    ],
     tone: 'tertiary',
   },
   {
     title: 'Tools & Deployment',
-    summary: 'Versionner, deployer et livrer avec un workflow reproductible.',
-    items: ['GitHub', 'Vercel', 'Tauri'],
+    icon: 'github',
+    iconColor: 'E8ECF5',
+    items: [
+      { label: 'GitHub', icon: 'github', iconColor: 'E8ECF5' },
+      { label: 'Vercel', icon: 'vercel', iconColor: 'FFFFFF' },
+      { label: 'Tauri', icon: 'tauri' },
+    ],
     tone: 'neutral',
-  },
-  {
-    title: 'AI Workflow',
-    summary: "Utiliser l'IA pour accélérer sans perdre la maîtrise technique.",
-    items: ['Codex', 'OpenClaw Agents'],
-    tone: 'primary',
   },
 ]
