@@ -6,7 +6,6 @@ export function Hero() {
 
       <div className="hero__content reveal">
         <p className="status-pill">
-          <span aria-hidden="true" />
           Fullstack Developer - Rails / React - Product-minded - AI Workflows
         </p>
 

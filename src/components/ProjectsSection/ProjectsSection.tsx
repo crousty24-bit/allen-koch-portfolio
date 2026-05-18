@@ -21,19 +21,41 @@ export function ProjectsSection() {
           </h2>
         </div>
       </div>
-      <div className="projects-grid">
+      <div className="projects-grid" id="projects-grid">
         {visibleProjects.map((project, index) => (
           <ProjectCard index={index} key={project.title} project={project} />
         ))}
       </div>
-      {hasHiddenProjects && !showAllProjects ? (
+      {hasHiddenProjects ? (
         <div className="projects-section__more reveal">
           <button
-            className="button button--secondary"
-            onClick={() => setShowAllProjects(true)}
+            aria-controls="projects-grid"
+            aria-expanded={showAllProjects}
+            aria-label={
+              showAllProjects
+                ? 'Masquer les projets supplémentaires'
+                : 'Afficher tous les projets'
+            }
+            className="projects-toggle"
+            onClick={() => setShowAllProjects((isShowingAll) => !isShowingAll)}
             type="button"
           >
-            Voir tous les projets
+            <svg
+              aria-hidden="true"
+              className="projects-toggle__icon"
+              fill="none"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+            >
+              <path
+                d="M5 8L10 13L15 8"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.8"
+              />
+            </svg>
           </button>
         </div>
       ) : null}
