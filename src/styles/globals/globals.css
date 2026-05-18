@@ -467,17 +467,28 @@ select {
 
 .project-card__media {
   position: relative;
+  display: block;
   flex: 0 0 44%;
   min-height: 280px;
   overflow: hidden;
   background: var(--surface-high);
 }
 
+.project-card__media[href] {
+  cursor: pointer;
+}
+
 .project-card__media::after {
   position: absolute;
   inset: 0;
+  pointer-events: none;
   content: "";
   background: linear-gradient(to top, rgba(11, 14, 20, 0.78), transparent 65%);
+}
+
+.project-card__media:focus-visible {
+  outline: 2px solid rgba(84, 213, 255, 0.72);
+  outline-offset: -4px;
 }
 
 .project-card__media img {

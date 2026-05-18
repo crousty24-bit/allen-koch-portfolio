@@ -17,21 +17,36 @@ type ProjectCardProps = {
 export function ProjectCard({ index, project }: ProjectCardProps) {
   const hasDemoLink = Boolean(project.href)
   const hasRepositoryLink = Boolean(project.repositoryHref)
+  const projectImage = (
+    <img
+      src={project.imageSrc}
+      alt={project.imageAlt}
+      height="720"
+      loading="lazy"
+      width="1280"
+    />
+  )
 
   return (
     <article
       className="project-card reveal"
       style={{ '--index': index } as CSSProperties}
     >
-      <div className="project-card__media">
-        <img
-          src={project.imageSrc}
-          alt={project.imageAlt}
-          height="720"
-          loading="lazy"
-          width="1280"
-        />
-      </div>
+      {hasDemoLink ? (
+        <a
+          aria-label={`Voir le projet ${project.title}`}
+          className="project-card__media"
+          href={project.href}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {projectImage}
+        </a>
+      ) : (
+        <div aria-disabled="true" className="project-card__media">
+          {projectImage}
+        </div>
+      )}
 
       <div className="project-card__body">
         <div className="project-card__header">
