@@ -570,6 +570,9 @@ select {
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 1.85rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
@@ -588,6 +591,7 @@ select {
 }
 
 .chip--muted {
+  border: 1px solid rgba(184, 195, 255, 0.12);
   background: rgba(67, 70, 86, 0.35);
 }
 
@@ -779,6 +783,39 @@ select {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.skill-card .chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.skill-card .chip {
+  min-height: 2rem;
+  padding: 0.42rem 0.7rem;
+  color: color-mix(in srgb, var(--skill-chip-accent) 68%, #eff1ff);
+  line-height: 1.15;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--skill-chip-accent) 16%, transparent),
+      rgba(255, 255, 255, 0.035)
+    ),
+    rgba(255, 255, 255, 0.035);
+  border-color: color-mix(in srgb, var(--skill-chip-accent) 28%, transparent);
+}
+
+.skill-card .chip:nth-child(3n + 1) {
+  --skill-chip-accent: var(--primary);
+}
+
+.skill-card .chip:nth-child(3n + 2) {
+  --skill-chip-accent: var(--tertiary);
+}
+
+.skill-card .chip:nth-child(3n) {
+  --skill-chip-accent: var(--secondary);
 }
 
 .skill-card h3 {

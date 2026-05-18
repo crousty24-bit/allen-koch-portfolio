@@ -31,7 +31,7 @@ export const skills: SkillItem[] = [
   },
   {
     title: 'AI Workflow',
-    keywords: ['Codex', 'Agentic tools', 'Automation', 'Review'],
+    keywords: ['Codex', 'OpenClaw', 'Agentic tools', 'Automation', 'Review'],
     description:
       "Utiliser l'IA comme assistant de développement, de debug et d'automatisation, sans perdre la maîtrise technique.",
   },
