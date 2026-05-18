@@ -1,21 +1,25 @@
 import type { CSSProperties } from 'react'
+import { copy, type Language } from '../../data/i18n/i18n'
 import { skills } from '../../data/skills/skills'
 import { stack } from '../../data/stack/stack'
 
 const iconUrl = (icon: string, color?: string) =>
   `https://cdn.simpleicons.org/${icon}${color ? `/${color}` : ''}`
 
-export function StackSection() {
+type StackSectionProps = {
+  language: Language
+}
+
+export function StackSection({ language }: StackSectionProps) {
+  const stackCopy = copy[language].stack
+
   return (
     <section className="section stack-section" id="stack">
       <div className="section-heading section-heading--split reveal">
         <div>
-          <p className="eyebrow">Stack & skills</p>
-          <h2>Une base technique simple, lisible et orientée livraison.</h2>
-          <p>
-            La stack met l'accent sur des outils que je peux comprendre,
-            déployer et maintenir dans le temps.
-          </p>
+          <p className="eyebrow">{stackCopy.eyebrow}</p>
+          <h2>{stackCopy.heading}</h2>
+          <p>{stackCopy.text}</p>
         </div>
       </div>
 
@@ -62,7 +66,7 @@ export function StackSection() {
             style={{ '--index': index } as CSSProperties}
           >
             <h3>{skill.title}</h3>
-            <p>{skill.description}</p>
+            <p>{skill.description[language]}</p>
             <div className="chip-list">
               {skill.keywords.map((keyword) => (
                 <span className="chip chip--muted" key={keyword}>

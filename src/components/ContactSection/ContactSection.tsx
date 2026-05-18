@@ -1,7 +1,13 @@
+import { copy, type Language } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
 
-export function ContactSection() {
+type ContactSectionProps = {
+  language: Language
+}
+
+export function ContactSection({ language }: ContactSectionProps) {
   const email = links.find((link) => link.kind === 'email')
+  const contactCopy = copy[language].contact
 
   return (
     <section className="section contact-section" id="contact">
@@ -9,11 +15,8 @@ export function ContactSection() {
         <div aria-hidden="true" className="contact-panel__overlay" />
         <div className="contact-panel__content">
           <p className="eyebrow">Contact</p>
-          <h2>Travaillons sur un projet clair, utile et maintenable.</h2>
-          <p>
-            Disponible pour échanger autour d'un produit web, d'un MVP ou d'une
-            base technique à rendre plus propre.
-          </p>
+          <h2>{contactCopy.heading}</h2>
+          <p>{contactCopy.text}</p>
           {email ? (
             <a
               className="button button--primary button--large"
@@ -24,16 +27,16 @@ export function ContactSection() {
           ) : null}
           <dl className="contact-meta">
             <div>
-              <dt>Profil</dt>
-              <dd>Fullstack Junior</dd>
+              <dt>{contactCopy.meta.profile[0]}</dt>
+              <dd>{contactCopy.meta.profile[1]}</dd>
             </div>
             <div>
-              <dt>Focus</dt>
-              <dd>Rails / React</dd>
+              <dt>{contactCopy.meta.focus[0]}</dt>
+              <dd>{contactCopy.meta.focus[1]}</dd>
             </div>
             <div>
-              <dt>Localisation</dt>
-              <dd>France</dd>
+              <dt>{contactCopy.meta.location[0]}</dt>
+              <dd>{contactCopy.meta.location[1]}</dd>
             </div>
           </dl>
         </div>

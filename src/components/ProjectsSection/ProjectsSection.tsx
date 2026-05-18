@@ -1,29 +1,38 @@
 import { useState } from 'react'
+import { copy, type Language } from '../../data/i18n/i18n'
 import { projects } from '../../data/projects/projects'
 import { ProjectCard } from '../ProjectCard/ProjectCard'
 
 const visibleProjectsCount = 3
 
-export function ProjectsSection() {
+type ProjectsSectionProps = {
+  language: Language
+}
+
+export function ProjectsSection({ language }: ProjectsSectionProps) {
   const [showAllProjects, setShowAllProjects] = useState(false)
   const visibleProjects = showAllProjects
     ? projects
     : projects.slice(0, visibleProjectsCount)
   const hasHiddenProjects = projects.length > visibleProjectsCount
+  const projectsCopy = copy[language].projects
 
   return (
     <section className="section projects-section" id="projects">
       <div className="section-heading section-heading--split reveal">
         <div>
-          <p className="eyebrow">Portfolio</p>
-          <h2>
-            Des produits construits pour être compris, utilisés et maintenus.
-          </h2>
+          <p className="eyebrow">{projectsCopy.eyebrow}</p>
+          <h2>{projectsCopy.heading}</h2>
         </div>
       </div>
       <div className="projects-grid" id="projects-grid">
         {visibleProjects.map((project, index) => (
-          <ProjectCard index={index} key={project.title} project={project} />
+          <ProjectCard
+            index={index}
+            key={project.title}
+            language={language}
+            project={project}
+          />
         ))}
       </div>
       {hasHiddenProjects ? (
@@ -33,8 +42,8 @@ export function ProjectsSection() {
             aria-expanded={showAllProjects}
             aria-label={
               showAllProjects
-                ? 'Masquer les projets supplémentaires'
-                : 'Afficher tous les projets'
+                ? projectsCopy.hideExtraLabel
+                : projectsCopy.showAllLabel
             }
             className="projects-toggle"
             onClick={() => setShowAllProjects((isShowingAll) => !isShowingAll)}
@@ -60,9 +69,9 @@ export function ProjectsSection() {
         </div>
       ) : null}
       <div className="projects-section__cta reveal">
-        <p>Une idée de projet ?</p>
+        <p>{projectsCopy.ctaText}</p>
         <a className="button button--primary" href="#contact">
-          Se connecter
+          {projectsCopy.ctaLink}
         </a>
       </div>
     </section>

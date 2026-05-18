@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import { copy, type Language } from '../../data/i18n/i18n'
 import type { Project } from '../../data/projects/projects'
 
 const chipColors = [
@@ -11,16 +12,18 @@ const chipColors = [
 
 type ProjectCardProps = {
   index: number
+  language: Language
   project: Project
 }
 
-export function ProjectCard({ index, project }: ProjectCardProps) {
+export function ProjectCard({ index, language, project }: ProjectCardProps) {
   const hasDemoLink = Boolean(project.href)
   const hasRepositoryLink = Boolean(project.repositoryHref)
+  const projectCopy = copy[language].projects
   const projectImage = (
     <img
       src={project.imageSrc}
-      alt={project.imageAlt}
+      alt={project.imageAlt[language]}
       height="720"
       loading="lazy"
       width="1280"
@@ -34,7 +37,7 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
     >
       {hasDemoLink ? (
         <a
-          aria-label={`Voir le projet ${project.title}`}
+          aria-label={`${projectCopy.viewProject} ${project.title}`}
           className="project-card__media"
           href={project.href}
           rel="noopener noreferrer"
@@ -51,12 +54,14 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
       <div className="project-card__body">
         <div className="project-card__header">
           <div>
-            <p>{project.status}</p>
+            <p>{project.status[language]}</p>
             <h3>{project.title}</h3>
           </div>
         </div>
 
-        <p className="project-card__description">{project.description}</p>
+        <p className="project-card__description">
+          {project.description[language]}
+        </p>
 
         <div className="chip-list">
           {project.stack.map((tag, tagIndex) => (
@@ -85,7 +90,7 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
             rel={hasRepositoryLink ? 'noopener noreferrer' : undefined}
             target={hasRepositoryLink ? '_blank' : undefined}
           >
-            GitHub
+            {projectCopy.github}
           </a>
           <a
             aria-disabled={!hasDemoLink}
@@ -96,7 +101,7 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
             rel={hasDemoLink ? 'noopener noreferrer' : undefined}
             target={hasDemoLink ? '_blank' : undefined}
           >
-            Voir
+            {projectCopy.view}
           </a>
         </div>
       </div>

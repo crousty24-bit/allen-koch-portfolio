@@ -1,8 +1,14 @@
 import portraitSrc from '../../assets/images/allen-portrait1.jpg'
+import { copy, type Language } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
 
-export function AboutSection() {
+type AboutSectionProps = {
+  language: Language
+}
+
+export function AboutSection({ language }: AboutSectionProps) {
   const socialLinks = links.filter((link) => link.kind === 'social')
+  const aboutCopy = copy[language].about
 
   return (
     <section className="section about-section" id="about">
@@ -12,33 +18,26 @@ export function AboutSection() {
           <figure className="portrait-card">
             <img
               src={portraitSrc}
-              alt="Portrait professionnel d'Allen Koch"
+              alt={aboutCopy.alt}
               height="1280"
               loading="lazy"
               width="1024"
             />
           </figure>
           <div className="floating-tags">
-            <span>France</span>
-            <span>Junior Fullstack</span>
+            {aboutCopy.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
           </div>
         </div>
 
         <div className="about-content reveal">
-          <p className="eyebrow">About</p>
-          <h2>Développeur fullstack junior, pragmatique et orienté produit.</h2>
+          <p className="eyebrow">{aboutCopy.eyebrow}</p>
+          <h2>{aboutCopy.heading}</h2>
           <div className="about-copy">
-            <p>
-              Je construis des applications web orientées produit avec une
-              approche pragmatique : comprendre le besoin, livrer un MVP clair,
-              puis améliorer progressivement l'expérience utilisateur et la
-              qualité technique.
-            </p>
-            <p>
-              Ma stack principale combine Rails, React et TypeScript, avec un
-              workflow renforcé par les outils d'automatisation IA. Je cherche à
-              créer des projets utiles, maintenables et réellement utilisables.
-            </p>
+            {aboutCopy.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
 
           <div className="social-row">
