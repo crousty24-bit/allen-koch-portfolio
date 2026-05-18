@@ -1,7 +1,5 @@
+import portraitSrc from '../../assets/images/allen-portrait1.jpg'
 import { links } from '../../data/links/links'
-
-const portraitSrc =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBnb2o2eB0RRPXSt-YPMUQUpuJU4Y516CQKkpaYgjGrfWjJ1rSVu-2oR80SsS2SOrVt-rLdmEkwYZ4PZkRfdtnOiHB__ytImQ8_9Zj_xjSd3WrMA0boWynM5-zCGt0spK8-M5g3mqAZSUyZ_a2hKUdfRY5WLaelEMwmImszso7AKDrU6rP_1FxEe-C8sX0Tr9NTZKR8i8FlozYImst20XYVsIAgsGdTETqMhf2_x-RsF-Fb-YNhDsP0tv8TVqssa0kg27QDn653Qao'
 
 export function AboutSection() {
   const socialLinks = links.filter((link) => link.kind === 'social')
