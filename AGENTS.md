@@ -23,6 +23,13 @@ Act as a pragmatic coding agent. Prioritize clarity, maintainability, accessibil
 
 Build a one-page professional portfolio for a junior fullstack developer.
 
+Current status: MVP almost complete. The remaining expected work is mostly
+polish:
+
+- improve the hero visual design
+- optionally add restrained effects or motion where they improve hierarchy
+- shorten and refine some copy, especially hero text and long descriptions
+
 The site must present:
 
 - profile and positioning
@@ -32,6 +39,9 @@ The site must present:
 - about section
 - contact CTA
 - GitHub, LinkedIn, X, and email links
+- dark/light theme toggle
+- FR/EN language toggle
+- back-to-top action after scroll
 
 ## Design Reference
 
@@ -40,6 +50,7 @@ Use `DESIGN.md` as the primary design reference.
 Key visual direction:
 
 - dark theme by default
+- light theme available via header toggle
 - premium minimalism
 - sober modern developer aesthetic
 - glassmorphism used carefully
@@ -47,6 +58,7 @@ Key visual direction:
 - blue/cyan/violet accents
 - responsive one-page layout
 - restrained animations and hover states
+- concise bilingual content in French and English
 
 ## Expected Sections
 
@@ -58,13 +70,16 @@ Key visual direction:
 - Contact
 - Footer
 
-Navbar anchors:
+Global UI:
 
 - Home
 - Projets
 - Stack
 - About
 - Contact
+- dark/light icon toggle in the header
+- FR/EN language toggle in the header
+- minimal back-to-top icon button in the bottom-right corner after scroll
 
 ## Implementation Rules
 
@@ -75,7 +90,9 @@ Navbar anchors:
 - Do not add dependencies unless explicitly validated.
 - Do not introduce routing unless explicitly requested.
 - Do not add backend logic.
-- Do not implement theme or language toggles unless explicitly validated.
+- Do not add new global controls unless explicitly validated.
+- Preserve the current static-site scope: no backend, no database, no auth.
+- Keep the existing theme and language state local to the frontend.
 
 ## Code Quality
 
