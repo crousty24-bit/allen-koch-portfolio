@@ -6,8 +6,7 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
-        <div>
-          <strong>AK</strong>
+        <div className="site-footer__brand">
           <p>Allen Koch - Fullstack Developer</p>
         </div>
         <nav aria-label="Liens sociaux footer">

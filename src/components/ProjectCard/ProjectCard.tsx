@@ -2,11 +2,11 @@ import type { CSSProperties } from 'react'
 import type { Project } from '../../data/projects/projects'
 
 const chipColors = [
-  { accent: '#2e5bff', glow: 'rgba(46, 91, 255, 0.2)' },
-  { accent: '#54d5ff', glow: 'rgba(84, 213, 255, 0.18)' },
-  { accent: '#d4bbff', glow: 'rgba(212, 187, 255, 0.16)' },
-  { accent: '#ff4d6d', glow: 'rgba(255, 77, 109, 0.16)' },
-  { accent: '#ffd166', glow: 'rgba(255, 209, 102, 0.14)' },
+  { accent: '#2f6bff' },
+  { accent: '#16e4ff' },
+  { accent: '#b95cff' },
+  { accent: '#ff3f7f' },
+  { accent: '#ffcc24' },
 ]
 
 type ProjectCardProps = {
@@ -67,7 +67,6 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
                 {
                   '--chip-accent':
                     chipColors[tagIndex % chipColors.length].accent,
-                  '--chip-glow': chipColors[tagIndex % chipColors.length].glow,
                 } as CSSProperties
               }
             >

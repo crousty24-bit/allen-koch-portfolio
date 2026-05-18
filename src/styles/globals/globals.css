@@ -182,11 +182,14 @@ select {
 .site-footer a {
   transition:
     color 220ms ease,
+    border-color 220ms ease,
     background 220ms ease,
+    box-shadow 220ms ease,
     transform 220ms ease;
 }
 
-.navbar__links a {
+.navbar__links a,
+.navbar__actions a {
   padding: 0.45rem 0.6rem;
   border-radius: var(--radius-sm);
 }
@@ -195,8 +198,13 @@ select {
 .navbar__links a:focus-visible,
 .navbar__actions a:hover,
 .navbar__actions a:focus-visible {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  color: #effbff;
+  background:
+    linear-gradient(135deg, rgba(46, 91, 255, 0.28), rgba(49, 243, 255, 0.16)),
+    rgba(255, 255, 255, 0.055);
+  box-shadow:
+    0 0 0 1px rgba(84, 213, 255, 0.18),
+    0 10px 26px rgba(46, 91, 255, 0.18);
 }
 
 .navbar__actions {
@@ -575,6 +583,7 @@ select {
   justify-content: center;
   min-height: 1.85rem;
   padding: 0.35rem 0.7rem;
+  border: 1px solid transparent;
   border-radius: 999px;
   color: var(--text-muted);
   font-family: Geist, monospace;
@@ -582,12 +591,18 @@ select {
 }
 
 .project-card__chip {
-  border-color: color-mix(in srgb, var(--chip-accent) 42%, transparent);
-  color: color-mix(in srgb, var(--chip-accent) 58%, #eff1ff);
+  border-color: color-mix(in srgb, var(--chip-accent) 78%, transparent);
+  color: #f7fbff;
   background:
-    linear-gradient(135deg, var(--chip-glow), rgba(255, 255, 255, 0.035)),
-    rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--chip-accent) 58%, rgba(255, 255, 255, 0.08)),
+      color-mix(in srgb, var(--chip-accent) 24%, rgba(255, 255, 255, 0.04))
+    ),
+    rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .chip--muted {
@@ -794,28 +809,47 @@ select {
 .skill-card .chip {
   min-height: 2rem;
   padding: 0.42rem 0.7rem;
-  color: color-mix(in srgb, var(--skill-chip-accent) 68%, #eff1ff);
+  color: #f7fbff;
   line-height: 1.15;
   background:
     linear-gradient(
       135deg,
-      color-mix(in srgb, var(--skill-chip-accent) 16%, transparent),
-      rgba(255, 255, 255, 0.035)
+      color-mix(
+        in srgb,
+        var(--skill-chip-accent) 60%,
+        rgba(255, 255, 255, 0.08)
+      ),
+      color-mix(
+        in srgb,
+        var(--skill-chip-accent) 26%,
+        rgba(255, 255, 255, 0.04)
+      )
     ),
-    rgba(255, 255, 255, 0.035);
-  border-color: color-mix(in srgb, var(--skill-chip-accent) 28%, transparent);
+    rgba(255, 255, 255, 0.06);
+  border-color: color-mix(in srgb, var(--skill-chip-accent) 76%, transparent);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.skill-card .chip:nth-child(3n + 1) {
-  --skill-chip-accent: var(--primary);
+.skill-card .chip:nth-child(5n + 1) {
+  --skill-chip-accent: #2f6bff;
 }
 
-.skill-card .chip:nth-child(3n + 2) {
-  --skill-chip-accent: var(--tertiary);
+.skill-card .chip:nth-child(5n + 2) {
+  --skill-chip-accent: #16e4ff;
 }
 
-.skill-card .chip:nth-child(3n) {
-  --skill-chip-accent: var(--secondary);
+.skill-card .chip:nth-child(5n + 3) {
+  --skill-chip-accent: #b95cff;
+}
+
+.skill-card .chip:nth-child(5n + 4) {
+  --skill-chip-accent: #ff3f7f;
+}
+
+.skill-card .chip:nth-child(5n) {
+  --skill-chip-accent: #ffcc24;
 }
 
 .skill-card h3 {
@@ -1011,16 +1045,13 @@ select {
   margin: 0 auto;
 }
 
-.site-footer strong {
-  display: block;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 2rem;
-  color: rgba(225, 226, 235, 0.25);
-}
-
 .site-footer p {
   margin: 0.35rem 0 0;
   color: var(--text-soft);
+}
+
+.site-footer__brand p {
+  margin: 0;
 }
 
 .site-footer nav {
