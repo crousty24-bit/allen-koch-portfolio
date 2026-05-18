@@ -1,46 +1,77 @@
 import { useState } from 'react'
+import { copy, type Language } from '../../data/i18n/i18n'
 import { projects } from '../../data/projects/projects'
 import { ProjectCard } from '../ProjectCard/ProjectCard'
 
 const visibleProjectsCount = 3
 
-export function ProjectsSection() {
+type ProjectsSectionProps = {
+  language: Language
+}
+
+export function ProjectsSection({ language }: ProjectsSectionProps) {
   const [showAllProjects, setShowAllProjects] = useState(false)
   const visibleProjects = showAllProjects
     ? projects
     : projects.slice(0, visibleProjectsCount)
   const hasHiddenProjects = projects.length > visibleProjectsCount
+  const projectsCopy = copy[language].projects
 
   return (
     <section className="section projects-section" id="projects">
       <div className="section-heading section-heading--split reveal">
         <div>
-          <p className="eyebrow">Portfolio</p>
-          <h2>
-            Des produits construits pour être compris, utilisés et maintenus.
-          </h2>
+          <p className="eyebrow">{projectsCopy.eyebrow}</p>
+          <h2>{projectsCopy.heading}</h2>
         </div>
       </div>
-      <div className="projects-grid">
+      <div className="projects-grid" id="projects-grid">
         {visibleProjects.map((project, index) => (
-          <ProjectCard index={index} key={project.title} project={project} />
+          <ProjectCard
+            index={index}
+            key={project.title}
+            language={language}
+            project={project}
+          />
         ))}
       </div>
-      {hasHiddenProjects && !showAllProjects ? (
+      {hasHiddenProjects ? (
         <div className="projects-section__more reveal">
           <button
-            className="button button--secondary"
-            onClick={() => setShowAllProjects(true)}
+            aria-controls="projects-grid"
+            aria-expanded={showAllProjects}
+            aria-label={
+              showAllProjects
+                ? projectsCopy.hideExtraLabel
+                : projectsCopy.showAllLabel
+            }
+            className="projects-toggle"
+            onClick={() => setShowAllProjects((isShowingAll) => !isShowingAll)}
             type="button"
           >
-            Voir tous les projets
+            <svg
+              aria-hidden="true"
+              className="projects-toggle__icon"
+              fill="none"
+              height="20"
+              viewBox="0 0 20 20"
+              width="20"
+            >
+              <path
+                d="M5 8L10 13L15 8"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.8"
+              />
+            </svg>
           </button>
         </div>
       ) : null}
       <div className="projects-section__cta reveal">
-        <p>Une idée de projet ?</p>
+        <p>{projectsCopy.ctaText}</p>
         <a className="button button--primary" href="#contact">
-          Se connecter
+          {projectsCopy.ctaLink}
         </a>
       </div>
     </section>

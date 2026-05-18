@@ -1,26 +1,29 @@
 import type { CSSProperties } from 'react'
+import { copy, type Language } from '../../data/i18n/i18n'
 import type { Project } from '../../data/projects/projects'
 
 const chipColors = [
-  { accent: '#2e5bff', glow: 'rgba(46, 91, 255, 0.2)' },
-  { accent: '#54d5ff', glow: 'rgba(84, 213, 255, 0.18)' },
-  { accent: '#d4bbff', glow: 'rgba(212, 187, 255, 0.16)' },
-  { accent: '#ff4d6d', glow: 'rgba(255, 77, 109, 0.16)' },
-  { accent: '#ffd166', glow: 'rgba(255, 209, 102, 0.14)' },
+  { accent: '#2f6bff' },
+  { accent: '#16e4ff' },
+  { accent: '#b95cff' },
+  { accent: '#ff3f7f' },
+  { accent: '#ffcc24' },
 ]
 
 type ProjectCardProps = {
   index: number
+  language: Language
   project: Project
 }
 
-export function ProjectCard({ index, project }: ProjectCardProps) {
+export function ProjectCard({ index, language, project }: ProjectCardProps) {
   const hasDemoLink = Boolean(project.href)
   const hasRepositoryLink = Boolean(project.repositoryHref)
+  const projectCopy = copy[language].projects
   const projectImage = (
     <img
       src={project.imageSrc}
-      alt={project.imageAlt}
+      alt={project.imageAlt[language]}
       height="720"
       loading="lazy"
       width="1280"
@@ -34,7 +37,7 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
     >
       {hasDemoLink ? (
         <a
-          aria-label={`Voir le projet ${project.title}`}
+          aria-label={`${projectCopy.viewProject} ${project.title}`}
           className="project-card__media"
           href={project.href}
           rel="noopener noreferrer"
@@ -51,12 +54,14 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
       <div className="project-card__body">
         <div className="project-card__header">
           <div>
-            <p>{project.status}</p>
+            <p>{project.status[language]}</p>
             <h3>{project.title}</h3>
           </div>
         </div>
 
-        <p className="project-card__description">{project.description}</p>
+        <p className="project-card__description">
+          {project.description[language]}
+        </p>
 
         <div className="chip-list">
           {project.stack.map((tag, tagIndex) => (
@@ -67,7 +72,6 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
                 {
                   '--chip-accent':
                     chipColors[tagIndex % chipColors.length].accent,
-                  '--chip-glow': chipColors[tagIndex % chipColors.length].glow,
                 } as CSSProperties
               }
             >
@@ -86,7 +90,7 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
             rel={hasRepositoryLink ? 'noopener noreferrer' : undefined}
             target={hasRepositoryLink ? '_blank' : undefined}
           >
-            GitHub
+            {projectCopy.github}
           </a>
           <a
             aria-disabled={!hasDemoLink}
@@ -97,7 +101,7 @@ export function ProjectCard({ index, project }: ProjectCardProps) {
             rel={hasDemoLink ? 'noopener noreferrer' : undefined}
             target={hasDemoLink ? '_blank' : undefined}
           >
-            Voir
+            {projectCopy.view}
           </a>
         </div>
       </div>

@@ -1,0 +1,142 @@
+export type Language = 'fr' | 'en'
+export type Theme = 'dark' | 'light'
+
+export const copy = {
+  fr: {
+    about: {
+      alt: "Portrait professionnel d'Allen Koch",
+      eyebrow: 'About',
+      heading: 'Développeur fullstack junior, pragmatique et orienté produit.',
+      paragraphs: [
+        "Je construis des applications web orientées produit avec une approche pragmatique : comprendre le besoin, livrer un MVP clair, puis améliorer progressivement l'expérience utilisateur et la qualité technique.",
+        "Ma stack principale combine Rails, React et TypeScript, avec un workflow renforcé par les outils d'automatisation IA. Je cherche à créer des projets utiles, maintenables et réellement utilisables.",
+      ],
+      tags: ['France', 'Junior Fullstack'],
+    },
+    contact: {
+      heading: 'Travaillons sur un projet clair, utile et maintenable.',
+      text: "Disponible pour échanger autour d'un produit web, d'un MVP ou d'une base technique à rendre plus propre.",
+      meta: {
+        profile: ['Profil', 'Fullstack Junior'],
+        focus: ['Focus', 'Rails / React'],
+        location: ['Localisation', 'France'],
+      },
+    },
+    footer: {
+      brand: 'Allen Koch - Développeur Fullstack',
+      copyright: '© 2026 Allen Koch. Tous droits réservés.',
+      socialLabel: 'Liens sociaux footer',
+    },
+    hero: {
+      status:
+        'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
+      heading: 'Construire des produits web',
+      highlight: 'clairs, utiles et maintenables.',
+      subtitle:
+        "Développeur Fullstack Junior Rails / React, je construis des applications web orientées produit, de la conception MVP à l'amélioration continue.",
+      note: "Penser produit, coder proprement, livrer utile avec l'IA comme levier, pas comme raccourci.",
+      projectsCta: 'Voir les projets',
+      contactCta: 'Me contacter',
+    },
+    nav: {
+      home: 'Home',
+      projects: 'Projets',
+      stack: 'Stack',
+      about: 'About',
+      contact: 'Contact',
+      mainLabel: 'Navigation principale',
+      externalLabel: 'Liens externes',
+      homeLabel: 'Allen Koch - accueil',
+      themeDarkLabel: 'Basculer en thème sombre',
+      themeLightLabel: 'Basculer en thème clair',
+      languageLabel: 'Passer le site en anglais',
+    },
+    projects: {
+      eyebrow: 'Portfolio',
+      heading:
+        'Des produits construits pour être compris, utilisés et maintenus.',
+      showAllLabel: 'Afficher tous les projets',
+      hideExtraLabel: 'Masquer les projets supplémentaires',
+      ctaText: 'Une idée de projet ?',
+      ctaLink: 'Se connecter',
+      viewProject: 'Voir le projet',
+      github: 'GitHub',
+      view: 'Voir',
+    },
+    skipLink: 'Aller au contenu',
+    stack: {
+      eyebrow: 'Stack & skills',
+      heading: 'Une base technique simple, lisible et orientée livraison.',
+      text: "La stack met l'accent sur des outils que je peux comprendre, déployer et maintenir dans le temps.",
+    },
+    topButtonLabel: 'Remonter en haut de la page',
+  },
+  en: {
+    about: {
+      alt: 'Professional portrait of Allen Koch',
+      eyebrow: 'About',
+      heading: 'Junior fullstack developer, pragmatic and product-minded.',
+      paragraphs: [
+        'I build product-oriented web applications with a pragmatic approach: understand the need, ship a clear MVP, then improve the user experience and technical quality over time.',
+        'My main stack combines Rails, React and TypeScript, with a workflow strengthened by AI automation tools. I aim to build useful, maintainable projects that are actually usable.',
+      ],
+      tags: ['France', 'Junior Fullstack'],
+    },
+    contact: {
+      heading: "Let's work on a clear, useful and maintainable project.",
+      text: 'Available to discuss a web product, an MVP, or a technical base that needs to become cleaner.',
+      meta: {
+        profile: ['Profile', 'Junior Fullstack'],
+        focus: ['Focus', 'Rails / React'],
+        location: ['Location', 'France'],
+      },
+    },
+    footer: {
+      brand: 'Allen Koch - Fullstack Developer',
+      copyright: '© 2026 Allen Koch. All rights reserved.',
+      socialLabel: 'Footer social links',
+    },
+    hero: {
+      status:
+        'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
+      heading: 'Building web products that are',
+      highlight: 'clear, useful and maintainable.',
+      subtitle:
+        'Junior Rails / React Fullstack Developer building product-oriented web applications, from MVP design to continuous improvement.',
+      note: 'Think product, write clean code, ship useful work with AI as leverage, not as a shortcut.',
+      projectsCta: 'View projects',
+      contactCta: 'Contact me',
+    },
+    nav: {
+      home: 'Home',
+      projects: 'Projects',
+      stack: 'Stack',
+      about: 'About',
+      contact: 'Contact',
+      mainLabel: 'Main navigation',
+      externalLabel: 'External links',
+      homeLabel: 'Allen Koch - home',
+      themeDarkLabel: 'Switch to dark theme',
+      themeLightLabel: 'Switch to light theme',
+      languageLabel: 'Switch site to French',
+    },
+    projects: {
+      eyebrow: 'Portfolio',
+      heading: 'Products built to be understood, used and maintained.',
+      showAllLabel: 'Show all projects',
+      hideExtraLabel: 'Hide extra projects',
+      ctaText: 'Have a project idea?',
+      ctaLink: 'Get in touch',
+      viewProject: 'View project',
+      github: 'GitHub',
+      view: 'View',
+    },
+    skipLink: 'Skip to content',
+    stack: {
+      eyebrow: 'Stack & skills',
+      heading: 'A simple, readable technical base focused on delivery.',
+      text: 'The stack focuses on tools I can understand, deploy and maintain over time.',
+    },
+    topButtonLabel: 'Back to top',
+  },
+} as const
