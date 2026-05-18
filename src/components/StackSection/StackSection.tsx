@@ -8,13 +8,15 @@ const iconUrl = (icon: string, color?: string) =>
 export function StackSection() {
   return (
     <section className="section stack-section" id="stack">
-      <div className="section-heading section-heading--center reveal">
-        <p className="eyebrow">Stack & skills</p>
-        <h2>Une base technique simple, lisible et orientée livraison.</h2>
-        <p>
-          La stack met l'accent sur des outils que je peux comprendre, déployer
-          et maintenir dans le temps.
-        </p>
+      <div className="section-heading section-heading--split reveal">
+        <div>
+          <p className="eyebrow">Stack & skills</p>
+          <h2>Une base technique simple, lisible et orientée livraison.</h2>
+          <p>
+            La stack met l'accent sur des outils que je peux comprendre,
+            déployer et maintenir dans le temps.
+          </p>
+        </div>
       </div>
 
       <div className="stack-grid">
