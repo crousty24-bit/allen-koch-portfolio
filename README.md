@@ -1,0 +1,150 @@
+# Allen Koch - Portfolio Développeur
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Status](https://img.shields.io/badge/status-MVP-success)
+![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)
+![License](https://img.shields.io/badge/license-private-lightgrey)
+
+Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack junior, des projets sélectionnés, une stack technique et des liens de contact professionnels.
+
+## Aperçu
+
+Ce projet est un site statique moderne, responsive et orienté présentation professionnelle.
+
+Objectifs principaux :
+
+- présenter un profil de développeur fullstack junior ;
+- mettre en avant des projets web et workflows IA ;
+- documenter une stack Rails / React / TypeScript ;
+- fournir des liens directs vers GitHub, LinkedIn, X et email professionnel ;
+- garder une base de code simple, maintenable et prête à déployer.
+
+## Stack
+
+- React
+- Vite
+- TypeScript
+- ESLint
+- Biome
+- CSS natif avec variables de design
+
+Le projet ne contient pas :
+
+- backend ;
+- base de données ;
+- authentification ;
+- formulaire serveur ;
+- routing applicatif complexe.
+
+## Design
+
+La direction visuelle est documentée dans [`DESIGN.md`](./DESIGN.md).
+
+Principes retenus :
+
+- thème sombre par défaut ;
+- style premium, sobre et technique ;
+- glassmorphism léger ;
+- grille responsive ;
+- animations CSS limitées à `transform` et `opacity` ;
+- aucun ajout de dépendance UI externe.
+
+## Structure
+
+```txt
+src/
+  components/
+    Navbar/
+    Hero/
+    ProjectsSection/
+    ProjectCard/
+    StackSection/
+    AboutSection/
+    ContactSection/
+    Footer/
+  data/
+    links/
+    projects/
+    skills/
+    stack/
+  assets/
+    images/
+    icons/
+  styles/
+    globals/
+```
+
+## Scripts
+
+```bash
+npm run dev
+```
+
+Démarre le serveur de développement Vite.
+
+```bash
+npm run build
+```
+
+Compile TypeScript et génère le build de production.
+
+```bash
+npm run lint
+```
+
+Lance ESLint sur le projet.
+
+```bash
+npm run biome:check
+```
+
+Vérifie le formatage et les règles Biome sans réécriture.
+
+```bash
+npm run format
+```
+
+Formate le projet avec Biome.
+
+## Installation
+
+```bash
+npm install
+npm run dev
+```
+
+Le site est ensuite disponible sur l'URL locale indiquée par Vite.
+
+## Vérifications avant push
+
+Avant de pousser sur GitHub :
+
+```bash
+npm run build
+npm run lint
+npm run biome:check
+npm audit --audit-level=moderate
+```
+
+État validé pour MVP `1.0.0` :
+
+- build production OK ;
+- lint OK ;
+- Biome OK ;
+- audit npm sans vulnérabilité modérée ou supérieure ;
+- aucune dépendance inutile ajoutée.
+
+## Notes de sécurité
+
+Le site est statique et ne traite pas d'entrée utilisateur côté serveur. Les surfaces principales à surveiller sont :
+
+- liens externes ;
+- images et polices chargées depuis des domaines tiers ;
+- absence de secrets dans le dépôt ;
+- dépendances npm et chaîne de build.
+
+Les liens externes ouverts dans un nouvel onglet utilisent `rel="noopener noreferrer"`.
+
+## Licence
+
+Projet personnel privé. Tous droits réservés.
