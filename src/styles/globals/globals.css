@@ -431,8 +431,14 @@ select {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.35rem;
+}
+
+.projects-section__more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
 }
 
 .projects-section__cta {
@@ -467,6 +473,7 @@ select {
 
 .project-card {
   display: flex;
+  flex-direction: column;
   min-height: 100%;
   overflow: hidden;
   border-radius: var(--radius-lg);
@@ -486,8 +493,8 @@ select {
 .project-card__media {
   position: relative;
   display: block;
-  flex: 0 0 44%;
-  min-height: 280px;
+  aspect-ratio: 16 / 10;
+  min-height: 0;
   overflow: hidden;
   background: var(--surface-high);
 }
@@ -1056,10 +1063,13 @@ select {
     padding-top: 8.5rem;
   }
 
-  .projects-grid,
   .stack-layout,
   .about-layout {
     grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .skills-grid {
@@ -1123,6 +1133,7 @@ select {
   }
 
   .section-heading--split,
+  .projects-grid,
   .stack-grid,
   .skills-grid,
   .contact-meta,
