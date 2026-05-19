@@ -2,14 +2,6 @@ import type { CSSProperties } from 'react'
 import { copy, type Language } from '../../data/i18n/i18n'
 import type { Project } from '../../data/projects/projects'
 
-const chipColors = [
-  { accent: '#2f6bff' },
-  { accent: '#16e4ff' },
-  { accent: '#b95cff' },
-  { accent: '#ff3f7f' },
-  { accent: '#ffcc24' },
-]
-
 type ProjectCardProps = {
   index: number
   language: Language
@@ -64,17 +56,8 @@ export function ProjectCard({ index, language, project }: ProjectCardProps) {
         </p>
 
         <div className="chip-list">
-          {project.stack.map((tag, tagIndex) => (
-            <span
-              className="chip project-card__chip"
-              key={tag}
-              style={
-                {
-                  '--chip-accent':
-                    chipColors[tagIndex % chipColors.length].accent,
-                } as CSSProperties
-              }
-            >
+          {project.stack.map((tag) => (
+            <span className="chip project-card__chip" key={tag}>
               {tag}
             </span>
           ))}
