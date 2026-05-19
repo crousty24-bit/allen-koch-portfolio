@@ -25,20 +25,6 @@ export function ContactSection({ language }: ContactSectionProps) {
               {email.href.replace('mailto:', '')}
             </a>
           ) : null}
-          <dl className="contact-meta">
-            <div>
-              <dt>{contactCopy.meta.profile[0]}</dt>
-              <dd>{contactCopy.meta.profile[1]}</dd>
-            </div>
-            <div>
-              <dt>{contactCopy.meta.focus[0]}</dt>
-              <dd>{contactCopy.meta.focus[1]}</dd>
-            </div>
-            <div>
-              <dt>{contactCopy.meta.location[0]}</dt>
-              <dd>{contactCopy.meta.location[1]}</dd>
-            </div>
-          </dl>
         </div>
       </div>
     </section>
