@@ -1,23 +1,28 @@
 # Design Reference: Allen Koch Portfolio
 
-This document describes the current implementation state of the portfolio and
-the remaining design work for the MVP. It replaces the earlier Stitch-only
-handoff notes as the primary local design reference.
+This document describes the final MVP implementation state of the portfolio.
+It replaces the earlier Stitch-only handoff notes as the primary local design
+reference.
 
 ## 1. Product State
 
 The project is a static one-page React/Vite portfolio for Allen Koch, a junior
 fullstack developer.
 
-Current MVP status: almost complete. The page already includes the expected
-sections, responsive layout, local portrait/logo assets, theme switching,
-language switching, project expansion/collapse, and a back-to-top control.
+Current MVP status: release `1.0.0`.
 
-Remaining MVP polish:
+The page includes the expected sections, responsive layout, local portrait/logo
+assets, theme switching, language switching, project expansion/collapse, and a
+back-to-top control. This is the stable design baseline.
 
-- improve the hero design and first-viewport impact
-- optionally add restrained effects or motion if they clarify hierarchy
-- shorten and refine some texts, especially hero copy and longer descriptions
+Future design work should be limited by default to:
+
+- restrained visual refinements
+- accessibility and readability improvements
+- small responsive fixes
+- punctual content updates for projects, stack, bio, and links
+
+Do not reopen broad MVP redesign work unless explicitly requested.
 
 ## 2. Current Structure
 
@@ -152,7 +157,7 @@ Navbar anchors:
 
 ## 8. Hero
 
-Current hero is functional but still needs design polish.
+Current hero is the release `1.0.0` baseline.
 
 Current content pattern:
 
@@ -161,14 +166,6 @@ Current content pattern:
 - subtitle
 - short note
 - two CTA buttons
-
-Remaining work:
-
-- improve visual impact in the first viewport
-- shorten hero copy
-- reduce repetition between status, subtitle, and note
-- consider a more intentional motion or depth effect
-- keep the hero professional, not decorative
 
 The hero should communicate quickly:
 
@@ -280,7 +277,7 @@ Rules:
 
 - keep French and English copy aligned in meaning
 - keep hero copy short
-- shorten long project/skill descriptions before final release
+- keep project and skill descriptions concise
 - preserve TypeScript typing for translated content
 - do not hard-code new display copy inside components when it belongs in i18n
 
@@ -290,10 +287,14 @@ Local assets:
 
 - `src/assets/images/ak-logo.png`
 - `src/assets/images/allen-portrait1.jpg`
+- `public/projects/kane.png`
+- `public/projects/mission-control.png`
+- `public/projects/portfolio-ak.png`
+- `public/projects/questonaut.png`
 - `public/projects/rubber-duck-ia.svg`
 
-Some project images still use hosted temporary references. Replace them with
-owned local assets before production if ownership or permanence is uncertain.
+Project visuals are local assets in the release baseline. Keep future project
+visuals local unless there is a clear reason to use a stable external asset.
 
 ## 17. Implementation Constraints
 
@@ -308,3 +309,5 @@ When implementing future changes:
 - keep semantic HTML and accessible labels
 - run `npm run build`, `npm run lint`, and `npm run biome:check` before
   finalizing implementation work
+- keep changes maintenance-oriented unless a broader redesign is explicitly
+  requested

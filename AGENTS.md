@@ -19,16 +19,22 @@ Act as a pragmatic coding agent. Prioritize clarity, maintainability, accessibil
 - No authentication
 - No complex form handling
 
-## Product Goal
+## Product State
 
-Build a one-page professional portfolio for a junior fullstack developer.
+This repository contains the final MVP release state for a one-page
+professional portfolio for a junior fullstack developer.
 
-Current status: MVP almost complete. The remaining expected work is mostly
-polish:
+Current status: release `1.0.0`.
 
-- improve the hero visual design
-- optionally add restrained effects or motion where they improve hierarchy
-- shorten and refine some copy, especially hero text and long descriptions
+The current implementation is considered the stable product baseline. Future
+changes should be limited to minor front/design polish or punctual content
+updates:
+
+- add or update selected projects
+- update stack data
+- update bio copy
+- update GitHub, LinkedIn, X, or email links
+- refine small visual details, accessibility, SEO, or performance issues
 
 The site must present:
 
@@ -93,6 +99,10 @@ Global UI:
 - Do not add new global controls unless explicitly validated.
 - Preserve the current static-site scope: no backend, no database, no auth.
 - Keep the existing theme and language state local to the frontend.
+- Treat the `1.0.0` implementation as the baseline. Do not reopen broad MVP
+  polish work unless explicitly requested.
+- Future changes should be maintenance-oriented by default: content updates,
+  minor UI refinements, accessibility fixes, SEO updates, or dependency hygiene.
 
 ## Code Quality
 
@@ -112,3 +122,7 @@ Before finalizing implementation work, run:
 - `npm run biome:check`
 
 If a command cannot be run, state why clearly.
+
+For release validation, also run:
+
+- `npm audit --audit-level=moderate`

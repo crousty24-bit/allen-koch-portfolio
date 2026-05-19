@@ -1,11 +1,16 @@
 # Allen Koch - Portfolio Développeur
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Status](https://img.shields.io/badge/status-MVP-success)
+![Status](https://img.shields.io/badge/status-release%201.0.0-success)
 ![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)
 ![License](https://img.shields.io/badge/license-private-lightgrey)
 
 Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack junior, des projets sélectionnés, une stack technique et des liens de contact professionnels.
+
+Version `1.0.0` est l'état final du MVP. Le projet est considéré stable pour
+release ; les évolutions attendues après cette version doivent rester limitées
+à de petites améliorations front/design ou à des mises à jour ponctuelles de
+données.
 
 ## Aperçu
 
@@ -18,6 +23,22 @@ Objectifs principaux :
 - documenter une stack Rails / React / TypeScript ;
 - fournir des liens directs vers GitHub, LinkedIn, X et email professionnel ;
 - garder une base de code simple, maintenable et prête à déployer.
+
+Évolutions prévues après `1.0.0` :
+
+- ajouter ou mettre à jour des projets ;
+- mettre à jour la stack, la bio ou les liens ;
+- ajuster des détails visuels mineurs sans changer le périmètre produit ;
+- améliorer ponctuellement l'accessibilité, la performance ou le SEO.
+
+Hors périmètre par défaut :
+
+- backend ;
+- base de données ;
+- authentification ;
+- routing applicatif complexe ;
+- formulaire serveur ;
+- refonte structurelle sans demande explicite.
 
 ## Stack
 
@@ -126,13 +147,22 @@ npm run biome:check
 npm audit --audit-level=moderate
 ```
 
-État validé pour MVP `1.0.0` :
+État validé pour release `1.0.0` :
 
 - build production OK ;
 - lint OK ;
 - Biome OK ;
 - audit npm sans vulnérabilité modérée ou supérieure ;
 - aucune dépendance inutile ajoutée.
+
+Commandes validées lors de l'audit final :
+
+```bash
+npm run build
+npm run lint
+npm run biome:check
+npm audit --audit-level=moderate
+```
 
 ## Notes de sécurité
 
