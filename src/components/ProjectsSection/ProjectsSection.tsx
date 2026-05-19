@@ -23,6 +23,7 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
         <div>
           <p className="eyebrow">{projectsCopy.eyebrow}</p>
           <h2>{projectsCopy.heading}</h2>
+          <p>{projectsCopy.text}</p>
         </div>
       </div>
       <div className="projects-grid" id="projects-grid">

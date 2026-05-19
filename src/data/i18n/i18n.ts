@@ -6,7 +6,7 @@ export const copy = {
     about: {
       alt: "Portrait professionnel d'Allen Koch",
       eyebrow: 'About',
-      heading: 'Développeur fullstack junior, pragmatique et orienté produit.',
+      heading: "Hello, moi c'est Allen",
       paragraphs: [
         "Je construis des applications web orientées produit avec une approche pragmatique : comprendre le besoin, livrer un MVP clair, puis améliorer progressivement l'expérience utilisateur et la qualité technique.",
         "Ma stack principale combine Rails, React et TypeScript, avec un workflow renforcé par les outils d'automatisation IA. Je cherche à créer des projets utiles, maintenables et réellement utilisables.",
@@ -14,8 +14,8 @@ export const copy = {
       tags: ['France', 'Junior Fullstack'],
     },
     contact: {
-      heading: 'Travaillons sur un projet clair, utile et maintenable.',
-      text: "Disponible pour échanger autour d'un produit web, d'un MVP ou d'une base technique à rendre plus propre.",
+      heading: 'Parlons de votre projet.',
+      text: "Disponible pour discuter d'un projet web, d'un MVP ou d'une base technique à structurer proprement.",
       meta: {
         profile: ['Profil', 'Fullstack Junior'],
         focus: ['Focus', 'Rails / React'],
@@ -53,8 +53,8 @@ export const copy = {
     },
     projects: {
       eyebrow: 'Portfolio',
-      heading:
-        'Des produits construits pour être compris, utilisés et maintenus.',
+      heading: 'Build & Learn',
+      text: 'Des projets concrets pour explorer des stacks, améliorer mon workflow et construire des solutions clients utiles.',
       showAllLabel: 'Afficher tous les projets',
       hideExtraLabel: 'Masquer les projets supplémentaires',
       ctaText: 'Une idée de projet ?',
@@ -66,7 +66,8 @@ export const copy = {
     skipLink: 'Aller au contenu',
     stack: {
       eyebrow: 'Stack & skills',
-      heading: 'Une base technique simple, lisible et orientée livraison.',
+      heading:
+        'Une base technique solide, lisible et moderne, pensée pour construire et itérer.',
       text: "La stack met l'accent sur des outils que je peux comprendre, déployer et maintenir dans le temps.",
     },
     topButtonLabel: 'Remonter en haut de la page',
@@ -75,7 +76,7 @@ export const copy = {
     about: {
       alt: 'Professional portrait of Allen Koch',
       eyebrow: 'About',
-      heading: 'Junior fullstack developer, pragmatic and product-minded.',
+      heading: "Hello, I'm Allen",
       paragraphs: [
         'I build product-oriented web applications with a pragmatic approach: understand the need, ship a clear MVP, then improve the user experience and technical quality over time.',
         'My main stack combines Rails, React and TypeScript, with a workflow strengthened by AI automation tools. I aim to build useful, maintainable projects that are actually usable.',
@@ -83,8 +84,8 @@ export const copy = {
       tags: ['France', 'Junior Fullstack'],
     },
     contact: {
-      heading: "Let's work on a clear, useful and maintainable project.",
-      text: 'Available to discuss a web product, an MVP, or a technical base that needs to become cleaner.',
+      heading: "Let's talk about your project.",
+      text: 'Available to discuss a web project, an MVP, or a technical foundation to structure cleanly.',
       meta: {
         profile: ['Profile', 'Junior Fullstack'],
         focus: ['Focus', 'Rails / React'],
@@ -122,7 +123,8 @@ export const copy = {
     },
     projects: {
       eyebrow: 'Portfolio',
-      heading: 'Products built to be understood, used and maintained.',
+      heading: 'Build & Learn',
+      text: 'Concrete projects to explore stacks, improve my workflow and build useful client solutions.',
       showAllLabel: 'Show all projects',
       hideExtraLabel: 'Hide extra projects',
       ctaText: 'Have a project idea?',
@@ -134,7 +136,8 @@ export const copy = {
     skipLink: 'Skip to content',
     stack: {
       eyebrow: 'Stack & skills',
-      heading: 'A simple, readable technical base focused on delivery.',
+      heading:
+        'A solid, readable and modern technical base designed to build and iterate.',
       text: 'The stack focuses on tools I can understand, deploy and maintain over time.',
     },
     topButtonLabel: 'Back to top',

@@ -2,14 +2,6 @@ import type { CSSProperties } from 'react'
 import { copy, type Language } from '../../data/i18n/i18n'
 import type { Project } from '../../data/projects/projects'
 
-const chipColors = [
-  { accent: '#2f6bff' },
-  { accent: '#16e4ff' },
-  { accent: '#b95cff' },
-  { accent: '#ff3f7f' },
-  { accent: '#ffcc24' },
-]
-
 type ProjectCardProps = {
   index: number
   language: Language
@@ -64,46 +56,37 @@ export function ProjectCard({ index, language, project }: ProjectCardProps) {
         </p>
 
         <div className="chip-list">
-          {project.stack.map((tag, tagIndex) => (
-            <span
-              className="chip project-card__chip"
-              key={tag}
-              style={
-                {
-                  '--chip-accent':
-                    chipColors[tagIndex % chipColors.length].accent,
-                } as CSSProperties
-              }
-            >
+          {project.stack.map((tag) => (
+            <span className="chip project-card__chip" key={tag}>
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="project-card__links">
-          <a
-            aria-disabled={!hasRepositoryLink}
-            className={`project-card__link project-card__link--secondary${
-              hasRepositoryLink ? '' : ' project-card__link--empty'
-            }`}
-            href={project.repositoryHref ?? ''}
-            rel={hasRepositoryLink ? 'noopener noreferrer' : undefined}
-            target={hasRepositoryLink ? '_blank' : undefined}
-          >
-            {projectCopy.github}
-          </a>
-          <a
-            aria-disabled={!hasDemoLink}
-            className={`project-card__link project-card__link--primary${
-              hasDemoLink ? '' : ' project-card__link--empty'
-            }`}
-            href={project.href ?? ''}
-            rel={hasDemoLink ? 'noopener noreferrer' : undefined}
-            target={hasDemoLink ? '_blank' : undefined}
-          >
-            {projectCopy.view}
-          </a>
-        </div>
+        {hasRepositoryLink || hasDemoLink ? (
+          <div className="project-card__links">
+            {hasRepositoryLink ? (
+              <a
+                className="project-card__link project-card__link--secondary"
+                href={project.repositoryHref}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {projectCopy.github}
+              </a>
+            ) : null}
+            {hasDemoLink ? (
+              <a
+                className="project-card__link project-card__link--primary"
+                href={project.href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {projectCopy.view}
+              </a>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </article>
   )

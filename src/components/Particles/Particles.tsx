@@ -154,11 +154,18 @@ export function Particles({
       return undefined
     }
 
-    const renderer = new Renderer({
-      alpha: true,
-      depth: false,
-      dpr: pixelRatio,
-    })
+    let renderer: Renderer
+
+    try {
+      renderer = new Renderer({
+        alpha: true,
+        depth: false,
+        dpr: pixelRatio,
+      })
+    } catch {
+      return undefined
+    }
+
     const gl = renderer.gl
 
     container.appendChild(gl.canvas)
