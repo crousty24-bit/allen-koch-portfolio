@@ -1,6 +1,5 @@
 import akLogo from '../../assets/images/ak-logo.png'
 import { copy, type Language, type Theme } from '../../data/i18n/i18n'
-import { links } from '../../data/links/links'
 
 const navItems = [
   { key: 'home', href: '#home' },
@@ -23,7 +22,6 @@ export function Navbar({
   onToggleTheme,
   theme,
 }: NavbarProps) {
-  const socialLinks = links.filter((link) => link.kind === 'social')
   const navCopy = copy[language].nav
 
   return (
@@ -50,19 +48,6 @@ export function Navbar({
         </nav>
 
         <div className="navbar__controls">
-          <nav aria-label={navCopy.externalLabel} className="navbar__actions">
-            {socialLinks.map((link) => (
-              <a
-                href={link.href}
-                key={link.href}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
           <div className="navbar__toggles">
             <button
               aria-label={

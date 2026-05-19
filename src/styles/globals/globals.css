@@ -191,7 +191,7 @@ select {
 
 .navbar {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 1.5rem;
   max-width: var(--container);
@@ -202,7 +202,6 @@ select {
 
 .brand,
 .navbar__links,
-.navbar__actions,
 .social-row,
 .site-footer nav {
   display: flex;
@@ -210,6 +209,7 @@ select {
 }
 
 .brand {
+  justify-self: start;
   gap: 0.75rem;
   min-width: max-content;
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -227,6 +227,7 @@ select {
 }
 
 .navbar__links {
+  justify-self: center;
   justify-content: center;
   gap: clamp(0.65rem, 2vw, 2rem);
   font-family: Geist, monospace;
@@ -235,7 +236,6 @@ select {
 }
 
 .navbar__links a,
-.navbar__actions a,
 .social-row a,
 .site-footer a {
   transition:
@@ -246,16 +246,13 @@ select {
     transform 220ms ease;
 }
 
-.navbar__links a,
-.navbar__actions a {
+.navbar__links a {
   padding: 0.45rem 0.6rem;
   border-radius: var(--radius-sm);
 }
 
 .navbar__links a:hover,
-.navbar__links a:focus-visible,
-.navbar__actions a:hover,
-.navbar__actions a:focus-visible {
+.navbar__links a:focus-visible {
   color: #effbff;
   background:
     linear-gradient(135deg, rgba(46, 91, 255, 0.28), rgba(49, 243, 255, 0.16)),
@@ -265,14 +262,6 @@ select {
     0 10px 26px rgba(46, 91, 255, 0.18);
 }
 
-.navbar__actions {
-  justify-content: flex-end;
-  gap: 0.75rem;
-  font-family: Geist, monospace;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
 .navbar__controls,
 .navbar__toggles {
   display: flex;
@@ -280,6 +269,7 @@ select {
 }
 
 .navbar__controls {
+  justify-self: end;
   justify-content: flex-end;
   gap: 0.85rem;
 }
@@ -1499,8 +1489,8 @@ select {
 
   .brand,
   .navbar__links,
-  .navbar__actions,
   .navbar__controls {
+    justify-self: center;
     justify-content: center;
   }
 
@@ -1542,10 +1532,6 @@ select {
 
   .navbar__links a {
     padding: 0.34rem 0.48rem;
-  }
-
-  .navbar__actions {
-    display: none;
   }
 
   .navbar__controls {
