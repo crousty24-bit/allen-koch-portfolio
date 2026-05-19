@@ -5,9 +5,12 @@ import { ContactSection } from './components/ContactSection/ContactSection'
 import { Footer } from './components/Footer/Footer'
 import { Hero } from './components/Hero/Hero'
 import { Navbar } from './components/Navbar/Navbar'
+import { Particles } from './components/Particles/Particles'
 import { ProjectsSection } from './components/ProjectsSection/ProjectsSection'
 import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
+
+const backgroundParticleColors = ['#2e5bff', '#54d5ff', '#6c04de']
 
 const getStoredTheme = (): Theme => {
   if (typeof window === 'undefined') {
@@ -43,6 +46,19 @@ function App() {
 
   return (
     <>
+      <Particles
+        alphaParticles
+        cameraDistance={22}
+        moveParticlesOnHover
+        particleBaseSize={88}
+        particleColors={backgroundParticleColors}
+        particleCount={170}
+        particleHoverFactor={0.35}
+        particleSpread={12}
+        pixelRatio={Math.min(window.devicePixelRatio || 1, 2)}
+        sizeRandomness={0.8}
+        speed={0.06}
+      />
       <a className="skip-link" href="#main-content">
         {pageCopy.skipLink}
       </a>
