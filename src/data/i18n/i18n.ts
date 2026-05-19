@@ -30,10 +30,10 @@ export const copy = {
     hero: {
       status:
         'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
-      heading: 'Construire des produits web',
-      highlight: 'clairs, utiles et maintenables.',
+      heading: 'Construire simple. Livrer utile.',
+      highlight: '',
       subtitle:
-        "Développeur Fullstack Junior Rails / React, je construis des applications web orientées produit, de la conception MVP à l'amélioration continue.",
+        'Je construis des expériences web fonctionnelles, structurées et maintenables, avec une approche orientée produit.',
       note: "Penser produit, coder proprement, livrer utile avec l'IA comme levier, pas comme raccourci.",
       projectsCta: 'Voir les projets',
       contactCta: 'Me contacter',
@@ -99,10 +99,10 @@ export const copy = {
     hero: {
       status:
         'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
-      heading: 'Building web products that are',
-      highlight: 'clear, useful and maintainable.',
+      heading: 'Build simply. Ship useful work.',
+      highlight: '',
       subtitle:
-        'Junior Rails / React Fullstack Developer building product-oriented web applications, from MVP design to continuous improvement.',
+        'I build functional, structured and maintainable web experiences with a product-minded approach.',
       note: 'Think product, write clean code, ship useful work with AI as leverage, not as a shortcut.',
       projectsCta: 'View projects',
       contactCta: 'Contact me',

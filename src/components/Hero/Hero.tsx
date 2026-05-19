@@ -103,8 +103,13 @@ export function Hero({ language }: HeroProps) {
         <p className="status-pill">{heroCopy.status}</p>
 
         <h1>
-          {heroCopy.heading}{' '}
-          <span className="hero__highlight">{heroCopy.highlight}</span>
+          {heroCopy.heading}
+          {heroCopy.highlight ? (
+            <>
+              {' '}
+              <span className="hero__highlight">{heroCopy.highlight}</span>
+            </>
+          ) : null}
         </h1>
 
         <p className="hero__subtitle">{heroCopy.subtitle}</p>
