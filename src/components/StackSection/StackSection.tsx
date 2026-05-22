@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import { copy, type Language } from '../../data/i18n/i18n'
-import { skills } from '../../data/skills/skills'
 import { stack } from '../../data/stack/stack'
+import { SkillsTree } from '../SkillsTree/SkillsTree'
 
 const iconUrl = (icon: string, color?: string) =>
   `https://cdn.simpleicons.org/${icon}${color ? `/${color}` : ''}`
@@ -58,25 +58,7 @@ export function StackSection({ language }: StackSectionProps) {
         ))}
       </div>
 
-      <div className="skills-grid">
-        {skills.map((skill, index) => (
-          <article
-            className="skill-card reveal"
-            key={skill.title}
-            style={{ '--index': index } as CSSProperties}
-          >
-            <h3>{skill.title}</h3>
-            <p>{skill.description[language]}</p>
-            <div className="chip-list">
-              {skill.keywords.map((keyword) => (
-                <span className="chip chip--muted" key={keyword}>
-                  {keyword}
-                </span>
-              ))}
-            </div>
-          </article>
-        ))}
-      </div>
+      <SkillsTree language={language} />
     </section>
   )
 }

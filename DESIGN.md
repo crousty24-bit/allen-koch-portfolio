@@ -205,12 +205,12 @@ neon glow.
 Current structure:
 
 - stack cards for technical categories
-- skills cards for developer capabilities
+- interactive skills tree below the stack grid
 - external icons from Simple Icons
-- skill chips share the same palette as project chips
 
-Keep stack and skills dense but readable. This section should feel like a clear
-technical inventory, not a marketing block.
+Keep stack and skills dense but readable. The skills tree should stay scannable,
+keyboard accessible, and clear on mobile without turning the section into a
+marketing block.
 
 ## 11. About
 
