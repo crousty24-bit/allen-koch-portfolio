@@ -94,6 +94,9 @@ classes over adding theme-specific one-offs.
 Any design, color, or theme-style change made for the default dark theme must
 be reflected coherently in light mode.
 
+Any design change must also be checked and adapted for mobile and narrow
+responsive layouts.
+
 ## 5. Color System
 
 Primary dark tokens currently follow this family:
