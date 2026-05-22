@@ -44,6 +44,43 @@ function App() {
     window.localStorage.setItem('language', language)
   }, [language])
 
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return
+    }
+
+    const scrollSections = document.querySelectorAll<HTMLElement>(
+      'main > .section:not(.hero)',
+    )
+
+    scrollSections.forEach((section) => {
+      section.classList.add('section--scroll-fade')
+    })
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return
+          }
+
+          entry.target.classList.add('section--scroll-visible')
+          sectionObserver.unobserve(entry.target)
+        })
+      },
+      {
+        rootMargin: '0px 0px -18%',
+        threshold: 0.12,
+      },
+    )
+
+    scrollSections.forEach((section) => {
+      sectionObserver.observe(section)
+    })
+
+    return () => sectionObserver.disconnect()
+  }, [])
+
   return (
     <>
       <Particles
