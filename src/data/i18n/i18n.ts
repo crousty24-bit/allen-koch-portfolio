@@ -28,8 +28,7 @@ export const copy = {
       socialLabel: 'Liens sociaux footer',
     },
     hero: {
-      status:
-        'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
+      status: 'Développeur Fullstack - React / Rails',
       heading: 'Construire simple. Livrer utile.',
       highlight: '',
       subtitle:
@@ -100,8 +99,7 @@ export const copy = {
       socialLabel: 'Footer social links',
     },
     hero: {
-      status:
-        'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
+      status: 'Fullstack Developer - React / Rails',
       heading: 'Build simply. Ship useful work.',
       highlight: '',
       subtitle:
