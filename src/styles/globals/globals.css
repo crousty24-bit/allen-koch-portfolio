@@ -1729,9 +1729,12 @@ select {
   }
 
   .hero__actions,
-  .button,
   .project-card {
     width: 100%;
+  }
+
+  .hero__actions .button {
+    width: min(100%, 12rem);
   }
 
   .button {
