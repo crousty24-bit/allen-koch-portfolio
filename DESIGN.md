@@ -91,6 +91,9 @@ Light theme should preserve the same structure and hierarchy:
 When changing styles, prefer updating shared tokens or existing component
 classes over adding theme-specific one-offs.
 
+Any design, color, or theme-style change made for the default dark theme must
+be reflected coherently in light mode.
+
 ## 5. Color System
 
 Primary dark tokens currently follow this family:
