@@ -1,6 +1,7 @@
 import portraitSrc from '../../assets/images/allen-portrait1.jpg'
 import { copy, type Language } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
+import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
 
 type AboutSectionProps = {
   language: Language
@@ -54,6 +55,8 @@ export function AboutSection({ language }: AboutSectionProps) {
           </div>
         </div>
       </div>
+
+      <AboutAccordion language={language} />
     </section>
   )
 }

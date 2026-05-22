@@ -218,6 +218,7 @@ Current structure:
 
 - portrait card using local asset `src/assets/images/allen-portrait1.jpg`
 - grayscale portrait by default, color on hover
+- data-driven accordion below the main About layout
 - floating tags for location/status
 - social links below copy
 
