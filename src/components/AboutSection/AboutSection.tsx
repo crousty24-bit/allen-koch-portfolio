@@ -37,7 +37,15 @@ export function AboutSection({ language }: AboutSectionProps) {
           <h2>{aboutCopy.heading}</h2>
           <div className="about-copy">
             {aboutCopy.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph.map((part) => part.text).join('')}>
+                {paragraph.map((part) =>
+                  'strong' in part && part.strong ? (
+                    <strong key={part.text}>{part.text}</strong>
+                  ) : (
+                    part.text
+                  ),
+                )}
+              </p>
             ))}
           </div>
 
