@@ -2129,12 +2129,31 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html:root {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
-    scroll-behavior: auto;
     animation-duration: 1ms;
     animation-iteration-count: 1;
     transition-duration: 1ms;
+  }
+
+  .ambient,
+  .hero::after,
+  .hero__scroll,
+  .reveal,
+  .skills-tree__content:not([hidden]),
+  .about-accordion__panel:not([hidden]) {
+    animation: none;
+    animation-delay: 0ms;
+  }
+
+  .section--scroll-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
