@@ -99,6 +99,10 @@ Global UI:
 - Do not add new global controls unless explicitly validated.
 - Preserve the current static-site scope: no backend, no database, no auth.
 - Keep the existing theme and language state local to the frontend.
+- Keep dark and light themes coherent: any change to default dark-mode design,
+  colors, or theme styling must be reflected appropriately in light mode.
+- Keep responsive behavior coherent: any design change must be checked and
+  adapted for mobile and narrow viewports.
 - Treat the `1.0.0` implementation as the baseline. Do not reopen broad MVP
   polish work unless explicitly requested.
 - Future changes should be maintenance-oriented by default: content updates,

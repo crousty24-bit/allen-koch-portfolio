@@ -1,50 +1,152 @@
 import type { Language } from '../i18n/i18n'
 
-export type SkillItem = {
-  title: string
-  keywords: string[]
-  description: Record<Language, string>
+export type SkillTreeIcon =
+  | 'ai-workflow'
+  | 'code-quality'
+  | 'collaboration'
+  | 'delivery'
+  | 'engineering'
+  | 'product'
+  | 'product-mindset'
+  | 'teamwork'
+  | 'terminal'
+
+export type SkillTreeNode = {
+  id: string
+  icon?: SkillTreeIcon
+  label: Record<Language, string>
+  children?: SkillTreeNode[]
+  keywords?: Record<Language, string[]>
 }
 
-export const skills: SkillItem[] = [
-  {
-    title: 'Developer Workflow',
-    keywords: ['Git', 'GitHub', 'CLI', 'Linux / WSL', 'Debug'],
-    description: {
-      fr: 'Travailler proprement, comprendre les erreurs, versionner le code et avancer avec méthode.',
-      en: 'Work cleanly, understand errors, version code and move forward with method.',
-    },
+export const skillsTree: SkillTreeNode = {
+  id: 'skills',
+  label: {
+    fr: 'Compétences',
+    en: 'Skills',
   },
-  {
-    title: 'Code Quality',
-    keywords: ['Clean code', 'Naming', 'Architecture', 'Maintainability'],
-    description: {
-      fr: 'Écrire du code lisible, structuré, évolutif et compréhensible par une équipe.',
-      en: 'Write readable, structured, scalable code that a team can understand.',
+  children: [
+    {
+      id: 'engineering-practices',
+      icon: 'engineering',
+      label: {
+        fr: "Pratiques d'ingénierie",
+        en: 'Engineering Practices',
+      },
+      children: [
+        {
+          id: 'developer-workflow',
+          icon: 'terminal',
+          label: {
+            fr: 'Workflow développeur',
+            en: 'Developer Workflow',
+          },
+          keywords: {
+            fr: ['Git', 'GitHub', 'CLI', 'Linux / WSL', 'Débogage'],
+            en: ['Git', 'GitHub', 'CLI', 'Linux / WSL', 'Debugging'],
+          },
+        },
+        {
+          id: 'code-quality',
+          icon: 'code-quality',
+          label: {
+            fr: 'Qualité du code',
+            en: 'Code Quality',
+          },
+          keywords: {
+            fr: [
+              'Clean code',
+              'Naming',
+              'Architecture simple',
+              'Maintenabilité',
+            ],
+            en: [
+              'Clean code',
+              'Naming',
+              'Simple architecture',
+              'Maintainability',
+            ],
+          },
+        },
+      ],
     },
-  },
-  {
-    title: 'Product Mindset',
-    keywords: ['MVP', 'User stories', 'UX clarity', 'Client needs'],
-    description: {
-      fr: "Partir du besoin réel, prioriser l'utile et construire des fonctionnalités utilisables.",
-      en: 'Start from the real need, prioritize what is useful and build usable features.',
+    {
+      id: 'product-delivery',
+      icon: 'product',
+      label: {
+        fr: 'Produit & Livraison',
+        en: 'Product & Delivery',
+      },
+      children: [
+        {
+          id: 'product-mindset',
+          icon: 'product-mindset',
+          label: {
+            fr: 'Approche produit',
+            en: 'Product Mindset',
+          },
+          keywords: {
+            fr: ['MVP', 'User stories', 'Clarté UX', 'Priorisation'],
+            en: ['MVP', 'User stories', 'UX clarity', 'Prioritization'],
+          },
+        },
+        {
+          id: 'delivery',
+          icon: 'delivery',
+          label: {
+            fr: 'Livraison',
+            en: 'Delivery',
+          },
+          keywords: {
+            fr: ['Déploiement', 'Documentation', 'Itération', 'Workflow agile'],
+            en: ['Deployment', 'Documentation', 'Iteration', 'Agile workflow'],
+          },
+        },
+      ],
     },
-  },
-  {
-    title: 'Delivery',
-    keywords: ['Documentation', 'Deployment', 'Iteration', 'Agile workflow'],
-    description: {
-      fr: 'Livrer progressivement, documenter les choix et améliorer le projet par itérations.',
-      en: 'Ship progressively, document choices and improve the project through iterations.',
+    {
+      id: 'modern-collaboration',
+      icon: 'teamwork',
+      label: {
+        fr: 'Collaboration moderne',
+        en: 'Modern Collaboration',
+      },
+      children: [
+        {
+          id: 'ai-assisted-workflow',
+          icon: 'ai-workflow',
+          label: {
+            fr: 'Workflow assisté par IA',
+            en: 'AI-Assisted Workflow',
+          },
+          keywords: {
+            fr: [
+              'Codex',
+              'Outils agentiques',
+              'Automatisation',
+              'Revue de code',
+            ],
+            en: ['Codex', 'Agentic tools', 'Automation', 'Code review'],
+          },
+        },
+        {
+          id: 'collaboration',
+          icon: 'collaboration',
+          label: {
+            fr: 'Collaboration',
+            en: 'Collaboration',
+          },
+          keywords: {
+            fr: [
+              'Communication',
+              'Feedback',
+              'Autonomie',
+              'Résolution de problèmes',
+            ],
+            en: ['Communication', 'Feedback', 'Autonomy', 'Problem solving'],
+          },
+        },
+      ],
     },
-  },
-  {
-    title: 'AI Workflow',
-    keywords: ['Codex', 'OpenClaw', 'Agentic tools', 'Automation', 'Review'],
-    description: {
-      fr: "Utiliser l'IA comme assistant de développement, de debug et d'automatisation, sans perdre la maîtrise technique.",
-      en: 'Use AI as a development, debugging and automation assistant without losing technical control.',
-    },
-  },
-]
+  ],
+}

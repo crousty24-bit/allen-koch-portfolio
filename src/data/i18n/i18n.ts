@@ -8,8 +8,30 @@ export const copy = {
       eyebrow: 'About',
       heading: "Hello, moi c'est Allen",
       paragraphs: [
-        "Je construis des applications web orientées produit avec une approche pragmatique : comprendre le besoin, livrer un MVP clair, puis améliorer progressivement l'expérience utilisateur et la qualité technique.",
-        "Ma stack principale combine Rails, React et TypeScript, avec un workflow renforcé par les outils d'automatisation IA. Je cherche à créer des projets utiles, maintenables et réellement utilisables.",
+        [
+          { strong: true, text: 'Mon but :' },
+          {
+            text: " des applications web orientées produit avec une approche pragmatique. Comprendre le besoin, livrer un MVP clair, puis améliorer progressivement l'UX et la qualité technique.",
+          },
+        ],
+        [
+          { text: 'Ce que j’apprécie le plus ? ' },
+          { strong: true, text: 'Résoudre des problèmes concrets' },
+          { text: '.' },
+        ],
+        [
+          {
+            text: 'Le backend est mon terrain de jeu principal, parce qu’il oblige à ',
+          },
+          { strong: true, text: 'comprendre la logique métier' },
+          { text: ' et construire des bases solides derrière l’interface.' },
+        ],
+        [
+          { strong: true, text: 'Mon approche :' },
+          {
+            text: ' le code n’a de valeur que s’il répond à un enjeu réel : simplifier un usage, automatiser une tâche, fiabiliser un processus ou rendre un produit plus clair et plus utile.',
+          },
+        ],
       ],
       tags: ['France', 'Junior Fullstack'],
     },
@@ -28,8 +50,7 @@ export const copy = {
       socialLabel: 'Liens sociaux footer',
     },
     hero: {
-      status:
-        'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
+      status: 'Développeur Fullstack - React / Rails',
       heading: 'Construire simple. Livrer utile.',
       highlight: '',
       subtitle:
@@ -47,6 +68,8 @@ export const copy = {
       mainLabel: 'Navigation principale',
       externalLabel: 'Liens externes',
       homeLabel: 'Allen Koch - accueil',
+      openMenuLabel: 'Ouvrir le menu',
+      closeMenuLabel: 'Fermer le menu',
       themeDarkLabel: 'Basculer en thème sombre',
       themeLightLabel: 'Basculer en thème clair',
       languageLabel: 'Passer le site en anglais',
@@ -78,8 +101,30 @@ export const copy = {
       eyebrow: 'About',
       heading: "Hello, I'm Allen",
       paragraphs: [
-        'I build product-oriented web applications with a pragmatic approach: understand the need, ship a clear MVP, then improve the user experience and technical quality over time.',
-        'My main stack combines Rails, React and TypeScript, with a workflow strengthened by AI automation tools. I aim to build useful, maintainable projects that are actually usable.',
+        [
+          { strong: true, text: 'My goal:' },
+          {
+            text: ' build product-oriented web applications with a pragmatic approach. Understand the need, ship a clear MVP, then improve the UX and technical quality over time.',
+          },
+        ],
+        [
+          { text: 'What I enjoy most? ' },
+          { strong: true, text: 'Solving concrete problems' },
+          { text: '.' },
+        ],
+        [
+          {
+            text: 'Backend is my main playground because it requires me to ',
+          },
+          { strong: true, text: 'understand the business logic' },
+          { text: ' and build solid foundations behind the interface.' },
+        ],
+        [
+          { strong: true, text: 'My approach:' },
+          {
+            text: ' code only has value when it addresses a real need: simplifying a workflow, automating a task, making a process more reliable or making a product clearer and more useful.',
+          },
+        ],
       ],
       tags: ['France', 'Junior Fullstack'],
     },
@@ -98,8 +143,7 @@ export const copy = {
       socialLabel: 'Footer social links',
     },
     hero: {
-      status:
-        'Fullstack Developer - Rails / React - Product-minded - AI Workflows',
+      status: 'Fullstack Developer - React / Rails',
       heading: 'Build simply. Ship useful work.',
       highlight: '',
       subtitle:
@@ -117,6 +161,8 @@ export const copy = {
       mainLabel: 'Main navigation',
       externalLabel: 'External links',
       homeLabel: 'Allen Koch - home',
+      openMenuLabel: 'Open menu',
+      closeMenuLabel: 'Close menu',
       themeDarkLabel: 'Switch to dark theme',
       themeLightLabel: 'Switch to light theme',
       languageLabel: 'Switch site to French',
