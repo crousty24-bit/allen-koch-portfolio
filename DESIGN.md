@@ -94,6 +94,9 @@ classes over adding theme-specific one-offs.
 Any design, color, or theme-style change made for the default dark theme must
 be reflected coherently in light mode.
 
+Any design change must also be checked and adapted for mobile and narrow
+responsive layouts.
+
 ## 5. Color System
 
 Primary dark tokens currently follow this family:
@@ -202,12 +205,12 @@ neon glow.
 Current structure:
 
 - stack cards for technical categories
-- skills cards for developer capabilities
+- interactive skills tree below the stack grid
 - external icons from Simple Icons
-- skill chips share the same palette as project chips
 
-Keep stack and skills dense but readable. This section should feel like a clear
-technical inventory, not a marketing block.
+Keep stack and skills dense but readable. The skills tree should stay scannable,
+keyboard accessible, and clear on mobile without turning the section into a
+marketing block.
 
 ## 11. About
 
@@ -215,6 +218,7 @@ Current structure:
 
 - portrait card using local asset `src/assets/images/allen-portrait1.jpg`
 - grayscale portrait by default, color on hover
+- data-driven accordion below the main About layout
 - floating tags for location/status
 - social links below copy
 

@@ -1,6 +1,7 @@
 import portraitSrc from '../../assets/images/allen-portrait1.jpg'
 import { copy, type Language } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
+import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
 
 type AboutSectionProps = {
   language: Language
@@ -36,7 +37,15 @@ export function AboutSection({ language }: AboutSectionProps) {
           <h2>{aboutCopy.heading}</h2>
           <div className="about-copy">
             {aboutCopy.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph.map((part) => part.text).join('')}>
+                {paragraph.map((part) =>
+                  'strong' in part && part.strong ? (
+                    <strong key={part.text}>{part.text}</strong>
+                  ) : (
+                    part.text
+                  ),
+                )}
+              </p>
             ))}
           </div>
 
@@ -54,6 +63,8 @@ export function AboutSection({ language }: AboutSectionProps) {
           </div>
         </div>
       </div>
+
+      <AboutAccordion language={language} />
     </section>
   )
 }
