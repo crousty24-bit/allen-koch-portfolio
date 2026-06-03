@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "biome:check": "biome check .",
     "test": "vitest run",
+    "stats:update": "node scripts/update-hero-stats.mjs",
     "format": "biome format --write .",
     "preview": "vite preview"
   },

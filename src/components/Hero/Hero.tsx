@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { heroStats } from '../../data/hero/heroStats'
 import { copy, type Language } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
 
@@ -204,18 +205,22 @@ export function Hero({ language }: HeroProps) {
         </div>
 
         <dl aria-label={heroCopy.statsLabel} className="hero__stats">
-          {heroCopy.stats.map((stat) => (
-            <div className="hero__stat" key={stat.label}>
-              <dt>{stat.label}</dt>
-              <dd>
-                <CountUp
-                  label={stat.label}
-                  prefix={stat.prefix}
-                  value={stat.value}
-                />
-              </dd>
-            </div>
-          ))}
+          {heroStats.map((stat) => {
+            const label = heroCopy.statLabels[stat.id]
+
+            return (
+              <div className="hero__stat" key={stat.id}>
+                <dt>{label}</dt>
+                <dd>
+                  <CountUp
+                    label={label}
+                    prefix={stat.prefix}
+                    value={stat.value}
+                  />
+                </dd>
+              </div>
+            )
+          })}
         </dl>
       </div>
 

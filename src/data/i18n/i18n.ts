@@ -59,10 +59,10 @@ export const copy = {
       projectsCta: 'Voir les projets',
       contactCta: 'Me contacter',
       statsLabel: 'Statistiques du hero',
-      stats: [
-        { label: 'Contributions', prefix: '+', value: 833 },
-        { label: 'Projets', prefix: '', value: 5 },
-      ],
+      statLabels: {
+        contributions: 'Contributions',
+        projects: 'Projets',
+      },
     },
     nav: {
       home: 'Home',
@@ -157,10 +157,10 @@ export const copy = {
       projectsCta: 'View projects',
       contactCta: 'Contact me',
       statsLabel: 'Hero stats',
-      stats: [
-        { label: 'Contributions', prefix: '+', value: 833 },
-        { label: 'Projects', prefix: '', value: 5 },
-      ],
+      statLabels: {
+        contributions: 'Contributions',
+        projects: 'Projects',
+      },
     },
     nav: {
       home: 'Home',
