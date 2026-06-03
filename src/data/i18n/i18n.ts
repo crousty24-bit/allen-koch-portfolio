@@ -51,13 +51,18 @@ export const copy = {
     },
     hero: {
       status: 'Développeur Fullstack - React / Rails',
-      heading: 'Construire simple. Livrer utile.',
+      heading: 'Développeur Fullstack. AI Builder',
       highlight: '',
       subtitle:
         'Je construis des expériences web fonctionnelles, structurées et maintenables, avec une approche orientée produit.',
       note: "Penser produit, coder proprement, livrer utile avec l'IA comme levier, pas comme raccourci.",
       projectsCta: 'Voir les projets',
       contactCta: 'Me contacter',
+      statsLabel: 'Statistiques du hero',
+      statLabels: {
+        contributions: 'Contributions',
+        projects: 'Projets',
+      },
     },
     nav: {
       home: 'Home',
@@ -144,13 +149,18 @@ export const copy = {
     },
     hero: {
       status: 'Fullstack Developer - React / Rails',
-      heading: 'Build simply. Ship useful work.',
+      heading: 'Fullstack Developer. AI Builder',
       highlight: '',
       subtitle:
         'I build functional, structured and maintainable web experiences with a product-minded approach.',
       note: 'Think product, write clean code, ship useful work with AI as leverage, not as a shortcut.',
       projectsCta: 'View projects',
       contactCta: 'Contact me',
+      statsLabel: 'Hero stats',
+      statLabels: {
+        contributions: 'Contributions',
+        projects: 'Projects',
+      },
     },
     nav: {
       home: 'Home',
