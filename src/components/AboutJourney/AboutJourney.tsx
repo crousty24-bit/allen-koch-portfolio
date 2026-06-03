@@ -255,9 +255,9 @@ function JourneyIcon({ kind }: JourneyIconProps) {
 }
 
 export function AboutJourney({ language }: AboutJourneyProps) {
-  const [openItemId, setOpenItemId] = useState(
-    () => aboutJourneyItems[0]?.id ?? '',
-  )
+  const [openItemIds, setOpenItemIds] = useState(() => [
+    aboutJourneyItems[0]?.id ?? '',
+  ])
   const labels = timelineLabels[language]
 
   return (
@@ -277,7 +277,7 @@ export function AboutJourney({ language }: AboutJourneyProps) {
         <ol className="about-journey__list">
           {aboutJourneyItems.map((item, index) => {
             const side = index % 2 === 0 ? 'left' : 'right'
-            const isOpen = openItemId === item.id
+            const isOpen = openItemIds.includes(item.id)
             const panelId = `about-journey-${item.id}-panel`
 
             return (
@@ -297,8 +297,12 @@ export function AboutJourney({ language }: AboutJourneyProps) {
                   }`}
                   className="about-journey__card"
                   onClick={() =>
-                    setOpenItemId((currentId) =>
-                      currentId === item.id ? '' : item.id,
+                    setOpenItemIds((currentIds) =>
+                      currentIds.includes(item.id)
+                        ? currentIds.filter(
+                            (currentId) => currentId !== item.id,
+                          )
+                        : [...currentIds, item.id],
                     )
                   }
                   type="button"

@@ -2038,7 +2038,6 @@ select {
 
 .about-journey__item--right .about-journey__card {
   grid-column: 5;
-  grid-template-columns: minmax(0, 0fr) auto auto;
   justify-self: start;
   border-color: rgba(108, 4, 222, 0.28);
   background:
@@ -2046,12 +2045,9 @@ select {
     rgba(11, 14, 20, 0.78);
 }
 
-.about-journey__item--left.about-journey__item--open .about-journey__card {
-  grid-template-columns: auto auto minmax(0, 1fr);
-}
-
+.about-journey__item--left.about-journey__item--open .about-journey__card,
 .about-journey__item--right.about-journey__item--open .about-journey__card {
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: auto auto minmax(0, 1fr);
 }
 
 .about-journey__card:hover,
@@ -2092,7 +2088,6 @@ select {
 }
 
 .about-journey__item--right .about-journey__index {
-  grid-column: 3;
   color: var(--secondary);
   background: rgba(108, 4, 222, 0.12);
   border-color: rgba(108, 4, 222, 0.24);
@@ -2106,10 +2101,6 @@ select {
   color: var(--text);
   border: 1px solid rgba(184, 195, 255, 0.16);
   border-radius: var(--radius-md);
-}
-
-.about-journey__item--right .about-journey__icon-shell {
-  grid-column: 2;
 }
 
 .about-journey__icon {
@@ -2132,9 +2123,7 @@ select {
 }
 
 .about-journey__item--right .about-journey__content {
-  grid-column: 1;
-  text-align: right;
-  transform-origin: right center;
+  transform-origin: left center;
 }
 
 .about-journey__item--open .about-journey__content {
