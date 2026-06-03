@@ -1,16 +1,15 @@
 # Allen Koch - Portfolio Développeur
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Status](https://img.shields.io/badge/status-release%201.0.0-success)
+![Version](https://img.shields.io/badge/version-1.1.1-blue)
+![Status](https://img.shields.io/badge/status-release%201.1.1-success)
 ![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)
 ![License](https://img.shields.io/badge/license-private-lightgrey)
 
 Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack junior, des projets sélectionnés, une stack technique et des liens de contact professionnels.
 
-Version `1.0.0` est l'état final du MVP. Le projet est considéré stable pour
-release ; les évolutions attendues après cette version doivent rester limitées
-à de petites améliorations front/design ou à des mises à jour ponctuelles de
-données.
+Version `1.1.1` est l'état stable de production actuel. Le projet reste limité
+à de petites améliorations front/design, à des mises à jour ponctuelles de
+données et à l'hygiène de release.
 
 ## Aperçu
 
@@ -24,7 +23,7 @@ Objectifs principaux :
 - fournir des liens directs vers GitHub, LinkedIn, X et email professionnel ;
 - garder une base de code simple, maintenable et prête à déployer.
 
-Évolutions prévues après `1.0.0` :
+Évolutions prévues après `1.1.1` :
 
 - ajouter ou mettre à jour des projets ;
 - mettre à jour la stack, la bio ou les liens ;
@@ -144,14 +143,16 @@ Avant de pousser sur GitHub :
 npm run build
 npm run lint
 npm run biome:check
+npm run test
 npm audit --audit-level=moderate
 ```
 
-État validé pour release `1.0.0` :
+État validé pour release `1.1.1` :
 
 - build production OK ;
 - lint OK ;
 - Biome OK ;
+- tests OK ;
 - audit npm sans vulnérabilité modérée ou supérieure ;
 - aucune dépendance inutile ajoutée.
 
@@ -161,8 +162,13 @@ Commandes validées lors de l'audit final :
 npm run build
 npm run lint
 npm run biome:check
+npm run test
 npm audit --audit-level=moderate
 ```
+
+La release `1.1.1` durcit aussi le workflow GitHub Actions de mise à jour des
+statistiques hero : la génération automatique reste planifiée, mais le push du
+fichier généré est isolé dans une étape disposant seule de l'accès écriture.
 
 ## Notes de sécurité
 

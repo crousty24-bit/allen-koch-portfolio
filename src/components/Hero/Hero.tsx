@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+
+import { heroStats } from '../../data/hero/heroStats'
 import { copy, type Language } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
 
@@ -88,6 +91,66 @@ const iconByLabel = {
   ),
 } as const
 
+type CountUpProps = {
+  label: string
+  prefix: string
+  value: number
+}
+
+function CountUp({ label, prefix, value }: CountUpProps) {
+  const [displayValue, setDisplayValue] = useState(() => {
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    return prefersReducedMotion ? value : 0
+  })
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+
+    if (prefersReducedMotion) {
+      return
+    }
+
+    const duration = 1200
+    const start = performance.now()
+    let animationFrameId = 0
+
+    const updateValue = (timestamp: number) => {
+      const progress = Math.min((timestamp - start) / duration, 1)
+      const easedProgress = 1 - (1 - progress) ** 3
+
+      setDisplayValue(Math.round(value * easedProgress))
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(updateValue)
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(updateValue)
+
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [value])
+
+  return (
+    <>
+      <span aria-hidden="true" className="hero__stat-value">
+        {prefix}
+        {displayValue}
+      </span>
+      <span className="visually-hidden">
+        {prefix}
+        {value} {label}
+      </span>
+    </>
+  )
+}
+
 export function Hero({ language }: HeroProps) {
   const pageCopy = copy[language]
   const heroCopy = pageCopy.hero
@@ -100,43 +163,65 @@ export function Hero({ language }: HeroProps) {
       <div aria-hidden="true" className="hero__grid" />
 
       <div className="hero__content reveal">
-        <p className="status-pill">{heroCopy.status}</p>
+        <div className="hero__intro">
+          <h1>
+            {heroCopy.heading}
+            {heroCopy.highlight ? (
+              <>
+                {' '}
+                <span className="hero__highlight">{heroCopy.highlight}</span>
+              </>
+            ) : null}
+          </h1>
 
-        <h1>
-          {heroCopy.heading}
-          {heroCopy.highlight ? (
-            <>
-              {' '}
-              <span className="hero__highlight">{heroCopy.highlight}</span>
-            </>
-          ) : null}
-        </h1>
+          <p className="hero__subtitle">{heroCopy.subtitle}</p>
 
-        <p className="hero__subtitle">{heroCopy.subtitle}</p>
+          <div className="hero__actions">
+            <a className="button button--primary" href="#projects">
+              {heroCopy.projectsCta}
+            </a>
+            <a className="button button--secondary" href="#contact">
+              {heroCopy.contactCta}
+            </a>
+          </div>
 
-        <div className="hero__actions">
-          <a className="button button--primary" href="#projects">
-            {heroCopy.projectsCta}
-          </a>
-          <a className="button button--secondary" href="#contact">
-            {heroCopy.contactCta}
-          </a>
+          <nav
+            aria-label={pageCopy.nav.externalLabel}
+            className="hero__socials"
+          >
+            {heroLinks.map((link) => (
+              <a
+                aria-label={link.label}
+                className="hero__social-link"
+                href={link.href}
+                key={link.href}
+                rel={link.kind === 'social' ? 'noopener noreferrer' : undefined}
+                target={link.kind === 'social' ? '_blank' : undefined}
+              >
+                {iconByLabel[link.label as keyof typeof iconByLabel]}
+              </a>
+            ))}
+          </nav>
         </div>
 
-        <nav aria-label={pageCopy.nav.externalLabel} className="hero__socials">
-          {heroLinks.map((link) => (
-            <a
-              aria-label={link.label}
-              className="hero__social-link"
-              href={link.href}
-              key={link.href}
-              rel={link.kind === 'social' ? 'noopener noreferrer' : undefined}
-              target={link.kind === 'social' ? '_blank' : undefined}
-            >
-              {iconByLabel[link.label as keyof typeof iconByLabel]}
-            </a>
-          ))}
-        </nav>
+        <dl aria-label={heroCopy.statsLabel} className="hero__stats">
+          {heroStats.map((stat) => {
+            const label = heroCopy.statLabels[stat.id]
+
+            return (
+              <div className="hero__stat" key={stat.id}>
+                <dt>{label}</dt>
+                <dd>
+                  <CountUp
+                    label={label}
+                    prefix={stat.prefix}
+                    value={stat.value}
+                  />
+                </dd>
+              </div>
+            )
+          })}
+        </dl>
       </div>
 
       <a

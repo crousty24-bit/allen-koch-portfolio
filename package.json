@@ -1,7 +1,7 @@
 {
   "name": "portfolio-dev",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "biome:check": "biome check .",
     "test": "vitest run",
+    "stats:update": "node scripts/update-hero-stats.mjs",
     "format": "biome format --write .",
     "preview": "vite preview"
   },

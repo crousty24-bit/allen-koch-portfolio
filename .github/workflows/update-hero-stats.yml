@@ -1,0 +1,92 @@
+name: Update hero stats
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  update-hero-stats:
+    runs-on: ubuntu-latest
+    outputs:
+      stats_changed: ${{ steps.stats-diff.outputs.changed }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update generated hero stats
+        run: npm run stats:update
+        env:
+          GH_PROFILE_TOKEN: ${{ secrets.GH_PROFILE_TOKEN }}
+          GITHUB_LOGIN: crousty24-bit
+
+      - name: Build
+        run: npm run build
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Biome check
+        run: npm run biome:check
+
+      - name: Check generated stats diff
+        id: stats-diff
+        run: |
+          if git diff --quiet -- src/data/hero/githubStats.ts; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload generated stats
+        if: steps.stats-diff.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-hero-stats
+          path: src/data/hero/githubStats.ts
+          if-no-files-found: error
+
+  write-hero-stats:
+    needs: update-hero-stats
+    if: needs.update-hero-stats.outputs.stats_changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download generated stats
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-hero-stats
+          path: src/data/hero
+
+      - name: Commit updated stats
+        run: |
+          if git diff --quiet -- src/data/hero/githubStats.ts; then
+            echo "Hero stats unchanged."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/hero/githubStats.ts
+          git commit -m "chore: update hero stats"
+          git push

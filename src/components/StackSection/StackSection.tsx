@@ -47,7 +47,7 @@ export function StackSection({ language }: StackSectionProps) {
                     alt=""
                     height="16"
                     loading="lazy"
-                    src={iconUrl(item.icon, item.iconColor)}
+                    src={item.iconSrc ?? iconUrl(item.icon, item.iconColor)}
                     width="16"
                   />
                   <span>{item.label}</span>
