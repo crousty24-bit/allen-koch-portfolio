@@ -9,7 +9,7 @@ reference.
 The project is a static one-page React/Vite portfolio for Allen Koch, a junior
 fullstack developer.
 
-Current MVP status: release `1.0.0`.
+Current production status: release `1.1.1`.
 
 The page includes the expected sections, responsive layout, local portrait/logo
 assets, theme switching, language switching, project expansion/collapse, and a
@@ -163,7 +163,7 @@ Navbar anchors:
 
 ## 8. Hero
 
-Current hero is the release `1.0.0` baseline.
+Current hero is the release `1.1.1` baseline.
 
 Current content pattern:
 
