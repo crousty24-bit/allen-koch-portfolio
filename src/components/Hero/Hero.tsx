@@ -100,8 +100,6 @@ export function Hero({ language }: HeroProps) {
       <div aria-hidden="true" className="hero__grid" />
 
       <div className="hero__content reveal">
-        <p className="status-pill">{heroCopy.status}</p>
-
         <h1>
           {heroCopy.heading}
           {heroCopy.highlight ? (
