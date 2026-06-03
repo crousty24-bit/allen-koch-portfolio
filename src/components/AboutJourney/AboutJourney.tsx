@@ -284,10 +284,15 @@ export function AboutJourney({ language }: AboutJourneyProps) {
               <li
                 className={`about-journey__item about-journey__item--${side}${
                   isOpen ? ' about-journey__item--open' : ''
-                }`}
+                }${item.dateLabel ? ' about-journey__item--dated' : ''}`}
                 key={item.id}
               >
                 <span aria-hidden="true" className="about-journey__branch" />
+                {item.dateLabel ? (
+                  <span className="about-journey__date">
+                    {item.dateLabel[language]}
+                  </span>
+                ) : null}
                 <span aria-hidden="true" className="about-journey__node" />
                 <button
                   aria-controls={panelId}

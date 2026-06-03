@@ -7,6 +7,7 @@ export type AboutAccordionItem = {
 }
 
 export type AboutJourneyItem = {
+  dateLabel?: Record<Language, string>
   description: Record<Language, string>
   icon:
     | 'steps'
@@ -111,6 +112,10 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   {
     id: 'thp',
     icon: 'thp',
+    dateLabel: {
+      fr: 'Janvier 2026',
+      en: 'January 2026',
+    },
     title: {
       fr: 'THP',
       en: 'THP',
@@ -159,6 +164,10 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   {
     id: 'react-typescript-node',
     icon: 'react',
+    dateLabel: {
+      fr: 'Avril 2026',
+      en: 'April 2026',
+    },
     title: {
       fr: 'React / TypeScript / NodeJS',
       en: 'React / TypeScript / NodeJS',
@@ -172,8 +181,8 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
     id: 'today',
     icon: 'today',
     title: {
-      fr: 'Aujourd’hui',
-      en: 'Today',
+      fr: 'Dev 1.0',
+      en: 'Dev 1.0',
     },
     description: {
       fr: 'Portfolio, projets concrets et progression continue',
