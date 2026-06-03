@@ -14,8 +14,8 @@ export const aboutAccordionItems: AboutAccordionItem[] = [
       en: 'How do you approach a new project?',
     },
     answer: {
-      fr: 'clarifier le besoin, cadrer un premier périmètre utile, puis itérer avec une base technique lisible.',
-      en: 'clarify the need, frame a useful first scope, then iterate with a readable technical base.',
+      fr: 'Clarifier le besoin, cadrer un premier périmètre utile, puis itérer avec une base technique lisible.',
+      en: 'Clarify the need, frame a useful first scope, then iterate with a readable technical base.',
     },
   },
   {
@@ -25,8 +25,8 @@ export const aboutAccordionItems: AboutAccordionItem[] = [
       en: 'What priorities guide delivery?',
     },
     answer: {
-      fr: "garder l'expérience claire, le code maintenable et les décisions assez simples pour avancer proprement.",
-      en: 'keep the experience clear, the code maintainable and the decisions simple enough to move cleanly.',
+      fr: "Garder l'expérience claire, le code maintenable et les décisions assez simples pour avancer proprement.",
+      en: 'Keep the experience clear, the code maintainable and the decisions simple enough to move cleanly.',
     },
   },
   {
@@ -36,8 +36,8 @@ export const aboutAccordionItems: AboutAccordionItem[] = [
       en: 'How do you work with a team or client?',
     },
     answer: {
-      fr: 'communiquer le contexte, documenter les points importants et utiliser le feedback pour ajuster le produit.',
-      en: 'communicate context, document the important points and use feedback to adjust the product.',
+      fr: 'Communiquer le contexte, documenter les points importants et utiliser le feedback pour ajuster le produit.',
+      en: 'Communicate context, document the important points and use feedback to adjust the product.',
     },
   },
 ]
