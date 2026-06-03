@@ -464,9 +464,17 @@ select {
 .hero__content {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 18rem);
+  align-items: center;
+  gap: clamp(3rem, 8vw, 7rem);
   width: 100%;
   max-width: calc(var(--container) - var(--gutter) - var(--gutter));
   padding-top: 0;
+}
+
+.hero__intro {
+  min-width: 0;
 }
 
 .hero h1,
@@ -527,6 +535,44 @@ select {
   justify-content: flex-start;
   gap: 0.85rem;
   margin-top: 2.1rem;
+}
+
+.hero__stats {
+  display: grid;
+  gap: 1.35rem;
+  justify-self: end;
+  width: min(100%, 18rem);
+  margin: 0;
+  animation: revealUp 820ms 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero__stat {
+  padding: 1.25rem 0 1.25rem 1.4rem;
+  border-left: 1px solid rgba(84, 213, 255, 0.28);
+}
+
+.hero__stat dt {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__stat dd {
+  margin: 0.35rem 0 0;
+}
+
+.hero__stat-value {
+  display: inline-block;
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(2.35rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .hero__social-link {
@@ -1909,6 +1955,17 @@ select {
     padding-top: 12rem;
   }
 
+  .hero__content {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-self: start;
+    width: min(100%, 34rem);
+  }
+
   .hero h1 {
     font-size: 4.15rem;
   }
@@ -2013,6 +2070,7 @@ select {
 
   .hero__content {
     width: 100%;
+    gap: 2rem;
   }
 
   .hero h1 {
@@ -2025,6 +2083,18 @@ select {
     margin-top: 1.25rem;
     font-size: 1.04rem;
     line-height: 1.62;
+  }
+
+  .hero__stats {
+    gap: 1rem;
+  }
+
+  .hero__stat {
+    padding: 1rem 0 1rem 1rem;
+  }
+
+  .hero__stat-value {
+    font-size: clamp(2rem, 13vw, 3rem);
   }
 
   .status-pill {
