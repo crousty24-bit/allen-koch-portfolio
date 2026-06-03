@@ -44,7 +44,7 @@ export const projects: Project[] = [
     status: { fr: 'Prototype', en: 'Prototype' },
   },
   {
-    title: 'Rubber Duck IA',
+    title: 'Sokwak AI',
     description: {
       fr: '“AI-assisted learning without solution dumping”. Une IA qui n’écrit pas la solution à ta place, mais t’aide à apprendre à la trouver.',
       en: '"AI-assisted learning without solution dumping". An AI that does not write the solution for you, but helps you learn how to find it.',
@@ -84,6 +84,20 @@ export const projects: Project[] = [
     imageSrc: '/projects/portfolio-ak.png',
     repositoryHref: 'https://github.com/crousty24-bit/allen-koch-portfolio',
     stack: ['React', 'Vite', 'TypeScript'],
+    status: { fr: 'En cours', en: 'In progress' },
+  },
+  {
+    title: 'HabitFlower',
+    description: {
+      fr: "Une application web mobile-first de suivi d'habitudes gamifiée, inspirée de l'univers cosy farming game en pixel art.",
+      en: 'A mobile-first gamified habit-tracking web app inspired by the cosy farming game world in pixel art.',
+    },
+    imageAlt: {
+      fr: "Interface pixel art mobile-first avec fleurs, suivi d'habitudes et ambiance cosy farming game.",
+      en: 'Mobile-first pixel-art interface with flowers, habit tracking and a cosy farming game atmosphere.',
+    },
+    imageSrc: '/projects/habitflower.svg',
+    stack: ['React', 'Vite', 'TypeScript', 'NestJS'],
     status: { fr: 'En cours', en: 'In progress' },
   },
 ]
