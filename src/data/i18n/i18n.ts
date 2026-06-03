@@ -6,32 +6,22 @@ export const copy = {
     about: {
       alt: "Portrait professionnel d'Allen Koch",
       eyebrow: 'About',
-      heading: "Hello, moi c'est Allen",
-      paragraphs: [
-        [
-          { strong: true, text: 'Mon but :' },
-          {
-            text: " des applications web orientées produit avec une approche pragmatique. Comprendre le besoin, livrer un MVP clair, puis améliorer progressivement l'UX et la qualité technique.",
-          },
-        ],
-        [
-          { text: 'Ce que j’apprécie le plus ? ' },
-          { strong: true, text: 'Résoudre des problèmes concrets' },
-          { text: '.' },
-        ],
-        [
-          {
-            text: 'Le backend est mon terrain de jeu principal, parce qu’il oblige à ',
-          },
-          { strong: true, text: 'comprendre la logique métier' },
-          { text: ' et construire des bases solides derrière l’interface.' },
-        ],
-        [
-          { strong: true, text: 'Mon approche :' },
-          {
-            text: ' le code n’a de valeur que s’il répond à un enjeu réel : simplifier un usage, automatiser une tâche, fiabiliser un processus ou rendre un produit plus clair et plus utile.',
-          },
-        ],
+      heading: 'Hello, je suis Allen.',
+      intro:
+        'Développeur en reconversion, je construis des applications web utiles, lisibles et maintenables.',
+      cards: [
+        {
+          title: 'Backend first',
+          text: 'Logique métier · données · architecture',
+        },
+        {
+          title: 'Product-minded',
+          text: 'MVP · usage réel · amélioration continue',
+        },
+        {
+          title: 'AI workflow',
+          text: 'Automatisation · debug · code review',
+        },
       ],
       tags: ['France', 'Junior Fullstack'],
     },
@@ -104,32 +94,22 @@ export const copy = {
     about: {
       alt: 'Professional portrait of Allen Koch',
       eyebrow: 'About',
-      heading: "Hello, I'm Allen",
-      paragraphs: [
-        [
-          { strong: true, text: 'My goal:' },
-          {
-            text: ' build product-oriented web applications with a pragmatic approach. Understand the need, ship a clear MVP, then improve the UX and technical quality over time.',
-          },
-        ],
-        [
-          { text: 'What I enjoy most? ' },
-          { strong: true, text: 'Solving concrete problems' },
-          { text: '.' },
-        ],
-        [
-          {
-            text: 'Backend is my main playground because it requires me to ',
-          },
-          { strong: true, text: 'understand the business logic' },
-          { text: ' and build solid foundations behind the interface.' },
-        ],
-        [
-          { strong: true, text: 'My approach:' },
-          {
-            text: ' code only has value when it addresses a real need: simplifying a workflow, automating a task, making a process more reliable or making a product clearer and more useful.',
-          },
-        ],
+      heading: "Hello, I'm Allen.",
+      intro:
+        'Career-switching developer, I build useful, readable and maintainable web applications.',
+      cards: [
+        {
+          title: 'Backend first',
+          text: 'Business logic · data · architecture',
+        },
+        {
+          title: 'Product-minded',
+          text: 'MVP · real usage · continuous improvement',
+        },
+        {
+          title: 'AI workflow',
+          text: 'Automation · debug · code review',
+        },
       ],
       tags: ['France', 'Junior Fullstack'],
     },
