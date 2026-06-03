@@ -84,8 +84,7 @@ export const copy = {
     skipLink: 'Aller au contenu',
     stack: {
       eyebrow: 'Stack & skills',
-      heading:
-        'Une base technique solide, lisible et moderne, pensée pour construire et itérer.',
+      heading: 'Une base technique solide, lisible et moderne.',
       text: "La stack met l'accent sur des outils que je peux comprendre, déployer et maintenir dans le temps.",
     },
     topButtonLabel: 'Remonter en haut de la page',
