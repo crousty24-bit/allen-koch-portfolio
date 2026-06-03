@@ -1,6 +1,7 @@
 export type StackTech = {
   icon: string
   iconColor?: string
+  iconSrc?: string
   label: string
 }
 
@@ -52,6 +53,7 @@ export const stack: StackItem[] = [
     iconColor: 'E8ECF5',
     items: [
       { label: 'GitHub', icon: 'github', iconColor: 'E8ECF5' },
+      { label: 'VS Code', icon: 'vscode', iconSrc: '/icons/vscode.svg' },
       { label: 'Vercel', icon: 'vercel', iconColor: 'FFFFFF' },
       { label: 'Tauri', icon: 'tauri' },
     ],
