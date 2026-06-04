@@ -1,4 +1,4 @@
 export const githubStats = {
-  commitContributions: 833,
+  commitContributions: 565,
   contributionYear: 2026,
 } as const
