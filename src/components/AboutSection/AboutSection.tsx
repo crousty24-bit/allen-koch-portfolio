@@ -99,16 +99,16 @@ export function AboutSection({ language }: AboutSectionProps) {
               width="1024"
             />
           </figure>
-          <div className="floating-tags">
-            {aboutCopy.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
         </div>
 
         <div className="about-content reveal">
           <p className="eyebrow">{aboutCopy.eyebrow}</p>
           <h2>{aboutCopy.heading}</h2>
+          <ul className="about-badges" aria-label={aboutCopy.eyebrow}>
+            {aboutCopy.badges.map((badge) => (
+              <li key={badge}>{badge}</li>
+            ))}
+          </ul>
           <div className="about-copy">
             <p>{aboutCopy.intro}</p>
             <div className="about-cards">

@@ -44,6 +44,23 @@ export const projects: Project[] = [
     status: { fr: 'Prototype', en: 'Prototype' },
   },
   {
+    title: 'Code Quality Guardian',
+    description: {
+      fr: 'Agent Skill qui encadre les interventions des agents de code : inspection préalable, portée limitée, comportement préservé et vérification honnête. Changer moins, mais mieux.',
+      en: 'Agent Skill that guides coding agents to inspect first, limit scope, preserve behavior and report verification honestly. Change less, but better.',
+    },
+    imageAlt: {
+      fr: "Page d'accueil sombre de Code Quality Guardian avec le message « Make coding agents change less, but better ».",
+      en: 'Dark Code Quality Guardian homepage displaying the message “Make coding agents change less, but better”.',
+    },
+    imageSrc: '/projects/code-quality-guardian.png',
+    repositoryHref:
+      'https://github.com/crousty24-bit/code-quality-guardian-skill',
+    stack: ['Agent Skill', 'AI Workflow', 'Code Quality'],
+    status: { fr: 'En cours', en: 'In progress' },
+    href: 'https://code-quality-guardian.vercel.app/',
+  },
+  {
     title: 'Sokwak AI',
     description: {
       fr: '“AI-assisted learning without solution dumping”. Une IA qui n’écrit pas la solution à ta place, mais t’aide à apprendre à la trouver.',

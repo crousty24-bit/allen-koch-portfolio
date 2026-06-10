@@ -1,0 +1,91 @@
+.about-accordion {
+  width: min(100%, 72rem);
+  margin-top: clamp(2.5rem, 7vw, 5rem);
+  border-top: 1px solid rgba(184, 195, 255, 0.16);
+}
+
+.about-accordion__item {
+  border-bottom: 1px solid rgba(184, 195, 255, 0.16);
+}
+
+.about-accordion__heading {
+  margin: 0;
+}
+
+.about-accordion__trigger {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 4.6rem;
+  padding: 1.35rem 0;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  transition:
+    color 220ms ease,
+    background 220ms ease;
+}
+
+.about-accordion__trigger:hover,
+.about-accordion__trigger:focus-visible {
+  color: var(--tertiary);
+  background: linear-gradient(
+    90deg,
+    rgba(46, 91, 255, 0.1),
+    rgba(84, 213, 255, 0.02) 48%,
+    transparent 82%
+  );
+}
+
+.about-accordion__trigger:focus-visible {
+  outline: 2px solid rgba(84, 213, 255, 0.56);
+  outline-offset: 0.22rem;
+}
+
+.about-accordion__chevron {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.14rem;
+  color: var(--text-muted);
+  opacity: 0.86;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  flex: 0 0 auto;
+}
+
+.about-accordion__trigger[aria-expanded="true"] .about-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.about-accordion__panel:not([hidden]) {
+  animation: aboutAccordionReveal 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.about-accordion__panel p {
+  max-width: 58rem;
+  padding: 0 2.2rem 1.35rem 0;
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+:root[data-theme="light"] .about-accordion,
+:root[data-theme="light"] .about-accordion__item {
+  border-color: rgba(17, 24, 39, 0.12);
+}
+
+:root[data-theme="light"] .about-accordion__trigger:hover,
+:root[data-theme="light"] .about-accordion__trigger:focus-visible {
+  background: linear-gradient(
+    90deg,
+    rgba(51, 93, 255, 0.08),
+    rgba(0, 127, 184, 0.03) 52%,
+    transparent 84%
+  );
+}

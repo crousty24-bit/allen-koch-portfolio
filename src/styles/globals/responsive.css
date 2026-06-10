@@ -1,0 +1,4 @@
+@import "./responsive-1040.css" (max-width: 1040px);
+@import "./responsive-760.css" (max-width: 760px);
+@import "./responsive-430.css" (max-width: 430px);
+@import "./reduced-motion.css" (prefers-reduced-motion: reduce);

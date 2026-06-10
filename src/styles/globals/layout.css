@@ -1,0 +1,5 @@
+.section {
+  max-width: var(--container);
+  padding: var(--section-gap) var(--gutter);
+  margin: 0 auto;
+}
