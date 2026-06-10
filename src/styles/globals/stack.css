@@ -1,0 +1,159 @@
+.stack-section {
+  max-width: none;
+  background: linear-gradient(
+    180deg,
+    rgba(25, 28, 34, 0.7),
+    rgba(16, 19, 26, 0)
+  );
+}
+
+:root[data-theme="light"] .stack-section {
+  background: linear-gradient(
+    180deg,
+    rgba(231, 237, 245, 0.72),
+    rgba(244, 247, 251, 0)
+  );
+}
+
+.stack-section > * {
+  max-width: var(--container);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.stack-card {
+  padding: 1.6rem;
+  border-radius: var(--radius-lg);
+}
+
+.stack-card {
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    background 260ms ease;
+}
+
+.stack-card:hover {
+  border-color: rgba(184, 195, 255, 0.28);
+  background: rgba(255, 255, 255, 0.055);
+  transform: translateY(-3px);
+}
+
+:root[data-theme="light"] .stack-card:hover {
+  border-color: rgba(51, 93, 255, 0.22);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.stack-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1.1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(184, 195, 255, 0.16);
+}
+
+.stack-card__icon img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.stack-card--secondary .stack-card__icon {
+  background: rgba(212, 187, 255, 0.17);
+}
+
+.stack-card--tertiary .stack-card__icon {
+  background: rgba(84, 213, 255, 0.16);
+}
+
+.stack-card--neutral .stack-card__icon {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stack-card h3 {
+  font-size: 1.35rem;
+}
+
+.stack-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0;
+  margin: 1.2rem 0 0;
+  color: var(--text-soft);
+  list-style: none;
+}
+
+.stack-badge {
+  display: inline-flex;
+  align-items: center;
+  --chip-accent: var(--chip-accent-1);
+  min-height: 2.1rem;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid color-mix(in srgb, var(--chip-accent) 48%, transparent);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--chip-accent) 20%, rgba(255, 255, 255, 0.05)),
+      color-mix(in srgb, var(--chip-accent) 10%, rgba(255, 255, 255, 0.035))
+    ),
+    rgba(255, 255, 255, 0.045);
+  color: color-mix(in srgb, var(--chip-accent) 16%, var(--text-soft));
+  font-size: 0.86rem;
+  line-height: 1;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+  gap: 0.45rem;
+}
+
+.stack-badge:nth-child(5n + 1) {
+  --chip-accent: var(--chip-accent-1);
+}
+
+.stack-badge:nth-child(5n + 2) {
+  --chip-accent: var(--chip-accent-2);
+}
+
+.stack-badge:nth-child(5n + 3) {
+  --chip-accent: var(--chip-accent-3);
+}
+
+.stack-badge:nth-child(5n + 4) {
+  --chip-accent: var(--chip-accent-4);
+}
+
+.stack-badge:nth-child(5n) {
+  --chip-accent: var(--chip-accent-5);
+}
+
+.stack-badge:hover {
+  border-color: color-mix(in srgb, var(--chip-accent) 66%, transparent);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--chip-accent) 28%, rgba(255, 255, 255, 0.07)),
+      color-mix(in srgb, var(--chip-accent) 14%, rgba(255, 255, 255, 0.045))
+    ),
+    rgba(255, 255, 255, 0.065);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.stack-badge img {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
