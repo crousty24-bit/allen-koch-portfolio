@@ -23,16 +23,17 @@
 .portrait-card {
   position: relative;
   z-index: 1;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   margin: 0;
   overflow: hidden;
-  border-radius: var(--radius-xl);
+  border-radius: 50%;
 }
 
 .portrait-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 44%;
   filter: grayscale(1);
   transition:
     filter 500ms ease,
@@ -42,39 +43,6 @@
 .portrait-card:hover img {
   filter: grayscale(0);
   transform: scale(1.025);
-}
-
-.floating-tags {
-  position: absolute;
-  right: -1rem;
-  bottom: 1.25rem;
-  z-index: 2;
-  display: grid;
-  gap: 0.6rem;
-}
-
-.floating-tags span {
-  min-height: 2.4rem;
-  padding: 0.55rem 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius-sm);
-  background: rgba(5, 8, 16, 0.78);
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  color: var(--text);
-  font-family: Geist, monospace;
-  font-size: 0.78rem;
-  backdrop-filter: blur(10px);
-}
-
-:root[data-theme="light"] .floating-tags span {
-  border-color: rgba(17, 24, 39, 0.14);
-  background: rgba(248, 251, 255, 0.9);
-  box-shadow:
-    0 12px 28px rgba(37, 49, 67, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.88);
-  color: var(--text);
 }
 
 .about-copy {
@@ -95,6 +63,30 @@
   animation:
     aboutTypewriter 900ms steps(24, end) 160ms both,
     aboutTypewriterCaret 900ms step-end 160ms forwards;
+}
+
+.about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 1rem 0 0;
+  list-style: none;
+}
+
+.about-badges li {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  font-family: Geist, monospace;
+  font-size: 0.78rem;
+}
+
+:root[data-theme="light"] .about-badges li {
+  border-color: rgba(17, 24, 39, 0.12);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .about-copy > p {

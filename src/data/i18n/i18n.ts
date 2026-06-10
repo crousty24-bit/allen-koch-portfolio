@@ -7,6 +7,7 @@ export const copy = {
       alt: "Portrait professionnel d'Allen Koch",
       eyebrow: 'About',
       heading: 'Hello, je suis Allen.',
+      badges: ['France', 'Développeur Junior'],
       intro:
         'Développeur en reconversion, je construis des applications web utiles, lisibles et maintenables.',
       cards: [
@@ -23,7 +24,6 @@ export const copy = {
           text: 'Automatisation · debug · code review',
         },
       ],
-      tags: ['France', 'Junior Fullstack'],
     },
     contact: {
       heading: 'Parlons de votre projet.',
@@ -94,6 +94,7 @@ export const copy = {
       alt: 'Professional portrait of Allen Koch',
       eyebrow: 'About',
       heading: "Hello, I'm Allen.",
+      badges: ['France', 'Junior Developer'],
       intro:
         'Career-switching developer, I build useful, readable and maintainable web applications.',
       cards: [
@@ -110,7 +111,6 @@ export const copy = {
           text: 'Automation · debug · code review',
         },
       ],
-      tags: ['France', 'Junior Fullstack'],
     },
     contact: {
       heading: "Let's talk about your project.",
