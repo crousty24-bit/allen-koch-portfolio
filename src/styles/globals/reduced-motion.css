@@ -1,0 +1,41 @@
+html:root {
+  scroll-behavior: auto;
+}
+
+*,
+*::before,
+*::after {
+  animation-duration: 1ms;
+  animation-iteration-count: 1;
+  transition-duration: 1ms;
+}
+
+.ambient,
+.hero::after,
+.hero__scroll,
+.reveal,
+.about-content h2,
+.skills-tree__content:not([hidden]),
+.about-accordion__panel:not([hidden]) {
+  animation: none;
+  animation-delay: 0ms;
+}
+
+.about-content h2 {
+  width: auto;
+  overflow: visible;
+  white-space: normal;
+  border-right: 0;
+}
+
+:root .about-journey__content,
+:root .about-journey__card,
+:root .about-journey__chevron {
+  transition: none;
+}
+
+.section--scroll-fade {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}

@@ -1,0 +1,42 @@
+.section-heading {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.section-heading--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: end;
+}
+
+.section-heading--center {
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  color: var(--primary);
+  font-family: Geist, monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-heading h2,
+.about-content h2,
+.contact-panel h2 {
+  font-size: clamp(2.05rem, 5vw, 3.15rem);
+  line-height: 1.12;
+}
+
+.section-heading p,
+.about-copy,
+.contact-panel p,
+.project-card__description {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
