@@ -212,11 +212,15 @@ export function Hero({ language }: HeroProps) {
               <div className="hero__stat" key={stat.id}>
                 <dt>{label}</dt>
                 <dd>
-                  <CountUp
-                    label={label}
-                    prefix={stat.prefix}
-                    value={stat.value}
-                  />
+                  {'prefix' in stat ? (
+                    <CountUp
+                      label={label}
+                      prefix={stat.prefix}
+                      value={stat.value}
+                    />
+                  ) : (
+                    <span className="hero__stat-text">{stat.value}</span>
+                  )}
                 </dd>
               </div>
             )
