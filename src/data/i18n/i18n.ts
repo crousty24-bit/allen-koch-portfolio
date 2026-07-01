@@ -8,21 +8,10 @@ export const copy = {
       eyebrow: 'About',
       heading: "Bonjour, moi c'est Allen.",
       badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
-      intro:
+      intro: [
         'Développeur en reconversion, je construis des applications web utiles, lisibles et maintenables.',
-      cards: [
-        {
-          title: 'Backend first',
-          text: 'Logique métier · données · architecture',
-        },
-        {
-          title: 'Product-minded',
-          text: 'MVP · usage réel · amélioration continue',
-        },
-        {
-          title: 'AI workflow',
-          text: 'Automatisation · debug · code review',
-        },
+        "J'aime comprendre les besoins derrière un projet, avancer avec méthode et créer des interfaces simples à utiliser.",
+        "Ce qui me motive : simplifier l'expérience utilisateur et livrer quelque chose qui fonctionne vraiment.",
       ],
     },
     contact: {
@@ -95,21 +84,10 @@ export const copy = {
       eyebrow: 'About',
       heading: "Hello, I'm Allen.",
       badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
-      intro:
+      intro: [
         'Career-switching developer, I build useful, readable and maintainable web applications.',
-      cards: [
-        {
-          title: 'Backend first',
-          text: 'Business logic · data · architecture',
-        },
-        {
-          title: 'Product-minded',
-          text: 'MVP · real usage · continuous improvement',
-        },
-        {
-          title: 'AI workflow',
-          text: 'Automation · debug · code review',
-        },
+        'I like understanding the needs behind a project, moving forward with method and creating interfaces that are simple to use.',
+        'What motivates me: simplifying the user experience and shipping something that truly works.',
       ],
     },
     contact: {
