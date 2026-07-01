@@ -163,6 +163,17 @@
   font-variant-numeric: tabular-nums;
 }
 
+.hero__stat-text {
+  display: inline-block;
+  max-width: 12rem;
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
 .hero__social-link {
   display: inline-flex;
   align-items: center;

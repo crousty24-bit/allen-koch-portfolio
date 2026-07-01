@@ -6,23 +6,12 @@ export const copy = {
     about: {
       alt: "Portrait professionnel d'Allen Koch",
       eyebrow: 'About',
-      heading: 'Hello, je suis Allen.',
-      badges: ['France', 'Développeur Junior'],
-      intro:
+      heading: "Bonjour, moi c'est Allen.",
+      badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
+      intro: [
         'Développeur en reconversion, je construis des applications web utiles, lisibles et maintenables.',
-      cards: [
-        {
-          title: 'Backend first',
-          text: 'Logique métier · données · architecture',
-        },
-        {
-          title: 'Product-minded',
-          text: 'MVP · usage réel · amélioration continue',
-        },
-        {
-          title: 'AI workflow',
-          text: 'Automatisation · debug · code review',
-        },
+        "J'aime comprendre les besoins derrière un projet, avancer avec méthode et créer des interfaces simples à utiliser.",
+        "Ce qui me motive : simplifier l'expérience utilisateur et livrer quelque chose qui fonctionne vraiment.",
       ],
     },
     contact: {
@@ -41,15 +30,15 @@ export const copy = {
     },
     hero: {
       status: 'Développeur Fullstack - React / Rails',
-      heading: 'Développeur Fullstack. AI Builder',
+      heading: 'Je transforme les idées en produits web utilisables',
       highlight: '',
       subtitle:
-        'Je construis des expériences web fonctionnelles, structurées et maintenables, avec une approche orientée produit.',
-      note: "Penser produit, coder proprement, livrer utile avec l'IA comme levier, pas comme raccourci.",
+        "J'aide les entreprises à construire des expériences web fonctionnelles, structurées et maintenables, avec une approche orientée produit.",
       projectsCta: 'Voir les projets',
       contactCta: 'Me contacter',
       statsLabel: 'Statistiques du hero',
       statLabels: {
+        profile: 'Profile',
         contributions: 'Contributions',
         projects: 'Projets',
       },
@@ -72,7 +61,7 @@ export const copy = {
     projects: {
       eyebrow: 'Portfolio',
       heading: 'Build & Learn',
-      text: 'Des projets concrets pour explorer des stacks, améliorer mon workflow et construire des solutions clients utiles.',
+      text: 'Des projets concrets conçus pour répondre à des besoins réels, avec une approche produit, une structure claire et un code maintenable.',
       showAllLabel: 'Afficher tous les projets',
       hideExtraLabel: 'Masquer les projets supplémentaires',
       ctaText: 'Une idée de projet ?',
@@ -94,22 +83,11 @@ export const copy = {
       alt: 'Professional portrait of Allen Koch',
       eyebrow: 'About',
       heading: "Hello, I'm Allen.",
-      badges: ['France', 'Junior Developer'],
-      intro:
+      badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
+      intro: [
         'Career-switching developer, I build useful, readable and maintainable web applications.',
-      cards: [
-        {
-          title: 'Backend first',
-          text: 'Business logic · data · architecture',
-        },
-        {
-          title: 'Product-minded',
-          text: 'MVP · real usage · continuous improvement',
-        },
-        {
-          title: 'AI workflow',
-          text: 'Automation · debug · code review',
-        },
+        'I like understanding the needs behind a project, moving forward with method and creating interfaces that are simple to use.',
+        'What motivates me: simplifying the user experience and shipping something that truly works.',
       ],
     },
     contact: {
@@ -128,15 +106,15 @@ export const copy = {
     },
     hero: {
       status: 'Fullstack Developer - React / Rails',
-      heading: 'Fullstack Developer. AI Builder',
+      heading: 'I turn ideas into usable web products',
       highlight: '',
       subtitle:
-        'I build functional, structured and maintainable web experiences with a product-minded approach.',
-      note: 'Think product, write clean code, ship useful work with AI as leverage, not as a shortcut.',
+        'I help businesses build functional, structured and maintainable web experiences with a product-minded approach.',
       projectsCta: 'View projects',
       contactCta: 'Contact me',
       statsLabel: 'Hero stats',
       statLabels: {
+        profile: 'Profile',
         contributions: 'Contributions',
         projects: 'Projects',
       },
@@ -159,7 +137,7 @@ export const copy = {
     projects: {
       eyebrow: 'Portfolio',
       heading: 'Build & Learn',
-      text: 'Concrete projects to explore stacks, improve my workflow and build useful client solutions.',
+      text: 'Concrete projects designed to meet real needs, with a product-minded approach, clear structure and maintainable code.',
       showAllLabel: 'Show all projects',
       hideExtraLabel: 'Hide extra projects',
       ctaText: 'Have a project idea?',
