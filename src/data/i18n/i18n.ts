@@ -6,8 +6,8 @@ export const copy = {
     about: {
       alt: "Portrait professionnel d'Allen Koch",
       eyebrow: 'About',
-      heading: 'Hello, je suis Allen.',
-      badges: ['France', 'Développeur Junior'],
+      heading: "Bonjour, moi c'est Allen.",
+      badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
       intro:
         'Développeur en reconversion, je construis des applications web utiles, lisibles et maintenables.',
       cards: [
@@ -72,7 +72,7 @@ export const copy = {
     projects: {
       eyebrow: 'Portfolio',
       heading: 'Build & Learn',
-      text: 'Des projets concrets pour explorer des stacks, améliorer mon workflow et construire des solutions clients utiles.',
+      text: 'Des projets concrets conçus pour répondre à des besoins réels, avec une approche produit, une structure claire et un code maintenable.',
       showAllLabel: 'Afficher tous les projets',
       hideExtraLabel: 'Masquer les projets supplémentaires',
       ctaText: 'Une idée de projet ?',
@@ -94,7 +94,7 @@ export const copy = {
       alt: 'Professional portrait of Allen Koch',
       eyebrow: 'About',
       heading: "Hello, I'm Allen.",
-      badges: ['France', 'Junior Developer'],
+      badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
       intro:
         'Career-switching developer, I build useful, readable and maintainable web applications.',
       cards: [
@@ -159,7 +159,7 @@ export const copy = {
     projects: {
       eyebrow: 'Portfolio',
       heading: 'Build & Learn',
-      text: 'Concrete projects to explore stacks, improve my workflow and build useful client solutions.',
+      text: 'Concrete projects designed to meet real needs, with a product-minded approach, clear structure and maintainable code.',
       showAllLabel: 'Show all projects',
       hideExtraLabel: 'Hide extra projects',
       ctaText: 'Have a project idea?',
