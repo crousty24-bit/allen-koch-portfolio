@@ -18,7 +18,7 @@ export const copy = {
       heading: 'Parlons de votre projet.',
       text: "Disponible pour discuter d'un projet web, d'un MVP ou d'une base technique à structurer proprement.",
       meta: {
-        profile: ['Profil', 'Fullstack Junior'],
+        profile: ['Profil', 'Fullstack'],
         focus: ['Focus', 'Rails / React'],
         location: ['Localisation', 'France'],
       },
@@ -94,7 +94,7 @@ export const copy = {
       heading: "Let's talk about your project.",
       text: 'Available to discuss a web project, an MVP, or a technical foundation to structure cleanly.',
       meta: {
-        profile: ['Profile', 'Junior Fullstack'],
+        profile: ['Profile', 'Fullstack'],
         focus: ['Focus', 'Rails / React'],
         location: ['Location', 'France'],
       },
