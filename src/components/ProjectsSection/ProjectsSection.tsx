@@ -11,9 +11,6 @@ type ProjectsSectionProps = {
 
 export function ProjectsSection({ language }: ProjectsSectionProps) {
   const [showAllProjects, setShowAllProjects] = useState(false)
-  const visibleProjects = showAllProjects
-    ? projects
-    : projects.slice(0, visibleProjectsCount)
   const hasHiddenProjects = projects.length > visibleProjectsCount
   const projectsCopy = copy[language].projects
 
@@ -27,9 +24,10 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
         </div>
       </div>
       <div className="projects-grid" id="projects-grid">
-        {visibleProjects.map((project, index) => (
+        {projects.map((project, index) => (
           <ProjectCard
             index={index}
+            isCollapsed={!showAllProjects && index >= visibleProjectsCount}
             key={project.title}
             language={language}
             project={project}

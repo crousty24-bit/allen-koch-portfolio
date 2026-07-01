@@ -29,11 +29,12 @@ export const copy = {
       socialLabel: 'Liens sociaux footer',
     },
     hero: {
-      status: 'Développeur Fullstack - React / Rails',
-      heading: 'Je transforme les idées en produits web utilisables',
+      status: 'Développeur Fullstack / AI Builder',
+      heading:
+        'Je transforme les idées en produits web et workflows IA utilisables',
       highlight: '',
       subtitle:
-        "J'aide les entreprises à construire des expériences web fonctionnelles, structurées et maintenables, avec une approche orientée produit.",
+        "J'aide à construire des expériences web fonctionnelles, structurées et maintenables, avec une approche produit et des workflows IA utiles.",
       projectsCta: 'Voir les projets',
       contactCta: 'Me contacter',
       statsLabel: 'Statistiques du hero',
@@ -105,11 +106,11 @@ export const copy = {
       socialLabel: 'Footer social links',
     },
     hero: {
-      status: 'Fullstack Developer - React / Rails',
-      heading: 'I turn ideas into usable web products',
+      status: 'Fullstack Developer / AI Builder',
+      heading: 'I turn ideas into usable web products and AI workflows',
       highlight: '',
       subtitle:
-        'I help businesses build functional, structured and maintainable web experiences with a product-minded approach.',
+        'I help build functional, structured and maintainable web experiences with a product-minded approach and useful AI workflows.',
       projectsCta: 'View projects',
       contactCta: 'Contact me',
       statsLabel: 'Hero stats',
