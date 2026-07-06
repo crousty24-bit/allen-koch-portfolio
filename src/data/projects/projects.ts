@@ -5,11 +5,16 @@ export type Project = {
   description: Record<Language, string>
   imageAlt: Record<Language, string>
   imageSrc: string
+  imageSizes?: string
+  imageWebpSrcSet?: string
   repositoryHref?: string
   stack: string[]
   status: Record<Language, string>
   href?: string
 }
+
+const projectCardImageSizes =
+  '(max-width: 760px) calc(100vw - 2.2rem), (max-width: 1040px) calc((100vw - 4.25rem) / 2), 397px'
 
 export const projects: Project[] = [
   {
@@ -23,6 +28,9 @@ export const projects: Project[] = [
       en: 'Dark productivity interface with tracking cards, blue progress bars and a developer-tool atmosphere.',
     },
     imageSrc: '/projects/questonaut.png',
+    imageSizes: projectCardImageSizes,
+    imageWebpSrcSet:
+      '/projects/generated/questonaut-384.webp 384w, /projects/generated/questonaut-512.webp 512w',
     repositoryHref:
       'https://github.com/crousty24-bit/questonaut_habit_tracker_app',
     stack: ['Rails', 'Hotwire', 'Product UX'],
@@ -39,6 +47,9 @@ export const projects: Project[] = [
       en: 'Futuristic terminal interface with code lines, cyan and violet syntax, and a technical workstation mood.',
     },
     imageSrc: '/projects/mission-control.png',
+    imageSizes: projectCardImageSizes,
+    imageWebpSrcSet:
+      '/projects/generated/mission-control-384.webp 384w, /projects/generated/mission-control-512.webp 512w',
     repositoryHref: 'https://github.com/crousty24-bit/mission-control',
     stack: ['Tauri', 'TypeScript', 'Linux'],
     status: { fr: 'Prototype', en: 'Prototype' },
@@ -54,6 +65,9 @@ export const projects: Project[] = [
       en: 'Dark Code Quality Guardian homepage displaying the message “Make coding agents change less, but better”.',
     },
     imageSrc: '/projects/code-quality-guardian.png',
+    imageSizes: projectCardImageSizes,
+    imageWebpSrcSet:
+      '/projects/generated/code-quality-guardian-384.webp 384w, /projects/generated/code-quality-guardian-768.webp 768w',
     repositoryHref:
       'https://github.com/crousty24-bit/code-quality-guardian-skill',
     stack: ['Agent Skill', 'AI Workflow', 'Code Quality'],
@@ -85,6 +99,9 @@ export const projects: Project[] = [
       en: 'Abstract AI network visualization with luminous blue filaments on a dark background.',
     },
     imageSrc: '/projects/kane.png',
+    imageSizes: projectCardImageSizes,
+    imageWebpSrcSet:
+      '/projects/generated/kane-384.webp 384w, /projects/generated/kane-512.webp 512w',
     stack: ['AI Workflow', 'Automation', 'Privacy'],
     status: { fr: 'Exploration', en: 'Exploration' },
   },
@@ -99,6 +116,9 @@ export const projects: Project[] = [
       en: 'Modern desk view with a mechanical keyboard and a screen showing a dark-mode portfolio interface.',
     },
     imageSrc: '/projects/portfolio-ak.png',
+    imageSizes: projectCardImageSizes,
+    imageWebpSrcSet:
+      '/projects/generated/portfolio-ak-384.webp 384w, /projects/generated/portfolio-ak-512.webp 512w',
     repositoryHref: 'https://github.com/crousty24-bit/allen-koch-portfolio',
     stack: ['React', 'Vite', 'TypeScript'],
     status: { fr: 'En cours', en: 'In progress' },

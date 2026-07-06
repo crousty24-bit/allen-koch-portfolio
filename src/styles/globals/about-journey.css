@@ -48,7 +48,7 @@
   padding: 0.7rem 1.2rem;
   margin: 0 auto;
   color: var(--text);
-  font-family: Geist, monospace;
+  font-family: var(--font-mono);
   font-size: 0.86rem;
   font-weight: 700;
   text-align: center;
@@ -118,7 +118,7 @@
   min-width: 7.4rem;
   padding: 0.42rem 0.72rem;
   color: var(--text);
-  font-family: Geist, monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 700;
   line-height: 1;
@@ -237,7 +237,7 @@
   width: 1.6rem;
   height: 1.6rem;
   color: var(--tertiary);
-  font-family: Geist, monospace;
+  font-family: var(--font-mono);
   font-size: 0.74rem;
   font-weight: 700;
   background: rgba(84, 213, 255, 0.08);

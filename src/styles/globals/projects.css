@@ -114,7 +114,7 @@
 .projects-section__cta p {
   margin: 0;
   color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.35rem, 3vw, 1.85rem);
   font-weight: 700;
   line-height: 1.2;
@@ -195,9 +195,14 @@
   outline-offset: -4px;
 }
 
+.project-card__media picture,
 .project-card__media img {
+  display: block;
   width: 100%;
   height: 100%;
+}
+
+.project-card__media img {
   object-fit: cover;
   opacity: 0.84;
   transition:
@@ -221,7 +226,7 @@
 .project-card__header p {
   margin: 0 0 0.35rem;
   color: var(--tertiary);
-  font-family: Geist, monospace;
+  font-family: var(--font-mono);
   font-size: 0.74rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -230,7 +235,7 @@
 .project-card h3,
 .stack-card h3 {
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   line-height: 1.2;
   letter-spacing: -0.025em;
 }
@@ -260,7 +265,7 @@
   border: 1px solid transparent;
   border-radius: 999px;
   color: var(--text-muted);
-  font-family: Geist, monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
 }
 

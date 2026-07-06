@@ -70,7 +70,7 @@
 .about-content h2,
 .contact-panel h2 {
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   color: var(--text);
   letter-spacing: -0.045em;
 }
@@ -155,7 +155,7 @@
 .hero__stat-value {
   display: inline-block;
   color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2.35rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1;
@@ -167,7 +167,7 @@
   display: inline-block;
   max-width: 12rem;
   color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   font-weight: 800;
   line-height: 1.2;

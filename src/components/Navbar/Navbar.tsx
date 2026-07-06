@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import akLogo from '../../assets/images/ak-logo.png'
+import akLogo from '../../assets/images/generated/ak-logo.webp'
 import { copy, type Language, type Theme } from '../../data/i18n/i18n'
 
 const navItems = [
@@ -51,8 +51,8 @@ export function Navbar({
             alt=""
             className="brand__logo"
             fetchPriority="high"
-            height="512"
-            width="512"
+            height="96"
+            width="96"
           />
           <span>Allen Koch</span>
         </a>

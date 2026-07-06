@@ -18,14 +18,25 @@ export function ProjectCard({
   const hasDemoLink = Boolean(project.href)
   const hasRepositoryLink = Boolean(project.repositoryHref)
   const projectCopy = copy[language].projects
-  const projectImage = (
-    <img
-      src={project.imageSrc}
-      alt={project.imageAlt[language]}
-      height="720"
-      loading="lazy"
-      width="1280"
-    />
+  const projectImage = isCollapsed ? null : (
+    <picture>
+      {project.imageWebpSrcSet ? (
+        <source
+          sizes={project.imageSizes}
+          srcSet={project.imageWebpSrcSet}
+          type="image/webp"
+        />
+      ) : null}
+      <img
+        src={project.imageSrc}
+        alt={project.imageAlt[language]}
+        decoding="async"
+        height="720"
+        loading="lazy"
+        sizes={project.imageSizes}
+        width="1280"
+      />
+    </picture>
   )
 
   return (
