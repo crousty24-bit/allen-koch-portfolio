@@ -65,20 +65,31 @@
   min-width: 0;
 }
 
-.hero h1,
+.hero__title,
+.hero__heading,
 .section-heading h2,
 .about-content h2,
 .contact-panel h2 {
   margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   color: var(--text);
   letter-spacing: -0.045em;
 }
 
-.hero h1 {
+.hero__title {
   max-width: 900px;
-  margin: 1.65rem 0 0;
-  font-size: 5.35rem;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.hero__heading {
+  max-width: 900px;
+  margin: 1rem 0 0;
+  font-size: 4.9rem;
   font-weight: 800;
   line-height: 1.04;
   letter-spacing: 0;
@@ -155,7 +166,7 @@
 .hero__stat-value {
   display: inline-block;
   color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2.35rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1;
@@ -167,7 +178,7 @@
   display: inline-block;
   max-width: 12rem;
   color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   font-weight: 800;
   line-height: 1.2;

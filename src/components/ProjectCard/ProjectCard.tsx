@@ -4,33 +4,38 @@ import type { Project } from '../../data/projects/projects'
 
 type ProjectCardProps = {
   index: number
-  isCollapsed?: boolean
   language: Language
   project: Project
 }
 
-export function ProjectCard({
-  index,
-  isCollapsed = false,
-  language,
-  project,
-}: ProjectCardProps) {
+export function ProjectCard({ index, language, project }: ProjectCardProps) {
   const hasDemoLink = Boolean(project.href)
   const hasRepositoryLink = Boolean(project.repositoryHref)
   const projectCopy = copy[language].projects
   const projectImage = (
-    <img
-      src={project.imageSrc}
-      alt={project.imageAlt[language]}
-      height="720"
-      loading="lazy"
-      width="1280"
-    />
+    <picture>
+      {project.imageWebpSrcSet ? (
+        <source
+          sizes={project.imageSizes}
+          srcSet={project.imageWebpSrcSet}
+          type="image/webp"
+        />
+      ) : null}
+      <img
+        src={project.imageSrc}
+        alt={project.imageAlt[language]}
+        decoding="async"
+        height="720"
+        loading="lazy"
+        sizes={project.imageSizes}
+        width="1280"
+      />
+    </picture>
   )
 
   return (
     <article
-      className={`project-card reveal${isCollapsed ? ' project-card--collapsed' : ''}`}
+      className="project-card reveal"
       style={{ '--index': index } as CSSProperties}
     >
       {hasDemoLink ? (

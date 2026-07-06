@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import portraitSrc from '../../assets/images/allen-portrait1.jpg'
+import portrait360Src from '../../assets/images/generated/allen-portrait-360.webp'
+import portrait640Src from '../../assets/images/generated/allen-portrait-640.webp'
+import portrait900Src from '../../assets/images/generated/allen-portrait-900.webp'
 import { copy, type Language } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
 import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
@@ -36,8 +39,8 @@ export function AboutSection({ language }: AboutSectionProps) {
         aboutObserver.disconnect()
       },
       {
-        rootMargin: '0px 0px -28%',
-        threshold: 0.25,
+        rootMargin: '0px 0px -18%',
+        threshold: 0.12,
       },
     )
 
@@ -58,13 +61,21 @@ export function AboutSection({ language }: AboutSectionProps) {
         <div className="about-visual reveal">
           <div aria-hidden="true" className="about-visual__glow" />
           <figure className="portrait-card">
-            <img
-              src={portraitSrc}
-              alt={aboutCopy.alt}
-              height="1280"
-              loading="lazy"
-              width="1024"
-            />
+            <picture>
+              <source
+                sizes="(max-width: 760px) min(100vw - 2.2rem, 420px), 38vw"
+                srcSet={`${portrait360Src} 360w, ${portrait640Src} 640w, ${portrait900Src} 900w`}
+                type="image/webp"
+              />
+              <img
+                src={portraitSrc}
+                alt={aboutCopy.alt}
+                height="1280"
+                loading="lazy"
+                sizes="(max-width: 760px) min(100vw - 2.2rem, 420px), 38vw"
+                width="1024"
+              />
+            </picture>
           </figure>
         </div>
 

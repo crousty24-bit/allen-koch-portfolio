@@ -32,8 +32,8 @@ html {
   width: min(100%, 34rem);
 }
 
-.hero h1 {
-  font-size: 4.15rem;
+.hero__heading {
+  font-size: 3.8rem;
 }
 
 .about-layout {

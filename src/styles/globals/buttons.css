@@ -16,7 +16,7 @@
   margin: 0 auto;
   border-radius: 999px;
   color: var(--text-muted);
-  font-family: Geist, monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.03em;
   text-align: center;
