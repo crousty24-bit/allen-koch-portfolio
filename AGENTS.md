@@ -103,6 +103,12 @@ Global UI:
   colors, or theme styling must be reflected appropriately in light mode.
 - Keep responsive behavior coherent: any design change must be checked and
   adapted for mobile and narrow viewports.
+- Preserve the current mobile-performance baseline: no WebGL particles on
+  mobile, reduced expensive effects on mobile, responsive WebP assets, and
+  lighter mobile font loading where documented in `DESIGN.md`.
+- Any mobile performance optimization must explicitly state whether desktop
+  rendering is expected to change. If desktop should remain unchanged, verify
+  desktop and mobile separately.
 - Treat the `1.0.0` implementation as the baseline. Do not reopen broad MVP
   polish work unless explicitly requested.
 - Future changes should be maintenance-oriented by default: content updates,

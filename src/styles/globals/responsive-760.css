@@ -2,6 +2,56 @@ html {
   scroll-padding-top: 6rem;
 }
 
+.site-header,
+.navbar__menu,
+.status-pill,
+.chip,
+.button--secondary,
+.icon-toggle,
+.hero__social-link,
+.hero__scroll,
+.projects-toggle,
+.back-to-top,
+.project-card,
+.stack-card,
+.portrait-card,
+.contact-panel {
+  backdrop-filter: none;
+}
+
+.ambient,
+.about-visual__glow {
+  display: none;
+}
+
+.hero::after {
+  filter: none;
+  animation: none;
+}
+
+.hero__scroll,
+.hero__stats,
+.reveal,
+.skills-tree__content:not([hidden]),
+.about-accordion__panel:not([hidden]) {
+  animation: none;
+  animation-delay: 0ms;
+}
+
+.about-content h2 {
+  width: auto;
+  overflow: visible;
+  white-space: normal;
+  border-right: 0;
+  animation: none;
+}
+
+.section--scroll-fade {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 .navbar {
   grid-template-columns: 2.5rem minmax(0, 1fr) 2.5rem;
   min-height: 4.75rem;

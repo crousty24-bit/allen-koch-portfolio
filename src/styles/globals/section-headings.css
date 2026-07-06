@@ -19,7 +19,7 @@
 .eyebrow {
   margin: 0 0 0.85rem;
   color: var(--primary);
-  font-family: Geist, monospace;
+  font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
