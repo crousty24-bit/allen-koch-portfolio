@@ -9,7 +9,7 @@ export const copy = {
       heading: "Bonjour, moi c'est Allen.",
       badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
       intro: [
-        'Développeur en reconversion, je construis des applications web utiles, lisibles et maintenables.',
+        "Développeur web en reconversion, basé en Alsace, je construis des applications web utiles, lisibles et maintenables, en adéquation avec le paysage numérique actuel et l'évolution des solutions IA.",
         "J'aime comprendre les besoins derrière un projet, avancer avec méthode et créer des interfaces simples à utiliser.",
         "Ce qui me motive : simplifier l'expérience utilisateur et livrer quelque chose qui fonctionne vraiment.",
       ],
@@ -30,8 +30,9 @@ export const copy = {
     },
     hero: {
       status: 'Développeur Fullstack / AI Builder',
+      title: 'Allen Koch | Développeur Web | Alsace, France',
       heading:
-        'Je transforme les idées en produits web et workflows IA utilisables',
+        'Transformer les besoins en produits web utiles, structurés et maintenables',
       highlight: '',
       subtitle:
         "J'aide à construire des expériences web fonctionnelles, structurées et maintenables, avec une approche produit et des workflows IA utiles.",
@@ -86,7 +87,7 @@ export const copy = {
       heading: "Hello, I'm Allen.",
       badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
       intro: [
-        'Career-switching developer, I build useful, readable and maintainable web applications.',
+        "Career-switching web developer based in Alsace, I build useful, readable, and maintainable web applications aligned with today's digital landscape and the evolution of AI solutions.",
         'I like understanding the needs behind a project, moving forward with method and creating interfaces that are simple to use.',
         'What motivates me: simplifying the user experience and shipping something that truly works.',
       ],
@@ -107,7 +108,9 @@ export const copy = {
     },
     hero: {
       status: 'Fullstack Developer / AI Builder',
-      heading: 'I turn ideas into usable web products and AI workflows',
+      title: 'Allen Koch | Web Developer | Alsace, France',
+      heading:
+        'Turning needs into useful, structured, and maintainable web products',
       highlight: '',
       subtitle:
         'I help build functional, structured and maintainable web experiences with a product-minded approach and useful AI workflows.',
