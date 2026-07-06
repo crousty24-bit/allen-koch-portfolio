@@ -39,8 +39,8 @@ export function AboutSection({ language }: AboutSectionProps) {
         aboutObserver.disconnect()
       },
       {
-        rootMargin: '0px 0px -28%',
-        threshold: 0.25,
+        rootMargin: '0px 0px -18%',
+        threshold: 0.12,
       },
     )
 

@@ -70,8 +70,8 @@
 
 .about-section--title-animated .about-content h2 {
   animation:
-    aboutTypewriter 900ms steps(24, end) 160ms both,
-    aboutTypewriterCaret 900ms step-end 160ms forwards;
+    aboutTypewriter 900ms steps(24, end) both,
+    aboutTypewriterCaret 900ms step-end forwards;
 }
 
 .about-badges {
