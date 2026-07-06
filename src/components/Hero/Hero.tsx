@@ -164,7 +164,9 @@ export function Hero({ language }: HeroProps) {
 
       <div className="hero__content reveal">
         <div className="hero__intro">
-          <h1>
+          <h1 className="hero__title">{heroCopy.title}</h1>
+
+          <h2 className="hero__heading">
             {heroCopy.heading}
             {heroCopy.highlight ? (
               <>
@@ -172,7 +174,7 @@ export function Hero({ language }: HeroProps) {
                 <span className="hero__highlight">{heroCopy.highlight}</span>
               </>
             ) : null}
-          </h1>
+          </h2>
 
           <p className="hero__subtitle">{heroCopy.subtitle}</p>
 
