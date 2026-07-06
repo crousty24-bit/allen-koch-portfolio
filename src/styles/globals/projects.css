@@ -165,10 +165,6 @@
   transform: translateY(-4px);
 }
 
-.project-card--collapsed {
-  display: none;
-}
-
 .project-card__media {
   position: relative;
   display: block;

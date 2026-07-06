@@ -125,7 +125,7 @@ Current font stack:
 
 - headings / brand: Plus Jakarta Sans
 - body: Inter
-- labels / metadata / chips: Geist
+- labels / metadata / chips: Geist on desktop, system monospace on mobile
 
 General rules:
 
@@ -134,6 +134,8 @@ General rules:
 - avoid long paragraphs in high-impact areas
 - preserve readable line-height in body copy
 - do not use viewport-width font scaling
+- keep desktop typography faithful to this baseline; mobile may use lighter
+  font-loading choices only when the performance benefit is intentional
 
 ## 7. Navbar
 
@@ -270,7 +272,22 @@ Implemented interactions:
 Future effects should be restrained. Add motion only when it improves
 orientation, hierarchy, or perceived quality.
 
-## 15. Content And I18n
+## 15. Mobile Performance Baseline
+
+The mobile performance baseline intentionally differs from desktop in a few
+bounded areas:
+
+- WebGL particles are desktop-only and must not load on mobile.
+- Expensive blur, backdrop-filter, glow, and non-essential animations are
+  reduced at mobile widths.
+- Mobile uses responsive WebP assets and may use lighter font loading.
+- Desktop visual fidelity remains a separate requirement and must be checked
+  when changing performance, typography, effects, or responsive rules.
+
+Future mobile optimizations must state whether desktop rendering is expected
+to remain unchanged. If unchanged, validate desktop and mobile separately.
+
+## 16. Content And I18n
 
 Copy is currently managed through `src/data/i18n/i18n.ts` and passed through
 typed props.
@@ -288,22 +305,30 @@ Rules:
 - preserve TypeScript typing for translated content
 - do not hard-code new display copy inside components when it belongs in i18n
 
-## 16. Assets
+## 17. Assets
 
 Local assets:
 
-- `src/assets/images/ak-logo.png`
+- `src/assets/images/generated/ak-logo.webp`
 - `src/assets/images/allen-portrait1.jpg`
+- `src/assets/images/generated/allen-portrait-360.webp`
+- `src/assets/images/generated/allen-portrait-640.webp`
+- `src/assets/images/generated/allen-portrait-900.webp`
 - `public/projects/kane.png`
 - `public/projects/mission-control.png`
 - `public/projects/portfolio-ak.png`
 - `public/projects/questonaut.png`
 - `public/projects/rubber-duck-ia.svg`
+- `public/projects/generated/*.webp`
 
 Project visuals are local assets in the release baseline. Keep future project
 visuals local unless there is a clear reason to use a stable external asset.
 
-## 17. Implementation Constraints
+Original PNG/JPG project and portrait assets act as source/fallback files.
+Generated WebP files under `public/projects/generated/` are treated as
+immutable deploy assets; create a new filename when replacing their content.
+
+## 18. Implementation Constraints
 
 When implementing future changes:
 
@@ -314,6 +339,9 @@ When implementing future changes:
 - do not introduce routing
 - do not introduce backend logic
 - keep semantic HTML and accessible labels
+- preserve the mobile-performance baseline unless a change explicitly targets it
+- verify desktop and mobile separately when a mobile optimization claims desktop
+  rendering is unchanged
 - run `npm run build`, `npm run lint`, and `npm run biome:check` before
   finalizing implementation work
 - keep changes maintenance-oriented unless a broader redesign is explicitly
