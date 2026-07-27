@@ -18,6 +18,10 @@ describe('projects data', () => {
       repositoryHref: 'https://github.com/Naethr/SnipStack/tree/develop',
     })
     expect(snipStack.href).toBeUndefined()
-    expect(projects[2]?.title).toBe('Questonaut')
+    expect(projects.slice(0, 3).map((project) => project.title)).toEqual([
+      'Diff Impact Analyzer',
+      'SnipStack',
+      'Code Quality Guardian',
+    ])
   })
 })
