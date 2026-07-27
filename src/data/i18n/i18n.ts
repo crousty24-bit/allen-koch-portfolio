@@ -35,7 +35,7 @@ export const copy = {
         'Transformer les besoins en produits web utiles, structurés et maintenables',
       highlight: '',
       subtitle:
-        "J'aide à construire des expériences web fonctionnelles, structurées et maintenables, avec une approche produit et des workflows IA utiles.",
+        "Du besoin à la mise en ligne, j'avance par itérations courtes avec une approche produit et des workflows IA utiles.",
       projectsCta: 'Voir les projets',
       contactCta: 'Me contacter',
       statsLabel: 'Statistiques du hero',
@@ -113,7 +113,7 @@ export const copy = {
         'Turning needs into useful, structured, and maintainable web products',
       highlight: '',
       subtitle:
-        'I help build functional, structured and maintainable web experiences with a product-minded approach and useful AI workflows.',
+        'From initial need to deployment, I work in focused iterations with a product-minded approach and useful AI workflows.',
       projectsCta: 'View projects',
       contactCta: 'Contact me',
       statsLabel: 'Hero stats',
