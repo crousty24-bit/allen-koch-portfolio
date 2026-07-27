@@ -328,6 +328,16 @@ html {
   line-height: 1.22;
 }
 
+.about-journey__actions {
+  margin-top: 1.15rem;
+}
+
+.about-journey__toggle {
+  min-height: 2.65rem;
+  padding: 0.62rem 0.85rem;
+  font-size: 0.7rem;
+}
+
 .section-heading--center {
   text-align: left;
 }

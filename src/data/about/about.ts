@@ -24,6 +24,10 @@ export type AboutJourneyItem = {
   title: Record<Language, string>
 }
 
+export function getCollapsedJourneyItemCount(itemCount: number) {
+  return Math.ceil(itemCount / 2)
+}
+
 export const aboutAccordionItems: AboutAccordionItem[] = [
   {
     id: 'working-style',
@@ -187,6 +191,22 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
     description: {
       fr: 'Portfolio, projets concrets et progression continue',
       en: 'Portfolio, concrete projects and continuous progress',
+    },
+  },
+  {
+    id: 'thp-internship',
+    icon: 'thp',
+    dateLabel: {
+      fr: 'Juillet–août 2026',
+      en: 'July–August 2026',
+    },
+    title: {
+      fr: 'Stage',
+      en: 'Internship',
+    },
+    description: {
+      fr: 'Stage de deux mois à THP : bêta-testing et création de sites web',
+      en: 'Two-month internship at THP: beta testing and website development',
     },
   },
 ]
