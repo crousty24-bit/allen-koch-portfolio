@@ -221,6 +221,8 @@ Current structure:
 - portrait card using local asset `src/assets/images/allen-portrait1.jpg`
 - grayscale portrait by default, color on hover
 - data-driven accordion below the main About layout
+- data-driven journey timeline with its first half shown by default
+- accessible timeline toggle expands or collapses the complete journey
 - floating tags for location/status
 - social links below copy
 

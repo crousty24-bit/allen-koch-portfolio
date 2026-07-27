@@ -30,7 +30,9 @@ html:root {
 
 :root .about-journey__content,
 :root .about-journey__card,
-:root .about-journey__chevron {
+:root .about-journey__chevron,
+:root .about-journey__toggle,
+:root .about-journey__toggle-icon {
   transition: none;
 }
 

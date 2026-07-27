@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {
   type AboutJourneyItem,
   aboutJourneyItems,
+  getCollapsedJourneyItemCount,
 } from '../../data/about/about'
 import type { Language } from '../../data/i18n/i18n'
 
@@ -15,19 +16,30 @@ type JourneyIconProps = {
 
 const timelineLabels: Record<
   Language,
-  { close: string; end: string; open: string; start: string }
+  {
+    close: string
+    end: string
+    open: string
+    showLess: string
+    showMore: string
+    start: string
+  }
 > = {
   fr: {
     start: 'Octobre 2025',
     end: 'Aujourd’hui',
     open: 'Ouvrir',
     close: 'Fermer',
+    showMore: 'Afficher plus',
+    showLess: 'Réduire',
   },
   en: {
     start: 'October 2025',
     end: 'Today',
     open: 'Open',
     close: 'Close',
+    showMore: 'More',
+    showLess: 'Reduce',
   },
 }
 
@@ -258,7 +270,15 @@ export function AboutJourney({ language }: AboutJourneyProps) {
   const [openItemIds, setOpenItemIds] = useState(() => [
     aboutJourneyItems[0]?.id ?? '',
   ])
+  const [showAllItems, setShowAllItems] = useState(false)
+  const collapsedItemCount = getCollapsedJourneyItemCount(
+    aboutJourneyItems.length,
+  )
+  const hasHiddenItems = aboutJourneyItems.length > collapsedItemCount
   const labels = timelineLabels[language]
+  const visibleItems = showAllItems
+    ? aboutJourneyItems
+    : aboutJourneyItems.slice(0, collapsedItemCount)
 
   return (
     <section
@@ -274,8 +294,8 @@ export function AboutJourney({ language }: AboutJourneyProps) {
         <span className="about-journey__badge about-journey__badge--start">
           {labels.start}
         </span>
-        <ol className="about-journey__list">
-          {aboutJourneyItems.map((item, index) => {
+        <ol className="about-journey__list" id="about-journey-list">
+          {visibleItems.map((item, index) => {
             const side = index % 2 === 0 ? 'left' : 'right'
             const isOpen = openItemIds.includes(item.id)
             const panelId = `about-journey-${item.id}-panel`
@@ -333,10 +353,39 @@ export function AboutJourney({ language }: AboutJourneyProps) {
             )
           })}
         </ol>
-        <span className="about-journey__badge about-journey__badge--end">
-          {labels.end}
-        </span>
+        {!hasHiddenItems || showAllItems ? (
+          <span className="about-journey__badge about-journey__badge--end">
+            {labels.end}
+          </span>
+        ) : null}
       </div>
+      {hasHiddenItems ? (
+        <div className="about-journey__actions">
+          <button
+            aria-controls="about-journey-list"
+            aria-expanded={showAllItems}
+            className="about-journey__toggle"
+            onClick={() => setShowAllItems((isShowingAll) => !isShowingAll)}
+            type="button"
+          >
+            <span>{showAllItems ? labels.showLess : labels.showMore}</span>
+            <svg
+              aria-hidden="true"
+              className="about-journey__toggle-icon"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M5 8L10 13L15 8"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.8"
+              />
+            </svg>
+          </button>
+        </div>
+      ) : null}
     </section>
   )
 }
