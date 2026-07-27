@@ -18,6 +18,43 @@ const projectCardImageSizes =
 
 export const projects: Project[] = [
   {
+    title: 'Diff Impact Analyzer',
+    description: {
+      fr: 'Outil local qui analyse les changements Git et produit une évaluation déterministe et explicable de leur portée et de leur risque.',
+      en: 'Local tool that analyzes Git changes and produces a deterministic, explainable assessment of their scope and risk.',
+    },
+    imageAlt: {
+      fr: "Landing page sombre de Diff Impact Analyzer avec son interface d'analyse de la portée et du score d'impact des changements Git.",
+      en: 'Dark Diff Impact Analyzer landing page showing its Git change scope and impact score interface.',
+    },
+    imageSrc: '/projects/diff-impact-analyzer.png',
+    imageSizes: projectCardImageSizes,
+    imageWebpSrcSet:
+      '/projects/generated/diff-impact-analyzer-384.webp 384w, /projects/generated/diff-impact-analyzer-512.webp 512w',
+    repositoryHref: 'https://github.com/crousty24-bit/diff-impact-analyzer',
+    stack: ['Node.js', 'TypeScript', 'React', 'Express'],
+    status: { fr: 'MVP', en: 'MVP' },
+    href: 'https://diff-impact-analyzer.vercel.app/',
+  },
+  {
+    title: 'SnipStack',
+    description: {
+      fr: 'Bibliothèque de snippets avec une source frontend et serveur unique, disponible comme application web React et Rails ou comme application desktop Tauri.',
+      en: 'Snippet library with one frontend and server-side source of truth, available as a React and Rails web app or a Tauri desktop app.',
+    },
+    imageAlt: {
+      fr: 'Interface sombre de SnipStack avec formulaire de création, recherche et bibliothèque de snippets de code.',
+      en: 'Dark SnipStack interface with a creation form, search and code snippet library.',
+    },
+    imageSrc: '/projects/snipstack.png',
+    imageSizes: projectCardImageSizes,
+    imageWebpSrcSet:
+      '/projects/generated/snipstack-384.webp 384w, /projects/generated/snipstack-512.webp 512w',
+    repositoryHref: 'https://github.com/Naethr/SnipStack/tree/develop',
+    stack: ['React', 'Rails', 'PostgreSQL', 'Tauri'],
+    status: { fr: 'MVP', en: 'MVP' },
+  },
+  {
     title: 'Questonaut',
     description: {
       fr: "Tracker d'habitudes gamifié construit avec Ruby on Rails. L'objectif est de rendre la progression lisible, motivante et simple à maintenir.",
