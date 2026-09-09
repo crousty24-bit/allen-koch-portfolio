@@ -8,6 +8,7 @@ import { Navbar } from './components/Navbar/Navbar'
 import { ProjectsSection } from './components/ProjectsSection/ProjectsSection'
 import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
+import { readStoredPreference, writeStoredPreference } from './utils/storage'
 
 const backgroundParticleColors = ['#2e5bff', '#54d5ff', '#6c04de']
 const desktopParticlesQuery = '(min-width: 761px)'
@@ -58,7 +59,12 @@ const getStoredTheme = (): Theme => {
     return 'dark'
   }
 
-  return window.localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+  return readStoredPreference(
+    () => window.localStorage,
+    'theme',
+    (value): value is Theme => value === 'dark' || value === 'light',
+    'dark',
+  )
 }
 
 const getStoredLanguage = (): Language => {
@@ -66,7 +72,12 @@ const getStoredLanguage = (): Language => {
     return 'fr'
   }
 
-  return window.localStorage.getItem('language') === 'en' ? 'en' : 'fr'
+  return readStoredPreference(
+    () => window.localStorage,
+    'language',
+    (value): value is Language => value === 'fr' || value === 'en',
+    'fr',
+  )
 }
 
 function App() {
@@ -80,12 +91,12 @@ function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     document.documentElement.style.colorScheme = theme
-    window.localStorage.setItem('theme', theme)
+    writeStoredPreference(() => window.localStorage, 'theme', theme)
   }, [theme])
 
   useEffect(() => {
     document.documentElement.lang = language
-    window.localStorage.setItem('language', language)
+    writeStoredPreference(() => window.localStorage, 'language', language)
   }, [language])
 
   useEffect(() => {
