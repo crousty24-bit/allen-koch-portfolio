@@ -21,9 +21,19 @@ export function BackToTopButton({ language }: BackToTopButtonProps) {
 
   return (
     <button
+      aria-hidden={!isVisible}
       aria-label={copy[language].topButtonLabel}
       className={`back-to-top${isVisible ? ' back-to-top--visible' : ''}`}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={(event) => {
+        event.currentTarget.blur()
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)')
+          .matches
+          ? 'auto'
+          : 'smooth'
+
+        window.scrollTo({ top: 0, behavior })
+      }}
+      tabIndex={isVisible ? 0 : -1}
       type="button"
     >
       <svg
