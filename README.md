@@ -154,8 +154,7 @@ npm audit --audit-level=moderate
 - Biome OK ;
 - tests OK ;
 - audit des dépendances de production sans vulnérabilité modérée ou supérieure ;
-- audit complet : alertes connues dans l'outillage de développement, sans
-  correctif disponible au moment de la release ;
+- audit complet sans vulnérabilité modérée ou supérieure ;
 - aucune dépendance inutile ajoutée.
 
 Commandes validées lors de l'audit final :
