@@ -23,6 +23,7 @@ export const stack: StackItem[] = [
       { label: 'TypeScript', icon: 'typescript' },
       { label: 'JavaScript', icon: 'javascript' },
       { label: 'Tailwind CSS', icon: 'tailwindcss' },
+      { label: 'Shadcn', icon: 'shadcnui' },
     ],
     tone: 'primary',
   },
@@ -34,6 +35,7 @@ export const stack: StackItem[] = [
       { label: 'Node.js', icon: 'nodedotjs' },
       { label: 'Express', icon: 'express', iconColor: 'E8ECF5' },
       { label: 'NestJS', icon: 'nestjs' },
+      { label: 'API REST', icon: 'swagger' },
     ],
     tone: 'secondary',
   },
@@ -54,6 +56,12 @@ export const stack: StackItem[] = [
     items: [
       { label: 'GitHub', icon: 'github', iconColor: 'E8ECF5' },
       { label: 'VS Code', icon: 'vscode', iconSrc: '/icons/vscode.svg' },
+      {
+        label: 'Codex',
+        icon: 'openai',
+        iconSrc: '/icons/openai.svg',
+      },
+      { label: 'Docker', icon: 'docker' },
       { label: 'Vercel', icon: 'vercel', iconColor: 'FFFFFF' },
       { label: 'Tauri', icon: 'tauri' },
     ],
