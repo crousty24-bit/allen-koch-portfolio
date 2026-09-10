@@ -97,6 +97,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = language
+    document.title = copy[language].hero.title
     writeStoredPreference(() => window.localStorage, 'language', language)
   }, [language])
 
