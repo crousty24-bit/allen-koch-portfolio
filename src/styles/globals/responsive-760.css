@@ -309,23 +309,23 @@ html {
 }
 
 .about-journey__item--open .about-journey__content {
-  max-width: 4.65rem;
+  max-width: 5.5rem;
 }
 
 .about-journey__title,
 .about-journey__description {
-  min-width: 4.65rem;
+  min-width: 5.5rem;
 }
 
 .about-journey__title {
-  font-size: 0.63rem;
-  line-height: 1.14;
+  font-size: 0.78rem;
+  line-height: 1.2;
 }
 
 .about-journey__description {
   margin-top: 0.16rem;
-  font-size: 0.54rem;
-  line-height: 1.22;
+  font-size: 0.72rem;
+  line-height: 1.35;
 }
 
 .about-journey__actions {
