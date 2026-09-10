@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react'
 import { AboutSection } from './components/AboutSection/AboutSection'
 import { BackToTopButton } from './components/BackToTopButton/BackToTopButton'
 import { ContactSection } from './components/ContactSection/ContactSection'
+import { DecorativeErrorBoundary } from './components/DecorativeErrorBoundary/DecorativeErrorBoundary'
 import { Footer } from './components/Footer/Footer'
 import { Hero } from './components/Hero/Hero'
 import { Navbar } from './components/Navbar/Navbar'
@@ -156,21 +157,23 @@ function App() {
   return (
     <>
       {canRenderParticles ? (
-        <Suspense fallback={null}>
-          <Particles
-            alphaParticles
-            cameraDistance={22}
-            moveParticlesOnHover
-            particleBaseSize={88}
-            particleColors={backgroundParticleColors}
-            particleCount={170}
-            particleHoverFactor={0.35}
-            particleSpread={12}
-            pixelRatio={Math.min(window.devicePixelRatio || 1, 2)}
-            sizeRandomness={0.8}
-            speed={0.06}
-          />
-        </Suspense>
+        <DecorativeErrorBoundary>
+          <Suspense fallback={null}>
+            <Particles
+              alphaParticles
+              cameraDistance={22}
+              moveParticlesOnHover
+              particleBaseSize={88}
+              particleColors={backgroundParticleColors}
+              particleCount={170}
+              particleHoverFactor={0.35}
+              particleSpread={12}
+              pixelRatio={Math.min(window.devicePixelRatio || 1, 2)}
+              sizeRandomness={0.8}
+              speed={0.06}
+            />
+          </Suspense>
+        </DecorativeErrorBoundary>
       ) : null}
       <a className="skip-link" href="#main-content">
         {pageCopy.skipLink}
