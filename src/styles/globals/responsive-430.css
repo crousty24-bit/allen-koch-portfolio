@@ -5,3 +5,61 @@
 .hero__heading {
   font-size: clamp(2rem, 8.2vw, 2.2rem);
 }
+
+.about-journey__item,
+.about-journey__item--dated {
+  grid-template-columns: minmax(0, 1fr) 1.8rem minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  min-height: 0;
+  row-gap: 0.55rem;
+}
+
+.about-journey__branch {
+  display: none;
+}
+
+.about-journey__node,
+.about-journey__item--dated .about-journey__node {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.about-journey__date {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  font-size: 0.68rem;
+}
+
+.about-journey__item--left .about-journey__card,
+.about-journey__item--right .about-journey__card,
+.about-journey__item--dated .about-journey__card {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  justify-self: stretch;
+  width: 100%;
+  max-width: none;
+  justify-content: center;
+  padding: 0.65rem;
+}
+
+.about-journey__item--open .about-journey__card {
+  justify-content: normal;
+}
+
+.about-journey__item--open .about-journey__content {
+  max-width: none;
+}
+
+.about-journey__title,
+.about-journey__description {
+  min-width: 0;
+}
+
+.about-journey__title {
+  font-size: 0.95rem;
+}
+
+.about-journey__description {
+  font-size: 0.85rem;
+  line-height: 1.45;
+}

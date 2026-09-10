@@ -39,7 +39,7 @@ const timelineLabels: Record<
     open: 'Open',
     close: 'Close',
     showMore: 'More',
-    showLess: 'Reduce',
+    showLess: 'Show less',
   },
 }
 

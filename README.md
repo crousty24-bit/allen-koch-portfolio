@@ -1,13 +1,13 @@
 # Allen Koch - Portfolio Développeur
 
-![Version](https://img.shields.io/badge/version-1.3.1-blue)
-![Status](https://img.shields.io/badge/status-release%201.3.1-success)
+![Version](https://img.shields.io/badge/version-1.3.2-blue)
+![Status](https://img.shields.io/badge/status-release%201.3.2-success)
 ![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)
 ![License](https://img.shields.io/badge/license-private-lightgrey)
 
 Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack junior, des projets sélectionnés, une stack technique et des liens de contact professionnels.
 
-Version `1.3.1` est l'état stable de production actuel. Le projet reste limité
+Version `1.3.2` est l'état stable de production actuel. Le projet reste limité
 à de petites améliorations front/design, à des mises à jour ponctuelles de
 données et à l'hygiène de release.
 
@@ -23,7 +23,7 @@ Objectifs principaux :
 - fournir des liens directs vers GitHub, LinkedIn, X et email professionnel ;
 - garder une base de code simple, maintenable et prête à déployer.
 
-Évolutions prévues après `1.3.1` :
+Évolutions prévues après `1.3.2` :
 
 - ajouter ou mettre à jour des projets ;
 - mettre à jour la stack, la bio ou les liens ;
@@ -129,11 +129,28 @@ Formate le projet avec Biome.
 ## Installation
 
 ```bash
-npm install
+nvm install
+nvm use
+npm ci
 npm run dev
 ```
 
-Le site est ensuite disponible sur l'URL locale indiquée par Vite.
+Le projet utilise Node 24 et npm 11. Le fichier `.nvmrc`, les contraintes
+`engines` et les workflows CI partagent cette même base. Le site est ensuite
+disponible sur l'URL locale indiquée par Vite.
+
+## Ajouter un projet
+
+1. Ajouter l'image source sous `public/projects/` avec un nom unique.
+2. Créer les variantes WebP nécessaires sous `public/projects/generated/`.
+   Ne jamais remplacer un fichier déjà déployé : utiliser un nouveau nom pour
+   respecter le cache annuel.
+3. Ajouter le projet dans `src/data/projects/projects.ts` avec `description`,
+   `imageAlt` et `status` en français et en anglais, puis renseigner les chemins
+   de l'image source et du `srcset` WebP.
+4. Vérifier les deux langues, les thèmes clair et sombre, puis les rendus mobile
+   et desktop.
+5. Exécuter les vérifications documentées ci-dessous avant le push.
 
 ## Vérifications avant push
 
@@ -147,15 +164,14 @@ npm run test
 npm audit --audit-level=moderate
 ```
 
-État validé pour release `1.3.1` :
+État validé pour release `1.3.2` :
 
 - build production OK ;
 - lint OK ;
 - Biome OK ;
 - tests OK ;
 - audit des dépendances de production sans vulnérabilité modérée ou supérieure ;
-- audit complet : alertes connues dans l'outillage de développement, sans
-  correctif disponible au moment de la release ;
+- audit complet sans vulnérabilité modérée ou supérieure ;
 - aucune dépendance inutile ajoutée.
 
 Commandes validées lors de l'audit final :
@@ -168,9 +184,9 @@ npm run test
 npm audit --audit-level=moderate
 ```
 
-La release `1.3.1` enrichit la sélection de projets et rend la timeline du
-parcours repliable. Les tests associés couvrent l'ordre des projets et le
-comportement de cette timeline.
+La release `1.3.2` renforce l'accessibilité, la résilience du rendu décoratif,
+la lisibilité mobile et les conventions de maintenance. Les tests associés
+couvrent notamment le stockage local, l'ordre des projets et la timeline.
 
 Le workflow GitHub Actions de mise à jour des statistiques hero conserve un
 accès écriture limité à l'étape qui pousse le fichier généré.
