@@ -35,6 +35,9 @@ jobs:
           GH_PROFILE_TOKEN: ${{ secrets.GH_PROFILE_TOKEN }}
           GITHUB_LOGIN: crousty24-bit
 
+      - name: Test
+        run: npm run test
+
       - name: Build
         run: npm run build
 
