@@ -1,0 +1,75 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#090D18"/>
+  <circle cx="1020" cy="150" r="86" fill="#8D81FF" opacity=".75"/>
+  <path d="M0 395 180 315 330 365 520 245 690 340 850 260 1040 350 1280 275V720H0Z" fill="#151A2C"/>
+  <path d="M0 455 210 390 390 430 575 330 790 440 980 365 1280 420V720H0Z" fill="#20243A"/>
+
+  <g opacity=".75" fill="#303653">
+    <rect x="90" y="220" width="150" height="330"/>
+    <rect x="65" y="195" width="200" height="30"/>
+    <rect x="108" y="165" width="34" height="55"/>
+    <rect x="188" y="150" width="34" height="70"/>
+    <rect x="940" y="230" width="180" height="330"/>
+    <rect x="915" y="200" width="230" height="34"/>
+    <rect x="965" y="160" width="38" height="70"/>
+    <rect x="1062" y="180" width="38" height="50"/>
+  </g>
+
+  <path d="M0 558H1280V720H0Z" fill="#28283C"/>
+  <path d="M0 558H1280V586H0Z" fill="#55506A"/>
+  <path d="M0 586H1280V604H0Z" fill="#37364C"/>
+  <g fill="#343348">
+    <rect x="36" y="622" width="190" height="24"/>
+    <rect x="250" y="662" width="230" height="22"/>
+    <rect x="704" y="625" width="200" height="26"/>
+    <rect x="950" y="671" width="260" height="24"/>
+  </g>
+
+  <g transform="translate(464 374)">
+    <rect x="64" y="36" width="58" height="72" fill="#B9C8DF"/>
+    <rect x="72" y="44" width="42" height="14" fill="#E5EEF9"/>
+    <rect x="68" y="62" width="50" height="12" fill="#4D5C78"/>
+    <rect x="55" y="106" width="76" height="92" fill="#546985"/>
+    <rect x="64" y="116" width="58" height="56" fill="#7089A6"/>
+    <path d="M93 116 114 144 93 163 72 144Z" fill="#61C8E8"/>
+    <rect x="56" y="194" width="28" height="74" fill="#3D4B67"/>
+    <rect x="103" y="194" width="28" height="74" fill="#3D4B67"/>
+    <rect x="48" y="260" width="42" height="18" fill="#1C2133"/>
+    <rect x="97" y="260" width="42" height="18" fill="#1C2133"/>
+    <rect x="126" y="114" width="20" height="112" fill="#AABBD2" transform="rotate(-38 126 114)"/>
+    <rect x="178" y="70" width="28" height="32" fill="#E7F1FF" transform="rotate(52 178 70)"/>
+  </g>
+
+  <g transform="translate(770 476)">
+    <path d="M0 66C0 25 33 0 76 0s76 25 76 66v49H0Z" fill="#7B4DA9"/>
+    <rect x="26" y="46" width="20" height="20" fill="#E7F1FF"/>
+    <rect x="106" y="46" width="20" height="20" fill="#E7F1FF"/>
+    <rect x="32" y="52" width="9" height="9" fill="#171426"/>
+    <rect x="111" y="52" width="9" height="9" fill="#171426"/>
+    <rect x="54" y="84" width="44" height="10" fill="#4A285F"/>
+  </g>
+
+  <g transform="translate(1000 506)">
+    <path d="M0 52C0 20 25 0 58 0s58 20 58 52v37H0Z" fill="#5EAF79"/>
+    <rect x="20" y="36" width="15" height="15" fill="#E7F1FF"/>
+    <rect x="81" y="36" width="15" height="15" fill="#E7F1FF"/>
+    <rect x="43" y="64" width="31" height="8" fill="#2C6948"/>
+  </g>
+
+  <g fill="#F6C760">
+    <circle cx="340" cy="520" r="17"/>
+    <circle cx="390" cy="480" r="17"/>
+    <circle cx="434" cy="530" r="17"/>
+  </g>
+  <g fill="#FFF0A3" opacity=".85">
+    <rect x="336" y="509" width="8" height="22"/>
+    <rect x="386" y="469" width="8" height="22"/>
+    <rect x="430" y="519" width="8" height="22"/>
+  </g>
+
+  <g transform="translate(74 74)">
+    <rect width="624" height="164" rx="16" fill="#0D1220" opacity=".9"/>
+    <text x="42" y="76" fill="#E7F1FF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="54" font-weight="700">MILADY'S KNIGHT</text>
+    <text x="44" y="122" fill="#77D9F2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" letter-spacing="8">BLIGHTFALL</text>
+  </g>
+</svg>

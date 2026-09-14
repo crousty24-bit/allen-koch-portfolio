@@ -24,4 +24,19 @@ describe('projects data', () => {
       'Code Quality Guardian',
     ])
   })
+
+  it("presents Milady's Knight as a Godot game project", () => {
+    const miladysKnight = projects.find(
+      (project) => project.title === "Milady's Knight",
+    )
+
+    expect(miladysKnight).toMatchObject({
+      repositoryHref: 'https://github.com/crousty24-bit/Milady-s-Knight-godot',
+      stack: ['Godot', 'GDScript', 'GPT-6 Astra'],
+      status: { fr: 'Prototype', en: 'Prototype' },
+    })
+    expect(projects.some((project) => project.title === 'HabitFlower')).toBe(
+      false,
+    )
+  })
 })
