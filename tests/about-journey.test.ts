@@ -6,12 +6,9 @@ import {
 } from '../src/data/about/about'
 
 describe('about journey', () => {
-  it('adds the localized THP internship after Dev 1.0', () => {
-    expect(aboutJourneyItems.at(-2)?.title).toEqual({
-      fr: 'Dev 1.0',
-      en: 'Dev 1.0',
-    })
-    expect(aboutJourneyItems.at(-1)).toMatchObject({
+  it('ends with the localized internship and freelance milestones', () => {
+    expect(aboutJourneyItems).toHaveLength(12)
+    expect(aboutJourneyItems.at(-2)).toMatchObject({
       id: 'thp-internship',
       icon: 'thp',
       dateLabel: {
@@ -21,6 +18,22 @@ describe('about journey', () => {
       title: {
         fr: 'Stage',
         en: 'Internship',
+      },
+    })
+    expect(aboutJourneyItems.at(-1)).toMatchObject({
+      id: 'freelance-start',
+      icon: 'fullstack',
+      dateLabel: {
+        fr: 'Septembre 2026',
+        en: 'September 2026',
+      },
+      title: {
+        fr: 'Dev Web Freelance',
+        en: 'Freelance Web Developer',
+      },
+      description: {
+        fr: "Début d'activité",
+        en: 'Start of freelance activity',
       },
     })
   })

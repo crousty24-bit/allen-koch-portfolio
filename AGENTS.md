@@ -24,7 +24,7 @@ Act as a pragmatic coding agent. Prioritize clarity, maintainability, accessibil
 This repository contains the final MVP release state for a one-page
 professional portfolio for a junior fullstack developer.
 
-Current status: release `1.0.0`.
+Current status: release `1.3.2`.
 
 The current implementation is considered the stable product baseline. Future
 changes should be limited to minor front/design polish or punctual content
@@ -109,7 +109,7 @@ Global UI:
 - Any mobile performance optimization must explicitly state whether desktop
   rendering is expected to change. If desktop should remain unchanged, verify
   desktop and mobile separately.
-- Treat the `1.0.0` implementation as the baseline. Do not reopen broad MVP
+- Treat the `1.3.2` implementation as the baseline. Do not reopen broad MVP
   polish work unless explicitly requested.
 - Future changes should be maintenance-oriented by default: content updates,
   minor UI refinements, accessibility fixes, SEO updates, or dependency hygiene.

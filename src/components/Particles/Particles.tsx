@@ -296,6 +296,8 @@ export function Particles({
       }
 
       cancelAnimationFrame(animationFrameId)
+      geometry.remove()
+      program.remove()
 
       if (container.contains(gl.canvas)) {
         container.removeChild(gl.canvas)

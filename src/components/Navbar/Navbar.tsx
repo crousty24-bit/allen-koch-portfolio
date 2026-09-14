@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import akLogo from '../../assets/images/generated/ak-logo.webp'
 import { copy, type Language, type Theme } from '../../data/i18n/i18n'
 
@@ -24,6 +24,7 @@ export function Navbar({
   theme,
 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuToggleRef = useRef<HTMLButtonElement>(null)
   const navCopy = copy[language].nav
 
   useEffect(() => {
@@ -34,6 +35,7 @@ export function Navbar({
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsMenuOpen(false)
+        menuToggleRef.current?.focus()
       }
     }
 
@@ -65,6 +67,7 @@ export function Navbar({
           }
           className="menu-toggle"
           onClick={() => setIsMenuOpen((currentMenu) => !currentMenu)}
+          ref={menuToggleRef}
           type="button"
         >
           <span aria-hidden="true" />

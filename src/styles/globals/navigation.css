@@ -93,6 +93,17 @@
     0 10px 26px rgba(46, 91, 255, 0.18);
 }
 
+:root[data-theme="light"] .navbar__links a:hover,
+:root[data-theme="light"] .navbar__links a:focus-visible {
+  color: var(--primary);
+  background:
+    linear-gradient(135deg, rgba(51, 93, 255, 0.06), rgba(0, 127, 184, 0.06)),
+    rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 0 0 1px rgba(51, 93, 255, 0.18),
+    0 10px 26px rgba(37, 49, 67, 0.1);
+}
+
 .navbar__controls,
 .navbar__toggles {
   display: flex;
