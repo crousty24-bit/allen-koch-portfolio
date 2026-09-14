@@ -161,17 +161,18 @@ export const projects: Project[] = [
     status: { fr: 'En cours', en: 'In progress' },
   },
   {
-    title: 'HabitFlower',
+    title: "Milady's Knight",
     description: {
-      fr: "Une application web mobile-first de suivi d'habitudes gamifiée, inspirée de l'univers cosy farming game en pixel art.",
-      en: 'A mobile-first gamified habit-tracking web app inspired by the cosy farming game world in pixel art.',
+      fr: "Prototype jouable d'action-platformer 2D en pixel art : un chevalier traverse un royaume en ruine, affronte des slimes corrompus et collecte l'or qui brisera le sceau.",
+      en: 'Playable pixel-art 2D action-platformer prototype: a knight crosses a ruined kingdom, fights corrupted slimes and collects the gold needed to break the seal.',
     },
     imageAlt: {
-      fr: "Interface pixel art mobile-first avec fleurs, suivi d'habitudes et ambiance cosy farming game.",
-      en: 'Mobile-first pixel-art interface with flowers, habit tracking and a cosy farming game atmosphere.',
+      fr: "Scène pixel art de Milady's Knight montrant un chevalier dans les ruines face à des slimes corrompus.",
+      en: "Pixel-art scene from Milady's Knight showing a knight facing corrupted slimes in the ruins.",
     },
-    imageSrc: '/projects/habitflower.svg',
-    stack: ['React', 'Vite', 'TypeScript', 'NestJS'],
-    status: { fr: 'En cours', en: 'In progress' },
+    imageSrc: '/projects/miladys-knight.svg',
+    repositoryHref: 'https://github.com/crousty24-bit/Milady-s-Knight-godot',
+    stack: ['Godot', 'GDScript', 'GPT-6 Astra'],
+    status: { fr: 'Prototype', en: 'Prototype' },
   },
 ]
