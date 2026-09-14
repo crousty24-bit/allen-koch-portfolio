@@ -209,4 +209,20 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
       en: 'Two-month internship at THP: beta testing and website development',
     },
   },
+  {
+    id: 'freelance-start',
+    icon: 'fullstack',
+    dateLabel: {
+      fr: 'Septembre 2026',
+      en: 'September 2026',
+    },
+    title: {
+      fr: 'Dev Web Freelance',
+      en: 'Freelance Web Developer',
+    },
+    description: {
+      fr: "Début d'activité",
+      en: 'Start of freelance activity',
+    },
+  },
 ]
