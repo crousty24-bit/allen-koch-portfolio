@@ -1,0 +1,264 @@
+# Runs Workflow
+
+Source de vérité du suivi : objectifs, responsables, dépendances et état des RUN.
+Les preuves vont dans [runs-journal.md](runs-journal.md). Le cycle d'exécution est
+défini dans [docs/agentic-workflow.md](docs/agentic-workflow.md).
+
+## Règles de suivi
+
+- Identifiants stables `RUN-000`, `RUN-001`, etc. Ne pas renuméroter l'historique.
+- Statuts : `planned`, `in_progress`, `verify`, `done`, `blocked`.
+- Un seul RUN `in_progress` ou `verify` à la fois ; aucun obligatoire au repos.
+  Des sous-tâches peuvent être déléguées dans ce RUN avec propriétaires distincts.
+- `planned` → `in_progress` après contrôle du mandat et des dépendances ; puis
+  `verify` pendant les contrôles/revues ; `done` lorsque ses critères sont satisfaits.
+  `blocked` nomme l'obstacle et la condition de reprise, sans masquer le travail restant.
+- L'ordre de priorité ne vaut pas autorisation de tout exécuter. Une correction
+  découverte ou un RUN suivant reste planifié s'il sort de la demande en cours.
+- Les responsables ci-dessous sont des affectations prévues. Une délégation
+  effective doit être nommée et tracée ; ne pas inventer un agent actif.
+
+## Tableau de suivi
+
+| RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
+| --- | --- | --- | --- | --- | --- |
+| RUN-000 | P1 | Audit et préparation initiale de refonte | Codex ; contribution design de Claude | Aucune | done |
+| RUN-001 | P1 | Workflow agentique adapté du boilerplate | Codex, rôle Documentation | RUN-000 | done |
+| RUN-002 | P1 | Alertes de dépendances de développement | Codex ; compétence Security | Audit A01 | planned |
+| RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | Audit A04 | planned |
+| RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | Audit A05 | planned |
+| RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-000 ; réponses d'Allen | planned |
+| RUN-006 | P1 | Refonte visuelle totale et maquettes multipages | Claude ; arbitrage Allen | RUN-005, RUN-011, RUN-016 | planned |
+| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-012 à RUN-015, RUN-017 | planned |
+| RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
+| RUN-009 | P1 | Proposition de custom agents et politique de délégation | Codex ; revue Luna | RUN-001 | done |
+| RUN-010 | P1 | Cadrage documentaire du périmètre élargi | Codex ; revue Luna | RUN-009 | done |
+| RUN-011 | P1 | Architecture des pages, URL et rendu | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | planned |
+| RUN-012 | P1 | Navigation et socle multipage | Codex ; Claude UI | RUN-011, RUN-013 | planned |
+| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-002, RUN-004, RUN-006 | planned |
+| RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | planned |
+| RUN-015 | P1 | Projets personnels conservés et espace clients | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
+| RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
+| RUN-017 | P1 | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
+| RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
+
+## RUN-000 — Audit et préparation initiale
+
+- Objectif : auditer le dépôt et préparer le positionnement IA freelance.
+- Périmètre : audit, plan de refonte, brief Claude, première proposition, documents racines.
+- Vérification : preuves datées et limites dans l'audit et le journal.
+- Fin : livrables documentaires disponibles ; aucune correction frontend requise pour ce RUN.
+- Risque conservé : les anomalies relevées restent à traiter dans les RUN suivants.
+
+## RUN-001 — Organisation agentique du dépôt
+
+- Mandat : demande d'Allen du 27 octobre 2026 de reprendre le workflow du
+  `react-node-boilerplate`, avec documents `docs/`, workflow et journal des RUN.
+- Objectif : permettre à un agent de reprendre une tâche, déléguer un périmètre
+  et retrouver les preuves sans reconstituer tout l'historique de conversation.
+- Périmètre : brief, RUN, journal, cycle, routage, contrats de transfert, politiques,
+  outils, fiches de rôles et liens des points d'entrée.
+- Préservé : frontend, dépendances, CI, données et ressources de refonte existantes ;
+  dépôt source consulté en lecture seule.
+- Risques : doublons entre documents, fausses capacités importées, affectations
+  confondues avec une délégation exécutée, écrasement de travaux existants.
+- Acceptation : sources de vérité distinctes, RUN futurs bornés, transferts et
+  propriétaires définis, rôles adaptés au statique, liens valides, checks exécutés
+  et résultats consignés sans inventer de déploiement ou de revue indépendante.
+- Relais : suite choisie par Allen parmi les RUN planifiés ; pas de déclenchement automatique.
+
+## RUN-002 — Dépendances
+
+- Objectif/périmètre : corriger les alertes de l'outillage identifiées en A01,
+  versions compatibles et lockfile ; pas de nouvelle fonctionnalité.
+- Risques : rupture d'outils ou upgrade majeur involontaire.
+- Acceptation : diff expliqué, build/lint/Biome/tests réussis, audit complet au seuil
+  moderate et audit production exécutés ; toute alerte restante explicitement traitée.
+- Relais : retour de Security si sollicité, puis intégration et revue par Codex.
+
+## RUN-003 — Visibilité au défilement
+
+- Objectif/périmètre : corriger A04 dans App et styles concernés sans refonte graphique.
+- Risques : section invisible, régression clavier/ancres ou effets mobile/desktop.
+- Acceptation : reproduction avant/après à 1440 × 300 et 1440 × 900 px ; mobile,
+  reduced-motion, ancres/clavier et contrôles applicatifs vérifiés.
+- Relais : Frontend → Test/QA → Codex avec preuve navigateur et limites.
+
+## RUN-004 — TypeScript strict
+
+- Objectif/périmètre : activer strict dans les configurations application, outils
+  et tests ; corriger les erreurs éventuelles sans refactorisation hors sujet.
+- Risques : assertions ou exceptions de configuration masquant de vraies erreurs.
+- Acceptation : build, lint, Biome et tests réussis ; aucune erreur ignorée pour
+  obtenir le résultat. L'audit n'a vérifié strict ponctuellement que pour l'application.
+
+## RUN-005 — Offres et cas
+
+- Objectif/périmètre : promesse, trois familles d'offres à arbitrer, deux ou trois
+  cas avec contribution/preuves/limites, contenu FR/EN et CTA.
+- Risques : promesses non démontrées, confusion projet personnel/mission client.
+- Acceptation : faits validés par Allen, variantes linguistiques cohérentes,
+  décisions dans le brief/plan, contenu prêt à transmettre à Claude.
+- Relais : brief design avec décisions acquises et inconnues restantes.
+
+## RUN-006 — Refonte visuelle totale confiée à Claude
+
+- Passe A : proposer une nouvelle direction globale (palette, typographie, grille,
+  iconographie, composants), sans imposer les choix 1.3.2 ou « Atelier technique ».
+- Passe B : maquettes des pages retenues et navigation, sections services,
+  projets personnels/clients, contact/devis ; emplacement futur de la confiance.
+- Passe C : spécifier animations, transitions entre états/pages, focus, formulaire
+  et variantes FR/EN, sombre/clair, mobile/desktop, reduced-motion.
+- Livrables : `docs/claude-design-brief.md`, décisions visuelles et contrat de relais ;
+  pas d'envoi réel de formulaire ni d'implémentation implicite à ce stade.
+- Risques : validation supposée, design ne couvrant qu'une langue ou un thème.
+- Acceptation : proposition attribuée à Claude, desktop/mobile et sombre/clair,
+  états/focus et FR/EN couverts ; direction arbitrée par Allen avant implémentation.
+- Relais : transfert design → frontend avec fichiers, décisions et limites ;
+  mettre à jour DESIGN pour les décisions validées en distinguant le rendu livré.
+
+## RUN-007 — Assemblage de la refonte
+
+- Passe A : intégrer les passes multipage, visuelles, services, projets et contact ;
+  réserver les fichiers communs, vérifier les préférences globales et liens interpages.
+- Passe B : harmoniser FR/EN, sombre/clair, contenus, métadonnées/OG/sitemap et assets.
+- Passe C : revue intégrée avec parcours clavier, direct/rechargement/404, cas de
+  formulaire et données réelles ; corriger les interactions entre lots.
+- Risques : collisions CSS/routage/i18n, perte du catalogue personnel, référence client fictive.
+- Acceptation : critères des passes satisfaits, problèmes du socle traités, contrôles
+  applicatifs/navigateur et revue finale ; docs alignées avec l'état livré.
+
+## RUN-008 — Validation et préparation de release
+
+- Passe A : build/lint/Biome/tests/audit et mesures de performance par page sur
+  build production ; mobile/desktop, langues/thèmes, clavier et reduced-motion.
+- Passe B : accès direct/rechargement/404, navigation, métadonnées/canonical/sitemap,
+  anciens liens et formulaire (succès, échec, anti-abus, réception de contrôle autorisée).
+- Passe C : validation visuelle/contenu d'Allen et cohérence version/docs avant release.
+- La section confiance future RUN-018 ne conditionne pas cette release ; pas de
+  références client fictives pour remplir les espaces prévus.
+- Risques : présenter un build local comme un déploiement ou un score comme un gain terrain.
+- Acceptation : preuves techniques et validation visuelle d'Allen consignées ;
+  si une validation requise manque, rester en `verify`.
+- Publication : vérifier le mandat et la cible avant push/merge/déploiement ;
+  préparer un transfert Production si la publication est demandée.
+
+## RUN-009 — Custom agents et efficacité de délégation
+
+- Mandat : proposer quatre agents Codex code/logique/SEO/optimisation et deux
+  agents Claude design/front ; intégrer les préférences de modèles d'Allen.
+- Périmètre : proposition de profils, politique coûts/efficacité, routage,
+  consignes principales et journal. Aucun agent natif installé dans ce RUN.
+- Risques : doublons code/front, escalade coûteuse implicite, noms de modèles
+  pris pour des identifiants vérifiés, délégation plus chère que le travail direct.
+- Acceptation : six profils aux frontières explicites, choix humain du main,
+  modèles/efforts de sous-agents documentés, délégation requise lorsqu'avantageuse,
+  transferts minimaux, relecture et liens vérifiés.
+- Relais : configuration native après choix de la proposition et vérification des
+  formats/capacités ; aucun RUN frontend lancé.
+
+
+## RUN-010 — Planification du périmètre élargi
+
+- Mandat : ajouter au workflow les demandes de refonte totale, multipage, formulaire,
+  prestations, projets clients distincts et confiance future, découpées en RUN/passes.
+- Périmètre : brief, plan, suivi, consignes et brief Claude ; historique préservé.
+- Risques : anciennes limites one-page reprises comme contraintes, dépendances
+  cycliques, formulaire faussement opérationnel, faux clients/témoignages.
+- Acceptation : exigences couvertes, RUN bornés avec responsables/dépendances,
+  stratégie de contact laissée à choisir, confiance future non bloquante, liens et
+  graphe de dépendances vérifiés. Aucun code applicatif modifié.
+
+## RUN-011 — Architecture multipage et URL
+
+- Passe A : arborescence et parcours (Accueil, Services, Projets, À propos, Contact
+  proposés), contenu par page et distinction personnel/client ; valider les URL.
+- Passe B : choisir rendu/routage compatibles avec SEO, hébergement et FR/EN ;
+  comparer le minimum utile sans imposer routeur/framework ou nouvelle dépendance.
+- Passe C : contrat de navigation : liens profonds, rechargement, 404, historique,
+  focus/titres, anciennes ancres, canonical/hreflang selon choix linguistique,
+  sitemap et assets sur chemins imbriqués.
+- Risques : pages inaccessibles directement, duplication SEO et rupture des liens existants.
+- Acceptation : décision documentée dans le brief, carte des pages/URL et critères
+  de tests transmis à Claude/Frontend ; pas d'architecture supposée déjà implémentée.
+
+## RUN-012 — Socle et navigation multipage
+
+- Passe A : implémenter la stratégie retenue, composition partagée et pages ;
+  conserver thème/langue, navigation et pied de page cohérents.
+- Passe B : intégrer les navigations desktop/mobile et états actifs, liens internes,
+  retour navigateur, focus, accès direct/rechargement et 404.
+- Passe C : migrer les liens/ancres et configurer le minimum d'hébergement nécessaire
+  sur la base de la décision RUN-011, sans publication automatique.
+- Risques : régression de navigation, URL sans contenu, préférences incohérentes.
+- Acceptation : chaque URL prévue rend le bon contenu et ses métadonnées ; liens
+  connus migrés, tests utiles et parcours navigateur réussis dans les conditions retenues.
+
+## RUN-013 — Système visuel, animations et transitions
+
+- Passe A — Claude UI : intégrer nouvelle palette/tokens, typographie, grille,
+  composants et assets selon design accepté, avec clair/sombre.
+- Passe B — Claude UI : animations et transitions de pages/états, hover/focus et
+  variantes reduced-motion ; contenu visible si un effet échoue.
+- Passe C — Codex Performance/QA : contrôler mobile/desktop, contraste, focus,
+  débordements et coût réel du mouvement sur build production ; ajuster avec Claude.
+- Risques : lourdeur décorative, blocage du contenu, régression accessibilité/mobile.
+- Acceptation : fidélité au design arbitré, états accessibles et mesures consignées ;
+  dépendances éventuelles validées. Vérifier la résolution d'A04 avec RUN-003.
+
+## RUN-014 — Services / prestations
+
+- Passe A : structurer offres, besoins, livrables, limites et CTA sur contenu d'Allen.
+- Passe B : intégrer une ou plusieurs sections dédiées, page Services si retenue
+  et aperçus d'accueil, données FR/EN et liens vers contact/devis.
+- Passe C : vérifier lisibilité, cohérence offres/formulaire, responsive et SEO.
+- Risques : promesses non démontrées ou catalogue technique sans bénéfice explicite.
+- Acceptation : services clairement accessibles, contenu validé et CTA fonctionnels ;
+  pas de tarif, gain ou délai inventé.
+
+## RUN-015 — Projets personnels et projets clients
+
+- Passe A : inventorier et conserver le catalogue personnel actuel, ses contenus,
+  liens et assets ; définir les champs distincts de mission client et droits de publication.
+- Passe B : intégrer deux espaces distincts sur la/les pages retenues, détails de cas
+  si documentés et données FR/EN ; aucune requalification automatique personnel → client.
+- Passe C : vérifier liens, attribution, preuves et autorisations ; absence de cas
+  client publiable = espace masqué, données de test hors contenu de production.
+- Risques : perte d'un projet personnel, confusion de statut, référence client fictive.
+- Acceptation : catalogue personnel préservé, affichage clients prêt et testé avec
+  politique d'absence de données ; seuls les cas réels autorisés sont publics.
+
+## RUN-016 — Décision de traitement contact / devis
+
+- Passe A : besoins et champs minimaux, destinataire, données transmises/conservation,
+  états attendus et alternative de contact ; budget/délai optionnels si utiles.
+- Passe B : choisir service d'envoi ou endpoint minimal ; vérifier coût/limites,
+  validation à la frontière de traitement, anti-abus, secrets, exploitation et maintenance.
+- Passe C : documenter contrat succès/erreurs, configuration et test de réception
+  vers une boîte de contrôle autorisée, informations de confidentialité à publier.
+- Risques : dépendance payante implicite, données exposées, spam ou email non reçu.
+- Acceptation : décision explicite et solution vérifiée, périmètre de traitement
+  borné, données et critères d'envoi documentés ; aucun fournisseur supposé choisi.
+
+## RUN-017 — Formulaire et envoi contact / devis
+
+- Passe A — Claude UI : formulaire selon design, labels/aides accessibles, champs
+  contact/prestation/devis selon contrat, navigation clavier et validations client.
+- Passe B — Codex : intégrer traitement choisi, validation serveur/service,
+  anti-abus proportionné, secrets hors bundle et configuration documentée.
+- Passe C — QA : attente/succès/échec, doubles soumissions, réseau/service indisponible,
+  conservation de saisie après échec et test de réception de contrôle autorisé.
+- Risques : faux succès, injection/spam, perte de saisie ou fuite de coordonnées.
+- Acceptation : envoi réel vérifié dans le cadre autorisé, feedback accessible,
+  alternative contact et confidentialité ; aucune clé dans le navigateur. Pas de
+  backend généraliste, base de données ou authentification ajoutés par défaut.
+
+## RUN-018 — Futur « Ils m'ont fait confiance »
+
+- Extension future, non requise pour la première release ; emplacement prévu par RUN-006.
+- Passe A : recueillir références/logos/témoignages réels et accords de publication.
+- Passe B : intégrer le contenu autorisé, formats d'assets, attribution et FR/EN.
+- Passe C : vérifier lisibilité, accessibilité, performance et validité des références.
+- Risques : faux cautionnement, logo non autorisé, témoignage fabriqué.
+- Acceptation : seules références documentées et autorisées publiées ; aucun bloc
+  vide/fictif affiché pour anticiper des clients inexistants.

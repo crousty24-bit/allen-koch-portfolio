@@ -1,5 +1,14 @@
 # Design Reference: Allen Koch Portfolio
 
+> Transition note — 2026-10-27: the AI freelance redesign is being prepared in
+> [docs/](docs/README.md), with design assigned to Claude. This document remains
+> the historical 1.3.2 reference. Known differences from the current code are
+> recorded in the audit; redesign proposals are not an implemented visual baseline.
+> Expanded scope: full visual redesign including palette and motion, separate
+> pages, contact/quote form, services, distinct personal/client projects and future
+> trust references. Baseline constraints below do not override this target;
+> see the current product and Claude briefs before designing the replacement.
+
 This document describes the final MVP implementation state of the portfolio.
 It replaces the earlier Stitch-only handoff notes as the primary local design
 reference.
@@ -332,14 +341,19 @@ immutable deploy assets; create a new filename when replacing their content.
 
 ## 18. Implementation Constraints
 
-When implementing future changes:
+The restrictions below describe baseline maintenance. The expanded redesign in
+`brief.md` and `AGENTS.md` takes precedence for separate pages and the scoped
+contact/quote form; its routing/rendering and processing decisions belong to the
+dedicated runs, not to an implicit backend expansion.
+
+When implementing baseline maintenance changes:
 
 - keep edits minimal and targeted
 - preserve the existing React component structure
 - prefer native CSS and existing tokens
 - do not add dependencies unless explicitly validated
-- do not introduce routing
-- do not introduce backend logic
+- preserve baseline routing unless implementing the decided multipage run
+- preserve baseline backend scope except for the decided form-processing integration
 - keep semantic HTML and accessible labels
 - preserve the mobile-performance baseline unless a change explicitly targets it
 - verify desktop and mobile separately when a mobile optimization claims desktop

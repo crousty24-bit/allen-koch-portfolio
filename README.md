@@ -1,5 +1,23 @@
 # Allen Koch - Portfolio Développeur
 
+> Refonte en préparation (27 octobre 2026) : positionnement développeur IA
+> freelance, design confié à Claude. Le site reste en 1.3.2. Voir le
+> [dossier d'audit et de refonte](docs/README.md), le [workflow](WORKFLOW.md)
+> et les [instructions Claude](CLAUDE.md). Les résultats de vérification ci-dessous
+> décrivent la release historique ; l'audit daté présente l'état contrôlé actuel.
+
+Périmètre de refonte désormais demandé : nouveau design complet, pages séparées,
+formulaire contact/devis, services, projets personnels conservés, projets clients
+distincts et future section « Ils m'ont fait confiance ». Les descriptions one-page
+et limites de maintenance ci-dessous concernent la baseline 1.3.2 ; la cible et
+les décisions encore nécessaires sont dans [le brief](brief.md).
+
+Le suivi agentique sépare le [brief produit](brief.md), les
+[RUN planifiés et leurs responsables](runs-workflow.md), le
+[journal d'exécution](runs-journal.md) et les
+[règles de délégation](docs/handoff-contracts.md). Un RUN actif au maximum ;
+le design reste confié à Claude et l'intégration à Codex.
+
 ![Version](https://img.shields.io/badge/version-1.3.2-blue)
 ![Status](https://img.shields.io/badge/status-release%201.3.2-success)
 ![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)

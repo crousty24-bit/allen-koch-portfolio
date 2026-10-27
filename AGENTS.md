@@ -1,12 +1,45 @@
 # AGENTS.md
 
+## Redesign preparation — 2026-10-27
+
+Allen has explicitly requested an audit and preparation for a redesign positioning
+the portfolio as an AI developer offering freelance services. Design is assigned
+to Claude; technical audit, architecture and verification are handled by Codex.
+Read [WORKFLOW.md](WORKFLOW.md), [brief.md](brief.md),
+[runs-workflow.md](runs-workflow.md), the relevant recent entries of
+[runs-journal.md](runs-journal.md), and [docs/README.md](docs/README.md).
+Release 1.3.2 remains the implementation baseline. Allen's expanded redesign
+request supersedes its one-page and minor-polish limits: plan a complete new
+visual system, separate pages, contact/quote form, services, preserved personal
+projects, separate client projects and a future trust section. Palette and motion
+may change completely under Claude's design ownership. Routing/rendering and
+form processing must be decided before implementation; no provider, new dependency,
+general backend, database or authentication is selected by this planning request.
+Preserve accessibility, FR/EN, both themes and mobile performance requirements.
+
+## Run and delegation discipline
+
+For non-trivial work, identify the bounded RUN, its mandate, acceptance criteria,
+preserved contracts and verification before editing. Keep at most one RUN active;
+delegate only useful bounded subtasks with explicit file ownership using
+`docs/handoff-contracts.md`. Roles are capabilities, not automatically available
+agents. Claude owns visual design; Codex owns coordination and final integration.
+Main agents must delegate when the expected benefit exceeds total handoff,
+execution and integration cost. Before choosing a subagent, read
+`docs/custom-agents.md` for proposed profiles, user model preferences, effort
+selection and fallback rules. The human selects the main agent model.
+Record actual contributors, checks, failures and handoff state in the journal.
+Do not claim independent review when the implementer performed the review.
+Planning a future RUN does not authorize executing it automatically. Session
+instructions and existing user authorization take precedence over repository policy.
+
 ## Project Role
 
 This repository is a static developer portfolio for Allen Koch.
 
 Act as a pragmatic coding agent. Prioritize clarity, maintainability, accessibility, and a clean implementation over visual over-engineering.
 
-## Stack
+## Stack (current implementation baseline)
 
 - React
 - Vite
@@ -17,7 +50,7 @@ Act as a pragmatic coding agent. Prioritize clarity, maintainability, accessibil
 - No backend
 - No database
 - No authentication
-- No complex form handling
+- Baseline has no form processing; contact/quote processing is planned separately
 
 ## Product State
 
@@ -27,8 +60,8 @@ professional portfolio for a junior fullstack developer.
 Current status: release `1.3.2`.
 
 The current implementation is considered the stable product baseline. Future
-changes should be limited to minor front/design polish or punctual content
-updates:
+changes outside the explicitly requested redesign remain limited to minor
+front/design polish or punctual content updates:
 
 - add or update selected projects
 - update stack data
@@ -51,7 +84,9 @@ The site must present:
 
 ## Design Reference
 
-Use `DESIGN.md` as the primary design reference.
+Use `DESIGN.md` as the historical baseline reference. For the complete redesign,
+use the updated brief and Claude design brief; the palette below is not imposed
+on the new design before its direction is accepted.
 
 Key visual direction:
 
@@ -66,7 +101,7 @@ Key visual direction:
 - restrained animations and hover states
 - concise bilingual content in French and English
 
-## Expected Sections
+## Baseline Sections
 
 - Navbar
 - Hero
@@ -95,9 +130,11 @@ Global UI:
 - Keep content data-driven where useful.
 - Do not add dependencies unless explicitly validated.
 - Do not introduce routing unless explicitly requested.
-- Do not add backend logic.
+- Add form-processing logic only within the scoped contact run after its
+  service/endpoint decision; no general backend is authorized by default.
 - Do not add new global controls unless explicitly validated.
-- Preserve the current static-site scope: no backend, no database, no auth.
+- Preserve the current static frontend until migration; multipage and a contact
+  form are requested targets, without database or authentication by default.
 - Keep the existing theme and language state local to the frontend.
 - Keep dark and light themes coherent: any change to default dark-mode design,
   colors, or theme styling must be reflected appropriately in light mode.
