@@ -1,8 +1,7 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AboutSection } from './components/AboutSection/AboutSection'
 import { BackToTopButton } from './components/BackToTopButton/BackToTopButton'
 import { ContactSection } from './components/ContactSection/ContactSection'
-import { DecorativeErrorBoundary } from './components/DecorativeErrorBoundary/DecorativeErrorBoundary'
 import { Footer } from './components/Footer/Footer'
 import { Hero } from './components/Hero/Hero'
 import { Navbar } from './components/Navbar/Navbar'
@@ -11,60 +10,16 @@ import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
 import { readStoredPreference, writeStoredPreference } from './utils/storage'
 
-const backgroundParticleColors = ['#2e5bff', '#54d5ff', '#6c04de']
-const desktopParticlesQuery = '(min-width: 761px)'
-const reducedMotionQuery = '(prefers-reduced-motion: reduce)'
-let supportsWebGL: boolean | null = null
-
-const Particles = lazy(() =>
-  import('./components/Particles/Particles').then((module) => ({
-    default: module.Particles,
-  })),
-)
-
-const shouldRenderParticles = () => {
-  if (typeof window === 'undefined') {
-    return false
-  }
-
-  return (
-    window.matchMedia(desktopParticlesQuery).matches &&
-    !window.matchMedia(reducedMotionQuery).matches &&
-    canUseWebGL()
-  )
-}
-
-const canUseWebGL = () => {
-  if (typeof document === 'undefined') {
-    return false
-  }
-
-  if (supportsWebGL !== null) {
-    return supportsWebGL
-  }
-
-  try {
-    const canvas = document.createElement('canvas')
-    supportsWebGL = Boolean(
-      canvas.getContext('webgl2') ?? canvas.getContext('webgl'),
-    )
-  } catch {
-    supportsWebGL = false
-  }
-
-  return supportsWebGL
-}
-
 const getStoredTheme = (): Theme => {
   if (typeof window === 'undefined') {
-    return 'dark'
+    return 'light'
   }
 
   return readStoredPreference(
     () => window.localStorage,
     'theme',
     (value): value is Theme => value === 'dark' || value === 'light',
-    'dark',
+    'light',
   )
 }
 
@@ -84,9 +39,6 @@ const getStoredLanguage = (): Language => {
 function App() {
   const [theme, setTheme] = useState<Theme>(getStoredTheme)
   const [language, setLanguage] = useState<Language>(getStoredLanguage)
-  const [canRenderParticles, setCanRenderParticles] = useState(
-    shouldRenderParticles,
-  )
   const pageCopy = copy[language]
 
   useEffect(() => {
@@ -100,23 +52,6 @@ function App() {
     document.title = copy[language].hero.title
     writeStoredPreference(() => window.localStorage, 'language', language)
   }, [language])
-
-  useEffect(() => {
-    const desktopMedia = window.matchMedia(desktopParticlesQuery)
-    const reducedMotionMedia = window.matchMedia(reducedMotionQuery)
-    const updateParticleSupport = () => {
-      setCanRenderParticles(shouldRenderParticles())
-    }
-
-    desktopMedia.addEventListener('change', updateParticleSupport)
-    reducedMotionMedia.addEventListener('change', updateParticleSupport)
-    updateParticleSupport()
-
-    return () => {
-      desktopMedia.removeEventListener('change', updateParticleSupport)
-      reducedMotionMedia.removeEventListener('change', updateParticleSupport)
-    }
-  }, [])
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -157,25 +92,6 @@ function App() {
 
   return (
     <>
-      {canRenderParticles ? (
-        <DecorativeErrorBoundary>
-          <Suspense fallback={null}>
-            <Particles
-              alphaParticles
-              cameraDistance={22}
-              moveParticlesOnHover
-              particleBaseSize={88}
-              particleColors={backgroundParticleColors}
-              particleCount={170}
-              particleHoverFactor={0.35}
-              particleSpread={12}
-              pixelRatio={Math.min(window.devicePixelRatio || 1, 2)}
-              sizeRandomness={0.8}
-              speed={0.06}
-            />
-          </Suspense>
-        </DecorativeErrorBoundary>
-      ) : null}
       <a className="skip-link" href="#main-content">
         {pageCopy.skipLink}
       </a>

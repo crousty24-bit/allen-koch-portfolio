@@ -12,16 +12,12 @@ export function ContactSection({ language }: ContactSectionProps) {
   return (
     <section className="section contact-section" id="contact">
       <div className="contact-panel reveal">
-        <div aria-hidden="true" className="contact-panel__overlay" />
-        <div className="contact-panel__content">
-          <p className="eyebrow">Contact</p>
-          <h2>{contactCopy.heading}</h2>
+        <p className="eyebrow eyebrow--section">Contact</p>
+        <h2>{contactCopy.heading}</h2>
+        <div className="contact-panel__aside">
           <p>{contactCopy.text}</p>
           {email ? (
-            <a
-              className="button button--primary button--large"
-              href={email.href}
-            >
+            <a className="contact-panel__email" href={email.href}>
               {email.href.replace('mailto:', '')}
             </a>
           ) : null}

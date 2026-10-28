@@ -10,15 +10,16 @@ design confié à Claude, workflow et ressources pour les agents dans le dépôt
 Clientèles précisées : TPE/PME, startups, outils et workflows agents, réalisation
 d'applications et de sites web modernes. Il n'y a pas de niche unique validée.
 
-Périmètre confirmé : refonte visuelle **globale et totale**, pages séparées,
+Périmètre confirmé : refonte visuelle **globale et totale** sur une page unique
+avec ancres,
 formulaire contact/devis, services/prestations, conservation des projets personnels,
 espace projets clients distinct et future section « Ils m'ont fait confiance ».
 Les choix d'adaptation reviennent à Claude à partir des quatre
 [références Stitch importées](maquettes_references/README.md) et de leur système
 monochrome. La palette 1.3.2 n'est pas imposée ; Allen arbitre la direction finale.
 Conserver React/Vite/TypeScript et les contrats utiles FR/EN, sombre/clair,
-accessibilité et performance mobile. Le rendu multipage et la solution d'envoi
-restent à décider avant leur implémentation ; aucun framework ou prestataire
+accessibilité et performance mobile. La solution d'envoi reste à décider avant
+son implémentation ; aucun framework ou prestataire
 n'est sélectionné par ce plan.
 
 ## Proposition de contenu à arbitrer
@@ -38,9 +39,9 @@ Ces offres sont une proposition éditoriale, pas une attestation de services dé
 vendus. Claude propose une autre répartition (web / MVP / workflows) : choisir une
 seule taxonomie après arbitrage, sans afficher six cartes de services redondantes.
 
-## Arborescence proposée à cadrer
+## Sections proposées à cadrer
 
-| Page proposée | Contenu principal |
+| Section proposée | Contenu principal |
 | --- | --- |
 | Accueil | Promesse, aperçus des prestations/réalisations, méthode et CTA |
 | Services | Une ou plusieurs sections d'offres, besoins, livrables et demande de devis |
@@ -48,12 +49,11 @@ seule taxonomie après arbitrage, sans afficher six cartes de services redondant
 | À propos | Profil, expertise et parcours |
 | Contact / devis | Formulaire et moyen de contact de secours |
 
-Ce découpage est une proposition ; les pages séparées sont demandées, pas ces
-URL précises. RUN-011 arrête l'arborescence, la stratégie de rendu/routage et le
-traitement FR/EN. Les études de cas peuvent devenir des pages dédiées si leur
-contenu le justifie. Prévoir titres/métadonnées propres, accès direct/rechargement,
-404, retour navigateur, focus et navigation interpages ; traiter les anciennes
-ancres connues et les chemins d'assets imbriqués.
+Ce découpage est une proposition ; la page unique et la navigation par ancres
+sont confirmées. RUN-011 arrête l'ordre, les identifiants d'ancres et le traitement
+FR/EN. Les études de cas restent dans la section Projets ou renvoient vers leurs
+liens externes existants. Prévoir accès direct/rechargement avec fragment, focus,
+titres cohérents et compatibilité des anciennes ancres connues.
 
 ## Design et mouvement
 
@@ -61,14 +61,14 @@ Claude reproduit et adapte le langage visuel Stitch : palette monochrome,
 typographie, grille, composants et iconographie ; il précise les choix retenus
 parmi les quatre variantes. La proposition précédente « Atelier technique » reste
 une ressource non validée ; elle ne contraint pas cette refonte. Spécifier les
-mouvements entre états/pages et leur variante reduced-motion,
+mouvements entre sections/états et leur variante reduced-motion,
 sans imposer de dépendance d'animation. Vérifier mobile/desktop et sombre/clair.
 
 ## Services, projets et confiance
 
 Les familles de services ci-dessus restent à arbitrer puis à intégrer en sections
-clairement identifiables, avec CTA de contact/devis. La page Services proposée
-n'empêche pas des aperçus sur l'accueil.
+clairement identifiables, avec CTA vers l'ancre de contact/devis. Les offres
+peuvent être présentées brièvement dans l'introduction.
 
 Conserver le catalogue personnel actuel, ses contenus et liens. Ajouter un espace
 clients distinct : mission, rôle exact, livrables, statut, résultats vérifiables et
@@ -101,9 +101,9 @@ informations de confidentialité avant publication ; aucun avis juridique implic
 ## Architecture cible à décider puis implémenter
 
 Réutiliser les composants, données typées et tokens quand ils conviennent au
-nouveau design. Prévoir une composition partagée (navigation, pied de page,
-préférences) et des composants de pages. Les URL et le rendu, plutôt que l'ajout
-prématuré d'un routeur ou d'un Context, guident RUN-011/012. Toute dépendance reste
+nouveau design. Prévoir une composition de page unique (navigation, pied de page,
+préférences) et des composants de sections. Les ancres et les parcours clavier
+guident RUN-011/012, sans ajout de routeur. Toute dépendance reste
 à justifier et valider. Le traitement du formulaire n'autorise pas une plateforme
 backend complète, une base de données ou une authentification par défaut.
 
@@ -114,8 +114,8 @@ nouveau design n'est pas contraint de conserver ses effets ou sa palette.
 ## Exécution par RUN
 
 Le suivi opérationnel est centralisé dans [runs-workflow.md](../runs-workflow.md).
-RUN-006 couvre le design total ; RUN-011 à RUN-017 découpent architecture multipage,
-navigation, système visuel, services, projets et formulaire. RUN-018 prévoit la
+RUN-006 couvre le design total ; RUN-011 à RUN-017 découpent navigation par ancres,
+système visuel, services, projets et formulaire. RUN-018 prévoit la
 confiance future. RUN-007 assemble les passes et RUN-008 valide la release.
 Responsables, dépendances et critères vivent dans ce suivi ; les preuves dans
 [runs-journal.md](../runs-journal.md). Aucune implémentation ni release automatique.
@@ -127,8 +127,8 @@ Responsables, dépendances et critères vivent dans ce suivi ; les preuves dans
 - Rôle exact dans les projets collaboratifs et preuves partageables.
 - Zone d'intervention, langues de travail, disponibilité et canal de contact préféré.
 - Conservation des statistiques GitHub et des effets WebGL, selon leur utilité.
-- Arborescence finale, rendu/routage et URL FR/EN : le toggle actuel ne crée pas
-  une version anglaise indexable.
+- Ordre final des sections, identifiants d'ancres et indexation EN : le toggle
+  actuel ne crée pas une version anglaise indexable.
 - Solution de contact, destinataire, champs, conservation et vérification de réception.
 - Cas clients, références et autorisations réellement disponibles.
 
@@ -138,8 +138,8 @@ Allen avant la release. Le dépôt ne suffit pas à établir les obligations de 
 ## Ordre des phases et références Stitch
 
 Exécuter d'abord la phase 1 : conception/validation visuelle (RUN-006), puis
-système visuel sur la baseline (RUN-013). Les contenus définitifs, pages/routage,
-sections et fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
+système visuel sur la baseline (RUN-013). Les contenus définitifs, ancres et
+fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
 Les maquettes peuvent anticiper ces évolutions sans prétendre qu'elles fonctionnent.
 Les décisions techniques ultérieures peuvent nécessiter une adaptation visuelle ciblée.
 Les quatre [références Stitch importées](maquettes_references/README.md) sont le

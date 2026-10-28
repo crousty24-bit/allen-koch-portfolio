@@ -9,13 +9,13 @@ Read [WORKFLOW.md](WORKFLOW.md), [brief.md](brief.md),
 [runs-workflow.md](runs-workflow.md), the relevant recent entries of
 [runs-journal.md](runs-journal.md), and [docs/README.md](docs/README.md).
 Release 1.3.2 remains the implementation baseline. Allen's expanded redesign
-request supersedes its one-page and minor-polish limits: plan a complete new
-visual system, separate pages, contact/quote form, services, preserved personal
-projects, separate client projects and a future trust section. The four imported
+request supersedes its minor-polish limits: plan a complete new visual system
+on one page with anchor navigation, contact/quote form, services, preserved
+personal projects, separate client projects and a future trust section. The four imported
 Stitch variants and their monochrome design system in
 `docs/maquettes_references/` are the visual model to reproduce and adapt under
-Claude's design ownership; Allen has not selected one variant. Routing/rendering and
-form processing must be decided before implementation; no provider, new dependency,
+Claude's design ownership; Allen has not selected one variant. Form processing
+must be decided before implementation; no provider, new dependency,
 general backend, database or authentication is selected by this planning request.
 Preserve accessibility, FR/EN, both themes and mobile performance requirements.
 
@@ -136,8 +136,8 @@ Global UI:
 - Add form-processing logic only within the scoped contact run after its
   service/endpoint decision; no general backend is authorized by default.
 - Do not add new global controls unless explicitly validated.
-- Preserve the current static frontend until migration; multipage and a contact
-  form are requested targets, without database or authentication by default.
+- Keep the redesign on one page with anchor navigation and a contact form,
+  without database or authentication by default.
 - Keep the existing theme and language state local to the frontend.
 - Keep dark and light themes coherent: any change to default dark-mode design,
   colors, or theme styling must be reflected appropriately in light mode.

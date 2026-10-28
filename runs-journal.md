@@ -177,3 +177,260 @@ copier de secret, donnée client ou résultat supposé.
 - Décision encore ouverte : variante ou synthèse finale et ses adaptations ;
   Claude prépare la proposition, Allen l'arbitre avant RUN-013. Les exports
   desktop ne valident ni mobile, ni FR/EN, ni sombre/clair ou le comportement.
+
+## Décision de conserver une page unique — 28 octobre 2026
+
+- Branche/révision de départ : `feature/refonte_new_design`, `585acc6` ; arbre propre.
+- Mandat d'Allen : la refonte reste one-page, avec navigation par ancres et aucune
+  nouvelle page dédiée. Cette décision remplace la cible multipage de RUN-010
+  sans effacer son historique.
+- Portée : brief, plan, RUN-006/011/012 et critères de validation, consignes agents,
+  index et références de refonte. Aucun code applicatif modifié.
+- Intervenant : Codex ; pas de sous-agent pour cet alignement documentaire borné.
+- Contrôles : `git diff --check` réussi ; recherche des consignes multipages dans
+  les documents courants, avec seules mentions restantes dans l'historique RUN-010.
+  Build/lint/Biome non lancés : aucun code ni configuration exécutable modifié.
+- Relais : Claude compose une page unique ; RUN-011 fixe sections et ancres, puis
+  RUN-012 les intègre. Le traitement du formulaire et la variante visuelle restent
+  à décider dans leurs RUN respectifs.
+
+## RUN-006, itération 1, passe A : analyse Stitch et garde-fous (28 octobre 2026)
+
+- Branche : `feature/refonte_new_design`, révision `739d094` ; modifications
+  documentaires antérieures commitées, arbre propre au départ.
+- Mandat d'Allen : démarrer la phase 1, analyser workflow, documentation et les
+  quatre variantes Stitch ; refonte visuelle seule, contenu actuel conservé sans
+  nouvelle section ; ajouter les garde-fous anti « vibecode slop » ; tenir
+  DESIGN.md à jour par itération ; rendre un compte-rendu et un plan d'intégration
+  soumis à validation.
+- Statut : RUN-006 passé en `in_progress` ; passe A livrée au statut proposé.
+- Livrables : `DESIGN.md` partie R (journal d'itérations, garde-fous R1, analyse
+  des variantes, tokens, typographie, correspondance des sections, mouvement,
+  fichiers RUN-013, décisions attendues, limites) ; renvoi aux garde-fous dans
+  `docs/claude-design-brief.md`. Partie baseline 1.3.2 de DESIGN.md non modifiée.
+- Intervenant : Claude (Opus 5.5, main choisi par Allen). Pas de sous-agent :
+  l'analyse visuelle exigeait les captures dans le contexte principal ; un
+  transfert aurait dupliqué la lecture sans gain.
+- Contrôles : 24 tranches des captures examinées (outil Pillow dans un venv
+  temporaire hors dépôt) ; HTML exportés inspectés (polices Geist, Material
+  Symbols, Tailwind CDN, `backdrop-blur`) ; recherche d'emojis et de tirets
+  cadratins dans `src/` sans résultat ; contrastes WCAG calculés par script
+  (non mesurés dans un navigateur), dont un échec AA de la palette Stitch
+  (`#73716D` sur `#ECEAE4` = 4,05:1) corrigé dans la proposition.
+- Non exécutés : build/lint/Biome (aucun code modifié), navigateur, rendu React.
+- Relais : décisions d'Allen listées dans DESIGN.md R8, puis RUN-013 par lots.
+
+## RUN-006 clôture et RUN-013 lot 1 : fondations (28 octobre 2026)
+
+- Branche : `feature/refonte_new_design`, révision `739d094`, modifications de
+  l'itération 1 non commitées conservées.
+- Décisions d'Allen sur DESIGN.md R8 : synthèse recommandée, Schibsted Grotesk
+  et IBM Plex Mono (Space Mono ponctuelle), clair par défaut, captures en couleur,
+  suppression des particules, compteur conservé, survol sans mouvement.
+  RUN-006 passé `done` ; RUN-013 `in_progress`.
+- Analyse de `weihangli.dev` (inspiration des maquettes selon Allen) : captures
+  après défilement et CSS de production ; reprises et rejets dans DESIGN.md R10.
+- Lot 1 implémenté : `tokens.css` réécrit (clair par défaut, sombre via
+  `data-theme="dark"`, alias transitoires), polices dans `index.html`,
+  `theme-color` clair/sombre, script de thème inversé, `App.tsx` (particules et
+  défaut clair), suppression de `Particles`, `DecorativeErrorBoundary` et de la
+  dépendance `ogl` (`package.json`, lockfile), retrait des orbes, de la trame,
+  du halo About et du voile Contact, base/boutons/focus/eyebrow monochromes,
+  marges dans `responsive-1040/760.css`. Neutralisation mécanique dans le CSS des
+  sections : 133 couleurs chromatiques, 26 ombres, 11 transformations de survol.
+- Intervenant : Claude (Opus 5.5, main). Pas de sous-agent : le lot fixe les
+  modèles réutilisés ensuite, la délégation aurait coûté plus que l'exécution.
+- Contrôles : build, lint et tests (13/13) réussis ; `biome check` du code
+  réussi, `npm run biome:check` en échec sur les exports HTML Stitch de `docs/`
+  uniquement (antérieur au lot) ; captures 1440/390/320 px en clair et sombre sur
+  le build de production, polices chargées vérifiées, aucun débordement
+  horizontal à 320/390/768/1440 px. Outils de capture (`playwright-core`,
+  Pillow) installés dans le scratchpad, hors dépôt.
+- Une erreur de suppression dans `responsive-760.css` (fusion de deux règles)
+  a été détectée à la relecture et corrigée depuis la version commitée.
+- Non exécutés : audit npm, contraste mesuré par composant, zoom 200 %,
+  performance, revue indépendante. Aucun commit.
+- Relais : lot 2 (navbar, menu mobile, en-têtes de section, footer, retour en
+  haut). `AGENTS.md` décrit encore « dark theme by default » dans sa partie
+  baseline : alignement à faire par Codex ou sur mandat, fichier partagé.
+
+## RUN-013 lot 2 : cadre global (28 octobre 2026)
+
+- Branche : `feature/refonte_new_design` ; départ `f49f71c` (lot 1 commité à la
+  demande d'Allen, qui a validé le lot et les intitulés de colonnes du pied de page).
+- Fichiers : `Navbar.tsx`, `Footer.tsx`, `BackToTopButton.tsx`, nouveau
+  `src/data/links/navigation.ts`, `i18n.ts` (`navHeading`, `linksHeading` ajoutés,
+  `socialLabel` retiré), eyebrows de `ProjectsSection`, `StackSection`,
+  `AboutSection`, `ContactSection` ; CSS `navigation`, `contact-footer`,
+  `back-to-top`, `section-headings`, `animations`, `base`, `responsive-1040/760`.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent (composants partagés,
+  modèles fixés pour les lots suivants).
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/800/768/390/320 px, clair/sombre, FR/EN, menu ouvert, focus ;
+  débordement horizontal mesuré nul. Défauts trouvés et corrigés en cours de lot :
+  débordement du pied de page sur mobile, alignement du menu mobile, index de
+  section sur la ligne du titre About, taille de l'index Contact. Biome signalait
+  un titre masqué aux lecteurs d'écran : corrigé par `aria-labelledby`.
+- Non exécutés : lecteur d'écran réel, zoom 200 %, contraste mesuré par composant.
+  Aucun commit de ce lot.
+- Relais : lot 3 (Hero).
+
+## RUN-013 lot 3 : hero (28 octobre 2026)
+
+- Départ `0458d23` (lot 2 commité après validation d'Allen).
+- Fichiers : `Hero.tsx`, `i18n.ts` (`hero.name`, `hero.role`), `hero.css`
+  réécrit, règle de titres partagée déplacée dans `section-headings.css`,
+  `responsive-1040/760/430.css`, `animations.css` (`scrollCue` retiré).
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/1024/768/390/320 px, clair/sombre, FR/EN ; débordement mesuré
+  nul ; largeur du nom mesurée. Ajustement après capture : chiffres clés sur deux
+  colonnes en mobile (hauteur du hero ramenée de 1063 à 942 px à 390 px).
+- Non exécutés : zoom 200 %, lecteur d'écran, contraste par composant. Aucun commit.
+- Relais : lot 4 (Projets).
+
+## RUN-013 lot 4 : projets (28 octobre 2026)
+
+- Départ `e946e25` (lot 3 commité après validation d'Allen).
+- Fichiers : `ProjectCard.tsx` (variantes `feature` et `compact`),
+  `ProjectsSection.tsx`, `projects.ts` (`srcset` étendus, `imageSizes` retiré),
+  6 nouveaux WebP dans `public/projects/generated/`, CSS `projects` réécrit,
+  `buttons` (`.chip`), `section-headings` (en-têtes en grille),
+  `responsive-1040/760.css`.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent. Assets générés avec
+  Pillow dans le scratchpad, depuis les PNG du dépôt.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN, replié/déplié ;
+  débordement mesuré nul après correction ; fichiers d'image servis et position
+  de l'index collant mesurés. Écart à R5 documenté dans DESIGN.md R14.
+- Non exécutés : densité 2, zoom 200 %, lecteur d'écran. Aucun commit.
+- Relais : lot 5 (Stack et arbre de compétences).
+
+## RUN-013 lot 5 : stack et arbre de compétences (28 octobre 2026)
+
+- Départ `cd8be76` (lot 4 commité après validation d'Allen).
+- Fichiers : `StackSection.tsx`, `SkillsTree.tsx` (icônes retirées, index et
+  profondeur), CSS `stack` et `skills-tree` réécrits, `projects.css` (bloc
+  transitoire réduit), `animations.css`, `responsive-1040/760.css`. Données
+  `stack.ts` et `skills.ts` inchangées.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN, replié/déplié ;
+  débordement nul, 0 requête Simple Icons, ouverture clavier vérifiés par script.
+- Non exécutés : lecteur d'écran, zoom 200 %. Aucun commit.
+- Relais : lot 6 (About, accordéon, parcours).
+
+## RUN-013 lot 6 : about, accordéon et parcours (28 octobre 2026)
+
+- Départ `441c465` (lot 5 commité après validation d'Allen).
+- Fichiers : `AboutSection.tsx` (observateur retiré, accordéon déplacé dans la
+  colonne de texte), `AboutAccordion.tsx` (signe +/−), `AboutJourney.tsx` (liste
+  plate, icônes et ouverture par étape retirées), CSS `about-profile`,
+  `about-accordion`, `about-journey` réécrits, `animations.css`, nettoyage de
+  `responsive-430/760/1040.css` et `reduced-motion.css`. Données inchangées.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN ; débordement mobile de 70
+  à 140 px détecté puis corrigé ; titre collant et accordéon clavier mesurés.
+- Écart d'interaction documenté (DESIGN.md R16) : étapes du parcours toujours
+  ouvertes. Non exécutés : lecteur d'écran, zoom 200 %. Aucun commit.
+- Relais : lot 7 (Contact).
+
+## RUN-013 lot 7 : contact (28 octobre 2026)
+
+- Départ `088c05d` (lot 6 commité après validation d'Allen).
+- Fichiers : `ContactSection.tsx`, `contact-footer.css` (bloc inversé),
+  `section-headings.css` et `projects.css` (règles transitoires retirées),
+  `responsive-1040/760.css`.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN ; débordement nul ; couleur
+  du focus dans le bloc inversé mesurée ; contrastes calculés par script.
+- Décision de composition documentée (DESIGN.md R17). Aucun commit.
+- Relais : lot 8 (mouvement, reduced-motion, contrôle qualité avec Codex).
+
+## RUN-013 lot 8 : mouvement et contrôle qualité (28 octobre 2026)
+
+- Départ `91256b9` (lot 7 commité après validation d'Allen).
+- Fichiers : `animations.css` (durées et décalages d'entrée), DESIGN.md R18,
+  `runs-workflow.md` (RUN-013 en `verify`, relais passe C préparé).
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent. Le relais vers Codex est
+  rédigé mais **non transmis** : aucun canal vers Codex dans cette session.
+- Contrôles par script sur build production : contraste de 256 textes en clair et
+  en sombre (0 échec), parcours clavier complet desktop et mobile (0 problème),
+  zoom 200 % et 400 % (0 débordement), reduced-motion, poids de chargement.
+  build, lint, tests 13/13, `biome check` du code réussis.
+- Un premier passage clavier, faussé par le défilement doux, a été relancé avec
+  attente de fin de défilement ; seul le second résultat est retenu.
+- Non exécutés : navigateur réel, Lighthouse, réseau ralenti, lecteur d'écran,
+  revue indépendante. Aucun commit.
+- Relais : passe C de Codex ; Allen transmet le contrat ou mandate son envoi.
+
+
+## RUN-013 passe C : correctifs menu 1 et 2 (28 octobre 2026)
+
+- Mandat explicite d'Allen : corriger les deux constats du retour Codex sur les
+  lots 1 à 8, depuis `95969f2`. Périmètre borné : hauteur du menu mobile et
+  fermeture lorsque le focus quitte l'en-tête. A04 reste dans RUN-003.
+- Acceptation : Contact, thème et langue accessibles en paysage ; Tab et
+  Maj+Tab ne laissent pas le focus derrière le panneau ; Échap ferme et rend le
+  focus au bouton ; thèmes, FR/EN et présentation desktop préservés.
+- Fichiers : `responsive-760.css` (hauteur bornée à l'espace écran disponible,
+  défilement interne conservé), `Navbar.tsx` (écoute `focusin` pendant l'ouverture,
+  fermeture à la sortie de l'en-tête, nettoyage des écouteurs).
+- Intervenant : Codex main, relecture par l'implémenteur. Pas de délégation pour
+  ces deux corrections ciblées ; pas de revue indépendante des correctifs.
+- Vérifications : build, ESLint, 13 tests Vitest et Biome applicatif réussis.
+  Biome global échoue sur les quatre HTML Stitch (10 erreurs, 6 avertissements,
+  2 informations). Avertissement de build préexistant : CSS 430 px vide.
+- Autocontrôle navigateur avec assertions : Chrome 156 avec interface sur build
+  production, émulation tactile DPR 2, 390×844 / 667×375 / 740×320 / 320×568,
+  FR/EN et clair/sombre (16 cas) ; hauteur du panneau, accès aux réglages,
+  sortie par Tab et Maj+Tab, Échap et restauration du focus réussis. À 1440×900,
+  bouton mobile masqué et structure desktop inchangée (`display: contents`).
+  Effet visuel desktop attendu : aucun ; modification CSS limitée au mobile.
+- Preuves conservées hors dépôt, sans dépendance ajoutée :
+  [script d'assertions](/mnt/c/Users/allen/.codex/visualizations/2026/10/28/01a18329-02d8-7f22-9277-e1d837bac67c/RUN-013-audit/check-menu-fixes.mjs),
+  [résultats](/mnt/c/Users/allen/.codex/visualizations/2026/10/28/01a18329-02d8-7f22-9277-e1d837bac67c/RUN-013-audit/menu-fixes-results.json).
+  Le script emploie Playwright déjà présent dans le cache de cet environnement ;
+  il n'est pas une commande de test portable du projet.
+- Non exécutés : lecteur d'écran réel, téléphone physique, zoom navigateur réel,
+  nouveau Lighthouse (les deux changements ciblent le menu ouvert).
+- État : constats 1 et 2 corrigés localement ; RUN-013 reste en `verify` pour les
+  validations restantes. Aucun commit, push ni déploiement.
+
+## RUN-013 clôture de la phase 1 (28 octobre 2026)
+
+- Mandat : Allen confirme avoir vérifié le menu mobile, les accordéons, le
+  dépliage des projets et de la timeline, valide le point 1 de l'audit de clôture,
+  puis demande les corrections documentaires 2 et 3. Validation humaine reçue
+  dans cette conversation ; navigateur, matériel et lecteur d'écran non précisés.
+  Cette acceptation est attribuée à Allen, sans inventer un essai par Codex.
+- État : RUN-006 reste `done` pour le périmètre visuel de phase 1 arbitré par Allen ;
+  RUN-013 passe de `verify` à `done`. Aucun RUN de phase 2 lancé automatiquement.
+- Preuves techniques de la passe C Codex : Chrome 156 avec interface, 24 états
+  largeur/langue/thème sans débordement horizontal ni erreur console ; réduction
+  des animations et contrastes contrôlés dans les états examinés. Lighthouse
+  13.4.1 sur build production local : performance 99 mobile / 100 desktop,
+  accessibilité, bonnes pratiques et SEO 100 pour les deux profils. Mesures de
+  laboratoire du 28 octobre, pas des métriques terrain ni une conformité complète.
+- [Rapport et preuves de l'audit initial](/mnt/c/Users/allen/.codex/visualizations/2026/10/28/01a18329-02d8-7f22-9277-e1d837bac67c/RUN-013-audit/report.md).
+  Le rapport conserve les constats avant correction ; ses deux défauts de menu
+  ont ensuite été corrigés dans `346d204` et vérifiés dans 16 cas mobiles et sur
+  desktop. Build, lint, 13 tests et Biome applicatif repassés lors de l'audit de
+  clôture ; Biome global reste en échec sur les quatre HTML Stitch.
+- Correction 2 : suppression de la dépendance circulaire implicite. RUN-013
+  constate le report d'A04 ; RUN-003 porte sa résolution après RUN-013 et RUN-007
+  vérifiera son intégration. A04 est toujours reproduit à 1440 × 500 sur Projets.
+- Correction 3 : suivi, brief, index documentaire, brief Claude et entrée README
+  alignés sur la phase 1 terminée ; complément R19 à DESIGN. Les références
+  historiques et la baseline de production 1.3.2 restent distinguées du code local.
+- Intervenant : Codex main, relecture documentaire par l'auteur, sans sous-agent
+  pour cette mise à jour bornée. Aucun code, dépendance ou contrat exécutable modifié.
+- Vérification de ce lot : diff, cohérence des statuts et des renvois, existence des
+  liens locaux ajoutés. Pas de nouvelle exécution build/lint/tests/Lighthouse pour
+  ces seules corrections Markdown, conformément à docs/tooling.md.
+- Limites conservées : pas de lecteur d'écran exécuté par Codex, de téléphone
+  physique ni de zoom navigateur réel contrôlés par Codex. Les résultats humains
+  acceptés ci-dessus n'ajoutent pas de détails techniques absents du message d'Allen.
+- Clôture locale uniquement : aucun commit, push, déploiement ou nouvelle release.

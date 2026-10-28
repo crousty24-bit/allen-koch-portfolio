@@ -39,14 +39,14 @@ la recherche graphique initiale.
 
 Partir des quatre maquettes Stitch importées et de leur système monochrome :
 les reproduire et les adapter, puis appliquer la direction validée à la baseline.
-Les futures pages/sections peuvent être représentées avec contenus de travail
-identifiés ; leur contenu final, routage et fonctionnement viennent en phase 2.
+Les futures sections peuvent être représentées avec contenus de travail
+identifiés ; leur contenu final, ancres et fonctionnement viennent en phase 2.
 Le formulaire reste une maquette sans envoi à ce stade.
 
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
-| RUN-006 | P1 | Refonte visuelle totale et maquettes multipages | Claude ; arbitrage Allen | RUN-010 | planned |
-| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | planned |
+| RUN-006 | P1 | Refonte visuelle totale et maquettes one-page | Claude ; arbitrage Allen | RUN-010 | done |
+| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | done |
 
 ### Phase 2 — Contenus, sections et fonctionnalités
 
@@ -56,8 +56,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | RUN-013 | planned |
 | RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | RUN-013 | planned |
 | RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | planned |
-| RUN-011 | P1 | Architecture des pages, URL et rendu | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | planned |
-| RUN-012 | P1 | Navigation et socle multipage | Codex ; Claude UI | RUN-011, RUN-013 | planned |
+| RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | planned |
+| RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | planned |
 | RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | planned |
 | RUN-015 | P1 | Projets personnels conservés et espace clients | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
@@ -106,6 +106,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : section invisible, régression clavier/ancres ou effets mobile/desktop.
 - Acceptation : reproduction avant/après à 1440 × 300 et 1440 × 900 px ; mobile,
   reduced-motion, ancres/clavier et contrôles applicatifs vérifiés.
+- Dette reportée de RUN-013 : A04 reste reproduit sur Projets à 1440 × 500 px.
+  Sa résolution relève de ce RUN ; RUN-007 en vérifiera l'intégration avant release.
 - Relais : Frontend → Test/QA → Codex avec preuve navigateur et limites.
 
 ## RUN-004 — TypeScript strict
@@ -127,13 +129,18 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 ## RUN-006 — Refonte visuelle totale confiée à Claude
 
+- Périmètre de clôture : phase 1 limitée par Allen le 28 octobre 2026 au design
+  du contenu existant. Synthèse Stitch arbitrée dans DESIGN.md R8 ; RUN `done`.
+  Les sections services/clients/confiance et le formulaire des passes initiales
+  ci-dessous restent en phase 2 ; leur absence ne rouvre pas RUN-006.
+
 - Passe A : comparer les [quatre références Stitch](docs/maquettes_references/README.md),
   reproduire leur langage visuel monochrome et proposer les adaptations de palette,
   typographie, grille, iconographie et composants. Les choix 1.3.2 et « Atelier
   technique » ne sont pas la base de cette refonte.
-- Passe B : maquettes des pages proposées et navigation, sections services,
+- Passe B : maquette de la page et navigation par ancres, sections services,
   projets personnels/clients, contact/devis ; emplacement futur de la confiance.
-- Passe C : spécifier animations, transitions entre états/pages, focus, formulaire
+- Passe C : spécifier animations, transitions entre sections/états, focus, formulaire
   et variantes FR/EN, sombre/clair, mobile/desktop, reduced-motion.
 - Livrables : synthèse des maquettes Stitch déjà importées dans
   `docs/maquettes_references/`, adaptations documentées, décisions visuelles et
@@ -148,20 +155,20 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 ## RUN-007 — Assemblage de la refonte
 
-- Passe A : intégrer les passes multipage, visuelles, services, projets et contact ;
-  réserver les fichiers communs, vérifier les préférences globales et liens interpages.
+- Passe A : intégrer les passes visuelles, services, projets et contact sur une page ;
+  réserver les fichiers communs, vérifier les préférences globales et ancres.
 - Passe B : harmoniser FR/EN, sombre/clair, contenus, métadonnées/OG/sitemap et assets.
-- Passe C : revue intégrée avec parcours clavier, direct/rechargement/404, cas de
+- Passe C : revue intégrée avec parcours clavier, accès direct/rechargement aux ancres, cas de
   formulaire et données réelles ; corriger les interactions entre lots.
-- Risques : collisions CSS/routage/i18n, perte du catalogue personnel, référence client fictive.
+- Risques : collisions CSS/navigation/i18n, perte du catalogue personnel, référence client fictive.
 - Acceptation : critères des passes satisfaits, problèmes du socle traités, contrôles
   applicatifs/navigateur et revue finale ; docs alignées avec l'état livré.
 
 ## RUN-008 — Validation et préparation de release
 
-- Passe A : build/lint/Biome/tests/audit et mesures de performance par page sur
+- Passe A : build/lint/Biome/tests/audit et mesures de performance de la page sur
   build production ; mobile/desktop, langues/thèmes, clavier et reduced-motion.
-- Passe B : accès direct/rechargement/404, navigation, métadonnées/canonical/sitemap,
+- Passe B : accès direct/rechargement aux ancres, navigation, métadonnées/canonical/sitemap,
   anciens liens et formulaire (succès, échec, anti-abus, réception de contrôle autorisée).
 - Passe C : validation visuelle/contenu d'Allen et cohérence version/docs avant release.
 - La section confiance future RUN-018 ne conditionne pas cette release ; pas de
@@ -191,6 +198,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 - Mandat : ajouter au workflow les demandes de refonte totale, multipage, formulaire,
   prestations, projets clients distincts et confiance future, découpées en RUN/passes.
+- Décision ultérieure du 28 octobre : la cible multipage est remplacée par une page
+  unique avec navigation par ancres ; conserver ce mandat comme historique.
 - Périmètre : brief, plan, suivi, consignes et brief Claude ; historique préservé.
 - Risques : anciennes limites one-page reprises comme contraintes, dépendances
   cycliques, formulaire faussement opérationnel, faux clients/témoignages.
@@ -198,51 +207,97 @@ Le formulaire reste une maquette sans envoi à ce stade.
   stratégie de contact laissée à choisir, confiance future non bloquante, liens et
   graphe de dépendances vérifiés. Aucun code applicatif modifié.
 
-## RUN-011 — Architecture multipage et URL
+## RUN-011 — Architecture des sections et ancres
 
-- Passe A : arborescence et parcours (Accueil, Services, Projets, À propos, Contact
-  proposés), contenu par page et distinction personnel/client ; valider les URL.
-- Passe B : choisir rendu/routage compatibles avec SEO, hébergement et FR/EN ;
-  comparer le minimum utile sans imposer routeur/framework ou nouvelle dépendance.
-- Passe C : contrat de navigation : liens profonds, rechargement, 404, historique,
-  focus/titres, anciennes ancres, canonical/hreflang selon choix linguistique,
-  sitemap et assets sur chemins imbriqués.
-- Risques : pages inaccessibles directement, duplication SEO et rupture des liens existants.
-- Acceptation : décision documentée dans le brief, carte des pages/URL et critères
-  de tests transmis à Claude/Frontend ; pas d'architecture supposée déjà implémentée.
+- Passe A : définir l'ordre des sections (Accueil, Services, Projets, À propos,
+  Contact proposés), leurs contenus et la distinction personnel/client.
+- Passe B : fixer les identifiants d'ancres, les liens de navigation et CTA,
+  la compatibilité des anciennes ancres et le traitement FR/EN et SEO sur une page.
+- Passe C : définir les critères d'accès direct/rechargement avec fragment, de
+  défilement et de focus clavier, sur desktop et mobile.
+- Risques : ancres cassées, sections masquées après navigation et liens existants rompus.
+- Acceptation : ordre et ancres documentés dans le brief, critères de tests transmis
+  à Claude/Frontend ; aucune nouvelle page ni dépendance de routage prévue.
 
-## RUN-012 — Socle et navigation multipage
+## RUN-012 — Socle et navigation par ancres
 
-- Passe A : implémenter la stratégie retenue, composition partagée et pages ;
-  conserver thème/langue, navigation et pied de page cohérents.
-- Passe B : intégrer les navigations desktop/mobile et états actifs, liens internes,
-  retour navigateur, focus, accès direct/rechargement et 404.
-- Passe C : migrer les liens/ancres et configurer le minimum d'hébergement nécessaire
-  sur la base de la décision RUN-011, sans publication automatique.
-- Risques : régression de navigation, URL sans contenu, préférences incohérentes.
-- Acceptation : chaque URL prévue rend le bon contenu et ses métadonnées ; liens
-  connus migrés, tests utiles et parcours navigateur réussis dans les conditions retenues.
+- Passe A : intégrer les sections dans la page unique ; conserver thème/langue,
+  navigation et pied de page cohérents.
+- Passe B : intégrer la navigation desktop/mobile, les états actifs et liens internes,
+  le focus, l'accès direct et le rechargement avec fragment.
+- Passe C : mettre à jour les liens/ancres selon RUN-011 et vérifier les parcours
+  clavier et navigateur, sans publication automatique.
+- Risques : régression de navigation, section inaccessible, préférences incohérentes.
+- Acceptation : chaque ancre prévue mène à la bonne section ; anciens liens connus
+  préservés, tests utiles et parcours navigateur réussis.
 
 ## RUN-013 — Système visuel, animations et transitions
 
 - Portée phase 1 : habillage de la baseline et composants visuels ; les nouveaux
-  contenus, routes et fonctions restent en phase 2. Les transitions de pages sont
-  spécifiées ici puis raccordées au routage en RUN-012.
+  contenus, ancres et fonctions restent en phase 2. Les transitions entre sections
+  sont spécifiées ici puis raccordées à la navigation en RUN-012.
 - Passe A — Claude UI : intégrer les tokens, la typographie, la grille,
   les composants et assets issus de la synthèse Stitch acceptée, avec clair/sombre.
-- Passe B — Claude UI : animations et transitions de pages/états, hover/focus et
+- Passe B — Claude UI : animations et transitions de sections/états, hover/focus et
   variantes reduced-motion ; contenu visible si un effet échoue.
 - Passe C — Codex Performance/QA : contrôler mobile/desktop, contraste, focus,
   débordements et coût réel du mouvement sur build production ; ajuster avec Claude.
 - Risques : lourdeur décorative, blocage du contenu, régression accessibilité/mobile.
 - Acceptation : fidélité au design arbitré, états accessibles et mesures consignées ;
-  dépendances éventuelles validées. Vérifier la résolution d'A04 avec RUN-003.
+  dépendances éventuelles validées. A04 est constaté et reporté explicitement à
+  RUN-003, dont la résolution sera vérifiée dans RUN-007. RUN-003 peut ainsi
+  démarrer après RUN-013 ; sa résolution n'est pas un préalable à cette clôture.
+- État au 28 octobre 2026 : huit lots Claude commités de `f49f71c` à `95969f2`,
+  audit Codex réalisé, correctifs du menu commités dans `346d204` et vérifiés.
+  Allen valide le point 1 de l'audit après contrôle du menu mobile, des accordéons,
+  du dépliage des projets et de la timeline. RUN passé `done` ; preuves et limites
+  dans [le journal](runs-journal.md#run-013-clôture-de-la-phase-1-28-octobre-2026).
+  Cette clôture ne vaut ni release ni déploiement et ne lance aucun RUN suivant.
+
+### Relais passe C — Claude → Codex (contrat historique, exécuté)
+
+Le contrat ci-dessous est conservé dans sa rédaction initiale. Allen l'a transmis
+à Codex ; le retour, les correctifs et la validation de clôture sont consignés
+au journal. Les inconnues qu'il énumère décrivent le départ de la passe C.
+
+```text
+RUN et sous-tâche : RUN-013 passe C, contrôle performance/QA de la refonte visuelle.
+Émetteur / destinataire / rôle : Claude (design, lots 1 à 8) / Codex / Performance et QA.
+Modèle et effort demandés / bénéfice attendu : selon docs/custom-agents.md ; contrôle
+  indépendant de l'implémenteur, exigé par la passe C et la politique de revue.
+Objectif et livrable : retour au format « Retour » de docs/handoff-contracts.md, avec
+  constats priorisés ; pas de refonte graphique.
+Dans le périmètre : build production, mobile/desktop, clair/sombre, FR/EN, contraste,
+  focus, débordements, coût réel du mouvement (apparitions 600 ms, compteur, éléments
+  collants), poids et chargement des polices, régressions par rapport à 1.3.2.
+Hors périmètre : contenus, sections nouvelles, ancres (RUN-011/012), formulaire
+  (RUN-016/017), dépendances (RUN-002), typage strict (RUN-004).
+Fichiers et preuves utiles : DESIGN.md partie R (R1 garde-fous, R3 tokens, R6 mouvement,
+  R11 à R18 contrôles), runs-journal.md entrées RUN-013, src/styles/globals/*.css,
+  composants Navbar, Hero, ProjectCard, ProjectsSection, StackSection, SkillsTree,
+  AboutSection, AboutAccordion, AboutJourney, ContactSection, Footer, BackToTopButton.
+Fichiers réservés en écriture : aucun pour Codex sans accord ; correctifs proposés en
+  constats, appliqués par Claude ou par Codex après répartition explicite.
+Contrats à préserver : garde-fous R1, palette monochrome, rayon 0, clair par défaut,
+  thème/langue locaux, pas de WebGL, contenu 1.3.2 inchangé, tests existants.
+Dépendances / inconnues / risques : A04 (visibilité en fenêtre courte, RUN-003) non
+  traité ; mesures de Claude faites en Chrome sans interface, densité 1, sans réseau
+  ralenti ni lecteur d'écran ; npm run biome:check échoue sur les exports HTML Stitch
+  de docs/ (configuration commune, décision à prendre).
+Actions autorisées : lecture, build et preview locaux, mesures navigateur ; aucun
+  commit, push, déploiement ni ajout de dépendance sans mandat d'Allen.
+Vérifications attendues : Lighthouse ou équivalent mobile/desktop sur build production,
+  contrôle navigateur réel (pas seulement sans interface), lecteur d'écran sur le menu
+  mobile, les accordéons et le dépliage des projets.
+Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
+  visuels, Codex ceux de performance après répartition ; Allen arbitre la clôture.
+```
 
 ## RUN-014 — Services / prestations
 
 - Passe A : structurer offres, besoins, livrables, limites et CTA sur contenu d'Allen.
-- Passe B : intégrer une ou plusieurs sections dédiées, page Services si retenue
-  et aperçus d'accueil, données FR/EN et liens vers contact/devis.
+- Passe B : intégrer une ou plusieurs sections dédiées sur la page unique,
+  données FR/EN et ancres vers contact/devis.
 - Passe C : vérifier lisibilité, cohérence offres/formulaire, responsive et SEO.
 - Risques : promesses non démontrées ou catalogue technique sans bénéfice explicite.
 - Acceptation : services clairement accessibles, contenu validé et CTA fonctionnels ;
@@ -252,7 +307,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 - Passe A : inventorier et conserver le catalogue personnel actuel, ses contenus,
   liens et assets ; définir les champs distincts de mission client et droits de publication.
-- Passe B : intégrer deux espaces distincts sur la/les pages retenues, détails de cas
+- Passe B : intégrer deux espaces distincts dans la section Projets, détails de cas
   si documentés et données FR/EN ; aucune requalification automatique personnel → client.
 - Passe C : vérifier liens, attribution, preuves et autorisations ; absence de cas
   client publiable = espace masqué, données de test hors contenu de production.

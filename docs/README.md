@@ -40,13 +40,16 @@ Le portfolio statique n'a pas de rôle backend/database.
 
 ## Ressources de refonte
 
-État documentaire au 27 octobre 2026 : préparation ; baseline déclarée 1.3.2,
-refonte non implémentée. Les propositions ne valent pas validation visuelle.
+État au 28 octobre 2026 : phase 1 clôturée (RUN-006 et RUN-013 `done`),
+refonte visuelle implémentée et contrôlée sur le contenu existant. La baseline
+historique de production reste 1.3.2 ; aucun déploiement n'est déclaré ici.
+Le [suivi](../runs-workflow.md) et le [journal](../runs-journal.md) distinguent les
+preuves de clôture des dettes et des travaux de phase 2.
 
 | Document | Usage |
 | --- | --- |
 | [Audit daté](audit-2026-10-27.md) | Constats, priorités et limites des contrôles de RUN-000 |
-| [Plan de refonte](refonte-plan.md) | Périmètre élargi, multipage, services, projets et formulaire |
+| [Plan de refonte](refonte-plan.md) | Périmètre one-page, ancres, services, projets et formulaire |
 | [Brief Claude](claude-design-brief.md) | Livrables et critères design de RUN-006 |
 | [Proposition Claude](references/claude-design-proposal.md) | Contribution initiale non validée |
 | [Références](references/README.md) | Sources techniques et conventions de ressources |
@@ -56,5 +59,5 @@ refonte non implémentée. Les propositions ne valent pas validation visuelle.
 Mettre à jour le document propriétaire et lier depuis cet index, plutôt que
 recopier des statuts, preuves ou décisions dans chaque fichier.
 
-La variante finale et ses adaptations restent à arbitrer par Allen avant
-l'implémentation visuelle.
+La synthèse validée et ses adaptations sont consignées dans DESIGN.md R8 à R19.
+Les services, projets clients et le formulaire restent dans les RUN de phase 2.

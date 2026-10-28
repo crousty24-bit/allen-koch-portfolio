@@ -5,16 +5,12 @@ export type Project = {
   description: Record<Language, string>
   imageAlt: Record<Language, string>
   imageSrc: string
-  imageSizes?: string
   imageWebpSrcSet?: string
   repositoryHref?: string
   stack: string[]
   status: Record<Language, string>
   href?: string
 }
-
-const projectCardImageSizes =
-  '(max-width: 760px) calc(100vw - 2.2rem), (max-width: 1040px) calc((100vw - 4.25rem) / 2), 397px'
 
 export const projects: Project[] = [
   {
@@ -28,9 +24,8 @@ export const projects: Project[] = [
       en: 'Dark Diff Impact Analyzer landing page showing its Git change scope and impact score interface.',
     },
     imageSrc: '/projects/diff-impact-analyzer.png',
-    imageSizes: projectCardImageSizes,
     imageWebpSrcSet:
-      '/projects/generated/diff-impact-analyzer-384.webp 384w, /projects/generated/diff-impact-analyzer-512.webp 512w',
+      '/projects/generated/diff-impact-analyzer-384.webp 384w, /projects/generated/diff-impact-analyzer-512.webp 512w, /projects/generated/diff-impact-analyzer-960.webp 960w, /projects/generated/diff-impact-analyzer-1280.webp 1280w',
     repositoryHref: 'https://github.com/crousty24-bit/diff-impact-analyzer',
     stack: ['Node.js', 'TypeScript', 'React', 'Express'],
     status: { fr: 'MVP', en: 'MVP' },
@@ -47,9 +42,8 @@ export const projects: Project[] = [
       en: 'Dark SnipStack interface with a creation form, search and code snippet library.',
     },
     imageSrc: '/projects/snipstack.png',
-    imageSizes: projectCardImageSizes,
     imageWebpSrcSet:
-      '/projects/generated/snipstack-384.webp 384w, /projects/generated/snipstack-512.webp 512w',
+      '/projects/generated/snipstack-384.webp 384w, /projects/generated/snipstack-512.webp 512w, /projects/generated/snipstack-960.webp 960w, /projects/generated/snipstack-1280.webp 1280w',
     repositoryHref: 'https://github.com/Naethr/SnipStack/tree/develop',
     stack: ['React', 'Rails', 'PostgreSQL', 'Tauri'],
     status: { fr: 'MVP', en: 'MVP' },
@@ -65,9 +59,8 @@ export const projects: Project[] = [
       en: 'Dark Code Quality Guardian homepage displaying the message “Make coding agents change less, but better”.',
     },
     imageSrc: '/projects/code-quality-guardian.png',
-    imageSizes: projectCardImageSizes,
     imageWebpSrcSet:
-      '/projects/generated/code-quality-guardian-384.webp 384w, /projects/generated/code-quality-guardian-768.webp 768w',
+      '/projects/generated/code-quality-guardian-384.webp 384w, /projects/generated/code-quality-guardian-768.webp 768w, /projects/generated/code-quality-guardian-960.webp 960w, /projects/generated/code-quality-guardian-1280.webp 1280w',
     repositoryHref:
       'https://github.com/crousty24-bit/code-quality-guardian-skill',
     stack: ['Agent Skill', 'AI Workflow', 'Code Quality'],
@@ -85,7 +78,6 @@ export const projects: Project[] = [
       en: 'Dark productivity interface with tracking cards, blue progress bars and a developer-tool atmosphere.',
     },
     imageSrc: '/projects/questonaut.png',
-    imageSizes: projectCardImageSizes,
     imageWebpSrcSet:
       '/projects/generated/questonaut-384.webp 384w, /projects/generated/questonaut-512.webp 512w',
     repositoryHref:
@@ -104,7 +96,6 @@ export const projects: Project[] = [
       en: 'Futuristic terminal interface with code lines, cyan and violet syntax, and a technical workstation mood.',
     },
     imageSrc: '/projects/mission-control.png',
-    imageSizes: projectCardImageSizes,
     imageWebpSrcSet:
       '/projects/generated/mission-control-384.webp 384w, /projects/generated/mission-control-512.webp 512w',
     repositoryHref: 'https://github.com/crousty24-bit/mission-control',
@@ -136,7 +127,6 @@ export const projects: Project[] = [
       en: 'Abstract AI network visualization with luminous blue filaments on a dark background.',
     },
     imageSrc: '/projects/kane.png',
-    imageSizes: projectCardImageSizes,
     imageWebpSrcSet:
       '/projects/generated/kane-384.webp 384w, /projects/generated/kane-512.webp 512w',
     stack: ['AI Workflow', 'Automation', 'Privacy'],
@@ -153,7 +143,6 @@ export const projects: Project[] = [
       en: 'Modern desk view with a mechanical keyboard and a screen showing a dark-mode portfolio interface.',
     },
     imageSrc: '/projects/portfolio-ak.png',
-    imageSizes: projectCardImageSizes,
     imageWebpSrcSet:
       '/projects/generated/portfolio-ak-384.webp 384w, /projects/generated/portfolio-ak-512.webp 512w',
     repositoryHref: 'https://github.com/crousty24-bit/allen-koch-portfolio',

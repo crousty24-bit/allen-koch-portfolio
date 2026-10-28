@@ -6,7 +6,7 @@ reproduire et à adapter** pour RUN-006 et RUN-013.
 
 Conserver les quatre variantes, comparer leurs choix et documenter la variante
 ou la synthèse finale validée par Allen. Claude adapte les références au contenu
-réel, aux pages, à FR/EN, au mobile, aux deux thèmes et à l'accessibilité. Les
+réel, aux sections d'une page unique et à leurs ancres, à FR/EN, au mobile, aux deux thèmes et à l'accessibilité. Les
 exports HTML ne sont pas du code de production à intégrer automatiquement.
 
 ## Minimalist Developer Portfolio templates

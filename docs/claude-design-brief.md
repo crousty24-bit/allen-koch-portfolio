@@ -1,6 +1,14 @@
 # Brief design pour Claude
 
-## Mission
+## État et portée
+
+Phase 1 clôturée le 28 octobre 2026 : RUN-006 et RUN-013 `done`. Allen a retenu
+la synthèse et les choix de DESIGN.md R8 ; les huit lots et leurs contrôles sont
+documentés en R11 à R19 et dans le journal. Le brief initial ci-dessous conserve
+la cible complète ; ses services, projets clients et formulaire relèvent de la
+phase 2, sans remettre en attente la direction déjà validée.
+
+## Mission initiale
 
 Concevoir la refonte visuelle globale et totale du portfolio Allen Koch vers une activité de développeur IA
 freelance. Claude porte le design ; Codex porte l'audit, la cohérence technique et
@@ -21,17 +29,17 @@ d'outils/workflows agents, mais aussi de sites et applications web modernes.
   Stitch ; les écarts relevés dans l'audit priment sur ses descriptions de la
   version 1.3.2 non conformes au code.
 - [Quatre variantes Stitch importées](maquettes_references/README.md) et leur
-  système monochrome : base visuelle à reproduire et à adapter, sans variante
-  finale encore choisie par Allen.
+  système monochrome : base de la synthèse retenue par Allen (DESIGN.md R8).
 - `src/styles/globals/tokens.css` : couleurs et polices disponibles.
 - [Première proposition](references/claude-design-proposal.md) : contribution
   de Claude Code obtenue le 27 octobre 2026, non validée, sans vue du navigateur.
 
-React/Vite/TypeScript et CSS natif conservés. Cible multipage avec formulaire
-contact/devis : consulter le plan actualisé. Les décisions de RUN-011/016 viennent
-en phase 2 ; leurs inconnues restent explicites dans les maquettes de phase 1.
+React/Vite/TypeScript et CSS natif conservés. Cible one-page avec navigation par
+ancres et formulaire contact/devis : consulter le plan actualisé. Les décisions
+de RUN-011/016 viennent en phase 2 ; leurs inconnues restent explicites dans
+les maquettes de phase 1.
 Partir de la palette, typographie, grille et composition Stitch ; proposer les
-adaptations nécessaires pour les pages, les états et le contenu réel. Animations
+adaptations nécessaires pour les sections, les états et le contenu réel. Animations
 et transitions restent à spécifier. La baseline 1.3.2 et la proposition initiale
 ne constituent pas la direction visuelle de cette refonte.
 Pas de dépendance ou de prestataire choisi par la seule conception visuelle.
@@ -39,19 +47,19 @@ FR/EN, sombre/clair, clavier et réduction des animations doivent être couverts
 Pas de WebGL sur mobile. Les choix desktop peuvent évoluer dans la refonte, mais
 doivent être présentés et vérifiés distinctement des choix mobile.
 
-## Livrables demandés pour la prochaine étape
+## Livrables du cadrage initial (phase 1 et cible de phase 2)
 
 1. Une synthèse argumentée des quatre variantes Stitch : choix de composition,
    grille, densité, typographie, palette monochrome, projets, iconographie et
    adaptations nécessaires ; expliciter les écarts à la référence.
-2. Une composition des pages et de leur navigation selon l’arborescence retenue ;
+2. Une composition de la page unique et de sa navigation par ancres ;
    services/prestations, projets personnels conservés et espace clients distinct.
    Prévoir l’emplacement futur « Ils m’ont fait confiance » sans contenu fictif.
 3. Des maquettes ou spécifications desktop et mobile, sombre et clair, avec
    textes FR et contrôle de la longueur EN.
 4. Les états menu mobile, boutons/liens/focus, projets repliés/dépliés, liens
    absents, images indisponibles, formulaire contact/devis (validation, envoi, succès,
-   échec), navigation/404 et réduction des animations.
+   échec), navigation par ancres et réduction des animations.
 5. La liste des composants/styles à réutiliser, modifier, ajouter ou supprimer.
 6. Les arbitrages et points non vérifiés ; ne pas annoncer un contrôle navigateur
    ou de contraste si aucune mesure n'a été effectuée.
@@ -62,6 +70,14 @@ avant son implémentation.
 
 ## Garde-fous éditoriaux et techniques
 
+- Appliquer les garde-fous anti « vibecode slop » d'Allen (28 octobre 2026),
+  détaillés dans [DESIGN.md, section R1](../DESIGN.md#r1-garde-fous-anti--vibecode-slop-) :
+  pas d'icônes Lucide, d'emojis, de liquid glass, de tirets cadratins, de polices
+  Inter/Geist/Space Grotesk, de bento grids, de fenêtres de terminal, de violet
+  ou néon, d'orbes radiaux, de dot grids, d'icônes étincelles, de flèches animées
+  ni d'animations au survol. Ils priment sur les maquettes Stitch.
+- Phase 1 = refonte visuelle seule : contenu actuel conservé et adapté, aucune
+  section ni contenu nouveau (décision d'Allen du 28 octobre 2026).
 - Ne pas inventer de clients, témoignages, revenus, gains, délais ou tarifs.
 - Qualifier personnel/collaboratif, prototype/MVP, rôle et preuve pour chaque cas.
 - Préférer captures authentiques et légendées ; distinguer illustrations et interfaces réelles.
@@ -81,8 +97,8 @@ une source générée ; le nom d'un outil dans un projet ne doit pas être suppr
 sur une supposition. Le besoin de contenu sans JavaScript serait un changement
 de rendu à chiffrer, pas une exigence acquise de migration SSR.
 
-Cette première proposition était fondée sur la cible one-page antérieure ; elle
-ne remplace pas le nouveau cadrage multipage avec formulaire.
+Cette première proposition one-page reste non validée sur le plan visuel ; elle
+doit être adaptée au cadrage actuel avec formulaire et références Stitch.
 
 Le code ne fait pas d’hydratation actuellement : il effectue un rendu client.
 Pour ce lot, séparer les choix graphiques de la décision éventuelle de prérendu.
@@ -90,8 +106,8 @@ Pour ce lot, séparer les choix graphiques de la décision éventuelle de prére
 ## Ordre des phases et références Stitch
 
 Exécuter d'abord la phase 1 : conception/validation visuelle (RUN-006), puis
-système visuel sur la baseline (RUN-013). Les contenus définitifs, pages/routage,
-sections et fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
+système visuel sur la baseline (RUN-013). Les contenus définitifs, ancres et
+fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
 Les maquettes peuvent anticiper ces évolutions sans prétendre qu'elles fonctionnent.
 Les décisions techniques ultérieures peuvent nécessiter une adaptation visuelle ciblée.
 Les quatre [références Stitch importées](maquettes_references/README.md) sont le

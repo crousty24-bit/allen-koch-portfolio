@@ -26,11 +26,14 @@ export const copy = {
     footer: {
       brand: 'Allen Koch - Développeur Fullstack',
       copyright: '© 2026 Allen Koch. Tous droits réservés.',
-      socialLabel: 'Liens sociaux footer',
+      navHeading: 'Navigation',
+      linksHeading: 'Liens',
     },
     hero: {
       status: 'Développeur Fullstack / AI Builder',
       title: 'Allen Koch | Développeur Web | Alsace, France',
+      name: 'Allen Koch',
+      role: 'Développeur Web / Alsace, France',
       heading:
         'Transformer les besoins en produits web utiles, structurés et maintenables',
       highlight: '',
@@ -104,11 +107,14 @@ export const copy = {
     footer: {
       brand: 'Allen Koch - Fullstack Developer',
       copyright: '© 2026 Allen Koch. All rights reserved.',
-      socialLabel: 'Footer social links',
+      navHeading: 'Navigation',
+      linksHeading: 'Links',
     },
     hero: {
       status: 'Fullstack Developer / AI Builder',
       title: 'Allen Koch | Web Developer | Alsace, France',
+      name: 'Allen Koch',
+      role: 'Web Developer / Alsace, France',
       heading:
         'Turning needs into useful, structured, and maintainable web products',
       highlight: '',
