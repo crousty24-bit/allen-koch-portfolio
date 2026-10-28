@@ -7,6 +7,17 @@
   background: var(--surface);
 }
 
+.chip {
+  min-height: 1.75rem;
+  padding: 0.25rem 0.5rem;
+  color: var(--text-muted);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
 .status-pill {
   gap: 0.6rem;
   justify-content: center;

@@ -288,3 +288,20 @@ copier de secret, donnée client ou résultat supposé.
   colonnes en mobile (hauteur du hero ramenée de 1063 à 942 px à 390 px).
 - Non exécutés : zoom 200 %, lecteur d'écran, contraste par composant. Aucun commit.
 - Relais : lot 4 (Projets).
+
+## RUN-013 lot 4 : projets (28 octobre 2026)
+
+- Départ `e946e25` (lot 3 commité après validation d'Allen).
+- Fichiers : `ProjectCard.tsx` (variantes `feature` et `compact`),
+  `ProjectsSection.tsx`, `projects.ts` (`srcset` étendus, `imageSizes` retiré),
+  6 nouveaux WebP dans `public/projects/generated/`, CSS `projects` réécrit,
+  `buttons` (`.chip`), `section-headings` (en-têtes en grille),
+  `responsive-1040/760.css`.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent. Assets générés avec
+  Pillow dans le scratchpad, depuis les PNG du dépôt.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN, replié/déplié ;
+  débordement mesuré nul après correction ; fichiers d'image servis et position
+  de l'index collant mesurés. Écart à R5 documenté dans DESIGN.md R14.
+- Non exécutés : densité 2, zoom 200 %, lecteur d'écran. Aucun commit.
+- Relais : lot 5 (Stack et arbre de compétences).

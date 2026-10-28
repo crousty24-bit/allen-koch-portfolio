@@ -25,6 +25,7 @@ Statuts employés dans la partie R : **proposé** (non validé par Allen),
 | 2026-10-28 | It. 3, RUN-013 lot 1 | Fondations : tokens clair/sombre, clair par défaut, polices, boutons, focus ; retrait particules, `ogl`, orbes, trame, flou, ombres, couleurs chromatiques et mouvements au survol | implémenté, contrôlé (voir R11) |
 | 2026-10-28 | It. 4, RUN-013 lot 2 | Cadre global : en-tête, menu mobile, index de section `0N / Libellé`, pied de page, retour en haut | implémenté, contrôlé (voir R12) |
 | 2026-10-28 | It. 5, RUN-013 lot 3 | Hero : nom pleine largeur, rôle, promesse, CTA, liens texte, chiffres clés à filets | implémenté, contrôlé (voir R13) |
+| 2026-10-28 | It. 6, RUN-013 lot 4 | Projets : 3 projets mis en avant à index collant, grille dépliée à 3 colonnes, bandeau CTA, en-têtes de section en grille | implémenté, contrôlé (voir R14) |
 
 Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
 seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
@@ -663,3 +664,43 @@ EN : aucun débordement horizontal mesuré ; nom à 94 % de la largeur utile à
 1440 px et 96 à 99 % de 320 à 390 px. Hauteur du hero : 843 px à 1440, 942 px à
 390. Non mesurés : zoom 200 % (le nom, dimensionné sur la largeur d'écran, ne
 grandit pas avec le zoom texte), contraste par composant.
+
+## R14. Lot 4 : projets (28 octobre 2026)
+
+Écart à R5, décidé par Claude après R10 : les rangées alternées image/texte de
+la variante A sont remplacées par la composition de weihangli.dev, plus lisible
+avec un index collant. Les sources de 512 px des projets 4 à 9 imposent aussi une
+grille dépliée à 3 colonnes plutôt que 2, pour ne pas agrandir les images.
+
+Implémenté :
+
+- **En-têtes de section en grille** (Projets et Stack) : index sur sa propre
+  ligne, titre colonnes 1 à 7, texte d'introduction colonnes 9 à 12 ; titre puis
+  texte pleine largeur en dessous de 1040 px.
+- **3 projets mis en avant** : grand index `01` et total `/ 09` collants dans
+  les colonnes 1 à 3 (CSS `position: sticky`, desktop et tablette), capture
+  16:10 bordée d'un filet sur les colonnes 4 à 12, puis statut, titre et
+  description à gauche, tags et liens à droite. Mobile : index en ligne,
+  empilement simple.
+- **Projets 4 à 9** après dépliage : grille régulière 3 colonnes (2 en tablette,
+  1 en mobile), méta `04 / Statut`. Le bouton de dépliage affiche désormais son
+  libellé existant avec un signe +/−, sans rotation.
+- **Liens** : boutons « Voir » plein et « GitHub » à filet, flèche ↗ statique ;
+  projet sans lien de démo : visuel non cliquable, sans bouton Voir ; aucun bouton
+  si aucun lien. Tags en étiquettes mono à filet (`.chip` défini dans
+  `buttons.css`), rendus en liste.
+- **Bandeau CTA** « Une idée de projet ? » entre deux filets, bouton à droite.
+- **Captures en couleur** (R8) : voile sombre et opacité réduite supprimés.
+- **Nouveaux assets** : WebP 960 et 1280 px pour les trois projets mis en avant,
+  générés depuis leurs PNG d'origine sous de nouveaux noms (18 à 38 Ko). Les
+  tailles `sizes` dépendent maintenant de la variante dans `ProjectCard` ;
+  `imageSizes` retiré des données.
+
+Contrôles : build, lint, tests (13/13) et `biome check` du code réussis.
+Captures production à 1440, 768, 390 et 320 px, clair et sombre, FR et EN,
+replié et déplié. Fichiers servis mesurés : WebP 1280 à 984 px de large en
+desktop, 960 en tablette, 384 en mobile (densité 1). Index collant mesuré à
+96 px du haut pendant le défilement. Défauts trouvés et corrigés : débordement
+de 20 px à 320 px (colonnes implicites créées par l'en-tête en grille), tags sans
+style après le déplacement de la règle `.chip`. Non mesurés : densité 2, zoom
+200 %, contraste par composant.
