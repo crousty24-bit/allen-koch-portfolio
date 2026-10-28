@@ -16,6 +16,7 @@ export function Navbar({
   theme,
 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
   const menuToggleRef = useRef<HTMLButtonElement>(null)
   const navCopy = copy[language].nav
 
@@ -31,13 +32,26 @@ export function Navbar({
       }
     }
 
-    window.addEventListener('keydown', closeOnEscape)
+    const closeOnFocusOutside = (event: FocusEvent) => {
+      if (
+        event.target instanceof Node &&
+        !headerRef.current?.contains(event.target)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
 
-    return () => window.removeEventListener('keydown', closeOnEscape)
+    window.addEventListener('keydown', closeOnEscape)
+    document.addEventListener('focusin', closeOnFocusOutside)
+
+    return () => {
+      window.removeEventListener('keydown', closeOnEscape)
+      document.removeEventListener('focusin', closeOnFocusOutside)
+    }
   }, [isMenuOpen])
 
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <div className={`navbar${isMenuOpen ? ' navbar--menu-open' : ''}`}>
         <a className="brand" href="#home" aria-label={navCopy.homeLabel}>
           <span aria-hidden="true" className="brand__mark">

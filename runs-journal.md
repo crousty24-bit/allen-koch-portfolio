@@ -365,3 +365,36 @@ copier de secret, donnée client ou résultat supposé.
 - Non exécutés : navigateur réel, Lighthouse, réseau ralenti, lecteur d'écran,
   revue indépendante. Aucun commit.
 - Relais : passe C de Codex ; Allen transmet le contrat ou mandate son envoi.
+
+
+## RUN-013 passe C : correctifs menu 1 et 2 (28 octobre 2026)
+
+- Mandat explicite d'Allen : corriger les deux constats du retour Codex sur les
+  lots 1 à 8, depuis `95969f2`. Périmètre borné : hauteur du menu mobile et
+  fermeture lorsque le focus quitte l'en-tête. A04 reste dans RUN-003.
+- Acceptation : Contact, thème et langue accessibles en paysage ; Tab et
+  Maj+Tab ne laissent pas le focus derrière le panneau ; Échap ferme et rend le
+  focus au bouton ; thèmes, FR/EN et présentation desktop préservés.
+- Fichiers : `responsive-760.css` (hauteur bornée à l'espace écran disponible,
+  défilement interne conservé), `Navbar.tsx` (écoute `focusin` pendant l'ouverture,
+  fermeture à la sortie de l'en-tête, nettoyage des écouteurs).
+- Intervenant : Codex main, relecture par l'implémenteur. Pas de délégation pour
+  ces deux corrections ciblées ; pas de revue indépendante des correctifs.
+- Vérifications : build, ESLint, 13 tests Vitest et Biome applicatif réussis.
+  Biome global échoue sur les quatre HTML Stitch (10 erreurs, 6 avertissements,
+  2 informations). Avertissement de build préexistant : CSS 430 px vide.
+- Autocontrôle navigateur avec assertions : Chrome 156 avec interface sur build
+  production, émulation tactile DPR 2, 390×844 / 667×375 / 740×320 / 320×568,
+  FR/EN et clair/sombre (16 cas) ; hauteur du panneau, accès aux réglages,
+  sortie par Tab et Maj+Tab, Échap et restauration du focus réussis. À 1440×900,
+  bouton mobile masqué et structure desktop inchangée (`display: contents`).
+  Effet visuel desktop attendu : aucun ; modification CSS limitée au mobile.
+- Preuves conservées hors dépôt, sans dépendance ajoutée :
+  [script d'assertions](/mnt/c/Users/allen/.codex/visualizations/2026/10/28/01a18329-02d8-7f22-9277-e1d837bac67c/RUN-013-audit/check-menu-fixes.mjs),
+  [résultats](/mnt/c/Users/allen/.codex/visualizations/2026/10/28/01a18329-02d8-7f22-9277-e1d837bac67c/RUN-013-audit/menu-fixes-results.json).
+  Le script emploie Playwright déjà présent dans le cache de cet environnement ;
+  il n'est pas une commande de test portable du projet.
+- Non exécutés : lecteur d'écran réel, téléphone physique, zoom navigateur réel,
+  nouveau Lighthouse (les deux changements ciblent le menu ouvert).
+- État : constats 1 et 2 corrigés localement ; RUN-013 reste en `verify` pour les
+  validations restantes. Aucun commit, push ni déploiement.
