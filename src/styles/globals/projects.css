@@ -181,16 +181,9 @@
   line-height: 1.1;
 }
 
-/* Transitional: shared card frames until the Stack, About and Contact lots. */
-.stack-card,
+/* Transitional: shared card frames until the About and Contact lots. */
 .portrait-card,
 .contact-panel {
   border: 1px solid var(--outline);
   background: var(--background);
-}
-
-.stack-card h3 {
-  margin: 0;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
 }

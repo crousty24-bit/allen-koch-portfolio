@@ -305,3 +305,17 @@ copier de secret, donnée client ou résultat supposé.
   de l'index collant mesurés. Écart à R5 documenté dans DESIGN.md R14.
 - Non exécutés : densité 2, zoom 200 %, lecteur d'écran. Aucun commit.
 - Relais : lot 5 (Stack et arbre de compétences).
+
+## RUN-013 lot 5 : stack et arbre de compétences (28 octobre 2026)
+
+- Départ `cd8be76` (lot 4 commité après validation d'Allen).
+- Fichiers : `StackSection.tsx`, `SkillsTree.tsx` (icônes retirées, index et
+  profondeur), CSS `stack` et `skills-tree` réécrits, `projects.css` (bloc
+  transitoire réduit), `animations.css`, `responsive-1040/760.css`. Données
+  `stack.ts` et `skills.ts` inchangées.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN, replié/déplié ;
+  débordement nul, 0 requête Simple Icons, ouverture clavier vérifiés par script.
+- Non exécutés : lecteur d'écran, zoom 200 %. Aucun commit.
+- Relais : lot 6 (About, accordéon, parcours).

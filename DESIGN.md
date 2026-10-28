@@ -26,6 +26,7 @@ Statuts employés dans la partie R : **proposé** (non validé par Allen),
 | 2026-10-28 | It. 4, RUN-013 lot 2 | Cadre global : en-tête, menu mobile, index de section `0N / Libellé`, pied de page, retour en haut | implémenté, contrôlé (voir R12) |
 | 2026-10-28 | It. 5, RUN-013 lot 3 | Hero : nom pleine largeur, rôle, promesse, CTA, liens texte, chiffres clés à filets | implémenté, contrôlé (voir R13) |
 | 2026-10-28 | It. 6, RUN-013 lot 4 | Projets : 3 projets mis en avant à index collant, grille dépliée à 3 colonnes, bandeau CTA, en-têtes de section en grille | implémenté, contrôlé (voir R14) |
+| 2026-10-28 | It. 7, RUN-013 lot 5 | Stack en rangées à tags, arbre de compétences en accordéon numéroté, fond de surface | implémenté, contrôlé (voir R15) |
 
 Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
 seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
@@ -704,3 +705,33 @@ desktop, 960 en tablette, 384 en mobile (densité 1). Index collant mesuré à
 de 20 px à 320 px (colonnes implicites créées par l'en-tête en grille), tags sans
 style après le déplacement de la règle `.chip`. Non mesurés : densité 2, zoom
 200 %, contraste par composant.
+
+## R15. Lot 5 : stack et arbre de compétences (28 octobre 2026)
+
+Implémenté :
+
+- **Bande de surface** pleine largeur derrière la section Stack (alternance
+  fond / surface de la variante A), sans élément supplémentaire.
+- **Stack** en liste de définitions à filets : catégorie en mono à gauche
+  (colonnes 1 à 3), technologies en tags à droite (colonnes 4 à 12) ; empilé sur
+  mobile. Logos Simple Icons supprimés : plus aucune requête vers
+  `cdn.simpleicons.org` (mesuré : 0 ressource). Les champs `icon` restent dans
+  `stack.ts`, non affichés.
+- **Arbre de compétences** en accordéon : racine en libellé mono, catégories
+  numérotées `01 02 03` en 1,5 rem, sous-compétences numérotées et indentées,
+  mots-clés en mono sous chaque sous-compétence, signe +/− sans rotation, filets
+  entre rangées. Comportement inchangé : chaque nœud est un bouton avec
+  `aria-expanded`, racine ouverte par défaut. Apparition du contenu en opacité
+  220 ms (`skillsTreeReveal`), supprimée en `prefers-reduced-motion`.
+- **Icônes de l'arbre supprimées**, dont `ai-workflow` qui dessinait une étoile
+  à quatre branches (icône étincelle interdite par R1). Le type `SkillTreeIcon`
+  et les champs `icon` restent dans `skills.ts`, non affichés.
+- Filets des rangées en `--outline-strong` sur la surface, où `--outline`
+  (1,24:1 sur fond) disparaissait presque.
+
+Contrôles : build, lint, tests (13/13) et `biome check` du code réussis.
+Captures production à 1440, 768, 390 et 320 px, clair et sombre, FR et EN,
+arbre replié et entièrement déplié ; débordement mesuré nul ; ouverture au
+clavier (Entrée) vérifiée par script. Ajustements après capture : double filet
+sous une sous-compétence ouverte supprimé, retrait et taille du niveau 2 sur
+mobile. Non mesurés : lecteur d'écran, zoom 200 %, contraste par composant.

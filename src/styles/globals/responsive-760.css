@@ -112,35 +112,6 @@ html {
   min-height: 3.15rem;
 }
 
-.stack-grid {
-  grid-template-columns: 1fr;
-}
-
-.skills-tree__list--children {
-  padding-left: 0.95rem;
-  margin-left: 0.55rem;
-}
-
-.skills-tree__list--children::before {
-  left: 0.25rem;
-}
-
-.skills-tree__list--children > .skills-tree__node::before {
-  left: -0.68rem;
-  width: 0.62rem;
-}
-
-.skills-tree__trigger {
-  gap: 0.5rem;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.skills-tree__keywords {
-  max-width: calc(100% - 1.65rem);
-  margin-left: 1.65rem;
-}
-
 .about-accordion__trigger {
   min-height: 4.25rem;
   padding: 1.15rem 0;
@@ -409,4 +380,40 @@ html {
 .projects-section__cta .button,
 .projects-toggle {
   width: 100%;
+}
+
+.stack-list__row {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.stack-list__row dt,
+.stack-list__row dd {
+  grid-column: 1;
+}
+
+.skills-tree {
+  margin-top: 3.5rem;
+}
+
+.skills-tree__node--depth-1 > .skills-tree__trigger,
+.skills-tree__node--depth-2 > .skills-tree__trigger {
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 1rem;
+}
+
+.skills-tree__node--depth-1 > .skills-tree__trigger {
+  font-size: 1.25rem;
+}
+
+.skills-tree__list--children .skills-tree__list--children {
+  padding-left: 1.25rem;
+}
+
+.skills-tree__node--depth-2 > .skills-tree__trigger {
+  font-size: 1rem;
+}
+
+.skills-tree__keywords {
+  padding-left: 3.5rem;
 }

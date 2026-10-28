@@ -15,10 +15,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.stack-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .hero__intro {
   grid-column: 1 / -1;
 }
@@ -65,4 +61,12 @@
 
 .project-card--feature .chip-list {
   justify-content: flex-start;
+}
+
+.stack-list__row dt {
+  grid-column: 1 / span 4;
+}
+
+.stack-list__row dd {
+  grid-column: 5 / -1;
 }
