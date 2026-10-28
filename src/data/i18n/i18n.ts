@@ -26,7 +26,8 @@ export const copy = {
     footer: {
       brand: 'Allen Koch - Développeur Fullstack',
       copyright: '© 2026 Allen Koch. Tous droits réservés.',
-      socialLabel: 'Liens sociaux footer',
+      navHeading: 'Navigation',
+      linksHeading: 'Liens',
     },
     hero: {
       status: 'Développeur Fullstack / AI Builder',
@@ -104,7 +105,8 @@ export const copy = {
     footer: {
       brand: 'Allen Koch - Fullstack Developer',
       copyright: '© 2026 Allen Koch. All rights reserved.',
-      socialLabel: 'Footer social links',
+      navHeading: 'Navigation',
+      linksHeading: 'Links',
     },
     hero: {
       status: 'Fullstack Developer / AI Builder',

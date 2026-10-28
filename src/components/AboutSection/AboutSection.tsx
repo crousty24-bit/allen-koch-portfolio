@@ -79,7 +79,7 @@ export function AboutSection({ language }: AboutSectionProps) {
         </div>
 
         <div className="about-content reveal">
-          <p className="eyebrow">{aboutCopy.eyebrow}</p>
+          <p className="eyebrow eyebrow--section">{aboutCopy.eyebrow}</p>
           <h2>{aboutCopy.heading}</h2>
           <ul className="about-badges" aria-label={aboutCopy.eyebrow}>
             {aboutCopy.badges.map((badge) => (

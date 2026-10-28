@@ -19,48 +19,92 @@
   font-size: 1.08rem;
 }
 
+/* Transitional: centred panel until the Contact lot (RUN-013 lot 7). */
+.contact-panel .eyebrow {
+  margin: 0 auto 0.85rem;
+  font-size: 0.75rem;
+}
+
 .contact-panel .button {
   margin-top: 2rem;
 }
 
 .site-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(16, 19, 26, 0.72);
-}
-
-:root[data-theme="light"] .site-footer {
-  border-top-color: rgba(17, 24, 39, 0.09);
-  background: rgba(248, 251, 255, 0.68);
+  border-top: 1px solid var(--outline);
+  background: var(--background);
 }
 
 .site-footer__inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: center;
   max-width: var(--container);
-  padding: 2.2rem var(--gutter);
+  padding: 4rem var(--gutter) 1.5rem;
   margin: 0 auto;
 }
 
-.site-footer p {
-  margin: 0.35rem 0 0;
-  color: var(--text-soft);
+.site-footer__columns {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem 2.5rem;
 }
 
-.site-footer__brand p {
+.site-footer__brand {
+  grid-column: 1 / span 6;
   margin: 0;
-}
-
-.site-footer nav {
-  justify-content: center;
-  gap: 1.25rem;
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.86rem;
 }
 
-.site-footer__inner > p {
-  justify-self: end;
-  text-align: right;
+.site-footer__column {
+  grid-column: span 3;
+}
+
+.site-footer__heading {
+  padding-bottom: 0.75rem;
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--outline);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.site-footer__column ul {
+  display: grid;
+  gap: 0.375rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.site-footer__column a {
+  font-size: 1.0625rem;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+.site-footer__column a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Decorative repeat of the name: hidden from assistive technologies. */
+.site-footer__name {
+  margin: 4rem 0 0;
+  font-size: min(15vw, 13.5rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.8;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.site-footer__legal {
+  padding-top: 1rem;
+  margin: 1.5rem 0 0;
+  color: var(--text-muted);
+  border-top: 1px solid var(--outline);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
 }

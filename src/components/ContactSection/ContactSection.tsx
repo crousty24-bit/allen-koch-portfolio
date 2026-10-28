@@ -13,7 +13,7 @@ export function ContactSection({ language }: ContactSectionProps) {
     <section className="section contact-section" id="contact">
       <div className="contact-panel reveal">
         <div className="contact-panel__content">
-          <p className="eyebrow">Contact</p>
+          <p className="eyebrow eyebrow--section">Contact</p>
           <h2>{contactCopy.heading}</h2>
           <p>{contactCopy.text}</p>
           {email ? (

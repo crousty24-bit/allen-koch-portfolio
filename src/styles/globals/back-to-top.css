@@ -1,46 +1,29 @@
 .back-to-top {
   position: fixed;
-  right: clamp(1rem, 3vw, 1.5rem);
-  bottom: clamp(1rem, 3vw, 1.5rem);
+  right: 1.25rem;
+  bottom: 1.25rem;
   z-index: 30;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.75rem;
+  height: 2.75rem;
   color: var(--text);
   pointer-events: none;
   cursor: pointer;
-  background: rgba(16, 19, 26, 0.76);
-  border: 1px solid color-mix(in srgb, var(--text) 28%, transparent);
-  border-radius: 999px;
+  background: var(--background);
+  border: 1px solid var(--outline-strong);
   opacity: 0;
-  transform: translateY(0.7rem);
-  transition:
-    opacity 220ms ease,
-    transform 220ms ease,
-    border-color 220ms ease,
-    background 220ms ease;
+  transition: opacity 160ms var(--ease-out);
 }
 
 .back-to-top--visible {
   pointer-events: auto;
   opacity: 1;
-  transform: translateY(0);
 }
 
-.back-to-top:hover,
-.back-to-top:focus-visible {
-  color: var(--tertiary);
-  background: color-mix(in srgb, var(--text) 10%, transparent);
-  border-color: color-mix(in srgb, var(--text) 50%, transparent);
-}
-
-.back-to-top:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--text) 50%, transparent);
-  outline-offset: 3px;
-}
-
-:root[data-theme="light"] .back-to-top {
-  background: rgba(255, 255, 255, 0.82);
+.back-to-top:hover {
+  color: var(--background);
+  border-color: var(--text);
+  background: var(--text);
 }

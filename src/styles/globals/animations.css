@@ -83,3 +83,13 @@
     transform: translate(-50%, 0.5rem);
   }
 }
+
+@keyframes menuFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

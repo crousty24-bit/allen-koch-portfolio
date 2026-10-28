@@ -23,6 +23,7 @@ Statuts employés dans la partie R : **proposé** (non validé par Allen),
 | 2026-10-28 | It. 1, RUN-006 passe A | Analyse des 4 variantes, garde-fous, synthèse, tokens et correspondance avec le contenu actuel | proposé |
 | 2026-10-28 | It. 2, arbitrage | Décisions d'Allen sur R8 ; analyse du site d'inspiration des maquettes (R10) | validé (R8), proposé (R10) |
 | 2026-10-28 | It. 3, RUN-013 lot 1 | Fondations : tokens clair/sombre, clair par défaut, polices, boutons, focus ; retrait particules, `ogl`, orbes, trame, flou, ombres, couleurs chromatiques et mouvements au survol | implémenté, contrôlé (voir R11) |
+| 2026-10-28 | It. 4, RUN-013 lot 2 | Cadre global : en-tête, menu mobile, index de section `0N / Libellé`, pied de page, retour en haut | implémenté, contrôlé (voir R12) |
 
 Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
 seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
@@ -596,3 +597,38 @@ When implementing baseline maintenance changes:
   finalizing implementation work
 - keep changes maintenance-oriented unless a broader redesign is explicitly
   requested
+
+## R12. Lot 2 : cadre global (28 octobre 2026)
+
+Implémenté :
+
+- **En-tête** opaque de 4 rem, filet bas, monogramme texte « AK » en carré plein
+  (le logo bleu/violet n'est plus affiché, le fichier reste dans `src/assets`),
+  liens en corps de texte soulignés au survol, bouton de thème carré, sélecteur
+  FR/EN à deux segments (langue active inversée, même bouton et même libellé
+  accessible qu'avant). Disposition desktop conservée jusqu'à 761 px.
+- **Menu mobile** (≤ 760 px) : panneau opaque sur toute la hauteur, liens en
+  1,5 rem séparés par des filets, contrôles en bas, apparition en opacité 160 ms ;
+  Échap et retour du focus inchangés.
+- **Index de section** `01 / Portfolio`, `02 / Stack & skills`, `03 / About`,
+  `04 / Contact` par compteur CSS sur `.eyebrow--section`, suivi d'un filet.
+- **Pied de page** : marque, colonnes « Navigation » et « Liens » / « Links »
+  (libellés validés par Allen le 28 octobre 2026), nom géant décoratif masqué
+  aux technologies d'assistance, mention légale en mono. Liens de navigation
+  partagés avec l'en-tête via `src/data/links/navigation.ts`.
+- **Retour en haut** : carré de 44 px, contour de contrôle, inversion au survol,
+  apparition en opacité seule.
+- Icônes de l'en-tête et du retour en haut redessinées en extrémités carrées.
+
+Contrôles : build, lint, tests (13/13) et `biome check` du code réussis. Captures
+du build de production à 1440, 800, 768, 390 et 320 px, clair et sombre, FR et
+EN, menu ouvert et focus clavier : aucun débordement horizontal, mesuré par
+script. Le nom du pied de page occupe 94 à 99 % de la largeur utile de 320 à
+1920 px. Deux défauts trouvés en contrôle et corrigés : grille du pied de page à
+12 colonnes trop large sur mobile (débordement de 70 à 140 px), liens du menu
+mobile centrés dans une colonne étroite.
+
+Écarts transitoires : le hero garde un grand espace haut à 768 px (règle 1.3.2
+prévue pour l'ancien en-tête sur deux lignes, traitée au lot 3) ; le Contact
+reste centré jusqu'au lot 7. Le nom du pied de page utilise une taille indexée
+sur la largeur, bornée en rem et décorative : non agrandi par le zoom texte.

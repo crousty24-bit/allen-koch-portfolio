@@ -42,3 +42,27 @@
   color: var(--text-muted);
   line-height: 1.7;
 }
+
+/* Section index ("01 / Portfolio") and trailing rule, numbered in page order. */
+main {
+  counter-reset: section-index;
+}
+
+.eyebrow--section {
+  display: flex;
+  width: fit-content;
+  gap: 1rem;
+  align-items: center;
+  counter-increment: section-index;
+}
+
+.eyebrow--section::before {
+  content: counter(section-index, decimal-leading-zero) " /";
+}
+
+.eyebrow--section::after {
+  width: 2.5rem;
+  height: 1px;
+  content: "";
+  background: var(--outline-strong);
+}

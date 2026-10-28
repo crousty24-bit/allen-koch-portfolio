@@ -2,25 +2,6 @@
   --gutter: 2rem;
 }
 
-html {
-  scroll-padding-top: 10.5rem;
-}
-
-.navbar {
-  grid-template-columns: 1fr;
-  height: auto;
-  gap: 0.85rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.brand,
-.navbar__links,
-.navbar__controls {
-  justify-self: center;
-  justify-content: center;
-}
-
 .hero {
   padding-top: 12rem;
 }

@@ -253,3 +253,24 @@ copier de secret, donnée client ou résultat supposé.
 - Relais : lot 2 (navbar, menu mobile, en-têtes de section, footer, retour en
   haut). `AGENTS.md` décrit encore « dark theme by default » dans sa partie
   baseline : alignement à faire par Codex ou sur mandat, fichier partagé.
+
+## RUN-013 lot 2 : cadre global (28 octobre 2026)
+
+- Branche : `feature/refonte_new_design` ; départ `f49f71c` (lot 1 commité à la
+  demande d'Allen, qui a validé le lot et les intitulés de colonnes du pied de page).
+- Fichiers : `Navbar.tsx`, `Footer.tsx`, `BackToTopButton.tsx`, nouveau
+  `src/data/links/navigation.ts`, `i18n.ts` (`navHeading`, `linksHeading` ajoutés,
+  `socialLabel` retiré), eyebrows de `ProjectsSection`, `StackSection`,
+  `AboutSection`, `ContactSection` ; CSS `navigation`, `contact-footer`,
+  `back-to-top`, `section-headings`, `animations`, `base`, `responsive-1040/760`.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent (composants partagés,
+  modèles fixés pour les lots suivants).
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/800/768/390/320 px, clair/sombre, FR/EN, menu ouvert, focus ;
+  débordement horizontal mesuré nul. Défauts trouvés et corrigés en cours de lot :
+  débordement du pied de page sur mobile, alignement du menu mobile, index de
+  section sur la ligne du titre About, taille de l'index Contact. Biome signalait
+  un titre masqué aux lecteurs d'écran : corrigé par `aria-labelledby`.
+- Non exécutés : lecteur d'écran réel, zoom 200 %, contraste mesuré par composant.
+  Aucun commit de ce lot.
+- Relais : lot 3 (Hero).
