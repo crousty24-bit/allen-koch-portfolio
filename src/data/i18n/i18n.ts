@@ -32,6 +32,8 @@ export const copy = {
     hero: {
       status: 'Développeur Fullstack / AI Builder',
       title: 'Allen Koch | Développeur Web | Alsace, France',
+      name: 'Allen Koch',
+      role: 'Développeur Web / Alsace, France',
       heading:
         'Transformer les besoins en produits web utiles, structurés et maintenables',
       highlight: '',
@@ -111,6 +113,8 @@ export const copy = {
     hero: {
       status: 'Fullstack Developer / AI Builder',
       title: 'Allen Koch | Web Developer | Alsace, France',
+      name: 'Allen Koch',
+      role: 'Web Developer / Alsace, France',
       heading:
         'Turning needs into useful, structured, and maintainable web products',
       highlight: '',

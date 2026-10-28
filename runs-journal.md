@@ -274,3 +274,17 @@ copier de secret, donnée client ou résultat supposé.
 - Non exécutés : lecteur d'écran réel, zoom 200 %, contraste mesuré par composant.
   Aucun commit de ce lot.
 - Relais : lot 3 (Hero).
+
+## RUN-013 lot 3 : hero (28 octobre 2026)
+
+- Départ `0458d23` (lot 2 commité après validation d'Allen).
+- Fichiers : `Hero.tsx`, `i18n.ts` (`hero.name`, `hero.role`), `hero.css`
+  réécrit, règle de titres partagée déplacée dans `section-headings.css`,
+  `responsive-1040/760/430.css`, `animations.css` (`scrollCue` retiré).
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/1024/768/390/320 px, clair/sombre, FR/EN ; débordement mesuré
+  nul ; largeur du nom mesurée. Ajustement après capture : chiffres clés sur deux
+  colonnes en mobile (hauteur du hero ramenée de 1063 à 942 px à 390 px).
+- Non exécutés : zoom 200 %, lecteur d'écran, contraste par composant. Aucun commit.
+- Relais : lot 4 (Projets).

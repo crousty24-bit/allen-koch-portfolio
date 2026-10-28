@@ -24,6 +24,7 @@ Statuts employés dans la partie R : **proposé** (non validé par Allen),
 | 2026-10-28 | It. 2, arbitrage | Décisions d'Allen sur R8 ; analyse du site d'inspiration des maquettes (R10) | validé (R8), proposé (R10) |
 | 2026-10-28 | It. 3, RUN-013 lot 1 | Fondations : tokens clair/sombre, clair par défaut, polices, boutons, focus ; retrait particules, `ogl`, orbes, trame, flou, ombres, couleurs chromatiques et mouvements au survol | implémenté, contrôlé (voir R11) |
 | 2026-10-28 | It. 4, RUN-013 lot 2 | Cadre global : en-tête, menu mobile, index de section `0N / Libellé`, pied de page, retour en haut | implémenté, contrôlé (voir R12) |
+| 2026-10-28 | It. 5, RUN-013 lot 3 | Hero : nom pleine largeur, rôle, promesse, CTA, liens texte, chiffres clés à filets | implémenté, contrôlé (voir R13) |
 
 Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
 seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
@@ -632,3 +633,33 @@ mobile centrés dans une colonne étroite.
 prévue pour l'ancien en-tête sur deux lignes, traitée au lot 3) ; le Contact
 reste centré jusqu'au lot 7. Le nom du pied de page utilise une taille indexée
 sur la largeur, bornée en rem et décorative : non agrandi par le zoom texte.
+
+## R13. Lot 3 : hero (28 octobre 2026)
+
+Implémenté :
+
+- Titre `h1` découpé sans changement de texte : « Allen Koch » en capitales sur
+  toute la largeur du conteneur (même échelle que le nom du pied de page), puis
+  le rôle « Développeur Web / Alsace, France » en gris. Clés `hero.name` et
+  `hero.role` ajoutées à `i18n.ts` ; `hero.title` reste le titre du document.
+- Grille 12 colonnes : promesse (`hero.heading`) et sous-titre sur les colonnes
+  1 à 7, CTA plein et secondaire empilés sur les colonnes 9 à 12, liens GitHub,
+  LinkedIn, X et Email en texte mono (icônes supprimées).
+- Rangée de chiffres clés réels (profil, contributions GitHub, nombre de projets)
+  en cellules séparées par des filets, compteur animé conservé ; indicateur de
+  défilement statique carré en bout de rangée, masqué sur mobile où il doublait
+  le CTA.
+- Tablette (≤ 1040 px) : promesse pleine largeur, CTA côte à côte. Mobile
+  (≤ 760 px) : une colonne, CTA pleine largeur, profil sur toute la largeur puis
+  contributions et projets côte à côte.
+- Supprimés : ancienne mise en page centrée sur la hauteur de l'écran, animation
+  de rebond de l'indicateur (`scrollCue`), règles 1.3.2 du hero dans les trois
+  fichiers responsive, marges latérales mobiles à 1,1 rem (remplacées par le
+  token de gouttière).
+
+Contrôles : build, lint, tests (13/13) et `biome check` du code réussis.
+Captures production à 1440, 1024, 768, 390 et 320 px, clair et sombre, FR et
+EN : aucun débordement horizontal mesuré ; nom à 94 % de la largeur utile à
+1440 px et 96 à 99 % de 320 à 390 px. Hauteur du hero : 843 px à 1440, 942 px à
+390. Non mesurés : zoom 200 % (le nom, dimensionné sur la largeur d'écran, ne
+grandit pas avec le zoom texte), contraste par composant.

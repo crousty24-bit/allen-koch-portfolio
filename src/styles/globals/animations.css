@@ -73,17 +73,6 @@
   }
 }
 
-@keyframes scrollCue {
-  0%,
-  100% {
-    transform: translate(-50%, 0);
-  }
-
-  50% {
-    transform: translate(-50%, 0.5rem);
-  }
-}
-
 @keyframes menuFade {
   from {
     opacity: 0;

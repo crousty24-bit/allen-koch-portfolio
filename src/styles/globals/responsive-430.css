@@ -1,11 +1,3 @@
-.hero__title {
-  font-size: 0.9rem;
-}
-
-.hero__heading {
-  font-size: clamp(2rem, 8.2vw, 2.2rem);
-}
-
 .about-journey__item,
 .about-journey__item--dated {
   grid-template-columns: minmax(0, 1fr) 1.8rem minmax(0, 1fr);
