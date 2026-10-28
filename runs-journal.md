@@ -127,3 +127,53 @@ copier de secret, donnée client ou résultat supposé.
   ou endpoint, champs/destinataire/conservation et références clients disponibles.
 - Relais : les RUN d'implémentation restent `planned`. RUN-018 est une extension
   future avec références autorisées, sans faux clients ni bloc public vide.
+
+
+## Réorganisation du suivi — 28 octobre 2026
+
+- Demande : design/visuel en phase 1, contenu/sections/features en phase 2.
+- Tableau réordonné sans renuméroter les RUN ; RUN-006 dépend de RUN-010,
+  RUN-013 de RUN-006 ; socle technique et contenu suivent RUN-013.
+- Brief, plan et brief Claude alignés ; maquettes anticipant les futures fonctions
+  distinguées de leur implémentation. Répertoire `docs/maquettes_references/`
+  documenté pour import via MCP Stitch avec provenance et statut de validation.
+- Contrôles : 19 RUN uniques, dépendances sans cycle, liens locaux et
+  `git diff --check` réussis. Relecture locale ; pas de délégation pour cette
+  correction documentaire bornée, dont le transfert aurait dupliqué la lecture.
+- Non exécutés : import Stitch, build/tests et navigateur ; aucun code modifié.
+
+## Import de références Stitch — 28 octobre 2026
+
+- Branche : `develop` ; documents déjà modifiés par les travaux précédents,
+  préservés. Préparation de RUN-006, sans exécution du design confié à Claude.
+- Mandat : importer « Minimalist Developer Portfolio templates » via MCP Stitch,
+  ses quatre variantes et sa palette monochrome.
+- Intervenant réel : Codex pour l'export et l'indexation ; aucun sous-agent,
+  le transfert d'un téléchargement borné aurait ajouté du coût d'intégration.
+- Source : projet Stitch `2072749873957336725`, quatre écrans desktop et système
+  `d9370495eb9f4a598ab64aab1589649a`.
+- Livrables : captures PNG, HTML bruts et DESIGN.md sous
+  `docs/maquettes_references/minimalist-developer-portfolio-templates/` ; index
+  de provenance et statut des variantes dans le README du répertoire.
+- Contrôles : présence des neuf fichiers, ouverture UTF-8 des quatre HTML,
+  signatures PNG et dimensions 2560 px de large, en-tête du DESIGN.md et
+  `git diff --check` réussis. Build/lint/Biome non lancés : aucun code produit modifié.
+- Limites : auteur précis non vérifié ; pas de choix de variante, d'écran mobile,
+  d'export EN ni d'intégration React. Les HTML dépendent de ressources externes.
+- Relais : Claude examine les quatre propositions ; Allen arbitre la direction
+  avant l'implémentation de RUN-013.
+
+## Décision sur la base visuelle Stitch — 28 octobre 2026
+
+- Mandat d'Allen : les quatre variantes Stitch importées et leur système
+  monochrome servent de modèle à reproduire et à adapter pour la refonte.
+- Portée : alignement documentaire de `AGENTS.md`, `CLAUDE.md`, `DESIGN.md`,
+  `README.md`, `brief.md`, `runs-workflow.md`, du plan, du brief Claude,
+  de l'index `docs/` et de l'index des maquettes. Aucun code produit modifié.
+- Intervenant : Codex, sans sous-agent pour cet alignement documentaire ciblé.
+- Contrôles : `git diff --check` réussi, liens locaux des onze documents concernés
+  vérifiés, recherche des anciennes consignes contradictoires sans résultat.
+  Build/lint/Biome non lancés : aucun code produit modifié.
+- Décision encore ouverte : variante ou synthèse finale et ses adaptations ;
+  Claude prépare la proposition, Allen l'arbitre avant RUN-013. Les exports
+  desktop ne valident ni mobile, ni FR/EN, ni sombre/clair ou le comportement.

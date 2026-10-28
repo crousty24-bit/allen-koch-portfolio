@@ -11,8 +11,10 @@ Read [WORKFLOW.md](WORKFLOW.md), [brief.md](brief.md),
 Release 1.3.2 remains the implementation baseline. Allen's expanded redesign
 request supersedes its one-page and minor-polish limits: plan a complete new
 visual system, separate pages, contact/quote form, services, preserved personal
-projects, separate client projects and a future trust section. Palette and motion
-may change completely under Claude's design ownership. Routing/rendering and
+projects, separate client projects and a future trust section. The four imported
+Stitch variants and their monochrome design system in
+`docs/maquettes_references/` are the visual model to reproduce and adapt under
+Claude's design ownership; Allen has not selected one variant. Routing/rendering and
 form processing must be decided before implementation; no provider, new dependency,
 general backend, database or authentication is selected by this planning request.
 Preserve accessibility, FR/EN, both themes and mobile performance requirements.
@@ -84,11 +86,12 @@ The site must present:
 
 ## Design Reference
 
-Use `DESIGN.md` as the historical baseline reference. For the complete redesign,
-use the updated brief and Claude design brief; the palette below is not imposed
-on the new design before its direction is accepted.
+Use `DESIGN.md` for the historical baseline and the current redesign direction.
+For the complete redesign, use the updated brief, Claude design brief and imported
+Stitch references. The palette below describes the 1.3.2 baseline, not the
+monochrome reference for the redesign.
 
-Key visual direction:
+Baseline 1.3.2 visual direction:
 
 - dark theme by default
 - light theme available via header toggle

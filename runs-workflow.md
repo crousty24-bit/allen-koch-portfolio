@@ -18,28 +18,52 @@ défini dans [docs/agentic-workflow.md](docs/agentic-workflow.md).
 - Les responsables ci-dessous sont des affectations prévues. Une délégation
   effective doit être nommée et tracée ; ne pas inventer un agent actif.
 
-## Tableau de suivi
+## Tableau de suivi — ordre d'exécution
+
+Les identifiants historiques restent stables ; l'ordre des lignes indique l'ordre
+prévu. Deux phases : design/visuel d'abord, puis contenu, sections et fonctionnalités.
+La clôture de RUN-013 ouvre la phase 2. Les détails ci-dessous se lisent avec ces
+nouvelles dépendances ; aucune dépendance de contenu ou de formulaire ne bloque
+la recherche graphique initiale.
+
+### Historique de préparation terminé
 
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
 | RUN-000 | P1 | Audit et préparation initiale de refonte | Codex ; contribution design de Claude | Aucune | done |
 | RUN-001 | P1 | Workflow agentique adapté du boilerplate | Codex, rôle Documentation | RUN-000 | done |
-| RUN-002 | P1 | Alertes de dépendances de développement | Codex ; compétence Security | Audit A01 | planned |
-| RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | Audit A04 | planned |
-| RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | Audit A05 | planned |
-| RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-000 ; réponses d'Allen | planned |
-| RUN-006 | P1 | Refonte visuelle totale et maquettes multipages | Claude ; arbitrage Allen | RUN-005, RUN-011, RUN-016 | planned |
-| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-012 à RUN-015, RUN-017 | planned |
-| RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-009 | P1 | Proposition de custom agents et politique de délégation | Codex ; revue Luna | RUN-001 | done |
 | RUN-010 | P1 | Cadrage documentaire du périmètre élargi | Codex ; revue Luna | RUN-009 | done |
+
+### Phase 1 — Refonte visuelle et design
+
+Partir des quatre maquettes Stitch importées et de leur système monochrome :
+les reproduire et les adapter, puis appliquer la direction validée à la baseline.
+Les futures pages/sections peuvent être représentées avec contenus de travail
+identifiés ; leur contenu final, routage et fonctionnement viennent en phase 2.
+Le formulaire reste une maquette sans envoi à ce stade.
+
+| RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
+| --- | --- | --- | --- | --- | --- |
+| RUN-006 | P1 | Refonte visuelle totale et maquettes multipages | Claude ; arbitrage Allen | RUN-010 | planned |
+| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | planned |
+
+### Phase 2 — Contenus, sections et fonctionnalités
+
+| RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
+| --- | --- | --- | --- | --- | --- |
+| RUN-002 | P1 | Alertes de dépendances de développement | Codex ; compétence Security | RUN-013 | planned |
+| RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | RUN-013 | planned |
+| RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | RUN-013 | planned |
+| RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | planned |
 | RUN-011 | P1 | Architecture des pages, URL et rendu | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | planned |
 | RUN-012 | P1 | Navigation et socle multipage | Codex ; Claude UI | RUN-011, RUN-013 | planned |
-| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-002, RUN-004, RUN-006 | planned |
 | RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | planned |
 | RUN-015 | P1 | Projets personnels conservés et espace clients | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
 | RUN-017 | P1 | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
+| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-012 à RUN-015, RUN-017 | planned |
+| RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
 ## RUN-000 — Audit et préparation initiale
@@ -103,17 +127,22 @@ défini dans [docs/agentic-workflow.md](docs/agentic-workflow.md).
 
 ## RUN-006 — Refonte visuelle totale confiée à Claude
 
-- Passe A : proposer une nouvelle direction globale (palette, typographie, grille,
-  iconographie, composants), sans imposer les choix 1.3.2 ou « Atelier technique ».
-- Passe B : maquettes des pages retenues et navigation, sections services,
+- Passe A : comparer les [quatre références Stitch](docs/maquettes_references/README.md),
+  reproduire leur langage visuel monochrome et proposer les adaptations de palette,
+  typographie, grille, iconographie et composants. Les choix 1.3.2 et « Atelier
+  technique » ne sont pas la base de cette refonte.
+- Passe B : maquettes des pages proposées et navigation, sections services,
   projets personnels/clients, contact/devis ; emplacement futur de la confiance.
 - Passe C : spécifier animations, transitions entre états/pages, focus, formulaire
   et variantes FR/EN, sombre/clair, mobile/desktop, reduced-motion.
-- Livrables : `docs/claude-design-brief.md`, décisions visuelles et contrat de relais ;
+- Livrables : synthèse des maquettes Stitch déjà importées dans
+  `docs/maquettes_references/`, adaptations documentées, décisions visuelles et
+  contrat de relais ;
   pas d'envoi réel de formulaire ni d'implémentation implicite à ce stade.
 - Risques : validation supposée, design ne couvrant qu'une langue ou un thème.
-- Acceptation : proposition attribuée à Claude, desktop/mobile et sombre/clair,
-  états/focus et FR/EN couverts ; direction arbitrée par Allen avant implémentation.
+- Acceptation : fidélité expliquée aux références Stitch, adaptations attribuées
+  à Claude, desktop/mobile et sombre/clair, états/focus et FR/EN couverts ;
+  direction arbitrée par Allen avant implémentation.
 - Relais : transfert design → frontend avec fichiers, décisions et limites ;
   mettre à jour DESIGN pour les décisions validées en distinguant le rendu livré.
 
@@ -196,8 +225,11 @@ défini dans [docs/agentic-workflow.md](docs/agentic-workflow.md).
 
 ## RUN-013 — Système visuel, animations et transitions
 
-- Passe A — Claude UI : intégrer nouvelle palette/tokens, typographie, grille,
-  composants et assets selon design accepté, avec clair/sombre.
+- Portée phase 1 : habillage de la baseline et composants visuels ; les nouveaux
+  contenus, routes et fonctions restent en phase 2. Les transitions de pages sont
+  spécifiées ici puis raccordées au routage en RUN-012.
+- Passe A — Claude UI : intégrer les tokens, la typographie, la grille,
+  les composants et assets issus de la synthèse Stitch acceptée, avec clair/sombre.
 - Passe B — Claude UI : animations et transitions de pages/états, hover/focus et
   variantes reduced-motion ; contenu visible si un effet échoue.
 - Passe C — Codex Performance/QA : contrôler mobile/desktop, contraste, focus,

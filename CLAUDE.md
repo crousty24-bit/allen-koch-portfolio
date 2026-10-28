@@ -17,12 +17,18 @@ RUN-006 porte le design final ; la proposition initiale relève de RUN-000.
 Le site existant est une baseline 1.3.2, pas le design déjà approuvé de la refonte.
 La demande couvre un nouveau design total (palette et mouvements inclus), des
 pages séparées, services, projets personnels/clients distincts, formulaire
-contact/devis et futur bloc de confiance. Utiliser le brief actualisé ; la palette
-et la structure one-page historiques ne contraignent pas la proposition.
+contact/devis et futur bloc de confiance. Utiliser les quatre [maquettes Stitch
+importées](docs/maquettes_references/README.md) et leur système monochrome comme
+**base visuelle à reproduire et à adapter**. Comparer leurs compositions, proposer
+une synthèse ou une variante retenue, puis expliciter les adaptations pour le
+contenu réel, FR/EN, mobile, sombre/clair et accessibilité. Allen n'a pas encore
+choisi une variante finale. La palette et la structure one-page de la version
+1.3.2 ne contraignent pas cette refonte.
 
-- Proposer une direction visuelle et une hiérarchie adaptées aux besoins des clients.
+- Décliner la direction Stitch en hiérarchie et pages adaptées aux besoins des clients.
 - Couvrir mobile/desktop, sombre/clair, FR/EN et les états accessibles.
-- Réutiliser React/Vite/TypeScript, le CSS natif et les tokens existants.
+- Réutiliser React/Vite/TypeScript et le CSS natif ; adapter les tokens existants
+  au système visuel retenu.
 - Distinguer proposition, décision validée, implémentation et contrôle observé.
 - Respecter les faits des projets ; ne pas fabriquer preuves clients ou résultats.
 - Ne pas étendre le périmètre à un backend, une démo IA connectée ou de nouvelles

@@ -13,7 +13,9 @@ d'applications et de sites web modernes. Il n'y a pas de niche unique validée.
 Périmètre confirmé : refonte visuelle **globale et totale**, pages séparées,
 formulaire contact/devis, services/prestations, conservation des projets personnels,
 espace projets clients distinct et future section « Ils m'ont fait confiance ».
-Les choix graphiques reviennent à Claude ; la palette actuelle n'est pas imposée.
+Les choix d'adaptation reviennent à Claude à partir des quatre
+[références Stitch importées](maquettes_references/README.md) et de leur système
+monochrome. La palette 1.3.2 n'est pas imposée ; Allen arbitre la direction finale.
 Conserver React/Vite/TypeScript et les contrats utiles FR/EN, sombre/clair,
 accessibilité et performance mobile. Le rendu multipage et la solution d'envoi
 restent à décider avant leur implémentation ; aucun framework ou prestataire
@@ -55,10 +57,11 @@ ancres connues et les chemins d'assets imbriqués.
 
 ## Design et mouvement
 
-Claude propose un nouveau système visuel : palette, typographie, grille, composants,
-iconographie, animations et transitions. La proposition précédente « Atelier
-technique » reste une ressource non validée ; elle ne contraint pas cette refonte
-plus large. Spécifier les mouvements entre états/pages et leur variante reduced-motion,
+Claude reproduit et adapte le langage visuel Stitch : palette monochrome,
+typographie, grille, composants et iconographie ; il précise les choix retenus
+parmi les quatre variantes. La proposition précédente « Atelier technique » reste
+une ressource non validée ; elle ne contraint pas cette refonte. Spécifier les
+mouvements entre états/pages et leur variante reduced-motion,
 sans imposer de dépendance d'animation. Vérifier mobile/desktop et sombre/clair.
 
 ## Services, projets et confiance
@@ -131,3 +134,14 @@ Responsables, dépendances et critères vivent dans ce suivi ; les preuves dans
 
 Les informations professionnelles/légales à publier doivent être confirmées par
 Allen avant la release. Le dépôt ne suffit pas à établir les obligations de son activité.
+
+## Ordre des phases et références Stitch
+
+Exécuter d'abord la phase 1 : conception/validation visuelle (RUN-006), puis
+système visuel sur la baseline (RUN-013). Les contenus définitifs, pages/routage,
+sections et fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
+Les maquettes peuvent anticiper ces évolutions sans prétendre qu'elles fonctionnent.
+Les décisions techniques ultérieures peuvent nécessiter une adaptation visuelle ciblée.
+Les quatre [références Stitch importées](maquettes_references/README.md) sont le
+modèle visuel à reproduire et à adapter en phase 1. La variante finale ou leur
+synthèse reste à arbitrer par Allen avant l'implémentation.

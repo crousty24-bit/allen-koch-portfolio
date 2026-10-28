@@ -17,16 +17,23 @@ d'outils/workflows agents, mais aussi de sites et applications web modernes.
 
 - `src/data/` : textes, projets et liens existants ; leur présence n'établit pas
   une expérience client, un niveau d'expertise ni un résultat commercial.
-- `DESIGN.md` : baseline historique ; les écarts relevés dans l'audit priment
-  sur ses descriptions non conformes au code.
+- [DESIGN.md](../DESIGN.md) : baseline historique et renvoi à la direction
+  Stitch ; les écarts relevés dans l'audit priment sur ses descriptions de la
+  version 1.3.2 non conformes au code.
+- [Quatre variantes Stitch importées](maquettes_references/README.md) et leur
+  système monochrome : base visuelle à reproduire et à adapter, sans variante
+  finale encore choisie par Allen.
 - `src/styles/globals/tokens.css` : couleurs et polices disponibles.
 - [Première proposition](references/claude-design-proposal.md) : contribution
   de Claude Code obtenue le 27 octobre 2026, non validée, sans vue du navigateur.
 
 React/Vite/TypeScript et CSS natif conservés. Cible multipage avec formulaire
-contact/devis : consulter le plan actualisé et les décisions de RUN-011/016.
-Palette, typographie, animations et transitions sont à repenser intégralement ;
-la baseline et la proposition initiale ne constituent pas une direction imposée.
+contact/devis : consulter le plan actualisé. Les décisions de RUN-011/016 viennent
+en phase 2 ; leurs inconnues restent explicites dans les maquettes de phase 1.
+Partir de la palette, typographie, grille et composition Stitch ; proposer les
+adaptations nécessaires pour les pages, les états et le contenu réel. Animations
+et transitions restent à spécifier. La baseline 1.3.2 et la proposition initiale
+ne constituent pas la direction visuelle de cette refonte.
 Pas de dépendance ou de prestataire choisi par la seule conception visuelle.
 FR/EN, sombre/clair, clavier et réduction des animations doivent être couverts.
 Pas de WebGL sur mobile. Les choix desktop peuvent évoluer dans la refonte, mais
@@ -34,8 +41,9 @@ doivent être présentés et vérifiés distinctement des choix mobile.
 
 ## Livrables demandés pour la prochaine étape
 
-1. Une nouvelle direction visuelle argumentée : grille, densité, typographie, couleurs,
-   traitement des projets, iconographie et rôle des effets.
+1. Une synthèse argumentée des quatre variantes Stitch : choix de composition,
+   grille, densité, typographie, palette monochrome, projets, iconographie et
+   adaptations nécessaires ; expliciter les écarts à la référence.
 2. Une composition des pages et de leur navigation selon l’arborescence retenue ;
    services/prestations, projets personnels conservés et espace clients distinct.
    Prévoir l’emplacement futur « Ils m’ont fait confiance » sans contenu fictif.
@@ -48,8 +56,9 @@ doivent être présentés et vérifiés distinctement des choix mobile.
 6. Les arbitrages et points non vérifiés ; ne pas annoncer un contrôle navigateur
    ou de contraste si aucune mesure n'a été effectuée.
 
-La première proposition textuelle remplit une partie du cadrage, pas ces livrables
-visuels ni leur validation. Allen arbitre la direction avant son implémentation.
+Les exports Stitch fournissent les références desktop, pas les variantes mobile,
+FR/EN et états complets demandés ci-dessus. Allen arbitre la direction finale
+avant son implémentation.
 
 ## Garde-fous éditoriaux et techniques
 
@@ -77,3 +86,14 @@ ne remplace pas le nouveau cadrage multipage avec formulaire.
 
 Le code ne fait pas d’hydratation actuellement : il effectue un rendu client.
 Pour ce lot, séparer les choix graphiques de la décision éventuelle de prérendu.
+
+## Ordre des phases et références Stitch
+
+Exécuter d'abord la phase 1 : conception/validation visuelle (RUN-006), puis
+système visuel sur la baseline (RUN-013). Les contenus définitifs, pages/routage,
+sections et fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
+Les maquettes peuvent anticiper ces évolutions sans prétendre qu'elles fonctionnent.
+Les décisions techniques ultérieures peuvent nécessiter une adaptation visuelle ciblée.
+Les quatre [références Stitch importées](maquettes_references/README.md) sont le
+modèle visuel à reproduire et à adapter. Documenter la variante ou la synthèse
+retenue et ses adaptations ; ne pas traiter le HTML exporté comme du code React.

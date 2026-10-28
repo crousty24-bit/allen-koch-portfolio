@@ -76,9 +76,11 @@ Le projet ne contient pas :
 
 ## Design
 
-La direction visuelle est documentée dans [`DESIGN.md`](./DESIGN.md).
+La direction de refonte s'appuie sur les [quatre maquettes Stitch importées](./docs/maquettes_references/README.md)
+et leur système monochrome, à reproduire et à adapter. [`DESIGN.md`](./DESIGN.md)
+distingue cette cible de la baseline actuelle.
 
-Principes retenus :
+Principes de la version 1.3.2 actuellement livrée :
 
 - thème sombre par défaut ;
 - style premium, sobre et technique ;

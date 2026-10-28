@@ -8,9 +8,11 @@ Le positionnement vise un développeur IA freelance proposant sites et applicati
 intégrations/automatisations IA, outils et workflows agents.
 
 Clientèles demandées par Allen : TPE/PME, startups et équipes techniques.
-Les offres exactes, les preuves publiables et la direction graphique restent à
-arbitrer. Le [plan de refonte](docs/refonte-plan.md) contient les propositions,
-pas des prestations déjà vendues ni un design approuvé.
+Les offres exactes et les preuves publiables restent à arbitrer. Les quatre
+[maquettes Stitch importées](docs/maquettes_references/README.md) et leur palette
+monochrome servent de modèle visuel à reproduire et à adapter ; la variante finale
+reste à choisir. Le [plan de refonte](docs/refonte-plan.md) contient les propositions,
+pas des prestations déjà vendues ni un design finalisé.
 
 ## Exigences de refonte confirmées
 
@@ -60,7 +62,7 @@ L'[audit du 27 octobre](docs/audit-2026-10-27.md) documente la baseline inspect�
 checks applicatifs réussis, alertes npm dans l'outillage, défaut de visibilité et
 limitations SEO/tests. Ces résultats sont datés et ne remplacent pas de nouveaux checks.
 Une [proposition textuelle de Claude](docs/references/claude-design-proposal.md)
-existe ; les maquettes et la refonte ne sont pas implémentées.
+existe et les quatre maquettes Stitch sont importées. La refonte n'est pas implémentée.
 
 Les demandes traitées à ce stade portent sur l'audit, la préparation de refonte
 et l’adaptation du workflow agentique depuis le boilerplate, puis la planification
@@ -77,10 +79,22 @@ Playwright ou des rôles backend/base de données sur la seule foi de ce modèle
 L'origine et les adaptations sont consignées dans [docs/initialization.md](docs/initialization.md).
 
 Restent à décider : promesse, offres prioritaires, rôle exact dans les cas présentés,
-modalités d'intervention, disponibilité, canal de contact, choix visuels, intérêt
-des statistiques/particules et indexation EN. Ajouter au cadrage : arborescence/URL/rendu multipage,
+modalités d'intervention, disponibilité, canal de contact, variante et adaptations
+visuelles, intérêt des statistiques/particules et indexation EN. Ajouter au cadrage :
+arborescence/URL/rendu multipage,
 solution d’envoi/destinataire du formulaire, données nécessaires et conservation.
 Ne pas inventer ces réponses.
 
 Mettre à jour ce brief pour une décision produit/architecture acquise ; garder les
 résultats de commandes et le détail temporaire des tâches dans le journal.
+
+## Ordre des phases et références Stitch
+
+Exécuter d'abord la phase 1 : conception/validation visuelle (RUN-006), puis
+système visuel sur la baseline (RUN-013). Les contenus définitifs, pages/routage,
+sections et fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
+Les maquettes peuvent anticiper ces évolutions sans prétendre qu'elles fonctionnent.
+Les décisions techniques ultérieures peuvent nécessiter une adaptation visuelle ciblée.
+Les quatre [références Stitch importées](docs/maquettes_references/README.md)
+forment la base à reproduire et à adapter en RUN-006 ; Allen arbitre la variante
+ou la synthèse avant l'implémentation visuelle.

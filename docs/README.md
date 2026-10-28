@@ -50,7 +50,11 @@ refonte non implémentée. Les propositions ne valent pas validation visuelle.
 | [Brief Claude](claude-design-brief.md) | Livrables et critères design de RUN-006 |
 | [Proposition Claude](references/claude-design-proposal.md) | Contribution initiale non validée |
 | [Références](references/README.md) | Sources techniques et conventions de ressources |
-| [DESIGN.md](../DESIGN.md) | Référence historique de la baseline et écarts documentés dans l'audit |
+| [DESIGN.md](../DESIGN.md) | Baseline historique et direction de refonte fondée sur Stitch |
+| [Maquettes Stitch](maquettes_references/README.md) | Quatre variantes importées et système monochrome à reproduire et adapter |
 
 Mettre à jour le document propriétaire et lier depuis cet index, plutôt que
 recopier des statuts, preuves ou décisions dans chaque fichier.
+
+La variante finale et ses adaptations restent à arbitrer par Allen avant
+l'implémentation visuelle.

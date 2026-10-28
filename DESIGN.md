@@ -1,17 +1,32 @@
 # Design Reference: Allen Koch Portfolio
 
-> Transition note — 2026-10-27: the AI freelance redesign is being prepared in
-> [docs/](docs/README.md), with design assigned to Claude. This document remains
-> the historical 1.3.2 reference. Known differences from the current code are
-> recorded in the audit; redesign proposals are not an implemented visual baseline.
-> Expanded scope: full visual redesign including palette and motion, separate
-> pages, contact/quote form, services, distinct personal/client projects and future
-> trust references. Baseline constraints below do not override this target;
-> see the current product and Claude briefs before designing the replacement.
+> Redesign direction — 2026-10-28: the four [imported Stitch variants](docs/maquettes_references/README.md)
+> and their [monochrome design system](docs/maquettes_references/minimalist-developer-portfolio-templates/DESIGN.md)
+> are the visual model to reproduce and adapt for the AI freelance redesign.
+> Claude owns the design adaptation; Allen has not selected a final variant.
+> Reconcile the references with real content, separate pages, FR/EN, both themes,
+> mobile layouts, accessibility and performance. This direction is not implemented.
+> The sections below describe the historical 1.3.2 baseline; known differences
+> from current code are recorded in the audit. They do not override the redesign.
 
-This document describes the final MVP implementation state of the portfolio.
-It replaces the earlier Stitch-only handoff notes as the primary local design
-reference.
+This document describes the final MVP implementation state of the portfolio and
+points to the current Stitch reference for the redesign.
+
+## Redesign reference — not yet implemented
+
+The imported Stitch project, **Minimalist Developer Portfolio templates**, contains
+four desktop variants (A–D) and the **Monochrome Editorial Portfolio** system.
+Use their typography, grids, spacing, surfaces, boundaries and warm monochrome
+palette as the starting visual language. The [reference index](docs/maquettes_references/README.md)
+links each PNG, HTML export and the exact source palette. Claude should compare
+the variants, recommend a coherent direction and document any necessary changes.
+No single variant or final layout has been approved yet.
+
+The exports are design references, not production components or verified content.
+Extend the direction to mobile, FR/EN and dark/light states, with accessible focus,
+contrast and reduced motion. Actual routes, form processing and client claims
+remain governed by their dedicated RUNs. The current blue/cyan/violet palette,
+glass effects and one-page layout described below belong to release 1.3.2.
 
 ## 1. Product State
 

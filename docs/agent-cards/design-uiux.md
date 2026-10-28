@@ -4,8 +4,9 @@
 
 ## Entrées et mission
 
-Contenu et preuves, brief design, références, tokens et contraintes du RUN.
-Définir hiérarchie, compositions responsive, typographie, couleurs, assets et
+Contenu et preuves, brief design, [maquettes Stitch importées](../maquettes_references/README.md),
+tokens et contraintes du RUN. Reproduire et adapter leur langage visuel :
+hiérarchie, compositions responsive, typographie, couleurs, assets et
 états d'interaction. Proposer avant d'implémenter si le mandat est de conception.
 Ne pas inventer clients/résultats ni présenter une direction comme approuvée.
 Un arbitrage majeur revient à Allen sans bloquer la préparation indépendante.
