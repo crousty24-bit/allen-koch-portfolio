@@ -180,10 +180,3 @@
   letter-spacing: -0.03em;
   line-height: 1.1;
 }
-
-/* Transitional: shared card frames until the About and Contact lots. */
-.portrait-card,
-.contact-panel {
-  border: 1px solid var(--outline);
-  background: var(--background);
-}

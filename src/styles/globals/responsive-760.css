@@ -4,12 +4,30 @@
 }
 
 .about-layout,
-.about-journey {
+.about-journey,
+.contact-panel {
   grid-template-columns: minmax(0, 1fr);
 }
 
 .about-content h2 {
   font-size: 2.25rem;
+}
+
+.contact-panel {
+  padding: 3rem 1.25rem;
+}
+
+.contact-panel h2 {
+  font-size: 2.75rem;
+}
+
+.contact-panel__aside {
+  grid-column: 1;
+  margin-top: 2rem;
+}
+
+.contact-panel__email {
+  font-size: 1.25rem;
 }
 
 .about-copy {

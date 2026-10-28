@@ -1,6 +1,5 @@
 .section-heading h2,
-.about-content h2,
-.contact-panel h2 {
+.about-content h2 {
   margin: 0;
   color: var(--text);
 }
@@ -27,8 +26,7 @@
 }
 
 .section-heading h2,
-.about-content h2,
-.contact-panel h2 {
+.about-content h2 {
   font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 400;
   letter-spacing: -0.035em;
@@ -37,7 +35,6 @@
 
 .section-heading p,
 .about-copy,
-.contact-panel p,
 .project-card__description {
   color: var(--text-muted);
   line-height: 1.7;

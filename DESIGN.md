@@ -28,6 +28,7 @@ Statuts employés dans la partie R : **proposé** (non validé par Allen),
 | 2026-10-28 | It. 6, RUN-013 lot 4 | Projets : 3 projets mis en avant à index collant, grille dépliée à 3 colonnes, bandeau CTA, en-têtes de section en grille | implémenté, contrôlé (voir R14) |
 | 2026-10-28 | It. 7, RUN-013 lot 5 | Stack en rangées à tags, arbre de compétences en accordéon numéroté, fond de surface | implémenté, contrôlé (voir R15) |
 | 2026-10-28 | It. 8, RUN-013 lot 6 | About : portrait N&B, texte et accordéon en colonne droite, parcours en liste numérotée à titre collant | implémenté, contrôlé (voir R16) |
+| 2026-10-28 | It. 9, RUN-013 lot 7 | Contact en bloc inversé : grand titre, texte et email souligné | implémenté, contrôlé (voir R17) |
 
 Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
 seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
@@ -770,3 +771,34 @@ Captures production à 1440, 768, 390 et 320 px, clair et sombre, FR et EN,
 parcours replié et déplié ; débordement mesuré nul après correction (grilles à
 12 colonnes passées à 1 colonne sur mobile) ; ouverture de l'accordéon au
 clavier vérifiée par script. Non mesurés : lecteur d'écran, zoom 200 %.
+
+## R17. Lot 7 : contact (28 octobre 2026)
+
+Décision de Claude, issue de la piste « à évaluer » de R10 : bloc **inversé**
+plutôt qu'une colonne droite laissée vide en attendant le formulaire. Sans
+formulaire en phase 1, l'inversion donne une fin de page affirmée sans contenu
+nouveau.
+
+Implémenté :
+
+- Bloc à angles droits dans le conteneur, fond `#191919` en thème clair, surface
+  sombre `#232320` bordée d'un filet en thème sombre. Les tokens sont redéfinis
+  localement dans `.contact-panel` : index de section, texte, filets et contour
+  de focus s'inversent d'eux-mêmes (focus mesuré ivoire `rgb(245, 242, 235)`).
+- Grille : index sur sa ligne, titre « Parlons de votre projet. » en 5 rem sur
+  les colonnes 1 à 7, texte et email sur les colonnes 9 à 12. L'email, jusqu'ici
+  dans un bouton plein, devient un grand lien souligné (même adresse, même
+  `mailto:`), cassable sur les petits écrans.
+- Phase 2 : le formulaire prendra les colonnes 9 à 12 ; le texte et l'email
+  passeront sous le titre.
+- Contrastes calculés : texte 15,73:1 et texte secondaire 6,89:1 sur `#191919` ;
+  14,09:1 et 6,18:1 sur `#232320`. Le bloc sombre ne se distingue du fond sombre
+  qu'à 1,14:1, d'où le filet.
+- Supprimés : panneau centré, règles `.contact-panel` partagées de
+  `section-headings.css` et dernier bloc transitoire de `projects.css`.
+
+Contrôles : build, lint, tests (13/13) et `biome check` du code réussis.
+Captures production à 1440, 768, 390 et 320 px, clair et sombre, FR et EN ;
+débordement mesuré nul. Les captures pleine page superposent l'en-tête fixe et
+le lien d'évitement au bloc : artefact de capture, absent des vues écran.
+Non mesurés : lecteur d'écran, zoom 200 %.

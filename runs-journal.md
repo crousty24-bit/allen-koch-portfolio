@@ -335,3 +335,16 @@ copier de secret, donnée client ou résultat supposé.
 - Écart d'interaction documenté (DESIGN.md R16) : étapes du parcours toujours
   ouvertes. Non exécutés : lecteur d'écran, zoom 200 %. Aucun commit.
 - Relais : lot 7 (Contact).
+
+## RUN-013 lot 7 : contact (28 octobre 2026)
+
+- Départ `088c05d` (lot 6 commité après validation d'Allen).
+- Fichiers : `ContactSection.tsx`, `contact-footer.css` (bloc inversé),
+  `section-headings.css` et `projects.css` (règles transitoires retirées),
+  `responsive-1040/760.css`.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN ; débordement nul ; couleur
+  du focus dans le bloc inversé mesurée ; contrastes calculés par script.
+- Décision de composition documentée (DESIGN.md R17). Aucun commit.
+- Relais : lot 8 (mouvement, reduced-motion, contrôle qualité avec Codex).
