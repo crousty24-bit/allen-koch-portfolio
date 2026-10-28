@@ -29,6 +29,7 @@ Statuts employés dans la partie R : **proposé** (non validé par Allen),
 | 2026-10-28 | It. 7, RUN-013 lot 5 | Stack en rangées à tags, arbre de compétences en accordéon numéroté, fond de surface | implémenté, contrôlé (voir R15) |
 | 2026-10-28 | It. 8, RUN-013 lot 6 | About : portrait N&B, texte et accordéon en colonne droite, parcours en liste numérotée à titre collant | implémenté, contrôlé (voir R16) |
 | 2026-10-28 | It. 9, RUN-013 lot 7 | Contact en bloc inversé : grand titre, texte et email souligné | implémenté, contrôlé (voir R17) |
+| 2026-10-28 | It. 10, RUN-013 lot 8 | Mouvement aligné sur R6, contrôle qualité navigateur, relais passe C vers Codex | implémenté, contrôlé (voir R18) |
 
 Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
 seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
@@ -802,3 +803,37 @@ Captures production à 1440, 768, 390 et 320 px, clair et sombre, FR et EN ;
 débordement mesuré nul. Les captures pleine page superposent l'en-tête fixe et
 le lien d'évitement au bloc : artefact de capture, absent des vues écran.
 Non mesurés : lecteur d'écran, zoom 200 %.
+
+## R18. Lot 8 : mouvement et contrôle qualité (28 octobre 2026)
+
+Mouvement implémenté (R6) : apparition des sections au défilement ramenée de
+1,5 s et 24 px à 600 ms et 16 px ; animation d'entrée `.reveal` à 600 ms,
+décalage de 60 ms entre éléments ; courbe `--ease-out` (`cubic-bezier(0.16, 1,
+0.3, 1)`) partout. Seules trois transitions subsistent dans le CSS : apparition
+des sections, fondu du bouton retour en haut, croix du menu mobile. Aucune n'est
+liée au survol.
+
+Contrôles mesurés par script sur le build de production (Chrome sans interface,
+densité 1, sauf mention) :
+
+| Contrôle | Résultat |
+| --- | --- |
+| Contraste de chaque texte rendu, tout déplié, 1440 px | Clair : 256 textes, 0 sous le seuil AA. Sombre : 256 textes, 0 sous le seuil |
+| Parcours clavier depuis le haut de page | 46 arrêts à 1440 px, 39 à 390 px ; contour de 2 px visible, élément dans le champ et jamais sous l'en-tête fixe, ordre conforme à la lecture |
+| Zoom 200 % (1440 et 1280 px) et 400 % (1440 px), densité 2 | Aucun débordement horizontal |
+| `prefers-reduced-motion` | Aucune section masquée, aucune animation d'entrée, compteur affiché à sa valeur finale |
+| Build | CSS 27,1 Ko, soit 5,4 Ko gzip (42,0 et 8,7 Ko au début du lot 1) ; JS 229 Ko, soit 71,8 Ko gzip |
+| Premier chargement | 11 requêtes et 405 Ko décodés à 1440 px ; 9 requêtes et 326 Ko à 390 px ; seules ressources externes : Google Fonts |
+
+Constats non corrigés, signalés :
+
+- Le hero contient deux liens « Voir les projets » (bouton et flèche) et chaque
+  projet avec démo deux liens vers la même adresse (visuel et bouton « Voir ») :
+  comportement hérité de 1.3.2, à arbitrer.
+- A04 (sections invisibles en fenêtre très courte, RUN-003) n'est pas traité :
+  le mécanisme d'apparition au défilement est conservé, seule sa durée change.
+- `npm run biome:check` échoue toujours sur les exports HTML Stitch de `docs/`.
+
+Non mesurés : navigateur réel avec interface, densité 2 en dehors du zoom,
+réseau ralenti, Lighthouse, lecteur d'écran. Ces contrôles relèvent de la passe C
+confiée à Codex (relais préparé dans `runs-workflow.md`, RUN-013).

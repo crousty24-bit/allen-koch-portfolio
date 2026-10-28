@@ -46,7 +46,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
 | RUN-006 | P1 | Refonte visuelle totale et maquettes one-page | Claude ; arbitrage Allen | RUN-010 | done |
-| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | in_progress |
+| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | verify |
 
 ### Phase 2 — Contenus, sections et fonctionnalités
 
@@ -238,6 +238,44 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : lourdeur décorative, blocage du contenu, régression accessibilité/mobile.
 - Acceptation : fidélité au design arbitré, états accessibles et mesures consignées ;
   dépendances éventuelles validées. Vérifier la résolution d'A04 avec RUN-003.
+- État au 28 octobre 2026 : passes A et B livrées par Claude en 8 lots (lots 1 à 7
+  commités de `f49f71c` à `91256b9`), détail dans DESIGN.md R11 à R18. RUN en
+  `verify` : passe C en attente de Codex.
+
+### Relais passe C — Claude → Codex (préparé, non transmis)
+
+```text
+RUN et sous-tâche : RUN-013 passe C, contrôle performance/QA de la refonte visuelle.
+Émetteur / destinataire / rôle : Claude (design, lots 1 à 8) / Codex / Performance et QA.
+Modèle et effort demandés / bénéfice attendu : selon docs/custom-agents.md ; contrôle
+  indépendant de l'implémenteur, exigé par la passe C et la politique de revue.
+Objectif et livrable : retour au format « Retour » de docs/handoff-contracts.md, avec
+  constats priorisés ; pas de refonte graphique.
+Dans le périmètre : build production, mobile/desktop, clair/sombre, FR/EN, contraste,
+  focus, débordements, coût réel du mouvement (apparitions 600 ms, compteur, éléments
+  collants), poids et chargement des polices, régressions par rapport à 1.3.2.
+Hors périmètre : contenus, sections nouvelles, ancres (RUN-011/012), formulaire
+  (RUN-016/017), dépendances (RUN-002), typage strict (RUN-004).
+Fichiers et preuves utiles : DESIGN.md partie R (R1 garde-fous, R3 tokens, R6 mouvement,
+  R11 à R18 contrôles), runs-journal.md entrées RUN-013, src/styles/globals/*.css,
+  composants Navbar, Hero, ProjectCard, ProjectsSection, StackSection, SkillsTree,
+  AboutSection, AboutAccordion, AboutJourney, ContactSection, Footer, BackToTopButton.
+Fichiers réservés en écriture : aucun pour Codex sans accord ; correctifs proposés en
+  constats, appliqués par Claude ou par Codex après répartition explicite.
+Contrats à préserver : garde-fous R1, palette monochrome, rayon 0, clair par défaut,
+  thème/langue locaux, pas de WebGL, contenu 1.3.2 inchangé, tests existants.
+Dépendances / inconnues / risques : A04 (visibilité en fenêtre courte, RUN-003) non
+  traité ; mesures de Claude faites en Chrome sans interface, densité 1, sans réseau
+  ralenti ni lecteur d'écran ; npm run biome:check échoue sur les exports HTML Stitch
+  de docs/ (configuration commune, décision à prendre).
+Actions autorisées : lecture, build et preview locaux, mesures navigateur ; aucun
+  commit, push, déploiement ni ajout de dépendance sans mandat d'Allen.
+Vérifications attendues : Lighthouse ou équivalent mobile/desktop sur build production,
+  contrôle navigateur réel (pas seulement sans interface), lecteur d'écran sur le menu
+  mobile, les accordéons et le dépliage des projets.
+Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
+  visuels, Codex ceux de performance après répartition ; Allen arbitre la clôture.
+```
 
 ## RUN-014 — Services / prestations
 

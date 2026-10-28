@@ -348,3 +348,20 @@ copier de secret, donnée client ou résultat supposé.
   du focus dans le bloc inversé mesurée ; contrastes calculés par script.
 - Décision de composition documentée (DESIGN.md R17). Aucun commit.
 - Relais : lot 8 (mouvement, reduced-motion, contrôle qualité avec Codex).
+
+## RUN-013 lot 8 : mouvement et contrôle qualité (28 octobre 2026)
+
+- Départ `91256b9` (lot 7 commité après validation d'Allen).
+- Fichiers : `animations.css` (durées et décalages d'entrée), DESIGN.md R18,
+  `runs-workflow.md` (RUN-013 en `verify`, relais passe C préparé).
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent. Le relais vers Codex est
+  rédigé mais **non transmis** : aucun canal vers Codex dans cette session.
+- Contrôles par script sur build production : contraste de 256 textes en clair et
+  en sombre (0 échec), parcours clavier complet desktop et mobile (0 problème),
+  zoom 200 % et 400 % (0 débordement), reduced-motion, poids de chargement.
+  build, lint, tests 13/13, `biome check` du code réussis.
+- Un premier passage clavier, faussé par le défilement doux, a été relancé avec
+  attente de fin de défilement ; seul le second résultat est retenu.
+- Non exécutés : navigateur réel, Lighthouse, réseau ralenti, lecteur d'écran,
+  revue indépendante. Aucun commit.
+- Relais : passe C de Codex ; Allen transmet le contrat ou mandate son envoi.
