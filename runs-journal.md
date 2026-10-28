@@ -319,3 +319,19 @@ copier de secret, donnée client ou résultat supposé.
   débordement nul, 0 requête Simple Icons, ouverture clavier vérifiés par script.
 - Non exécutés : lecteur d'écran, zoom 200 %. Aucun commit.
 - Relais : lot 6 (About, accordéon, parcours).
+
+## RUN-013 lot 6 : about, accordéon et parcours (28 octobre 2026)
+
+- Départ `441c465` (lot 5 commité après validation d'Allen).
+- Fichiers : `AboutSection.tsx` (observateur retiré, accordéon déplacé dans la
+  colonne de texte), `AboutAccordion.tsx` (signe +/−), `AboutJourney.tsx` (liste
+  plate, icônes et ouverture par étape retirées), CSS `about-profile`,
+  `about-accordion`, `about-journey` réécrits, `animations.css`, nettoyage de
+  `responsive-430/760/1040.css` et `reduced-motion.css`. Données inchangées.
+- Intervenant : Claude (Opus 5.5, main), sans sous-agent.
+- Contrôles : build, lint, tests 13/13, `biome check` du code réussis ; captures
+  production 1440/768/390/320 px, clair/sombre, FR/EN ; débordement mobile de 70
+  à 140 px détecté puis corrigé ; titre collant et accordéon clavier mesurés.
+- Écart d'interaction documenté (DESIGN.md R16) : étapes du parcours toujours
+  ouvertes. Non exécutés : lecteur d'écran, zoom 200 %. Aucun commit.
+- Relais : lot 7 (Contact).

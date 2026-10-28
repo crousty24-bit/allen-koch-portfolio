@@ -32,20 +32,9 @@ export function AboutAccordion({ language }: AboutAccordionProps) {
                 type="button"
               >
                 <span>{item.question[language]}</span>
-                <svg
-                  aria-hidden="true"
-                  className="about-accordion__chevron"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="m5 7.5 5 5 5-5"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.8"
-                  />
-                </svg>
+                <span aria-hidden="true" className="about-accordion__sign">
+                  {isOpen ? '−' : '+'}
+                </span>
               </button>
             </h3>
 

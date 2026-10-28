@@ -27,6 +27,7 @@ Statuts employés dans la partie R : **proposé** (non validé par Allen),
 | 2026-10-28 | It. 5, RUN-013 lot 3 | Hero : nom pleine largeur, rôle, promesse, CTA, liens texte, chiffres clés à filets | implémenté, contrôlé (voir R13) |
 | 2026-10-28 | It. 6, RUN-013 lot 4 | Projets : 3 projets mis en avant à index collant, grille dépliée à 3 colonnes, bandeau CTA, en-têtes de section en grille | implémenté, contrôlé (voir R14) |
 | 2026-10-28 | It. 7, RUN-013 lot 5 | Stack en rangées à tags, arbre de compétences en accordéon numéroté, fond de surface | implémenté, contrôlé (voir R15) |
+| 2026-10-28 | It. 8, RUN-013 lot 6 | About : portrait N&B, texte et accordéon en colonne droite, parcours en liste numérotée à titre collant | implémenté, contrôlé (voir R16) |
 
 Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
 seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
@@ -735,3 +736,37 @@ arbre replié et entièrement déplié ; débordement mesuré nul ; ouverture au
 clavier (Entrée) vérifiée par script. Ajustements après capture : double filet
 sous une sous-compétence ouverte supprimé, retrait et taille du niveau 2 sur
 mobile. Non mesurés : lecteur d'écran, zoom 200 %, contraste par composant.
+
+## R16. Lot 6 : about, accordéon et parcours (28 octobre 2026)
+
+Implémenté :
+
+- **Portrait** 4:5 à angles droits, bordé d'un filet, noir et blanc fixe
+  (colonnes 1 à 5). L'ancien passage en couleur au survol a été retiré au lot 1
+  (R1) ; le cadre rond et le halo disparaissent.
+- **Colonne de texte** (7 à 12) : index de section, titre 3,5 rem, badges
+  existants en tags mono, paragraphes, liens sociaux texte, puis l'accordéon
+  déplacé dans cette colonne (même contenu, même ordre de lecture).
+- **Accordéon** en rangées à filets, signe +/− sans rotation, un seul élément
+  ouvert à la fois comme avant ; apparition du panneau en opacité 220 ms.
+- **Parcours** : l'arbre à branches gauche/droite avec icônes, nœuds et
+  dégradés devient une liste ordonnée à filets (index mono, date si elle existe,
+  titre, description). Titre « My Coding Journey » collant à gauche sur desktop
+  (mesuré à 96 px du haut pendant le défilement), statique sous 1040 px. Bornes
+  « Octobre 2025 » et « Aujourd'hui » conservées en libellés mono ; dépliage de
+  la seconde moitié conservé, bouton à libellé et signe +/−.
+- **Écart d'interaction assumé** : chaque étape du parcours n'est plus un bouton
+  à ouvrir ; titre et description sont toujours visibles. Le contenu est
+  identique, sa lecture ne demande plus de clic. Les libellés « Ouvrir » /
+  « Fermer », devenus inutiles, sont retirés du composant.
+- **Supprimés** : effet machine à écrire du titre About et son observateur,
+  icônes du parcours (le champ `icon` reste dans `about.ts`, le test le vérifie),
+  keyframes `aboutTypewriter*`, toutes les règles 1.3.2 du parcours dans
+  `responsive-430/760/1040.css` et `reduced-motion.css` (sélecteurs exigés par le
+  test conservés).
+
+Contrôles : build, lint, tests (13/13) et `biome check` du code réussis.
+Captures production à 1440, 768, 390 et 320 px, clair et sombre, FR et EN,
+parcours replié et déplié ; débordement mesuré nul après correction (grilles à
+12 colonnes passées à 1 colonne sur mobile) ; ouverture de l'accordéon au
+clavier vérifiée par script. Non mesurés : lecteur d'écran, zoom 200 %.

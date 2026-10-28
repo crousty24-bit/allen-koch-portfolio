@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react'
 import portraitSrc from '../../assets/images/allen-portrait1.jpg'
 import portrait360Src from '../../assets/images/generated/allen-portrait-360.webp'
 import portrait640Src from '../../assets/images/generated/allen-portrait-640.webp'
@@ -13,56 +12,17 @@ type AboutSectionProps = {
 }
 
 export function AboutSection({ language }: AboutSectionProps) {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [hasEnteredAbout, setHasEnteredAbout] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  )
   const socialLinks = links.filter((link) => link.kind === 'social')
   const aboutCopy = copy[language].about
 
-  useEffect(() => {
-    const section = sectionRef.current
-
-    if (!section || hasEnteredAbout) {
-      return
-    }
-
-    const aboutObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) {
-          return
-        }
-
-        setHasEnteredAbout(true)
-        aboutObserver.disconnect()
-      },
-      {
-        rootMargin: '0px 0px -18%',
-        threshold: 0.12,
-      },
-    )
-
-    aboutObserver.observe(section)
-
-    return () => aboutObserver.disconnect()
-  }, [hasEnteredAbout])
-
   return (
-    <section
-      className={`section about-section${
-        hasEnteredAbout ? ' about-section--title-animated' : ''
-      }`}
-      id="about"
-      ref={sectionRef}
-    >
+    <section className="section about-section" id="about">
       <div className="about-layout">
         <div className="about-visual reveal">
           <figure className="portrait-card">
             <picture>
               <source
-                sizes="(max-width: 760px) min(100vw - 2.2rem, 420px), 38vw"
+                sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 1040px) 26rem, 38vw"
                 srcSet={`${portrait360Src} 360w, ${portrait640Src} 640w, ${portrait900Src} 900w`}
                 type="image/webp"
               />
@@ -71,7 +31,7 @@ export function AboutSection({ language }: AboutSectionProps) {
                 alt={aboutCopy.alt}
                 height="1280"
                 loading="lazy"
-                sizes="(max-width: 760px) min(100vw - 2.2rem, 420px), 38vw"
+                sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 1040px) 26rem, 38vw"
                 width="1024"
               />
             </picture>
@@ -81,9 +41,11 @@ export function AboutSection({ language }: AboutSectionProps) {
         <div className="about-content reveal">
           <p className="eyebrow eyebrow--section">{aboutCopy.eyebrow}</p>
           <h2>{aboutCopy.heading}</h2>
-          <ul className="about-badges" aria-label={aboutCopy.eyebrow}>
+          <ul className="chip-list about-badges" aria-label={aboutCopy.eyebrow}>
             {aboutCopy.badges.map((badge) => (
-              <li key={badge}>{badge}</li>
+              <li className="chip" key={badge}>
+                {badge}
+              </li>
             ))}
           </ul>
           <div className="about-copy">
@@ -104,10 +66,11 @@ export function AboutSection({ language }: AboutSectionProps) {
               </a>
             ))}
           </div>
+
+          <AboutAccordion language={language} />
         </div>
       </div>
 
-      <AboutAccordion language={language} />
       <AboutJourney language={language} />
     </section>
   )
