@@ -46,7 +46,7 @@ refonte non implémentée. Les propositions ne valent pas validation visuelle.
 | Document | Usage |
 | --- | --- |
 | [Audit daté](audit-2026-10-27.md) | Constats, priorités et limites des contrôles de RUN-000 |
-| [Plan de refonte](refonte-plan.md) | Périmètre élargi, multipage, services, projets et formulaire |
+| [Plan de refonte](refonte-plan.md) | Périmètre one-page, ancres, services, projets et formulaire |
 | [Brief Claude](claude-design-brief.md) | Livrables et critères design de RUN-006 |
 | [Proposition Claude](references/claude-design-proposal.md) | Contribution initiale non validée |
 | [Références](references/README.md) | Sources techniques et conventions de ressources |

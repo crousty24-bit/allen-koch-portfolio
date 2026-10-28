@@ -2,8 +2,9 @@
 
 ## Produit et périmètre
 
-Baseline actuelle : portfolio statique one-page 1.3.2 d’Allen Koch. La cible est
-un portfolio multipage avec refonte visuelle totale et formulaire contact/devis.
+Baseline actuelle : portfolio statique one-page 1.3.2 d’Allen Koch. La cible reste
+un site one-page, avec refonte visuelle totale, navigation par ancres et
+formulaire contact/devis.
 Le positionnement vise un développeur IA freelance proposant sites et applications web,
 intégrations/automatisations IA, outils et workflows agents.
 
@@ -17,7 +18,8 @@ pas des prestations déjà vendues ni un design finalisé.
 ## Exigences de refonte confirmées
 
 - Nouveau design global : palette, typographie, compositions, animations et transitions.
-- Pages séparées avec navigation et URL propres ; découpage précis à définir.
+- Sections sur une page unique, accessibles par des ancres de navigation ;
+  ordre précis à définir.
 - Formulaire de contact et demande de devis avec envoi réel, solution à choisir.
 - Une ou plusieurs sections de services/prestations.
 - Conservation des projets personnels actuels et ajout d’un espace projets clients distinct.
@@ -26,10 +28,9 @@ pas des prestations déjà vendues ni un design finalisé.
 ## Architecture et contrats à préserver
 
 - React, Vite, TypeScript, CSS natif, npm ; Node 24 et npm 11 selon le dépôt.
-- La baseline est statique sans backend/routeur. La cible autorise le multipage
-  et une intégration d’envoi de formulaire ; stratégie de routage/rendu et solution
-  de traitement restent à décider, sans backend généraliste, BDD ou authentification
-  ajoutés par défaut.
+- La baseline est statique sans backend/routeur. La cible conserve une page unique
+  et autorise une intégration d’envoi de formulaire ; la solution de traitement
+  reste à décider, sans backend généraliste, BDD ou authentification ajoutés par défaut.
 - État thème/langue local ; FR/EN, sombre/clair, navigation clavier et responsive.
 - Composants dans `src/components/`, contenu typé dans `src/data/`, styles dans
   `src/styles/globals/`, tests dans `tests/`.
@@ -80,8 +81,8 @@ L'origine et les adaptations sont consignées dans [docs/initialization.md](docs
 
 Restent à décider : promesse, offres prioritaires, rôle exact dans les cas présentés,
 modalités d'intervention, disponibilité, canal de contact, variante et adaptations
-visuelles, intérêt des statistiques/particules et indexation EN. Ajouter au cadrage :
-arborescence/URL/rendu multipage,
+visuelles et intérêt des statistiques/particules. Ajouter au cadrage : ordre des
+sections, ancres de navigation, traitement de l'indexation EN,
 solution d’envoi/destinataire du formulaire, données nécessaires et conservation.
 Ne pas inventer ces réponses.
 
@@ -91,8 +92,8 @@ résultats de commandes et le détail temporaire des tâches dans le journal.
 ## Ordre des phases et références Stitch
 
 Exécuter d'abord la phase 1 : conception/validation visuelle (RUN-006), puis
-système visuel sur la baseline (RUN-013). Les contenus définitifs, pages/routage,
-sections et fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
+système visuel sur la baseline (RUN-013). Les contenus définitifs, ancres et
+fonctionnalités sont réalisés en phase 2 selon le tableau de suivi.
 Les maquettes peuvent anticiper ces évolutions sans prétendre qu'elles fonctionnent.
 Les décisions techniques ultérieures peuvent nécessiter une adaptation visuelle ciblée.
 Les quatre [références Stitch importées](docs/maquettes_references/README.md)

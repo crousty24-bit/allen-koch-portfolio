@@ -177,3 +177,19 @@ copier de secret, donnée client ou résultat supposé.
 - Décision encore ouverte : variante ou synthèse finale et ses adaptations ;
   Claude prépare la proposition, Allen l'arbitre avant RUN-013. Les exports
   desktop ne valident ni mobile, ni FR/EN, ni sombre/clair ou le comportement.
+
+## Décision de conserver une page unique — 28 octobre 2026
+
+- Branche/révision de départ : `feature/refonte_new_design`, `585acc6` ; arbre propre.
+- Mandat d'Allen : la refonte reste one-page, avec navigation par ancres et aucune
+  nouvelle page dédiée. Cette décision remplace la cible multipage de RUN-010
+  sans effacer son historique.
+- Portée : brief, plan, RUN-006/011/012 et critères de validation, consignes agents,
+  index et références de refonte. Aucun code applicatif modifié.
+- Intervenant : Codex ; pas de sous-agent pour cet alignement documentaire borné.
+- Contrôles : `git diff --check` réussi ; recherche des consignes multipages dans
+  les documents courants, avec seules mentions restantes dans l'historique RUN-010.
+  Build/lint/Biome non lancés : aucun code ni configuration exécutable modifié.
+- Relais : Claude compose une page unique ; RUN-011 fixe sections et ancres, puis
+  RUN-012 les intègre. Le traitement du formulaire et la variante visuelle restent
+  à décider dans leurs RUN respectifs.

@@ -4,7 +4,8 @@
 > and their [monochrome design system](docs/maquettes_references/minimalist-developer-portfolio-templates/DESIGN.md)
 > are the visual model to reproduce and adapt for the AI freelance redesign.
 > Claude owns the design adaptation; Allen has not selected a final variant.
-> Reconcile the references with real content, separate pages, FR/EN, both themes,
+> Reconcile the references with real content, one-page anchor navigation, FR/EN,
+> both themes,
 > mobile layouts, accessibility and performance. This direction is not implemented.
 > The sections below describe the historical 1.3.2 baseline; known differences
 > from current code are recorded in the audit. They do not override the redesign.
@@ -24,9 +25,9 @@ No single variant or final layout has been approved yet.
 
 The exports are design references, not production components or verified content.
 Extend the direction to mobile, FR/EN and dark/light states, with accessible focus,
-contrast and reduced motion. Actual routes, form processing and client claims
+contrast and reduced motion. Anchor navigation, form processing and client claims
 remain governed by their dedicated RUNs. The current blue/cyan/violet palette,
-glass effects and one-page layout described below belong to release 1.3.2.
+glass effects and layout described below belong to release 1.3.2.
 
 ## 1. Product State
 
@@ -357,8 +358,8 @@ immutable deploy assets; create a new filename when replacing their content.
 ## 18. Implementation Constraints
 
 The restrictions below describe baseline maintenance. The expanded redesign in
-`brief.md` and `AGENTS.md` takes precedence for separate pages and the scoped
-contact/quote form; its routing/rendering and processing decisions belong to the
+`brief.md` and `AGENTS.md` takes precedence for the one-page redesign and scoped
+contact/quote form; anchor navigation and processing decisions belong to the
 dedicated runs, not to an implicit backend expansion.
 
 When implementing baseline maintenance changes:
@@ -367,7 +368,7 @@ When implementing baseline maintenance changes:
 - preserve the existing React component structure
 - prefer native CSS and existing tokens
 - do not add dependencies unless explicitly validated
-- preserve baseline routing unless implementing the decided multipage run
+- preserve the existing one-page anchor navigation
 - preserve baseline backend scope except for the decided form-processing integration
 - keep semantic HTML and accessible labels
 - preserve the mobile-performance baseline unless a change explicitly targets it

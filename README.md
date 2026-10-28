@@ -6,10 +6,10 @@
 > et les [instructions Claude](CLAUDE.md). Les résultats de vérification ci-dessous
 > décrivent la release historique ; l'audit daté présente l'état contrôlé actuel.
 
-Périmètre de refonte désormais demandé : nouveau design complet, pages séparées,
+Périmètre de refonte désormais demandé : nouveau design complet sur une page avec ancres,
 formulaire contact/devis, services, projets personnels conservés, projets clients
-distincts et future section « Ils m'ont fait confiance ». Les descriptions one-page
-et limites de maintenance ci-dessous concernent la baseline 1.3.2 ; la cible et
+distincts et future section « Ils m'ont fait confiance ». Les limites de maintenance
+ci-dessous concernent la baseline 1.3.2 ; la cible et
 les décisions encore nécessaires sont dans [le brief](brief.md).
 
 Le suivi agentique sépare le [brief produit](brief.md), les
