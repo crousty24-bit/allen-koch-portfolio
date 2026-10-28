@@ -12,11 +12,9 @@
   pointer-events: none;
   cursor: pointer;
   background: rgba(16, 19, 26, 0.76);
-  border: 1px solid rgba(84, 213, 255, 0.28);
+  border: 1px solid color-mix(in srgb, var(--text) 28%, transparent);
   border-radius: 999px;
   opacity: 0;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(14px);
   transform: translateY(0.7rem);
   transition:
     opacity 220ms ease,
@@ -34,17 +32,15 @@
 .back-to-top:hover,
 .back-to-top:focus-visible {
   color: var(--tertiary);
-  background: rgba(84, 213, 255, 0.1);
-  border-color: rgba(84, 213, 255, 0.5);
-  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+  border-color: color-mix(in srgb, var(--text) 50%, transparent);
 }
 
 .back-to-top:focus-visible {
-  outline: 2px solid rgba(84, 213, 255, 0.5);
+  outline: 2px solid color-mix(in srgb, var(--text) 50%, transparent);
   outline-offset: 3px;
 }
 
 :root[data-theme="light"] .back-to-top {
   background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 16px 36px rgba(37, 49, 67, 0.14);
 }

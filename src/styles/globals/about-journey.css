@@ -29,11 +29,11 @@
   content: "";
   background: linear-gradient(
     180deg,
-    rgba(84, 213, 255, 0.1),
-    rgba(84, 213, 255, 0.72) 12%,
-    rgba(46, 91, 255, 0.66) 50%,
-    rgba(108, 4, 222, 0.58) 88%,
-    rgba(84, 213, 255, 0.08)
+    color-mix(in srgb, var(--text) 10%, transparent),
+    color-mix(in srgb, var(--text) 72%, transparent) 12%,
+    color-mix(in srgb, var(--text) 66%, transparent) 50%,
+    color-mix(in srgb, var(--text) 58%, transparent) 88%,
+    color-mix(in srgb, var(--text) 8%, transparent)
   );
   border-radius: 999px;
   transform: translateX(-50%);
@@ -50,16 +50,17 @@
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
   background:
-    linear-gradient(135deg, rgba(46, 91, 255, 0.18), rgba(84, 213, 255, 0.08)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 18%, transparent),
+      color-mix(in srgb, var(--text) 8%, transparent)
+    ),
     rgba(11, 14, 20, 0.92);
-  border: 1px solid rgba(84, 213, 255, 0.38);
+  border: 1px solid color-mix(in srgb, var(--text) 38%, transparent);
   border-radius: var(--radius-md);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 18px 40px rgba(0, 0, 0, 0.2);
 }
 
 .about-journey__badge--end {
@@ -98,11 +99,8 @@
   width: 1.05rem;
   height: 1.05rem;
   background: var(--surface-lowest);
-  border: 2px solid rgba(84, 213, 255, 0.76);
+  border: 2px solid color-mix(in srgb, var(--text) 76%, transparent);
   border-radius: 999px;
-  box-shadow:
-    0 0 0 0.3rem rgba(46, 91, 255, 0.12),
-    inset 0 0 0 0.18rem rgba(84, 213, 255, 0.16);
 }
 
 .about-journey__item--dated .about-journey__node {
@@ -120,17 +118,18 @@
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
   text-align: center;
   background:
-    linear-gradient(135deg, rgba(46, 91, 255, 0.16), rgba(84, 213, 255, 0.07)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 16%, transparent),
+      color-mix(in srgb, var(--text) 7%, transparent)
+    ),
     rgba(11, 14, 20, 0.94);
-  border: 1px solid rgba(84, 213, 255, 0.32);
+  border: 1px solid color-mix(in srgb, var(--text) 32%, transparent);
   border-radius: var(--radius-sm);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 12px 28px rgba(0, 0, 0, 0.16);
 }
 
 .about-journey__branch {
@@ -138,8 +137,8 @@
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(84, 213, 255, 0.05),
-    rgba(84, 213, 255, 0.58)
+    color-mix(in srgb, var(--text) 5%, transparent),
+    color-mix(in srgb, var(--text) 58%, transparent)
   );
 }
 
@@ -155,8 +154,8 @@
   grid-column: 4;
   background: linear-gradient(
     90deg,
-    rgba(108, 4, 222, 0.58),
-    rgba(108, 4, 222, 0.05)
+    color-mix(in srgb, var(--text) 58%, transparent),
+    color-mix(in srgb, var(--text) 5%, transparent)
   );
 }
 
@@ -172,13 +171,14 @@
   text-align: left;
   cursor: pointer;
   background:
-    linear-gradient(135deg, rgba(84, 213, 255, 0.1), rgba(255, 255, 255, 0.02)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 10%, transparent),
+      rgba(255, 255, 255, 0.02)
+    ),
     rgba(11, 14, 20, 0.78);
-  border: 1px solid rgba(84, 213, 255, 0.24);
+  border: 1px solid color-mix(in srgb, var(--text) 24%, transparent);
   border-radius: var(--radius-lg);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 16px 42px rgba(0, 0, 0, 0.14);
   transition:
     border-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
     background 280ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -197,9 +197,13 @@
 .about-journey__item--right .about-journey__card {
   grid-column: 5;
   justify-self: start;
-  border-color: rgba(108, 4, 222, 0.28);
+  border-color: color-mix(in srgb, var(--text) 28%, transparent);
   background:
-    linear-gradient(135deg, rgba(108, 4, 222, 0.13), rgba(255, 255, 255, 0.02)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 13%, transparent),
+      rgba(255, 255, 255, 0.02)
+    ),
     rgba(11, 14, 20, 0.78);
 }
 
@@ -211,23 +215,31 @@
 .about-journey__card:hover,
 .about-journey__card:focus-visible,
 .about-journey__item--open .about-journey__card {
-  border-color: rgba(84, 213, 255, 0.5);
+  border-color: color-mix(in srgb, var(--text) 50%, transparent);
   background:
-    linear-gradient(135deg, rgba(84, 213, 255, 0.14), rgba(46, 91, 255, 0.05)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 14%, transparent),
+      color-mix(in srgb, var(--text) 5%, transparent)
+    ),
     rgba(11, 14, 20, 0.9);
 }
 
 .about-journey__item--right .about-journey__card:hover,
 .about-journey__item--right .about-journey__card:focus-visible,
 .about-journey__item--right.about-journey__item--open .about-journey__card {
-  border-color: rgba(180, 112, 255, 0.48);
+  border-color: color-mix(in srgb, var(--text) 48%, transparent);
   background:
-    linear-gradient(135deg, rgba(108, 4, 222, 0.18), rgba(84, 213, 255, 0.04)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 18%, transparent),
+      color-mix(in srgb, var(--text) 4%, transparent)
+    ),
     rgba(11, 14, 20, 0.9);
 }
 
 .about-journey__card:focus-visible {
-  outline: 2px solid rgba(84, 213, 255, 0.56);
+  outline: 2px solid color-mix(in srgb, var(--text) 56%, transparent);
   outline-offset: 0.2rem;
 }
 
@@ -239,16 +251,16 @@
   color: var(--tertiary);
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  font-weight: 700;
-  background: rgba(84, 213, 255, 0.08);
-  border: 1px solid rgba(84, 213, 255, 0.18);
+  font-weight: 500;
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
   border-radius: var(--radius-sm);
 }
 
 .about-journey__item--right .about-journey__index {
   color: var(--secondary);
-  background: rgba(108, 4, 222, 0.12);
-  border-color: rgba(108, 4, 222, 0.24);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+  border-color: color-mix(in srgb, var(--text) 24%, transparent);
 }
 
 .about-journey__icon-shell {
@@ -257,7 +269,7 @@
   width: 2.15rem;
   height: 2.15rem;
   color: var(--text);
-  border: 1px solid rgba(184, 195, 255, 0.16);
+  border: 1px solid color-mix(in srgb, var(--text) 16%, transparent);
   border-radius: var(--radius-md);
 }
 
@@ -294,7 +306,7 @@
   display: block;
   min-width: 12.5rem;
   font-size: 0.98rem;
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.2;
   white-space: normal;
 }
@@ -325,14 +337,11 @@
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(84, 213, 255, 0.26);
+  border: 1px solid color-mix(in srgb, var(--text) 26%, transparent);
   border-radius: var(--radius-md);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 14px 32px rgba(0, 0, 0, 0.14);
   transition:
     color 220ms ease,
     border-color 220ms ease,
@@ -343,13 +352,12 @@
 .about-journey__toggle:hover,
 .about-journey__toggle:focus-visible {
   color: var(--primary);
-  background: rgba(84, 213, 255, 0.08);
-  border-color: rgba(84, 213, 255, 0.5);
-  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  border-color: color-mix(in srgb, var(--text) 50%, transparent);
 }
 
 .about-journey__toggle:focus-visible {
-  outline: 2px solid rgba(84, 213, 255, 0.56);
+  outline: 2px solid color-mix(in srgb, var(--text) 56%, transparent);
   outline-offset: 0.2rem;
 }
 
@@ -368,30 +376,32 @@
 :root[data-theme="light"] .about-journey__card,
 :root[data-theme="light"] .about-journey__toggle {
   background:
-    linear-gradient(135deg, rgba(51, 93, 255, 0.1), rgba(0, 127, 184, 0.04)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 10%, transparent),
+      color-mix(in srgb, var(--text) 4%, transparent)
+    ),
     rgba(255, 255, 255, 0.82);
-  border-color: rgba(0, 127, 184, 0.2);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.86),
-    0 16px 36px rgba(37, 49, 67, 0.1);
+  border-color: color-mix(in srgb, var(--text) 20%, transparent);
 }
 
 :root[data-theme="light"] .about-journey__toggle:hover,
 :root[data-theme="light"] .about-journey__toggle:focus-visible {
   background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(0, 127, 184, 0.42);
+  border-color: color-mix(in srgb, var(--text) 42%, transparent);
 }
 
 :root[data-theme="light"] .about-journey__item--right .about-journey__card {
   background:
-    linear-gradient(135deg, rgba(122, 56, 216, 0.1), rgba(0, 127, 184, 0.03)),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--text) 10%, transparent),
+      color-mix(in srgb, var(--text) 3%, transparent)
+    ),
     rgba(255, 255, 255, 0.82);
-  border-color: rgba(122, 56, 216, 0.2);
+  border-color: color-mix(in srgb, var(--text) 20%, transparent);
 }
 
 :root[data-theme="light"] .about-journey__node {
   background: var(--surface);
-  box-shadow:
-    0 0 0 0.3rem rgba(51, 93, 255, 0.08),
-    inset 0 0 0 0.18rem rgba(0, 127, 184, 0.1);
 }

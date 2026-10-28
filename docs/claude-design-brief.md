@@ -63,6 +63,14 @@ avant son implémentation.
 
 ## Garde-fous éditoriaux et techniques
 
+- Appliquer les garde-fous anti « vibecode slop » d'Allen (28 octobre 2026),
+  détaillés dans [DESIGN.md, section R1](../DESIGN.md#r1-garde-fous-anti--vibecode-slop-) :
+  pas d'icônes Lucide, d'emojis, de liquid glass, de tirets cadratins, de polices
+  Inter/Geist/Space Grotesk, de bento grids, de fenêtres de terminal, de violet
+  ou néon, d'orbes radiaux, de dot grids, d'icônes étincelles, de flèches animées
+  ni d'animations au survol. Ils priment sur les maquettes Stitch.
+- Phase 1 = refonte visuelle seule : contenu actuel conservé et adapté, aucune
+  section ni contenu nouveau (décision d'Allen du 28 octobre 2026).
 - Ne pas inventer de clients, témoignages, revenus, gains, délais ou tarifs.
 - Qualifier personnel/collaboratif, prototype/MVP, rôle et preuve pour chaque cas.
 - Préférer captures authentiques et légendées ; distinguer illustrations et interfaces réelles.

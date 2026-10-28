@@ -10,8 +10,6 @@ html:root {
   transition-duration: 1ms;
 }
 
-.ambient,
-.hero::after,
 .hero__scroll,
 .reveal,
 .about-content h2,

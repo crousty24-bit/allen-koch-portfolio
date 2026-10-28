@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..700;1,400..700&display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
       media="(min-width: 761px)"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +20,16 @@
       name="description"
       content="Portfolio d'Allen Koch, développeur web en Alsace : produits web utiles, maintenables, solutions IA et workflows modernes avec React, Rails et TypeScript."
     />
-    <meta name="theme-color" content="#10131a" />
+    <meta
+      name="theme-color"
+      content="#f8f7f3"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171715"
+      media="(prefers-color-scheme: dark)"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Allen Koch" />
     <meta
@@ -71,12 +80,12 @@
     </script>
     <script>
       try {
-        if (window.localStorage.getItem('theme') === 'light') {
-          document.documentElement.dataset.theme = 'light'
-          document.documentElement.style.colorScheme = 'light'
+        if (window.localStorage.getItem('theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark'
+          document.documentElement.style.colorScheme = 'dark'
         }
       } catch {
-        // Keep the default dark theme when storage is unavailable.
+        // Keep the default light theme when storage is unavailable.
       }
     </script>
     <title>Allen Koch | Développeur Web | Alsace, France</title>

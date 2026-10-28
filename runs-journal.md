@@ -193,3 +193,63 @@ copier de secret, donnée client ou résultat supposé.
 - Relais : Claude compose une page unique ; RUN-011 fixe sections et ancres, puis
   RUN-012 les intègre. Le traitement du formulaire et la variante visuelle restent
   à décider dans leurs RUN respectifs.
+
+## RUN-006, itération 1, passe A : analyse Stitch et garde-fous (28 octobre 2026)
+
+- Branche : `feature/refonte_new_design`, révision `739d094` ; modifications
+  documentaires antérieures commitées, arbre propre au départ.
+- Mandat d'Allen : démarrer la phase 1, analyser workflow, documentation et les
+  quatre variantes Stitch ; refonte visuelle seule, contenu actuel conservé sans
+  nouvelle section ; ajouter les garde-fous anti « vibecode slop » ; tenir
+  DESIGN.md à jour par itération ; rendre un compte-rendu et un plan d'intégration
+  soumis à validation.
+- Statut : RUN-006 passé en `in_progress` ; passe A livrée au statut proposé.
+- Livrables : `DESIGN.md` partie R (journal d'itérations, garde-fous R1, analyse
+  des variantes, tokens, typographie, correspondance des sections, mouvement,
+  fichiers RUN-013, décisions attendues, limites) ; renvoi aux garde-fous dans
+  `docs/claude-design-brief.md`. Partie baseline 1.3.2 de DESIGN.md non modifiée.
+- Intervenant : Claude (Opus 5.5, main choisi par Allen). Pas de sous-agent :
+  l'analyse visuelle exigeait les captures dans le contexte principal ; un
+  transfert aurait dupliqué la lecture sans gain.
+- Contrôles : 24 tranches des captures examinées (outil Pillow dans un venv
+  temporaire hors dépôt) ; HTML exportés inspectés (polices Geist, Material
+  Symbols, Tailwind CDN, `backdrop-blur`) ; recherche d'emojis et de tirets
+  cadratins dans `src/` sans résultat ; contrastes WCAG calculés par script
+  (non mesurés dans un navigateur), dont un échec AA de la palette Stitch
+  (`#73716D` sur `#ECEAE4` = 4,05:1) corrigé dans la proposition.
+- Non exécutés : build/lint/Biome (aucun code modifié), navigateur, rendu React.
+- Relais : décisions d'Allen listées dans DESIGN.md R8, puis RUN-013 par lots.
+
+## RUN-006 clôture et RUN-013 lot 1 : fondations (28 octobre 2026)
+
+- Branche : `feature/refonte_new_design`, révision `739d094`, modifications de
+  l'itération 1 non commitées conservées.
+- Décisions d'Allen sur DESIGN.md R8 : synthèse recommandée, Schibsted Grotesk
+  et IBM Plex Mono (Space Mono ponctuelle), clair par défaut, captures en couleur,
+  suppression des particules, compteur conservé, survol sans mouvement.
+  RUN-006 passé `done` ; RUN-013 `in_progress`.
+- Analyse de `weihangli.dev` (inspiration des maquettes selon Allen) : captures
+  après défilement et CSS de production ; reprises et rejets dans DESIGN.md R10.
+- Lot 1 implémenté : `tokens.css` réécrit (clair par défaut, sombre via
+  `data-theme="dark"`, alias transitoires), polices dans `index.html`,
+  `theme-color` clair/sombre, script de thème inversé, `App.tsx` (particules et
+  défaut clair), suppression de `Particles`, `DecorativeErrorBoundary` et de la
+  dépendance `ogl` (`package.json`, lockfile), retrait des orbes, de la trame,
+  du halo About et du voile Contact, base/boutons/focus/eyebrow monochromes,
+  marges dans `responsive-1040/760.css`. Neutralisation mécanique dans le CSS des
+  sections : 133 couleurs chromatiques, 26 ombres, 11 transformations de survol.
+- Intervenant : Claude (Opus 5.5, main). Pas de sous-agent : le lot fixe les
+  modèles réutilisés ensuite, la délégation aurait coûté plus que l'exécution.
+- Contrôles : build, lint et tests (13/13) réussis ; `biome check` du code
+  réussi, `npm run biome:check` en échec sur les exports HTML Stitch de `docs/`
+  uniquement (antérieur au lot) ; captures 1440/390/320 px en clair et sombre sur
+  le build de production, polices chargées vérifiées, aucun débordement
+  horizontal à 320/390/768/1440 px. Outils de capture (`playwright-core`,
+  Pillow) installés dans le scratchpad, hors dépôt.
+- Une erreur de suppression dans `responsive-760.css` (fusion de deux règles)
+  a été détectée à la relecture et corrigée depuis la version commitée.
+- Non exécutés : audit npm, contraste mesuré par composant, zoom 200 %,
+  performance, revue indépendante. Aucun commit.
+- Relais : lot 2 (navbar, menu mobile, en-têtes de section, footer, retour en
+  haut). `AGENTS.md` décrit encore « dark theme by default » dans sa partie
+  baseline : alignement à faire par Codex ou sur mandat, fichier partagé.

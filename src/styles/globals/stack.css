@@ -40,13 +40,12 @@
 }
 
 .stack-card:hover {
-  border-color: rgba(184, 195, 255, 0.28);
+  border-color: color-mix(in srgb, var(--text) 28%, transparent);
   background: rgba(255, 255, 255, 0.055);
-  transform: translateY(-3px);
 }
 
 :root[data-theme="light"] .stack-card:hover {
-  border-color: rgba(51, 93, 255, 0.22);
+  border-color: color-mix(in srgb, var(--text) 22%, transparent);
   background: rgba(255, 255, 255, 0.88);
 }
 
@@ -57,7 +56,7 @@
   height: 2.75rem;
   margin-bottom: 1.1rem;
   border-radius: var(--radius-sm);
-  background: rgba(184, 195, 255, 0.16);
+  background: color-mix(in srgb, var(--text) 16%, transparent);
 }
 
 .stack-card__icon img {
@@ -67,11 +66,11 @@
 }
 
 .stack-card--secondary .stack-card__icon {
-  background: rgba(212, 187, 255, 0.17);
+  background: color-mix(in srgb, var(--text) 17%, transparent);
 }
 
 .stack-card--tertiary .stack-card__icon {
-  background: rgba(84, 213, 255, 0.16);
+  background: color-mix(in srgb, var(--text) 16%, transparent);
 }
 
 .stack-card--neutral .stack-card__icon {
@@ -148,7 +147,6 @@
     ),
     rgba(255, 255, 255, 0.065);
   color: var(--text);
-  transform: translateY(-1px);
 }
 
 .stack-badge img {

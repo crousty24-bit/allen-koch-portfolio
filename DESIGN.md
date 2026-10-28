@@ -1,33 +1,251 @@
 # Design Reference: Allen Koch Portfolio
 
-> Redesign direction — 2026-10-28: the four [imported Stitch variants](docs/maquettes_references/README.md)
-> and their [monochrome design system](docs/maquettes_references/minimalist-developer-portfolio-templates/DESIGN.md)
-> are the visual model to reproduce and adapt for the AI freelance redesign.
-> Claude owns the design adaptation; Allen has not selected a final variant.
-> Reconcile the references with real content, one-page anchor navigation, FR/EN,
-> both themes,
-> mobile layouts, accessibility and performance. This direction is not implemented.
-> The sections below describe the historical 1.3.2 baseline; known differences
-> from current code are recorded in the audit. They do not override the redesign.
+Ce document a deux parties :
 
-This document describes the final MVP implementation state of the portfolio and
-points to the current Stitch reference for the redesign.
+- **Partie R, refonte (RUN-006 / RUN-013)** : direction visuelle issue des
+  [quatre variantes Stitch](docs/maquettes_references/README.md) et de leur
+  [système monochrome](docs/maquettes_references/minimalist-developer-portfolio-templates/DESIGN.md).
+  Document de travail de Claude, mis à jour à chaque itération.
+- **Partie historique, baseline 1.3.2** (sections 1 à 18, en anglais) : état
+  livré avant la refonte. Elle ne contraint pas la refonte, sauf les exigences
+  de performance mobile et d'accessibilité qu'elle décrit.
 
-## Redesign reference — not yet implemented
+Statuts employés dans la partie R : **proposé** (non validé par Allen),
+**validé** (décision d'Allen datée), **implémenté** (présent dans le code),
+**contrôlé** (vérifié par une mesure ou une observation nommée).
 
-The imported Stitch project, **Minimalist Developer Portfolio templates**, contains
-four desktop variants (A–D) and the **Monochrome Editorial Portfolio** system.
-Use their typography, grids, spacing, surfaces, boundaries and warm monochrome
-palette as the starting visual language. The [reference index](docs/maquettes_references/README.md)
-links each PNG, HTML export and the exact source palette. Claude should compare
-the variants, recommend a coherent direction and document any necessary changes.
-No single variant or final layout has been approved yet.
+# Partie R : refonte visuelle
 
-The exports are design references, not production components or verified content.
-Extend the direction to mobile, FR/EN and dark/light states, with accessible focus,
-contrast and reduced motion. Anchor navigation, form processing and client claims
-remain governed by their dedicated RUNs. The current blue/cyan/violet palette,
-glass effects and layout described below belong to release 1.3.2.
+## R0. État et journal des itérations
+
+| Date | Itération | Contenu | Statut |
+| --- | --- | --- | --- |
+| 2026-10-28 | It. 1, RUN-006 passe A | Analyse des 4 variantes, garde-fous, synthèse, tokens et correspondance avec le contenu actuel | proposé |
+| 2026-10-28 | It. 2, arbitrage | Décisions d'Allen sur R8 ; analyse du site d'inspiration des maquettes (R10) | validé (R8), proposé (R10) |
+| 2026-10-28 | It. 3, RUN-013 lot 1 | Fondations : tokens clair/sombre, clair par défaut, polices, boutons, focus ; retrait particules, `ogl`, orbes, trame, flou, ombres, couleurs chromatiques et mouvements au survol | implémenté, contrôlé (voir R11) |
+
+Périmètre de la phase 1 fixé par Allen le 28 octobre 2026 : **refonte visuelle
+seule**. Le contenu actuel (sections, textes, projets, stack, parcours) est
+conservé tel quel et adapté au nouveau design. Aucune section ni aucun contenu
+nouveau : services, méthode, projets clients, formulaire et bloc de confiance
+attendent la phase 2. Les sections des maquettes sans équivalent actuel
+servent uniquement de référence de style.
+
+## R1. Garde-fous anti « vibecode slop »
+
+Règles demandées par Allen le 28 octobre 2026 (**validé**). Elles priment sur
+les maquettes Stitch lorsqu'elles les contredisent.
+
+| Interdit | Application concrète dans ce projet |
+| --- | --- |
+| Icônes Lucide | Ni Lucide ni jeu équivalent importé (Material Symbols des exports Stitch inclus). Quelques SVG inline dessinés pour le site, trait 1,5 px, extrémités carrées. Liens sociaux en texte. |
+| Emojis | Aucun emoji dans l'interface, les textes, les métadonnées ou les alt. |
+| Liquid glass | Aucun `backdrop-filter`, panneau translucide ou flou. En-tête et panneaux opaques, séparés par des filets. |
+| Tirets cadratins (—) | Aucun dans le texte affiché ni dans les métadonnées. Remplacer par `/`, `·`, `:` ou une virgule ; intervalles avec un trait d'union simple. |
+| Polices Inter, Geist, Space Grotesk | Retirées, y compris Geist prévue par le système Stitch et Inter/Geist de la baseline. Voir R4. |
+| Bento grids | Pas de mosaïque de tuiles inégales. Grilles à colonnes régulières, listes indexées, rangées. |
+| Fenêtres de terminal | Pas de faux terminal, de chrome de fenêtre, de bloc de code décoratif. Extension de Claude : pas non plus d'habillage pseudo-système des variantes C/D (`SYS_SPEC //`, coordonnées GPS, horloge en direct, crochets `[01]`). |
+| Violet, néon | Palette monochrome sans aucun accent chromatique, y compris les pastilles vertes « disponible » des variantes B/C/D. Pas de lueur. |
+| Orbes radiaux | Aucun dégradé radial ni halo (`ambient`, `about-visual__glow`, `contact-panel__overlay` de la baseline supprimés). |
+| Dot grids | Aucune trame de points ni quadrillage de fond (`hero__grid` de la baseline, quadrillage de la variante B). |
+| Icônes étincelles | Aucun symbole ✦ / sparkle pour signifier l'IA. |
+| Flèches animées | Aucune flèche qui glisse ou rebondit. Flèche statique ↗ tolérée pour un lien externe seulement. |
+| Animations au survol | Aucun mouvement au survol : ni translation, ni zoom, ni rotation, ni transition de filtre. Le survol change un état (inversion de tons, soulignement) de façon instantanée. Interprétation à confirmer par Allen. |
+
+Garde-fous complémentaires issus du système Stitch, conservés : rayon 0,
+aucune ombre portée (l'ombre des images de la variante D est retirée), aucun
+dégradé décoratif, aucune métrique, ville, date ou client inventé.
+
+## R2. Analyse des quatre variantes Stitch
+
+Les exports sont des écrans desktop en français, 1280 px CSS (captures 2560 px).
+Leur contenu est fictif : métriques (« 12+ années », « 99,8 % », « 40+ »,
+« < 45 ms », « +32 % conversion »), projets (Kontrol OS, Konsol Studio, Synapse
+Labs), ville (Paris), date de fondation (2018), portrait et email. Rien de ce
+contenu n'est repris.
+
+| Variante | Caractère | À retenir | À écarter |
+| --- | --- | --- | --- |
+| A, Indépendant | Clair, éditorial, chaleureux, casse de phrase, aéré | Rythme vertical, alternance de fonds (`#F8F7F3` / `#ECEAE4`) par section, en-têtes de section `01 / LIBELLÉ` avec filet, projets en rangées image 7 col / texte 5 col, accordéon en rangées, portrait N&B, contact en deux colonnes, pied de page sobre | Libellés mono rendus en serif (police non chargée), métriques fictives, en-tête flouté |
+| B, Immersive Premium | Version sombre de A, plus dense, tout en mono | Référence du thème sombre, rangée de chiffres clés sous le hero, cadres d'image à filet | Quadrillage de fond, pastilles vertes, stats inventées, surcharge de mono |
+| C, Structured Modernist | Clair, structuré par des filets partout, pseudo-technique | Grilles à cellules bordées (stack, chiffres clés), cartes à filets égaux | Barre système, coordonnées, horloge, `SEC_01 //`, crochets, CTA en `[ ]` |
+| D, Typographie expérimentale | Clair, échelle typographique extrême, italiques | Grand nom sur deux lignes, grands numéros gris, titres de projet avec italique | Ombres d'image, débordement du titre « CONSTRUISONS » sur le formulaire (défaut de la maquette), pseudo-technique |
+
+**Recommandation (proposé)** : une synthèse, avec **A comme base** de
+composition et de ton, **B comme référence du thème sombre**, les **cellules à
+filets de C** pour les grilles d'information (chiffres clés, stack, parcours)
+et l'**échelle de D** limitée au nom du hero. A parle le mieux aux TPE/PME
+comme aux équipes techniques : calme, lisible, sans jargon visuel. C et D
+apportent de la structure mais leur habillage pseudo-système tombe sous R1.
+
+## R3. Tokens proposés
+
+Palette Stitch reprise, avec deux corrections issues du calcul de contraste
+WCAG (formule de luminance relative, calcul hors navigateur, 28 octobre 2026) :
+
+- le gris secondaire clair `#73716D` donne 4,54:1 sur le fond mais **4,05:1 sur
+  la surface `#ECEAE4`**, sous le seuil AA de 4,5:1 : remplacé par `#66645F`
+  (5,51:1 sur fond, 4,91:1 sur surface) ;
+- les filets Stitch (1,24:1 clair, 1,36:1 sombre) conviennent aux séparateurs
+  décoratifs, pas aux bordures de champs et de contrôles qui exigent 3:1 :
+  ajout d'un token de contour de contrôle.
+
+| Token (nom actuel conservé) | Clair | Sombre | Usage |
+| --- | --- | --- | --- |
+| `--background` | `#F8F7F3` | `#171715` | Fond de page |
+| `--surface` | `#ECEAE4` | `#232320` | Sections alternées, tags, panneaux |
+| `--outline` | `#E2DFD7` | `#31302C` | Filets décoratifs uniquement |
+| `--outline-strong` (nouveau) | `#85827A` (3,58 / 3,19:1) | `#76736C` (3,79 / 3,33:1) | Bordures de boutons secondaires, futurs champs |
+| `--text` | `#191919` (16,4:1) | `#F5F2EB` (16,06:1) | Texte principal, boutons pleins |
+| `--text-muted` | `#66645F` | `#A5A29A` (7,04 / 6,18:1) | Texte secondaire, légendes |
+| Focus | `--text`, contour 2 px, décalage 3 px | idem | Tous les éléments interactifs |
+
+Les ratios entre parenthèses portent sur fond puis surface. Ils restent à
+contrôler dans le navigateur une fois implémentés. Tokens supprimés :
+`--primary*`, `--secondary*`, `--tertiary`, `--chip-accent-*`, `--radius-*`
+(remplacés par 0) et les variantes de surface inutilisées.
+
+Grille : conteneur maximal 1440 px, marges 3,5 rem desktop et 1,25 rem mobile,
+12 colonnes desktop, 6 tablette, 1 mobile. Points de rupture existants
+conservés (1040, 760 et 430 px) pour limiter la reprise du CSS. Rythme
+vertical : 7 rem entre sections desktop, 4 rem mobile.
+
+## R4. Typographie proposée
+
+Geist (système Stitch) et Inter (baseline) étant interdits, il faut un
+remplaçant du même registre : grotesque neutre, chasse normale, italique
+disponible (titres de la variante D), poids 400 à 600, chargé depuis Google
+Fonts comme aujourd'hui (aucune dépendance npm).
+
+| Rôle | Candidat recommandé | Alternative | Motif |
+| --- | --- | --- | --- |
+| Titres et texte | **Schibsted Grotesk** | Hanken Grotesk | Grotesque conçue pour un groupe de presse, cohérente avec le registre éditorial ; Hanken est la plus proche de Geist |
+| Libellés, index, tags | **IBM Plex Mono** | Space Mono (police Stitch, autorisée) | Plex reste lisible en capitales à 11 et 12 px ; Space Mono est plus fidèle mais très large |
+
+Échelle reprise de Stitch : nom du hero `clamp(3rem, 9vw, 8.5rem)`, interligne
+0,95, approche −0,04 em, en capitales ; titres de section 3,5 rem (2,25 rem
+mobile) ; corps 1 à 1,125 rem, interligne 1,6 ; libellés mono 0,75 rem en
+capitales, approche 0,06 em. Le `clamp` à bornes en rem remplace la règle
+« pas de taille indexée sur la largeur » de la baseline pour ce seul titre.
+Chargement mobile allégé conservé : la mono n'est chargée qu'au-delà de 760 px,
+repli `ui-monospace` en dessous.
+
+## R5. Correspondance contenu actuel et composition
+
+Ordre et ancres inchangés : `#home`, `#projects`, `#stack`, `#about`, `#contact`.
+Chaque section reçoit un en-tête `0N / Eyebrow actuel` suivi d'un filet (A),
+sans libellé de droite inventé. Fonds alternés : Hero fond, Projets fond,
+Stack surface, About fond, Contact surface, pied de page fond.
+
+| Section actuelle | Composition desktop proposée | Mobile (≤ 760 px) |
+| --- | --- | --- |
+| Navbar | A : opaque, filet bas, logo + nom à gauche, liens au centre en casse de phrase, sélecteur FR/EN à deux segments (actif inversé), bouton thème. Plus de flou. | Bouton menu à deux traits ; panneau plein écran opaque, liens en 1,5 rem, contrôles en bas ; Échap et focus conservés |
+| Hero | Statut en mono capitales avec carré plein ; nom « Allen Koch » en très grand (premier segment du titre actuel, à découper dans `i18n`) ; « Développeur Web / Alsace, France » en sous-ligne grise ; titre et sous-titre actuels en colonne gauche ; CTA à droite (plein « Voir les projets », secondaire à filet « Me contacter ») ; liens sociaux en texte mono ; 3 chiffres clés réels (profil, contributions GitHub, nombre de projets) en cellules à filets (C) ; indicateur de défilement statique | Nom sur deux lignes à 3 rem ; CTA pleine largeur empilés ; chiffres clés en une colonne |
+| Projets | En-tête « Portfolio », titre « Build & Learn » à gauche, texte à droite (A). 3 projets en rangées alternées image 7 col / texte 5 col : méta mono `01 / Statut`, titre, description, tags plats, liens texte GitHub et Voir ↗. Les 6 autres, après dépliage, en grille régulière à 2 colonnes. Bandeau « Une idée de projet ? » à filets avec bouton | Image puis texte ; grille dépliée en une colonne |
+| Stack | Rangées à filets : catégorie en mono à gauche, technologies en tags à droite (R10), sans logos. Arbre de compétences en rangées d'accordéon (A) : numéro mono, libellé, signe +/− | Catégorie au-dessus de ses tags ; accordéon pleine largeur |
+| About | A : portrait N&B 5 col avec légende formée des badges existants ; titre « Bonjour, moi c'est Allen. » en grand, paragraphes, liens sociaux texte. Accordéon en rangées. Parcours en liste ordonnée à filets : index, date, titre, description ; moitié visible puis dépliage | Portrait puis texte ; parcours sur une colonne |
+| Contact | A, colonne gauche : titre « Parlons de votre projet. » en grand, texte, email en grand lien souligné. La colonne droite reste vide en phase 1 et accueillera le formulaire en phase 2 | Empilé ; email cassable sans débordement à 320 px |
+| Footer | A : marque et copyright à gauche, liens sociaux texte à droite | Empilé, aligné à gauche |
+| Retour en haut | Carré 44 px, contour de contrôle, flèche statique | Identique |
+
+Éléments retirés de l'affichage, contenu préservé : particules WebGL (colorées,
+incompatibles avec la palette), logos Simple Icons de la stack, icônes du
+parcours, icônes des liens sociaux, effet machine à écrire du titre About.
+Les données correspondantes restent dans `src/data/`.
+
+## R6. Interactions et mouvement (proposé)
+
+Budget de mouvement volontairement faible, conforme à R1.
+
+| Élément | Comportement | `prefers-reduced-motion` |
+| --- | --- | --- |
+| Apparition des sections | Opacité 0 → 1 et translation 16 px, 600 ms, `cubic-bezier(0.16, 1, 0.3, 1)` (R10), une seule fois ; contenu visible si le script échoue | Aucune animation |
+| Accordéons, dépliage projets et parcours | Hauteur via `grid-template-rows` 0fr → 1fr, 220 ms ; signe +/− remplacé sans rotation | Instantané |
+| Survol | Inversion de tons ou soulignement, instantané | Identique |
+| Focus clavier | Contour 2 px couleur du texte, instantané | Identique |
+| Thème et langue | Changement instantané | Identique |
+| Menu mobile | Apparition en opacité 160 ms | Instantané |
+| Compteur des chiffres clés | Conservé (R8) | Valeur statique |
+
+## R7. Fichiers concernés par RUN-013
+
+À modifier : `tokens.css` (réécriture), `base.css`, `buttons.css`,
+`navigation.css`, `hero.css`, `projects.css`, `stack.css`, `skills-tree.css`,
+`about-*.css`, `contact-footer.css`, `back-to-top.css`, `section-headings.css`,
+`animations.css`, `reduced-motion.css`, `responsive-*.css`, `desktop-fonts.css` ;
+`index.html` (polices, `theme-color`) ; `App.tsx` (rendu des particules) ;
+`Navbar`, `Hero`, `StackSection`, `AboutSection`, `AboutJourney` (retraits
+d'icônes et d'effets, balisage du hero). Découpage du titre dans `i18n.ts`
+sans changement de texte. Aucun composant ni dépendance ajouté ; la suppression
+de la dépendance `ogl` est à valider séparément.
+
+## R8. Décisions d'Allen (validé le 28 octobre 2026)
+
+1. Synthèse retenue : A comme base, B pour le sombre, filets de C, nom à
+   l'échelle de D.
+2. Polices : Schibsted Grotesk et IBM Plex Mono. Space Mono reste possible pour
+   quelques éléments ponctuels, à désigner au cas par cas.
+3. Thème par défaut : clair. Le sombre reste disponible et mémorisé.
+4. Captures de projets : en couleur, fidèles aux vrais projets.
+5. Particules WebGL : supprimées, dépendance `ogl` comprise.
+6. Compteur animé des chiffres clés : conservé (valeur statique en
+   `prefers-reduced-motion`, comme aujourd'hui).
+7. Survol : changement d'état instantané, sans aucun mouvement.
+
+## R9. Limites de cette itération
+
+Analyse faite sur les captures PNG découpées et sur les HTML exportés ; aucun
+rendu React ni contrôle navigateur. Les contrastes sont calculés, pas mesurés
+sur la page. Aucune maquette mobile, anglaise ou sombre n'existe hormis la
+variante B (sombre, desktop) : ces états sont spécifiés ici, pas dessinés.
+
+## R10. Site d'inspiration des maquettes : weihangli.dev
+
+Allen indique que les maquettes Stitch s'inspirent de
+`https://www.weihangli.dev/`. Analyse du 28 octobre 2026 : captures pleine page
+à 1440 et 390 px après défilement (Chrome sans interface), CSS de production lu.
+Polices du site : Figtree et Geist Mono (non reprises). Courbe d'animation
+dominante `cubic-bezier(0.16, 1, 0.3, 1)`, durées de 200 à 700 ms. Coins arrondis
+et pilules partout.
+
+| Élément observé | Décision (proposé) |
+| --- | --- |
+| Nom en très grand sur toute la largeur du conteneur, graisse moyenne | **Repris** : nom du hero aligné sur la largeur du conteneur, graisse 500 au lieu de 400 (Stitch) pour plus de présence |
+| Grille asymétrique : libellé mono à gauche, contenu à partir de la 7e colonne | **Repris** pour les textes d'introduction de section et l'About |
+| Projets : grand numéro d'index (`01 / 04`) collant à gauche pendant que le visuel défile à droite | **Repris** pour les 3 projets mis en avant, en CSS `position: sticky`, desktop seulement ; numéro en ligne sur mobile |
+| Compétences : catégorie en mono à gauche, tags à droite, filets entre les rangées | **Repris** pour la Stack ; remplace les 4 colonnes de R5, mieux adapté aux listes longues et au mobile |
+| Sous-listes numérotées `01 02 03` en grand corps, séparées par des filets | **Repris** pour les enfants de l'arbre de compétences |
+| Pied de page : colonnes à libellé mono et filet, nom géant en bas | **Repris** sans contenu nouveau : colonnes Navigation et Liens à partir des liens existants, nom géant ; les deux intitulés de colonne sont de courts libellés d'interface, à confirmer |
+| Bloc contact inversé (texte clair sur fond sombre) dans une page claire | **À évaluer** au lot Contact comme point d'emphase final, à condition de rester lisible dans les deux thèmes |
+| Coins arrondis, boutons pilules, pastille verte « disponible », bouton rond | **Écarté** : rayon 0 et monochromie du système validé (R1, R3) |
+| Horloge locale, date du jour, sélecteur de 5 langues, copie de l'email | **Écarté** : contenu ou fonction nouveaux, et horloge exclue par R1 |
+| Captures incrustées sur des photos d'ambiance | **Écarté** : demanderait de nouveaux assets ; captures réelles conservées telles quelles |
+
+Le mouvement d'apparition reprend la courbe du site (déjà celle de la baseline),
+ramenée à 600 ms. Aucun mouvement lié au survol n'est repris.
+
+## R11. Contrôles du lot 1 (28 octobre 2026)
+
+- `npm run build`, `npm run lint`, `npm test` (13/13) : réussis.
+- `npm run biome:check` : échoue uniquement sur les exports HTML Stitch de
+  `docs/maquettes_references/` (commit `585acc6`, antérieur au lot) ;
+  `biome check src tests index.html` réussit.
+- Navigateur (build de production, Chrome sans interface) : thème clair par
+  défaut et sombre mémorisé rendus ; Schibsted Grotesk et IBM Plex Mono chargées
+  (desktop) ; texte principal calculé `#191919` sur `#F8F7F3` ; aucun débordement
+  horizontal à 320, 390, 768 et 1440 px.
+- État transitoire assumé jusqu'aux lots suivants : mises en page 1.3.2
+  conservées, logos de la stack en couleur, tags en pilule, portrait rond, fond
+  légèrement bleuté de la section Stack en clair, dégradés neutralisés mais
+  encore présents dans l'accordéon et le parcours.
+- Couleurs chromatiques des sections remplacées mécaniquement par la couleur du
+  texte à opacité égale (`color-mix`), ombres supprimées, `transform`/`filter`
+  retirés des règles `:hover`. Ces règles seront réécrites aux lots 2 à 7.
+- Non mesuré : contraste réel de chaque composant, zoom 200 %, performance.
+
+# Partie historique : baseline 1.3.2
+
+This part describes the final MVP implementation state of the portfolio.
 
 ## 1. Product State
 

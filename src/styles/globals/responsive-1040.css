@@ -1,3 +1,7 @@
+:root {
+  --gutter: 2rem;
+}
+
 html {
   scroll-padding-top: 10.5rem;
 }

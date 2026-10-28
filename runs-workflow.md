@@ -45,8 +45,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
-| RUN-006 | P1 | Refonte visuelle totale et maquettes one-page | Claude ; arbitrage Allen | RUN-010 | planned |
-| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | planned |
+| RUN-006 | P1 | Refonte visuelle totale et maquettes one-page | Claude ; arbitrage Allen | RUN-010 | done |
+| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | in_progress |
 
 ### Phase 2 — Contenus, sections et fonctionnalités
 

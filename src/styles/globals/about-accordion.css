@@ -1,11 +1,11 @@
 .about-accordion {
   width: min(100%, 72rem);
   margin-top: clamp(2.5rem, 7vw, 5rem);
-  border-top: 1px solid rgba(184, 195, 255, 0.16);
+  border-top: 1px solid color-mix(in srgb, var(--text) 16%, transparent);
 }
 
 .about-accordion__item {
-  border-bottom: 1px solid rgba(184, 195, 255, 0.16);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 16%, transparent);
 }
 
 .about-accordion__heading {
@@ -38,14 +38,14 @@
   color: var(--tertiary);
   background: linear-gradient(
     90deg,
-    rgba(46, 91, 255, 0.1),
-    rgba(84, 213, 255, 0.02) 48%,
+    color-mix(in srgb, var(--text) 10%, transparent),
+    color-mix(in srgb, var(--text) 2%, transparent) 48%,
     transparent 82%
   );
 }
 
 .about-accordion__trigger:focus-visible {
-  outline: 2px solid rgba(84, 213, 255, 0.56);
+  outline: 2px solid color-mix(in srgb, var(--text) 56%, transparent);
   outline-offset: 0.22rem;
 }
 
@@ -84,8 +84,8 @@
 :root[data-theme="light"] .about-accordion__trigger:focus-visible {
   background: linear-gradient(
     90deg,
-    rgba(51, 93, 255, 0.08),
-    rgba(0, 127, 184, 0.03) 52%,
+    color-mix(in srgb, var(--text) 8%, transparent),
+    color-mix(in srgb, var(--text) 3%, transparent) 52%,
     transparent 84%
   );
 }

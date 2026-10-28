@@ -12,7 +12,6 @@ export function ContactSection({ language }: ContactSectionProps) {
   return (
     <section className="section contact-section" id="contact">
       <div className="contact-panel reveal">
-        <div aria-hidden="true" className="contact-panel__overlay" />
         <div className="contact-panel__content">
           <p className="eyebrow">Contact</p>
           <h2>{contactCopy.heading}</h2>

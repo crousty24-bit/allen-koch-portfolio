@@ -158,10 +158,6 @@ export function Hero({ language }: HeroProps) {
 
   return (
     <section className="hero section" id="home">
-      <div aria-hidden="true" className="ambient ambient--primary" />
-      <div aria-hidden="true" className="ambient ambient--secondary" />
-      <div aria-hidden="true" className="hero__grid" />
-
       <div className="hero__content reveal">
         <div className="hero__intro">
           <h1 className="hero__title">{heroCopy.title}</h1>

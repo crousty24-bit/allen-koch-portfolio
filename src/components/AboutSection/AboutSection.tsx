@@ -59,7 +59,6 @@ export function AboutSection({ language }: AboutSectionProps) {
     >
       <div className="about-layout">
         <div className="about-visual reveal">
-          <div aria-hidden="true" className="about-visual__glow" />
           <figure className="portrait-card">
             <picture>
               <source

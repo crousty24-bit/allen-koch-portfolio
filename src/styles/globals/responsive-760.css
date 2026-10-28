@@ -1,27 +1,10 @@
+:root {
+  --gutter: 1.25rem;
+  --section-gap: 4rem;
+}
+
 html {
   scroll-padding-top: 6rem;
-}
-
-.site-header,
-.navbar__menu,
-.status-pill,
-.chip,
-.button--secondary,
-.icon-toggle,
-.hero__social-link,
-.hero__scroll,
-.projects-toggle,
-.back-to-top,
-.project-card,
-.stack-card,
-.portrait-card,
-.contact-panel {
-  backdrop-filter: none;
-}
-
-.ambient,
-.about-visual__glow {
-  display: none;
 }
 
 .site-header {
@@ -30,11 +13,6 @@ html {
 
 :root[data-theme="light"] .site-header {
   background: var(--surface);
-}
-
-.hero::after {
-  filter: none;
-  animation: none;
 }
 
 .hero__scroll,
@@ -88,9 +66,6 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   background: var(--surface-lowest);
-  box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .navbar--menu-open .navbar__menu {
@@ -101,9 +76,6 @@ html {
 :root[data-theme="light"] .navbar__menu {
   border-color: rgba(17, 24, 39, 0.1);
   background: var(--surface);
-  box-shadow:
-    0 18px 42px rgba(37, 49, 67, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
 .navbar__links {
@@ -281,9 +253,6 @@ html {
 .about-journey__node {
   width: 0.86rem;
   height: 0.86rem;
-  box-shadow:
-    0 0 0 0.22rem rgba(46, 91, 255, 0.12),
-    inset 0 0 0 0.12rem rgba(84, 213, 255, 0.16);
 }
 
 .about-journey__date {
