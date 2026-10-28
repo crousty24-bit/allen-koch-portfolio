@@ -1,10 +1,12 @@
 # Allen Koch - Portfolio Développeur
 
-> Refonte en préparation (27 octobre 2026) : positionnement développeur IA
-> freelance, design confié à Claude. Le site reste en 1.3.2. Voir le
-> [dossier d'audit et de refonte](docs/README.md), le [workflow](WORKFLOW.md)
-> et les [instructions Claude](CLAUDE.md). Les résultats de vérification ci-dessous
-> décrivent la release historique ; l'audit daté présente l'état contrôlé actuel.
+> Phase 1 de refonte visuelle clôturée le 28 octobre 2026 : RUN-006 et RUN-013
+> `done`, design Claude, audit et correctifs techniques Codex, validation Allen.
+> La baseline de production déclarée reste 1.3.2 ; aucune nouvelle release ni
+> publication n'est annoncée. Voir le [suivi](runs-workflow.md) et les
+> [preuves et limites](runs-journal.md). Les descriptions de release ci-dessous
+> restent celles de la baseline historique ; les fonctionnalités nouvelles sont
+> planifiées en phase 2.
 
 Périmètre de refonte désormais demandé : nouveau design complet sur une page avec ancres,
 formulaire contact/devis, services, projets personnels conservés, projets clients

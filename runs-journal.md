@@ -398,3 +398,39 @@ copier de secret, donnée client ou résultat supposé.
   nouveau Lighthouse (les deux changements ciblent le menu ouvert).
 - État : constats 1 et 2 corrigés localement ; RUN-013 reste en `verify` pour les
   validations restantes. Aucun commit, push ni déploiement.
+
+## RUN-013 clôture de la phase 1 (28 octobre 2026)
+
+- Mandat : Allen confirme avoir vérifié le menu mobile, les accordéons, le
+  dépliage des projets et de la timeline, valide le point 1 de l'audit de clôture,
+  puis demande les corrections documentaires 2 et 3. Validation humaine reçue
+  dans cette conversation ; navigateur, matériel et lecteur d'écran non précisés.
+  Cette acceptation est attribuée à Allen, sans inventer un essai par Codex.
+- État : RUN-006 reste `done` pour le périmètre visuel de phase 1 arbitré par Allen ;
+  RUN-013 passe de `verify` à `done`. Aucun RUN de phase 2 lancé automatiquement.
+- Preuves techniques de la passe C Codex : Chrome 156 avec interface, 24 états
+  largeur/langue/thème sans débordement horizontal ni erreur console ; réduction
+  des animations et contrastes contrôlés dans les états examinés. Lighthouse
+  13.4.1 sur build production local : performance 99 mobile / 100 desktop,
+  accessibilité, bonnes pratiques et SEO 100 pour les deux profils. Mesures de
+  laboratoire du 28 octobre, pas des métriques terrain ni une conformité complète.
+- [Rapport et preuves de l'audit initial](/mnt/c/Users/allen/.codex/visualizations/2026/10/28/01a18329-02d8-7f22-9277-e1d837bac67c/RUN-013-audit/report.md).
+  Le rapport conserve les constats avant correction ; ses deux défauts de menu
+  ont ensuite été corrigés dans `346d204` et vérifiés dans 16 cas mobiles et sur
+  desktop. Build, lint, 13 tests et Biome applicatif repassés lors de l'audit de
+  clôture ; Biome global reste en échec sur les quatre HTML Stitch.
+- Correction 2 : suppression de la dépendance circulaire implicite. RUN-013
+  constate le report d'A04 ; RUN-003 porte sa résolution après RUN-013 et RUN-007
+  vérifiera son intégration. A04 est toujours reproduit à 1440 × 500 sur Projets.
+- Correction 3 : suivi, brief, index documentaire, brief Claude et entrée README
+  alignés sur la phase 1 terminée ; complément R19 à DESIGN. Les références
+  historiques et la baseline de production 1.3.2 restent distinguées du code local.
+- Intervenant : Codex main, relecture documentaire par l'auteur, sans sous-agent
+  pour cette mise à jour bornée. Aucun code, dépendance ou contrat exécutable modifié.
+- Vérification de ce lot : diff, cohérence des statuts et des renvois, existence des
+  liens locaux ajoutés. Pas de nouvelle exécution build/lint/tests/Lighthouse pour
+  ces seules corrections Markdown, conformément à docs/tooling.md.
+- Limites conservées : pas de lecteur d'écran exécuté par Codex, de téléphone
+  physique ni de zoom navigateur réel contrôlés par Codex. Les résultats humains
+  acceptés ci-dessus n'ajoutent pas de détails techniques absents du message d'Allen.
+- Clôture locale uniquement : aucun commit, push, déploiement ou nouvelle release.

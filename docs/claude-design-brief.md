@@ -1,6 +1,14 @@
 # Brief design pour Claude
 
-## Mission
+## État et portée
+
+Phase 1 clôturée le 28 octobre 2026 : RUN-006 et RUN-013 `done`. Allen a retenu
+la synthèse et les choix de DESIGN.md R8 ; les huit lots et leurs contrôles sont
+documentés en R11 à R19 et dans le journal. Le brief initial ci-dessous conserve
+la cible complète ; ses services, projets clients et formulaire relèvent de la
+phase 2, sans remettre en attente la direction déjà validée.
+
+## Mission initiale
 
 Concevoir la refonte visuelle globale et totale du portfolio Allen Koch vers une activité de développeur IA
 freelance. Claude porte le design ; Codex porte l'audit, la cohérence technique et
@@ -21,8 +29,7 @@ d'outils/workflows agents, mais aussi de sites et applications web modernes.
   Stitch ; les écarts relevés dans l'audit priment sur ses descriptions de la
   version 1.3.2 non conformes au code.
 - [Quatre variantes Stitch importées](maquettes_references/README.md) et leur
-  système monochrome : base visuelle à reproduire et à adapter, sans variante
-  finale encore choisie par Allen.
+  système monochrome : base de la synthèse retenue par Allen (DESIGN.md R8).
 - `src/styles/globals/tokens.css` : couleurs et polices disponibles.
 - [Première proposition](references/claude-design-proposal.md) : contribution
   de Claude Code obtenue le 27 octobre 2026, non validée, sans vue du navigateur.
@@ -40,7 +47,7 @@ FR/EN, sombre/clair, clavier et réduction des animations doivent être couverts
 Pas de WebGL sur mobile. Les choix desktop peuvent évoluer dans la refonte, mais
 doivent être présentés et vérifiés distinctement des choix mobile.
 
-## Livrables demandés pour la prochaine étape
+## Livrables du cadrage initial (phase 1 et cible de phase 2)
 
 1. Une synthèse argumentée des quatre variantes Stitch : choix de composition,
    grille, densité, typographie, palette monochrome, projets, iconographie et

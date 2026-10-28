@@ -46,7 +46,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
 | RUN-006 | P1 | Refonte visuelle totale et maquettes one-page | Claude ; arbitrage Allen | RUN-010 | done |
-| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | verify |
+| RUN-013 | P1 | Nouveau système visuel, animations et transitions | Claude ; Codex performance/QA | RUN-006 | done |
 
 ### Phase 2 — Contenus, sections et fonctionnalités
 
@@ -106,6 +106,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : section invisible, régression clavier/ancres ou effets mobile/desktop.
 - Acceptation : reproduction avant/après à 1440 × 300 et 1440 × 900 px ; mobile,
   reduced-motion, ancres/clavier et contrôles applicatifs vérifiés.
+- Dette reportée de RUN-013 : A04 reste reproduit sur Projets à 1440 × 500 px.
+  Sa résolution relève de ce RUN ; RUN-007 en vérifiera l'intégration avant release.
 - Relais : Frontend → Test/QA → Codex avec preuve navigateur et limites.
 
 ## RUN-004 — TypeScript strict
@@ -126,6 +128,11 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Relais : brief design avec décisions acquises et inconnues restantes.
 
 ## RUN-006 — Refonte visuelle totale confiée à Claude
+
+- Périmètre de clôture : phase 1 limitée par Allen le 28 octobre 2026 au design
+  du contenu existant. Synthèse Stitch arbitrée dans DESIGN.md R8 ; RUN `done`.
+  Les sections services/clients/confiance et le formulaire des passes initiales
+  ci-dessous restent en phase 2 ; leur absence ne rouvre pas RUN-006.
 
 - Passe A : comparer les [quatre références Stitch](docs/maquettes_references/README.md),
   reproduire leur langage visuel monochrome et proposer les adaptations de palette,
@@ -237,12 +244,21 @@ Le formulaire reste une maquette sans envoi à ce stade.
   débordements et coût réel du mouvement sur build production ; ajuster avec Claude.
 - Risques : lourdeur décorative, blocage du contenu, régression accessibilité/mobile.
 - Acceptation : fidélité au design arbitré, états accessibles et mesures consignées ;
-  dépendances éventuelles validées. Vérifier la résolution d'A04 avec RUN-003.
-- État au 28 octobre 2026 : passes A et B livrées par Claude en 8 lots (lots 1 à 7
-  commités de `f49f71c` à `91256b9`), détail dans DESIGN.md R11 à R18. RUN en
-  `verify` : passe C en attente de Codex.
+  dépendances éventuelles validées. A04 est constaté et reporté explicitement à
+  RUN-003, dont la résolution sera vérifiée dans RUN-007. RUN-003 peut ainsi
+  démarrer après RUN-013 ; sa résolution n'est pas un préalable à cette clôture.
+- État au 28 octobre 2026 : huit lots Claude commités de `f49f71c` à `95969f2`,
+  audit Codex réalisé, correctifs du menu commités dans `346d204` et vérifiés.
+  Allen valide le point 1 de l'audit après contrôle du menu mobile, des accordéons,
+  du dépliage des projets et de la timeline. RUN passé `done` ; preuves et limites
+  dans [le journal](runs-journal.md#run-013-clôture-de-la-phase-1-28-octobre-2026).
+  Cette clôture ne vaut ni release ni déploiement et ne lance aucun RUN suivant.
 
-### Relais passe C — Claude → Codex (préparé, non transmis)
+### Relais passe C — Claude → Codex (contrat historique, exécuté)
+
+Le contrat ci-dessous est conservé dans sa rédaction initiale. Allen l'a transmis
+à Codex ; le retour, les correctifs et la validation de clôture sont consignés
+au journal. Les inconnues qu'il énumère décrivent le départ de la passe C.
 
 ```text
 RUN et sous-tâche : RUN-013 passe C, contrôle performance/QA de la refonte visuelle.

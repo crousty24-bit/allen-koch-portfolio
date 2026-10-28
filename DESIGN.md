@@ -837,3 +837,17 @@ Constats non corrigés, signalés :
 Non mesurés : navigateur réel avec interface, densité 2 en dehors du zoom,
 réseau ralenti, Lighthouse, lecteur d'écran. Ces contrôles relèvent de la passe C
 confiée à Codex (relais préparé dans `runs-workflow.md`, RUN-013).
+
+
+## R19. Clôture de la phase 1 (28 octobre 2026)
+
+RUN-006 et RUN-013 sont `done`. Les contrôles R11 à R18 restent les preuves
+historiques de Claude, complétées par l'audit Codex, les correctifs de menu
+`346d204` et la validation d'Allen. Le point 1 de l'audit est accepté par Allen
+après vérification du menu mobile, des accordéons, des projets et de la timeline ;
+le navigateur et l'outil d'assistance employés ne sont pas précisés.
+
+Le [journal de clôture](runs-journal.md#run-013-clôture-de-la-phase-1-28-octobre-2026)
+consigne les mesures et leurs limites. A04 reste à corriger en RUN-003, puis à
+revérifier en RUN-007 ; les erreurs Biome des exports Stitch restent signalées.
+La clôture de l'habillage visuel ne vaut pas validation de release ou déploiement.
