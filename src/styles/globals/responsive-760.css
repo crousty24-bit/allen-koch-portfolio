@@ -164,10 +164,6 @@ html {
   min-height: 3.15rem;
 }
 
-.section-heading--center {
-  text-align: left;
-}
-
 .hero {
   padding-top: calc(4rem + 3rem);
 }

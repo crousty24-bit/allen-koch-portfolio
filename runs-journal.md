@@ -1527,3 +1527,64 @@ copier de secret, donnée client ou résultat supposé.
   indique ne pas l’avoir écrit. Il a été préservé et n’est pas attribué à cette
   passe. Pas de revue indépendante, Safari/Firefox, téléphone réel ou validation
   visuelle d’Allen. RUN-022 reste actif ; aucun commit, push ou déploiement.
+
+
+## Corrections post-audit RUN-022/023 (29 octobre 2026)
+
+- Mandat direct d'Allen : appliquer les constats 1 à 5 de l'audit de la branche
+  `feature/refonte-integration-visuelle` à `9015fff`. Skills Ponytail Audit pour
+  le diagnostic précédent, puis Ponytail full pour cette implémentation.
+  Périmètre borné : tests des sections/index/timeline, alignement du suivi et
+  suppression de deux règles CSS mortes. Aucun autre RUN exécuté.
+- Contrats préservés : composants et effets existants, données FR/EN, thèmes,
+  accessibilité, dépendances et lockfile. Les seules modifications de styles
+  retirent `.section-heading--center` et sa surcharge mobile, sans usage confirmé
+  après recherche globale (neuf lignes non vides, onze avec séparateurs).
+  Aucun changement visuel attendu sur desktop ou mobile.
+- Main Codex : ajout de `tests/browser/scroll-interactions.mjs` et de son petit
+  adaptateur Chrome, commande `npm run test:browser`, raccordement à Quality après
+  le build et documentation dans `docs/testing.md`. Node 24, `node:test`, WebSocket
+  natif et le Chrome installé suffisent ; aucune dépendance ajoutée, aucun paquet
+  téléchargé. `CHROME_BIN` peut nommer l'exécutable ; son absence provoque un échec.
+- Douze tests navigateur sur build production : pile réversible à 390/1440 px
+  (opacité, recul, épinglage et pointeurs), ancres du menu, recalcul après
+  dépliage/repli, mouvement réduit au chargement et en session, repli sans
+  ResizeObserver. Index aux seuils 760/761 et 1040/1041, plus 1440 px : affichage
+  individuel/partagé, taille, 01→02→03→01, translation calculée, position sticky,
+  absence de chevauchement/débordement et reduced-motion. Timeline mobile/desktop :
+  masque lié au mouvement, clics rapprochés, retour, retrait du masque et variable
+  à l'arrêt, clavier et réduction du mouvement. Erreurs JavaScript surveillées.
+- Délégation bornée selon `docs/custom-agents.md` : sous-agent effectivement appelé
+  `align_docs_cleanup`, modèle `gpt-6-luna`, effort medium, rôle Code Engineer.
+  Propriété exclusive initiale : DESIGN.md, runs-workflow.md et les deux CSS ;
+  gain attendu : traiter en parallèle un lot documentaire/mécanique indépendant.
+  Retour intégré et diff relu par le main. Le même agent a ensuite relu en lecture
+  seule les nouveaux tests, l'adaptateur et leur raccordement : aucun défaut
+  actionnable remonté ; limite tactile signalée. Cette revue des tests est
+  indépendante de leur auteur ; la documentation n'a pas de revue indépendante
+  revendiquée. Main : précision du suivi/brief et consignation des vérifications.
+- RUN-022 et RUN-023 sont `done` sur confirmation d'Allen dans sa demande ;
+  descriptions et compteur des cinq titres dans DESIGN alignés. RUN-008 reste
+  `planned` et sera repris sur une nouvelle branche ; aucun mandat de publication
+  ni validation finale de release déduit de cette clôture.
+- Incidents de vérification : premier lancement du nouvel adaptateur refusé par
+  CDP car la condition de chargement retournait un nœud DOM non sérialisable ;
+  correction vers un booléen. Une passe suivante a expiré sur une ancre mobile ;
+  l'attente vérifie maintenant une position stable pendant 100 ms au lieu d'un
+  seul échantillon transitoire. Suite complète puis trois répétitions ciblées
+  des ancres mobile/desktop réussies. Aucun correctif applicatif déduit de ces
+  incidents d'outillage.
+- Vérification de sensibilité : trois mutations temporaires du CSS dans `dist`
+  (fondu coupé, chiffres immobilisés, masque supprimé) ont chacune fait échouer
+  le scénario attendu. CSS restauré en `finally`, puis build régénéré ; aucune
+  mutation ni option de test supplémentaire conservée dans les sources.
+- Contrôles locaux : build, lint, Biome (76 fichiers), 55/55 tests Vitest,
+  12/12 tests navigateur, audit npm sans vulnérabilité et `git diff --check`
+  réussis. Node 24.22.1, npm 11.19.1, Chrome 156.0.8078.47 headless sous Linux.
+  Avertissement préexistant : import du fichier responsive-430.css vide.
+- Limites : exécution CI GitHub non déclenchée ; Chrome doit être présent sur
+  le runner. Tests navigateur en FR/clair, polices Google bloquées pour éviter
+  une dépendance réseau ; vues étroites sans émulation tactile. La matrice
+  FR/EN, clair/sombre de l'audit précédent complète ces tests, sans garantir
+  Safari/Firefox, lecteur d'écran, appareil physique ou fluidité GPU. Aucun
+  commit, push, déploiement ni nouvelle branche créé dans cette correction.

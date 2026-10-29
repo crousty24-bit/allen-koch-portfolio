@@ -616,8 +616,8 @@ Implémenté :
 - **Menu mobile** (≤ 760 px) : panneau opaque sur toute la hauteur, liens en
   1,5 rem séparés par des filets, contrôles en bas, apparition en opacité 160 ms ;
   Échap et retour du focus inchangés.
-- **Index de section** `01 / Portfolio`, `02 / Stack & skills`, `03 / About`,
-  `04 / Contact` par compteur CSS sur `.eyebrow--section`, suivi d'un filet.
+- **Index de section** `01 / Services`, `02 / Portfolio`, `03 / Stack & skills`,
+  `04 / About`, `05 / Contact` par compteur CSS sur `.section-title`, sans filet.
 - **Pied de page** : marque, colonnes « Navigation » et « Liens » / « Links »
   (libellés validés par Allen le 28 octobre 2026), nom géant décoratif masqué
   aux technologies d'assistance, mention légale en mono. Liens de navigation

@@ -13,6 +13,7 @@ Depuis RUN-020, `npm run test` exécute Vitest en environnement Node :
 | `globals-css.test.ts` | Invariants textuels du CSS et organisation responsive |
 | `content-contracts.test.ts` | Identités, textes bilingues non vides, images et srcset existants, liens et cache |
 | `render-contracts.test.ts` | Rendu React initial, ancres, IDs/ARIA, langues, variantes et liens des cartes |
+| `section-stack.test.ts` | Géométrie de l'épinglage, couverture et marge de lecture |
 | `update-hero-stats.test.ts` | Commande réelle copiée dans un dossier temporaire ; réseau simulé par préchargement Node |
 
 Les tests de statistiques n'utilisent pas de jeton réel et ne contactent pas GitHub.
@@ -26,9 +27,41 @@ DOM/JSX/Vite de `tsconfig.test.json` permettent de compiler les imports React ;
 ils ne créent pas un navigateur. Ces tests n'exécutent ni effets, ni événements,
 ni calcul de style. Les assertions de chaînes CSS ne valident pas le rendu visuel.
 
-La CI Quality exécute cette suite avec lint, Biome, build et audit. Aucun nouveau
-runner navigateur ou paquet n'est installé. Les scripts exploratoires locaux ne
-sont pas des prérequis de la CI.
+La CI Quality exécute cette suite avec lint, Biome, build et audit, puis les tests
+navigateur décrits ci-dessous. Les scripts exploratoires hors dépôt ne remplacent
+pas ces tests versionnés.
+
+## Tests navigateur versionnés — corrections post-audit RUN-022/023
+
+```bash
+npm run build
+npm run test:browser
+```
+
+Prérequis : Node 24 et Chrome installé, accessible par `google-chrome` ou par
+`CHROME_BIN` (chemin de l'exécutable). Aucun téléchargement automatique ni paquet
+npm supplémentaire. L'absence de Chrome fait échouer la commande ; aucun test
+n'est sauté silencieusement. La CI lance cette commande après le build.
+
+`tests/browser/scroll-interactions.mjs` utilise le runner natif `node:test` et
+`chrome.mjs` pilote Chrome via son protocole de débogage et WebSocket natif.
+Vite preview sert le build sur une adresse locale et un port libre. Les profils
+Chrome sont temporaires ; contextes, navigateur et serveur sont fermés en fin de test.
+
+| Parcours automatisé | Contrat vérifié |
+| --- | --- |
+| Sections à 390 et 1440 px | Fondu aller/retour, ancres du menu, recalcul après dépliage/repli des projets, désactivation dynamique en mouvement réduit |
+| Mouvement réduit au chargement et absence de `ResizeObserver` | Pas d'empilement ; contenu visible |
+| Index à 760, 761, 1040, 1041 et 1440 px | Index individuels/partagé selon largeur, `01 → 02 → 03 → 01`, déplacement visuel réel, position sticky, taille, absence de chevauchement et de débordement, transition désactivée en mouvement réduit |
+| Timeline à 390 et 1440 px | Masque pendant le mouvement, clics rapprochés, marche arrière, retrait du masque à l'arrêt, flèches clavier et mouvement réduit |
+
+Les attentes attendent un état observable avec délai maximal, sans durée fixe de
+défilement supposée. Les erreurs JavaScript non interceptées font échouer la suite.
+Les polices Google sont bloquées dans ces profils pour éviter une dépendance réseau ;
+les tests contrôlent les styles et la géométrie mesurée avec les polices de repli.
+Ils utilisent le thème clair et la langue FR par défaut. Les vues étroites testent
+les breakpoints CSS, pas les gestes tactiles ou les performances d'un téléphone.
+La matrice complète FR/EN, clair/sombre et les contrôles visuels restent nécessaires.
 
 ## Matrice navigateur sur le build de production
 
@@ -78,8 +111,9 @@ Tester les contrats introduits au moment de leur implémentation : absence de ca
 client publiable en RUN-015 ; validation, succès réel, erreur réseau, double envoi
 et conservation de saisie en RUN-017, selon le traitement choisi en RUN-016.
 Pas de nouvelles abstractions uniquement pour tester, de snapshots HTML complets,
-ou de pourcentage de couverture arbitraire. Une automatisation navigateur en CI
-reste une décision d'outillage distincte, avec mandat et dépendances explicites.
+ou de pourcentage de couverture arbitraire. L'automatisation ciblée en CI ci-dessus
+répond à la demande d'Allen d'appliquer les constats 1 à 3 de l'audit ; étendre ce
+périmètre ou ajouter une dépendance reste une décision distincte.
 
 
 ## Contrat RUN-011 pour les prochaines intégrations

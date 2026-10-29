@@ -7,13 +7,6 @@
   margin-bottom: 4rem;
 }
 
-.section-heading--center {
-  max-width: 760px;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-
 .section-title {
   font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 400;

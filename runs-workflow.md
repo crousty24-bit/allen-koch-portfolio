@@ -66,8 +66,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
 | RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | done |
 | RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | done |
-| RUN-022 | P2 | Passe visuelle 1 — transitions de sections au scroll | Claude UI ; Codex QA ; validation Allen | RUN-007 | in_progress |
-| RUN-023 | P2 | Passe structure — titres des sections et Hero | Claude UI ; Codex QA ; validation Allen | RUN-022 | planned |
+| RUN-022 | P2 | Passe visuelle 1 — transitions de sections au scroll | Claude UI ; Codex QA ; validation Allen | RUN-007 | done |
+| RUN-023 | P2 | Passe structure — titres des sections et Hero | Claude UI ; Codex QA ; validation Allen | RUN-022 | done |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -208,6 +208,9 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 ## RUN-008 — Validation et préparation de release
 
+- Décision d'Allen du 29 octobre, confirmée pendant l'audit de la branche :
+  reste `planned` et sera exécuté sur une nouvelle branche. Les corrections
+  post-audit de RUN-022/023 ne déclenchent pas RUN-008.
 - Passe A : build/lint/Biome/tests/audit et mesures de performance de la page sur
   build production ; mobile/desktop, langues/thèmes, clavier et reduced-motion.
 - Passe B : accès direct/rechargement aux ancres, navigation, métadonnées/canonical/sitemap,
@@ -518,18 +521,19 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - [Contrat Claude](docs/handoffs/run-022-claude-transitions-scroll.md) : référence
   vidéo analysée, cinq frontières, transition réversible avec recouvrement/fondu,
   lecture intégrale des sections longues, ancres/clavier/reduced-motion préservés.
-- État : contrat initial préparé par Codex ; implémentation des transitions de
-  sections présente dans `80272f7`. Le complément timeline a été implémenté par
-  Claude puis contrôlé par Codex ; validation visuelle d’Allen encore attendue.
-  RUN-022 reste le seul RUN actif.
-- Acceptation : implémentation, contrôles applicatifs/navigateur, vidéo de preuve,
-  intégration QA Codex et validation visuelle d’Allen. Aucun paquet ni publication.
+- Clôture le 29 octobre 2026 après implémentation des transitions de sections
+  (`80272f7`) et du complément timeline par Claude, QA Codex et confirmation
+  d'Allen dans sa demande de correction post-audit. Les contrôles
+  applicatifs/navigateur et la vidéo de preuve sont tracés
+  au journal. Aucun paquet ni publication ; la validation finale de release reste
+  réservée à RUN-008.
 - Les passes suivantes feront chacune l’objet d’un contrat sur instruction d’Allen ;
   aucun périmètre futur n’est déduit de cette première demande.
 - Complément explicitement demandé par Allen le 29 octobre : transition légère
   de la timeline About sur clic des flèches, fondu synchronisé au défilement réel
   et absent en mouvement réduit. [Contrat Claude](docs/handoffs/run-022-claude-timeline-transition.md)
-  borné à la piste About ; RUN-022 reste le seul actif jusqu’à QA et validation.
+  borné à la piste About ; son implémentation, sa QA Codex et la confirmation
+  d'Allen sont incluses dans cette clôture.
 
 
 ## RUN-023 — Passe structure : titres des sections et Hero
@@ -537,12 +541,12 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Mandat d’Allen du 29 octobre : committer le correctif de focus Codex, puis
   préparer la passe suivante selon la discipline du contrat Claude par passe.
 - Commit ciblé effectué : 17dfeb0, base.css et entrée de journal seulement.
-  Travaux RUN-022 de Claude préservés hors commit ; RUN-022 reste le seul actif.
+  Les changements RUN-022 de Claude étaient alors préservés hors commit.
 - [Contrat Claude](docs/handoffs/run-023-claude-hierarchie-titres-hero.md) : suppression
   des p.eyebrow, leurs libellés numérotés deviennent les H2 ; sous-titres About,
   parcours et Contact en H3, étapes en H4 ; Hero sans rôle répété sous le H1,
   métier en H2 et nouveau sous-titre commercial légèrement reformulé FR/EN.
-- Préparation documentaire terminée, implémentation planned pour Claude ; aucun
-  code de cette passe modifié par Codex. Exécution séquentielle après RUN-022.
-- Acceptation : hiérarchie/ARIA/ancres valides, responsive/thèmes/langues et
-  animations préservés, checks et navigateur, retour Claude, QA et validation Allen.
+- Clôture le 29 octobre 2026 après implémentation par Claude, QA Codex et
+  confirmation d'Allen. La hiérarchie des titres, ARIA et ancres ont été contrôlés ;
+  responsive, thèmes, langues et animations préservés selon les preuves du journal.
+  RUN-008 reste planifié pour la validation finale de release.

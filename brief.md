@@ -152,15 +152,16 @@ vers cette même adresse, mais aucun envoi n'est effectué maintenant. Le formul
 reste une évolution future, sans bloquer l'itération visuelle et son assemblage.
 RUN-021 est clôturé localement après correctifs et contrôles ; présentation
 About inchangée. Allen lance RUN-007 le 29 octobre sur la nouvelle branche
-`feature/refonte-integration-visuelle`, commune à RUN-008 et aux correctifs/RUN
-supplémentaires qu’il donnera. Le [contrat Claude](docs/handoffs/run-007-claude-coherence-visuelle.md)
+`feature/refonte-integration-visuelle`, pour RUN-007 et les correctifs/RUN
+supplémentaires demandés. Le [contrat Claude](docs/handoffs/run-007-claude-coherence-visuelle.md)
 a été exécuté : retour Claude reçu, correctifs arbitrés par Allen intégrés et
 RUN-007 clôturé localement. Intitulé principal FR « Développeur Fullstack & IA »,
 équivalent EN « Fullstack & AI Developer » dans Hero, profil et footer ; badges
 et libellés anglais conservés volontairement. About commence par le texte sous
 1040 px ; bouton retour déplacé dans la marge desktop seulement. Image sociale
-monochrome sous une nouvelle URL. RUN-008 reste planifié pour la validation finale ;
-aucune publication autorisée.
+monochrome sous une nouvelle URL. RUN-022/023 sont clôturés sur confirmation
+d'Allen ; RUN-008 reste planifié pour la validation finale sur une nouvelle
+branche, selon sa précision du 29 octobre. Aucune publication autorisée.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).
 

@@ -13,6 +13,7 @@
     "lint": "eslint .",
     "biome:check": "biome check .",
     "test": "vitest run",
+    "test:browser": "node --test tests/browser/scroll-interactions.mjs",
     "stats:update": "node scripts/update-hero-stats.mjs",
     "format": "biome format --write .",
     "preview": "vite preview"
