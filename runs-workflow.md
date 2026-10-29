@@ -518,12 +518,18 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - [Contrat Claude](docs/handoffs/run-022-claude-transitions-scroll.md) : référence
   vidéo analysée, cinq frontières, transition réversible avec recouvrement/fondu,
   lecture intégrale des sections longues, ancres/clavier/reduced-motion préservés.
-- État : analyse et contrat préparés par Codex, relais manuel par Allen ; aucune
-  implémentation ni contribution Claude reçue pour RUN-022. Seul RUN actif.
+- État : contrat initial préparé par Codex ; implémentation des transitions de
+  sections présente dans `80272f7`. Le complément timeline a été implémenté par
+  Claude puis contrôlé par Codex ; validation visuelle d’Allen encore attendue.
+  RUN-022 reste le seul RUN actif.
 - Acceptation : implémentation, contrôles applicatifs/navigateur, vidéo de preuve,
   intégration QA Codex et validation visuelle d’Allen. Aucun paquet ni publication.
 - Les passes suivantes feront chacune l’objet d’un contrat sur instruction d’Allen ;
   aucun périmètre futur n’est déduit de cette première demande.
+- Complément explicitement demandé par Allen le 29 octobre : transition légère
+  de la timeline About sur clic des flèches, fondu synchronisé au défilement réel
+  et absent en mouvement réduit. [Contrat Claude](docs/handoffs/run-022-claude-timeline-transition.md)
+  borné à la piste About ; RUN-022 reste le seul actif jusqu’à QA et validation.
 
 
 ## RUN-023 — Passe structure : titres des sections et Hero

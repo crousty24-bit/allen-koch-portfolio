@@ -66,6 +66,20 @@
   scrollbar-width: thin;
 }
 
+/* Arrow clicks only: steps fade at both edges while the track moves.
+   AboutJourney sets --journey-edge from the scroll speed and drops the mask at rest,
+   so it never clips the focus outline. */
+.about-journey__list[data-moving] {
+  --journey-fade: min(6rem, 25%);
+  mask-image: linear-gradient(
+    90deg,
+    rgb(0 0 0 / var(--journey-edge, 1)),
+    #000 var(--journey-fade),
+    #000 calc(100% - var(--journey-fade)),
+    rgb(0 0 0 / var(--journey-edge, 1))
+  );
+}
+
 .about-journey__item {
   position: relative;
   display: grid;

@@ -35,6 +35,11 @@ html:root,
   pointer-events: auto;
 }
 
+/* Preference switched during a click: no edge fade. */
+.about-journey__list[data-moving] {
+  mask-image: none;
+}
+
 .projects-features__track {
   transition: none;
 }

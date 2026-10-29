@@ -1493,3 +1493,37 @@ copier de secret, donnée client ou résultat supposé.
   Avertissement build préexistant sur responsive-430.css vide. Pas de revue
   indépendante, Safari/Firefox, appareil réel ou validation visuelle d’Allen.
   Aucun commit, push ou déploiement.
+
+
+## Liens X et complément timeline RUN-022 (29 octobre 2026)
+
+- Mandat d’Allen : retirer les liens vers son profil X/Twitter et ajouter, par
+  délégation à Claude, un léger fondu de sortie/entrée lors des clics sur les
+  flèches du parcours About, synchronisé avec le défilement horizontal.
+- Codex : retrait de l’entrée X du catalogue partagé (Hero, About, Footer) et
+  du `sameAs` JSON-LD ; AGENTS.md actualisé. Les balises `twitter:*` restent des
+  métadonnées d’aperçu sans lien vers le profil. Les exports Stitch de référence
+  ne sont pas le site publié et n’ont pas été altérés.
+- Contrat `docs/handoffs/run-022-claude-timeline-transition.md` transmis à Claude
+  Code (modèle effectif Opus 5.5, effort non communiqué), avec fichiers réservés.
+  Claude a écrit AboutJourney.tsx, about-journey.css, reduced-motion.css et son
+  rapport ; sa session non interactive a refusé les commandes de vérification,
+  donc elle n’a pas revendiqué de QA. Codex a repris les contrôles. Aucun test
+  unitaire ajouté : la nouvelle logique a été vérifiée par assertions navigateur
+  sur la position, le masque et l’arrêt, sans extraction artificielle d’un utilitaire.
+- Vérifications Codex après intégration : `npm run build`, `npm run lint`,
+  `npm run biome:check`, `npm run test` (55/55) et `git diff --check` réussis.
+  Aucun lien `x.com/crousty24` dans src, index.html ou dist. Chrome headless
+  sur preview production : 1440×900 FR/clair et 390×844 EN/sombre, clic suivant
+  puis précédent, opacité des bords variant pendant le mouvement (minimum mesuré
+  0,30 desktop et 0,366 mobile), masque retiré à l’arrêt, aucun pageerror ;
+  1440×900 EN/sombre reduced-motion sans masque. Clics rapides, alignement
+  `scroll-snap`, navigation clavier et bascule dynamique vers reduced-motion
+  vérifiés ; balayage tactile simulé à 390 px : défilement sans fondu.
+- Captures et scripts navigateur :
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a188b5-ddf9-7052-bf47-0ba3eeb66541/about-timeline-fade/`.
+  L’avertissement build préexistant concerne responsive-430.css vide. Un diff
+  mobile About dans responsive-760.css est apparu pendant la délégation ; Claude
+  indique ne pas l’avoir écrit. Il a été préservé et n’est pas attribué à cette
+  passe. Pas de revue indépendante, Safari/Firefox, téléphone réel ou validation
+  visuelle d’Allen. RUN-022 reste actif ; aucun commit, push ou déploiement.

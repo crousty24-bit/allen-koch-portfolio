@@ -16,11 +16,6 @@ export const links: LinkItem[] = [
     kind: 'social',
   },
   {
-    label: 'X',
-    href: 'https://x.com/crousty24',
-    kind: 'social',
-  },
-  {
     label: 'Email',
     href: 'mailto:allen.kch24@gmail.com',
     kind: 'email',

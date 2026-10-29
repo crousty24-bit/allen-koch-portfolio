@@ -8,6 +8,23 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
+.about-layout {
+  row-gap: 0;
+}
+
+.about-content {
+  display: contents;
+}
+
+.about-visual {
+  grid-row: 3;
+  margin: 1.5rem 0;
+}
+
+.about-badges {
+  margin-top: 0;
+}
+
 .about-content__subtitle {
   font-size: 1.75rem;
 }
