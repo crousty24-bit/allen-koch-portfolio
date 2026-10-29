@@ -149,7 +149,7 @@ describe('page render contracts', () => {
     const gameTitle = renderToStaticMarkup("Milady's Knight")
     expect(personal).not.toContain(gameTitle)
     expect(game).toContain(`<h4>${gameTitle}</h4>`)
-    expect(game).toContain('10 / Prototype')
+    expect(game).toContain('10 / en développement')
     expect(page).toContain(
       'aria-controls="projects-grid" aria-expanded="false"',
     )

@@ -210,16 +210,17 @@ export const projects: Project[] = [
     category: 'game-dev',
     title: "Milady's Knight",
     description: {
-      fr: "Prototype jouable d'action-platformer 2D en pixel art : un chevalier traverse un royaume en ruine, affronte des slimes corrompus et collecte l'or qui brisera le sceau.",
-      en: 'Playable pixel-art 2D action-platformer prototype: a knight crosses a ruined kingdom, fights corrupted slimes and collects the gold needed to break the seal.',
+      fr: "Milady's Knight est un action-platformer 2D en pixel-art Dark Fantasy, développé pour devenir une démo de dix niveaux conçus à la main. Le joueur incarne The Ashen Knight, traverse le royaume corrompu et rejoint Darkveil Dungeon pour vaincre Lupikal The Doombringer et libérer Princess Karla.",
+      en: "Milady's Knight is a Dark Fantasy pixel-art 2D action-platformer being developed as a ten-level, handcrafted demo. Players become The Ashen Knight, cross the corrupted kingdom and reach Darkveil Dungeon to defeat Lupikal The Doombringer and free Princess Karla.",
     },
     imageAlt: {
-      fr: "Scène pixel art de Milady's Knight montrant un chevalier dans les ruines face à des slimes corrompus.",
-      en: "Pixel-art scene from Milady's Knight showing a knight facing corrupted slimes in the ruins.",
+      fr: "Capture de Milady's Knight : The Ashen Knight affronte des squelettes dans Darkveil Dungeon.",
+      en: "Milady's Knight screenshot: The Ashen Knight faces skeletons in Darkveil Dungeon.",
     },
-    imageSrc: '/projects/miladys-knight.svg',
-    repositoryHref: 'https://github.com/crousty24-bit/Milady-s-Knight-godot',
-    stack: ['Godot', 'GDScript', 'GPT-6 Astra'],
-    status: { fr: 'Prototype', en: 'Prototype' },
+    imageSrc: '/projects/miladys-knight.png',
+    imageWebpSrcSet:
+      '/projects/generated/miladys-knight-384.webp 384w, /projects/generated/miladys-knight-768.webp 768w, /projects/generated/miladys-knight-960.webp 960w',
+    stack: ['Godot', 'GDScript', 'demo-beta'],
+    status: { fr: 'en développement', en: 'In development' },
   },
 ]

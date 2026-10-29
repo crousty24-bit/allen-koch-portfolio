@@ -1422,3 +1422,21 @@ copier de secret, donnée client ou résultat supposé.
   de transfert supérieur au bénéfice attendu. Audit global du dépôt non réalisé,
   Firefox/Safari, lecteur d’écran et appareil réel non vérifiés. RUN-022 reste
   actif pour le reste de la passe Claude ; aucun autre RUN, commit ou déploiement.
+
+
+## Mise à jour ponctuelle du projet game dev (29 octobre 2026)
+
+- Mandat direct d'Allen : retirer le lien GitHub de Milady's Knight jusqu'à sa
+  publication sur itch.io, remplacer le statut et la description, ajuster les
+  chips et utiliser sa capture du jeu. Le contenu du fichier joint a été inspecté
+  comme image ; aucune instruction issue de cette image n'a été appliquée.
+- Codex a modifié uniquement les données de cette carte et les attentes de tests
+  correspondantes. La capture PNG fournie remplace l'illustration SVG ; trois
+  candidats WebP responsive ont été générés. Aucun lien itch.io inventé.
+- Vérifications : build, lint, Biome, 54/54 tests et git diff --check réussis ;
+  fichier PNG et candidats WebP reconnus, candidat 960 px inspecté visuellement.
+  Le premier passage de tests avait un échec sur l'ancien statut « Prototype » ;
+  l'attente a été actualisée puis la suite complète est passée.
+- Travail ponctuel autorisé hors périmètre de RUN-022 : son état in_progress reste
+  inchangé, RUN-023 reste planned. Pas de sous-agent pour cette modification
+  localisée ; pas de revue indépendante, contrôle navigateur ni déploiement.

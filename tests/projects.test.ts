@@ -66,10 +66,10 @@ describe('projects data', () => {
 
     expect(miladysKnight).toMatchObject({
       category: 'game-dev',
-      repositoryHref: 'https://github.com/crousty24-bit/Milady-s-Knight-godot',
-      stack: ['Godot', 'GDScript', 'GPT-6 Astra'],
-      status: { fr: 'Prototype', en: 'Prototype' },
+      stack: ['Godot', 'GDScript', 'demo-beta'],
+      status: { fr: 'en développement', en: 'In development' },
     })
+    expect(miladysKnight?.repositoryHref).toBeUndefined()
     expect(projects.some((project) => project.title === 'HabitFlower')).toBe(
       false,
     )
