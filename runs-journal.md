@@ -943,3 +943,131 @@ copier de secret, donnée client ou résultat supposé.
 - Clôture locale : RUN-014 done après relecture, 43 liens documentaires locaux
   valides, nouveaux fichiers explicitement inspectés et diff sans erreur.
   Aucun RUN actif ; RUN-015 reste planifié, sans lancement automatique.
+
+
+## RUN-015 : projets personnels, clients et game dev (29 octobre 2026)
+
+- Mandat : Allen demande la suite après RUN-014. Départ propre à 71141dd sur
+  feature/run-005-offres-contenus. Seul RUN actif : in_progress puis verify.
+- Composition : Claude Code appelé avec alias sonnet, effort demandé medium,
+  outils désactivés, contrat visuel borné sans écriture ; sortie JSON confirme
+  claude-sonnet-5-5. Groupes empilés, h3 mono avec effectif, cartes h4, filets,
+  réutilisation des cartes/bouton. Codex main intègre et contrôle le résultat.
+- Migration : catégorie explicite sur les neuf projets, huit personnels et seul
+  Milady's Knight en game-dev. Assertion de comparaison à HEAD : tous les champs
+  préexistants identiques (textes, statuts, liens, assets, stack et ordre).
+  About FR/EN comparé textuellement à HEAD et intact, parcours sans diff.
+- Affichage : trois personnels feature, cinq supplémentaires dépliables ; jeu
+  compact toujours présent et unique, position globale 09. Les comptes de groupes
+  sont 08 et 01 ; Hero reste à neuf. Aucun onglet, filtre ni nouvelle ancre de menu.
+- Clients : catégorie discriminée avec nom, mission, rôle, livrables, accord de
+  publication et résultat facultatif. isProjectPublished partagé par section,
+  cartes et statistiques ; aucun groupe vide ni cas non approuvé affiché.
+  Le flag ne cache pas le contenu d'un bundle frontend : les données non
+  autorisées/confidentielles ne doivent pas entrer dans les sources publiques.
+  Aucun client ajouté en production. Contrat documenté dans le plan.
+- Tests : jeux de données/compteur ajustés, hiérarchie h3/h4, jeu isolé et absence
+  clients vérifiés ; fixtures clients avec/sans accord et avec/sans résultat,
+  présentes seulement dans les tests et retirées en finally. Pas de prop ou
+  mécanisme de production ajouté pour injecter les fixtures.
+- Vérifications finales : build/lint/Biome (71 fichiers), 46/46 tests et
+  git diff --check réussis. Avertissement CSS vide préexistant conservé.
+  Une ligne vide EOF lors du regroupement de la règle projects-toggle a été
+  corrigée ; regroupement CSS sans changement de comportement.
+- Navigateur : Chrome 156.0.8078.47 avec interface, profils isolés, build de
+  production, Playwright en cache. Seize variantes 320×740, 390×844, 768×1024,
+  1440×900, FR/EN, clair/sombre : accès direct/reload Projets, focus clavier,
+  personnels 3→8→3, total cartes DOM 4→9→4, unicité des neuf titres, jeu toujours
+  seul dans son groupe, compteurs, CTA Contact et retour Projets, absence de
+  débordement. Quatre cas 1440×300/667×375 avec/sans reduced-motion complètent
+  ces parcours ; aucune exception pageerror dans ces vingt cas applicatifs.
+- Huit fixtures visuelles client supplémentaires : 320/1440, FR/EN, clair/sombre.
+  ProjectCard rendu côté serveur par Vite en mode middleware, HTML écrit hors
+  dépôt puis injecté dans des documents navigateur isolés avec les styles livrés.
+  Les quatre faits client, libellés, titre et absence de débordement sont vérifiés.
+  Aucun fichier de fixture dans src, public ou dist. Captures mobile personnelles,
+  jeu desktop et client mobile sombre inspectées par le main.
+- Contributeurs : Claude pour spécification ; Codex main pour code, intégration,
+  tests/navigateur et docs ; review_run015, gpt-6-luna effort demandé medium,
+  revue indépendante en lecture seule du contrat partagé et migration. Bénéfice
+  attendu : second contrôle publication/comptage/appels. Aucun constat bloquant ;
+  21 tests ciblés réussis chez le relecteur, sans navigateur. Retour confronté
+  au diff et aux contrôles par le main, aucune économie de tokens mesurée.
+- Preuves hors dépôt : design-prompt.txt/design-result.json, baseline-projects.ts,
+  fixtures.mjs/client-fr.html/client-en.html, check.mjs/results.json et captures
+  dans /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run015/.
+  Results : 16 parcours production, 4 reduced-motion/fenêtre courte et 8 fixtures.
+- Limites : aucun cas client réel ni droit de publication validé dans ce RUN ;
+  pas de Safari/Firefox, téléphone physique, lecteur d'écran, Lighthouse ou audit
+  SEO/réseau. Pas d'audit npm pour ce lot sans dépendance ni release. Scripts
+  navigateur hors CI ; aucune nouvelle dépendance ni nouveau composant de base.
+  Aucun commit, push, déploiement ou autre RUN exécuté.
+
+- Clôture locale : RUN-015 done après contrôles, captures relues, 51 liens locaux
+  valides et diff sans erreur. Aucun RUN actif ; la suite prévue reste RUN-016.
+
+
+## RUN-016 : proposition de traitement contact/devis (29 octobre 2026)
+
+- Mandat : Allen demande la suite après RUN-015. Branche conservée,
+  feature/run-005-offres-contenus ; HEAD 71141dd, travaux RUN-015 encore non
+  commités au démarrage, tous préservés. RUN-015 est done ; seul RUN-016 actif,
+  transitions in_progress puis verify.
+- Sources locales : RUN/brief/plan, package, vercel.json, politique sécurité et
+  liens ; site statique React/Vite, aucune logique d'envoi/configuration choisie.
+  Email public existant allen.kch24@gmail.com, pas encore destinataire approuvé.
+  Configuration Vercel présente, sans audit de compte/plan/hébergement distant.
+- Recherche officielle datée du 29 octobre : tarifs/quotas Formspree, Workflow
+  (validation serveur sur tous les plans), limites de compte, AJAX/fetch, sécurité
+  et guide officiel Vercel ; Resend pricing pour comparaison. Le contrat inclut
+  les liens directs. Free Formspree est présenté pour tests/développement,
+  50 soumissions/mois, archive consultable 30 jours ; Personal mensuel 15 USD
+  ou 120 USD/an. Aucun plan de production supposé choisi ni coût engagé.
+- Recommandation de travail : essai Formspree et fetch natif, trois champs nom
+  facultatif/email/message, validation dans le service, statut d'envoi vérifié,
+  erreurs bilingues, saisie conservée et contact email maintenu. Endpoint minimal
+  avec Resend comparé mais non retenu par défaut car ajoute serveur/secrets/maintenance.
+- Données : prestataire et messagerie distincts, rétention technique non déduite
+  de l'archive visible. Formspree annonce AWS États-Unis ; conservation de la
+  messagerie à décider par Allen, pas de durée légale ni conformité inventée.
+  Captcha/AJAX et paramètres anti-abus devront être vérifiés dans le compte réel.
+- Livrable : docs/contact-form-contract.md, renvois brief/plan/brief Claude/index,
+  suivi et journal. Politique sécurité corrigée sur le périmètre one-page (ancienne
+  mention multipage retirée), sans élargir les droits ni le périmètre backend.
+- Trois questions envoyées à Allen : choix de solution, adresse et futur test de
+  réception autorisé, durée de conservation des demandes sans suite. Aucun
+  choix, création de compte, abonnement, message de contrôle ou lecture Gmail
+  effectué. Les questions restent sans réponse au moment de la préparation.
+- Intervenant : Codex main, relecture par l'auteur, sans délégation pour cette
+  décision produit et ce cadrage documentaire liés aux arbitrages de l'humain.
+  Aucun changement applicatif supplémentaire dans RUN-016, aucun secret consulté.
+- Vérification : git diff --check réussi, 82 liens locaux valides, nouveau contrat
+  inspecté et seul RUN-016 actif en verify ; build, lint, Biome, tests et audit
+  non relancés pour ce lot de documents seuls selon
+  docs/tooling.md. Résultats applicatifs RUN-015 (46 tests et 28 cas navigateur)
+  restent datés, pas une preuve d'un service d'envoi configuré.
+- État : verify ; fournisseur/plan/destinataire/conservation et configuration réelle
+  restent à valider. Aucun RUN-017 lancé ; ni commit, push, déploiement ou envoi.
+
+
+### RUN-016 : décision email seul et clôture (29 octobre 2026)
+
+- Réponses d'Allen : conserver uniquement le lien email pour l'instant ; adresse
+  allen.kch24@gmail.com validée avec autorisation d'un futur message de contrôle
+  du formulaire vers elle ; conservation des demandes sans suite : 30 jours.
+- Périmètre révisé : RUN-016 done sur la décision de ne pas intégrer de traitement
+  de formulaire maintenant. RUN-017 reste planned mais reporté, pas annulé.
+  Il ne conditionne plus l'assemblage/validation de l'itération email seul en
+  RUN-007/008 ; critères de formulaire conservés pour une éventuelle reprise.
+- Contrat, brief, plan, relais Claude, sécurité, index et AGENTS alignés ; étude
+  fournisseurs conservée comme hypothèse future non choisie. Prochaine étape
+  visuelle possible : RUN-021, non lancé dans ce tour.
+- La durée de 30 jours est une politique retenue, pas une purge automatisée.
+  Aucun compte/fournisseur, endpoint, abonnement, lecture Gmail, message ou
+  suppression de mails effectué. L'autorisation du test est conservée pour sa
+  reprise future, sans la redemander à périmètre identique.
+- Contributeur : Codex main ; pas de délégation pour reporter ces décisions.
+  Vérification : diff-check réussi, 87 liens locaux valides, cible mailto
+  confirmée dans les données ; RUN-016 done et aucun RUN actif. Aucun code
+  supplémentaire modifié ; build/lint/Biome/tests non relancés pour ces documents
+  seuls, conformément à docs/tooling.md.

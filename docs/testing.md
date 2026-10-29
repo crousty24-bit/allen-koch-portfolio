@@ -108,3 +108,11 @@ CTA Contact par langue, ordre des sections identique à la navigation. Contrôle
 la grille à 320 px et le menu à six entrées, y compris en paysage et à 768 px ;
 les résultats datés et captures sont au journal. Le contenu reste une base
 provisoire pour le design, sans dépendre d'un formulaire opérationnel.
+
+
+RUN-015 vérifie les huit projets personnels et le jeu séparé, la hiérarchie
+h2/h3/h4 et l'absence totale du groupe client vide. Les fixtures de rendu client
+sont temporaires dans les tests, retirées dans finally : sans accord rien n'est
+affiché, avec accord mission/rôle/livrables sont présents, résultat omis s'il manque.
+En navigateur, vérifier personnels 3→8→3, total DOM 4→9→4 et jeu toujours unique.
+Le compteur Hero reste neuf. Les captures client sont des fixtures hors production.

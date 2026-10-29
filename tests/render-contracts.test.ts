@@ -11,12 +11,17 @@ import { ProjectsSection } from '../src/components/ProjectsSection/ProjectsSecti
 import { ServicesSection } from '../src/components/ServicesSection/ServicesSection'
 import { copy, type Language } from '../src/data/i18n/i18n'
 import { navItems } from '../src/data/links/navigation'
-import type { Project } from '../src/data/projects/projects'
+import {
+  isProjectPublished,
+  type Project,
+  projects,
+} from '../src/data/projects/projects'
 import { services } from '../src/data/services/services'
 
 const page = renderToStaticMarkup(createElement(App))
 const languages: Language[] = ['fr', 'en']
 const fixture: Project = {
+  category: 'personal',
   title: 'Projet témoin',
   description: { fr: 'Description française', en: 'English description' },
   imageAlt: { fr: 'Image française', en: 'English image' },
@@ -75,10 +80,83 @@ describe('page render contracts', () => {
 
   it('initially renders featured projects without mounting the extra cards', () => {
     expect(page.match(/project-card--feature/g)).toHaveLength(3)
-    expect(page).not.toContain('project-card--compact')
+    expect(page.match(/project-card--compact/g)).toHaveLength(1)
+    expect(page).not.toContain('client-projects-title')
+    const personal =
+      page.match(
+        /<section[^>]*aria-labelledby="personal-projects-title"[^>]*>([\s\S]*?)<\/section>/,
+      )?.[1] ?? ''
+    const game =
+      page.match(
+        /<section[^>]*aria-labelledby="game-dev-projects-title"[^>]*>([\s\S]*?)<\/section>/,
+      )?.[1] ?? ''
+    const gameTitle = renderToStaticMarkup("Milady's Knight")
+    expect(personal).not.toContain(gameTitle)
+    expect(game).toContain(`<h4>${gameTitle}</h4>`)
+    expect(game).toContain('09 / Prototype')
     expect(page).toContain(
       'aria-controls="projects-grid" aria-expanded="false"',
     )
+  })
+
+  it.each(
+    languages,
+  )('publishes client cases only with approval in %s', (language) => {
+    const client: Project = {
+      ...fixture,
+      category: 'client',
+      title: 'Mission témoin hors production',
+      client: {
+        name: 'Client de test',
+        mission: { fr: 'Mission française', en: 'English mission' },
+        role: { fr: 'Rôle français', en: 'English role' },
+        deliverables: { fr: 'Livrables français', en: 'English deliverables' },
+        publicationApproved: false,
+      },
+    }
+    const originalLength = projects.length
+    try {
+      projects.push(client)
+      const render = () =>
+        renderToStaticMarkup(createElement(ProjectsSection, { language }))
+      expect(render()).not.toContain('client-projects-title')
+      expect(render()).not.toContain(client.title)
+      expect(projects.filter(isProjectPublished)).toHaveLength(originalLength)
+      expect(
+        renderToStaticMarkup(
+          createElement(ProjectCard, {
+            project: client,
+            language,
+            index: 8,
+            total: 10,
+            variant: 'compact',
+          }),
+        ),
+      ).toBe('')
+      client.client.publicationApproved = true
+      const html = render()
+      expect(html).toContain('client-projects-title')
+      expect(html).toContain(client.client.name)
+      expect(html).toContain(client.client.mission[language])
+      expect(html).toContain(client.client.role[language])
+      expect(html).toContain(client.client.deliverables[language])
+      expect(html).not.toContain(
+        `<dt>${copy[language].projects.resultsLabel}</dt>`,
+      )
+      expect(html.indexOf('personal-projects-title')).toBeLessThan(
+        html.indexOf('client-projects-title'),
+      )
+      expect(html.indexOf('client-projects-title')).toBeLessThan(
+        html.indexOf('game-dev-projects-title'),
+      )
+      client.client.results = {
+        fr: 'Résultat vérifié témoin',
+        en: 'Verified fixture result',
+      }
+      expect(render()).toContain(client.client.results[language])
+    } finally {
+      projects.splice(originalLength)
+    }
   })
 
   it.each(

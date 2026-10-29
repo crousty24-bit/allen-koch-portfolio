@@ -19,6 +19,14 @@ must be decided before implementation; no provider, new dependency,
 general backend, database or authentication is selected by this planning request.
 Preserve accessibility, FR/EN, both themes and mobile performance requirements.
 
+## Contact decision — 2026-10-29
+
+Allen chooses the existing email link only for the current iteration. RUN-016 is
+closed on that decision; RUN-017 is deferred, not cancelled. Do not create a form,
+provider account or endpoint automatically. Earlier form requirements describe
+future scope. Keep allen.kch24@gmail.com; retain inquiries that do not lead to a project
+for 30 days, with no mailbox automation authorized. See docs/contact-form-contract.md.
+
 ## Run and delegation discipline
 
 For non-trivial work, identify the bounded RUN, its mandate, acceptance criteria,
@@ -145,8 +153,9 @@ Global UI:
 - Add form-processing logic only within the scoped contact run after its
   service/endpoint decision; no general backend is authorized by default.
 - Do not add new global controls unless explicitly validated.
-- Keep the redesign on one page with anchor navigation and a contact form,
-  without database or authentication by default.
+- Keep the redesign on one page with anchor navigation and the existing email
+  contact for the current iteration; the form is deferred by the RUN-016 decision.
+  No database or authentication by default.
 - Keep the existing theme and language state local to the frontend.
 - Keep dark and light themes coherent: any change to default dark-mode design,
   colors, or theme styling must be reflected appropriately in light mode.

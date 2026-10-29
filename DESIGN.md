@@ -924,3 +924,22 @@ Les résultats et limites des contrôles figurent dans le journal de RUN-012.
 
 Preuves et limites de rendu dans le journal de RUN-014 ; présentation About et
 neuf projets inchangés, aucun nouveau composant de base ni dépendance.
+
+
+## R24. Espaces Projets (29 octobre 2026, RUN-015)
+
+- Composition de Claude Sonnet 5.5, intégrée par Codex : groupes personnels,
+  clients, game dev empilés ; titre h3 mono et effectif discret, filet entre groupes.
+  Cartes en h4 avec styles équivalents aux anciens h3 ; palette et thèmes conservés.
+- Huit personnels : trois cartes feature, cinq compactes dépliables par le bouton
+  existant. Milady's Knight en carte compacte indépendante, position globale 09.
+  Aucun filtre ni onglet ajouté ; une seule entrée de navigation Projets.
+- Groupe client absent actuellement. Les futures cartes compactes affichent le
+  nom client et des faits FR/EN : mission, rôle, livrables et résultat vérifié s'il
+  existe. Aucun contenu fictif en production ; rendu testé par fixtures externes.
+- Les libellés du bouton précisent qu'il commande les projets personnels. Les
+  neuf projets sont conservés, le Hero garde un compteur à neuf ; présentation
+  About et timeline inchangées.
+
+Contrat de publication et limites du filtre dans docs/refonte-plan.md ; preuves
+techniques et visuelles au journal.

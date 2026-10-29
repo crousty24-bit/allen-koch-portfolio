@@ -10,10 +10,28 @@ export type Project = {
   stack: string[]
   status: Record<Language, string>
   href?: string
+} & (
+  | { category: 'personal' | 'game-dev' }
+  | {
+      category: 'client'
+      client: {
+        name: string
+        mission: Record<Language, string>
+        role: Record<Language, string>
+        deliverables: Record<Language, string>
+        results?: Record<Language, string>
+        publicationApproved: boolean
+      }
+    }
+)
+
+export function isProjectPublished(project: Project) {
+  return project.category !== 'client' || project.client.publicationApproved
 }
 
 export const projects: Project[] = [
   {
+    category: 'personal',
     title: 'Diff Impact Analyzer',
     description: {
       fr: 'Outil local qui analyse les changements Git et produit une évaluation déterministe et explicable de leur portée et de leur risque.',
@@ -32,6 +50,7 @@ export const projects: Project[] = [
     href: 'https://diff-impact-analyzer.vercel.app/',
   },
   {
+    category: 'personal',
     title: 'SnipStack',
     description: {
       fr: 'Bibliothèque de snippets avec une source frontend et serveur unique, disponible comme application web React et Rails ou comme application desktop Tauri.',
@@ -49,6 +68,7 @@ export const projects: Project[] = [
     status: { fr: 'MVP', en: 'MVP' },
   },
   {
+    category: 'personal',
     title: 'Code Quality Guardian',
     description: {
       fr: 'Agent Skill qui encadre les interventions des agents de code : inspection préalable, portée limitée, comportement préservé et vérification honnête. Changer moins, mais mieux.',
@@ -68,6 +88,7 @@ export const projects: Project[] = [
     href: 'https://code-quality-guardian.vercel.app/',
   },
   {
+    category: 'personal',
     title: 'Questonaut',
     description: {
       fr: "Tracker d'habitudes gamifié construit avec Ruby on Rails. L'objectif est de rendre la progression lisible, motivante et simple à maintenir.",
@@ -86,6 +107,7 @@ export const projects: Project[] = [
     status: { fr: 'MVP', en: 'MVP' },
   },
   {
+    category: 'personal',
     title: 'Mission Control',
     description: {
       fr: 'Application desktop Linux pour centraliser les workflows de développement, surveiller le système et garder le contexte technique au même endroit.',
@@ -103,6 +125,7 @@ export const projects: Project[] = [
     status: { fr: 'Prototype', en: 'Prototype' },
   },
   {
+    category: 'personal',
     title: 'Sokwak AI',
     description: {
       fr: '“AI-assisted learning without solution dumping”. Une IA qui n’écrit pas la solution à ta place, mais t’aide à apprendre à la trouver.',
@@ -117,6 +140,7 @@ export const projects: Project[] = [
     status: { fr: 'MVP', en: 'MVP' },
   },
   {
+    category: 'personal',
     title: 'Kane',
     description: {
       fr: "Assistant IA local orienté confidentialité, pensé pour automatiser le tri, l'analyse et les tâches répétitives sans perdre le contrôle technique.",
@@ -133,6 +157,7 @@ export const projects: Project[] = [
     status: { fr: 'Exploration', en: 'Exploration' },
   },
   {
+    category: 'personal',
     title: 'Portfolio AK',
     description: {
       fr: 'Le site portfolio actuel, conçu pour présenter clairement le profil, les projets et la progression technique avec une base React maintenable.',
@@ -150,6 +175,7 @@ export const projects: Project[] = [
     status: { fr: 'En cours', en: 'In progress' },
   },
   {
+    category: 'game-dev',
     title: "Milady's Knight",
     description: {
       fr: "Prototype jouable d'action-platformer 2D en pixel art : un chevalier traverse un royaume en ruine, affronte des slimes corrompus et collecte l'or qui brisera le sceau.",

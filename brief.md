@@ -3,8 +3,8 @@
 ## Produit et périmètre
 
 Baseline actuelle : portfolio statique one-page 1.3.2 d’Allen Koch. La cible reste
-un site one-page, avec refonte visuelle totale, navigation par ancres et
-formulaire contact/devis.
+un site one-page, avec refonte visuelle totale et navigation par ancres. Le contact
+reste un lien email pour l’itération actuelle ; le formulaire contact/devis est reporté.
 Le positionnement vise un développeur fullstack et IA démarrant son activité
 freelance. Allen précise le 29 octobre 2026 ne pas avoir encore créé son entreprise.
 La priorité actuelle reste visuelle : deux prestations de travail, sites/applications
@@ -25,7 +25,7 @@ phase 2, pas des prestations déjà vendues.
 - Nouveau design global : palette, typographie, compositions, animations et transitions.
 - Sections sur une page unique, accessibles par des ancres de navigation ;
   ordre défini par RUN-011 ci-dessous.
-- Formulaire de contact et demande de devis avec envoi réel, solution à choisir.
+- Contact actuel par lien email ; formulaire contact/devis reporté à une évolution future (décision RUN-016).
 - Une ou plusieurs sections de services/prestations.
 - Trois espaces projets : personnels, clients et game dev ; conserver les neuf
   projets et placer Milady's Knight dans game dev, sans doublon personnel.
@@ -135,7 +135,20 @@ préférences locales sont préservés. Aucun nouveau composant ni dépendance.
 RUN-014 intègre la section Services avant Projets : deux lignes éditoriales à
 filets, titres et paragraphes FR/EN validés, CTA commun vers Contact. Design de
 Claude Sonnet 5.5, intégration/QA Codex ; contenu toujours provisoire, aucune
-nouvelle dépendance. Les espaces Projets et la timeline restent à réaliser.
+nouvelle dépendance. RUN-015 réalise les espaces Projets ; la timeline reste en RUN-021.
+RUN-015 répartit les neuf projets : huit personnels (trois mis en avant, cinq
+supplémentaires dépliables) et Milady's Knight seul en game dev, toujours présent.
+Le groupe clients est prêt mais masqué en l'absence de cas autorisé. Mission,
+rôle, livrables et accord de publication sont requis pour une carte client ;
+un résultat reste facultatif et doit être vérifié. Le compteur public reste neuf.
+RUN-016 est clôturé sur la [décision contact](docs/contact-form-contract.md)
+validée par Allen : lien email seul vers `allen.kch24@gmail.com` pour l'instant.
+Formulaire RUN-017 reporté ; aucun prestataire ni abonnement choisi. Conservation
+retenue des demandes sans suite : 30 jours en messagerie, sans suppression
+automatique mise en place. Un futur test de réception du formulaire est autorisé
+vers cette même adresse, mais aucun envoi n'est effectué maintenant. Le formulaire
+reste une évolution future, sans bloquer l'itération visuelle et son assemblage.
+Suite pertinente : RUN-021 pour la timeline About, encore planifié.
 Aucun RUN suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).
@@ -148,11 +161,11 @@ Playwright ou des rôles backend/base de données sur la seule foi de ce modèle
 L'origine et les adaptations sont consignées dans [docs/initialization.md](docs/initialization.md).
 
 Restent à décider : promesse, offres prioritaires, rôle exact dans les cas présentés,
-modalités d'intervention, disponibilité et canal de contact. La synthèse visuelle,
+modalités d'intervention et disponibilité. Le canal actuel est l'email confirmé. La synthèse visuelle,
 les polices, le clair par défaut, le maintien du compteur et la suppression des
-particules sont déjà arbitrés dans DESIGN.md R8. RUN-011 fixe l'ordre, les ancres et le maintien d'une URL unique FR/EN. Restent
-à décider en RUN-016 : solution d’envoi/destinataire du formulaire, données
-nécessaires et conservation.
+particules sont déjà arbitrés dans DESIGN.md R8. RUN-011 fixe l'ordre, les ancres et le maintien d'une URL unique FR/EN. Le contact reste un lien email pour l'itération actuelle ; en cas de reprise du
+formulaire, resteront à décider le fournisseur, l'endpoint et les données. Adresse
+et durée des demandes sans suite déjà arbitrées dans RUN-016.
 Ne pas inventer ces réponses.
 
 Mettre à jour ce brief pour une décision produit/architecture acquise ; garder les

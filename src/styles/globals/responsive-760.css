@@ -267,7 +267,7 @@ html {
   justify-content: flex-start;
 }
 
-.project-card h3 {
+.project-card h4 {
   font-size: 1.75rem;
 }
 
@@ -326,4 +326,9 @@ html {
 
 .skills-tree__keywords {
   padding-left: 3.5rem;
+}
+
+.project-card__facts div {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.25rem;
 }

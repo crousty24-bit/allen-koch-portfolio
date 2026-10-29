@@ -1,4 +1,4 @@
-import { projects } from '../projects/projects'
+import { isProjectPublished, projects } from '../projects/projects'
 import { githubStats } from './githubStats'
 
 export type HeroStatId = 'profile' | 'contributions' | 'projects'
@@ -29,6 +29,6 @@ export const heroStats: HeroStat[] = [
   {
     id: 'projects',
     prefix: '',
-    value: projects.length,
+    value: projects.filter(isProjectPublished).length,
   },
 ]

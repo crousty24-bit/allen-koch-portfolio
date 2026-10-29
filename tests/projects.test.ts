@@ -1,8 +1,23 @@
 import { describe, expect, it } from 'vitest'
 
-import { projects } from '../src/data/projects/projects'
+import { isProjectPublished, projects } from '../src/data/projects/projects'
 
 describe('projects data', () => {
+  it('keeps eight personal projects and one game without inventing client cases', () => {
+    expect(projects).toHaveLength(9)
+    expect(
+      projects.filter((project) => project.category === 'personal'),
+    ).toHaveLength(8)
+    expect(
+      projects
+        .filter((project) => project.category === 'game-dev')
+        .map((project) => project.title),
+    ).toEqual(["Milady's Knight"])
+    expect(
+      projects.filter((project) => project.category === 'client'),
+    ).toHaveLength(0)
+    expect(projects.filter(isProjectPublished)).toHaveLength(9)
+  })
   it('places the new MVP projects first with their verified links', () => {
     const [diffImpactAnalyzer, snipStack] = projects
 
@@ -31,6 +46,7 @@ describe('projects data', () => {
     )
 
     expect(miladysKnight).toMatchObject({
+      category: 'game-dev',
       repositoryHref: 'https://github.com/crousty24-bit/Milady-s-Knight-godot',
       stack: ['Godot', 'GDScript', 'GPT-6 Astra'],
       status: { fr: 'Prototype', en: 'Prototype' },

@@ -10,9 +10,9 @@ design confié à Claude, workflow et ressources pour les agents dans le dépôt
 Clientèles précisées : TPE/PME, startups, outils et workflows agents, réalisation
 d'applications et de sites web modernes. Il n'y a pas de niche unique validée.
 
-Périmètre confirmé : refonte visuelle **globale et totale** sur une page unique
+Cible globale : refonte visuelle **globale et totale** sur une page unique
 avec ancres,
-formulaire contact/devis, services/prestations, conservation des projets personnels,
+contact email actuel et formulaire contact/devis reporté, services/prestations, conservation des projets personnels,
 espaces projets clients et game dev distincts et future section « Ils m'ont fait confiance ».
 Les choix d'adaptation reviennent à Claude à partir des quatre
 [références Stitch importées](maquettes_references/README.md) et de leur système
@@ -275,8 +275,8 @@ Les huit autres projets du catalogue restent dans l'espace personnel ; aucune
 mission client n'est déduite. Prévoir FR/EN : « Projets personnels » / “Personal
 projects”, « Projets clients » / “Client projects”, « Projets game dev » / “Game
 development projects”. L'implémentation de ces espaces relève de RUN-015.
-L'espace clients documentera : mission, rôle exact, livrables, statut, résultats vérifiables et
-accord de publication des informations/assets. Aucun projet personnel ne devient
+Le modèle client inclut nom, mission, rôle exact, livrables, statut, résultat
+facultatif vérifié et accord de publication des informations/assets. Aucun projet personnel ne devient
 une mission client sans preuve. En absence de cas client publiable, masquer cet
 espace public plutôt que fabriquer des références ; son rendu pourra être vérifié
 avec données de test explicitement identifiées hors contenu de production.
@@ -287,6 +287,16 @@ emplacement dans les maquettes ; ne publier ni bloc vide, ni logos fictifs. Ce R
 ne conditionne pas la première release de la refonte.
 
 ## Formulaire contact / devis
+
+Décision ultérieure d'Allen (RUN-016, 29 octobre) : conserver le lien email seul
+pour l'instant, vers allen.kch24@gmail.com. Formulaire reporté, non annulé ; les
+paragraphes ci-dessous conservent le cadrage d'une évolution future. Les demandes
+sans suite seront conservées 30 jours en messagerie, sans suppression automatique
+configurée. Le contact email ne bloque pas l'assemblage de l'itération actuelle.
+
+
+La [décision RUN-016 et son étude antérieure](contact-form-contract.md) distinguent
+le contact email retenu du formulaire reporté ; aucun fournisseur n'est choisi.
 
 RUN-016 choisit le traitement (service externe ou endpoint minimal), le destinataire,
 les champs nécessaires et leur conservation. Nom/contact, type de demande,
@@ -349,3 +359,27 @@ Les décisions techniques ultérieures peuvent nécessiter une adaptation visuel
 Les quatre [références Stitch importées](maquettes_references/README.md) sont le
 modèle visuel de la synthèse validée par Allen dans DESIGN.md R8 et implémentée
 en phase 1 ; les nouveaux contenus suivent ce système.
+
+
+## RUN-015 — Contrat des données projets intégré
+
+Chaque projet porte une catégorie explicite `personal`, `client` ou `game-dev`.
+Les neuf contenus, liens, assets et statuts précédents sont conservés. Les huit
+personnels gardent leur ordre ; Milady's Knight apparaît seulement dans game dev.
+Trois personnels sont affichés en grand, les cinq autres via le bouton existant.
+Le jeu reste visible dans sa propre grille compacte. Les indices suivent l'ordre
+global (jeu 09), le compteur Hero inclut tous les projets publiables (neuf).
+
+Pour un projet client, le type impose un bloc `client` : `name`, `mission`,
+`role`, `deliverables`, `publicationApproved`, et `results` facultatif. Mission,
+rôle, livrables et résultat sont FR/EN. Ne renseigner un résultat que s'il est
+vérifié, et ne passer l'accord à vrai qu'avec autorisation couvrant les textes,
+liens et images. Le filtre partagé protège section, carte et compteur contre
+l'affichage d'un cas non approuvé. Il ne rend pas confidentielles des données
+qui seraient présentes dans le bundle : ne jamais stocker d'informations client
+non autorisées dans les sources frontend. Aucun client n'est ajouté actuellement.
+
+Les cas approuvés/non approuvés, sans/avec résultat, sont vérifiés par fixtures
+dans les tests, sans prop de production dédiée au test. Les fixtures visuelles
+sont rendues hors dépôt, dans des documents navigateur isolés avec le CSS livré.
+Le groupe clients est entièrement absent du DOM tant qu'il est vide.

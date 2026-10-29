@@ -59,6 +59,25 @@ et le lien partagé Services. La grille devient réellement une colonne sous
 cartes, d'icônes, de dépendances ou de composants UI de base. Les contrôles et
 limites sont dans le journal ; ce relais ne lance pas les espaces projets.
 
+## Relais RUN-015 — espaces Projets intégrés
+
+Composition spécifiée par Claude Sonnet 5.5, intégrée et testée par Codex : groupes
+personnels, clients et game dev empilés. H3 de groupe en mono avec effectif, h4
+pour les cartes ; cartes et bouton existants conservés. Trois personnels feature,
+cinq autres dépliables ; Milady's Knight reste compact et visible indépendamment.
+Le groupe clients est absent sans cas autorisé ; aucun faux client ajouté.
+Les faits client (mission, rôle, livrables, résultat facultatif vérifié) ont été
+contrôlés avec des fixtures hors production. Index global conservé, jeu en 09.
+
+## Relais RUN-016 — contact email seul validé
+
+Allen conserve le lien vers `allen.kch24@gmail.com` pour l'instant : pas de
+formulaire ni de prestataire à intégrer. RUN-017 est reporté ; conserver Contact
+et son CTA email actuels, sans formulaire factice. Demandes sans suite : durée
+retenue de 30 jours, sans automatisation de messagerie. L'[étude contact](contact-form-contract.md)
+est conservée pour une éventuelle reprise explicitement mandatée.
+La prochaine évolution visuelle possible est RUN-021, sans modifier le texte About.
+
 ## Mission initiale
 
 Concevoir la refonte visuelle globale et totale du portfolio Allen Koch vers une activité de développeur IA

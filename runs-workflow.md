@@ -61,11 +61,11 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | done |
 | RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | done |
 | RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | done |
-| RUN-015 | P1 | Projets personnels, clients et game dev | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
-| RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
-| RUN-017 | P1 | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
+| RUN-015 | P1 | Projets personnels, clients et game dev | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | done |
+| RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | done |
+| RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
 | RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | planned |
-| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-017, RUN-021 | planned |
+| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | planned |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -180,11 +180,16 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 ## RUN-007 — Assemblage de la refonte
 
+- Périmètre actuel après RUN-016 : contact par email seul. RUN-017 reporté ne
+  conditionne pas cet assemblage ; aucune intégration ou validation d'envoi de
+  formulaire à prétendre réalisée. Ses critères seront repris si le formulaire est relancé.
+
 - Passe A : intégrer les passes visuelles, services, projets et contact sur une page ;
   réserver les fichiers communs, vérifier les préférences globales et ancres.
 - Passe B : harmoniser FR/EN, sombre/clair, contenus, métadonnées/OG/sitemap et assets.
 - Passe C : revue intégrée avec parcours clavier, accès direct/rechargement aux ancres, cas de
-  formulaire et données réelles ; corriger les interactions entre lots.
+  contact email et données réelles ; corriger les interactions entre lots.
+  Le formulaire est exclu du périmètre actuel, reporté en RUN-017.
 - Risques : collisions CSS/navigation/i18n, perte du catalogue personnel, référence client fictive.
 - Acceptation : critères des passes satisfaits, problèmes du socle traités, contrôles
   applicatifs/navigateur et revue finale ; docs alignées avec l'état livré.
@@ -194,7 +199,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Passe A : build/lint/Biome/tests/audit et mesures de performance de la page sur
   build production ; mobile/desktop, langues/thèmes, clavier et reduced-motion.
 - Passe B : accès direct/rechargement aux ancres, navigation, métadonnées/canonical/sitemap,
-  anciens liens et formulaire (succès, échec, anti-abus, réception de contrôle autorisée).
+  anciens liens et contact email. Les cas formulaire (succès, échec, anti-abus,
+  réception de contrôle autorisée) ne s’appliquent que si RUN-017 est relancé.
 - Passe C : validation visuelle/contenu d'Allen et cohérence version/docs avant release.
 - La section confiance future RUN-018 ne conditionne pas cette release ; pas de
   références client fictives pour remplir les espaces prévus.
@@ -369,6 +375,13 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Risques : perte d'un projet personnel, confusion de statut, référence client fictive.
 - Acceptation : catalogue personnel préservé, affichage clients prêt et testé avec
   politique d'absence de données ; seuls les cas réels autorisés sont publics.
+- Clôture locale le 29 octobre : huit personnels, jeu indépendant en position 09,
+  groupe clients masqué sans données autorisées ; filtre partagé carte/section/
+  compteur et métadonnées client typées. Aucun client ajouté en production.
+  Composition Claude Sonnet 5.5, intégration/QA Codex, revue Luna indépendante.
+  Build/lint/Biome, 46 tests, 28 scénarios navigateur/fixtures et 51 liens locaux
+  réussis. Contenus/liens/assets préservés ; preuves et limites au journal.
+  Aucun RUN suivant lancé automatiquement.
 
 ## RUN-016 — Décision de traitement contact / devis
 
@@ -381,8 +394,20 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Risques : dépendance payante implicite, données exposées, spam ou email non reçu.
 - Acceptation : décision explicite et solution vérifiée, périmètre de traitement
   borné, données et critères d'envoi documentés ; aucun fournisseur supposé choisi.
+- Mandat révisé par Allen : lien email seul pour l'instant, formulaire reporté.
+  Clôture `done` le 29 octobre sur cette décision, sans fournisseur ni endpoint.
+  Adresse allen.kch24@gmail.com et futur test de réception vers cette adresse
+  validés ; conservation des demandes sans suite fixée à 30 jours, sans automatisation.
+- Contrat et étude antérieure dans docs/contact-form-contract.md. Aucun compte,
+  abonnement, envoi, configuration distante ou suppression de messages effectué.
+- Relais : RUN-017 reste planned/reporté, non bloquant pour l'assemblage de
+  l'itération email seul. RUN-021 est la prochaine étape visuelle possible.
 
 ## RUN-017 — Formulaire et envoi contact / devis
+
+- Reporté à la demande d'Allen : pas de formulaire pour l'itération actuelle.
+  Ne pas lancer ce RUN à la seule clôture de RUN-016. Reprise sur mandat explicite
+  avec choix/configuration du service ; contact email seul conservé entre-temps.
 
 - Passe A — Claude UI : formulaire selon design, labels/aides accessibles, champs
   contact/prestation/devis selon contrat, navigation clavier et validations client.
