@@ -34,3 +34,7 @@ html:root,
   transform: none;
   pointer-events: auto;
 }
+
+.projects-features__track {
+  transition: none;
+}

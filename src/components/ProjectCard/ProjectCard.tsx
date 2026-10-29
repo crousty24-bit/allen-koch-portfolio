@@ -88,7 +88,7 @@ export function ProjectCard({
       {variant === 'feature' ? (
         <p aria-hidden="true" className="project-card__index">
           {position}
-          <span>/ {formatIndex(total)}</span>
+          <span className="project-card__total">/ {formatIndex(total)}</span>
         </p>
       ) : null}
 

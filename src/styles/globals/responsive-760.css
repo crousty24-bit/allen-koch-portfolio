@@ -225,10 +225,19 @@ html {
 }
 
 .projects-features {
+  display: block;
+}
+
+.projects-features__index {
+  display: none;
+}
+
+.projects-features__cards {
   gap: 4rem;
 }
 
 .project-card--feature {
+  display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   padding-top: 1.5rem;
@@ -236,12 +245,11 @@ html {
 
 .project-card__index {
   position: static;
-  grid-column: 1;
   font-size: 3.5rem;
 }
 
-.project-card--feature .project-card__main {
-  grid-column: 1;
+.project-card--feature .project-card__index {
+  display: block;
 }
 
 .project-card--feature .project-card__body {

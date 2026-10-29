@@ -169,6 +169,8 @@ function App() {
         Number.parseFloat(
           window.getComputedStyle(document.documentElement).scrollPaddingTop,
         ),
+        // A section's last content scrolls a quarter screen up before it gets covered.
+        window.innerHeight / 4,
       )
       pins.forEach((pin, index) => {
         sections[index].style.setProperty('--section-pin-top', `${pin.top}px`)

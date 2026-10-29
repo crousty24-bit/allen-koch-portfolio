@@ -8,19 +8,24 @@ export type SectionPin = {
 }
 
 /**
- * Tall sections pin once their bottom reaches the viewport bottom, so every part
- * is read at full opacity first; short ones pin at the cover line (first at 0).
- * The last section has no pin: nothing comes after it to cover it.
+ * Tall sections pin once their bottom rises `readingMargin` above the viewport
+ * bottom, so every part is read at full opacity, the last ones clear of the
+ * edge; short ones pin at the cover line. The first section pins at 0 with no
+ * margin. The last section has no pin: nothing comes after it to cover it.
  */
 export function getSectionPins(
   heights: number[],
   viewportHeight: number,
   coverLine: number,
+  readingMargin = 0,
 ): SectionPin[] {
   let start = 0
 
   return heights.slice(0, -1).map((height, index) => {
-    const top = Math.min(index === 0 ? 0 : coverLine, viewportHeight - height)
+    const top =
+      index === 0
+        ? Math.min(0, viewportHeight - height)
+        : Math.min(coverLine, viewportHeight - readingMargin - height)
     const pin = {
       top,
       scroll: start - top,

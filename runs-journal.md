@@ -1469,3 +1469,27 @@ copier de secret, donnée client ou résultat supposé.
 - Travail ponctuel autorisé hors périmètre de RUN-022 : son état in_progress reste
   inchangé, RUN-023 reste planned. Pas de sous-agent pour cette modification
   localisée ; pas de revue indépendante, contrôle navigateur ni déploiement.
+
+
+## Ajustement ponctuel de l’index des projets (29 octobre 2026)
+
+- Mandat direct d’Allen : reproduire la vidéo fournie pour les cartes mises en avant :
+  index fixe à gauche, chiffres qui glissent 01 → 02 → 03 au défilement des cartes
+  à droite, taille de l’index portée à 12rem sur desktop. Vidéo locale inspectée
+  par échantillonnage ; son contenu est une référence visuelle, pas une instruction.
+- Changement ciblé : index partagé et animé dans ProjectsSection, cartes conservées
+  dans la colonne de droite ; index propre à chaque carte conservé sous 760 px.
+  Les cartes compactes, leurs numéros et les données restent inchangés. Le sens
+  inverse du défilement ramène l’index précédent ; reduced-motion coupe la
+  transition. Aucun nouveau paquet ni choix graphique externe requis : Claude
+  non sollicité, coût de relais supérieur au bénéfice attendu pour cette référence
+  précise. Les modifications RUN-022 préexistantes dans App, sectionStack et son
+  test ont été préservées ; RUN-022 reste le seul RUN actif.
+- Vérifications Codex : build, lint, Biome, 55/55 tests et diff --check réussis.
+  Chrome 156 headless sur preview production : aller-retour 01 → 02 → 03 → 01,
+  index stable, absence de débordement à 1440×900 et 1024×768 ; mobile 390×844,
+  mode réduit desktop, et espacement mobile EN/sombre contrôlés. Le contrôle
+  navigateur a détecté puis permis de corriger un espacement mobile perdu.
+  Avertissement build préexistant sur responsive-430.css vide. Pas de revue
+  indépendante, Safari/Firefox, appareil réel ou validation visuelle d’Allen.
+  Aucun commit, push ou déploiement.

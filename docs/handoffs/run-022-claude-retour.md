@@ -228,3 +228,47 @@ doivent être conservées) :
 3. Courbe du fondu : linéaire jusqu'à 0. Option : fondu plus tôt, proche du Hero
    de la vidéo, qui pâlit vers 70 % de couverture.
 4. Codex : accepter ou refuser le module `src/utils/sectionStack.ts` (section 3).
+
+## 9. Ajustement après retour d'Allen : marge de lecture (29 octobre 2026)
+
+**Demande d'Allen.** La transition démarre trop tôt entre Services/Projets,
+Projets/Stack et Stack/About. Elle masque trop vite le bas des sections : CTA
+« Discuter de votre projet », skill-tree déplié, timeline en fin d'About. Allen
+demande une marge ou un délai.
+
+**Changement.** Une section haute continue désormais de défiler jusqu'à ce que
+son bas atteigne un quart d'écran au-dessus du bord inférieur. Ensuite seulement,
+elle s'épingle et la suivante la recouvre.
+- Mise en œuvre : paramètre `readingMargin` de `getSectionPins`, auquel `App`
+  passe `innerHeight / 4`.
+- Hero→Services : inchangé.
+- About→Contact : la marge s'y applique aussi, puisque l'exemple de la timeline
+  relève de cette frontière. Pour l'exclure, il faut un test d'index de plus.
+- Sections courtes : inchangées (épinglage à la ligne de couverture).
+- Fondu et recul : réglages inchangés.
+
+**Contrepartie.** La phase de recouvrement est plus courte de cette marge
+(1440×900 : 595 px de défilement au lieu de 820) ; elle commence plus tard,
+quand le contenu a été lu.
+
+| Bas du dernier contenu au début de la transition | Avant | Après |
+| --- | --- | --- |
+| 1440×900 Services / Projets / Stack / About | 788 / 755 / 767 / 782 px | 563 / 530 / 543 / 560 px |
+| 390×844 Services / Projets / Stack / About | 677 / 644 / 657 / 657 px | 569 / 536 / 548 / 549 px |
+
+**Fichiers.** `src/utils/sectionStack.ts`, `src/App.tsx` et
+`tests/section-stack.test.ts` (nouveau cas : marge pour une section haute, sans
+effet sur la première section ni sur une section courte).
+
+**Contrôles.**
+- Arbre local : build, lint, Biome, 55 tests et `git diff --check` réussis.
+- Chrome 156 headless : ancres 40/40, historique 8/8, Tab/Maj+Tab sans échec
+  (1 022 arrêts), reduced-motion, repli sans `ResizeObserver`, aucune couche
+  invisible cliquable ni débordement sur les 12 combinaisons, recalcul exact
+  après dépliage, langue et redimensionnement.
+- Planches : dossier `margin/` du répertoire de preuves (section 5).
+- Vidéos avant/après : non refaites.
+
+**Concurrence.** Pendant ces contrôles, une autre session modifiait Projets
+(`ProjectCard`, `ProjectsSection`, `projects.css`, `reduced-motion.css`,
+`responsive-1040/760.css`). Ces fichiers n'ont pas été touchés par cet ajustement.

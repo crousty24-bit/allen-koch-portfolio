@@ -35,6 +35,29 @@ describe('section stack geometry', () => {
     expect(short.distance).toBe(500)
   })
 
+  it('lets a tall section scroll a reading margin further before it pins', () => {
+    const margin = 225
+    const [first, tall] = getSectionPins(
+      [900, 2000, 600],
+      viewportHeight,
+      coverLine,
+      margin,
+    )
+    const [, short] = getSectionPins(
+      [900, 500, 600],
+      viewportHeight,
+      coverLine,
+      margin,
+    )
+
+    expect(first.top).toBe(0)
+    // Bottom meets the margin line instead of the viewport bottom.
+    expect(tall.scroll).toBe(900 + 2000 - (viewportHeight - margin))
+    expect(tall.distance).toBe(viewportHeight - margin - coverLine)
+    expect(getSectionCover(tall, tall.scroll)).toBe(0)
+    expect(short.top).toBe(coverLine)
+  })
+
   it('pins the first section at the page top and skips the last one', () => {
     const pins = getSectionPins([700, 2000, 600], viewportHeight, coverLine)
 
