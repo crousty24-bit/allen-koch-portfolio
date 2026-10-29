@@ -434,3 +434,59 @@ copier de secret, donnée client ou résultat supposé.
   physique ni de zoom navigateur réel contrôlés par Codex. Les résultats humains
   acceptés ci-dessus n'ajoutent pas de détails techniques absents du message d'Allen.
 - Clôture locale uniquement : aucun commit, push, déploiement ou nouvelle release.
+
+
+## RUN-002 : dépendances de développement (29 octobre 2026)
+
+- Mandat : Allen demande de démarrer la phase 2 par RUN-002 et de créer une
+  branche `feature/`. Départ : `develop` propre, commit `7e0ab8e` ; branche créée
+  `feature/run-002-dependencies`. RUN passé par `in_progress`, `verify`, puis `done`.
+- Périmètre : `package.json`, `package-lock.json`, suivi et brief ; aucune
+  modification frontend, CI, configuration de tests, dépendance de production
+  ou fonctionnalité. Contrats préservés : Node 24/npm 11, React, one-page,
+  FR/EN, thèmes, mobile et accessibilité. Risque ciblé : compatibilité de
+  l’outillage et de son bundle ; aucune donnée utilisateur modifiée.
+- État initial reproduit : audit complet en échec (6 paquets : 2 moderate,
+  4 high), production sans alerte. Chaînes inspectées avec `npm ls` :
+  Vite → PostCSS → source-map-js ; Vitest → @vitest/mocker ;
+  ESLint → minimatch → brace-expansion ; react-hooks → Zod.
+- Diagnostic : versions correctives compatibles disponibles. Avis consultés :
+  [Vitest/mocker](https://github.com/advisories/GHSA-qxg6-89mg-rqv8),
+  [Vite/launch-editor](https://github.com/advisories/GHSA-587h-7wmj-h5pm),
+  [Zod](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5).
+  Ces alertes concernent l’outillage ; aucune exploitation du site publié
+  n’est démontrée par cet audit.
+- Correction : `npm audit fix --dry-run --json` inspecté, puis mises à jour
+  ciblées avec `npm install --save-dev 'vite@^8.3.5' 'vitest@^4.1.12'` et
+  `npm update brace-expansion zod`. Aucun `--force`, override ou nouvelle
+  dépendance directe. Minimums déclarés Vite/Vitest relevés aux versions
+  installées ; React/React DOM et les autres dépendances directes inchangés.
+- Versions verrouillées : Vite 8.1.2 → 8.3.5 ; Vitest et @vitest/mocker
+  4.1.11 → 4.1.12 ; brace-expansion 5.0.9 → 5.0.12 ; source-map-js
+  1.2.1 → 1.2.2 ; Zod 4.4.3 → 4.6.7. Transitifs associés actualisés :
+  Rolldown/bindings 1.2.15, Lightning CSS/bindings 1.33.0, PostCSS 8.5.32,
+  picomatch 4.0.7, nanoid 3.3.20, chai 6.3.0, tinyrainbow 3.2.0,
+  @oxc-project/types 0.155.0. Ancienne chaîne optionnelle WASM Rolldown retirée
+  par npm ; bindings natifs des autres plateformes conservés/actualisés.
+- Vérifications sur Node 24.22.1/npm 11.19.1, après `npm ci` réussi :
+  `npm run build`, `npm run lint`, `npm run biome:check` (64 fichiers),
+  `npm run test` (5 fichiers, 13/13 tests),
+  `npm audit --audit-level=moderate` et
+  `npm audit --omit=dev --audit-level=moderate` réussis ; les deux audits
+  signalent 0 vulnérabilité. `npm ls --all` réussi, sans dépendance invalide.
+  Diff du lockfile relu ; aucun saut majeur involontaire identifié.
+- Intervenants : Codex main pour diagnostic, modification, contrôles et intégration ;
+  sous-agent `review_dependencies`, modèle `gpt-6-luna`, effort demandé low,
+  revue indépendante en lecture seule de `package.json`/lock depuis `7e0ab8e`.
+  Bénéfice attendu : contrôle borné des versions, engines/peers et changements
+  transitifs sans transfert du contexte UI. Retour : aucun constat actionnable,
+  dépendances de production inchangées et compatibilité Node vérifiée ; résultat
+  confronté au diff et à l’installation propre par le main. Aucune économie de
+  tokens mesurée, aucune délégation récursive.
+- Limites : pas de contrôle navigateur, Windows/macOS ou CI distante ; les tests
+  existants couvrent données/utilitaires et contrat CSS, pas le rendu complet.
+  Avertissement préexistant de build : `responsive-430.css` vide, non corrigé ici.
+  Biome global passe déjà avec les exclusions Stitch présentes dans la baseline :
+  aucune modification de sa configuration dans RUN-002.
+- Relais : RUN-002 `done` localement ; RUN-003 reste `planned`. Aucun commit,
+  push, déploiement ou release effectué ; aucun autre RUN exécuté.

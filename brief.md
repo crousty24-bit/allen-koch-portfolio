@@ -69,10 +69,14 @@ La proposition textuelle initiale de Claude reste une référence historique.
 La baseline de production déclarée reste 1.3.2 : cette clôture locale ne constitue
 ni une release ni un déploiement.
 
-Les nouvelles sections, les contenus définitifs, les ancres cibles et le traitement
-du formulaire restent en phase 2. Aucun RUN suivant n'est lancé automatiquement.
-A04 demeure une dette de RUN-003 ; les alertes de dépendances et le contrôle Biome
-global sur les exports Stitch restent signalés, sans être déclarés corrigés.
+La phase 2 a démarré par RUN-002, clôturé localement le 29 octobre 2026 :
+les dépendances de développement concernées sont mises à jour, les audits npm
+complet et production ne signalent aucune vulnérabilité, et les contrôles passent,
+y compris Biome global avec la configuration d’exclusion des exports Stitch déjà
+présente au départ de ce RUN. Les preuves datées sont au journal.
+Les nouvelles sections, contenus définitifs, ancres cibles et traitement du
+formulaire restent à réaliser. A04 demeure une dette de RUN-003. Aucun RUN
+suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).
 

@@ -52,7 +52,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
-| RUN-002 | P1 | Alertes de dépendances de développement | Codex ; compétence Security | RUN-013 | planned |
+| RUN-002 | P1 | Alertes de dépendances de développement | Codex ; compétence Security | RUN-013 | done |
 | RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | RUN-013 | planned |
 | RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | RUN-013 | planned |
 | RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | planned |
@@ -98,7 +98,10 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : rupture d'outils ou upgrade majeur involontaire.
 - Acceptation : diff expliqué, build/lint/Biome/tests réussis, audit complet au seuil
   moderate et audit production exécutés ; toute alerte restante explicitement traitée.
-- Relais : retour de Security si sollicité, puis intégration et revue par Codex.
+- Clôture locale le 29 octobre 2026 : audit complet et production sans alerte,
+  installation propre, build/lint/Biome et 13 tests réussis ; revue indépendante
+  du manifeste et du lockfile sans constat actionnable. Preuves et limites au journal.
+- Relais : RUN-003 reste planifié ; aucun RUN suivant lancé automatiquement.
 
 ## RUN-003 — Visibilité au défilement
 
