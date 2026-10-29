@@ -1168,3 +1168,423 @@ copier de secret, donnée client ou résultat supposé.
 
 - Clôture : RUN-021 done, 45 liens documentaires locaux valides et diff-check
   réussi ; aucun RUN actif. La passe est terminée, sans lancement de RUN-007.
+
+
+## RUN-007 : intégration technique et relais visuel Claude (29 octobre 2026)
+
+- Mandat : nouvelle branche feature commune à RUN-007, RUN-008 puis aux correctifs
+  et RUN supplémentaires donnés par Allen. Commencer par RUN-007 ; préparer un
+  contrat Claude utile qu’Allen exécutera à part. Départ propre sur develop,
+  commit e6261e6 ; création de `feature/refonte-integration-visuelle`, sans copie
+  de changements ni autre worktree. RUN-007 seul actif, maintenant verify ;
+  RUN-008 reste planned. Aucun mandat de publication.
+- Périmètre : vérifier l’assemblage déjà présent, les six ancres, FR/EN et thèmes,
+  catalogue et contact email ; harmoniser les métadonnées et isoler la revue
+  graphique. Préservés : contenu About, deux prestations, neuf projets dont un
+  jeu, clients masqués sans cas autorisé, préférences et CSS natif. Aucune
+  dépendance ni nouveau composant de base/shadcn, formulaire ou fonctionnalité.
+- Corrections minimales : titres HTML/OG/Twitter et runtime FR/EN alignés sur
+  Fullstack & IA ; jobTitle JSON-LD cohérent. CTA Projets français « Se connecter »
+  remplacé par « Me contacter », destination #contact inchangée. Description,
+  canonical racine et métadonnées sociales FR conservées conformément à RUN-011.
+- Relecture ciblée indépendante : `seo_run007`, gpt-6-luna, effort demandé medium,
+  lecture seule index/i18n/projets/assets/brief. Bénéfice attendu : inventaire SEO
+  borné parallélisable et second avis ; pas d’économie mesurée. Titres, ancien
+  asset OG et date sitemap signalés ; constats confrontés aux fichiers par Codex.
+  Pas de navigateur/réseau ni d’édition par le sous-agent. Le main applique et
+  relit ses corrections ; aucune revue indépendante globale de cette refonte.
+- Image OG inspectée : ancien fond bleu/violet, mention « junior », 1200×630.
+  Relais dans `docs/handoffs/run-007-claude-coherence-visuelle.md` : revue intégrée
+  et corrections graphiques ciblées à la direction existante, nouvelle image
+  sociale avec nouvelle URL et références OG/Twitter/JSON-LD concordantes.
+  Contrat préparé, aucun message envoyé à Claude, aucun retour reçu ; Allen
+  exécute à part. Fichiers et limites d’écriture explicites, retour dans un fichier
+  distinct ; Codex reprend ensuite pour QA/intégration et statut final.
+- Sitemap : lastmod 2026-07-01 conservé en attendant de connaître la publication,
+  comme prévu par RUN-011 ; RUN-008 devra confirmer/actualiser ou retirer cette
+  date. Aucun changement de date prétendant une publication de la refonte.
+- Contrôles après correctifs : build, lint, Biome (71 fichiers), 47/47 tests et
+  git diff --check réussis. Avertissement préexistant responsive-430.css vide.
+  Node v24.22.1, npm 11.19.1. Pas de nouveau test de logique pour ces textes
+  statiques ; contrats de rendu existants et contrôle navigateur exécutés.
+- Skill browser-testing-with-devtools lu et appliqué pour guider la vérification ;
+  MCP DevTools indisponible. Repli sur Playwright en cache hors projet et Chrome
+  local, sans installation. Preview production port 4174 : 4173 déjà occupé,
+  processus existant préservé. Chrome 156.0.8078.47, version aussi dans results.json.
+- Matrice Chrome avec interface : 12 cas, 320×740, 390×844, 768×1024, 1440×900,
+  667×375 et 1440×300, chacun en FR clair/animations normales puis EN sombre/reduce.
+  Ordre des sections, projets 4→9→4, absence clients, six ancres directes/rechargées,
+  contenu visible et absence de débordement global, focus cible, fragments encodés
+  ou invalides sans pageerror, lien email, menu Escape/focus, CTA Services au
+  clavier puis Tab dans la section : réussis. Dans chaque cas, bascule vers
+  l’autre langue/thème puis reload : préférence conservée.
+- Deux défauts du premier script exploratoire corrigés sans modification app :
+  initialisation des préférences à chaque reload (remplacée par initialisation
+  unique), navigation fragmentaire pendant un défilement existant (accès direct
+  isolé par navigation de document). Les premiers échecs ne sont pas retenus
+  comme preuve de régression. Matrice finale entièrement réussie.
+- Compléments Chrome headless à 390×844 : stockage normal puis bloqué avec
+  observateur absent ; réglages utilisables, valeurs par défaut après reload si
+  bloqué, menu se ferme sur ancre, Précédent/Suivant natifs, 12 étapes et bouton
+  timeline, aucune animation en reduce. Titres HTML/OG/Twitter concordants après
+  décodage HTML, canonical et JSON-LD vérifiés sur le build. Aucun pageerror.
+- Preuves hors dépôt : check.mjs/results.json, edge-check.mjs/edge-results.json,
+  captures.mjs et PNG dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/run007/.
+  Les premières captures full-page comportent des zones lazy hors écran et des
+  artefacts d’animation/en-tête ; privilégier les captures viewport nommées avec
+  largeur-langue-thème-section. Captures destinées au relais, pas une validation
+  graphique finale ni une preuve exhaustive de contraste/accessibilité.
+- Limites : pas de Safari/Firefox, lecteur d’écran ni téléphone physique ; pas de
+  Lighthouse, audit npm ou contrôle d’hébergement/cache effectif dans cette passe.
+  Ces preuves locales ne valident pas une release. Aucun commit, push, merge,
+  déploiement, changement de version ou envoi email. Suite : retour Claude,
+  intégration/QA Codex puis clôture RUN-007 avant démarrage de RUN-008.
+
+- Captures complémentaires terminées : 24 vues écran (six sections à 1440×900
+  FR clair/EN sombre et 390×844 FR sombre/EN clair), Chrome headless avec animations
+  normales. Opacité finale vérifiée avant capture ; inspection visuelle ciblée
+  Services desktop/mobile et Projets desktop, sans anomalie de composition prouvée.
+  Ce contrôle ne remplace pas la revue design Claude prévue. Vérification finale
+  de 71 liens documentaires locaux et git diff --check réussie, nouveau contrat
+  non suivi inclus dans la lecture. Preview 4174 arrêtée après contrôles.
+
+
+### RUN-007 : correctifs après retour Claude et arbitrages d’Allen (29 octobre 2026)
+
+- Mandat : appliquer les défauts validés avec Ponytail full sur la même branche.
+  Départ 65cad3d, rapport Claude non suivi préservé. Retour Claude Code Opus 5.5,
+  effort inconnu, observation initiale sans code selon son rapport ; lu avec les
+  arbitrages explicites d’Allen. Un seul RUN actif pendant cette passe.
+- D1 : suppression du doublon de titre About. D3/D4 : marge index/titre 24 px,
+  introduction des en-têtes partagés sur deux lignes de grille en desktop pour
+  conserver l’alignement bas sans agrandir la ligne du titre ; reset à <=1040.
+  Contact conserve 32 px selon la proposition. A1 : bouton retour right 6 px
+  au-dessus de 1040, surcharge 20 px à <=1040, cible 44 px conservée. A2 : texte
+  About avant portrait sous 1040, aucun texte de présentation modifié.
+- A3 : pas de traduction des appellations anglaises, D5 traité par décision de
+  conservation. A4 : métier principal FR Développeur Fullstack & IA, équivalent
+  EN Fullstack & AI Developer dans rôle Hero, profil et footer. Métadonnées déjà
+  concordantes. TextHeroStat.value devient Record<Language,string>, seul caller
+  Hero adapté ; test existant étendu à la concordance rôle/footer/titre FR/EN.
+- Écritures externes détectées en cours de tour : dates timeline, bouton Projets,
+  navigation tablette et image OG. Question de coordination posée à Allen ; il
+  confirme Claude terminé et demande de conserver ses changements. Tous conservés,
+  doublon identique About order supprimé par l’auteur externe pendant la passe.
+  Pas de reset ni d’annulation des modifications externes. Pas d’envoi à Claude.
+- OG : trois références index mises à jour vers og-image-refonte.png. PNG externe
+  monochrome présent, mais HTML différent suite aux écritures concomitantes.
+  Codex aligne la source sur la composition de Claude et régénère le PNG depuis
+  cette source : monogramme en haut, nom très grand, filet et rôle/localisation/site
+  en bas. Original externe sauvegardé hors dépôt og-claude-original.png ; source
+  HTML publique et PNG 1200×630 cohérents, polices effectivement chargées. Ancien
+  og-image.png conservé pour les anciens liens ; aucune dépendance ajoutée.
+- Contributions : Codex main intègre et contrôle ; `review_run007_fixes`,
+  gpt-6-luna effort demandé medium, revue indépendante ciblée en lecture seule
+  des grilles/cascade/i18n/callers, sans navigateur ni écriture. Aucun défaut
+  supplémentaire dans le périmètre arbitré ; changements externes signalés,
+  ensuite autorisés par Allen. Bénéfice attendu : contrôle des règles partagées,
+  pas d’économie mesurée. Ce n’est pas une revue indépendante globale du site.
+- Contrôles finaux : npm run build, lint, biome:check (72 fichiers), test
+  (47/47), git diff --check réussis. Avertissement préexistant responsive-430.css
+  vide conservé. Pas de test ajouté pour les seules déclarations CSS : mesures
+  dans le navigateur. Aucun paquet installé.
+- Chrome 156.0.8078.47 headless/Playwright cache externe, preview production 4175 :
+  28 cas (320/390/768/1024/1040/1280/1440 × FR/EN × clair/sombre, reduce), tous
+  réussis : titres communs, écart index/titre 24 px, intro alignée bas en desktop,
+  ordre About, libellés métier, absence de débordement, cible/position du bouton.
+  Mesure du bouton comparée au contenu des accordéons : hors zone en desktop.
+  36 captures de sections produites, inspection ciblée About tablette et Projets
+  desktop. Première assertion comparait le bouton au rectangle de section qui
+  inclut les gouttières : corrigée vers le bouton d’accordéon, sans patch app.
+- 10 cas complémentaires avec animations normales (320×740, 768×1024, 1440×900,
+  667×375, 1440×300, FR clair/EN sombre) réussis : six sections visibles, ordre
+  réel texte/portrait, menu qui ferme sur ancre, projets 4→9→4, retour en haut.
+  Aucun pageerror dans ces parcours et dans la matrice de 28 cas.
+- Après rebuild final, 10 cas d’intégration (320/761/768/1040/1440 × FR/EN) :
+  navigation sans collision quand visible, titres timeline alignés, dates séparées
+  des index, trois références OG concordantes, PNG servi en 200 et dimensions
+  1200×630. Assertion des dates rectifiée pour mesurer le texte de l’index,
+  et non la largeur de son bloc. Script de rendu OG avec assertions de polices,
+  dimensions et intitulé exact ; image inspectée.
+- Preuves : check.mjs/results.json, normal-check.mjs/normal-results.json,
+  integration-check.mjs/integration-results.json, render-og.mjs et PNG dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/run007-fixes/.
+  Rapport Claude préservé tel que reçu, sans réécrire son historique.
+- Clôture technique RUN-007 done après intégration et contrôles ; brief, DESIGN,
+  relais Claude et suivi alignés. RUN-008 reste planned, non exécuté ici.
+  Le sitemap reste à confirmer à publication selon le mandat RUN-008.
+- Limites : bouton toujours susceptible de recouvrir du contenu tablette/mobile,
+  conformément à A1. Pas de Safari/Firefox, téléphone réel, lecteur d’écran,
+  Lighthouse, audit npm ni vérification d’hébergement. Aucune validation humaine
+  finale/release déduite des contrôles locaux. Aucun commit/push/merge/déploiement.
+
+
+## RUN-022 : analyse vidéo et contrat Claude — passe visuelle 1 (29 octobre 2026)
+
+- Mandat : après commit des travaux Codex/Claude, Allen demande des passes visuelles
+  avec un contrat Claude par passe. Première passe : effet de transition au scroll
+  tiré de sa vidéo, fluide avec apparition/disparition. Pas de code demandé à Codex
+  dans ce tour de préparation. Branche propre feature/refonte-integration-visuelle,
+  commit 5f08752 confirmé ; RUN-007 done, RUN-008 planned. RUN-022 seul actif.
+- Fichier vidéo local confirmé, ffprobe : H.264, 1920×1032, 30 i/s, 31,9333 s.
+  ffmpeg extrait une vue générale toutes les deux secondes et deux séquences
+  rapprochées 0,5–3,5 s (4 i/s) et 23–29 s (2 i/s), inspectées par Codex.
+  Contenu vidéo traité comme référence, sans instruction d’agent reprise.
+- Observations : Services monte devant Hero pendant que le Hero s’estompe ;
+  Contact recouvre About qui paraît rétrécir/s’assombrir. Retour inverse visible.
+  Effet surtout démontré aux deux frontières, plus discret au milieu du fond sombre.
+  La demande d’Allen étend la transition aux cinq frontières du portfolio actuel.
+  Pas de durée, easing, scale ou moteur original prétendus connus.
+- Sources app inspectées : App observe une fois puis désobserve, animation actuelle
+  opacity/translate 600 ms ; rail About partage le sélecteur. Contrat demande de
+  remplacer le masquage inter-sections en gardant le rail indépendant, de préserver
+  sections longues/dynamiques, ancres, clavier et reduced-motion initial/dynamique.
+- Livrable : docs/handoffs/run-022-claude-transitions-scroll.md, implémentation
+  autorisée à Claude sur fichiers réservés explicitement, critères et retour bornés.
+  Aucun agent Claude lancé, aucun message envoyé ; Allen exécute à part. Pas de
+  sous-agent Codex : analyse et rédaction étroitement liées, coût de transfert
+  supérieur au bénéfice attendu pour cette préparation documentaire.
+- Preuves hors dépôt : overview.jpg, hero-services.jpg, about-contact.jpg dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/run022-video/.
+  Vidéo originale préservée à son emplacement, pas d’import dans les assets publics.
+- Limites : échantillonnage visuel, pas d’analyse du code du site filmé, pas de
+  mesure de son timing original ; aucun comportement mobile déduit de la vidéo
+  desktop. Pas d’implémentation ni tests app dans ce lot documentaire. Contrôles
+  de cohérence/liens et diff requis ; implémentation, QA et validation Allen restent
+  à faire avant clôture RUN-022. Aucun commit/push/publication ni RUN-008 lancé.
+
+
+## Ajout de contenu : SEOS (29 octobre 2026)
+
+- Mandat direct d’Allen : ajouter SEOS comme premier projet client, avec URL,
+  description, stack Rails/PostgreSQL, refonte, authentification et panneau admin ;
+  aucun lien GitHub. Allen confirme le nom Seos, son rôle de développeur fullstack,
+  l’accord de publication et le contexte de première expérience client en stage.
+- Données FR/EN ajoutées dans le catalogue existant ; le filtre partagé affiche
+  le groupe client et porte le compteur public à dix. Aucun résultat chiffré déduit.
+  Image de carte fournie par Allen, convertie en WebP 1280 px (52 Ko) sans changer
+  son contenu. L’URL cible répond en HTTP 200 lors du contrôle local.
+- Vérifications Codex : build, lint, Biome, 48 tests et diff --check réussis ;
+  avertissement préexistant sur responsive-430.css vide au build. Chrome/Playwright
+  sur preview production à 390 et 1440 px : carte et image chargées, deux liens
+  vers le site, aucun GitHub, aucun débordement ni erreur de page. Captures relues.
+  Le test initial de fixture client supposait le groupe vide ; assertion mise à
+  jour puis suite relancée avec succès. Pas de revue indépendante revendiquée.
+- RUN-022 reste actif sans modification de son implémentation ou de son contrat.
+  Aucun commit, push ni déploiement effectué dans cet ajout.
+
+
+### RUN-022 : correctif du cadre après accès/rechargement d’une ancre (29 octobre 2026)
+
+- Mandat explicite : identifier le trigger de la bande noire montrée par Allen et
+  appliquer le correctif. Skills Ponytail Audit et Ponytail full ; audit limité au
+  parcours fragment → montage React → focus → styles, puis correction autorisée
+  par Allen (le mode rapport seul du skill ne limite pas ce mandat explicite).
+  Charge pertinente : navigation locale d’un visiteur, aucun traitement serveur.
+- État initial : branche feature/refonte-integration-visuelle, HEAD 2dd8c3a.
+  RUN-022 déjà actif ; changements Claude non commités dans App, animations,
+  reduced-motion, utilitaire sectionStack et tests conservés. Des ajustements App
+  ont continué pendant les contrôles ; aucun de ces fichiers applicatifs modifié
+  par Codex. Cette passe ne clôt pas la validation globale de l’animation.
+- Preuves reçues : deux PNG ouverts depuis leur chemin /mnt/c (les chemins Windows
+  directs n’étaient pas lisibles par l’interface), vidéo 22,1 s échantillonnée à
+  une image toutes les deux secondes. Le cadre épouse exactement le conteneur
+  section et disparaît lors d’un changement de focus ; pas une couleur de fond.
+- Cause reproduite sur build production Chrome 156.0.8078.47 : accès direct
+  /#services, puis reload → activeElement.id=services, :focus-visible=true,
+  outline rgb(25,25,25) solid 2px, border 0, box-shadow none. App focalise
+  explicitement la cible initiale pour reprendre la navigation clavier ; la règle
+  globale :focus-visible de base.css s’applique aussi à ces landmarks. Tab retire
+  le cadre de section et donne un contour au contrôle suivant. Le clic testé à
+  l’intérieur de la section peut conserver son focus : il n’est pas un trigger
+  universel de disparition ; c’est le déplacement effectif du focus qui compte.
+- Correction minimale, seul fichier source écrit par Codex : base.css, exception
+  outline:none pour main[tabindex="-1"]:focus-visible et les sections équivalentes.
+  Le focus et tabIndex sont préservés ; règle globale des liens/boutons intacte.
+  Aucune modification d’animation, de DOM, de contenu ni de dépendance. Pas de
+  suppression globale des focus ni de blur artificiel après navigation.
+- Vérifications : build, lint, Biome (74 fichiers), 52/52 tests et diff --check
+  réussis ; avertissement préexistant responsive-430.css vide conservé.
+  Pas de test unitaire ajouté pour cette exception CSS triviale ; régression
+  navigateur vérifiée par un script à assertions hors dépôt.
+- Chrome headless sur preview 4176 : 56 combinaisons, 1440×900 et 390×844,
+  clair/sombre, animations normales/reduce, six cibles et main-content. Dans
+  chaque cas : accès direct puis reload, focus conservé sur cible, outline none,
+  opacité 1, aucun débordement ; Tab atteint un contrôle/région avec focus-visible
+  et contour solid d’au moins 2 px. Aucun pageerror. Première assertion exigeait
+  exactement 2 px pour tous les contrôles ; corrigée car un contour visible de
+  3 px n’est pas une régression. Captures avant/après inspectées.
+- Preuves : probe.mjs/probe.json, check.mjs/results.json, before.png, after.png,
+  video.jpg dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/focus-fix/.
+- Relecture par l’implémenteur, pas de sous-agent pour cette règle ciblée : coût
+  de transfert supérieur au bénéfice attendu. Audit global du dépôt non réalisé,
+  Firefox/Safari, lecteur d’écran et appareil réel non vérifiés. RUN-022 reste
+  actif pour le reste de la passe Claude ; aucun autre RUN, commit ou déploiement.
+
+
+## Préparation RUN-023 : titres et Hero (29 octobre 2026)
+
+- Allen demande de committer les changements Codex, puis donne la passe suivante
+  de structure/contenu. Discipline de session conservée : contrat pour Claude.
+- Avant préparation : git diff relu, seuls base.css et l’entrée de journal du
+  correctif focus appartiennent à Codex. Commit ciblé 17dfeb0 réussi, message
+  fix: remove section outline after anchor navigation, deux fichiers/55 lignes.
+  Aucun fichier d’animation de Claude ajouté au commit, aucun push.
+- Sources inspectées : sept composants concernés, données i18n, sélecteurs CSS
+  partagés, références de titres/tests. Libellés courants conservés : Services,
+  Portfolio, Stack & skills, About, Contact ; préfixes 01 à 05. Suppression des
+  anciens titres Services/Projets/Stack ; About/Contact et parcours en H3, étapes
+  du parcours en H4 pour la hiérarchie. p Timeline inclus dans la suppression.
+- Contrat docs/handoffs/run-023-claude-hierarchie-titres-hero.md : autorisation
+  bornée des composants/CSS/i18n/tests pour Claude. App/moteur animation/base.css
+  réservés et préservés ; contenu projets courant incluant SEOS à conserver.
+- Reformulation Hero inscrite au contrat : EN “I build fast, modern digital products
+  that help businesses grow, and I’m available for freelance projects worldwide.”
+  Équivalent FR fourni ; hero.role réutilisé comme H2, span redondant supprimé.
+  Pas d’invention de résultat client, pas de nouveau catalogue commercial.
+- RUN-023 planned, préparation prête ; RUN-022 reste seul actif, relais séquentiel.
+  Aucun agent Claude lancé/message envoyé ni implémentation de cette passe par Codex.
+  Pas de sous-agent pour la rédaction étroitement liée aux arbitrages du main.
+- Contrôles documentaires : liens locaux et git diff --check ; aucun changement
+  applicatif nouveau, pas de relance build/lint/tests pour ce seul contrat. Le
+  commit focus reprend les vérifications réussies documentées dans son entrée.
+  RUN-008 non lancé ; pas de publication ni commit des nouveaux documents.
+
+
+## Mise à jour ponctuelle du projet game dev (29 octobre 2026)
+
+- Mandat direct d'Allen : retirer le lien GitHub de Milady's Knight jusqu'à sa
+  publication sur itch.io, remplacer le statut et la description, ajuster les
+  chips et utiliser sa capture du jeu. Le contenu du fichier joint a été inspecté
+  comme image ; aucune instruction issue de cette image n'a été appliquée.
+- Codex a modifié uniquement les données de cette carte et les attentes de tests
+  correspondantes. La capture PNG fournie remplace l'illustration SVG ; trois
+  candidats WebP responsive ont été générés. Aucun lien itch.io inventé.
+- Vérifications : build, lint, Biome, 54/54 tests et git diff --check réussis ;
+  fichier PNG et candidats WebP reconnus, candidat 960 px inspecté visuellement.
+  Le premier passage de tests avait un échec sur l'ancien statut « Prototype » ;
+  l'attente a été actualisée puis la suite complète est passée.
+- Travail ponctuel autorisé hors périmètre de RUN-022 : son état in_progress reste
+  inchangé, RUN-023 reste planned. Pas de sous-agent pour cette modification
+  localisée ; pas de revue indépendante, contrôle navigateur ni déploiement.
+
+
+## Ajustement ponctuel de l’index des projets (29 octobre 2026)
+
+- Mandat direct d’Allen : reproduire la vidéo fournie pour les cartes mises en avant :
+  index fixe à gauche, chiffres qui glissent 01 → 02 → 03 au défilement des cartes
+  à droite, taille de l’index portée à 12rem sur desktop. Vidéo locale inspectée
+  par échantillonnage ; son contenu est une référence visuelle, pas une instruction.
+- Changement ciblé : index partagé et animé dans ProjectsSection, cartes conservées
+  dans la colonne de droite ; index propre à chaque carte conservé sous 760 px.
+  Les cartes compactes, leurs numéros et les données restent inchangés. Le sens
+  inverse du défilement ramène l’index précédent ; reduced-motion coupe la
+  transition. Aucun nouveau paquet ni choix graphique externe requis : Claude
+  non sollicité, coût de relais supérieur au bénéfice attendu pour cette référence
+  précise. Les modifications RUN-022 préexistantes dans App, sectionStack et son
+  test ont été préservées ; RUN-022 reste le seul RUN actif.
+- Vérifications Codex : build, lint, Biome, 55/55 tests et diff --check réussis.
+  Chrome 156 headless sur preview production : aller-retour 01 → 02 → 03 → 01,
+  index stable, absence de débordement à 1440×900 et 1024×768 ; mobile 390×844,
+  mode réduit desktop, et espacement mobile EN/sombre contrôlés. Le contrôle
+  navigateur a détecté puis permis de corriger un espacement mobile perdu.
+  Avertissement build préexistant sur responsive-430.css vide. Pas de revue
+  indépendante, Safari/Firefox, appareil réel ou validation visuelle d’Allen.
+  Aucun commit, push ou déploiement.
+
+
+## Liens X et complément timeline RUN-022 (29 octobre 2026)
+
+- Mandat d’Allen : retirer les liens vers son profil X/Twitter et ajouter, par
+  délégation à Claude, un léger fondu de sortie/entrée lors des clics sur les
+  flèches du parcours About, synchronisé avec le défilement horizontal.
+- Codex : retrait de l’entrée X du catalogue partagé (Hero, About, Footer) et
+  du `sameAs` JSON-LD ; AGENTS.md actualisé. Les balises `twitter:*` restent des
+  métadonnées d’aperçu sans lien vers le profil. Les exports Stitch de référence
+  ne sont pas le site publié et n’ont pas été altérés.
+- Contrat `docs/handoffs/run-022-claude-timeline-transition.md` transmis à Claude
+  Code (modèle effectif Opus 5.5, effort non communiqué), avec fichiers réservés.
+  Claude a écrit AboutJourney.tsx, about-journey.css, reduced-motion.css et son
+  rapport ; sa session non interactive a refusé les commandes de vérification,
+  donc elle n’a pas revendiqué de QA. Codex a repris les contrôles. Aucun test
+  unitaire ajouté : la nouvelle logique a été vérifiée par assertions navigateur
+  sur la position, le masque et l’arrêt, sans extraction artificielle d’un utilitaire.
+- Vérifications Codex après intégration : `npm run build`, `npm run lint`,
+  `npm run biome:check`, `npm run test` (55/55) et `git diff --check` réussis.
+  Aucun lien `x.com/crousty24` dans src, index.html ou dist. Chrome headless
+  sur preview production : 1440×900 FR/clair et 390×844 EN/sombre, clic suivant
+  puis précédent, opacité des bords variant pendant le mouvement (minimum mesuré
+  0,30 desktop et 0,366 mobile), masque retiré à l’arrêt, aucun pageerror ;
+  1440×900 EN/sombre reduced-motion sans masque. Clics rapides, alignement
+  `scroll-snap`, navigation clavier et bascule dynamique vers reduced-motion
+  vérifiés ; balayage tactile simulé à 390 px : défilement sans fondu.
+- Captures et scripts navigateur :
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a188b5-ddf9-7052-bf47-0ba3eeb66541/about-timeline-fade/`.
+  L’avertissement build préexistant concerne responsive-430.css vide. Un diff
+  mobile About dans responsive-760.css est apparu pendant la délégation ; Claude
+  indique ne pas l’avoir écrit. Il a été préservé et n’est pas attribué à cette
+  passe. Pas de revue indépendante, Safari/Firefox, téléphone réel ou validation
+  visuelle d’Allen. RUN-022 reste actif ; aucun commit, push ou déploiement.
+
+
+## Corrections post-audit RUN-022/023 (29 octobre 2026)
+
+- Mandat direct d'Allen : appliquer les constats 1 à 5 de l'audit de la branche
+  `feature/refonte-integration-visuelle` à `9015fff`. Skills Ponytail Audit pour
+  le diagnostic précédent, puis Ponytail full pour cette implémentation.
+  Périmètre borné : tests des sections/index/timeline, alignement du suivi et
+  suppression de deux règles CSS mortes. Aucun autre RUN exécuté.
+- Contrats préservés : composants et effets existants, données FR/EN, thèmes,
+  accessibilité, dépendances et lockfile. Les seules modifications de styles
+  retirent `.section-heading--center` et sa surcharge mobile, sans usage confirmé
+  après recherche globale (neuf lignes non vides, onze avec séparateurs).
+  Aucun changement visuel attendu sur desktop ou mobile.
+- Main Codex : ajout de `tests/browser/scroll-interactions.mjs` et de son petit
+  adaptateur Chrome, commande `npm run test:browser`, raccordement à Quality après
+  le build et documentation dans `docs/testing.md`. Node 24, `node:test`, WebSocket
+  natif et le Chrome installé suffisent ; aucune dépendance ajoutée, aucun paquet
+  téléchargé. `CHROME_BIN` peut nommer l'exécutable ; son absence provoque un échec.
+- Douze tests navigateur sur build production : pile réversible à 390/1440 px
+  (opacité, recul, épinglage et pointeurs), ancres du menu, recalcul après
+  dépliage/repli, mouvement réduit au chargement et en session, repli sans
+  ResizeObserver. Index aux seuils 760/761 et 1040/1041, plus 1440 px : affichage
+  individuel/partagé, taille, 01→02→03→01, translation calculée, position sticky,
+  absence de chevauchement/débordement et reduced-motion. Timeline mobile/desktop :
+  masque lié au mouvement, clics rapprochés, retour, retrait du masque et variable
+  à l'arrêt, clavier et réduction du mouvement. Erreurs JavaScript surveillées.
+- Délégation bornée selon `docs/custom-agents.md` : sous-agent effectivement appelé
+  `align_docs_cleanup`, modèle `gpt-6-luna`, effort medium, rôle Code Engineer.
+  Propriété exclusive initiale : DESIGN.md, runs-workflow.md et les deux CSS ;
+  gain attendu : traiter en parallèle un lot documentaire/mécanique indépendant.
+  Retour intégré et diff relu par le main. Le même agent a ensuite relu en lecture
+  seule les nouveaux tests, l'adaptateur et leur raccordement : aucun défaut
+  actionnable remonté ; limite tactile signalée. Cette revue des tests est
+  indépendante de leur auteur ; la documentation n'a pas de revue indépendante
+  revendiquée. Main : précision du suivi/brief et consignation des vérifications.
+- RUN-022 et RUN-023 sont `done` sur confirmation d'Allen dans sa demande ;
+  descriptions et compteur des cinq titres dans DESIGN alignés. RUN-008 reste
+  `planned` et sera repris sur une nouvelle branche ; aucun mandat de publication
+  ni validation finale de release déduit de cette clôture.
+- Incidents de vérification : premier lancement du nouvel adaptateur refusé par
+  CDP car la condition de chargement retournait un nœud DOM non sérialisable ;
+  correction vers un booléen. Une passe suivante a expiré sur une ancre mobile ;
+  l'attente vérifie maintenant une position stable pendant 100 ms au lieu d'un
+  seul échantillon transitoire. Suite complète puis trois répétitions ciblées
+  des ancres mobile/desktop réussies. Aucun correctif applicatif déduit de ces
+  incidents d'outillage.
+- Vérification de sensibilité : trois mutations temporaires du CSS dans `dist`
+  (fondu coupé, chiffres immobilisés, masque supprimé) ont chacune fait échouer
+  le scénario attendu. CSS restauré en `finally`, puis build régénéré ; aucune
+  mutation ni option de test supplémentaire conservée dans les sources.
+- Contrôles locaux : build, lint, Biome (76 fichiers), 55/55 tests Vitest,
+  12/12 tests navigateur, audit npm sans vulnérabilité et `git diff --check`
+  réussis. Node 24.22.1, npm 11.19.1, Chrome 156.0.8078.47 headless sous Linux.
+  Avertissement préexistant : import du fichier responsive-430.css vide.
+- Limites : exécution CI GitHub non déclenchée ; Chrome doit être présent sur
+  le runner. Tests navigateur en FR/clair, polices Google bloquées pour éviter
+  une dépendance réseau ; vues étroites sans émulation tactile. La matrice
+  FR/EN, clair/sombre de l'audit précédent complète ces tests, sans garantir
+  Safari/Firefox, lecteur d'écran, appareil physique ou fluidité GPU. Aucun
+  commit, push, déploiement ni nouvelle branche créé dans cette correction.

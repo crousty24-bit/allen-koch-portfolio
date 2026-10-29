@@ -12,8 +12,8 @@ export function ContactSection({ language }: ContactSectionProps) {
   return (
     <section className="section contact-section" id="contact" tabIndex={-1}>
       <div className="contact-panel reveal">
-        <p className="eyebrow eyebrow--section">Contact</p>
-        <h2>{contactCopy.heading}</h2>
+        <h2 className="section-title">{contactCopy.heading}</h2>
+        <h3 className="contact-panel__title">{contactCopy.subheading}</h3>
         <div className="contact-panel__aside">
           <p>{contactCopy.text}</p>
           {email ? (

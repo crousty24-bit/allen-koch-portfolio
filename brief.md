@@ -137,11 +137,12 @@ filets, titres et paragraphes FR/EN validés, CTA commun vers Contact. Design de
 Claude Sonnet 5.5, intégration/QA Codex ; contenu toujours provisoire, aucune
 nouvelle dépendance. RUN-015 réalise les espaces Projets ; RUN-021 intègre la timeline horizontale,
 avec corrections QA du fondu à l’entrée du rail et des dates accessibles.
-RUN-015 répartit les neuf projets : huit personnels (trois mis en avant, cinq
-supplémentaires dépliables) et Milady's Knight seul en game dev, toujours présent.
-Le groupe clients est prêt mais masqué en l'absence de cas autorisé. Mission,
-rôle, livrables et accord de publication sont requis pour une carte client ;
-un résultat reste facultatif et doit être vérifié. Le compteur public reste neuf.
+RUN-015 a réparti les neuf projets initiaux : huit personnels (trois mis en avant,
+cinq supplémentaires dépliables) et Milady's Knight seul en game dev. SEOS est
+ensuite ajouté comme premier projet client autorisé, réalisé lors d'un stage ;
+le groupe clients est désormais visible et le compteur public affiche dix projets.
+Mission, rôle, livrables et accord de publication sont requis pour une carte
+client ; un résultat reste facultatif et doit être vérifié.
 RUN-016 est clôturé sur la [décision contact](docs/contact-form-contract.md)
 validée par Allen : lien email seul vers `allen.kch24@gmail.com` pour l'instant.
 Formulaire RUN-017 reporté ; aucun prestataire ni abonnement choisi. Conservation
@@ -150,8 +151,17 @@ automatique mise en place. Un futur test de réception du formulaire est autoris
 vers cette même adresse, mais aucun envoi n'est effectué maintenant. Le formulaire
 reste une évolution future, sans bloquer l'itération visuelle et son assemblage.
 RUN-021 est clôturé localement après correctifs et contrôles ; présentation
-About inchangée. Suite planifiée : RUN-007 pour la cohérence globale.
-Aucun RUN suivant n’est lancé automatiquement.
+About inchangée. Allen lance RUN-007 le 29 octobre sur la nouvelle branche
+`feature/refonte-integration-visuelle`, pour RUN-007 et les correctifs/RUN
+supplémentaires demandés. Le [contrat Claude](docs/handoffs/run-007-claude-coherence-visuelle.md)
+a été exécuté : retour Claude reçu, correctifs arbitrés par Allen intégrés et
+RUN-007 clôturé localement. Intitulé principal FR « Développeur Fullstack & IA »,
+équivalent EN « Fullstack & AI Developer » dans Hero, profil et footer ; badges
+et libellés anglais conservés volontairement. About commence par le texte sous
+1040 px ; bouton retour déplacé dans la marge desktop seulement. Image sociale
+monochrome sous une nouvelle URL. RUN-022/023 sont clôturés sur confirmation
+d'Allen ; RUN-008 reste planifié pour la validation finale sur une nouvelle
+branche, selon sa précision du 29 octobre. Aucune publication autorisée.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).
 

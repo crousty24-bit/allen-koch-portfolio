@@ -1,31 +1,32 @@
 .projects-features {
   display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.projects-features__cards {
+  display: grid;
+  grid-column: 4 / -1;
   gap: 6rem;
+  min-width: 0;
 }
 
 .project-card--feature {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 2.5rem;
   padding-top: 2.5rem;
   border-top: 1px solid var(--outline);
 }
 
-/* Stays in view while the project visual scrolls past (DESIGN.md R10). */
 .project-card__index {
-  position: sticky;
-  top: calc(4rem + 2rem);
-  grid-column: 1 / span 3;
-  align-self: start;
   margin: 0;
-  font-size: 8rem;
+  font-size: 12rem;
   font-weight: 400;
   letter-spacing: -0.05em;
   line-height: 0.8;
   font-variant-numeric: tabular-nums;
 }
 
-.project-card__index span {
+.project-card__total {
   margin-left: 0.75rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
@@ -34,8 +35,32 @@
   vertical-align: top;
 }
 
-.project-card--feature .project-card__main {
-  grid-column: 4 / -1;
+.projects-features__index {
+  position: sticky;
+  top: 6rem;
+  grid-column: 1 / span 3;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.projects-features__window {
+  display: block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.projects-features__track,
+.projects-features__number {
+  display: block;
+}
+
+.projects-features__track {
+  transition: transform 450ms var(--ease-out);
+}
+
+.project-card--feature .project-card__index {
+  display: none;
 }
 
 .project-card__media {
@@ -138,7 +163,7 @@
 
 .projects-section__more {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 4rem;
 }
 

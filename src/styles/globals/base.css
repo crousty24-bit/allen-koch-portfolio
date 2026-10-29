@@ -47,3 +47,9 @@ select {
   outline: 2px solid var(--text);
   outline-offset: 3px;
 }
+
+/* Anchor targets keep focus for navigation without framing the whole section. */
+main[tabindex="-1"]:focus-visible,
+.section[tabindex="-1"]:focus-visible {
+  outline: none;
+}

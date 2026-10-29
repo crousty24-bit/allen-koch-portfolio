@@ -17,10 +17,9 @@ export function ServicesSection({ language }: ServicesSectionProps) {
     >
       <div className="section-heading section-heading--split reveal">
         <div>
-          <p className="eyebrow eyebrow--section">
-            {pageCopy.services.eyebrow}
-          </p>
-          <h2 id="services-title">{pageCopy.services.heading}</h2>
+          <h2 className="section-title" id="services-title">
+            {pageCopy.services.heading}
+          </h2>
         </div>
       </div>
       <ul className="services__list reveal">

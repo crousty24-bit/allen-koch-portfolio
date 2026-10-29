@@ -76,7 +76,7 @@ front/design polish or punctual content updates:
 - add or update selected projects
 - update stack data
 - update bio copy
-- update GitHub, LinkedIn, X, or email links
+- update GitHub, LinkedIn, or email links
 - refine small visual details, accessibility, SEO, or performance issues
 
 The site must present:
@@ -87,7 +87,7 @@ The site must present:
 - developer skills
 - about section
 - contact CTA
-- GitHub, LinkedIn, X, and email links
+- GitHub, LinkedIn, and email links
 - dark/light theme toggle
 - FR/EN language toggle
 - back-to-top action after scroll

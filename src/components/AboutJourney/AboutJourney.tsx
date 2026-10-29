@@ -34,11 +34,13 @@ const timelineLabels: Record<
 
 export function AboutJourney({ language }: AboutJourneyProps) {
   const trackRef = useRef<HTMLOListElement>(null)
+  const motionRef = useRef({ frame: 0 })
   const [edges, setEdges] = useState({ atStart: true, atEnd: false })
   const labels = timelineLabels[language]
 
   useEffect(() => {
     const track = trackRef.current
+    const motion = motionRef.current
     if (!track) {
       return
     }
@@ -59,8 +61,49 @@ export function AboutJourney({ language }: AboutJourneyProps) {
     return () => {
       track.removeEventListener('scroll', updateEdges)
       window.removeEventListener('resize', updateEdges)
+      cancelAnimationFrame(motion.frame)
+      motion.frame = 0
     }
   }, [])
+
+  // Edge fade driven by the measured scroll speed: it eases with the real
+  // motion and ends once scrollLeft (snap included) has stopped for 100 ms.
+  const fadeWhileMoving = (track: HTMLOListElement) => {
+    const motion = motionRef.current
+    if (motion.frame) {
+      return
+    }
+
+    let lastLeft = track.scrollLeft
+    let lastTime = performance.now()
+    let stillSince = lastTime
+    let edge = 1
+    track.setAttribute('data-moving', '')
+
+    const step = (time: number) => {
+      const left = track.scrollLeft
+      const speed = Math.abs(left - lastLeft) / Math.max(time - lastTime, 1)
+      if (left !== lastLeft) {
+        stillSince = time
+      }
+      lastLeft = left
+      lastTime = time
+
+      if (time - stillSince > 100) {
+        track.removeAttribute('data-moving')
+        track.style.removeProperty('--journey-edge')
+        motion.frame = 0
+        return
+      }
+
+      // Full fade (edges at 30 % opacity) from 1.5 px/ms, eased halfway each frame to absorb jitter.
+      edge += (1 - 0.7 * Math.min(speed / 1.5, 1) - edge) / 2
+      track.style.setProperty('--journey-edge', edge.toFixed(3))
+      motion.frame = requestAnimationFrame(step)
+    }
+
+    motion.frame = requestAnimationFrame(step)
+  }
 
   const scrollTrack = (direction: 1 | -1) => {
     const track = trackRef.current
@@ -71,6 +114,9 @@ export function AboutJourney({ language }: AboutJourneyProps) {
     const reduceMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches
+    if (!reduceMotion) {
+      fadeWhileMoving(track)
+    }
     track.scrollBy({
       left: direction * track.clientWidth * 0.8,
       behavior: reduceMotion ? 'instant' : 'smooth',
@@ -83,10 +129,7 @@ export function AboutJourney({ language }: AboutJourneyProps) {
       className="about-journey reveal"
     >
       <header className="about-journey__header">
-        <div>
-          <p className="eyebrow">Timeline</p>
-          <h2 id="about-journey-title">My Coding Journey</h2>
-        </div>
+        <h3 id="about-journey-title">My Coding Journey</h3>
         <div className="about-journey__controls">
           <button
             aria-controls="about-journey-list"
@@ -140,7 +183,7 @@ export function AboutJourney({ language }: AboutJourneyProps) {
                   {item.dateLabel[language]}
                 </p>
               ) : null}
-              <h3 className="about-journey__title">{item.title[language]}</h3>
+              <h4 className="about-journey__title">{item.title[language]}</h4>
               <p className="about-journey__description">
                 {item.description[language]}
               </p>

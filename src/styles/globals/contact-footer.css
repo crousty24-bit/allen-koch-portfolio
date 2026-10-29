@@ -21,18 +21,19 @@
   --outline: #3d3c37;
 }
 
-.contact-panel .eyebrow {
+.contact-panel .section-title {
   grid-column: 1 / -1;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
-.contact-panel h2 {
+.contact-panel__title {
   grid-column: 1 / span 7;
+  align-self: start;
   margin: 0;
-  font-size: 5rem;
+  font-size: 2.25rem;
   font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .contact-panel__aside {

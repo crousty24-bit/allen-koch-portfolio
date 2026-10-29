@@ -8,16 +8,33 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-.about-content h2 {
-  font-size: 2.25rem;
+.about-layout {
+  row-gap: 0;
+}
+
+.about-content {
+  display: contents;
+}
+
+.about-visual {
+  grid-row: 3;
+  margin: 1.5rem 0;
+}
+
+.about-badges {
+  margin-top: 0;
+}
+
+.about-content__subtitle {
+  font-size: 1.75rem;
 }
 
 .contact-panel {
   padding: 3rem 1.25rem;
 }
 
-.contact-panel h2 {
-  font-size: 2.75rem;
+.contact-panel__title {
+  font-size: 1.75rem;
 }
 
 .contact-panel__aside {
@@ -38,7 +55,7 @@
   margin-top: 4rem;
 }
 
-.about-journey__header h2 {
+.about-journey__header h3 {
   font-size: 1.75rem;
 }
 
@@ -147,17 +164,8 @@ html {
   min-height: 3.15rem;
 }
 
-.section-heading--center {
-  text-align: left;
-}
-
 .hero {
   padding-top: calc(4rem + 3rem);
-}
-
-.hero__role {
-  margin-top: 1rem;
-  font-size: 1rem;
 }
 
 .hero__body {
@@ -221,19 +229,28 @@ html {
 }
 
 .section-heading--split > div > h2,
-.section-heading--split > div > p:not(.eyebrow) {
+.section-heading--split p {
   grid-column: 1;
 }
 
-.section-heading--split > div > p:not(.eyebrow) {
+.section-heading--split p {
   margin-top: 1.25rem;
 }
 
 .projects-features {
+  display: block;
+}
+
+.projects-features__index {
+  display: none;
+}
+
+.projects-features__cards {
   gap: 4rem;
 }
 
 .project-card--feature {
+  display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   padding-top: 1.5rem;
@@ -241,12 +258,11 @@ html {
 
 .project-card__index {
   position: static;
-  grid-column: 1;
   font-size: 3.5rem;
 }
 
-.project-card--feature .project-card__main {
-  grid-column: 1;
+.project-card--feature .project-card__index {
+  display: block;
 }
 
 .project-card--feature .project-card__body {

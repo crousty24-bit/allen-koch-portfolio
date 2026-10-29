@@ -25,3 +25,21 @@ html:root,
   transform: none;
   transition: none;
 }
+
+/* Preference switched after load: the stack stops pinning, fading and receding. */
+.section-stack > .section {
+  position: relative;
+  top: auto;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Preference switched during a click: no edge fade. */
+.about-journey__list[data-moving] {
+  mask-image: none;
+}
+
+.projects-features__track {
+  transition: none;
+}

@@ -39,6 +39,8 @@ export const stack: StackItem[] = [
       { label: 'GitHub' },
       { label: 'VS Code' },
       { label: 'Codex' },
+      { label: 'Claude' },
+      { label: 'Ollama' },
       { label: 'Docker' },
       { label: 'Vercel' },
       { label: 'Tauri' },

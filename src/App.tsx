@@ -9,6 +9,11 @@ import { ProjectsSection } from './components/ProjectsSection/ProjectsSection'
 import { ServicesSection } from './components/ServicesSection/ServicesSection'
 import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
+import {
+  getSectionCover,
+  getSectionPins,
+  type SectionPin,
+} from './utils/sectionStack'
 import { readStoredPreference, writeStoredPreference } from './utils/storage'
 
 const getStoredTheme = (): Theme => {
@@ -78,8 +83,9 @@ function App() {
       return
     }
 
+    // Sections now transition through the scroll stack below; only the rail keeps its one-time fade.
     const scrollSections = document.querySelectorAll<HTMLElement>(
-      'main > .section:not(.hero), .about-journey__list',
+      '.about-journey__list',
     )
 
     scrollSections.forEach((section) => {
@@ -113,6 +119,106 @@ function App() {
           'section--scroll-fade',
           'section--scroll-visible',
         )
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    const main = document.querySelector('main')
+    if (
+      !main ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      !('ResizeObserver' in window) ||
+      !CSS.supports('selector(:has(*))')
+    ) {
+      return
+    }
+
+    const sections = Array.from(
+      main.querySelectorAll<HTMLElement>(':scope > .section'),
+    )
+    const covers: number[] = []
+    let pins: SectionPin[] = []
+    let mainTop = 0
+    let frameId = 0
+
+    const update = () => {
+      frameId = 0
+      const scrollOffset = window.scrollY - mainTop
+      pins.forEach((pin, index) => {
+        const cover =
+          Math.round(getSectionCover(pin, scrollOffset) * 1000) / 1000
+        if (cover === covers[index]) return
+        covers[index] = cover
+        sections[index].style.setProperty('--section-cover', String(cover))
+        // Near-transparent (opacity under 5 %) sections stop catching clicks.
+        sections[index].classList.toggle('section--covered', cover >= 0.95)
+      })
+    }
+
+    const scheduleUpdate = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(update)
+    }
+
+    // Reads first, then writes: runs on size changes only, never per scroll frame.
+    const measure = () => {
+      mainTop = main.getBoundingClientRect().top + window.scrollY
+      pins = getSectionPins(
+        sections.map((section) => section.offsetHeight),
+        window.innerHeight,
+        Number.parseFloat(
+          window.getComputedStyle(document.documentElement).scrollPaddingTop,
+        ),
+        // A section's last content scrolls a quarter screen up before it gets covered.
+        window.innerHeight / 4,
+      )
+      pins.forEach((pin, index) => {
+        sections[index].style.setProperty('--section-pin-top', `${pin.top}px`)
+      })
+      update()
+    }
+
+    // Fragment scrolling (links and history traversal) aims at a pinned box's
+    // current spot; unpin the target while the browser resolves where to scroll.
+    const unpinTarget = (hash: string | undefined) => {
+      const target = sections.find((section) => hash === `#${section.id}`)
+      if (!target) return
+      target.classList.add('section--unpinned')
+      window.requestAnimationFrame(() =>
+        target.classList.remove('section--unpinned'),
+      )
+    }
+    const unpinLinkTarget = (event: MouseEvent) => {
+      if (event.target instanceof Element) {
+        unpinTarget(
+          event.target.closest<HTMLAnchorElement>('a[href^="#"]')?.hash,
+        )
+      }
+    }
+    const unpinHistoryTarget = () => unpinTarget(window.location.hash)
+
+    main.classList.add('section-stack')
+    const resizeObserver = new ResizeObserver(measure)
+    sections.forEach((section) => {
+      resizeObserver.observe(section)
+    })
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', measure)
+    document.addEventListener('click', unpinLinkTarget)
+    window.addEventListener('popstate', unpinHistoryTarget)
+
+    return () => {
+      resizeObserver.disconnect()
+      window.cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', measure)
+      document.removeEventListener('click', unpinLinkTarget)
+      window.removeEventListener('popstate', unpinHistoryTarget)
+      main.classList.remove('section-stack')
+      sections.forEach((section) => {
+        section.classList.remove('section--covered', 'section--unpinned')
+        section.style.removeProperty('--section-pin-top')
+        section.style.removeProperty('--section-cover')
       })
     }
   }, [])

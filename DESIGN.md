@@ -616,8 +616,8 @@ Implémenté :
 - **Menu mobile** (≤ 760 px) : panneau opaque sur toute la hauteur, liens en
   1,5 rem séparés par des filets, contrôles en bas, apparition en opacité 160 ms ;
   Échap et retour du focus inchangés.
-- **Index de section** `01 / Portfolio`, `02 / Stack & skills`, `03 / About`,
-  `04 / Contact` par compteur CSS sur `.eyebrow--section`, suivi d'un filet.
+- **Index de section** `01 / Services`, `02 / Portfolio`, `03 / Stack & skills`,
+  `04 / About`, `05 / Contact` par compteur CSS sur `.section-title`, sans filet.
 - **Pied de page** : marque, colonnes « Navigation » et « Liens » / « Links »
   (libellés validés par Allen le 28 octobre 2026), nom géant décoratif masqué
   aux technologies d'assistance, mention légale en mono. Liens de navigation
@@ -954,3 +954,26 @@ techniques et visuelles au journal.
   à partir de l'observateur existant. L'animation ne se relance pas au retour.
 - Reduced-motion et absence d'observateur : contenu visible sans fondu ; aucune
   nouvelle dépendance ni nouvelle direction visuelle. Contrôles au journal.
+
+
+## R26. Cohérence intégrée après arbitrages (29 octobre 2026, RUN-007)
+
+- D1/D3/D4 : titre About reprend le clamp commun ; index → titre à 24 px pour
+  Services/Projets/Stack/About, Contact conserve ses 32 px. L’introduction des
+  en-têtes partagés occupe deux lignes de grille en desktop, bas aligné au titre ;
+  retour en flux sous le titre à 1040 px et moins.
+- A1 : bouton retour en haut à 6 px du bord au-dessus de 1040 px ; cible 44 px,
+  position tablette/mobile inchangée à 20 px, chevauchement résiduel accepté.
+- A2 : About affiche texte puis portrait sous 1040 px ; desktop conservé.
+- A3 : About, Stack & skills, Profile et badges anglais conservés volontairement.
+- A4 : « Développeur Fullstack & IA » / “Fullstack & AI Developer” dans rôle Hero,
+  statistique de profil, footer et titres ; image sociale française harmonisée.
+  Les autres textes et la présentation About sont conservés.
+- Image sociale : composition monochrome de Claude, nouvelle URL
+  `/og-image-refonte.png`, 1200×630 ; source HTML publique du même nom.
+- Compléments Claude conservés sur confirmation d’Allen : dates de timeline
+  alignées sur la ligne d’index, bouton Projets à gauche, navigation tablette
+  avec largeur des contrôles conservée et liens plus compacts.
+
+Contrôles datés et limites au journal. Aucune nouvelle direction graphique,
+dépendance ni publication ; validation finale d’Allen réservée à RUN-008.

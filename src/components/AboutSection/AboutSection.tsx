@@ -39,9 +39,9 @@ export function AboutSection({ language }: AboutSectionProps) {
         </div>
 
         <div className="about-content reveal">
-          <p className="eyebrow eyebrow--section">{aboutCopy.eyebrow}</p>
-          <h2>{aboutCopy.heading}</h2>
-          <ul className="chip-list about-badges" aria-label={aboutCopy.eyebrow}>
+          <h2 className="section-title">{aboutCopy.heading}</h2>
+          <h3 className="about-content__subtitle">{aboutCopy.subheading}</h3>
+          <ul className="chip-list about-badges" aria-label={aboutCopy.heading}>
             {aboutCopy.badges.map((badge) => (
               <li className="chip" key={badge}>
                 {badge}

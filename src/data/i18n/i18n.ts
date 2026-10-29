@@ -5,8 +5,8 @@ export const copy = {
   fr: {
     about: {
       alt: "Portrait professionnel d'Allen Koch",
-      eyebrow: 'About',
-      heading: "Bonjour, moi c'est Allen.",
+      heading: 'About',
+      subheading: "Bonjour, moi c'est Allen.",
       badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
       intro: [
         "Développeur web en reconversion, basé en Alsace, je construis des applications web utiles, lisibles et maintenables, en adéquation avec le paysage numérique actuel et l'évolution des solutions IA.",
@@ -15,24 +15,22 @@ export const copy = {
       ],
     },
     contact: {
-      heading: 'Parlons de votre projet.',
+      heading: 'Contact',
+      subheading: 'Parlons de votre projet.',
       text: "Disponible pour discuter d'un projet web, d'un MVP ou d'une base technique à structurer proprement.",
     },
     footer: {
-      brand: 'Allen Koch - Développeur Fullstack',
+      brand: 'Allen Koch - Développeur Fullstack & IA',
       copyright: '© 2026 Allen Koch. Tous droits réservés.',
       navHeading: 'Navigation',
       linksHeading: 'Liens',
     },
     hero: {
-      title: 'Allen Koch | Développeur Web | Alsace, France',
+      title: 'Allen Koch | Développeur Fullstack & IA | Alsace, France',
       name: 'Allen Koch',
-      role: 'Développeur Web / Alsace, France',
-      heading:
-        'Transformer les besoins en produits web utiles, structurés et maintenables',
-      highlight: '',
+      role: 'Développeur Fullstack & IA / Alsace, France',
       subtitle:
-        "Du besoin à la mise en ligne, j'avance par itérations courtes avec une approche produit et des workflows IA utiles.",
+        'Je conçois des produits numériques modernes et rapides pour aider les entreprises à se développer. Je suis disponible pour des missions freelance dans le monde entier.',
       projectsCta: 'Voir les réalisations',
       contactCta: 'Discuter de votre projet',
       statsLabel: 'Statistiques du hero',
@@ -66,25 +64,22 @@ export const copy = {
       roleLabel: 'Rôle',
       deliverablesLabel: 'Livrables',
       resultsLabel: 'Résultats',
-      eyebrow: 'Portfolio',
-      heading: 'Build & Learn',
+      heading: 'Portfolio',
       text: 'Des projets concrets conçus pour répondre à des besoins réels, avec une approche produit, une structure claire et un code maintenable.',
       showAllLabel: 'Afficher tous les projets personnels',
       hideExtraLabel: 'Masquer les projets personnels supplémentaires',
       ctaText: 'Une idée de projet ?',
-      ctaLink: 'Se connecter',
+      ctaLink: 'Me contacter',
       viewProject: 'Voir le projet',
       github: 'GitHub',
       view: 'Voir',
     },
     services: {
-      eyebrow: 'Services',
-      heading: 'Deux prestations',
+      heading: 'Services',
     },
     skipLink: 'Aller au contenu',
     stack: {
-      eyebrow: 'Stack & skills',
-      heading: 'Une base technique solide, lisible et moderne.',
+      heading: 'Stack & skills',
       text: "La stack met l'accent sur des outils que je peux comprendre, déployer et maintenir dans le temps.",
     },
     topButtonLabel: 'Remonter en haut de la page',
@@ -92,8 +87,8 @@ export const copy = {
   en: {
     about: {
       alt: 'Professional portrait of Allen Koch',
-      eyebrow: 'About',
-      heading: "Hello, I'm Allen.",
+      heading: 'About',
+      subheading: "Hello, I'm Allen.",
       badges: ['France', 'Fullstack Developer', 'AI-assisted workflows'],
       intro: [
         "Career-switching web developer based in Alsace, I build useful, readable, and maintainable web applications aligned with today's digital landscape and the evolution of AI solutions.",
@@ -102,24 +97,22 @@ export const copy = {
       ],
     },
     contact: {
-      heading: "Let's talk about your project.",
+      heading: 'Contact',
+      subheading: "Let's talk about your project.",
       text: 'Available to discuss a web project, an MVP, or a technical foundation to structure cleanly.',
     },
     footer: {
-      brand: 'Allen Koch - Fullstack Developer',
+      brand: 'Allen Koch - Fullstack & AI Developer',
       copyright: '© 2026 Allen Koch. All rights reserved.',
       navHeading: 'Navigation',
       linksHeading: 'Links',
     },
     hero: {
-      title: 'Allen Koch | Web Developer | Alsace, France',
+      title: 'Allen Koch | Fullstack & AI Developer | Alsace, France',
       name: 'Allen Koch',
-      role: 'Web Developer / Alsace, France',
-      heading:
-        'Turning needs into useful, structured, and maintainable web products',
-      highlight: '',
+      role: 'Fullstack & AI Developer / Alsace, France',
       subtitle:
-        'From initial need to deployment, I work in focused iterations with a product-minded approach and useful AI workflows.',
+        'I build fast, modern digital products that help businesses grow, and I’m available for freelance projects worldwide.',
       projectsCta: 'View projects',
       contactCta: 'Discuss your project',
       statsLabel: 'Hero stats',
@@ -153,8 +146,7 @@ export const copy = {
       roleLabel: 'Role',
       deliverablesLabel: 'Deliverables',
       resultsLabel: 'Results',
-      eyebrow: 'Portfolio',
-      heading: 'Build & Learn',
+      heading: 'Portfolio',
       text: 'Concrete projects designed to meet real needs, with a product-minded approach, clear structure and maintainable code.',
       showAllLabel: 'Show all personal projects',
       hideExtraLabel: 'Hide extra personal projects',
@@ -165,14 +157,11 @@ export const copy = {
       view: 'View',
     },
     services: {
-      eyebrow: 'Services',
-      heading: 'Two services',
+      heading: 'Services',
     },
     skipLink: 'Skip to content',
     stack: {
-      eyebrow: 'Stack & skills',
-      heading:
-        'A solid, readable and modern technical base designed to build and iterate.',
+      heading: 'Stack & skills',
       text: 'The stack focuses on tools I can understand, deploy and maintain over time.',
     },
     topButtonLabel: 'Back to top',
