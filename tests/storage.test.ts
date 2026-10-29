@@ -38,6 +38,38 @@ describe('preference storage', () => {
     ).toBe('dark')
   })
 
+  it('uses the fallback when no preference is stored', () => {
+    expect(
+      readStoredPreference(
+        () => ({ getItem: () => null }),
+        'theme',
+        isTheme,
+        'light',
+      ),
+    ).toBe('light')
+  })
+
+  it('uses the fallback when reading an available storage throws', () => {
+    expect(
+      readStoredPreference(
+        () => ({
+          getItem: () => {
+            throw new Error('Read blocked')
+          },
+        }),
+        'theme',
+        isTheme,
+        'light',
+      ),
+    ).toBe('light')
+  })
+
+  it('writes the requested key and value when storage is available', () => {
+    const setItem = vi.fn()
+    writeStoredPreference(() => ({ setItem }), 'language', 'en')
+    expect(setItem).toHaveBeenCalledExactlyOnceWith('language', 'en')
+  })
+
   it('ignores blocked storage writes', () => {
     expect(() =>
       writeStoredPreference(

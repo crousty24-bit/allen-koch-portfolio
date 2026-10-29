@@ -434,3 +434,254 @@ copier de secret, donnée client ou résultat supposé.
   physique ni de zoom navigateur réel contrôlés par Codex. Les résultats humains
   acceptés ci-dessus n'ajoutent pas de détails techniques absents du message d'Allen.
 - Clôture locale uniquement : aucun commit, push, déploiement ou nouvelle release.
+
+
+## RUN-002 : dépendances de développement (29 octobre 2026)
+
+- Mandat : Allen demande de démarrer la phase 2 par RUN-002 et de créer une
+  branche `feature/`. Départ : `develop` propre, commit `7e0ab8e` ; branche créée
+  `feature/run-002-dependencies`. RUN passé par `in_progress`, `verify`, puis `done`.
+- Périmètre : `package.json`, `package-lock.json`, suivi et brief ; aucune
+  modification frontend, CI, configuration de tests, dépendance de production
+  ou fonctionnalité. Contrats préservés : Node 24/npm 11, React, one-page,
+  FR/EN, thèmes, mobile et accessibilité. Risque ciblé : compatibilité de
+  l’outillage et de son bundle ; aucune donnée utilisateur modifiée.
+- État initial reproduit : audit complet en échec (6 paquets : 2 moderate,
+  4 high), production sans alerte. Chaînes inspectées avec `npm ls` :
+  Vite → PostCSS → source-map-js ; Vitest → @vitest/mocker ;
+  ESLint → minimatch → brace-expansion ; react-hooks → Zod.
+- Diagnostic : versions correctives compatibles disponibles. Avis consultés :
+  [Vitest/mocker](https://github.com/advisories/GHSA-qxg6-89mg-rqv8),
+  [Vite/launch-editor](https://github.com/advisories/GHSA-587h-7wmj-h5pm),
+  [Zod](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5).
+  Ces alertes concernent l’outillage ; aucune exploitation du site publié
+  n’est démontrée par cet audit.
+- Correction : `npm audit fix --dry-run --json` inspecté, puis mises à jour
+  ciblées avec `npm install --save-dev 'vite@^8.3.5' 'vitest@^4.1.12'` et
+  `npm update brace-expansion zod`. Aucun `--force`, override ou nouvelle
+  dépendance directe. Minimums déclarés Vite/Vitest relevés aux versions
+  installées ; React/React DOM et les autres dépendances directes inchangés.
+- Versions verrouillées : Vite 8.1.2 → 8.3.5 ; Vitest et @vitest/mocker
+  4.1.11 → 4.1.12 ; brace-expansion 5.0.9 → 5.0.12 ; source-map-js
+  1.2.1 → 1.2.2 ; Zod 4.4.3 → 4.6.7. Transitifs associés actualisés :
+  Rolldown/bindings 1.2.15, Lightning CSS/bindings 1.33.0, PostCSS 8.5.32,
+  picomatch 4.0.7, nanoid 3.3.20, chai 6.3.0, tinyrainbow 3.2.0,
+  @oxc-project/types 0.155.0. Ancienne chaîne optionnelle WASM Rolldown retirée
+  par npm ; bindings natifs des autres plateformes conservés/actualisés.
+- Vérifications sur Node 24.22.1/npm 11.19.1, après `npm ci` réussi :
+  `npm run build`, `npm run lint`, `npm run biome:check` (64 fichiers),
+  `npm run test` (5 fichiers, 13/13 tests),
+  `npm audit --audit-level=moderate` et
+  `npm audit --omit=dev --audit-level=moderate` réussis ; les deux audits
+  signalent 0 vulnérabilité. `npm ls --all` réussi, sans dépendance invalide.
+  Diff du lockfile relu ; aucun saut majeur involontaire identifié.
+- Intervenants : Codex main pour diagnostic, modification, contrôles et intégration ;
+  sous-agent `review_dependencies`, modèle `gpt-6-luna`, effort demandé low,
+  revue indépendante en lecture seule de `package.json`/lock depuis `7e0ab8e`.
+  Bénéfice attendu : contrôle borné des versions, engines/peers et changements
+  transitifs sans transfert du contexte UI. Retour : aucun constat actionnable,
+  dépendances de production inchangées et compatibilité Node vérifiée ; résultat
+  confronté au diff et à l’installation propre par le main. Aucune économie de
+  tokens mesurée, aucune délégation récursive.
+- Limites : pas de contrôle navigateur, Windows/macOS ou CI distante ; les tests
+  existants couvrent données/utilitaires et contrat CSS, pas le rendu complet.
+  Avertissement préexistant de build : `responsive-430.css` vide, non corrigé ici.
+  Biome global passe déjà avec les exclusions Stitch présentes dans la baseline :
+  aucune modification de sa configuration dans RUN-002.
+- Relais : RUN-002 `done` localement ; RUN-003 reste `planned`. Aucun commit,
+  push, déploiement ou release effectué ; aucun autre RUN exécuté.
+
+## RUN-003 : visibilité des longues sections (29 octobre 2026)
+
+- Mandat : Allen valide RUN-002, indique l’avoir commité et demande RUN-003,
+  puis RUN-004 sur la même branche si son coût reste borné. Départ vérifié :
+  `feature/run-002-dependencies` propre, `75dbce1`.
+- Périmètre : observateur dans `src/App.tsx`, visibilité clavier dans
+  `animations.css`, suivi documentaire ; aucun contenu, asset, thème, dépendance
+  ou nouvelle ancre. Contrats : fondu 600 ms/16 px/une fois, mobile et
+  reduced-motion directement visibles, préférences FR/EN et sombre/clair.
+- Cause : seuil de 12 % appliqué à une section de 3432 px, avec une marge
+  d’observation négative ; le ratio requis ne tient pas dans une fenêtre courte.
+  Reproduction sur build du code de `75dbce1`, servi séparément : après molette,
+  Projets garde une opacité de 0 à 1440×300 et 1440×500, contre 1 à 1440×900.
+- Correction : seuil 0 sans marge, apparition dès l’intersection, visibilité
+  préservée si `IntersectionObserver` est absent, nettoyage des classes lors du
+  démontage de l’effet. `:focus-within` évite de garder une section transparente
+  lorsqu’un de ses éléments reçoit le focus. Effet desktop attendu : déclenchement
+  plus tôt ; composition inchangée. Styles mobile/reduced-motion inchangés.
+- Premières preuves après correction : opacité 1 à 1440×300/500/900,
+  390×844 et 667×375 après molette ; captures comparées et inspectées.
+  Build, ESLint, Biome (64 fichiers) et 13 tests réussis. Un premier Biome a
+  signalé le format du nettoyage des classes ; corrigé avant le passage réussi.
+- Vérification navigateur : Chrome 156.0.8078.47 avec interface, profil isolé,
+  contrôle par Playwright déjà disponible dans le cache, sans dépendance ajoutée.
+  Les assertions et captures sont conservées hors dépôt dans
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a186ed-3611-71f1-a7fa-5368c12b732f/run003/`.
+- Protocole corrigé avant les mesures retenues : le premier chargement direct
+  avec hash restait à scrollY=0, sans atteindre la section. La reproduction
+  retenue utilise la molette ; les ancres sont testées après montage React.
+  Le premier contrôle mobile lisait la géométrie avant le défilement doux :
+  il attend désormais à la fois l’intersection avec l’écran et l’opacité finale.
+- Intervenants : Codex main pour diagnostic, correction, intégration et tests ;
+  sous-agent `review_scroll`, `gpt-6-luna`, effort demandé medium, revue
+  indépendante en lecture seule de App/CSS et styles mobile/reduced-motion.
+  Bénéfice attendu : contrôle borné des cas de cycle de vie et d’accessibilité.
+  Retour : aucun défaut actionnable, pas de test navigateur par le relecteur ;
+  retour confronté au diff par le main. Aucune économie de tokens mesurée.
+- Limite distincte observée : chargement initial d’une URL `/#projects` sans
+  défilement vers la cible ; traitement de navigation réservé à RUN-012.
+  Ni téléphone physique, ni lecteur d’écran, ni nouvel audit Lighthouse.
+  Avertissement de build préexistant : `responsive-430.css` vide.
+- Matrice finale : 19 scénarios réussis (5 tailles avec/sans réduction des
+  animations, 8 combinaisons FR/EN et clair/sombre à 1440×300 et 390×844,
+  et 1 cas sans observateur à 1440×300). Ancres Projets/Stack/About/Contact
+  après montage, défilement à la molette, activation clavier et focus dans About
+  vérifiés ; aucune erreur JavaScript/console ni débordement horizontal détectés.
+  Assertions : `regression.mjs`, résultats `regression-results.json`, comparaison
+  `check.mjs`, `before.json`/`after.json` et captures dans le dossier ci-dessus.
+  Ces contrôles ne sont pas une commande portable du dépôt.
+- État : `done` localement. Aucun commit, push ou déploiement. RUN-004 suit
+  sur la même branche conformément au mandat, sans autre RUN actif.
+
+
+## RUN-004 : activation TypeScript strict (29 octobre 2026)
+
+- Mandat : suite de RUN-003 autorisée par Allen sur la même branche si le coût
+  reste borné. Le contrôle préalable `tsc -p … --strict` avec caches temporaires
+  distincts réussissait pour les trois configurations avant modification : aucun
+  motif de report, bénéfice immédiat avant les ajouts de phase 2.
+- RUN-003 clôturé avant activation de RUN-004 ; transitions `in_progress`,
+  `verify`, puis `done`. Périmètre : une option `strict: true` ajoutée à
+  `tsconfig.app.json`, `tsconfig.node.json`, `tsconfig.test.json`.
+  Aucun changement de code, test, dépendance, assertion ou directive d’ignorance ;
+  aucun contournement ajouté. Les autres réglages existants restent inchangés.
+- Vérification : build (compilation des trois projets référencés), lint, Biome
+  (64 fichiers), 13/13 tests réussis après activation. Options strict effectives
+  contrôlées via l’API du compilateur installé (`parseJsonConfigFileContent` et
+  `getStrictOptionValue`) pour les trois projets. La première assertion utilisait
+  à tort `tsc --showConfig` comme s’il développait toutes les options implicites :
+  ce contrôle a été corrigé pour interroger leur valeur effective.
+- Build final : mêmes fichiers CSS/JS et mêmes tailles que RUN-003 ; l’activation
+  du typage ne change pas le bundle généré. Aucun nouveau passage navigateur
+  pour ces seules options de compilation ; les 19 scénarios de RUN-003 couvrent
+  ce même code livré. Avertissement CSS vide préexistant conservé.
+- Intervenant : Codex main, relecture par l’implémenteur. Pas de sous-agent pour
+  ces trois lignes de configuration : transfert et intégration sans bénéfice
+  attendu. La revue indépendante de RUN-003 ne porte pas sur RUN-004.
+- État : `done` localement sur `feature/run-002-dependencies`. Aucun commit,
+  push, déploiement ou nouveau RUN exécuté. RUN-005 reste planifié et nécessitera
+  les arbitrages de contenu d’Allen ; limites navigateur consignées dans RUN-003.
+
+
+## RUN-019 : règle shadcn/ui et cadrage CSS natif (29 octobre 2026)
+
+- Mandat : Allen valide la consigne proposée et demande son ajout documentaire,
+  en insistant sur le cadrage avec le CSS natif actuel.
+- Périmètre : AGENTS, brief, cycle agentique, outillage, suivi et journal uniquement.
+  Règle : shadcn/ui pour les nouveaux composants de base adaptés, consultation MCP,
+  réutilisation et exceptions justifiées ; direction visuelle de Claude préservée.
+- Avant la première intégration : cadrer et valider tokens, cascade, styles
+  globaux/resets, thèmes, responsive et dépendances. Aucune installation Tailwind,
+  substitution du CSS natif ou migration générale autorisée par ce lot.
+- Preuve MCP issue de l’inspection précédente dans cette même conversation :
+  `view_items_in_registries` sur `@shadcn/button` a répondu avec les détails du
+  composant. Accès à revérifier dans une autre session ou pour Claude.
+- Vérification : diff relu, `git diff --check` réussi et cibles des liens locaux
+  des six fichiers modifiés contrôlées. Aucun code, CSS, manifeste ou configuration
+  modifié ; build, lint, Biome, tests et audit non exécutés pour ce lot documentaire,
+  conformément à docs/tooling.md. Pas de vérification de compatibilité UI à ce stade.
+- Intervenant : Codex main, skill Ponytail ; relecture par l’implémenteur.
+  Pas de délégation : lot documentaire ciblé sans bénéfice attendu du transfert.
+- État : `done` après rédaction et vérification ; intégration technique hors mandat,
+  aucun RUN suivant lancé, aucun commit, push ou déploiement.
+
+
+## RUN-020 : correctifs et tests du socle validés après revue (29 octobre 2026)
+
+- Mandat : Allen valide les cinq propositions de l’audit global, nettoyage
+  compris, avec Ponytail et sans nouvelle dépendance. Branche conservée :
+  `feature/run-002-dependencies`, départ code `69228a7`. À la prise en charge,
+  six fichiers documentaires portent déjà la décision shadcn de RUN-019 :
+  AGENTS, brief, cycle, outillage, suivi et journal. Ces changements sont préservés ;
+  les compléments de RUN-020 sont ciblés et ne les remplacent pas.
+- RUN borné, seul actif : transitions `in_progress`, `verify`, `done`.
+  Périmètre : App, cache, données/styles non consommés, tests et documentation.
+  Aucun nouveau composant UI, paquet, routeur, fonctionnalité ou migration CSS ;
+  la règle shadcn concernant les nouveaux composants n’est donc pas déclenchée.
+- Ancres : après montage React, décodage du fragment et `scrollIntoView` instantané
+  sur la cible existante ; fragment absent/inconnu/mal encodé sans erreur.
+  L’effet ne réécrit ni l’historique ni les navigations natives suivantes.
+- Cache : `public, no-cache` sur `/projects/generated/*` ; cache long immutable
+  de `/assets/*` inchangé. Cela ne purge pas les anciennes réponses fraîches ;
+  changement d’URL à prévoir au remplacement d’une image déjà publiée avec le
+  cache long. Aucun asset remplacé et aucun en-tête distant contrôlé dans ce RUN.
+- Nettoyage : 23 déclarations de tokens sans consommateur, icônes/tons morts de
+  Stack, icônes de Skills/Parcours, textes non consommés `hero.status` et
+  `contact.meta` retirés. Assertions d’icônes obsolètes du test About supprimées.
+  Règle `.chip-list` déplacée auprès de `.chip` dans `buttons.css`, ajustements
+  des projets conservés. Textes et ordre affichés préservés.
+- Tests versionnés : 8 fichiers, 41 cas contre 5 fichiers/13 au départ :
+  stockage 7, parcours 2, statistiques hero 2, projets 2, CSS 3, contrats de
+  contenu 6, rendu React 12, commande statistiques 7. Contrats : identités, FR/EN
+  non vide, fichiers d’images/srcset, liens, cache, cibles d’ancres et ARIA,
+  variantes de cartes avec/sans démo/dépôt, sécurité des liens externes.
+  Tests statiques via `react-dom/server`, sans effets ni événements simulés.
+  Types DOM/JSX/Vite ajoutés dans la configuration stricte des tests seulement.
+- Tests CLI : copie de la commande réelle dans un répertoire temporaire,
+  préchargement d’une fixture `fetch` sans réseau réel, jeton bidon et nettoyage.
+  Sept cas : création valide, idempotence, HTTP, GraphQL, compteur invalide,
+  utilisateur absent, jeton absent. Les erreurs préservent le fichier existant ;
+  aucune modification du script de production pour rendre son code testable.
+- Contrôles finaux : `npm run build`, `npm run lint`, `npm run biome:check`
+  (68 fichiers), `npm run test` (41/41), `npm audit --audit-level=moderate` et
+  `npm audit --omit=dev --audit-level=moderate` réussis, 0 vulnérabilité.
+  Un premier build signalait une inférence TypeScript trop étroite de l’environnement
+  du test CLI : corrigée par `NodeJS.ProcessEnv`, puis compilation réussie.
+  Avertissement préexistant conservé : `responsive-430.css` vide.
+- Chrome 156.0.8078.47 avec interface, profils isolés, build de production :
+  huit cas de navigation (1440×300/900, 390×844, 667×375, avec/sans reduced-motion)
+  vérifient accès initial aux quatre sections, reload, fragment encodé, fragments
+  invalides, précédent/suivant et entrée au clavier. Six autres cas vérifient
+  langue/thème persistés ou stockage bloqué, dépliage projets 3→9→3 et parcours
+  6→12→6, exclusivité About et branches multiples de compétences, sans erreur
+  JavaScript ni débordement horizontal détectés dans ces cas.
+- Menu : 16 cas mobiles (390×844, 667×375, 740×320, 320×568, FR/EN, clair/sombre),
+  géométrie, Tab/Maj+Tab, Échap et restitution du focus réussis ; témoin desktop
+  à 1440×900 réussi. Script repris du contrôle RUN-013, sans modification Navbar.
+- Comparaison : code de `69228a7` exporté dans un dossier temporaire et servi
+  séparément, sans modifier les sources de travail. Huit couples avant/après
+  à 1440×900 et 390×844, FR/EN, clair/sombre : textes et styles calculés des
+  titres/cartes/tags/parcours/compétences identiques ; huit paires de captures
+  PNG intégrales identiques (SHA-256). Captures mobile comparées visuellement.
+  JS : 229,52 → 228,48 kB (gzip 71,77 → 71,50) ; CSS : 27,17 → 26,54 kB
+  (gzip 5,36 → 5,24). Tailles de build, sans gain de réactivité terrain annoncé.
+- Protocole : corrections de tests exploratoires avant résultats retenus : un
+  fragment inconnu changé dans le même document conserve sa position native,
+  contrairement à un chargement initial ; les cas initiaux utilisent désormais
+  une nouvelle navigation. Le focus au retour d’historique n’est pas assimilé à
+  une activation d’ancre avec Entrée : ce parcours est testé séparément.
+  Une attente de position a interrompu le premier passage de comparaison via
+  clavier ; la comparaison finale est isolée et prépare les sections par clics.
+  Les assertions clavier indépendantes et les comparaisons finales réussissent.
+- Preuves : scripts, captures et résultats dans
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a186ed-3611-71f1-a7fa-5368c12b732f/run020/` :
+  `browser-check.mjs` / `browser-results.json` (8 navigations, JSON partiel),
+  `interaction-summary.md` (6 succès observés avant interruption de la comparaison),
+  `visual-check.mjs` / `visual-results.json` (8 comparaisons),
+  `screenshot-comparison.json`, `menu-check.mjs` / `menu-fixes-results.json`.
+  Playwright provient du cache de l’environnement et ne devient pas une dépendance
+  du dépôt. La procédure portable manuelle est versionnée dans `docs/testing.md`.
+- Contributeurs effectifs : Codex main pour App/cache, tests contenu/rendu/stockage,
+  intégration, contrôles et documentation ; `cleanup_shared` (gpt-6-luna, effort
+  demandé medium) pour les huit fichiers attribués de données/CSS/test About ;
+  `stats_tests` (gpt-6-luna, medium) pour les deux fichiers de test CLI ;
+  `review_run020` (gpt-6-luna, high) pour revue indépendante en lecture seule.
+  Bénéfices attendus : deux lots autonomes sans collision d’écriture et revue
+  indépendante des interactions du diff ; retours confrontés aux fichiers et
+  contrôles par le main, aucune économie de tokens mesurée. Aucun défaut
+  actionnable confirmé par le relecteur ; il n’a pas exécuté le navigateur.
+- Limites : pas de navigateur automatisé portable dans la CI, en-têtes Vercel
+  non vérifiés à distance, pas de Safari/Firefox, lecteur d’écran, téléphone
+  physique, nouveau Lighthouse ni validation humaine du rendu dans ce RUN.
+  Les futures fonctionnalités clients/contact restent dans leurs RUN prévus.
+- État : `done` localement ; aucun commit, push, déploiement ou RUN suivant lancé.

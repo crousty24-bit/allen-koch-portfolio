@@ -108,15 +108,6 @@
   justify-items: end;
 }
 
-.chip-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
 .project-card--feature .chip-list {
   justify-content: flex-end;
 }

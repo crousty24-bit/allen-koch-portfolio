@@ -8,25 +8,6 @@
   --outline-strong: #85827a;
   --text: #191919;
   --text-muted: #66645f;
-  --text-soft: #66645f;
-
-  /* Transitional aliases: removed as each section is rewritten (RUN-013). */
-  --surface-lowest: var(--background);
-  --surface-low: var(--background);
-  --surface-container: var(--surface);
-  --surface-high: var(--surface);
-  --surface-highest: var(--outline);
-  --surface-bright: var(--outline);
-  --primary: var(--text);
-  --primary-strong: var(--text);
-  --secondary: var(--text-muted);
-  --secondary-strong: var(--text);
-  --tertiary: var(--text);
-  --chip-accent-1: var(--text-muted);
-  --chip-accent-2: var(--text-muted);
-  --chip-accent-3: var(--text-muted);
-  --chip-accent-4: var(--text-muted);
-  --chip-accent-5: var(--text-muted);
 }
 
 :root[data-theme="dark"] {
@@ -37,22 +18,16 @@
   --outline-strong: #76736c;
   --text: #f5f2eb;
   --text-muted: #a5a29a;
-  --text-soft: #a5a29a;
 }
 
 :root {
   --container: 1440px;
   --gutter: 3.5rem;
   --section-gap: 7rem;
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --font-sans:
     "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: var(--font-sans);
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
     monospace;

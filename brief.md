@@ -45,6 +45,21 @@ Les contrats détaillés, commandes et limites sont dans [AGENTS.md](AGENTS.md)
 et [docs/tooling.md](docs/tooling.md). Le code et les contrôles courants établissent
 le comportement effectif ; une description historique ne remplace pas une vérification.
 
+## Composants UI — décision du 29 octobre 2026
+
+Allen valide shadcn/ui pour les nouveaux composants de base lorsqu’un composant
+adapté existe, avec consultation préalable du MCP et réutilisation des composants
+déjà intégrés ; les exceptions doivent être justifiées (règle dans [AGENTS.md](AGENTS.md)).
+La direction visuelle reste confiée à Claude.
+
+Décision acquise, intégration technique non réalisée : le projet reste en CSS natif,
+sans configuration `components.json` ni dépendances Tailwind/Radix déclarées lors
+de l’inspection. Avant la première intégration, cadrer et valider la coexistence
+avec les tokens, la cascade et les styles globaux/resets actuels, les thèmes et
+le responsive. Aucun remplacement du CSS natif, ajout de Tailwind/dépendances ou
+migration générale de l’existant n’est autorisé par cette décision documentaire.
+Le cadrage et l’implémentation devront relever d’un mandat technique borné.
+
 ## Répartition décidée
 
 - Allen : informations sur son activité, priorités et validation produit/visuelle.
@@ -69,10 +84,22 @@ La proposition textuelle initiale de Claude reste une référence historique.
 La baseline de production déclarée reste 1.3.2 : cette clôture locale ne constitue
 ni une release ni un déploiement.
 
-Les nouvelles sections, les contenus définitifs, les ancres cibles et le traitement
-du formulaire restent en phase 2. Aucun RUN suivant n'est lancé automatiquement.
-A04 demeure une dette de RUN-003 ; les alertes de dépendances et le contrôle Biome
-global sur les exports Stitch restent signalés, sans être déclarés corrigés.
+La phase 2 a démarré par RUN-002, clôturé localement le 29 octobre 2026 :
+les dépendances de développement concernées sont mises à jour, les audits npm
+complet et production ne signalent aucune vulnérabilité, et les contrôles passent,
+y compris Biome global avec la configuration d’exclusion des exports Stitch déjà
+présente au départ de ce RUN. Les preuves datées sont au journal.
+Les nouvelles sections, contenus définitifs, ancres cibles et traitement du
+formulaire restent à réaliser. RUN-003 et RUN-004 sont également clôturés
+localement le 29 octobre : A04 corrigé et vérifié en navigateur, typage strict
+activé pour l’application, l’outillage et les tests. RUN-020, validé par Allen
+après revue globale, corrige l’accès initial avec fragment et le cache des images,
+intègre les contrats de tests de contenu/rendu/stockage/statistiques, et retire
+les résidus inutilisés du design. Aucun changement visuel ou nouvelle dépendance.
+La [procédure de tests](docs/testing.md) distingue les contrôles Node de la matrice
+navigateur ; son automatisation en CI reste une décision d’outillage distincte.
+RUN-012 raccordera les nouvelles ancres et RUN-007 vérifiera l’intégration globale.
+Aucun RUN suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).
 

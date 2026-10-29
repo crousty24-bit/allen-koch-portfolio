@@ -132,6 +132,15 @@ Global UI:
 - Prefer existing project structure.
 - Keep content data-driven where useful.
 - Do not add dependencies unless explicitly validated.
+- For new base UI components (buttons, inputs, selects, dialogs, accordions,
+  etc.), use shadcn/ui when a suitable component exists. Consult the Shadcn MCP
+  before implementation and reuse already integrated components. Adapt their
+  appearance to the validated design; justify any exception.
+- Before the first shadcn/ui integration, scope its coexistence with the current
+  native CSS: tokens, cascade, global styles/resets, themes and responsive behavior.
+  This decision does not authorize Tailwind installation, replacement of native
+  CSS, new dependencies or a general migration of existing components. Validate
+  the integration approach and any required dependencies before implementation.
 - Do not introduce routing unless explicitly requested.
 - Add form-processing logic only within the scoped contact run after its
   service/endpoint decision; no general backend is authorized by default.

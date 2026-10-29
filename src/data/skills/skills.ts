@@ -1,19 +1,7 @@
 import type { Language } from '../i18n/i18n'
 
-export type SkillTreeIcon =
-  | 'ai-workflow'
-  | 'code-quality'
-  | 'collaboration'
-  | 'delivery'
-  | 'engineering'
-  | 'product'
-  | 'product-mindset'
-  | 'teamwork'
-  | 'terminal'
-
 export type SkillTreeNode = {
   id: string
-  icon?: SkillTreeIcon
   label: Record<Language, string>
   children?: SkillTreeNode[]
   keywords?: Record<Language, string[]>
@@ -28,7 +16,6 @@ export const skillsTree: SkillTreeNode = {
   children: [
     {
       id: 'engineering-practices',
-      icon: 'engineering',
       label: {
         fr: "Pratiques d'ingénierie",
         en: 'Engineering Practices',
@@ -36,7 +23,6 @@ export const skillsTree: SkillTreeNode = {
       children: [
         {
           id: 'developer-workflow',
-          icon: 'terminal',
           label: {
             fr: 'Workflow développeur',
             en: 'Developer Workflow',
@@ -48,7 +34,6 @@ export const skillsTree: SkillTreeNode = {
         },
         {
           id: 'code-quality',
-          icon: 'code-quality',
           label: {
             fr: 'Qualité du code',
             en: 'Code Quality',
@@ -72,7 +57,6 @@ export const skillsTree: SkillTreeNode = {
     },
     {
       id: 'product-delivery',
-      icon: 'product',
       label: {
         fr: 'Produit & Livraison',
         en: 'Product & Delivery',
@@ -80,7 +64,6 @@ export const skillsTree: SkillTreeNode = {
       children: [
         {
           id: 'product-mindset',
-          icon: 'product-mindset',
           label: {
             fr: 'Approche produit',
             en: 'Product Mindset',
@@ -92,7 +75,6 @@ export const skillsTree: SkillTreeNode = {
         },
         {
           id: 'delivery',
-          icon: 'delivery',
           label: {
             fr: 'Livraison',
             en: 'Delivery',
@@ -106,7 +88,6 @@ export const skillsTree: SkillTreeNode = {
     },
     {
       id: 'modern-collaboration',
-      icon: 'teamwork',
       label: {
         fr: 'Collaboration moderne',
         en: 'Modern Collaboration',
@@ -114,7 +95,6 @@ export const skillsTree: SkillTreeNode = {
       children: [
         {
           id: 'ai-assisted-workflow',
-          icon: 'ai-workflow',
           label: {
             fr: 'Workflow assisté par IA',
             en: 'AI-Assisted Workflow',
@@ -131,7 +111,6 @@ export const skillsTree: SkillTreeNode = {
         },
         {
           id: 'collaboration',
-          icon: 'collaboration',
           label: {
             fr: 'Collaboration',
             en: 'Collaboration',
