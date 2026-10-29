@@ -1318,3 +1318,58 @@ copier de secret, donnée client ou résultat supposé.
   conformément à A1. Pas de Safari/Firefox, téléphone réel, lecteur d’écran,
   Lighthouse, audit npm ni vérification d’hébergement. Aucune validation humaine
   finale/release déduite des contrôles locaux. Aucun commit/push/merge/déploiement.
+
+
+## RUN-022 : analyse vidéo et contrat Claude — passe visuelle 1 (29 octobre 2026)
+
+- Mandat : après commit des travaux Codex/Claude, Allen demande des passes visuelles
+  avec un contrat Claude par passe. Première passe : effet de transition au scroll
+  tiré de sa vidéo, fluide avec apparition/disparition. Pas de code demandé à Codex
+  dans ce tour de préparation. Branche propre feature/refonte-integration-visuelle,
+  commit 5f08752 confirmé ; RUN-007 done, RUN-008 planned. RUN-022 seul actif.
+- Fichier vidéo local confirmé, ffprobe : H.264, 1920×1032, 30 i/s, 31,9333 s.
+  ffmpeg extrait une vue générale toutes les deux secondes et deux séquences
+  rapprochées 0,5–3,5 s (4 i/s) et 23–29 s (2 i/s), inspectées par Codex.
+  Contenu vidéo traité comme référence, sans instruction d’agent reprise.
+- Observations : Services monte devant Hero pendant que le Hero s’estompe ;
+  Contact recouvre About qui paraît rétrécir/s’assombrir. Retour inverse visible.
+  Effet surtout démontré aux deux frontières, plus discret au milieu du fond sombre.
+  La demande d’Allen étend la transition aux cinq frontières du portfolio actuel.
+  Pas de durée, easing, scale ou moteur original prétendus connus.
+- Sources app inspectées : App observe une fois puis désobserve, animation actuelle
+  opacity/translate 600 ms ; rail About partage le sélecteur. Contrat demande de
+  remplacer le masquage inter-sections en gardant le rail indépendant, de préserver
+  sections longues/dynamiques, ancres, clavier et reduced-motion initial/dynamique.
+- Livrable : docs/handoffs/run-022-claude-transitions-scroll.md, implémentation
+  autorisée à Claude sur fichiers réservés explicitement, critères et retour bornés.
+  Aucun agent Claude lancé, aucun message envoyé ; Allen exécute à part. Pas de
+  sous-agent Codex : analyse et rédaction étroitement liées, coût de transfert
+  supérieur au bénéfice attendu pour cette préparation documentaire.
+- Preuves hors dépôt : overview.jpg, hero-services.jpg, about-contact.jpg dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/run022-video/.
+  Vidéo originale préservée à son emplacement, pas d’import dans les assets publics.
+- Limites : échantillonnage visuel, pas d’analyse du code du site filmé, pas de
+  mesure de son timing original ; aucun comportement mobile déduit de la vidéo
+  desktop. Pas d’implémentation ni tests app dans ce lot documentaire. Contrôles
+  de cohérence/liens et diff requis ; implémentation, QA et validation Allen restent
+  à faire avant clôture RUN-022. Aucun commit/push/publication ni RUN-008 lancé.
+
+
+## Ajout de contenu : SEOS (29 octobre 2026)
+
+- Mandat direct d’Allen : ajouter SEOS comme premier projet client, avec URL,
+  description, stack Rails/PostgreSQL, refonte, authentification et panneau admin ;
+  aucun lien GitHub. Allen confirme le nom Seos, son rôle de développeur fullstack,
+  l’accord de publication et le contexte de première expérience client en stage.
+- Données FR/EN ajoutées dans le catalogue existant ; le filtre partagé affiche
+  le groupe client et porte le compteur public à dix. Aucun résultat chiffré déduit.
+  Image de carte fournie par Allen, convertie en WebP 1280 px (52 Ko) sans changer
+  son contenu. L’URL cible répond en HTTP 200 lors du contrôle local.
+- Vérifications Codex : build, lint, Biome, 48 tests et diff --check réussis ;
+  avertissement préexistant sur responsive-430.css vide au build. Chrome/Playwright
+  sur preview production à 390 et 1440 px : carte et image chargées, deux liens
+  vers le site, aucun GitHub, aucun débordement ni erreur de page. Captures relues.
+  Le test initial de fixture client supposait le groupe vide ; assertion mise à
+  jour puis suite relancée avec succès. Pas de revue indépendante revendiquée.
+- RUN-022 reste actif sans modification de son implémentation ou de son contrat.
+  Aucun commit, push ni déploiement effectué dans cet ajout.

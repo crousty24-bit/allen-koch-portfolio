@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest'
 import { isProjectPublished, projects } from '../src/data/projects/projects'
 
 describe('projects data', () => {
-  it('keeps eight personal projects and one game without inventing client cases', () => {
-    expect(projects).toHaveLength(9)
+  it('keeps eight personal projects, one approved client project and one game', () => {
+    expect(projects).toHaveLength(10)
     expect(
       projects.filter((project) => project.category === 'personal'),
     ).toHaveLength(8)
@@ -15,8 +15,27 @@ describe('projects data', () => {
     ).toEqual(["Milady's Knight"])
     expect(
       projects.filter((project) => project.category === 'client'),
-    ).toHaveLength(0)
-    expect(projects.filter(isProjectPublished)).toHaveLength(9)
+    ).toHaveLength(1)
+    expect(projects.filter(isProjectPublished)).toHaveLength(10)
+  })
+
+  it('publishes SEOS as an internship client project without a GitHub link', () => {
+    const seos = projects.find((project) => project.title.startsWith('SEOS -'))
+    expect(seos).toMatchObject({
+      category: 'client',
+      href: 'https://seos-exemple.thehackingproject.org/',
+      stack: ['Rails', 'PostgreSQL'],
+      status: {
+        fr: 'Stage · première expérience client',
+        en: 'Internship · first client project',
+      },
+      client: {
+        name: 'Seos',
+        role: { fr: 'Développeur fullstack', en: 'Full-stack developer' },
+        publicationApproved: true,
+      },
+    })
+    expect(seos?.repositoryHref).toBeUndefined()
   })
   it('places the new MVP projects first with their verified links', () => {
     const [diffImpactAnalyzer, snipStack] = projects

@@ -175,6 +175,38 @@ export const projects: Project[] = [
     status: { fr: 'En cours', en: 'In progress' },
   },
   {
+    category: 'client',
+    title: 'SEOS - Plateforme d’échange de services gratuits',
+    description: {
+      fr: 'Proposez un savoir-faire, trouvez un coup de main et créez des liens dans toute la communauté francophone.',
+      en: 'Share your skills, find a helping hand and build connections throughout the French-speaking community.',
+    },
+    imageAlt: {
+      fr: "Page d'accueil de SEOS avec le titre « Faites circuler l'entraide », une navigation et une recherche de services.",
+      en: 'SEOS homepage with the headline “Faites circuler l’entraide”, navigation and service search.',
+    },
+    imageSrc: '/projects/seos.webp',
+    stack: ['Rails', 'PostgreSQL'],
+    status: {
+      fr: 'Stage · première expérience client',
+      en: 'Internship · first client project',
+    },
+    href: 'https://seos-exemple.thehackingproject.org/',
+    client: {
+      name: 'Seos',
+      mission: {
+        fr: 'Refonte complète du site d’échange de services gratuits.',
+        en: 'Complete redesign of the free service exchange website.',
+      },
+      role: { fr: 'Développeur fullstack', en: 'Full-stack developer' },
+      deliverables: {
+        fr: 'Nouveau site, authentification et panneau d’administration.',
+        en: 'New website, authentication and admin panel.',
+      },
+      publicationApproved: true,
+    },
+  },
+  {
     category: 'game-dev',
     title: "Milady's Knight",
     description: {

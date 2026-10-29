@@ -80,8 +80,8 @@ describe('page render contracts', () => {
 
   it('initially renders featured projects without mounting the extra cards', () => {
     expect(page.match(/project-card--feature/g)).toHaveLength(3)
-    expect(page.match(/project-card--compact/g)).toHaveLength(1)
-    expect(page).not.toContain('client-projects-title')
+    expect(page.match(/project-card--compact/g)).toHaveLength(2)
+    expect(page).toContain('client-projects-title')
     const personal =
       page.match(
         /<section[^>]*aria-labelledby="personal-projects-title"[^>]*>([\s\S]*?)<\/section>/,
@@ -93,7 +93,7 @@ describe('page render contracts', () => {
     const gameTitle = renderToStaticMarkup("Milady's Knight")
     expect(personal).not.toContain(gameTitle)
     expect(game).toContain(`<h4>${gameTitle}</h4>`)
-    expect(game).toContain('09 / Prototype')
+    expect(game).toContain('10 / Prototype')
     expect(page).toContain(
       'aria-controls="projects-grid" aria-expanded="false"',
     )
@@ -119,7 +119,7 @@ describe('page render contracts', () => {
       projects.push(client)
       const render = () =>
         renderToStaticMarkup(createElement(ProjectsSection, { language }))
-      expect(render()).not.toContain('client-projects-title')
+      expect(render()).toContain('client-projects-title')
       expect(render()).not.toContain(client.title)
       expect(projects.filter(isProjectPublished)).toHaveLength(originalLength)
       expect(

@@ -137,11 +137,12 @@ filets, titres et paragraphes FR/EN validés, CTA commun vers Contact. Design de
 Claude Sonnet 5.5, intégration/QA Codex ; contenu toujours provisoire, aucune
 nouvelle dépendance. RUN-015 réalise les espaces Projets ; RUN-021 intègre la timeline horizontale,
 avec corrections QA du fondu à l’entrée du rail et des dates accessibles.
-RUN-015 répartit les neuf projets : huit personnels (trois mis en avant, cinq
-supplémentaires dépliables) et Milady's Knight seul en game dev, toujours présent.
-Le groupe clients est prêt mais masqué en l'absence de cas autorisé. Mission,
-rôle, livrables et accord de publication sont requis pour une carte client ;
-un résultat reste facultatif et doit être vérifié. Le compteur public reste neuf.
+RUN-015 a réparti les neuf projets initiaux : huit personnels (trois mis en avant,
+cinq supplémentaires dépliables) et Milady's Knight seul en game dev. SEOS est
+ensuite ajouté comme premier projet client autorisé, réalisé lors d'un stage ;
+le groupe clients est désormais visible et le compteur public affiche dix projets.
+Mission, rôle, livrables et accord de publication sont requis pour une carte
+client ; un résultat reste facultatif et doit être vérifié.
 RUN-016 est clôturé sur la [décision contact](docs/contact-form-contract.md)
 validée par Allen : lien email seul vers `allen.kch24@gmail.com` pour l'instant.
 Formulaire RUN-017 reporté ; aucun prestataire ni abonnement choisi. Conservation

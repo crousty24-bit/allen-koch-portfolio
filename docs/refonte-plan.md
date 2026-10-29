@@ -377,7 +377,8 @@ vérifié, et ne passer l'accord à vrai qu'avec autorisation couvrant les texte
 liens et images. Le filtre partagé protège section, carte et compteur contre
 l'affichage d'un cas non approuvé. Il ne rend pas confidentielles des données
 qui seraient présentes dans le bundle : ne jamais stocker d'informations client
-non autorisées dans les sources frontend. Aucun client n'est ajouté actuellement.
+non autorisées dans les sources frontend. SEOS a ensuite été ajouté comme premier
+cas client autorisé, réalisé lors d'un stage.
 
 Les cas approuvés/non approuvés, sans/avec résultat, sont vérifiés par fixtures
 dans les tests, sans prop de production dédiée au test. Les fixtures visuelles
