@@ -10,7 +10,6 @@ describe('about journey', () => {
     expect(aboutJourneyItems).toHaveLength(12)
     expect(aboutJourneyItems.at(-2)).toMatchObject({
       id: 'thp-internship',
-      icon: 'thp',
       dateLabel: {
         fr: 'Juillet–août 2026',
         en: 'July–August 2026',
@@ -22,7 +21,6 @@ describe('about journey', () => {
     })
     expect(aboutJourneyItems.at(-1)).toMatchObject({
       id: 'freelance-start',
-      icon: 'fullstack',
       dateLabel: {
         fr: 'Septembre 2026',
         en: 'September 2026',

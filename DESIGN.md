@@ -851,3 +851,26 @@ Le [journal de clôture](runs-journal.md#run-013-clôture-de-la-phase-1-28-octob
 consigne les mesures et leurs limites. A04 reste à corriger en RUN-003, puis à
 revérifier en RUN-007 ; les erreurs Biome des exports Stitch restent signalées.
 La clôture de l'habillage visuel ne vaut pas validation de release ou déploiement.
+
+
+## R20. Nettoyage du socle après revue (29 octobre 2026, RUN-020)
+
+Allen valide les correctifs, tests et suppressions ciblées proposés dans la revue
+technique. Le visuel validé de phase 1 est conservé : aucune nouvelle règle de
+composition, couleur, typographie ou interaction d’accordéon.
+
+- `.chip-list`, partagé par Projets/Stack/About, rejoint `.chip` dans `buttons.css` ;
+  les ajustements propres aux projets restent dans leurs fichiers existants.
+- Retrait de 23 déclarations de tokens non consommées, des icônes/tons non rendus
+  de Stack/Skills/Parcours et de copies `hero.status`/`contact.meta` inutilisées.
+  Les mentions de conservation de ces champs en R15/R16 décrivent leur lot
+  historique ; elles ne définissent plus le contrat de données courant.
+- Initialisation de la position d’une ancre après montage React ; les navigations
+  suivantes restent natives. Mobile, clavier et reduced-motion contrôlés.
+- Huit comparaisons Chrome avec `69228a7`, à 1440×900 et 390×844, FR/EN et
+  clair/sombre : textes et styles calculés identiques, captures PNG intégrales
+  identiques octet par octet. Ces résultats ne constituent pas une nouvelle
+  validation humaine ou une mesure multi-navigateurs.
+
+Contrats de tests et limites dans [la procédure](docs/testing.md) ; preuves,
+contributeurs et contrôles dans [le journal](runs-journal.md).

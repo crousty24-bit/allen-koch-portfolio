@@ -36,6 +36,30 @@ Markdown. Inspecter les nouveaux fichiers et vérifier leurs chemins expliciteme
   présence n'est pas une autorisation de publication.
 - Skills : lire ceux qui servent la tâche, sans les considérer comme une extension du mandat.
 
+## MCP Shadcn
+
+Disponible dans la session Codex du 29 octobre 2026 : l’appel de lecture
+`view_items_in_registries` sur `@shadcn/button` a répondu avec les détails du composant.
+Cela ne prouve ni une installation dans le dépôt, ni sa disponibilité pour Claude
+ou une autre session : vérifier l’accès avant usage et signaler toute indisponibilité.
+
+- `search_items_in_registries` : rechercher les composants.
+- `view_items_in_registries` et `get_item_examples_from_registries` : consulter
+  les détails et exemples.
+- `get_add_command_for_items` : obtenir une commande d’ajout, sans l’exécuter
+  hors du mandat technique validé.
+
+Certaines recherches nécessitent une configuration `components.json` ; ne pas
+initialiser le projet pour un simple contrôle documentaire. Appliquer la règle
+de [AGENTS.md](../AGENTS.md) et le cadrage CSS natif du [brief](../brief.md)
+avant la première intégration.
+
+## Tests et matrice navigateur
+
+La [procédure de vérification](testing.md) décrit la suite Vitest versionnée, ses
+limites, les tests de statistiques isolés et la matrice navigateur sur build
+production. Elle documente aussi le cache des images et le contrôle de release.
+
 ## Mesures
 
 Un contrôle UI documente mobile/desktop, thème/langue, clavier, réduction des

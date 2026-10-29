@@ -54,6 +54,20 @@ function App() {
   }, [language])
 
   useEffect(() => {
+    let id: string
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1))
+    } catch {
+      return
+    }
+
+    // React creates the anchor targets after the browser's initial fragment lookup.
+    if (id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'instant' })
+    }
+  }, [])
+
+  useEffect(() => {
     if (
       window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
       !('IntersectionObserver' in window)

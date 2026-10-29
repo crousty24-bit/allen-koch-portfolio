@@ -571,3 +571,117 @@ copier de secret, donnée client ou résultat supposé.
 - État : `done` localement sur `feature/run-002-dependencies`. Aucun commit,
   push, déploiement ou nouveau RUN exécuté. RUN-005 reste planifié et nécessitera
   les arbitrages de contenu d’Allen ; limites navigateur consignées dans RUN-003.
+
+
+## RUN-019 : règle shadcn/ui et cadrage CSS natif (29 octobre 2026)
+
+- Mandat : Allen valide la consigne proposée et demande son ajout documentaire,
+  en insistant sur le cadrage avec le CSS natif actuel.
+- Périmètre : AGENTS, brief, cycle agentique, outillage, suivi et journal uniquement.
+  Règle : shadcn/ui pour les nouveaux composants de base adaptés, consultation MCP,
+  réutilisation et exceptions justifiées ; direction visuelle de Claude préservée.
+- Avant la première intégration : cadrer et valider tokens, cascade, styles
+  globaux/resets, thèmes, responsive et dépendances. Aucune installation Tailwind,
+  substitution du CSS natif ou migration générale autorisée par ce lot.
+- Preuve MCP issue de l’inspection précédente dans cette même conversation :
+  `view_items_in_registries` sur `@shadcn/button` a répondu avec les détails du
+  composant. Accès à revérifier dans une autre session ou pour Claude.
+- Vérification : diff relu, `git diff --check` réussi et cibles des liens locaux
+  des six fichiers modifiés contrôlées. Aucun code, CSS, manifeste ou configuration
+  modifié ; build, lint, Biome, tests et audit non exécutés pour ce lot documentaire,
+  conformément à docs/tooling.md. Pas de vérification de compatibilité UI à ce stade.
+- Intervenant : Codex main, skill Ponytail ; relecture par l’implémenteur.
+  Pas de délégation : lot documentaire ciblé sans bénéfice attendu du transfert.
+- État : `done` après rédaction et vérification ; intégration technique hors mandat,
+  aucun RUN suivant lancé, aucun commit, push ou déploiement.
+
+
+## RUN-020 : correctifs et tests du socle validés après revue (29 octobre 2026)
+
+- Mandat : Allen valide les cinq propositions de l’audit global, nettoyage
+  compris, avec Ponytail et sans nouvelle dépendance. Branche conservée :
+  `feature/run-002-dependencies`, départ code `69228a7`. À la prise en charge,
+  six fichiers documentaires portent déjà la décision shadcn de RUN-019 :
+  AGENTS, brief, cycle, outillage, suivi et journal. Ces changements sont préservés ;
+  les compléments de RUN-020 sont ciblés et ne les remplacent pas.
+- RUN borné, seul actif : transitions `in_progress`, `verify`, `done`.
+  Périmètre : App, cache, données/styles non consommés, tests et documentation.
+  Aucun nouveau composant UI, paquet, routeur, fonctionnalité ou migration CSS ;
+  la règle shadcn concernant les nouveaux composants n’est donc pas déclenchée.
+- Ancres : après montage React, décodage du fragment et `scrollIntoView` instantané
+  sur la cible existante ; fragment absent/inconnu/mal encodé sans erreur.
+  L’effet ne réécrit ni l’historique ni les navigations natives suivantes.
+- Cache : `public, no-cache` sur `/projects/generated/*` ; cache long immutable
+  de `/assets/*` inchangé. Cela ne purge pas les anciennes réponses fraîches ;
+  changement d’URL à prévoir au remplacement d’une image déjà publiée avec le
+  cache long. Aucun asset remplacé et aucun en-tête distant contrôlé dans ce RUN.
+- Nettoyage : 23 déclarations de tokens sans consommateur, icônes/tons morts de
+  Stack, icônes de Skills/Parcours, textes non consommés `hero.status` et
+  `contact.meta` retirés. Assertions d’icônes obsolètes du test About supprimées.
+  Règle `.chip-list` déplacée auprès de `.chip` dans `buttons.css`, ajustements
+  des projets conservés. Textes et ordre affichés préservés.
+- Tests versionnés : 8 fichiers, 41 cas contre 5 fichiers/13 au départ :
+  stockage 7, parcours 2, statistiques hero 2, projets 2, CSS 3, contrats de
+  contenu 6, rendu React 12, commande statistiques 7. Contrats : identités, FR/EN
+  non vide, fichiers d’images/srcset, liens, cache, cibles d’ancres et ARIA,
+  variantes de cartes avec/sans démo/dépôt, sécurité des liens externes.
+  Tests statiques via `react-dom/server`, sans effets ni événements simulés.
+  Types DOM/JSX/Vite ajoutés dans la configuration stricte des tests seulement.
+- Tests CLI : copie de la commande réelle dans un répertoire temporaire,
+  préchargement d’une fixture `fetch` sans réseau réel, jeton bidon et nettoyage.
+  Sept cas : création valide, idempotence, HTTP, GraphQL, compteur invalide,
+  utilisateur absent, jeton absent. Les erreurs préservent le fichier existant ;
+  aucune modification du script de production pour rendre son code testable.
+- Contrôles finaux : `npm run build`, `npm run lint`, `npm run biome:check`
+  (68 fichiers), `npm run test` (41/41), `npm audit --audit-level=moderate` et
+  `npm audit --omit=dev --audit-level=moderate` réussis, 0 vulnérabilité.
+  Un premier build signalait une inférence TypeScript trop étroite de l’environnement
+  du test CLI : corrigée par `NodeJS.ProcessEnv`, puis compilation réussie.
+  Avertissement préexistant conservé : `responsive-430.css` vide.
+- Chrome 156.0.8078.47 avec interface, profils isolés, build de production :
+  huit cas de navigation (1440×300/900, 390×844, 667×375, avec/sans reduced-motion)
+  vérifient accès initial aux quatre sections, reload, fragment encodé, fragments
+  invalides, précédent/suivant et entrée au clavier. Six autres cas vérifient
+  langue/thème persistés ou stockage bloqué, dépliage projets 3→9→3 et parcours
+  6→12→6, exclusivité About et branches multiples de compétences, sans erreur
+  JavaScript ni débordement horizontal détectés dans ces cas.
+- Menu : 16 cas mobiles (390×844, 667×375, 740×320, 320×568, FR/EN, clair/sombre),
+  géométrie, Tab/Maj+Tab, Échap et restitution du focus réussis ; témoin desktop
+  à 1440×900 réussi. Script repris du contrôle RUN-013, sans modification Navbar.
+- Comparaison : code de `69228a7` exporté dans un dossier temporaire et servi
+  séparément, sans modifier les sources de travail. Huit couples avant/après
+  à 1440×900 et 390×844, FR/EN, clair/sombre : textes et styles calculés des
+  titres/cartes/tags/parcours/compétences identiques ; huit paires de captures
+  PNG intégrales identiques (SHA-256). Captures mobile comparées visuellement.
+  JS : 229,52 → 228,48 kB (gzip 71,77 → 71,50) ; CSS : 27,17 → 26,54 kB
+  (gzip 5,36 → 5,24). Tailles de build, sans gain de réactivité terrain annoncé.
+- Protocole : corrections de tests exploratoires avant résultats retenus : un
+  fragment inconnu changé dans le même document conserve sa position native,
+  contrairement à un chargement initial ; les cas initiaux utilisent désormais
+  une nouvelle navigation. Le focus au retour d’historique n’est pas assimilé à
+  une activation d’ancre avec Entrée : ce parcours est testé séparément.
+  Une attente de position a interrompu le premier passage de comparaison via
+  clavier ; la comparaison finale est isolée et prépare les sections par clics.
+  Les assertions clavier indépendantes et les comparaisons finales réussissent.
+- Preuves : scripts, captures et résultats dans
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a186ed-3611-71f1-a7fa-5368c12b732f/run020/` :
+  `browser-check.mjs` / `browser-results.json` (8 navigations, JSON partiel),
+  `interaction-summary.md` (6 succès observés avant interruption de la comparaison),
+  `visual-check.mjs` / `visual-results.json` (8 comparaisons),
+  `screenshot-comparison.json`, `menu-check.mjs` / `menu-fixes-results.json`.
+  Playwright provient du cache de l’environnement et ne devient pas une dépendance
+  du dépôt. La procédure portable manuelle est versionnée dans `docs/testing.md`.
+- Contributeurs effectifs : Codex main pour App/cache, tests contenu/rendu/stockage,
+  intégration, contrôles et documentation ; `cleanup_shared` (gpt-6-luna, effort
+  demandé medium) pour les huit fichiers attribués de données/CSS/test About ;
+  `stats_tests` (gpt-6-luna, medium) pour les deux fichiers de test CLI ;
+  `review_run020` (gpt-6-luna, high) pour revue indépendante en lecture seule.
+  Bénéfices attendus : deux lots autonomes sans collision d’écriture et revue
+  indépendante des interactions du diff ; retours confrontés aux fichiers et
+  contrôles par le main, aucune économie de tokens mesurée. Aucun défaut
+  actionnable confirmé par le relecteur ; il n’a pas exécuté le navigateur.
+- Limites : pas de navigateur automatisé portable dans la CI, en-têtes Vercel
+  non vérifiés à distance, pas de Safari/Firefox, lecteur d’écran, téléphone
+  physique, nouveau Lighthouse ni validation humaine du rendu dans ce RUN.
+  Les futures fonctionnalités clients/contact restent dans leurs RUN prévus.
+- État : `done` localement ; aucun commit, push, déploiement ou RUN suivant lancé.

@@ -34,6 +34,7 @@ la recherche graphique initiale.
 | RUN-001 | P1 | Workflow agentique adapté du boilerplate | Codex, rôle Documentation | RUN-000 | done |
 | RUN-009 | P1 | Proposition de custom agents et politique de délégation | Codex ; revue Luna | RUN-001 | done |
 | RUN-010 | P1 | Cadrage documentaire du périmètre élargi | Codex ; revue Luna | RUN-009 | done |
+| RUN-019 | P2 | Règle shadcn/ui et cadrage CSS natif dans la documentation | Codex | Aucune | done |
 
 ### Phase 1 — Refonte visuelle et design
 
@@ -55,6 +56,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-002 | P1 | Alertes de dépendances de développement | Codex ; compétence Security | RUN-013 | done |
 | RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | RUN-013 | done |
 | RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | RUN-013 | done |
+| RUN-020 | P1 | Correctifs et tests du socle avant nouvelles sections | Codex ; contributions nettoyage et tests CLI | RUN-004 | done |
 | RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | planned |
 | RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | planned |
 | RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | planned |
@@ -62,7 +64,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-015 | P1 | Projets personnels conservés et espace clients | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
 | RUN-017 | P1 | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
-| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-012 à RUN-015, RUN-017 | planned |
+| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-017 | planned |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -233,8 +235,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
   navigation et pied de page cohérents.
 - Passe B : intégrer la navigation desktop/mobile, les états actifs et liens internes,
   le focus, l'accès direct et le rechargement avec fragment.
-  Cas observé pendant RUN-003 : chargement initial de `/#projects` à scrollY=0 ;
-  les liens après montage fonctionnent. Reproduire et traiter ici l’accès initial.
+  Le défaut d’accès initial observé en RUN-003 est corrigé par RUN-020 ; conserver
+  sa régression lors du raccordement des nouvelles sections et ancres.
 - Passe C : mettre à jour les liens/ancres selon RUN-011 et vérifier les parcours
   clavier et navigateur, sans publication automatique.
 - Risques : régression de navigation, section inaccessible, préférences incohérentes.
@@ -359,3 +361,43 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Risques : faux cautionnement, logo non autorisé, témoignage fabriqué.
 - Acceptation : seules références documentées et autorisées publiées ; aucun bloc
   vide/fictif affiché pour anticiper des clients inexistants.
+
+## RUN-019 — Règle shadcn/ui et cadrage CSS natif
+
+- Mandat : consigne validée par Allen le 29 octobre 2026 ; ajouts documentaires
+  uniquement, avec prise en compte explicite du CSS natif actuel.
+- Périmètre : AGENTS, brief, cycle agentique, outillage, suivi et journal.
+- Préservé : code, CSS, dépendances, configuration et composants existants.
+- Acceptation : règle obligatoire pour les nouveaux composants de base adaptés,
+  consultation MCP et réutilisation, exceptions justifiées ; cadrage et validation
+  de la coexistence CSS natif avant intégration, aucune installation/migration implicite.
+- Vérification : cohérence, liens locaux et `git diff --check` ; relecture par
+  l’implémenteur, pas de revue indépendante requise pour ce lot documentaire.
+- Relais : intégration technique hors mandat ; aucun RUN suivant lancé automatiquement.
+
+
+## RUN-020 — Correctifs et tests du socle
+
+- Mandat : Allen valide les cinq propositions de la revue globale du 29 octobre
+  2026, nettoyage compris ; réalisation sur la branche existante.
+- Périmètre : accès initial aux ancres, cache des images publiques, tests de
+  contenu/rendu/stockage/commande de statistiques, propriété du style des tags,
+  retrait des tokens et métadonnées inutilisés. Pas de nouvelle dépendance.
+- Préservé : design, textes et ordre du contenu, FR/EN, clair/sombre, responsive,
+  accessibilité, effets reduced-motion, préférences locales et scripts de production.
+- Acceptation : ancres initiales/rechargement/historique vérifiés en navigateur,
+  cache révalidable pour les images aux URL stables, contrats utiles intégrés dans
+  Vitest, sept cas CLI isolés sans réseau réel, rendu visuel préservé, build/lint/
+  Biome/tests et audits réussis. Matrice navigateur documentée et reproductible
+  avec outils disponibles, sans faire dépendre la CI d’un cache local.
+- Hors périmètre : nouvelles sections, fournisseur de formulaire, migration UI,
+  routeur, nouveau runner navigateur, SSR/SSG et stratégie SEO EN.
+- Risques : saut initial concurrençant la restauration de défilement, cascade CSS,
+  suppression de champs encore consommés, tests trop liés à l’implémentation.
+- Clôture locale le 29 octobre 2026 : 41 tests, build/lint/Biome et audits verts ;
+  ancres et interactions contrôlées dans Chrome, 16 cas de menu mobile, huit
+  comparaisons de rendu identiques au commit de départ. Revue indépendante sans
+  défaut actionnable ; procédure dans `docs/testing.md`, preuves au journal.
+- Limites : cache effectif à vérifier sur preview hébergée autorisée ; pas de purge
+  des anciens caches ni de nouveau runner navigateur dans la CI.
+- Relais : aucun RUN suivant automatique, aucun commit/push/déploiement.

@@ -17,6 +17,7 @@
 | [routing-rules.md](routing-rules.md) | Choix du minimum de rôles utiles |
 | [custom-agents.md](custom-agents.md) | Six profils proposés, modèles/efforts et délégation selon coûts/efficacité |
 | [handoff-contracts.md](handoff-contracts.md) | Transfert de tâche, résultat et constats de revue |
+| [testing.md](testing.md) | Tests versionnés, matrice navigateur et cache des images |
 | [tooling.md](tooling.md) | Commandes présentes, preuves et capacités à vérifier |
 | [review-policy.md](review-policy.md) | Relecture, indépendance et critères de clôture |
 | [security-policy.md](security-policy.md) | Frontières de confiance et autorisations |

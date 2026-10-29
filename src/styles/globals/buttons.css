@@ -7,6 +7,15 @@
   background: var(--surface);
 }
 
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 .chip {
   min-height: 1.75rem;
   padding: 0.25rem 0.5rem;

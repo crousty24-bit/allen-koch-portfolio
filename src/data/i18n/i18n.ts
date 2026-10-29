@@ -17,11 +17,6 @@ export const copy = {
     contact: {
       heading: 'Parlons de votre projet.',
       text: "Disponible pour discuter d'un projet web, d'un MVP ou d'une base technique à structurer proprement.",
-      meta: {
-        profile: ['Profil', 'Fullstack'],
-        focus: ['Focus', 'Rails / React'],
-        location: ['Localisation', 'France'],
-      },
     },
     footer: {
       brand: 'Allen Koch - Développeur Fullstack',
@@ -30,7 +25,6 @@ export const copy = {
       linksHeading: 'Liens',
     },
     hero: {
-      status: 'Développeur Fullstack / AI Builder',
       title: 'Allen Koch | Développeur Web | Alsace, France',
       name: 'Allen Koch',
       role: 'Développeur Web / Alsace, France',
@@ -98,11 +92,6 @@ export const copy = {
     contact: {
       heading: "Let's talk about your project.",
       text: 'Available to discuss a web project, an MVP, or a technical foundation to structure cleanly.',
-      meta: {
-        profile: ['Profile', 'Fullstack'],
-        focus: ['Focus', 'Rails / React'],
-        location: ['Location', 'France'],
-      },
     },
     footer: {
       brand: 'Allen Koch - Fullstack Developer',
@@ -111,7 +100,6 @@ export const copy = {
       linksHeading: 'Links',
     },
     hero: {
-      status: 'Fullstack Developer / AI Builder',
       title: 'Allen Koch | Web Developer | Alsace, France',
       name: 'Allen Koch',
       role: 'Web Developer / Alsace, France',

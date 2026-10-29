@@ -9,17 +9,6 @@ export type AboutAccordionItem = {
 export type AboutJourneyItem = {
   dateLabel?: Record<Language, string>
   description: Record<Language, string>
-  icon:
-    | 'steps'
-    | 'markup'
-    | 'javascript'
-    | 'odin'
-    | 'thp'
-    | 'ruby'
-    | 'rails'
-    | 'fullstack'
-    | 'react'
-    | 'today'
   id: string
   title: Record<Language, string>
 }
@@ -67,7 +56,6 @@ export const aboutAccordionItems: AboutAccordionItem[] = [
 export const aboutJourneyItems: AboutJourneyItem[] = [
   {
     id: 'first-steps',
-    icon: 'steps',
     title: {
       fr: 'Premiers pas',
       en: 'First steps',
@@ -79,7 +67,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'html-css',
-    icon: 'markup',
     title: {
       fr: 'HTML / CSS',
       en: 'HTML / CSS',
@@ -91,7 +78,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'javascript',
-    icon: 'javascript',
     title: {
       fr: 'JavaScript',
       en: 'JavaScript',
@@ -103,7 +89,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'the-odin-project',
-    icon: 'odin',
     title: {
       fr: 'The Odin Project',
       en: 'The Odin Project',
@@ -115,7 +100,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'thp',
-    icon: 'thp',
     dateLabel: {
       fr: 'Janvier 2026',
       en: 'January 2026',
@@ -131,7 +115,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'ruby',
-    icon: 'ruby',
     title: {
       fr: 'Ruby',
       en: 'Ruby',
@@ -143,7 +126,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'rails-sql',
-    icon: 'rails',
     title: {
       fr: 'Rails & SQL',
       en: 'Rails & SQL',
@@ -155,7 +137,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'full-stack',
-    icon: 'fullstack',
     title: {
       fr: 'Full-stack',
       en: 'Full-stack',
@@ -167,7 +148,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'react-typescript-node',
-    icon: 'react',
     dateLabel: {
       fr: 'Avril 2026',
       en: 'April 2026',
@@ -183,7 +163,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'today',
-    icon: 'today',
     title: {
       fr: 'Dev 1.0',
       en: 'Dev 1.0',
@@ -195,7 +174,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'thp-internship',
-    icon: 'thp',
     dateLabel: {
       fr: 'Juillet–août 2026',
       en: 'July–August 2026',
@@ -211,7 +189,6 @@ export const aboutJourneyItems: AboutJourneyItem[] = [
   },
   {
     id: 'freelance-start',
-    icon: 'fullstack',
     dateLabel: {
       fr: 'Septembre 2026',
       en: 'September 2026',

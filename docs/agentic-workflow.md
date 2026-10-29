@@ -57,6 +57,14 @@ complet dans son périmètre. Une découverte hors périmètre revient à l'orch
 Celui-ci relit le retour, les fichiers et les preuves, résout les collisions puis
 intègre ou demande une correction ciblée. Un retour `completed` ne clôt pas le RUN.
 
+Pour tout nouveau composant UI de base, consulter le MCP Shadcn, rechercher un
+composant adapté et réutiliser ceux déjà intégrés avant d’écrire du code spécifique,
+selon [AGENTS.md](../AGENTS.md). Justifier les exceptions. Avant la première
+intégration, cadrer et faire valider sa coexistence avec le CSS natif actuel
+(tokens, cascade, styles globaux/resets, thèmes et responsive), ainsi que les
+dépendances nécessaires. La règle ne déclenche aucune installation ni migration
+générale ; la réalisation reste limitée au mandat du RUN.
+
 Préserver les travaux en cours ; ne pas réinitialiser, écraser ou committer un
 ensemble de modifications pour simplement faciliter un relais.
 
