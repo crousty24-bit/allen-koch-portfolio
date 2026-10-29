@@ -874,3 +874,18 @@ composition, couleur, typographie ou interaction d’accordéon.
 
 Contrats de tests et limites dans [la procédure](docs/testing.md) ; preuves,
 contributeurs et contrôles dans [le journal](runs-journal.md).
+
+
+## R21. Décisions de contenu et direction About (29 octobre 2026, RUN-005)
+
+- Projets : trois espaces personnels, clients et game dev. Milady's Knight
+  apparaît dans game dev uniquement ; les neuf projets sont conservés.
+- Code Quality Guardian : MVP (deprecated). Sokwak AI : MVP.
+- Présentation About : texte actuel FR/EN conservé intégralement.
+- My Coding Journey : direction horizontale, apparition en fondu et défilement
+  horizontal animé pour afficher davantage d'étapes. À concevoir par Claude et
+  réaliser en RUN-021 ; ce n'est pas le comportement actuel. Préserver l'accès
+  clavier/tactile et rendre les animations facultatives en reduced-motion.
+
+Ces décisions complètent la phase 1 ; les trois espaces et la nouvelle timeline
+restent à implémenter dans leurs RUN. Les deux statuts sont corrigés en RUN-005.

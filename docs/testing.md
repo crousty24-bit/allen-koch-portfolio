@@ -79,3 +79,15 @@ et conservation de saisie en RUN-017, selon le traitement choisi en RUN-016.
 Pas de nouvelles abstractions uniquement pour tester, de snapshots HTML complets,
 ou de pourcentage de couverture arbitraire. Une automatisation navigateur en CI
 reste une décision d'outillage distincte, avec mandat et dépendances explicites.
+
+
+## Contrat RUN-011 pour les prochaines intégrations
+
+La [matrice de navigation](refonte-plan.md#critères-de-navigation-à-vérifier-lors-de-lintégration)
+précise les cibles, le clavier, le menu mobile, l'historique et les tailles à
+contrôler en RUN-012 puis lors de l'ajout des sections. Le
+[contrat d'architecture](refonte-plan.md#run-011--architecture-des-sections-et-ancres)
+fixe l'ordre et le séquencement : `#services` ne devient un lien public qu'avec
+sa section en RUN-014. Vérifier les neuf projets répartis sans doublon en RUN-015
+et le texte de présentation About inchangé lors de RUN-021. Ces scénarios sont
+à exécuter sur l'UI intégrée ; ce cadrage ne constitue pas leur résultat.

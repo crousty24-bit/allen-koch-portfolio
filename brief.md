@@ -5,8 +5,12 @@
 Baseline actuelle : portfolio statique one-page 1.3.2 d’Allen Koch. La cible reste
 un site one-page, avec refonte visuelle totale, navigation par ancres et
 formulaire contact/devis.
-Le positionnement vise un développeur IA freelance proposant sites et applications web,
-intégrations/automatisations IA, outils et workflows agents.
+Le positionnement vise un développeur fullstack et IA démarrant son activité
+freelance. Allen précise le 29 octobre 2026 ne pas avoir encore créé son entreprise.
+La priorité actuelle reste visuelle : deux prestations de travail, sites/applications
+web et développement assisté par IA avec workflows agents. Intégrations IA et
+workflows sont regroupés ; ces textes provisoires pourront évoluer et ne constituent
+pas un catalogue commercial définitif. Ce contexte d'activité reste interne.
 
 Clientèles demandées par Allen : TPE/PME, startups et équipes techniques.
 Les offres exactes et les preuves publiables restent à arbitrer. Les quatre
@@ -20,10 +24,15 @@ phase 2, pas des prestations déjà vendues.
 
 - Nouveau design global : palette, typographie, compositions, animations et transitions.
 - Sections sur une page unique, accessibles par des ancres de navigation ;
-  ordre précis à définir.
+  ordre défini par RUN-011 ci-dessous.
 - Formulaire de contact et demande de devis avec envoi réel, solution à choisir.
 - Une ou plusieurs sections de services/prestations.
-- Conservation des projets personnels actuels et ajout d’un espace projets clients distinct.
+- Trois espaces projets : personnels, clients et game dev ; conserver les neuf
+  projets et placer Milady's Knight dans game dev, sans doublon personnel.
+- Statuts confirmés : Code Quality Guardian « MVP (deprecated) », Sokwak AI « MVP ».
+- À propos : conserver le texte de présentation actuel FR/EN ; revoir uniquement
+  la timeline My Coding Journey en horizontal, avec fondu et défilement animé
+  pour voir la suite (RUN-021), accessible et compatible reduced-motion.
 - Section future « Ils m’ont fait confiance », publiée avec références réelles autorisées.
 
 ## Architecture et contrats à préserver
@@ -99,6 +108,24 @@ les résidus inutilisés du design. Aucun changement visuel ou nouvelle dépenda
 La [procédure de tests](docs/testing.md) distingue les contrôles Node de la matrice
 navigateur ; son automatisation en CI reste une décision d’outillage distincte.
 RUN-012 raccordera les nouvelles ancres et RUN-007 vérifiera l’intégration globale.
+RUN-005 est lancé le 29 octobre sur `feature/run-005-offres-contenus` :
+inventaire des neuf projets et proposition FR/EN des offres, de trois cas et des
+CTA dans le [plan](docs/refonte-plan.md#run-005--proposition-éditoriale-fren-du-29-octobre-2026).
+Correction d'Allen : priorité au design et textes simples, provisoires ; deux
+prestations au lieu de trois, avec adaptations FR/EN de ses exemples commerciaux.
+La base provisoire est validée par Allen ; preuves détaillées et modalités
+commerciales ne conditionnent pas la préparation visuelle. Seuls les statuts de Code Quality
+Guardian et Sokwak AI sont corrigés dans les données ; présentation About intacte
+et aucune mission client déduite du catalogue.
+RUN-005 est clôturé après validation d'Allen ; sa demande de passer à la suite
+mandate RUN-011. Architecture retenue : Accueil `#home`, Services `#services`,
+Projets `#projects`, Stack `#stack`, À propos `#about`, Contact `#contact`, avec
+`#main-content` pour l'évitement. Les trois espaces de projets restent sous une
+seule entrée Projets. Présentation About actuelle inchangée. Services et son lien
+seront activés ensemble en RUN-014, sans section vide entre les RUN.
+Même URL et mêmes ancres FR/EN ; canonical racine conservée, pas de version EN
+indexable distincte promise. Le [contrat d'architecture](docs/refonte-plan.md#run-011--architecture-des-sections-et-ancres)
+détaille les CTA et critères navigateur pour RUN-012/014/015/021.
 Aucun RUN suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).
@@ -113,9 +140,9 @@ L'origine et les adaptations sont consignées dans [docs/initialization.md](docs
 Restent à décider : promesse, offres prioritaires, rôle exact dans les cas présentés,
 modalités d'intervention, disponibilité et canal de contact. La synthèse visuelle,
 les polices, le clair par défaut, le maintien du compteur et la suppression des
-particules sont déjà arbitrés dans DESIGN.md R8. Ajouter au cadrage : ordre des
-sections, ancres de navigation, traitement de l'indexation EN,
-solution d’envoi/destinataire du formulaire, données nécessaires et conservation.
+particules sont déjà arbitrés dans DESIGN.md R8. RUN-011 fixe l'ordre, les ancres et le maintien d'une URL unique FR/EN. Restent
+à décider en RUN-016 : solution d’envoi/destinataire du formulaire, données
+nécessaires et conservation.
 Ne pas inventer ces réponses.
 
 Mettre à jour ce brief pour une décision produit/architecture acquise ; garder les

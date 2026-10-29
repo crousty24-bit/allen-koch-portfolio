@@ -64,7 +64,7 @@ export const projects: Project[] = [
     repositoryHref:
       'https://github.com/crousty24-bit/code-quality-guardian-skill',
     stack: ['Agent Skill', 'AI Workflow', 'Code Quality'],
-    status: { fr: 'En cours', en: 'In progress' },
+    status: { fr: 'MVP (deprecated)', en: 'MVP (deprecated)' },
     href: 'https://code-quality-guardian.vercel.app/',
   },
   {
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     },
     imageSrc: '/projects/rubber-duck-ia.svg',
     stack: ['React', 'TypeScript', 'Prisma', 'AI Workflow'],
-    status: { fr: 'En cours', en: 'In progress' },
+    status: { fr: 'MVP', en: 'MVP' },
   },
   {
     title: 'Kane',

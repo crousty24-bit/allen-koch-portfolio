@@ -685,3 +685,128 @@ copier de secret, donnée client ou résultat supposé.
   physique, nouveau Lighthouse ni validation humaine du rendu dans ce RUN.
   Les futures fonctionnalités clients/contact restent dans leurs RUN prévus.
 - État : `done` localement ; aucun commit, push, déploiement ou RUN suivant lancé.
+
+
+## RUN-005 : offres et contenu bilingue (29 octobre 2026)
+
+- Mandat : Allen valide la recommandation puis demande de lancer RUN-005.
+  Départ propre sur `feature/run-005-offres-contenus`, créée depuis `develop`
+  à `a6778bb`. Seul RUN actif ; transitions `in_progress` puis `verify`.
+- Périmètre : plan éditorial, brief, relais Claude, suivi et journal. Préparer
+  promesse, offres, trois cas, présentation/contact et CTA FR/EN. Préserver code,
+  neuf projets, liens/assets, design, langues/thèmes ; aucune dépendance ni UI.
+- Sources : données projets, i18n, About et liens ; brief, suivi, journal récent,
+  plan, brief Claude, DESIGN R8, workflow et règles d'outillage.
+  Le catalogue ne prouve pas une expérience client ni la contribution individuelle.
+  Aucun dépôt externe audité ni lien distant vérifié.
+- Livrable : proposition bilingue centralisée dans docs/refonte-plan.md,
+  familles web / intégrations IA / workflows agents avec besoins, livrables,
+  limites et CTA ; neuf projets inventoriés. Trois cas proposés : Portfolio AK,
+  Diff Impact Analyzer, Code Quality Guardian. Rôles et preuves à confirmer.
+  Offre IA conditionnée à un cas maîtrisé démontrable ; à défaut hors publication.
+- Cohérence : statistiques conservées, WebGL supprimé et synthèse visuelle déjà
+  arbitrés dans DESIGN R8 ; plan corrigé sur ces points. Les autres RUN et leur
+  ordre ne changent pas. Le brief Claude renvoie à la proposition non validée.
+- Intervenant : Codex main, skill Ponytail ; relecture par l'implémenteur.
+  Pas de sous-agent : rédaction et arbitrages produit liés, sans lot autonome
+  justifiant le transfert. Aucune revue indépendante revendiquée.
+- Vérification : `git diff --check` réussi ; 40 liens vers des fichiers locaux
+  contrôlés et fragment RUN-005 des deux renvois validé ; seul RUN-005 actif en
+  `verify`. Textes FR/EN relus par l'implémenteur, sans traduction indépendante.
+  Build/lint/Biome/tests/audit non relancés : documents seuls, aucun contrat
+  exécutable modifié, conformément à docs/tooling.md. Pas de contrôle navigateur.
+- État : `verify` en attente de validation d'Allen sur les textes/offres, cas et
+  rôles, modalités/disponibilité/contact. Autoriser le RUN ne valide pas ces faits.
+  Aucun contenu public, commit, push, déploiement ni RUN suivant exécuté.
+
+
+### RUN-005 : simplification demandée par Allen (29 octobre 2026)
+
+- Correction du mandat : démarche d'abord visuelle ; Allen démarre son activité
+  freelance, entreprise non créée. Les textes de services sont temporaires et
+  sujets à évolution, sans catalogue commercial définitif requis maintenant.
+- Deux prestations : sites/applications web ; développement assisté par IA avec
+  workflows agents. Fusion IA/workflows, adaptation FR/EN des exemples commerciaux
+  fournis par Allen, paragraphes courts et CTA commun. Détails de livrables,
+  support et conditions retirés de la proposition visuelle.
+- Plan, brief, relais Claude et critères RUN-005 alignés. L'obligation ajoutée
+  de produire un cas IA pour avancer visuellement est retirée. Les trois pistes
+  de cas et l'inventaire restent disponibles pour plus tard ; aucune expérience
+  client inventée. Les inconnues factuelles ne sont pas des exigences de clôture
+  commerciale pour ce cadrage ; les contenus réellement publiés devront rester exacts.
+- État : `verify`, structure corrigée selon la demande, rédaction adaptée proposée.
+  Aucun autre RUN lancé et aucun code public modifié. Même branche et changements
+  documentaires précédents préservés ; relecture par Codex main, sans délégation
+  pour cette correction éditoriale ciblée.
+- Vérification : `git diff --check` réussi ; 40 liens locaux et fragment RUN-005
+  valides, présence des deux prestations contrôlée, textes FR/EN relus. Pas de
+  build, lint, Biome ni tests applicatifs pour des documents seuls (docs/tooling.md).
+
+
+### RUN-005 : projets et conservation du texte About (29 octobre 2026)
+
+- Mandat complémentaire d'Allen : Code Quality Guardian « MVP (deprecated) »,
+  Sokwak AI « MVP » ; trois espaces personnels/clients/game dev avec Milady's
+  Knight dans game dev. Timeline My Coding Journey à revoir en horizontal,
+  apparition en fondu et défilement horizontal animé ; présentation actuelle intacte.
+- Modification de données bornée : deux statuts corrigés FR/EN dans projects.ts.
+  Consommateurs inspectés : ProjectsSection/ProjectCard, statistiques et tests.
+  Aucun champ, ordre, lien, asset ni compte de projets changé ; pas de nouveau
+  test pour ces libellés seuls. La présentation et AboutJourney ne sont pas modifiés.
+- Cadrage : plan, brief, relais Claude et DESIGN R21 alignés ; remplacement de
+  la présentation About retiré. Trois espaces réservés à RUN-015. RUN-021
+  planifié pour la timeline, avec accès clavier/tactile, reduced-motion et
+  contrôles responsive ; RUN-007 inclut son intégration. Aucun RUN suivant lancé.
+- Vérification : build, lint, Biome (68 fichiers) et tests (41/41) réussis.
+  Avertissement de build préexistant : responsive-430.css vide.
+  Diff sans erreur d'espacement ; 41 liens locaux contrôlés. Diff vide pour i18n,
+  AboutSection et AboutJourney : présentation actuelle et composant préservés.
+- Intervenant : Codex main, relecture par l'implémenteur ; pas de délégation
+  justifiée pour ces libellés et ce cadrage ciblé. RUN-005 reste `verify`.
+- Limites : pas de contrôle navigateur ni d'audit npm pour cette correction de
+  contenu ; espaces projets et timeline uniquement spécifiés, pas implémentés.
+  Aucun commit, push ni déploiement.
+
+
+### RUN-005 : clôture validée (29 octobre 2026)
+
+- Allen valide les derniers correctifs projets/About et demande de passer à la
+  suite. RUN-005 passe `done` avec le mandat simplifié : base de contenu pour le
+  design, deux prestations temporaires, statuts corrigés, trois espaces projets
+  et présentation actuelle conservée. Aucun catalogue commercial définitif requis.
+- Les vérifications applicatives du lot précédent restent datées : build, lint,
+  Biome et 41 tests réussis ; aucun code modifié depuis ces résultats.
+- Suite autorisée : RUN-011. Aucun commit, push ou déploiement demandé/effectué.
+
+## RUN-011 : architecture des sections et ancres (29 octobre 2026)
+
+- Mandat : suite demandée après validation RUN-005 ; même branche
+  feature/run-005-offres-contenus, changements existants conservés. RUN-005 clos
+  avant démarrage ; transitions `in_progress`, `verify`, puis clôture après contrôle.
+- Sources : App, liste navigation, consommateurs Navbar/Footer/Hero et autres
+  sections, AboutJourney, index.html, robots/sitemap, plan et procédure de tests.
+  Sources locales uniquement ; pas d'audit SEO distant ni de résultat navigateur.
+- Décision : ordre Accueil/Services/Projets/Stack/About/Contact ; conserver les
+  cinq ancres de menu existantes et main-content, ajouter services avec son contenu
+  en RUN-014. Trois espaces sous Projets, sans nouveau filtre/onglet obligatoire,
+  huit projets personnels et Milady's Knight en game dev ; clients masqués si vides.
+- CTA et séquencement documentés : Hero contact principal/projets secondaire,
+  Services contact commun, mailto de secours conservé, lien Services activé avec
+  sa section. RUN-012 ne doit pas publier de lien sans cible ou section vide.
+- FR/EN : même URL et fragments ; canonical actuelle conservée, pas de version
+  EN distincte promise. Date historique du sitemap signalée pour RUN-007/008,
+  sans changement arbitraire ni stratégie SEO supplémentaire.
+- Livrables : plan, synthèse brief, relais Claude, critères de navigation et
+  procédure de tests. Tests à exécuter lors de l'intégration, pas déclarés réussis
+  ici. Mandat borné au cadrage, aucune interface ni configuration modifiée.
+- Intervenant : Codex main, skill Ponytail et relecture par l'implémenteur.
+  Pas de délégation : contrat documentaire ciblé lié aux décisions déjà connues,
+  coût du transfert sans bénéfice attendu. Aucun agent Claude appelé.
+- Vérifications : git diff --check réussi, 51 liens locaux et fragments RUN-011
+  contrôlés ; RUN-011 seul actif pendant la vérification puis aucun à sa clôture.
+  Contrat relu face aux sources ; aucun code changé dans ce lot, donc build/lint/
+  Biome/tests non relancés selon docs/tooling.md. Résultats RUN-005 conservés.
+- État : `done` localement ; RUN-012 reste planifié avec contrat d'intégration prêt.
+- Limites : code navigateur non exécuté pour ce lot documentaire ; vérifications
+  précédentes RUN-005 non présentées comme une preuve de la future UI.
+  Aucun commit, push, déploiement ou lancement RUN-012 effectué.
