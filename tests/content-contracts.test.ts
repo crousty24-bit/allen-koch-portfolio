@@ -5,6 +5,7 @@ import { aboutAccordionItems, aboutJourneyItems } from '../src/data/about/about'
 import { copy, type Language } from '../src/data/i18n/i18n'
 import { links } from '../src/data/links/links'
 import { projects } from '../src/data/projects/projects'
+import { services } from '../src/data/services/services'
 import { type SkillTreeNode, skillsTree } from '../src/data/skills/skills'
 import { stack } from '../src/data/stack/stack'
 
@@ -23,6 +24,7 @@ function expectUnique(values: string[]) {
 describe('published content contracts', () => {
   it('has unique identities for keyed lists and controlled regions', () => {
     expectUnique(projects.map((project) => project.title))
+    expectUnique(services.map((service) => service.id))
     expectUnique(aboutJourneyItems.map((item) => item.id))
     expectUnique(aboutAccordionItems.map((item) => item.id))
     expectUnique(nodes.map((node) => node.id))
@@ -37,6 +39,10 @@ describe('published content contracts', () => {
       copy[language].hero.heading,
       copy[language].hero.role,
       copy[language].contact.heading,
+      ...services.flatMap((service) => [
+        service.title[language],
+        service.description[language],
+      ]),
       ...projects.flatMap((project) => [
         project.description[language],
         project.imageAlt[language],

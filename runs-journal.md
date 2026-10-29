@@ -685,3 +685,486 @@ copier de secret, donnée client ou résultat supposé.
   physique, nouveau Lighthouse ni validation humaine du rendu dans ce RUN.
   Les futures fonctionnalités clients/contact restent dans leurs RUN prévus.
 - État : `done` localement ; aucun commit, push, déploiement ou RUN suivant lancé.
+
+
+## RUN-005 : offres et contenu bilingue (29 octobre 2026)
+
+- Mandat : Allen valide la recommandation puis demande de lancer RUN-005.
+  Départ propre sur `feature/run-005-offres-contenus`, créée depuis `develop`
+  à `a6778bb`. Seul RUN actif ; transitions `in_progress` puis `verify`.
+- Périmètre : plan éditorial, brief, relais Claude, suivi et journal. Préparer
+  promesse, offres, trois cas, présentation/contact et CTA FR/EN. Préserver code,
+  neuf projets, liens/assets, design, langues/thèmes ; aucune dépendance ni UI.
+- Sources : données projets, i18n, About et liens ; brief, suivi, journal récent,
+  plan, brief Claude, DESIGN R8, workflow et règles d'outillage.
+  Le catalogue ne prouve pas une expérience client ni la contribution individuelle.
+  Aucun dépôt externe audité ni lien distant vérifié.
+- Livrable : proposition bilingue centralisée dans docs/refonte-plan.md,
+  familles web / intégrations IA / workflows agents avec besoins, livrables,
+  limites et CTA ; neuf projets inventoriés. Trois cas proposés : Portfolio AK,
+  Diff Impact Analyzer, Code Quality Guardian. Rôles et preuves à confirmer.
+  Offre IA conditionnée à un cas maîtrisé démontrable ; à défaut hors publication.
+- Cohérence : statistiques conservées, WebGL supprimé et synthèse visuelle déjà
+  arbitrés dans DESIGN R8 ; plan corrigé sur ces points. Les autres RUN et leur
+  ordre ne changent pas. Le brief Claude renvoie à la proposition non validée.
+- Intervenant : Codex main, skill Ponytail ; relecture par l'implémenteur.
+  Pas de sous-agent : rédaction et arbitrages produit liés, sans lot autonome
+  justifiant le transfert. Aucune revue indépendante revendiquée.
+- Vérification : `git diff --check` réussi ; 40 liens vers des fichiers locaux
+  contrôlés et fragment RUN-005 des deux renvois validé ; seul RUN-005 actif en
+  `verify`. Textes FR/EN relus par l'implémenteur, sans traduction indépendante.
+  Build/lint/Biome/tests/audit non relancés : documents seuls, aucun contrat
+  exécutable modifié, conformément à docs/tooling.md. Pas de contrôle navigateur.
+- État : `verify` en attente de validation d'Allen sur les textes/offres, cas et
+  rôles, modalités/disponibilité/contact. Autoriser le RUN ne valide pas ces faits.
+  Aucun contenu public, commit, push, déploiement ni RUN suivant exécuté.
+
+
+### RUN-005 : simplification demandée par Allen (29 octobre 2026)
+
+- Correction du mandat : démarche d'abord visuelle ; Allen démarre son activité
+  freelance, entreprise non créée. Les textes de services sont temporaires et
+  sujets à évolution, sans catalogue commercial définitif requis maintenant.
+- Deux prestations : sites/applications web ; développement assisté par IA avec
+  workflows agents. Fusion IA/workflows, adaptation FR/EN des exemples commerciaux
+  fournis par Allen, paragraphes courts et CTA commun. Détails de livrables,
+  support et conditions retirés de la proposition visuelle.
+- Plan, brief, relais Claude et critères RUN-005 alignés. L'obligation ajoutée
+  de produire un cas IA pour avancer visuellement est retirée. Les trois pistes
+  de cas et l'inventaire restent disponibles pour plus tard ; aucune expérience
+  client inventée. Les inconnues factuelles ne sont pas des exigences de clôture
+  commerciale pour ce cadrage ; les contenus réellement publiés devront rester exacts.
+- État : `verify`, structure corrigée selon la demande, rédaction adaptée proposée.
+  Aucun autre RUN lancé et aucun code public modifié. Même branche et changements
+  documentaires précédents préservés ; relecture par Codex main, sans délégation
+  pour cette correction éditoriale ciblée.
+- Vérification : `git diff --check` réussi ; 40 liens locaux et fragment RUN-005
+  valides, présence des deux prestations contrôlée, textes FR/EN relus. Pas de
+  build, lint, Biome ni tests applicatifs pour des documents seuls (docs/tooling.md).
+
+
+### RUN-005 : projets et conservation du texte About (29 octobre 2026)
+
+- Mandat complémentaire d'Allen : Code Quality Guardian « MVP (deprecated) »,
+  Sokwak AI « MVP » ; trois espaces personnels/clients/game dev avec Milady's
+  Knight dans game dev. Timeline My Coding Journey à revoir en horizontal,
+  apparition en fondu et défilement horizontal animé ; présentation actuelle intacte.
+- Modification de données bornée : deux statuts corrigés FR/EN dans projects.ts.
+  Consommateurs inspectés : ProjectsSection/ProjectCard, statistiques et tests.
+  Aucun champ, ordre, lien, asset ni compte de projets changé ; pas de nouveau
+  test pour ces libellés seuls. La présentation et AboutJourney ne sont pas modifiés.
+- Cadrage : plan, brief, relais Claude et DESIGN R21 alignés ; remplacement de
+  la présentation About retiré. Trois espaces réservés à RUN-015. RUN-021
+  planifié pour la timeline, avec accès clavier/tactile, reduced-motion et
+  contrôles responsive ; RUN-007 inclut son intégration. Aucun RUN suivant lancé.
+- Vérification : build, lint, Biome (68 fichiers) et tests (41/41) réussis.
+  Avertissement de build préexistant : responsive-430.css vide.
+  Diff sans erreur d'espacement ; 41 liens locaux contrôlés. Diff vide pour i18n,
+  AboutSection et AboutJourney : présentation actuelle et composant préservés.
+- Intervenant : Codex main, relecture par l'implémenteur ; pas de délégation
+  justifiée pour ces libellés et ce cadrage ciblé. RUN-005 reste `verify`.
+- Limites : pas de contrôle navigateur ni d'audit npm pour cette correction de
+  contenu ; espaces projets et timeline uniquement spécifiés, pas implémentés.
+  Aucun commit, push ni déploiement.
+
+
+### RUN-005 : clôture validée (29 octobre 2026)
+
+- Allen valide les derniers correctifs projets/About et demande de passer à la
+  suite. RUN-005 passe `done` avec le mandat simplifié : base de contenu pour le
+  design, deux prestations temporaires, statuts corrigés, trois espaces projets
+  et présentation actuelle conservée. Aucun catalogue commercial définitif requis.
+- Les vérifications applicatives du lot précédent restent datées : build, lint,
+  Biome et 41 tests réussis ; aucun code modifié depuis ces résultats.
+- Suite autorisée : RUN-011. Aucun commit, push ou déploiement demandé/effectué.
+
+## RUN-011 : architecture des sections et ancres (29 octobre 2026)
+
+- Mandat : suite demandée après validation RUN-005 ; même branche
+  feature/run-005-offres-contenus, changements existants conservés. RUN-005 clos
+  avant démarrage ; transitions `in_progress`, `verify`, puis clôture après contrôle.
+- Sources : App, liste navigation, consommateurs Navbar/Footer/Hero et autres
+  sections, AboutJourney, index.html, robots/sitemap, plan et procédure de tests.
+  Sources locales uniquement ; pas d'audit SEO distant ni de résultat navigateur.
+- Décision : ordre Accueil/Services/Projets/Stack/About/Contact ; conserver les
+  cinq ancres de menu existantes et main-content, ajouter services avec son contenu
+  en RUN-014. Trois espaces sous Projets, sans nouveau filtre/onglet obligatoire,
+  huit projets personnels et Milady's Knight en game dev ; clients masqués si vides.
+- CTA et séquencement documentés : Hero contact principal/projets secondaire,
+  Services contact commun, mailto de secours conservé, lien Services activé avec
+  sa section. RUN-012 ne doit pas publier de lien sans cible ou section vide.
+- FR/EN : même URL et fragments ; canonical actuelle conservée, pas de version
+  EN distincte promise. Date historique du sitemap signalée pour RUN-007/008,
+  sans changement arbitraire ni stratégie SEO supplémentaire.
+- Livrables : plan, synthèse brief, relais Claude, critères de navigation et
+  procédure de tests. Tests à exécuter lors de l'intégration, pas déclarés réussis
+  ici. Mandat borné au cadrage, aucune interface ni configuration modifiée.
+- Intervenant : Codex main, skill Ponytail et relecture par l'implémenteur.
+  Pas de délégation : contrat documentaire ciblé lié aux décisions déjà connues,
+  coût du transfert sans bénéfice attendu. Aucun agent Claude appelé.
+- Vérifications : git diff --check réussi, 51 liens locaux et fragments RUN-011
+  contrôlés ; RUN-011 seul actif pendant la vérification puis aucun à sa clôture.
+  Contrat relu face aux sources ; aucun code changé dans ce lot, donc build/lint/
+  Biome/tests non relancés selon docs/tooling.md. Résultats RUN-005 conservés.
+- État : `done` localement ; RUN-012 reste planifié avec contrat d'intégration prêt.
+- Limites : code navigateur non exécuté pour ce lot documentaire ; vérifications
+  précédentes RUN-005 non présentées comme une preuve de la future UI.
+  Aucun commit, push, déploiement ou lancement RUN-012 effectué.
+
+
+## RUN-012 : navigation et CTA du socle (29 octobre 2026)
+
+- Mandat : Allen valide RUN-011 puis demande de passer à la suite. Départ propre
+  sur feature/run-005-offres-contenus à b9cc192, contenant les décisions précédentes.
+  Seul RUN actif, transitions in_progress puis verify.
+- Périmètre : Navbar, Hero, cibles d'ancres dans App et cinq sections existantes,
+  libellés navigation/CTA FR/EN, règle de soulignement, contrats de rendu et docs.
+  Services/lien restent en RUN-014, espaces projets en RUN-015, parcours en RUN-021.
+  Aucun composant de base nouveau : règle shadcn non déclenchée, aucune dépendance.
+- Hero : Contact principal, projets secondaire. Menu FR Accueil/À propos et
+  footer utilisent toujours la même liste ; lien de défilement conservé.
+- Position active : aria-current location et soulignement, calcul depuis les
+  sections et le scroll-padding CSS ; écoute scroll passive regroupée par rAF,
+  resize et ResizeObserver pour les changements de hauteur. Contact actif en bas
+  de page. Nettoyage des écouteurs/observateur/rAF ; aucun déplacement de focus
+  pendant le défilement. Fonctionne sans IntersectionObserver ni ResizeObserver.
+- Focus : sections et main avec tabindex -1, hors parcours Tab ; navigation native
+  conservée, focus sur la cible initiale après décodage et scroll instantané du
+  fragment, avec preventScroll. Fragments inconnus/mal formés sans erreur.
+- Préservé : blocs About FR/EN comparés textuellement à HEAD et identiques ;
+  données projets/parcours et AboutJourney sans diff. Palette, typographie,
+  préférences locales, liste/ordre des sections et dépendances inchangés.
+- Tests versionnés : assertions ajoutées aux contrats existants pour cibles
+  focalisables, CTA principal/secondaire FR/EN, un seul aria-current initial et
+  absence de lien Services avant sa section. Toujours 8 fichiers et 41 cas.
+- Contrôles finaux : build, ESLint, Biome (68 fichiers), Vitest 41/41 et
+  git diff --check réussis. Avertissement préexistant : responsive-430.css vide.
+  Premiers Biome : dépendance language non consommée et format signalés ; effet
+  corrigé avec ResizeObserver pour les changements de hauteur, puis formaté.
+  Sur la marque avec onClick, la règle d'ancre rejetait le href littéral ;
+  réutilisation de navItems[0].href, sans désactivation de règle.
+- Navigateur : Chrome 156.0.8078.47 avec interface, profils isolés, build de
+  production, Playwright déjà en cache. Huit scénarios de navigation :
+  1440×900, 1440×300, 390×844, 667×375 avec/sans reduced-motion. Cinq ancres
+  directes et reload, évitement, activation clavier/focus/Tab, molette, bas de
+  page, historique précédent/suivant, fragments encodés/inconnus/mal formés,
+  fermeture par marque/Échap vérifiés. Huit variantes FR/EN et clair/sombre à
+  1440×900 et 390×844 : préférences après reload, CTA, cohérence header/footer,
+  projets 3→9→3 et absence de débordement vérifiés. Deux cas supplémentaires
+  sans observateurs, dont un avec stockage bloqué, réussis. Aucune exception
+  pageerror dans ces 18 scénarios. Pas d'audit exhaustif console/réseau.
+- Protocole corrigé avant résultats retenus : mesure Home initiale attendait
+  à tort 63 px de marge au lieu de son bord de page ; historique exécuté trop
+  tôt avant enregistrement de la position ; Tab vers GitHub dans About pouvait
+  encore défiler au lancement de l'action suivante en paysage. Attentes de
+  stabilisation ajoutées, contrôle isolé history.mjs/mobile.mjs, sans correctif
+  source pour ces artefacts. Fixture de préférences ne doit pas les réécrire à
+  chaque reload : initialisation seulement si absentes. Captures reprises après
+  fin du fondu, chargement des polices et compteurs à leurs valeurs finales.
+- Contributeurs : Codex main pour code, tests, intégration et navigateur ;
+  review_run012, sous-agent gpt-6-luna effort demandé medium, revue indépendante
+  en lecture seule selon docs/handoff-contracts.md. Bénéfice attendu : contrôle
+  borné des nouveaux effets et du focus. Constat : marque ne fermant pas le menu
+  mobile ; corrigé puis contrôlé en navigateur par le main. Reprise diagnostique
+  sur le paysage : aucune cause source supplémentaire établie, hypothèse de
+  défilement en cours cohérente avec le protocole corrigé. Le relecteur n'a pas
+  exécuté le navigateur. Aucune économie de tokens mesurée.
+- Preuves hors dépôt : scripts check.mjs, history.mjs, mobile.mjs, captures.mjs,
+  results.json (8 navigation, 8 variantes, 2 fallback) et huit captures Hero dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run012/.
+  Ces scripts ne sont pas une suite navigateur portable du dépôt.
+- Limites : pas de Safari/Firefox, téléphone physique, lecteur d'écran,
+  Lighthouse ou nouvelle mesure de performance. Pas d'audit npm pour ce lot
+  sans dépendance/release. Contrôle global et validation humaine finale restent
+  en RUN-007/008 ; aucun commit, push, déploiement ni autre RUN exécuté.
+
+- Clôture : RUN-012 `done` localement après contrôles et relecture des captures
+  Hero desktop/mobile, FR clair et EN sombre notamment. 43 liens documentaires
+  locaux valides et diff sans erreur d'espacement. Aucun RUN actif à la fin ;
+  RUN-014 est le prochain lot d'intégration visuelle, sous direction Claude.
+
+
+## RUN-014 : intégration des deux prestations (29 octobre 2026)
+
+- Mandat : Allen demande la suite après RUN-012 ; départ propre sur
+  feature/run-005-offres-contenus à af85a1d. Seul RUN actif, transitions
+  in_progress puis verify. Les prestations restent provisoires pour le design.
+- Contribution visuelle réelle : Claude Code 2.1.287 authentifié, alias sonnet,
+  effort demandé medium ; sortie JSON confirme claude-sonnet-5-5. Contrat borné
+  en lecture seule/texte, outils désactivés : composition et CSS indicatifs sur
+  extraits ciblés, aucun fichier partagé modifié par Claude. Bénéfice attendu :
+  respecter sa propriété du design et limiter le transfert ; aucune économie de
+  tokens mesurée. Codex main assure seul l'intégration et les contrôles, sans
+  présenter sa relecture comme indépendante.
+- Design : deux lignes à filets, titres à gauche et paragraphes à droite en
+  desktop, empilés sous 1040 px, heading Deux prestations / Two services,
+  un CTA commun Contact. Système monochrome, typographie et effets existants.
+  Les dimensions suggérées par Claude n'étaient pas des mesures navigateur.
+- Fichiers : nouveau ServicesSection, données Service typées et CSS services ;
+  insertion App entre Hero et Projets, lien Services partagé Navbar/Footer,
+  deux clés i18n de heading et libellé navigation, responsive et import CSS.
+  Aucun composant de base nouveau : lien .button existant réutilisé, aucune
+  première intégration shadcn ni ajout de dépendance nécessaire.
+- Contenu : quatre paragraphes comparés par assertion à la version FR/EN
+  validée du plan, identiques. Blocs About comparés à HEAD, intacts ; données
+  projets/parcours et AboutJourney sans diff. Pas de catalogue contractuel,
+  chiffre, backend, formulaire ni nouvelle promesse ajouté.
+- Tests versionnés : contrats de contenu étendus aux identités/textes Services ;
+  rendu de deux services et un CTA par langue ; ordre des six sections comparé
+  à la navigation, liens et cibles d'ancres/ARIA existants conservés. L'ancienne
+  assertion interdisant tout lien Services est remplacée lors de son intégration.
+- Contrôles : build/lint/Biome (71 fichiers), tests 43/43 et diff-check réussis.
+  Premier Biome : ordre d'import du test corrigé. Avertissement de build
+  préexistant conservé : responsive-430.css vide. Aucun audit npm pour ce lot
+  sans dépendance ni release.
+- Contrôle navigateur Chrome 156.0.8078.47 avec interface, profils isolés et
+  build production, Playwright en cache : 16 variantes 320×740, 390×844,
+  768×1024, 1440×900, FR/EN et clair/sombre ; quatre cas 1440×300/667×375
+  avec/sans reduced-motion ; deux cas sans observateurs dont stockage bloqué.
+  Accès direct/reload Services, focus clavier, CTA Contact, retour Services,
+  anciennes ancres Projets/About, indication active, cohérence header/footer,
+  alignement des deux lignes, géométrie du menu desktop/paysage et absence de
+  débordement vérifiés. Aucun pageerror dans ces 22 scénarios.
+- Défaut découvert : grille empilée conservant douze colonnes et onze gaps de
+  2.5rem, largeur 440 px dans 280 px disponibles à 320 px. Codex passe la grille
+  à une colonne réelle sous 1040 px, puis tous les scénarios passent ; desktop
+  inchangé par ce correctif. Une fermeture du navigateur a interrompu le premier
+  passage après les 16 variantes ; les six cas restants ont été repris et réussis.
+- Captures de section conservées pour les 16 variantes ; rendu mobile FR clair
+  et desktop FR clair inspecté par le main. Scripts check.mjs/inspect.mjs,
+  results.json, captures et contrat/retour Claude design-prompt.txt/design-result.json
+  hors dépôt dans /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run014/.
+- Limites : pas de Safari/Firefox, téléphone physique, lecteur d'écran, nouveau
+  Lighthouse ni validation humaine finale du rendu. Les scripts navigateur ne
+  sont pas une suite portable intégrée à la CI ; pas d'audit SEO/réseau distant.
+  Les espaces projets, la timeline et le formulaire restent dans leurs RUN.
+  Aucun commit, push, déploiement ou autre RUN exécuté.
+
+- Clôture locale : RUN-014 done après relecture, 43 liens documentaires locaux
+  valides, nouveaux fichiers explicitement inspectés et diff sans erreur.
+  Aucun RUN actif ; RUN-015 reste planifié, sans lancement automatique.
+
+
+## RUN-015 : projets personnels, clients et game dev (29 octobre 2026)
+
+- Mandat : Allen demande la suite après RUN-014. Départ propre à 71141dd sur
+  feature/run-005-offres-contenus. Seul RUN actif : in_progress puis verify.
+- Composition : Claude Code appelé avec alias sonnet, effort demandé medium,
+  outils désactivés, contrat visuel borné sans écriture ; sortie JSON confirme
+  claude-sonnet-5-5. Groupes empilés, h3 mono avec effectif, cartes h4, filets,
+  réutilisation des cartes/bouton. Codex main intègre et contrôle le résultat.
+- Migration : catégorie explicite sur les neuf projets, huit personnels et seul
+  Milady's Knight en game-dev. Assertion de comparaison à HEAD : tous les champs
+  préexistants identiques (textes, statuts, liens, assets, stack et ordre).
+  About FR/EN comparé textuellement à HEAD et intact, parcours sans diff.
+- Affichage : trois personnels feature, cinq supplémentaires dépliables ; jeu
+  compact toujours présent et unique, position globale 09. Les comptes de groupes
+  sont 08 et 01 ; Hero reste à neuf. Aucun onglet, filtre ni nouvelle ancre de menu.
+- Clients : catégorie discriminée avec nom, mission, rôle, livrables, accord de
+  publication et résultat facultatif. isProjectPublished partagé par section,
+  cartes et statistiques ; aucun groupe vide ni cas non approuvé affiché.
+  Le flag ne cache pas le contenu d'un bundle frontend : les données non
+  autorisées/confidentielles ne doivent pas entrer dans les sources publiques.
+  Aucun client ajouté en production. Contrat documenté dans le plan.
+- Tests : jeux de données/compteur ajustés, hiérarchie h3/h4, jeu isolé et absence
+  clients vérifiés ; fixtures clients avec/sans accord et avec/sans résultat,
+  présentes seulement dans les tests et retirées en finally. Pas de prop ou
+  mécanisme de production ajouté pour injecter les fixtures.
+- Vérifications finales : build/lint/Biome (71 fichiers), 46/46 tests et
+  git diff --check réussis. Avertissement CSS vide préexistant conservé.
+  Une ligne vide EOF lors du regroupement de la règle projects-toggle a été
+  corrigée ; regroupement CSS sans changement de comportement.
+- Navigateur : Chrome 156.0.8078.47 avec interface, profils isolés, build de
+  production, Playwright en cache. Seize variantes 320×740, 390×844, 768×1024,
+  1440×900, FR/EN, clair/sombre : accès direct/reload Projets, focus clavier,
+  personnels 3→8→3, total cartes DOM 4→9→4, unicité des neuf titres, jeu toujours
+  seul dans son groupe, compteurs, CTA Contact et retour Projets, absence de
+  débordement. Quatre cas 1440×300/667×375 avec/sans reduced-motion complètent
+  ces parcours ; aucune exception pageerror dans ces vingt cas applicatifs.
+- Huit fixtures visuelles client supplémentaires : 320/1440, FR/EN, clair/sombre.
+  ProjectCard rendu côté serveur par Vite en mode middleware, HTML écrit hors
+  dépôt puis injecté dans des documents navigateur isolés avec les styles livrés.
+  Les quatre faits client, libellés, titre et absence de débordement sont vérifiés.
+  Aucun fichier de fixture dans src, public ou dist. Captures mobile personnelles,
+  jeu desktop et client mobile sombre inspectées par le main.
+- Contributeurs : Claude pour spécification ; Codex main pour code, intégration,
+  tests/navigateur et docs ; review_run015, gpt-6-luna effort demandé medium,
+  revue indépendante en lecture seule du contrat partagé et migration. Bénéfice
+  attendu : second contrôle publication/comptage/appels. Aucun constat bloquant ;
+  21 tests ciblés réussis chez le relecteur, sans navigateur. Retour confronté
+  au diff et aux contrôles par le main, aucune économie de tokens mesurée.
+- Preuves hors dépôt : design-prompt.txt/design-result.json, baseline-projects.ts,
+  fixtures.mjs/client-fr.html/client-en.html, check.mjs/results.json et captures
+  dans /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run015/.
+  Results : 16 parcours production, 4 reduced-motion/fenêtre courte et 8 fixtures.
+- Limites : aucun cas client réel ni droit de publication validé dans ce RUN ;
+  pas de Safari/Firefox, téléphone physique, lecteur d'écran, Lighthouse ou audit
+  SEO/réseau. Pas d'audit npm pour ce lot sans dépendance ni release. Scripts
+  navigateur hors CI ; aucune nouvelle dépendance ni nouveau composant de base.
+  Aucun commit, push, déploiement ou autre RUN exécuté.
+
+- Clôture locale : RUN-015 done après contrôles, captures relues, 51 liens locaux
+  valides et diff sans erreur. Aucun RUN actif ; la suite prévue reste RUN-016.
+
+
+## RUN-016 : proposition de traitement contact/devis (29 octobre 2026)
+
+- Mandat : Allen demande la suite après RUN-015. Branche conservée,
+  feature/run-005-offres-contenus ; HEAD 71141dd, travaux RUN-015 encore non
+  commités au démarrage, tous préservés. RUN-015 est done ; seul RUN-016 actif,
+  transitions in_progress puis verify.
+- Sources locales : RUN/brief/plan, package, vercel.json, politique sécurité et
+  liens ; site statique React/Vite, aucune logique d'envoi/configuration choisie.
+  Email public existant allen.kch24@gmail.com, pas encore destinataire approuvé.
+  Configuration Vercel présente, sans audit de compte/plan/hébergement distant.
+- Recherche officielle datée du 29 octobre : tarifs/quotas Formspree, Workflow
+  (validation serveur sur tous les plans), limites de compte, AJAX/fetch, sécurité
+  et guide officiel Vercel ; Resend pricing pour comparaison. Le contrat inclut
+  les liens directs. Free Formspree est présenté pour tests/développement,
+  50 soumissions/mois, archive consultable 30 jours ; Personal mensuel 15 USD
+  ou 120 USD/an. Aucun plan de production supposé choisi ni coût engagé.
+- Recommandation de travail : essai Formspree et fetch natif, trois champs nom
+  facultatif/email/message, validation dans le service, statut d'envoi vérifié,
+  erreurs bilingues, saisie conservée et contact email maintenu. Endpoint minimal
+  avec Resend comparé mais non retenu par défaut car ajoute serveur/secrets/maintenance.
+- Données : prestataire et messagerie distincts, rétention technique non déduite
+  de l'archive visible. Formspree annonce AWS États-Unis ; conservation de la
+  messagerie à décider par Allen, pas de durée légale ni conformité inventée.
+  Captcha/AJAX et paramètres anti-abus devront être vérifiés dans le compte réel.
+- Livrable : docs/contact-form-contract.md, renvois brief/plan/brief Claude/index,
+  suivi et journal. Politique sécurité corrigée sur le périmètre one-page (ancienne
+  mention multipage retirée), sans élargir les droits ni le périmètre backend.
+- Trois questions envoyées à Allen : choix de solution, adresse et futur test de
+  réception autorisé, durée de conservation des demandes sans suite. Aucun
+  choix, création de compte, abonnement, message de contrôle ou lecture Gmail
+  effectué. Les questions restent sans réponse au moment de la préparation.
+- Intervenant : Codex main, relecture par l'auteur, sans délégation pour cette
+  décision produit et ce cadrage documentaire liés aux arbitrages de l'humain.
+  Aucun changement applicatif supplémentaire dans RUN-016, aucun secret consulté.
+- Vérification : git diff --check réussi, 82 liens locaux valides, nouveau contrat
+  inspecté et seul RUN-016 actif en verify ; build, lint, Biome, tests et audit
+  non relancés pour ce lot de documents seuls selon
+  docs/tooling.md. Résultats applicatifs RUN-015 (46 tests et 28 cas navigateur)
+  restent datés, pas une preuve d'un service d'envoi configuré.
+- État : verify ; fournisseur/plan/destinataire/conservation et configuration réelle
+  restent à valider. Aucun RUN-017 lancé ; ni commit, push, déploiement ou envoi.
+
+
+### RUN-016 : décision email seul et clôture (29 octobre 2026)
+
+- Réponses d'Allen : conserver uniquement le lien email pour l'instant ; adresse
+  allen.kch24@gmail.com validée avec autorisation d'un futur message de contrôle
+  du formulaire vers elle ; conservation des demandes sans suite : 30 jours.
+- Périmètre révisé : RUN-016 done sur la décision de ne pas intégrer de traitement
+  de formulaire maintenant. RUN-017 reste planned mais reporté, pas annulé.
+  Il ne conditionne plus l'assemblage/validation de l'itération email seul en
+  RUN-007/008 ; critères de formulaire conservés pour une éventuelle reprise.
+- Contrat, brief, plan, relais Claude, sécurité, index et AGENTS alignés ; étude
+  fournisseurs conservée comme hypothèse future non choisie. Prochaine étape
+  visuelle possible : RUN-021, non lancé dans ce tour.
+- La durée de 30 jours est une politique retenue, pas une purge automatisée.
+  Aucun compte/fournisseur, endpoint, abonnement, lecture Gmail, message ou
+  suppression de mails effectué. L'autorisation du test est conservée pour sa
+  reprise future, sans la redemander à périmètre identique.
+- Contributeur : Codex main ; pas de délégation pour reporter ces décisions.
+  Vérification : diff-check réussi, 87 liens locaux valides, cible mailto
+  confirmée dans les données ; RUN-016 done et aucun RUN actif. Aucun code
+  supplémentaire modifié ; build/lint/Biome/tests non relancés pour ces documents
+  seuls, conformément à docs/tooling.md.
+
+
+## RUN-021 : timeline About horizontale (29 octobre 2026)
+
+- Conception et intégration Claude (main, sans délégation) : My Coding Journey en
+  rail horizontal (CSS natif, scroll-snap), nœuds sur ligne continue, bornes
+  Octobre 2025 / Aujourd'hui, boutons précédent/suivant (scrollBy, instant en
+  reduced-motion), liste focalisable défilant aux flèches, fondu échelonné 600 ms.
+  Déclenchement manuel uniquement, aucun défilement automatique.
+- Retraits : bouton Afficher plus/Réduire et getCollapsedJourneyItemCount (et son
+  test), devenus sans objet. Étapes, données et présentation About inchangées.
+- Fichiers : AboutJourney.tsx, about.ts, about-journey.css, reduced-motion.css,
+  responsive-760.css, responsive-1040.css, tests/about-journey.test.ts.
+- Vérification : build, lint, Biome, 45 tests et git diff --check réussis.
+  Chrome headless (Playwright en cache, hors projet) à 390 et 1280 px, clair/sombre,
+  FR/EN, avec et sans reduced-motion : aucun débordement global, libellés localisés,
+  animation absente en reduced-motion, ArrowRight avance d'une étape, Suivant
+  atteint la dernière étape puis se désactive, Précédent revient au début.
+- Non contrôlé : tactile sur appareil réel, lecteur d'écran, Safari/Firefox.
+  État verify : QA Codex attendue ; aucun commit, push ou déploiement.
+
+
+### RUN-021 : revue QA Codex / ponytail-review (29 octobre 2026)
+
+- Mandat : revue de l'intégration Claude, sans correction de code ; skill
+  ponytail-review. Diff courant non commité, callers, CSS/données/tests et README
+  inspectés ; charge retenue : 12 étapes statiques par visiteur, aucun état serveur.
+- Contrôles exécutés : build, lint, Biome (71 fichiers), 45/45 tests et diff-check
+  réussis. Avertissement préexistant responsive-430.css vide conservé.
+- Chrome 156.0.8078.47 avec interface, profils isolés, build production :
+  20 configurations (320×740, 390×844, 768×1024, 1440×900, 667×375 ; FR/EN ;
+  clair avec animations normales, sombre avec reduced-motion). Flèches natives,
+  boutons clavier jusqu'aux deux extrémités, désactivation aux bornes, reprise de
+  Tab, absence de débordement global, 12 étapes et libellés vérifiés. Deux gestes
+  tactiles émulés supplémentaires à 320/390 réussis. Aucun pageerror observé.
+- Constats confirmés : (1) AboutJourney.tsx:114 masque les seules bornes Octobre
+  2025 / Aujourd'hui par aria-hidden=true ; elles sont absentes de l'arbre
+  accessible Chrome, contrairement aux dates d'étapes qui restent présentes.
+  Correction proposée : retirer cet attribut. (2) about-journey.css:77-78 lance
+  les fondus au montage ; après 2.2 s, timeline à 8065 px hors écran et les douze
+  journeyFade sont finished ; arrivée à la timeline sans fondu visible. Correction
+  proposée : déclencher une fois à l'entrée dans l'écran, en réutilisant le
+  mécanisme de visibilité plutôt qu'une animation démarrée au montage.
+- Contributeurs : Codex main pour revue, checks, mesures et captures ;
+  review_run021, gpt-6-luna effort demandé medium, lecture indépendante du cycle
+  de vie/callers/accessibilité, sans écriture ni navigateur. Première lecture
+  sans constat ; les deux cas navigateur ont ensuite été confrontés au code et
+  confirmés par le relecteur. Aucune économie de tokens mesurée.
+- Preuves externes : before.diff, check.mjs/results.json, ax-fr.json,
+  date-proof.json et captures dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run021-review/.
+  Diff strictement identique avant/après les mesures, avant cet ajout au journal.
+- Verdict : corriger ces deux points avant clôture. RUN-021 reste verify ; aucune
+  correction source/CSS/test, commit, push ou publication effectué. Seul cet
+  ajout documentaire de QA complète le journal.
+- Non vérifié : appareil tactile physique, lecteur d'écran réel, Safari/Firefox.
+  Arbre accessible Chrome contrôlé, sans prétendre à un test de lecture vocale.
+
+
+### RUN-021 : corrections QA 1 et 2 avec Ponytail (29 octobre 2026)
+
+- Mandat : Allen autorise les deux correctifs de la revue, sans élargissement.
+  Travaux Claude et ajout QA existants préservés sur la même branche.
+- Accessibilité : retrait d'aria-hidden sur le conteneur des bornes ; deux tests
+  de rendu FR/EN ajoutés, puis dates présentes dans l'arbre accessible Chrome.
+- Fondu : le sélecteur de l'observateur App existant inclut le rail ol. Les
+  animations des étapes ne sont attachées qu'après section--scroll-visible ;
+  même observateur, mêmes classes et cleanup, aucun nouvel état/helper/dépendance.
+  Le sélecteur reduced-motion de même spécificité annule animation et délai,
+  y compris lors du changement de préférence après montage. Sans observateur,
+  pas de classe de masquage ni de fondu : contenu directement accessible.
+- Vérifications finales : build/lint/Biome (71 fichiers), 47/47 tests et diff-check
+  réussis. Première tentative de garde CSS par media query refusée par le contrat
+  centralisant les conditions dans responsive.css : remplacée par le sélecteur
+  existant de reduced-motion, sans modifier le test ni ajouter un fichier.
+  Avertissement préexistant responsive-430.css vide conservé.
+- Chrome 156.0.8078.47 avec interface, profils isolés et build production :
+  14 cas ciblés (320/1440 FR/EN et clair/sombre, animations normales/reduce/sans
+  IntersectionObserver, plus 667×375 et 1440×300), et deux changements de préférence
+  à 390 px avant entrée ou pendant le fondu. Après 2.2 s hors écran, aucun
+  journeyFade ; premier animationstart alors que le rail intersecte l'écran ;
+  douze fondus terminés, aucun redémarrage au retour. Sans observateur ou en
+  reduced-motion : aucune animation, contenu visible. Déplacement Suivant,
+  dates accessibles, douze étapes et absence de débordement vérifiés.
+- Relecture ciblée par review_run021, gpt-6-luna effort demandé medium, en lecture
+  seule : spécificité/import CSS, fallback et cleanup cohérents, aucun constat.
+  Codex main applique, intègre et contrôle ; pas de nouveau mandat design requis
+  pour corriger le déclenchement de l'animation existante. Aucun gain de tokens mesuré.
+- Preuves : check.mjs/results.json et captures.mjs, captures finales après
+  opacité complète à 1440×900 FR clair et 390×844 EN sombre, hors dépôt dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run021-fixes/.
+- Limites : pas de téléphone physique, lecteur d'écran réel, Safari/Firefox ou
+  nouvel audit Lighthouse. Pas d'audit npm : aucun paquet ni release modifié.
+  Aucun commit, push, déploiement ou RUN suivant exécuté.
+
+- Clôture : RUN-021 done, 45 liens documentaires locaux valides et diff-check
+  réussi ; aucun RUN actif. La passe est terminée, sans lancement de RUN-007.

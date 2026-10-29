@@ -51,6 +51,7 @@ preuves de clôture des dettes et des travaux de phase 2.
 | --- | --- |
 | [Audit daté](audit-2026-10-27.md) | Constats, priorités et limites des contrôles de RUN-000 |
 | [Plan de refonte](refonte-plan.md) | Périmètre one-page, ancres, services, projets et formulaire |
+| [Contrat contact/devis](contact-form-contract.md) | Décision email seul RUN-016 ; étude conservée pour le formulaire reporté |
 | [Brief Claude](claude-design-brief.md) | Livrables et critères design de RUN-006 |
 | [Proposition Claude](references/claude-design-proposal.md) | Contribution initiale non validée |
 | [Références](references/README.md) | Sources techniques et conventions de ressources |

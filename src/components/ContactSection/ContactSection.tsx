@@ -10,7 +10,7 @@ export function ContactSection({ language }: ContactSectionProps) {
   const contactCopy = copy[language].contact
 
   return (
-    <section className="section contact-section" id="contact">
+    <section className="section contact-section" id="contact" tabIndex={-1}>
       <div className="contact-panel reveal">
         <p className="eyebrow eyebrow--section">Contact</p>
         <h2>{contactCopy.heading}</h2>

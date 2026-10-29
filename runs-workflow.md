@@ -57,14 +57,15 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | RUN-013 | done |
 | RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | RUN-013 | done |
 | RUN-020 | P1 | Correctifs et tests du socle avant nouvelles sections | Codex ; contributions nettoyage et tests CLI | RUN-004 | done |
-| RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | planned |
-| RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | planned |
-| RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | planned |
-| RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | planned |
-| RUN-015 | P1 | Projets personnels conservés et espace clients | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
-| RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
-| RUN-017 | P1 | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
-| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-017 | planned |
+| RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | done |
+| RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | done |
+| RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | done |
+| RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | done |
+| RUN-015 | P1 | Projets personnels, clients et game dev | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | done |
+| RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | done |
+| RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
+| RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | done |
+| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | planned |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -130,12 +131,26 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 ## RUN-005 — Offres et cas
 
-- Objectif/périmètre : promesse, trois familles d'offres à arbitrer, deux ou trois
-  cas avec contribution/preuves/limites, contenu FR/EN et CTA.
-- Risques : promesses non démontrées, confusion projet personnel/mission client.
-- Acceptation : faits validés par Allen, variantes linguistiques cohérentes,
-  décisions dans le brief/plan, contenu prêt à transmettre à Claude.
-- Relais : brief design avec décisions acquises et inconnues restantes.
+- Mandat ajusté le 29 octobre : Allen privilégie le design ; activité freelance
+  débutante, entreprise non créée. Contenus de services simples et temporaires.
+- Objectif/périmètre : promesse, deux prestations FR/EN et CTA. Regrouper IA et
+  workflows agents ; conserver l'offre sites/applications et le catalogue actuel.
+  Les trois cas préparés sont des pistes, sans étude détaillée exigée à ce stade.
+- Risques : doublons, catalogue commercial prématuré, expérience client inventée.
+- Acceptation : structure à deux prestations conforme à la correction d'Allen,
+  textes FR/EN simples pour la composition, caractère provisoire explicite dans
+  les documents ; les faits publiés restent exacts. Aucun engagement à inventer.
+- Clôture : `done` le 29 octobre après validation explicite d'Allen des corrections
+  et demande de passer à la suite. Contenu validé comme base provisoire de design ;
+  preuves détaillées et modalités commerciales seront précisées avant publication
+  si nécessaires, sans bloquer la préparation visuelle.
+- Complément Allen : trois espaces personnels/clients/game dev (Milady's Knight
+  dans game dev), statuts Code Quality Guardian MVP (deprecated) et Sokwak AI MVP.
+  Présentation About actuelle intacte ; timeline horizontale réservée à RUN-021.
+- Préservé : code UI, neuf projets, assets/liens, thèmes, langues et présentation.
+  Seuls les deux statuts sont corrigés dans les données sur mandat explicite.
+- Vérification : cohérence FR/EN, liens locaux et diff selon docs/tooling.md.
+- Relais : base simplifiée validée pour Claude ; RUN-011 autorisé par Allen.
 
 ## RUN-006 — Refonte visuelle totale confiée à Claude
 
@@ -165,11 +180,16 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 ## RUN-007 — Assemblage de la refonte
 
+- Périmètre actuel après RUN-016 : contact par email seul. RUN-017 reporté ne
+  conditionne pas cet assemblage ; aucune intégration ou validation d'envoi de
+  formulaire à prétendre réalisée. Ses critères seront repris si le formulaire est relancé.
+
 - Passe A : intégrer les passes visuelles, services, projets et contact sur une page ;
   réserver les fichiers communs, vérifier les préférences globales et ancres.
 - Passe B : harmoniser FR/EN, sombre/clair, contenus, métadonnées/OG/sitemap et assets.
 - Passe C : revue intégrée avec parcours clavier, accès direct/rechargement aux ancres, cas de
-  formulaire et données réelles ; corriger les interactions entre lots.
+  contact email et données réelles ; corriger les interactions entre lots.
+  Le formulaire est exclu du périmètre actuel, reporté en RUN-017.
 - Risques : collisions CSS/navigation/i18n, perte du catalogue personnel, référence client fictive.
 - Acceptation : critères des passes satisfaits, problèmes du socle traités, contrôles
   applicatifs/navigateur et revue finale ; docs alignées avec l'état livré.
@@ -179,7 +199,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Passe A : build/lint/Biome/tests/audit et mesures de performance de la page sur
   build production ; mobile/desktop, langues/thèmes, clavier et reduced-motion.
 - Passe B : accès direct/rechargement aux ancres, navigation, métadonnées/canonical/sitemap,
-  anciens liens et formulaire (succès, échec, anti-abus, réception de contrôle autorisée).
+  anciens liens et contact email. Les cas formulaire (succès, échec, anti-abus,
+  réception de contrôle autorisée) ne s’appliquent que si RUN-017 est relancé.
 - Passe C : validation visuelle/contenu d'Allen et cohérence version/docs avant release.
 - La section confiance future RUN-018 ne conditionne pas cette release ; pas de
   références client fictives pour remplir les espaces prévus.
@@ -220,7 +241,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 ## RUN-011 — Architecture des sections et ancres
 
 - Passe A : définir l'ordre des sections (Accueil, Services, Projets, À propos,
-  Contact proposés), leurs contenus et la distinction personnel/client.
+  Contact proposés), leurs contenus et les espaces personnels/clients/game dev.
 - Passe B : fixer les identifiants d'ancres, les liens de navigation et CTA,
   la compatibilité des anciennes ancres et le traitement FR/EN et SEO sur une page.
 - Passe C : définir les critères d'accès direct/rechargement avec fragment, de
@@ -228,6 +249,15 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : ancres cassées, sections masquées après navigation et liens existants rompus.
 - Acceptation : ordre et ancres documentés dans le brief, critères de tests transmis
   à Claude/Frontend ; aucune nouvelle page ni dépendance de routage prévue.
+- Contrat du 29 octobre : Accueil → Services → Projets → Stack → À propos → Contact ;
+  anciennes ancres conservées, `#services` ajouté lors de RUN-014 avec sa section.
+  Une URL FR/EN, trois espaces dans Projets, présentation About inchangée.
+- Livrables : contrat dans docs/refonte-plan.md, synthèse dans brief.md et relais
+  documentaire Claude, critères de navigation transmis à docs/testing.md.
+- Préservé : tout le code courant et les changements RUN-005 ; aucune nouvelle
+  dépendance, page, migration CSS ou implémentation UI dans ce cadrage.
+- Clôture locale : `done` le 29 octobre après relecture et contrôle des liens,
+  fragments et statuts ; RUN-012 reste planifié, contrat prêt pour intégration.
 
 ## RUN-012 — Socle et navigation par ancres
 
@@ -242,6 +272,16 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : régression de navigation, section inaccessible, préférences incohérentes.
 - Acceptation : chaque ancre prévue mène à la bonne section ; anciens liens connus
   préservés, tests utiles et parcours navigateur réussis.
+- Périmètre exécuté : sections existantes, indication de position active dans le
+  menu, cibles focalisables, CTA Hero contact principal/projets secondaire,
+  libellés FR/EN et fermeture du menu par la marque. Services et son lien restent
+  réservés à RUN-014, espaces projets à RUN-015, timeline à RUN-021.
+- Préservé : présentation About, catalogue, thèmes/langues locaux, ordre courant,
+  CSS natif et dépendances ; aucun nouveau composant UI de base.
+- Clôture locale le 29 octobre : build/lint/Biome, 41 tests et 18 scénarios
+  Chrome réussis ; revue indépendante et correction de fermeture par la marque.
+  Captures desktop/mobile contrôlées. Preuves/limites au journal ; RUN-014 reste
+  planifié, sans intégration ni publication automatique.
 
 ## RUN-013 — Système visuel, animations et transitions
 
@@ -307,25 +347,41 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 
 ## RUN-014 — Services / prestations
 
-- Passe A : structurer offres, besoins, livrables, limites et CTA sur contenu d'Allen.
+- Passe A : reprendre les deux prestations provisoires validées en RUN-005,
+  un titre et un paragraphe chacune, sans catalogue contractuel ni offre doublonnée.
 - Passe B : intégrer une ou plusieurs sections dédiées sur la page unique,
   données FR/EN et ancres vers contact/devis.
 - Passe C : vérifier lisibilité, cohérence offres/formulaire, responsive et SEO.
 - Risques : promesses non démontrées ou catalogue technique sans bénéfice explicite.
 - Acceptation : services clairement accessibles, contenu validé et CTA fonctionnels ;
   pas de tarif, gain ou délai inventé.
+- Périmètre intégré : section Services avant Projets, lien ajouté simultanément
+  dans la liste partagée header/footer ; données FR/EN typées et CTA commun Contact.
+  Composition de Claude Sonnet 5.5, intégration et QA Codex ; aucune dépendance
+  ni nouveau composant de base. Présentation About et neuf projets conservés.
+- Clôture locale le 29 octobre : build/lint/Biome, 43 tests, 22 scénarios Chrome
+  et contrôles documentaires réussis ; débordement 320 px corrigé et captures
+  mobile/desktop relues. RUN-015 reste planifié ; preuves et limites au journal.
 
-## RUN-015 — Projets personnels et projets clients
+## RUN-015 — Projets personnels, clients et game dev
 
 - Passe A : inventorier et conserver le catalogue personnel actuel, ses contenus,
   liens et assets ; définir les champs distincts de mission client et droits de publication.
-- Passe B : intégrer deux espaces distincts dans la section Projets, détails de cas
+- Passe B : intégrer trois espaces personnels/clients/game dev ; Milady's Knight
+  uniquement dans game dev, sans perdre de projet. Intégrer détails de cas
   si documentés et données FR/EN ; aucune requalification automatique personnel → client.
 - Passe C : vérifier liens, attribution, preuves et autorisations ; absence de cas
   client publiable = espace masqué, données de test hors contenu de production.
 - Risques : perte d'un projet personnel, confusion de statut, référence client fictive.
 - Acceptation : catalogue personnel préservé, affichage clients prêt et testé avec
   politique d'absence de données ; seuls les cas réels autorisés sont publics.
+- Clôture locale le 29 octobre : huit personnels, jeu indépendant en position 09,
+  groupe clients masqué sans données autorisées ; filtre partagé carte/section/
+  compteur et métadonnées client typées. Aucun client ajouté en production.
+  Composition Claude Sonnet 5.5, intégration/QA Codex, revue Luna indépendante.
+  Build/lint/Biome, 46 tests, 28 scénarios navigateur/fixtures et 51 liens locaux
+  réussis. Contenus/liens/assets préservés ; preuves et limites au journal.
+  Aucun RUN suivant lancé automatiquement.
 
 ## RUN-016 — Décision de traitement contact / devis
 
@@ -338,8 +394,20 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Risques : dépendance payante implicite, données exposées, spam ou email non reçu.
 - Acceptation : décision explicite et solution vérifiée, périmètre de traitement
   borné, données et critères d'envoi documentés ; aucun fournisseur supposé choisi.
+- Mandat révisé par Allen : lien email seul pour l'instant, formulaire reporté.
+  Clôture `done` le 29 octobre sur cette décision, sans fournisseur ni endpoint.
+  Adresse allen.kch24@gmail.com et futur test de réception vers cette adresse
+  validés ; conservation des demandes sans suite fixée à 30 jours, sans automatisation.
+- Contrat et étude antérieure dans docs/contact-form-contract.md. Aucun compte,
+  abonnement, envoi, configuration distante ou suppression de messages effectué.
+- Relais : RUN-017 reste planned/reporté, non bloquant pour l'assemblage de
+  l'itération email seul. RUN-021 est la prochaine étape visuelle possible.
 
 ## RUN-017 — Formulaire et envoi contact / devis
+
+- Reporté à la demande d'Allen : pas de formulaire pour l'itération actuelle.
+  Ne pas lancer ce RUN à la seule clôture de RUN-016. Reprise sur mandat explicite
+  avec choix/configuration du service ; contact email seul conservé entre-temps.
 
 - Passe A — Claude UI : formulaire selon design, labels/aides accessibles, champs
   contact/prestation/devis selon contrat, navigation clavier et validations client.
@@ -401,3 +469,29 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Limites : cache effectif à vérifier sur preview hébergée autorisée ; pas de purge
   des anciens caches ni de nouveau runner navigateur dans la CI.
 - Relais : aucun RUN suivant automatique, aucun commit/push/déploiement.
+
+
+## RUN-021 — Timeline About horizontale
+
+- Mandat : demande d'Allen pendant le cadrage RUN-005 le 29 octobre 2026.
+  Planifié ; aucune implémentation de cette UI dans RUN-005.
+- Périmètre : My Coding Journey horizontal, apparition en fondu et défilement
+  horizontal animé pour afficher la suite ; conception Claude, intégration et QA.
+- Contrats : présentation About FR/EN inchangée, étapes du parcours conservées,
+  clair/sombre, tactile/clavier et accès à tout le contenu en reduced-motion.
+- Acceptation : responsive sans débordement global, focus visible, déplacement
+  utilisable au clavier et au tactile ; animations désactivées en reduced-motion.
+  Build/lint/Biome/tests et contrôle navigateur mobile/desktop, FR/EN, clair/sombre.
+- Dépendances : RUN-005 et RUN-013 ; intégration globale vérifiée dans RUN-007.
+  Consultation shadcn et cadrage CSS requis si un nouveau composant de base est
+  nécessaire ; aucun ajout de dépendance autorisé par cette planification.
+- Réalisation Claude le 29 octobre 2026 : rail horizontal natif (overflow-x,
+  scroll-snap), boutons précédent/suivant désactivés aux extrémités, région
+  focalisable défilant aux flèches, fondu échelonné des étapes. Les 12 étapes sont
+  visibles par défilement ; le bouton Afficher plus et getCollapsedJourneyItemCount
+  sont retirés. Aucune dépendance, texte About inchangé.
+- Clôture locale le 29 octobre après QA Codex : bornes de dates rendues accessibles,
+  fondu déclenché à l'entrée du rail via l'observateur existant, reduced-motion et
+  absence d'observateur préservés. Build/lint/Biome, 47 tests, revue indépendante
+  et 16 cas navigateur ciblés réussis ; preuves et limites au journal.
+  RUN-007 reste planifié, aucune publication ou validation de release implicite.

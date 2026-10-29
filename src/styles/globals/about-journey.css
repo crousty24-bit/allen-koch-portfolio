@@ -1,17 +1,18 @@
 .about-journey {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 2.5rem;
+  gap: 2rem;
+  min-width: 0;
   margin-top: 7rem;
   padding-top: 2.5rem;
   border-top: 1px solid var(--outline);
 }
 
 .about-journey__header {
-  position: sticky;
-  top: calc(4rem + 2rem);
-  grid-column: 1 / span 5;
-  align-self: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: end;
+  justify-content: space-between;
 }
 
 .about-journey__header h2 {
@@ -22,13 +23,26 @@
   line-height: 1.1;
 }
 
-.about-journey__body {
-  grid-column: 7 / -1;
+.about-journey__controls {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.about-journey__bound {
-  margin: 0;
-  padding: 0.75rem 0;
+.about-journey__arrow {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.about-journey__arrow:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.about-journey__bounds {
+  display: flex;
+  justify-content: space-between;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -37,21 +51,44 @@
 }
 
 .about-journey__list {
-  padding: 0;
+  display: grid;
+  grid-auto-columns: minmax(15rem, 18rem);
+  grid-auto-flow: column;
+  /* Top padding keeps rail nodes inside the scroll clip. */
+  padding: 0.3rem 0 1.25rem;
   margin: 0;
-  border-top: 1px solid var(--outline-strong);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
   list-style: none;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--outline-strong) transparent;
+  scrollbar-width: thin;
 }
 
 .about-journey__item {
+  position: relative;
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--outline-strong);
+  align-content: start;
+  gap: 0.75rem;
+  padding: 1.5rem 1.5rem 0 0;
+  border-top: 1px solid var(--outline-strong);
+  scroll-snap-align: start;
+}
+
+/* Node on the timeline rail. */
+.about-journey__item::before {
+  position: absolute;
+  top: -0.3rem;
+  left: 0;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--text);
+  border-radius: 50%;
+  content: "";
 }
 
 .about-journey__index {
-  padding-top: 0.3rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -80,8 +117,17 @@
   color: var(--text-muted);
 }
 
-.about-journey__toggle {
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-  cursor: pointer;
+@keyframes journeyFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.about-journey__list.section--scroll-visible .about-journey__item {
+  animation: journeyFade 600ms var(--ease-out) both;
+  animation-delay: calc(var(--index, 0) * 60ms);
 }

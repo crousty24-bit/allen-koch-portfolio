@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { copy, type Language } from '../../data/i18n/i18n'
-import type { Project } from '../../data/projects/projects'
+import { isProjectPublished, type Project } from '../../data/projects/projects'
 
 type ProjectCardProps = {
   index: number
@@ -27,9 +27,36 @@ export function ProjectCard({
   total,
   variant,
 }: ProjectCardProps) {
+  if (!isProjectPublished(project)) return null
+
   const hasDemoLink = Boolean(project.href)
   const hasRepositoryLink = Boolean(project.repositoryHref)
   const projectCopy = copy[language].projects
+  const clientFacts =
+    project.category === 'client'
+      ? [
+          {
+            label: projectCopy.missionLabel,
+            value: project.client.mission[language],
+          },
+          {
+            label: projectCopy.roleLabel,
+            value: project.client.role[language],
+          },
+          {
+            label: projectCopy.deliverablesLabel,
+            value: project.client.deliverables[language],
+          },
+          ...(project.client.results
+            ? [
+                {
+                  label: projectCopy.resultsLabel,
+                  value: project.client.results[language],
+                },
+              ]
+            : []),
+        ]
+      : []
   const imageSizes = imageSizesByVariant[variant]
   const position = formatIndex(index + 1)
   const projectImage = (
@@ -84,12 +111,25 @@ export function ProjectCard({
           <div className="project-card__summary">
             <p className="project-card__meta">
               {variant === 'compact' ? `${position} / ` : null}
+              {project.category === 'client'
+                ? `${project.client.name} / `
+                : null}
               {project.status[language]}
             </p>
-            <h3>{project.title}</h3>
+            <h4>{project.title}</h4>
             <p className="project-card__description">
               {project.description[language]}
             </p>
+            {clientFacts.length ? (
+              <dl className="project-card__facts">
+                {clientFacts.map((fact) => (
+                  <div key={fact.label}>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            ) : null}
           </div>
 
           <div className="project-card__details">

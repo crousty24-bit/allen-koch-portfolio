@@ -874,3 +874,83 @@ composition, couleur, typographie ou interaction d’accordéon.
 
 Contrats de tests et limites dans [la procédure](docs/testing.md) ; preuves,
 contributeurs et contrôles dans [le journal](runs-journal.md).
+
+
+## R21. Décisions de contenu et direction About (29 octobre 2026, RUN-005)
+
+- Projets : trois espaces personnels, clients et game dev. Milady's Knight
+  apparaît dans game dev uniquement ; les neuf projets sont conservés.
+- Code Quality Guardian : MVP (deprecated). Sokwak AI : MVP.
+- Présentation About : texte actuel FR/EN conservé intégralement.
+- My Coding Journey : direction horizontale, apparition en fondu et défilement
+  horizontal animé pour afficher davantage d'étapes. À concevoir par Claude et
+  réaliser en RUN-021 ; ce n'est pas le comportement actuel. Préserver l'accès
+  clavier/tactile et rendre les animations facultatives en reduced-motion.
+
+Ces décisions complètent la phase 1 ; les trois espaces et la nouvelle timeline
+restent à implémenter dans leurs RUN. Les deux statuts sont corrigés en RUN-005.
+
+
+## R22. Navigation et CTA du socle (29 octobre 2026, RUN-012)
+
+- Hero : Contact en bouton principal, réalisations en secondaire selon RUN-011.
+  Liens de défilement et ancien catalogue conservés.
+- Navigation FR : Accueil et À propos ; liste partagée avec le footer.
+- La section courante est soulignée et identifiée par aria-current location,
+  au défilement comme à l'accès direct ; aucune animation de survol ajoutée.
+- Cibles d'ancres focalisables hors de l'ordre Tab ; accès initial avec fragment
+  positionne le focus sans second défilement. Marque et liens ferment le menu mobile.
+- Design, présentation About, parcours, palette et thèmes conservés. Pas de
+  nouvelle section ni composant UI ; Services arrive avec son lien en RUN-014.
+
+Les résultats et limites des contrôles figurent dans le journal de RUN-012.
+
+
+## R23. Section Services (29 octobre 2026, RUN-014)
+
+- Composition spécifiée par Claude Sonnet 5.5, intégrée par Codex : deux lignes
+  éditoriales à filets, sans carte ni icône. Grille desktop 12 colonnes : titres
+  en 1–5, paragraphes en 7–12 ; une colonne sous 1040 px.
+- Eyebrow Services, heading « Deux prestations » / “Two services”, un CTA commun
+  vers Contact après les deux lignes. Classes de titre, reveal et bouton existantes
+  réutilisées ; palette/thèmes et typographie inchangés.
+- Paragraphes repris sans modification de la base FR/EN validée en RUN-005.
+  Les prestations restent temporaires ; aucun détail contractuel ou chiffre ajouté.
+- Section placée entre Hero et Projets ; entrée Services activée simultanément
+  dans la navigation partagée. Le compteur CSS suit automatiquement l'ordre DOM.
+- Correction issue du contrôle : grille à une seule colonne réelle sous 1040 px,
+  car conserver douze colonnes et onze espacements de 2.5rem débordait à 320 px.
+  La composition desktop reste celle spécifiée par Claude.
+
+Preuves et limites de rendu dans le journal de RUN-014 ; présentation About et
+neuf projets inchangés, aucun nouveau composant de base ni dépendance.
+
+
+## R24. Espaces Projets (29 octobre 2026, RUN-015)
+
+- Composition de Claude Sonnet 5.5, intégrée par Codex : groupes personnels,
+  clients, game dev empilés ; titre h3 mono et effectif discret, filet entre groupes.
+  Cartes en h4 avec styles équivalents aux anciens h3 ; palette et thèmes conservés.
+- Huit personnels : trois cartes feature, cinq compactes dépliables par le bouton
+  existant. Milady's Knight en carte compacte indépendante, position globale 09.
+  Aucun filtre ni onglet ajouté ; une seule entrée de navigation Projets.
+- Groupe client absent actuellement. Les futures cartes compactes affichent le
+  nom client et des faits FR/EN : mission, rôle, livrables et résultat vérifié s'il
+  existe. Aucun contenu fictif en production ; rendu testé par fixtures externes.
+- Les libellés du bouton précisent qu'il commande les projets personnels. Les
+  neuf projets sont conservés, le Hero garde un compteur à neuf ; présentation
+  About et timeline inchangées.
+
+Contrat de publication et limites du filtre dans docs/refonte-plan.md ; preuves
+techniques et visuelles au journal.
+
+
+## R25. Timeline About horizontale (29 octobre 2026, RUN-021)
+
+- Intégration Claude : rail CSS scroll-snap, douze étapes, commandes latérales
+  et navigation native au clavier/tactile. Présentation About et jalons inchangés.
+- Corrections Codex autorisées après QA : bornes Octobre 2025/Aujourd'hui
+  accessibles, fondu des étapes déclenché quand le rail entre dans l'écran,
+  à partir de l'observateur existant. L'animation ne se relance pas au retour.
+- Reduced-motion et absence d'observateur : contenu visible sans fondu ; aucune
+  nouvelle dépendance ni nouvelle direction visuelle. Contrôles au journal.

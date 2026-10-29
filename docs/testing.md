@@ -7,7 +7,7 @@ Depuis RUN-020, `npm run test` exécute Vitest en environnement Node :
 | Fichier | Contrat vérifié |
 | --- | --- |
 | `storage.test.ts` | Préférence valide, invalide, absente, lecture/écriture bloquée et écriture réussie |
-| `about-journey.test.ts` | Jalons et règle de repli du parcours |
+| `about-journey.test.ts` | Jalons et bornes de dates accessibles FR/EN |
 | `hero-stats.test.ts` | Statistiques dérivées du catalogue, libellés FR/EN |
 | `projects.test.ts` | Données et liens éditoriaux sélectionnés |
 | `globals-css.test.ts` | Invariants textuels du CSS et organisation responsive |
@@ -47,7 +47,8 @@ sans dépendre d'un chemin de cache propre à une machine.
 | Activer une ancre avec Entrée puis Tab | La navigation clavier se poursuit dans la section cible ; focus visible |
 | Menu mobile à 390×844 et 667×375 | Navigation et réglages accessibles ; Échap ferme et rend le focus ; Tab/Maj+Tab ne restent pas dans un menu fermé |
 | Basculer FR/EN et clair/sombre puis recharger | Réglages conservés ; avec stockage bloqué, réglages utilisables pendant la session et valeurs par défaut au rechargement |
-| Projets, parcours, accordéon About, compétences | Dépliage/repli correct ; un seul panneau About ouvert ; plusieurs branches de compétences peuvent être ouvertes |
+| Projets, accordéon About, compétences | Dépliage/repli correct ; un seul panneau About ouvert ; plusieurs branches de compétences peuvent être ouvertes |
+| Timeline About | 12 étapes accessibles au clavier et au tactile ; bornes accessibles ; fondu au premier passage à l’écran, absent sans observateur et en reduced-motion |
 | Défiler à 1440×300/900, 390×844 et 667×375 | Sections visibles, sans débordement horizontal ; mêmes contrôles avec reduced-motion |
 | Comparer les tags Projets/Stack/About avant/après un déplacement CSS | Dimensions, couleurs, polices et disposition conservées dans les deux thèmes et langues, desktop/mobile |
 
@@ -79,3 +80,48 @@ et conservation de saisie en RUN-017, selon le traitement choisi en RUN-016.
 Pas de nouvelles abstractions uniquement pour tester, de snapshots HTML complets,
 ou de pourcentage de couverture arbitraire. Une automatisation navigateur en CI
 reste une décision d'outillage distincte, avec mandat et dépendances explicites.
+
+
+## Contrat RUN-011 pour les prochaines intégrations
+
+La [matrice de navigation](refonte-plan.md#critères-de-navigation-à-vérifier-lors-de-lintégration)
+précise les cibles, le clavier, le menu mobile, l'historique et les tailles à
+contrôler en RUN-012 puis lors de l'ajout des sections. Le
+[contrat d'architecture](refonte-plan.md#run-011--architecture-des-sections-et-ancres)
+fixe l'ordre et le séquencement : `#services` ne devient un lien public qu'avec
+sa section en RUN-014. Vérifier les neuf projets répartis sans doublon en RUN-015
+et le texte de présentation About inchangé lors de RUN-021. Ces scénarios sont
+à exécuter sur l'UI intégrée ; ce cadrage ne constitue pas leur résultat.
+
+
+RUN-012 étend les assertions de rendu existantes : cibles d'ancres focalisables,
+CTA Hero contact principal/projets secondaire et position active initiale unique.
+Le comportement au scroll, au clavier et dans l'historique est vérifié dans le
+navigateur, avec stabilisation des défilements doux avant l'action suivante.
+Les scénarios initiaux utilisent une nouvelle navigation, les préférences ne sont
+initialisées qu'une fois par contexte de test pour permettre le contrôle du reload.
+Les résultats datés et scripts externes sont référencés au journal ; la suite Node
+ne simule pas les effets React ni les événements du navigateur.
+
+
+RUN-014 ajoute Services aux contrats de contenu/rendu : deux prestations et un
+CTA Contact par langue, ordre des sections identique à la navigation. Contrôler
+la grille à 320 px et le menu à six entrées, y compris en paysage et à 768 px ;
+les résultats datés et captures sont au journal. Le contenu reste une base
+provisoire pour le design, sans dépendre d'un formulaire opérationnel.
+
+
+RUN-015 vérifie les huit projets personnels et le jeu séparé, la hiérarchie
+h2/h3/h4 et l'absence totale du groupe client vide. Les fixtures de rendu client
+sont temporaires dans les tests, retirées dans finally : sans accord rien n'est
+affiché, avec accord mission/rôle/livrables sont présents, résultat omis s'il manque.
+En navigateur, vérifier personnels 3→8→3, total DOM 4→9→4 et jeu toujours unique.
+Le compteur Hero reste neuf. Les captures client sont des fixtures hors production.
+
+
+Régression RUN-021 : charger l'accueil, attendre plus de deux secondes avant
+l'arrivée à la timeline, puis vérifier que le fondu commence à l'entrée du rail
+et ne repart pas au retour. Contrôler aussi une préférence reduced-motion activée
+après le chargement et l'absence d'IntersectionObserver. Les tests Node de rendu
+vérifient les dates FR/EN ; les effets sont vérifiés dans le navigateur, avec les
+scripts et résultats datés du journal, sans nouvelle dépendance.

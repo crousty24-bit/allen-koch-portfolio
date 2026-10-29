@@ -6,6 +6,7 @@ import { Footer } from './components/Footer/Footer'
 import { Hero } from './components/Hero/Hero'
 import { Navbar } from './components/Navbar/Navbar'
 import { ProjectsSection } from './components/ProjectsSection/ProjectsSection'
+import { ServicesSection } from './components/ServicesSection/ServicesSection'
 import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
 import { readStoredPreference, writeStoredPreference } from './utils/storage'
@@ -63,7 +64,9 @@ function App() {
 
     // React creates the anchor targets after the browser's initial fragment lookup.
     if (id) {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'instant' })
+      const target = document.getElementById(id)
+      target?.scrollIntoView({ behavior: 'instant' })
+      target?.focus({ preventScroll: true })
     }
   }, [])
 
@@ -76,7 +79,7 @@ function App() {
     }
 
     const scrollSections = document.querySelectorAll<HTMLElement>(
-      'main > .section:not(.hero)',
+      'main > .section:not(.hero), .about-journey__list',
     )
 
     scrollSections.forEach((section) => {
@@ -133,8 +136,9 @@ function App() {
         }
         theme={theme}
       />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <Hero language={language} />
+        <ServicesSection language={language} />
         <ProjectsSection language={language} />
         <StackSection language={language} />
         <AboutSection language={language} />

@@ -1,6 +1,6 @@
 # Sécurité et limites d'autorité
 
-La baseline est statique ; la cible ajoute des pages et un traitement de formulaire,
+La baseline est statique ; la cible conserve une page unique et ajoute un traitement de formulaire,
 dont le service/endpoint reste à choisir. Les surfaces actuelles sont les dépendances,
 scripts et CI, liens externes, polices/icônes tierces, préférences locales et
 éventuels outils de délégation. Ne pas importer une politique d'API ou de base
@@ -30,6 +30,9 @@ Les instructions et permissions de la session restent prioritaires.
 
 ## Traitement du formulaire prévu
 
+La [décision RUN-016](contact-form-contract.md) retient le lien email seul pour
+l’instant. Les règles ci-dessous concernent une future reprise du formulaire ;
+aucun service ni endpoint à configurer dans l’itération actuelle.
 RUN-016 définit destinataire, prestataire/endpoint, champs minimaux, conservation,
 coût et données transmises. RUN-017 doit vérifier validation côté interface et
 à la frontière de traitement, erreurs accessibles, anti-abus proportionné, secrets
