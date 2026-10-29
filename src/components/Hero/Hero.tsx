@@ -141,7 +141,9 @@ export function Hero({ language }: HeroProps) {
                         value={stat.value}
                       />
                     ) : (
-                      <span className="hero__stat-text">{stat.value}</span>
+                      <span className="hero__stat-text">
+                        {stat.value[language]}
+                      </span>
                     )}
                   </dd>
                 </div>

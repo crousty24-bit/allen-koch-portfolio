@@ -46,6 +46,7 @@ main {
 }
 
 .eyebrow--section {
+  margin-bottom: 1.5rem;
   display: flex;
   width: fit-content;
   gap: 1rem;
@@ -73,7 +74,7 @@ main {
 }
 
 .section-heading--split > div > .eyebrow {
-  grid-column: 1 / -1;
+  grid-column: 1 / span 7;
   margin-bottom: 1.5rem;
 }
 
@@ -83,5 +84,6 @@ main {
 
 .section-heading--split > div > p:not(.eyebrow) {
   grid-column: 9 / -1;
+  grid-row: 1 / span 2;
   margin: 0;
 }

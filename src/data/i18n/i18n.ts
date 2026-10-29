@@ -19,7 +19,7 @@ export const copy = {
       text: "Disponible pour discuter d'un projet web, d'un MVP ou d'une base technique à structurer proprement.",
     },
     footer: {
-      brand: 'Allen Koch - Développeur Fullstack',
+      brand: 'Allen Koch - Développeur Fullstack & IA',
       copyright: '© 2026 Allen Koch. Tous droits réservés.',
       navHeading: 'Navigation',
       linksHeading: 'Liens',
@@ -27,7 +27,7 @@ export const copy = {
     hero: {
       title: 'Allen Koch | Développeur Fullstack & IA | Alsace, France',
       name: 'Allen Koch',
-      role: 'Développeur Web / Alsace, France',
+      role: 'Développeur Fullstack & IA / Alsace, France',
       heading:
         'Transformer les besoins en produits web utiles, structurés et maintenables',
       highlight: '',
@@ -106,7 +106,7 @@ export const copy = {
       text: 'Available to discuss a web project, an MVP, or a technical foundation to structure cleanly.',
     },
     footer: {
-      brand: 'Allen Koch - Fullstack Developer',
+      brand: 'Allen Koch - Fullstack & AI Developer',
       copyright: '© 2026 Allen Koch. All rights reserved.',
       navHeading: 'Navigation',
       linksHeading: 'Links',
@@ -114,7 +114,7 @@ export const copy = {
     hero: {
       title: 'Allen Koch | Fullstack & AI Developer | Alsace, France',
       name: 'Allen Koch',
-      role: 'Web Developer / Alsace, France',
+      role: 'Fullstack & AI Developer / Alsace, France',
       heading:
         'Turning needs into useful, structured, and maintainable web products',
       highlight: '',

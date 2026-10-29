@@ -79,8 +79,9 @@ est conservée pour une éventuelle reprise explicitement mandatée.
 RUN-021 est intégré et contrôlé : rail horizontal, fondu à l’entrée dans l’écran,
 bornes accessibles ; texte About conservé. RUN-007 est lancé le 29 octobre sur
 `feature/refonte-integration-visuelle` ; le [contrat Claude](handoffs/run-007-claude-coherence-visuelle.md)
-porte la revue de cohérence intégrée et l’image sociale. Relais manuel à exécuter
-par Allen, sans contribution Claude encore reçue pour ce RUN.
+porte la revue de cohérence intégrée et l’image sociale. Le [retour Claude](handoffs/run-007-claude-retour.md)
+est reçu ; arbitrages d’Allen et correctifs intégrés par Codex, contrôles au journal.
+RUN-007 clôturé localement ; RUN-008 reste la validation finale.
 
 ## Mission initiale
 

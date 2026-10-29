@@ -33,13 +33,6 @@
   grid-column: 7 / -1;
 }
 
-.about-content h2 {
-  font-size: 3.5rem;
-  font-weight: 400;
-  letter-spacing: -0.035em;
-  line-height: 1.07;
-}
-
 .about-badges {
   margin-top: 1.5rem;
 }

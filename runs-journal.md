@@ -1248,3 +1248,73 @@ copier de secret, donnée client ou résultat supposé.
   Ce contrôle ne remplace pas la revue design Claude prévue. Vérification finale
   de 71 liens documentaires locaux et git diff --check réussie, nouveau contrat
   non suivi inclus dans la lecture. Preview 4174 arrêtée après contrôles.
+
+
+### RUN-007 : correctifs après retour Claude et arbitrages d’Allen (29 octobre 2026)
+
+- Mandat : appliquer les défauts validés avec Ponytail full sur la même branche.
+  Départ 65cad3d, rapport Claude non suivi préservé. Retour Claude Code Opus 5.5,
+  effort inconnu, observation initiale sans code selon son rapport ; lu avec les
+  arbitrages explicites d’Allen. Un seul RUN actif pendant cette passe.
+- D1 : suppression du doublon de titre About. D3/D4 : marge index/titre 24 px,
+  introduction des en-têtes partagés sur deux lignes de grille en desktop pour
+  conserver l’alignement bas sans agrandir la ligne du titre ; reset à <=1040.
+  Contact conserve 32 px selon la proposition. A1 : bouton retour right 6 px
+  au-dessus de 1040, surcharge 20 px à <=1040, cible 44 px conservée. A2 : texte
+  About avant portrait sous 1040, aucun texte de présentation modifié.
+- A3 : pas de traduction des appellations anglaises, D5 traité par décision de
+  conservation. A4 : métier principal FR Développeur Fullstack & IA, équivalent
+  EN Fullstack & AI Developer dans rôle Hero, profil et footer. Métadonnées déjà
+  concordantes. TextHeroStat.value devient Record<Language,string>, seul caller
+  Hero adapté ; test existant étendu à la concordance rôle/footer/titre FR/EN.
+- Écritures externes détectées en cours de tour : dates timeline, bouton Projets,
+  navigation tablette et image OG. Question de coordination posée à Allen ; il
+  confirme Claude terminé et demande de conserver ses changements. Tous conservés,
+  doublon identique About order supprimé par l’auteur externe pendant la passe.
+  Pas de reset ni d’annulation des modifications externes. Pas d’envoi à Claude.
+- OG : trois références index mises à jour vers og-image-refonte.png. PNG externe
+  monochrome présent, mais HTML différent suite aux écritures concomitantes.
+  Codex aligne la source sur la composition de Claude et régénère le PNG depuis
+  cette source : monogramme en haut, nom très grand, filet et rôle/localisation/site
+  en bas. Original externe sauvegardé hors dépôt og-claude-original.png ; source
+  HTML publique et PNG 1200×630 cohérents, polices effectivement chargées. Ancien
+  og-image.png conservé pour les anciens liens ; aucune dépendance ajoutée.
+- Contributions : Codex main intègre et contrôle ; `review_run007_fixes`,
+  gpt-6-luna effort demandé medium, revue indépendante ciblée en lecture seule
+  des grilles/cascade/i18n/callers, sans navigateur ni écriture. Aucun défaut
+  supplémentaire dans le périmètre arbitré ; changements externes signalés,
+  ensuite autorisés par Allen. Bénéfice attendu : contrôle des règles partagées,
+  pas d’économie mesurée. Ce n’est pas une revue indépendante globale du site.
+- Contrôles finaux : npm run build, lint, biome:check (72 fichiers), test
+  (47/47), git diff --check réussis. Avertissement préexistant responsive-430.css
+  vide conservé. Pas de test ajouté pour les seules déclarations CSS : mesures
+  dans le navigateur. Aucun paquet installé.
+- Chrome 156.0.8078.47 headless/Playwright cache externe, preview production 4175 :
+  28 cas (320/390/768/1024/1040/1280/1440 × FR/EN × clair/sombre, reduce), tous
+  réussis : titres communs, écart index/titre 24 px, intro alignée bas en desktop,
+  ordre About, libellés métier, absence de débordement, cible/position du bouton.
+  Mesure du bouton comparée au contenu des accordéons : hors zone en desktop.
+  36 captures de sections produites, inspection ciblée About tablette et Projets
+  desktop. Première assertion comparait le bouton au rectangle de section qui
+  inclut les gouttières : corrigée vers le bouton d’accordéon, sans patch app.
+- 10 cas complémentaires avec animations normales (320×740, 768×1024, 1440×900,
+  667×375, 1440×300, FR clair/EN sombre) réussis : six sections visibles, ordre
+  réel texte/portrait, menu qui ferme sur ancre, projets 4→9→4, retour en haut.
+  Aucun pageerror dans ces parcours et dans la matrice de 28 cas.
+- Après rebuild final, 10 cas d’intégration (320/761/768/1040/1440 × FR/EN) :
+  navigation sans collision quand visible, titres timeline alignés, dates séparées
+  des index, trois références OG concordantes, PNG servi en 200 et dimensions
+  1200×630. Assertion des dates rectifiée pour mesurer le texte de l’index,
+  et non la largeur de son bloc. Script de rendu OG avec assertions de polices,
+  dimensions et intitulé exact ; image inspectée.
+- Preuves : check.mjs/results.json, normal-check.mjs/normal-results.json,
+  integration-check.mjs/integration-results.json, render-og.mjs et PNG dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/run007-fixes/.
+  Rapport Claude préservé tel que reçu, sans réécrire son historique.
+- Clôture technique RUN-007 done après intégration et contrôles ; brief, DESIGN,
+  relais Claude et suivi alignés. RUN-008 reste planned, non exécuté ici.
+  Le sitemap reste à confirmer à publication selon le mandat RUN-008.
+- Limites : bouton toujours susceptible de recouvrir du contenu tablette/mobile,
+  conformément à A1. Pas de Safari/Firefox, téléphone réel, lecteur d’écran,
+  Lighthouse, audit npm ni vérification d’hébergement. Aucune validation humaine
+  finale/release déduite des contrôles locaux. Aucun commit/push/merge/déploiement.

@@ -65,7 +65,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | done |
 | RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
 | RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | done |
-| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | verify |
+| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | done |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -190,10 +190,10 @@ Le formulaire reste une maquette sans envoi à ce stade.
   conditionne pas cet assemblage ; aucune intégration ou validation d'envoi de
   formulaire à prétendre réalisée. Ses critères seront repris si le formulaire est relancé.
 
-- Relais courant : contrôles techniques Codex réussis ; revue visuelle et asset OG
-  confiés au [contrat Claude](docs/handoffs/run-007-claude-coherence-visuelle.md),
-  préparé pour Allen, sans retour reçu. RUN-007 reste verify jusqu’à intégration
-  et contrôles du retour. Preuves et limites dans le journal.
+- Clôture locale le 29 octobre : [revue Claude reçue](docs/handoffs/run-007-claude-retour.md),
+  arbitrages A1–A5 d’Allen appliqués et changements complémentaires Claude conservés
+  à sa demande. Contrôles Codex réussis, image sociale intégrée ; preuves et limites
+  au journal. Validation finale/release réservée à RUN-008, non lancé ici.
 - Passe A : intégrer les passes visuelles, services, projets et contact sur une page ;
   réserver les fichiers communs, vérifier les préférences globales et ancres.
 - Passe B : harmoniser FR/EN, sombre/clair, contenus, métadonnées/OG/sitemap et assets.
