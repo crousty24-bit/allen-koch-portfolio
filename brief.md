@@ -135,7 +135,8 @@ préférences locales sont préservés. Aucun nouveau composant ni dépendance.
 RUN-014 intègre la section Services avant Projets : deux lignes éditoriales à
 filets, titres et paragraphes FR/EN validés, CTA commun vers Contact. Design de
 Claude Sonnet 5.5, intégration/QA Codex ; contenu toujours provisoire, aucune
-nouvelle dépendance. RUN-015 réalise les espaces Projets ; la timeline reste en RUN-021.
+nouvelle dépendance. RUN-015 réalise les espaces Projets ; RUN-021 intègre la timeline horizontale,
+avec corrections QA du fondu à l’entrée du rail et des dates accessibles.
 RUN-015 répartit les neuf projets : huit personnels (trois mis en avant, cinq
 supplémentaires dépliables) et Milady's Knight seul en game dev, toujours présent.
 Le groupe clients est prêt mais masqué en l'absence de cas autorisé. Mission,
@@ -148,7 +149,8 @@ retenue des demandes sans suite : 30 jours en messagerie, sans suppression
 automatique mise en place. Un futur test de réception du formulaire est autorisé
 vers cette même adresse, mais aucun envoi n'est effectué maintenant. Le formulaire
 reste une évolution future, sans bloquer l'itération visuelle et son assemblage.
-Suite pertinente : RUN-021 pour la timeline About, encore planifié.
+RUN-021 est clôturé localement après correctifs et contrôles ; présentation
+About inchangée. Suite planifiée : RUN-007 pour la cohérence globale.
 Aucun RUN suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).

@@ -943,3 +943,14 @@ neuf projets inchangés, aucun nouveau composant de base ni dépendance.
 
 Contrat de publication et limites du filtre dans docs/refonte-plan.md ; preuves
 techniques et visuelles au journal.
+
+
+## R25. Timeline About horizontale (29 octobre 2026, RUN-021)
+
+- Intégration Claude : rail CSS scroll-snap, douze étapes, commandes latérales
+  et navigation native au clavier/tactile. Présentation About et jalons inchangés.
+- Corrections Codex autorisées après QA : bornes Octobre 2025/Aujourd'hui
+  accessibles, fondu des étapes déclenché quand le rail entre dans l'écran,
+  à partir de l'observateur existant. L'animation ne se relance pas au retour.
+- Reduced-motion et absence d'observateur : contenu visible sans fondu ; aucune
+  nouvelle dépendance ni nouvelle direction visuelle. Contrôles au journal.

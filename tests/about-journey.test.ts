@@ -1,11 +1,26 @@
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 
-import {
-  aboutJourneyItems,
-  getCollapsedJourneyItemCount,
-} from '../src/data/about/about'
+import { AboutJourney } from '../src/components/AboutJourney/AboutJourney'
+import { aboutJourneyItems } from '../src/data/about/about'
+import type { Language } from '../src/data/i18n/i18n'
 
 describe('about journey', () => {
+  it.each([
+    ['fr', 'Octobre 2025', 'Aujourd’hui'],
+    ['en', 'October 2025', 'Today'],
+  ] as const)('keeps the date range accessible in %s', (language: Language, start, end) => {
+    const html = renderToStaticMarkup(createElement(AboutJourney, { language }))
+    const bounds = html.match(
+      /<div[^>]*class="about-journey__bounds"[^>]*>[\s\S]*?<\/div>/,
+    )?.[0]
+    expect(bounds).toBeDefined()
+    expect(bounds).not.toContain('aria-hidden')
+    expect(bounds).toContain(start)
+    expect(bounds).toContain(end)
+  })
+
   it('ends with the localized internship and freelance milestones', () => {
     expect(aboutJourneyItems).toHaveLength(12)
     expect(aboutJourneyItems.at(-2)).toMatchObject({
@@ -34,12 +49,5 @@ describe('about journey', () => {
         en: 'Start of freelance activity',
       },
     })
-  })
-
-  it('shows a scalable first half when collapsed', () => {
-    expect(getCollapsedJourneyItemCount(10)).toBe(5)
-    expect(getCollapsedJourneyItemCount(11)).toBe(6)
-    expect(getCollapsedJourneyItemCount(12)).toBe(6)
-    expect(getCollapsedJourneyItemCount(aboutJourneyItems.length)).toBe(6)
   })
 })

@@ -7,7 +7,7 @@ Depuis RUN-020, `npm run test` exécute Vitest en environnement Node :
 | Fichier | Contrat vérifié |
 | --- | --- |
 | `storage.test.ts` | Préférence valide, invalide, absente, lecture/écriture bloquée et écriture réussie |
-| `about-journey.test.ts` | Jalons et règle de repli du parcours |
+| `about-journey.test.ts` | Jalons et bornes de dates accessibles FR/EN |
 | `hero-stats.test.ts` | Statistiques dérivées du catalogue, libellés FR/EN |
 | `projects.test.ts` | Données et liens éditoriaux sélectionnés |
 | `globals-css.test.ts` | Invariants textuels du CSS et organisation responsive |
@@ -47,7 +47,8 @@ sans dépendre d'un chemin de cache propre à une machine.
 | Activer une ancre avec Entrée puis Tab | La navigation clavier se poursuit dans la section cible ; focus visible |
 | Menu mobile à 390×844 et 667×375 | Navigation et réglages accessibles ; Échap ferme et rend le focus ; Tab/Maj+Tab ne restent pas dans un menu fermé |
 | Basculer FR/EN et clair/sombre puis recharger | Réglages conservés ; avec stockage bloqué, réglages utilisables pendant la session et valeurs par défaut au rechargement |
-| Projets, parcours, accordéon About, compétences | Dépliage/repli correct ; un seul panneau About ouvert ; plusieurs branches de compétences peuvent être ouvertes |
+| Projets, accordéon About, compétences | Dépliage/repli correct ; un seul panneau About ouvert ; plusieurs branches de compétences peuvent être ouvertes |
+| Timeline About | 12 étapes accessibles au clavier et au tactile ; bornes accessibles ; fondu au premier passage à l’écran, absent sans observateur et en reduced-motion |
 | Défiler à 1440×300/900, 390×844 et 667×375 | Sections visibles, sans débordement horizontal ; mêmes contrôles avec reduced-motion |
 | Comparer les tags Projets/Stack/About avant/après un déplacement CSS | Dimensions, couleurs, polices et disposition conservées dans les deux thèmes et langues, desktop/mobile |
 
@@ -116,3 +117,11 @@ sont temporaires dans les tests, retirées dans finally : sans accord rien n'est
 affiché, avec accord mission/rôle/livrables sont présents, résultat omis s'il manque.
 En navigateur, vérifier personnels 3→8→3, total DOM 4→9→4 et jeu toujours unique.
 Le compteur Hero reste neuf. Les captures client sont des fixtures hors production.
+
+
+Régression RUN-021 : charger l'accueil, attendre plus de deux secondes avant
+l'arrivée à la timeline, puis vérifier que le fondu commence à l'entrée du rail
+et ne repart pas au retour. Contrôler aussi une préférence reduced-motion activée
+après le chargement et l'absence d'IntersectionObserver. Les tests Node de rendu
+vérifient les dates FR/EN ; les effets sont vérifiés dans le navigateur, avec les
+scripts et résultats datés du journal, sans nouvelle dépendance.

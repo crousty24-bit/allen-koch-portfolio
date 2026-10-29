@@ -64,7 +64,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-015 | P1 | Projets personnels, clients et game dev | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | done |
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | done |
 | RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
-| RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | planned |
+| RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | done |
 | RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | planned |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
@@ -485,3 +485,13 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Dépendances : RUN-005 et RUN-013 ; intégration globale vérifiée dans RUN-007.
   Consultation shadcn et cadrage CSS requis si un nouveau composant de base est
   nécessaire ; aucun ajout de dépendance autorisé par cette planification.
+- Réalisation Claude le 29 octobre 2026 : rail horizontal natif (overflow-x,
+  scroll-snap), boutons précédent/suivant désactivés aux extrémités, région
+  focalisable défilant aux flèches, fondu échelonné des étapes. Les 12 étapes sont
+  visibles par défilement ; le bouton Afficher plus et getCollapsedJourneyItemCount
+  sont retirés. Aucune dépendance, texte About inchangé.
+- Clôture locale le 29 octobre après QA Codex : bornes de dates rendues accessibles,
+  fondu déclenché à l'entrée du rail via l'observateur existant, reduced-motion et
+  absence d'observateur préservés. Build/lint/Biome, 47 tests, revue indépendante
+  et 16 cas navigateur ciblés réussis ; preuves et limites au journal.
+  RUN-007 reste planifié, aucune publication ou validation de release implicite.

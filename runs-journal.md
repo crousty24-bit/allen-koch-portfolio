@@ -1071,3 +1071,100 @@ copier de secret, donnée client ou résultat supposé.
   confirmée dans les données ; RUN-016 done et aucun RUN actif. Aucun code
   supplémentaire modifié ; build/lint/Biome/tests non relancés pour ces documents
   seuls, conformément à docs/tooling.md.
+
+
+## RUN-021 : timeline About horizontale (29 octobre 2026)
+
+- Conception et intégration Claude (main, sans délégation) : My Coding Journey en
+  rail horizontal (CSS natif, scroll-snap), nœuds sur ligne continue, bornes
+  Octobre 2025 / Aujourd'hui, boutons précédent/suivant (scrollBy, instant en
+  reduced-motion), liste focalisable défilant aux flèches, fondu échelonné 600 ms.
+  Déclenchement manuel uniquement, aucun défilement automatique.
+- Retraits : bouton Afficher plus/Réduire et getCollapsedJourneyItemCount (et son
+  test), devenus sans objet. Étapes, données et présentation About inchangées.
+- Fichiers : AboutJourney.tsx, about.ts, about-journey.css, reduced-motion.css,
+  responsive-760.css, responsive-1040.css, tests/about-journey.test.ts.
+- Vérification : build, lint, Biome, 45 tests et git diff --check réussis.
+  Chrome headless (Playwright en cache, hors projet) à 390 et 1280 px, clair/sombre,
+  FR/EN, avec et sans reduced-motion : aucun débordement global, libellés localisés,
+  animation absente en reduced-motion, ArrowRight avance d'une étape, Suivant
+  atteint la dernière étape puis se désactive, Précédent revient au début.
+- Non contrôlé : tactile sur appareil réel, lecteur d'écran, Safari/Firefox.
+  État verify : QA Codex attendue ; aucun commit, push ou déploiement.
+
+
+### RUN-021 : revue QA Codex / ponytail-review (29 octobre 2026)
+
+- Mandat : revue de l'intégration Claude, sans correction de code ; skill
+  ponytail-review. Diff courant non commité, callers, CSS/données/tests et README
+  inspectés ; charge retenue : 12 étapes statiques par visiteur, aucun état serveur.
+- Contrôles exécutés : build, lint, Biome (71 fichiers), 45/45 tests et diff-check
+  réussis. Avertissement préexistant responsive-430.css vide conservé.
+- Chrome 156.0.8078.47 avec interface, profils isolés, build production :
+  20 configurations (320×740, 390×844, 768×1024, 1440×900, 667×375 ; FR/EN ;
+  clair avec animations normales, sombre avec reduced-motion). Flèches natives,
+  boutons clavier jusqu'aux deux extrémités, désactivation aux bornes, reprise de
+  Tab, absence de débordement global, 12 étapes et libellés vérifiés. Deux gestes
+  tactiles émulés supplémentaires à 320/390 réussis. Aucun pageerror observé.
+- Constats confirmés : (1) AboutJourney.tsx:114 masque les seules bornes Octobre
+  2025 / Aujourd'hui par aria-hidden=true ; elles sont absentes de l'arbre
+  accessible Chrome, contrairement aux dates d'étapes qui restent présentes.
+  Correction proposée : retirer cet attribut. (2) about-journey.css:77-78 lance
+  les fondus au montage ; après 2.2 s, timeline à 8065 px hors écran et les douze
+  journeyFade sont finished ; arrivée à la timeline sans fondu visible. Correction
+  proposée : déclencher une fois à l'entrée dans l'écran, en réutilisant le
+  mécanisme de visibilité plutôt qu'une animation démarrée au montage.
+- Contributeurs : Codex main pour revue, checks, mesures et captures ;
+  review_run021, gpt-6-luna effort demandé medium, lecture indépendante du cycle
+  de vie/callers/accessibilité, sans écriture ni navigateur. Première lecture
+  sans constat ; les deux cas navigateur ont ensuite été confrontés au code et
+  confirmés par le relecteur. Aucune économie de tokens mesurée.
+- Preuves externes : before.diff, check.mjs/results.json, ax-fr.json,
+  date-proof.json et captures dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run021-review/.
+  Diff strictement identique avant/après les mesures, avant cet ajout au journal.
+- Verdict : corriger ces deux points avant clôture. RUN-021 reste verify ; aucune
+  correction source/CSS/test, commit, push ou publication effectué. Seul cet
+  ajout documentaire de QA complète le journal.
+- Non vérifié : appareil tactile physique, lecteur d'écran réel, Safari/Firefox.
+  Arbre accessible Chrome contrôlé, sans prétendre à un test de lecture vocale.
+
+
+### RUN-021 : corrections QA 1 et 2 avec Ponytail (29 octobre 2026)
+
+- Mandat : Allen autorise les deux correctifs de la revue, sans élargissement.
+  Travaux Claude et ajout QA existants préservés sur la même branche.
+- Accessibilité : retrait d'aria-hidden sur le conteneur des bornes ; deux tests
+  de rendu FR/EN ajoutés, puis dates présentes dans l'arbre accessible Chrome.
+- Fondu : le sélecteur de l'observateur App existant inclut le rail ol. Les
+  animations des étapes ne sont attachées qu'après section--scroll-visible ;
+  même observateur, mêmes classes et cleanup, aucun nouvel état/helper/dépendance.
+  Le sélecteur reduced-motion de même spécificité annule animation et délai,
+  y compris lors du changement de préférence après montage. Sans observateur,
+  pas de classe de masquage ni de fondu : contenu directement accessible.
+- Vérifications finales : build/lint/Biome (71 fichiers), 47/47 tests et diff-check
+  réussis. Première tentative de garde CSS par media query refusée par le contrat
+  centralisant les conditions dans responsive.css : remplacée par le sélecteur
+  existant de reduced-motion, sans modifier le test ni ajouter un fichier.
+  Avertissement préexistant responsive-430.css vide conservé.
+- Chrome 156.0.8078.47 avec interface, profils isolés et build production :
+  14 cas ciblés (320/1440 FR/EN et clair/sombre, animations normales/reduce/sans
+  IntersectionObserver, plus 667×375 et 1440×300), et deux changements de préférence
+  à 390 px avant entrée ou pendant le fondu. Après 2.2 s hors écran, aucun
+  journeyFade ; premier animationstart alors que le rail intersecte l'écran ;
+  douze fondus terminés, aucun redémarrage au retour. Sans observateur ou en
+  reduced-motion : aucune animation, contenu visible. Déplacement Suivant,
+  dates accessibles, douze étapes et absence de débordement vérifiés.
+- Relecture ciblée par review_run021, gpt-6-luna effort demandé medium, en lecture
+  seule : spécificité/import CSS, fallback et cleanup cohérents, aucun constat.
+  Codex main applique, intègre et contrôle ; pas de nouveau mandat design requis
+  pour corriger le déclenchement de l'animation existante. Aucun gain de tokens mesuré.
+- Preuves : check.mjs/results.json et captures.mjs, captures finales après
+  opacité complète à 1440×900 FR clair et 390×844 EN sombre, hors dépôt dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run021-fixes/.
+- Limites : pas de téléphone physique, lecteur d'écran réel, Safari/Firefox ou
+  nouvel audit Lighthouse. Pas d'audit npm : aucun paquet ni release modifié.
+  Aucun commit, push, déploiement ou RUN suivant exécuté.
+
+- Clôture : RUN-021 done, 45 liens documentaires locaux valides et diff-check
+  réussi ; aucun RUN actif. La passe est terminée, sans lancement de RUN-007.

@@ -79,7 +79,7 @@ function App() {
     }
 
     const scrollSections = document.querySelectorAll<HTMLElement>(
-      'main > .section:not(.hero)',
+      'main > .section:not(.hero), .about-journey__list',
     )
 
     scrollSections.forEach((section) => {

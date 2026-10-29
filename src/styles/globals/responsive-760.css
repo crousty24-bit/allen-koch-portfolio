@@ -4,7 +4,6 @@
 }
 
 .about-layout,
-.about-journey,
 .contact-panel {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -43,12 +42,8 @@
   font-size: 1.75rem;
 }
 
-.about-journey__item {
-  grid-template-columns: 2.5rem minmax(0, 1fr);
-}
-
-.about-journey__toggle {
-  width: 100%;
+.about-journey__list {
+  grid-auto-columns: minmax(13rem, 78%);
 }
 
 html {

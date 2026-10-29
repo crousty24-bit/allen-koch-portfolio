@@ -13,10 +13,6 @@ export type AboutJourneyItem = {
   title: Record<Language, string>
 }
 
-export function getCollapsedJourneyItemCount(itemCount: number) {
-  return Math.ceil(itemCount / 2)
-}
-
 export const aboutAccordionItems: AboutAccordionItem[] = [
   {
     id: 'working-style',

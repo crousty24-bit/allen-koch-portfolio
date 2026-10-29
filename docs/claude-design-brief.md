@@ -76,7 +76,8 @@ formulaire ni de prestataire à intégrer. RUN-017 est reporté ; conserver Cont
 et son CTA email actuels, sans formulaire factice. Demandes sans suite : durée
 retenue de 30 jours, sans automatisation de messagerie. L'[étude contact](contact-form-contract.md)
 est conservée pour une éventuelle reprise explicitement mandatée.
-La prochaine évolution visuelle possible est RUN-021, sans modifier le texte About.
+RUN-021 est intégré et contrôlé : rail horizontal, fondu à l’entrée dans l’écran,
+bornes accessibles ; texte About conservé. RUN-007 reste planifié.
 
 ## Mission initiale
 
