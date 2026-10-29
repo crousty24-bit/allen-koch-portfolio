@@ -1373,3 +1373,52 @@ copier de secret, donnée client ou résultat supposé.
   jour puis suite relancée avec succès. Pas de revue indépendante revendiquée.
 - RUN-022 reste actif sans modification de son implémentation ou de son contrat.
   Aucun commit, push ni déploiement effectué dans cet ajout.
+
+
+### RUN-022 : correctif du cadre après accès/rechargement d’une ancre (29 octobre 2026)
+
+- Mandat explicite : identifier le trigger de la bande noire montrée par Allen et
+  appliquer le correctif. Skills Ponytail Audit et Ponytail full ; audit limité au
+  parcours fragment → montage React → focus → styles, puis correction autorisée
+  par Allen (le mode rapport seul du skill ne limite pas ce mandat explicite).
+  Charge pertinente : navigation locale d’un visiteur, aucun traitement serveur.
+- État initial : branche feature/refonte-integration-visuelle, HEAD 2dd8c3a.
+  RUN-022 déjà actif ; changements Claude non commités dans App, animations,
+  reduced-motion, utilitaire sectionStack et tests conservés. Des ajustements App
+  ont continué pendant les contrôles ; aucun de ces fichiers applicatifs modifié
+  par Codex. Cette passe ne clôt pas la validation globale de l’animation.
+- Preuves reçues : deux PNG ouverts depuis leur chemin /mnt/c (les chemins Windows
+  directs n’étaient pas lisibles par l’interface), vidéo 22,1 s échantillonnée à
+  une image toutes les deux secondes. Le cadre épouse exactement le conteneur
+  section et disparaît lors d’un changement de focus ; pas une couleur de fond.
+- Cause reproduite sur build production Chrome 156.0.8078.47 : accès direct
+  /#services, puis reload → activeElement.id=services, :focus-visible=true,
+  outline rgb(25,25,25) solid 2px, border 0, box-shadow none. App focalise
+  explicitement la cible initiale pour reprendre la navigation clavier ; la règle
+  globale :focus-visible de base.css s’applique aussi à ces landmarks. Tab retire
+  le cadre de section et donne un contour au contrôle suivant. Le clic testé à
+  l’intérieur de la section peut conserver son focus : il n’est pas un trigger
+  universel de disparition ; c’est le déplacement effectif du focus qui compte.
+- Correction minimale, seul fichier source écrit par Codex : base.css, exception
+  outline:none pour main[tabindex="-1"]:focus-visible et les sections équivalentes.
+  Le focus et tabIndex sont préservés ; règle globale des liens/boutons intacte.
+  Aucune modification d’animation, de DOM, de contenu ni de dépendance. Pas de
+  suppression globale des focus ni de blur artificiel après navigation.
+- Vérifications : build, lint, Biome (74 fichiers), 52/52 tests et diff --check
+  réussis ; avertissement préexistant responsive-430.css vide conservé.
+  Pas de test unitaire ajouté pour cette exception CSS triviale ; régression
+  navigateur vérifiée par un script à assertions hors dépôt.
+- Chrome headless sur preview 4176 : 56 combinaisons, 1440×900 et 390×844,
+  clair/sombre, animations normales/reduce, six cibles et main-content. Dans
+  chaque cas : accès direct puis reload, focus conservé sur cible, outline none,
+  opacité 1, aucun débordement ; Tab atteint un contrôle/région avec focus-visible
+  et contour solid d’au moins 2 px. Aucun pageerror. Première assertion exigeait
+  exactement 2 px pour tous les contrôles ; corrigée car un contour visible de
+  3 px n’est pas une régression. Captures avant/après inspectées.
+- Preuves : probe.mjs/probe.json, check.mjs/results.json, before.png, after.png,
+  video.jpg dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/focus-fix/.
+- Relecture par l’implémenteur, pas de sous-agent pour cette règle ciblée : coût
+  de transfert supérieur au bénéfice attendu. Audit global du dépôt non réalisé,
+  Firefox/Safari, lecteur d’écran et appareil réel non vérifiés. RUN-022 reste
+  actif pour le reste de la passe Claude ; aucun autre RUN, commit ou déploiement.
