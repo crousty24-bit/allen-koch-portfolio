@@ -17,7 +17,7 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
   const extraProjects = projects.slice(visibleProjectsCount)
 
   return (
-    <section className="section projects-section" id="projects">
+    <section className="section projects-section" id="projects" tabIndex={-1}>
       <div className="section-heading section-heading--split reveal">
         <div>
           <p className="eyebrow eyebrow--section">{projectsCopy.eyebrow}</p>

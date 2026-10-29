@@ -10,7 +10,7 @@ export function StackSection({ language }: StackSectionProps) {
   const stackCopy = copy[language].stack
 
   return (
-    <section className="section stack-section" id="stack">
+    <section className="section stack-section" id="stack" tabIndex={-1}>
       <div className="section-heading section-heading--split reveal">
         <div>
           <p className="eyebrow eyebrow--section">{stackCopy.eyebrow}</p>

@@ -67,7 +67,8 @@
   text-underline-offset: 0.35em;
 }
 
-.navbar__links a:hover {
+.navbar__links a:hover,
+.navbar__links a[aria-current="location"] {
   text-decoration-color: currentColor;
 }
 

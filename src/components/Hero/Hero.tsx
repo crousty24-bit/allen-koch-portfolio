@@ -73,7 +73,7 @@ export function Hero({ language }: HeroProps) {
   const heroCopy = pageCopy.hero
 
   return (
-    <section className="hero section" id="home">
+    <section className="hero section" id="home" tabIndex={-1}>
       <div className="hero__content reveal">
         <h1 className="hero__title">
           <span className="hero__name">{heroCopy.name}</span>
@@ -97,11 +97,11 @@ export function Hero({ language }: HeroProps) {
 
           <div className="hero__aside">
             <div className="hero__actions">
-              <a className="button button--primary" href="#projects">
-                {heroCopy.projectsCta}
-              </a>
-              <a className="button button--secondary" href="#contact">
+              <a className="button button--primary" href="#contact">
                 {heroCopy.contactCta}
+              </a>
+              <a className="button button--secondary" href="#projects">
+                {heroCopy.projectsCta}
               </a>
             </div>
 

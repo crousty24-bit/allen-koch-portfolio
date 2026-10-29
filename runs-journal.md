@@ -810,3 +810,75 @@ copier de secret, donnée client ou résultat supposé.
 - Limites : code navigateur non exécuté pour ce lot documentaire ; vérifications
   précédentes RUN-005 non présentées comme une preuve de la future UI.
   Aucun commit, push, déploiement ou lancement RUN-012 effectué.
+
+
+## RUN-012 : navigation et CTA du socle (29 octobre 2026)
+
+- Mandat : Allen valide RUN-011 puis demande de passer à la suite. Départ propre
+  sur feature/run-005-offres-contenus à b9cc192, contenant les décisions précédentes.
+  Seul RUN actif, transitions in_progress puis verify.
+- Périmètre : Navbar, Hero, cibles d'ancres dans App et cinq sections existantes,
+  libellés navigation/CTA FR/EN, règle de soulignement, contrats de rendu et docs.
+  Services/lien restent en RUN-014, espaces projets en RUN-015, parcours en RUN-021.
+  Aucun composant de base nouveau : règle shadcn non déclenchée, aucune dépendance.
+- Hero : Contact principal, projets secondaire. Menu FR Accueil/À propos et
+  footer utilisent toujours la même liste ; lien de défilement conservé.
+- Position active : aria-current location et soulignement, calcul depuis les
+  sections et le scroll-padding CSS ; écoute scroll passive regroupée par rAF,
+  resize et ResizeObserver pour les changements de hauteur. Contact actif en bas
+  de page. Nettoyage des écouteurs/observateur/rAF ; aucun déplacement de focus
+  pendant le défilement. Fonctionne sans IntersectionObserver ni ResizeObserver.
+- Focus : sections et main avec tabindex -1, hors parcours Tab ; navigation native
+  conservée, focus sur la cible initiale après décodage et scroll instantané du
+  fragment, avec preventScroll. Fragments inconnus/mal formés sans erreur.
+- Préservé : blocs About FR/EN comparés textuellement à HEAD et identiques ;
+  données projets/parcours et AboutJourney sans diff. Palette, typographie,
+  préférences locales, liste/ordre des sections et dépendances inchangés.
+- Tests versionnés : assertions ajoutées aux contrats existants pour cibles
+  focalisables, CTA principal/secondaire FR/EN, un seul aria-current initial et
+  absence de lien Services avant sa section. Toujours 8 fichiers et 41 cas.
+- Contrôles finaux : build, ESLint, Biome (68 fichiers), Vitest 41/41 et
+  git diff --check réussis. Avertissement préexistant : responsive-430.css vide.
+  Premiers Biome : dépendance language non consommée et format signalés ; effet
+  corrigé avec ResizeObserver pour les changements de hauteur, puis formaté.
+  Sur la marque avec onClick, la règle d'ancre rejetait le href littéral ;
+  réutilisation de navItems[0].href, sans désactivation de règle.
+- Navigateur : Chrome 156.0.8078.47 avec interface, profils isolés, build de
+  production, Playwright déjà en cache. Huit scénarios de navigation :
+  1440×900, 1440×300, 390×844, 667×375 avec/sans reduced-motion. Cinq ancres
+  directes et reload, évitement, activation clavier/focus/Tab, molette, bas de
+  page, historique précédent/suivant, fragments encodés/inconnus/mal formés,
+  fermeture par marque/Échap vérifiés. Huit variantes FR/EN et clair/sombre à
+  1440×900 et 390×844 : préférences après reload, CTA, cohérence header/footer,
+  projets 3→9→3 et absence de débordement vérifiés. Deux cas supplémentaires
+  sans observateurs, dont un avec stockage bloqué, réussis. Aucune exception
+  pageerror dans ces 18 scénarios. Pas d'audit exhaustif console/réseau.
+- Protocole corrigé avant résultats retenus : mesure Home initiale attendait
+  à tort 63 px de marge au lieu de son bord de page ; historique exécuté trop
+  tôt avant enregistrement de la position ; Tab vers GitHub dans About pouvait
+  encore défiler au lancement de l'action suivante en paysage. Attentes de
+  stabilisation ajoutées, contrôle isolé history.mjs/mobile.mjs, sans correctif
+  source pour ces artefacts. Fixture de préférences ne doit pas les réécrire à
+  chaque reload : initialisation seulement si absentes. Captures reprises après
+  fin du fondu, chargement des polices et compteurs à leurs valeurs finales.
+- Contributeurs : Codex main pour code, tests, intégration et navigateur ;
+  review_run012, sous-agent gpt-6-luna effort demandé medium, revue indépendante
+  en lecture seule selon docs/handoff-contracts.md. Bénéfice attendu : contrôle
+  borné des nouveaux effets et du focus. Constat : marque ne fermant pas le menu
+  mobile ; corrigé puis contrôlé en navigateur par le main. Reprise diagnostique
+  sur le paysage : aucune cause source supplémentaire établie, hypothèse de
+  défilement en cours cohérente avec le protocole corrigé. Le relecteur n'a pas
+  exécuté le navigateur. Aucune économie de tokens mesurée.
+- Preuves hors dépôt : scripts check.mjs, history.mjs, mobile.mjs, captures.mjs,
+  results.json (8 navigation, 8 variantes, 2 fallback) et huit captures Hero dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run012/.
+  Ces scripts ne sont pas une suite navigateur portable du dépôt.
+- Limites : pas de Safari/Firefox, téléphone physique, lecteur d'écran,
+  Lighthouse ou nouvelle mesure de performance. Pas d'audit npm pour ce lot
+  sans dépendance/release. Contrôle global et validation humaine finale restent
+  en RUN-007/008 ; aucun commit, push, déploiement ni autre RUN exécuté.
+
+- Clôture : RUN-012 `done` localement après contrôles et relecture des captures
+  Hero desktop/mobile, FR clair et EN sombre notamment. 43 liens documentaires
+  locaux valides et diff sans erreur d'espacement. Aucun RUN actif à la fin ;
+  RUN-014 est le prochain lot d'intégration visuelle, sous direction Claude.

@@ -59,7 +59,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-020 | P1 | Correctifs et tests du socle avant nouvelles sections | Codex ; contributions nettoyage et tests CLI | RUN-004 | done |
 | RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | done |
 | RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | done |
-| RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | planned |
+| RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | done |
 | RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | planned |
 | RUN-015 | P1 | Projets personnels, clients et game dev | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
@@ -266,6 +266,16 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : régression de navigation, section inaccessible, préférences incohérentes.
 - Acceptation : chaque ancre prévue mène à la bonne section ; anciens liens connus
   préservés, tests utiles et parcours navigateur réussis.
+- Périmètre exécuté : sections existantes, indication de position active dans le
+  menu, cibles focalisables, CTA Hero contact principal/projets secondaire,
+  libellés FR/EN et fermeture du menu par la marque. Services et son lien restent
+  réservés à RUN-014, espaces projets à RUN-015, timeline à RUN-021.
+- Préservé : présentation About, catalogue, thèmes/langues locaux, ordre courant,
+  CSS natif et dépendances ; aucun nouveau composant UI de base.
+- Clôture locale le 29 octobre : build/lint/Biome, 41 tests et 18 scénarios
+  Chrome réussis ; revue indépendante et correction de fermeture par la marque.
+  Captures desktop/mobile contrôlées. Preuves/limites au journal ; RUN-014 reste
+  planifié, sans intégration ni publication automatique.
 
 ## RUN-013 — Système visuel, animations et transitions
 

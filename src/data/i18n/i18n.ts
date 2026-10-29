@@ -33,8 +33,8 @@ export const copy = {
       highlight: '',
       subtitle:
         "Du besoin à la mise en ligne, j'avance par itérations courtes avec une approche produit et des workflows IA utiles.",
-      projectsCta: 'Voir les projets',
-      contactCta: 'Me contacter',
+      projectsCta: 'Voir les réalisations',
+      contactCta: 'Discuter de votre projet',
       statsLabel: 'Statistiques du hero',
       statLabels: {
         profile: 'Profile',
@@ -43,10 +43,10 @@ export const copy = {
       },
     },
     nav: {
-      home: 'Home',
+      home: 'Accueil',
       projects: 'Projets',
       stack: 'Stack',
-      about: 'About',
+      about: 'À propos',
       contact: 'Contact',
       mainLabel: 'Navigation principale',
       externalLabel: 'Liens externes',
@@ -109,7 +109,7 @@ export const copy = {
       subtitle:
         'From initial need to deployment, I work in focused iterations with a product-minded approach and useful AI workflows.',
       projectsCta: 'View projects',
-      contactCta: 'Contact me',
+      contactCta: 'Discuss your project',
       statsLabel: 'Hero stats',
       statLabels: {
         profile: 'Profile',

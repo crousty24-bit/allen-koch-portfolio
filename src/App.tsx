@@ -63,7 +63,9 @@ function App() {
 
     // React creates the anchor targets after the browser's initial fragment lookup.
     if (id) {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'instant' })
+      const target = document.getElementById(id)
+      target?.scrollIntoView({ behavior: 'instant' })
+      target?.focus({ preventScroll: true })
     }
   }, [])
 
@@ -133,7 +135,7 @@ function App() {
         }
         theme={theme}
       />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <Hero language={language} />
         <ProjectsSection language={language} />
         <StackSection language={language} />

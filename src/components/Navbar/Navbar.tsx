@@ -16,9 +16,57 @@ export function Navbar({
   theme,
 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeHref, setActiveHref] = useState<string>('#home')
   const headerRef = useRef<HTMLElement>(null)
   const menuToggleRef = useRef<HTMLButtonElement>(null)
   const navCopy = copy[language].nav
+
+  useEffect(() => {
+    let frameId = 0
+
+    const updateActiveSection = () => {
+      frameId = 0
+      const offset =
+        Number.parseFloat(
+          window.getComputedStyle(document.documentElement).scrollPaddingTop,
+        ) + 1
+      let currentHref: string = navItems[0].href
+
+      for (const item of navItems) {
+        const section = document.getElementById(item.href.slice(1))
+        if (section && section.getBoundingClientRect().top <= offset) {
+          currentHref = item.href
+        }
+      }
+      if (
+        window.scrollY > 0 &&
+        window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 1
+      ) {
+        currentHref = navItems[navItems.length - 1].href
+      }
+      setActiveHref(currentHref)
+    }
+
+    const scheduleUpdate = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(updateActiveSection)
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    const resizeObserver =
+      'ResizeObserver' in window
+        ? new ResizeObserver(scheduleUpdate)
+        : undefined
+    resizeObserver?.observe(document.body)
+    return () => {
+      resizeObserver?.disconnect()
+      window.cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+    }
+  }, [])
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -53,7 +101,12 @@ export function Navbar({
   return (
     <header className="site-header" ref={headerRef}>
       <div className={`navbar${isMenuOpen ? ' navbar--menu-open' : ''}`}>
-        <a className="brand" href="#home" aria-label={navCopy.homeLabel}>
+        <a
+          className="brand"
+          href={navItems[0].href}
+          aria-label={navCopy.homeLabel}
+          onClick={() => setIsMenuOpen(false)}
+        >
           <span aria-hidden="true" className="brand__mark">
             AK
           </span>
@@ -79,6 +132,7 @@ export function Navbar({
           <nav aria-label={navCopy.mainLabel} className="navbar__links">
             {navItems.map((item) => (
               <a
+                aria-current={activeHref === item.href ? 'location' : undefined}
                 href={item.href}
                 key={item.href}
                 onClick={() => setIsMenuOpen(false)}

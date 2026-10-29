@@ -16,7 +16,7 @@ export function AboutSection({ language }: AboutSectionProps) {
   const aboutCopy = copy[language].about
 
   return (
-    <section className="section about-section" id="about">
+    <section className="section about-section" id="about" tabIndex={-1}>
       <div className="about-layout">
         <div className="about-visual reveal">
           <figure className="portrait-card">

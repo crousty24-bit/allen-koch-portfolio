@@ -889,3 +889,18 @@ contributeurs et contrôles dans [le journal](runs-journal.md).
 
 Ces décisions complètent la phase 1 ; les trois espaces et la nouvelle timeline
 restent à implémenter dans leurs RUN. Les deux statuts sont corrigés en RUN-005.
+
+
+## R22. Navigation et CTA du socle (29 octobre 2026, RUN-012)
+
+- Hero : Contact en bouton principal, réalisations en secondaire selon RUN-011.
+  Liens de défilement et ancien catalogue conservés.
+- Navigation FR : Accueil et À propos ; liste partagée avec le footer.
+- La section courante est soulignée et identifiée par aria-current location,
+  au défilement comme à l'accès direct ; aucune animation de survol ajoutée.
+- Cibles d'ancres focalisables hors de l'ordre Tab ; accès initial avec fragment
+  positionne le focus sans second défilement. Marque et liens ferment le menu mobile.
+- Design, présentation About, parcours, palette et thèmes conservés. Pas de
+  nouvelle section ni composant UI ; Services arrive avec son lien en RUN-014.
+
+Les résultats et limites des contrôles figurent dans le journal de RUN-012.

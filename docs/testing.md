@@ -91,3 +91,13 @@ fixe l'ordre et le séquencement : `#services` ne devient un lien public qu'avec
 sa section en RUN-014. Vérifier les neuf projets répartis sans doublon en RUN-015
 et le texte de présentation About inchangé lors de RUN-021. Ces scénarios sont
 à exécuter sur l'UI intégrée ; ce cadrage ne constitue pas leur résultat.
+
+
+RUN-012 étend les assertions de rendu existantes : cibles d'ancres focalisables,
+CTA Hero contact principal/projets secondaire et position active initiale unique.
+Le comportement au scroll, au clavier et dans l'historique est vérifié dans le
+navigateur, avec stabilisation des défilements doux avant l'action suivante.
+Les scénarios initiaux utilisent une nouvelle navigation, les préférences ne sont
+initialisées qu'une fois par contexte de test pour permettre le contrôle du reload.
+Les résultats datés et scripts externes sont référencés au journal ; la suite Node
+ne simule pas les effets React ni les événements du navigateur.

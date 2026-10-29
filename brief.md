@@ -107,7 +107,8 @@ intègre les contrats de tests de contenu/rendu/stockage/statistiques, et retire
 les résidus inutilisés du design. Aucun changement visuel ou nouvelle dépendance.
 La [procédure de tests](docs/testing.md) distingue les contrôles Node de la matrice
 navigateur ; son automatisation en CI reste une décision d’outillage distincte.
-RUN-012 raccordera les nouvelles ancres et RUN-007 vérifiera l’intégration globale.
+RUN-012 raccorde les ancres actuelles ; Services sera activé avec sa section en
+RUN-014. RUN-007 vérifiera l’intégration globale.
 RUN-005 est lancé le 29 octobre sur `feature/run-005-offres-contenus` :
 inventaire des neuf projets et proposition FR/EN des offres, de trois cas et des
 CTA dans le [plan](docs/refonte-plan.md#run-005--proposition-éditoriale-fren-du-29-octobre-2026).
@@ -126,6 +127,11 @@ seront activés ensemble en RUN-014, sans section vide entre les RUN.
 Même URL et mêmes ancres FR/EN ; canonical racine conservée, pas de version EN
 indexable distincte promise. Le [contrat d'architecture](docs/refonte-plan.md#run-011--architecture-des-sections-et-ancres)
 détaille les CTA et critères navigateur pour RUN-012/014/015/021.
+RUN-012, autorisé ensuite par Allen et clôturé localement, raccorde le CTA principal du Hero à Contact,
+le secondaire aux projets et les libellés FR/EN. La section courante est soulignée
+avec `aria-current="location"` ; les cibles d'ancres sont focalisables et le menu
+mobile se ferme aussi sur la marque. Présentation About, parcours, catalogue et
+préférences locales sont préservés. Aucun nouveau composant ni dépendance.
 Aucun RUN suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).

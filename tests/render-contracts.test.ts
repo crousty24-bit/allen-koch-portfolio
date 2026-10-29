@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 import App from '../src/App'
 import { AboutSection } from '../src/components/AboutSection/AboutSection'
 import { Footer } from '../src/components/Footer/Footer'
+import { Hero } from '../src/components/Hero/Hero'
 import { Navbar } from '../src/components/Navbar/Navbar'
 import { ProjectCard } from '../src/components/ProjectCard/ProjectCard'
 import { ProjectsSection } from '../src/components/ProjectsSection/ProjectsSection'
@@ -36,6 +37,13 @@ describe('page render contracts', () => {
     for (const target of references) expect(ids).toContain(target)
     for (const item of navItems) expect(ids).toContain(item.href.slice(1))
     expect(page.match(/<h1[\s>]/g)).toHaveLength(1)
+    for (const id of [
+      'main-content',
+      ...navItems.map((item) => item.href.slice(1)),
+    ]) {
+      expect(page).toMatch(new RegExp(`id="${id}"[^>]*tabindex="-1"`))
+    }
+    expect(page).not.toContain('href="#services"')
   })
 
   it('initially renders featured projects without mounting the extra cards', () => {
@@ -68,6 +76,14 @@ describe('page render contracts', () => {
         `href="${item.href}">${renderToStaticMarkup(copy[language].nav[item.key])}</a>`,
       )
     }
+    expect(nav.match(/aria-current="location"/g)).toHaveLength(1)
+    const hero = renderToStaticMarkup(createElement(Hero, { language }))
+    expect(hero).toContain(
+      `class="button button--primary" href="#contact">${renderToStaticMarkup(copy[language].hero.contactCta)}</a>`,
+    )
+    expect(hero).toContain(
+      `class="button button--secondary" href="#projects">${renderToStaticMarkup(copy[language].hero.projectsCta)}</a>`,
+    )
     const footer = renderToStaticMarkup(createElement(Footer, { language }))
     expect(footer).toContain(
       renderToStaticMarkup(copy[language].footer.navHeading),

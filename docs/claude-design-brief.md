@@ -40,6 +40,15 @@ RUN UI intégreront ce contrat avec les critères clavier/mobile/FR/EN/thèmes d
 plan ; le placement visuel précis reste confié à Claude. Aucun accès à Claude
 ni implémentation UI n'est simulé par ce transfert documentaire.
 
+## Relais RUN-012 — socle existant raccordé
+
+CTA Hero : Contact principal, réalisations secondaire. Navigation FR localisée
+(Accueil/À propos), section active soulignée, cibles d'ancres focalisables, menu
+mobile fermé par les liens et la marque. Les nouvelles sections restent dans
+leurs RUN : Services avec son lien en RUN-014, trois espaces Projets en RUN-015,
+timeline About en RUN-021. Conserver ces comportements pendant l'intégration.
+Aucun changement de palette, typographie ou présentation About dans RUN-012.
+
 ## Mission initiale
 
 Concevoir la refonte visuelle globale et totale du portfolio Allen Koch vers une activité de développeur IA
