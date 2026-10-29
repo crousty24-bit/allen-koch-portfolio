@@ -18,6 +18,48 @@
   transform: translate3d(0, 0, 0);
 }
 
+/* Scroll stack (RUN-022): a section pins once read, then the next one rises
+   over it while it fades and recedes. App sets both variables from the scroll. */
+@property --section-cover {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.section-stack > .section {
+  position: sticky;
+  top: var(--section-pin-top, auto);
+  z-index: 0;
+  opacity: calc(1 - var(--section-cover, 0));
+  transform: scale(calc(1 - 0.05 * var(--section-cover, 0)));
+  /* Top of the visible part: the box never drops below the nav's active line. */
+  transform-origin: 50% max(0px, calc(-1 * var(--section-pin-top, 0px)));
+}
+
+/* Opaque so the rising section hides the pinned one; zero specificity keeps the Stack band. */
+:where(.section-stack > .section) {
+  background: var(--background);
+}
+
+/* Near-transparent once covered: back in flow so fragment and focus scrolling
+   target the real box; it no longer catches clicks. */
+.section-stack > .section--covered {
+  position: relative;
+  top: auto;
+  transform: none;
+  pointer-events: none;
+}
+
+/* Keyboard focus and anchor jumps must reach the real box, not the pinned copy. */
+.section-stack > .section:has(:focus-visible),
+.section-stack > .section--unpinned {
+  position: relative;
+  top: auto;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
 @keyframes revealUp {
   from {
     opacity: 0;

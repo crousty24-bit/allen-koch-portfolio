@@ -25,3 +25,12 @@ html:root,
   transform: none;
   transition: none;
 }
+
+/* Preference switched after load: the stack stops pinning, fading and receding. */
+.section-stack > .section {
+  position: relative;
+  top: auto;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}

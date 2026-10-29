@@ -53,6 +53,7 @@ preuves de clôture des dettes et des travaux de phase 2.
 | [Plan de refonte](refonte-plan.md) | Périmètre one-page, ancres, services, projets et formulaire |
 | [Contrat contact/devis](contact-form-contract.md) | Décision email seul RUN-016 ; étude conservée pour le formulaire reporté |
 | [Brief Claude](claude-design-brief.md) | Direction design et relais des RUN UI |
+| [Contrat Claude RUN-023](handoffs/run-023-claude-hierarchie-titres-hero.md) | Nouvelle hiérarchie des titres et textes du Hero |
 | [Contrat Claude RUN-022](handoffs/run-022-claude-transitions-scroll.md) | Passe visuelle 1 : transitions au scroll à partir de la vidéo d’Allen |
 | [Contrat Claude RUN-007](handoffs/run-007-claude-coherence-visuelle.md) | Revue visuelle intégrée et image sociale ; relais manuel |
 | [Proposition Claude](references/claude-design-proposal.md) | Contribution initiale non validée |

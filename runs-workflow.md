@@ -66,6 +66,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
 | RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | done |
 | RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | done |
+| RUN-022 | P2 | Passe visuelle 1 — transitions de sections au scroll | Claude UI ; Codex QA ; validation Allen | RUN-007 | in_progress |
+| RUN-023 | P2 | Passe structure — titres des sections et Hero | Claude UI ; Codex QA ; validation Allen | RUN-022 | planned |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -505,3 +507,36 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
   absence d'observateur préservés. Build/lint/Biome, 47 tests, revue indépendante
   et 16 cas navigateur ciblés réussis ; preuves et limites au journal.
   RUN-007 reste planifié, aucune publication ou validation de release implicite.
+
+
+## RUN-022 — Passe visuelle 1 : transitions de sections au scroll
+
+- Mandat d’Allen du 29 octobre : analyser sa vidéo puis préparer un contrat
+  Claude pour intégrer le même effet fluide d’apparition/disparition entre sections.
+- Branche commune feature/refonte-integration-visuelle, état de départ 5f08752.
+  RUN-007 done ; RUN-008 reste planned et attend cette passe avant validation finale.
+- [Contrat Claude](docs/handoffs/run-022-claude-transitions-scroll.md) : référence
+  vidéo analysée, cinq frontières, transition réversible avec recouvrement/fondu,
+  lecture intégrale des sections longues, ancres/clavier/reduced-motion préservés.
+- État : analyse et contrat préparés par Codex, relais manuel par Allen ; aucune
+  implémentation ni contribution Claude reçue pour RUN-022. Seul RUN actif.
+- Acceptation : implémentation, contrôles applicatifs/navigateur, vidéo de preuve,
+  intégration QA Codex et validation visuelle d’Allen. Aucun paquet ni publication.
+- Les passes suivantes feront chacune l’objet d’un contrat sur instruction d’Allen ;
+  aucun périmètre futur n’est déduit de cette première demande.
+
+
+## RUN-023 — Passe structure : titres des sections et Hero
+
+- Mandat d’Allen du 29 octobre : committer le correctif de focus Codex, puis
+  préparer la passe suivante selon la discipline du contrat Claude par passe.
+- Commit ciblé effectué : 17dfeb0, base.css et entrée de journal seulement.
+  Travaux RUN-022 de Claude préservés hors commit ; RUN-022 reste le seul actif.
+- [Contrat Claude](docs/handoffs/run-023-claude-hierarchie-titres-hero.md) : suppression
+  des p.eyebrow, leurs libellés numérotés deviennent les H2 ; sous-titres About,
+  parcours et Contact en H3, étapes en H4 ; Hero sans rôle répété sous le H1,
+  métier en H2 et nouveau sous-titre commercial légèrement reformulé FR/EN.
+- Préparation documentaire terminée, implémentation planned pour Claude ; aucun
+  code de cette passe modifié par Codex. Exécution séquentielle après RUN-022.
+- Acceptation : hiérarchie/ARIA/ancres valides, responsive/thèmes/langues et
+  animations préservés, checks et navigateur, retour Claude, QA et validation Allen.

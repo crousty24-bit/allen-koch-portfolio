@@ -1424,6 +1424,35 @@ copier de secret, donnée client ou résultat supposé.
   actif pour le reste de la passe Claude ; aucun autre RUN, commit ou déploiement.
 
 
+## Préparation RUN-023 : titres et Hero (29 octobre 2026)
+
+- Allen demande de committer les changements Codex, puis donne la passe suivante
+  de structure/contenu. Discipline de session conservée : contrat pour Claude.
+- Avant préparation : git diff relu, seuls base.css et l’entrée de journal du
+  correctif focus appartiennent à Codex. Commit ciblé 17dfeb0 réussi, message
+  fix: remove section outline after anchor navigation, deux fichiers/55 lignes.
+  Aucun fichier d’animation de Claude ajouté au commit, aucun push.
+- Sources inspectées : sept composants concernés, données i18n, sélecteurs CSS
+  partagés, références de titres/tests. Libellés courants conservés : Services,
+  Portfolio, Stack & skills, About, Contact ; préfixes 01 à 05. Suppression des
+  anciens titres Services/Projets/Stack ; About/Contact et parcours en H3, étapes
+  du parcours en H4 pour la hiérarchie. p Timeline inclus dans la suppression.
+- Contrat docs/handoffs/run-023-claude-hierarchie-titres-hero.md : autorisation
+  bornée des composants/CSS/i18n/tests pour Claude. App/moteur animation/base.css
+  réservés et préservés ; contenu projets courant incluant SEOS à conserver.
+- Reformulation Hero inscrite au contrat : EN “I build fast, modern digital products
+  that help businesses grow, and I’m available for freelance projects worldwide.”
+  Équivalent FR fourni ; hero.role réutilisé comme H2, span redondant supprimé.
+  Pas d’invention de résultat client, pas de nouveau catalogue commercial.
+- RUN-023 planned, préparation prête ; RUN-022 reste seul actif, relais séquentiel.
+  Aucun agent Claude lancé/message envoyé ni implémentation de cette passe par Codex.
+  Pas de sous-agent pour la rédaction étroitement liée aux arbitrages du main.
+- Contrôles documentaires : liens locaux et git diff --check ; aucun changement
+  applicatif nouveau, pas de relance build/lint/tests pour ce seul contrat. Le
+  commit focus reprend les vérifications réussies documentées dans son entrée.
+  RUN-008 non lancé ; pas de publication ni commit des nouveaux documents.
+
+
 ## Mise à jour ponctuelle du projet game dev (29 octobre 2026)
 
 - Mandat direct d'Allen : retirer le lien GitHub de Milady's Knight jusqu'à sa
