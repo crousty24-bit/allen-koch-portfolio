@@ -6,6 +6,7 @@ import { Footer } from './components/Footer/Footer'
 import { Hero } from './components/Hero/Hero'
 import { Navbar } from './components/Navbar/Navbar'
 import { ProjectsSection } from './components/ProjectsSection/ProjectsSection'
+import { ServicesSection } from './components/ServicesSection/ServicesSection'
 import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
 import { readStoredPreference, writeStoredPreference } from './utils/storage'
@@ -137,6 +138,7 @@ function App() {
       />
       <main id="main-content" tabIndex={-1}>
         <Hero language={language} />
+        <ServicesSection language={language} />
         <ProjectsSection language={language} />
         <StackSection language={language} />
         <AboutSection language={language} />

@@ -43,6 +43,7 @@ export const copy = {
       },
     },
     nav: {
+      services: 'Services',
       home: 'Accueil',
       projects: 'Projets',
       stack: 'Stack',
@@ -68,6 +69,10 @@ export const copy = {
       viewProject: 'Voir le projet',
       github: 'GitHub',
       view: 'Voir',
+    },
+    services: {
+      eyebrow: 'Services',
+      heading: 'Deux prestations',
     },
     skipLink: 'Aller au contenu',
     stack: {
@@ -118,6 +123,7 @@ export const copy = {
       },
     },
     nav: {
+      services: 'Services',
       home: 'Home',
       projects: 'Projects',
       stack: 'Stack',
@@ -143,6 +149,10 @@ export const copy = {
       viewProject: 'View project',
       github: 'GitHub',
       view: 'View',
+    },
+    services: {
+      eyebrow: 'Services',
+      heading: 'Two services',
     },
     skipLink: 'Skip to content',
     stack: {

@@ -60,7 +60,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | done |
 | RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | done |
 | RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | done |
-| RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | planned |
+| RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | done |
 | RUN-015 | P1 | Projets personnels, clients et game dev | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | planned |
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | planned |
 | RUN-017 | P1 | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
@@ -341,13 +341,21 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 
 ## RUN-014 — Services / prestations
 
-- Passe A : structurer offres, besoins, livrables, limites et CTA sur contenu d'Allen.
+- Passe A : reprendre les deux prestations provisoires validées en RUN-005,
+  un titre et un paragraphe chacune, sans catalogue contractuel ni offre doublonnée.
 - Passe B : intégrer une ou plusieurs sections dédiées sur la page unique,
   données FR/EN et ancres vers contact/devis.
 - Passe C : vérifier lisibilité, cohérence offres/formulaire, responsive et SEO.
 - Risques : promesses non démontrées ou catalogue technique sans bénéfice explicite.
 - Acceptation : services clairement accessibles, contenu validé et CTA fonctionnels ;
   pas de tarif, gain ou délai inventé.
+- Périmètre intégré : section Services avant Projets, lien ajouté simultanément
+  dans la liste partagée header/footer ; données FR/EN typées et CTA commun Contact.
+  Composition de Claude Sonnet 5.5, intégration et QA Codex ; aucune dépendance
+  ni nouveau composant de base. Présentation About et neuf projets conservés.
+- Clôture locale le 29 octobre : build/lint/Biome, 43 tests, 22 scénarios Chrome
+  et contrôles documentaires réussis ; débordement 320 px corrigé et captures
+  mobile/desktop relues. RUN-015 reste planifié ; preuves et limites au journal.
 
 ## RUN-015 — Projets personnels, clients et game dev
 

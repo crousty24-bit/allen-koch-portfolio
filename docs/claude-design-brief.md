@@ -49,6 +49,16 @@ leurs RUN : Services avec son lien en RUN-014, trois espaces Projets en RUN-015,
 timeline About en RUN-021. Conserver ces comportements pendant l'intégration.
 Aucun changement de palette, typographie ou présentation About dans RUN-012.
 
+## Relais RUN-014 — Services intégré
+
+Claude Sonnet 5.5 a spécifié deux lignes à filets : titre à gauche, paragraphe à
+droite sur grille desktop, empilés sous 1040 px ; heading « Deux prestations » /
+“Two services”, CTA commun Contact. Codex a intégré les textes validés, la section
+et le lien partagé Services. La grille devient réellement une colonne sous
+1040 px pour éviter le débordement à 320 px observé au contrôle. Pas de nouvelles
+cartes, d'icônes, de dépendances ou de composants UI de base. Les contrôles et
+limites sont dans le journal ; ce relais ne lance pas les espaces projets.
+
 ## Mission initiale
 
 Concevoir la refonte visuelle globale et totale du portfolio Allen Koch vers une activité de développeur IA

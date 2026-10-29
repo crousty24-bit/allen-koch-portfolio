@@ -904,3 +904,23 @@ restent à implémenter dans leurs RUN. Les deux statuts sont corrigés en RUN-0
   nouvelle section ni composant UI ; Services arrive avec son lien en RUN-014.
 
 Les résultats et limites des contrôles figurent dans le journal de RUN-012.
+
+
+## R23. Section Services (29 octobre 2026, RUN-014)
+
+- Composition spécifiée par Claude Sonnet 5.5, intégrée par Codex : deux lignes
+  éditoriales à filets, sans carte ni icône. Grille desktop 12 colonnes : titres
+  en 1–5, paragraphes en 7–12 ; une colonne sous 1040 px.
+- Eyebrow Services, heading « Deux prestations » / “Two services”, un CTA commun
+  vers Contact après les deux lignes. Classes de titre, reveal et bouton existantes
+  réutilisées ; palette/thèmes et typographie inchangés.
+- Paragraphes repris sans modification de la base FR/EN validée en RUN-005.
+  Les prestations restent temporaires ; aucun détail contractuel ou chiffre ajouté.
+- Section placée entre Hero et Projets ; entrée Services activée simultanément
+  dans la navigation partagée. Le compteur CSS suit automatiquement l'ordre DOM.
+- Correction issue du contrôle : grille à une seule colonne réelle sous 1040 px,
+  car conserver douze colonnes et onze espacements de 2.5rem débordait à 320 px.
+  La composition desktop reste celle spécifiée par Claude.
+
+Preuves et limites de rendu dans le journal de RUN-014 ; présentation About et
+neuf projets inchangés, aucun nouveau composant de base ni dépendance.

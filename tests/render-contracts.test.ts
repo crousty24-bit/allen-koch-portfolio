@@ -8,9 +8,11 @@ import { Hero } from '../src/components/Hero/Hero'
 import { Navbar } from '../src/components/Navbar/Navbar'
 import { ProjectCard } from '../src/components/ProjectCard/ProjectCard'
 import { ProjectsSection } from '../src/components/ProjectsSection/ProjectsSection'
+import { ServicesSection } from '../src/components/ServicesSection/ServicesSection'
 import { copy, type Language } from '../src/data/i18n/i18n'
 import { navItems } from '../src/data/links/navigation'
 import type { Project } from '../src/data/projects/projects'
+import { services } from '../src/data/services/services'
 
 const page = renderToStaticMarkup(createElement(App))
 const languages: Language[] = ['fr', 'en']
@@ -43,7 +45,32 @@ describe('page render contracts', () => {
     ]) {
       expect(page).toMatch(new RegExp(`id="${id}"[^>]*tabindex="-1"`))
     }
-    expect(page).not.toContain('href="#services"')
+    expect(
+      [
+        ...page.matchAll(
+          /<section[^>]*id="(home|services|projects|stack|about|contact)"/g,
+        ),
+      ].map((match) => `#${match[1]}`),
+    ).toEqual(navItems.map((item) => item.href))
+  })
+
+  it.each(
+    languages,
+  )('renders two services and one contact CTA in %s', (language) => {
+    const html = renderToStaticMarkup(
+      createElement(ServicesSection, { language }),
+    )
+    expect(html.match(/<h3[\s>]/g)).toHaveLength(2)
+    expect(html.match(/<a[\s>]/g)).toHaveLength(1)
+    expect(html).toContain(
+      `href="#contact">${renderToStaticMarkup(copy[language].hero.contactCta)}</a>`,
+    )
+    for (const service of services) {
+      expect(html).toContain(renderToStaticMarkup(service.title[language]))
+      expect(html).toContain(
+        renderToStaticMarkup(service.description[language]),
+      )
+    }
   })
 
   it('initially renders featured projects without mounting the extra cards', () => {

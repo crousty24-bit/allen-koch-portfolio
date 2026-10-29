@@ -86,3 +86,18 @@
 .about-journey__header {
   position: static;
 }
+
+.services__item {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 1rem;
+  padding: 2rem 0;
+}
+
+.services__title,
+.services__text {
+  grid-column: 1 / -1;
+}
+
+.services__text {
+  max-width: 40rem;
+}

@@ -882,3 +882,64 @@ copier de secret, donnée client ou résultat supposé.
   Hero desktop/mobile, FR clair et EN sombre notamment. 43 liens documentaires
   locaux valides et diff sans erreur d'espacement. Aucun RUN actif à la fin ;
   RUN-014 est le prochain lot d'intégration visuelle, sous direction Claude.
+
+
+## RUN-014 : intégration des deux prestations (29 octobre 2026)
+
+- Mandat : Allen demande la suite après RUN-012 ; départ propre sur
+  feature/run-005-offres-contenus à af85a1d. Seul RUN actif, transitions
+  in_progress puis verify. Les prestations restent provisoires pour le design.
+- Contribution visuelle réelle : Claude Code 2.1.287 authentifié, alias sonnet,
+  effort demandé medium ; sortie JSON confirme claude-sonnet-5-5. Contrat borné
+  en lecture seule/texte, outils désactivés : composition et CSS indicatifs sur
+  extraits ciblés, aucun fichier partagé modifié par Claude. Bénéfice attendu :
+  respecter sa propriété du design et limiter le transfert ; aucune économie de
+  tokens mesurée. Codex main assure seul l'intégration et les contrôles, sans
+  présenter sa relecture comme indépendante.
+- Design : deux lignes à filets, titres à gauche et paragraphes à droite en
+  desktop, empilés sous 1040 px, heading Deux prestations / Two services,
+  un CTA commun Contact. Système monochrome, typographie et effets existants.
+  Les dimensions suggérées par Claude n'étaient pas des mesures navigateur.
+- Fichiers : nouveau ServicesSection, données Service typées et CSS services ;
+  insertion App entre Hero et Projets, lien Services partagé Navbar/Footer,
+  deux clés i18n de heading et libellé navigation, responsive et import CSS.
+  Aucun composant de base nouveau : lien .button existant réutilisé, aucune
+  première intégration shadcn ni ajout de dépendance nécessaire.
+- Contenu : quatre paragraphes comparés par assertion à la version FR/EN
+  validée du plan, identiques. Blocs About comparés à HEAD, intacts ; données
+  projets/parcours et AboutJourney sans diff. Pas de catalogue contractuel,
+  chiffre, backend, formulaire ni nouvelle promesse ajouté.
+- Tests versionnés : contrats de contenu étendus aux identités/textes Services ;
+  rendu de deux services et un CTA par langue ; ordre des six sections comparé
+  à la navigation, liens et cibles d'ancres/ARIA existants conservés. L'ancienne
+  assertion interdisant tout lien Services est remplacée lors de son intégration.
+- Contrôles : build/lint/Biome (71 fichiers), tests 43/43 et diff-check réussis.
+  Premier Biome : ordre d'import du test corrigé. Avertissement de build
+  préexistant conservé : responsive-430.css vide. Aucun audit npm pour ce lot
+  sans dépendance ni release.
+- Contrôle navigateur Chrome 156.0.8078.47 avec interface, profils isolés et
+  build production, Playwright en cache : 16 variantes 320×740, 390×844,
+  768×1024, 1440×900, FR/EN et clair/sombre ; quatre cas 1440×300/667×375
+  avec/sans reduced-motion ; deux cas sans observateurs dont stockage bloqué.
+  Accès direct/reload Services, focus clavier, CTA Contact, retour Services,
+  anciennes ancres Projets/About, indication active, cohérence header/footer,
+  alignement des deux lignes, géométrie du menu desktop/paysage et absence de
+  débordement vérifiés. Aucun pageerror dans ces 22 scénarios.
+- Défaut découvert : grille empilée conservant douze colonnes et onze gaps de
+  2.5rem, largeur 440 px dans 280 px disponibles à 320 px. Codex passe la grille
+  à une colonne réelle sous 1040 px, puis tous les scénarios passent ; desktop
+  inchangé par ce correctif. Une fermeture du navigateur a interrompu le premier
+  passage après les 16 variantes ; les six cas restants ont été repris et réussis.
+- Captures de section conservées pour les 16 variantes ; rendu mobile FR clair
+  et desktop FR clair inspecté par le main. Scripts check.mjs/inspect.mjs,
+  results.json, captures et contrat/retour Claude design-prompt.txt/design-result.json
+  hors dépôt dans /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a1873c-4579-7f52-9eb8-bba8ca3bc53b/run014/.
+- Limites : pas de Safari/Firefox, téléphone physique, lecteur d'écran, nouveau
+  Lighthouse ni validation humaine finale du rendu. Les scripts navigateur ne
+  sont pas une suite portable intégrée à la CI ; pas d'audit SEO/réseau distant.
+  Les espaces projets, la timeline et le formulaire restent dans leurs RUN.
+  Aucun commit, push, déploiement ou autre RUN exécuté.
+
+- Clôture locale : RUN-014 done après relecture, 43 liens documentaires locaux
+  valides, nouveaux fichiers explicitement inspectés et diff sans erreur.
+  Aucun RUN actif ; RUN-015 reste planifié, sans lancement automatique.

@@ -123,7 +123,7 @@ mandate RUN-011. Architecture retenue : Accueil `#home`, Services `#services`,
 Projets `#projects`, Stack `#stack`, À propos `#about`, Contact `#contact`, avec
 `#main-content` pour l'évitement. Les trois espaces de projets restent sous une
 seule entrée Projets. Présentation About actuelle inchangée. Services et son lien
-seront activés ensemble en RUN-014, sans section vide entre les RUN.
+sont intégrés ensemble en RUN-014, sans section vide intermédiaire.
 Même URL et mêmes ancres FR/EN ; canonical racine conservée, pas de version EN
 indexable distincte promise. Le [contrat d'architecture](docs/refonte-plan.md#run-011--architecture-des-sections-et-ancres)
 détaille les CTA et critères navigateur pour RUN-012/014/015/021.
@@ -132,6 +132,10 @@ le secondaire aux projets et les libellés FR/EN. La section courante est soulig
 avec `aria-current="location"` ; les cibles d'ancres sont focalisables et le menu
 mobile se ferme aussi sur la marque. Présentation About, parcours, catalogue et
 préférences locales sont préservés. Aucun nouveau composant ni dépendance.
+RUN-014 intègre la section Services avant Projets : deux lignes éditoriales à
+filets, titres et paragraphes FR/EN validés, CTA commun vers Contact. Design de
+Claude Sonnet 5.5, intégration/QA Codex ; contenu toujours provisoire, aucune
+nouvelle dépendance. Les espaces Projets et la timeline restent à réaliser.
 Aucun RUN suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).

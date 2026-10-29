@@ -101,3 +101,10 @@ Les scénarios initiaux utilisent une nouvelle navigation, les préférences ne 
 initialisées qu'une fois par contexte de test pour permettre le contrôle du reload.
 Les résultats datés et scripts externes sont référencés au journal ; la suite Node
 ne simule pas les effets React ni les événements du navigateur.
+
+
+RUN-014 ajoute Services aux contrats de contenu/rendu : deux prestations et un
+CTA Contact par langue, ordre des sections identique à la navigation. Contrôler
+la grille à 320 px et le menu à six entrées, y compris en paysage et à 768 px ;
+les résultats datés et captures sont au journal. Le contenu reste une base
+provisoire pour le design, sans dépendre d'un formulaire opérationnel.
