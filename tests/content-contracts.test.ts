@@ -36,9 +36,10 @@ describe('published content contracts', () => {
 
   it.each(languages)('has nonempty published text in %s', (language) => {
     const strings = [
-      copy[language].hero.heading,
       copy[language].hero.role,
-      copy[language].contact.heading,
+      copy[language].hero.subtitle,
+      copy[language].about.subheading,
+      copy[language].contact.subheading,
       ...services.flatMap((service) => [
         service.title[language],
         service.description[language],

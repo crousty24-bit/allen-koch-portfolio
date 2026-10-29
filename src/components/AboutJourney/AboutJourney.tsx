@@ -83,10 +83,7 @@ export function AboutJourney({ language }: AboutJourneyProps) {
       className="about-journey reveal"
     >
       <header className="about-journey__header">
-        <div>
-          <p className="eyebrow">Timeline</p>
-          <h2 id="about-journey-title">My Coding Journey</h2>
-        </div>
+        <h3 id="about-journey-title">My Coding Journey</h3>
         <div className="about-journey__controls">
           <button
             aria-controls="about-journey-list"
@@ -140,7 +137,7 @@ export function AboutJourney({ language }: AboutJourneyProps) {
                   {item.dateLabel[language]}
                 </p>
               ) : null}
-              <h3 className="about-journey__title">{item.title[language]}</h3>
+              <h4 className="about-journey__title">{item.title[language]}</h4>
               <p className="about-journey__description">
                 {item.description[language]}
               </p>

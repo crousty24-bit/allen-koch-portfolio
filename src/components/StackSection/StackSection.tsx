@@ -13,8 +13,7 @@ export function StackSection({ language }: StackSectionProps) {
     <section className="section stack-section" id="stack" tabIndex={-1}>
       <div className="section-heading section-heading--split reveal">
         <div>
-          <p className="eyebrow eyebrow--section">{stackCopy.eyebrow}</p>
-          <h2>{stackCopy.heading}</h2>
+          <h2 className="section-title">{stackCopy.heading}</h2>
           <p>{stackCopy.text}</p>
         </div>
       </div>

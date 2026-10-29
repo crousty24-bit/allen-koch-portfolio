@@ -28,8 +28,7 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
     <section className="section projects-section" id="projects" tabIndex={-1}>
       <div className="section-heading section-heading--split reveal">
         <div>
-          <p className="eyebrow eyebrow--section">{projectsCopy.eyebrow}</p>
-          <h2>{projectsCopy.heading}</h2>
+          <h2 className="section-title">{projectsCopy.heading}</h2>
           <p>{projectsCopy.text}</p>
         </div>
       </div>

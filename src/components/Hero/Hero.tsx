@@ -77,20 +77,11 @@ export function Hero({ language }: HeroProps) {
       <div className="hero__content reveal">
         <h1 className="hero__title">
           <span className="hero__name">{heroCopy.name}</span>
-          <span className="hero__role">{heroCopy.role}</span>
         </h1>
 
         <div className="hero__body">
           <div className="hero__intro">
-            <h2 className="hero__heading">
-              {heroCopy.heading}
-              {heroCopy.highlight ? (
-                <>
-                  {' '}
-                  <span className="hero__highlight">{heroCopy.highlight}</span>
-                </>
-              ) : null}
-            </h2>
+            <h2 className="hero__heading">{heroCopy.role}</h2>
 
             <p className="hero__subtitle">{heroCopy.subtitle}</p>
           </div>

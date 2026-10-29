@@ -3,12 +3,14 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import App from '../src/App'
 import { AboutSection } from '../src/components/AboutSection/AboutSection'
+import { ContactSection } from '../src/components/ContactSection/ContactSection'
 import { Footer } from '../src/components/Footer/Footer'
 import { Hero } from '../src/components/Hero/Hero'
 import { Navbar } from '../src/components/Navbar/Navbar'
 import { ProjectCard } from '../src/components/ProjectCard/ProjectCard'
 import { ProjectsSection } from '../src/components/ProjectsSection/ProjectsSection'
 import { ServicesSection } from '../src/components/ServicesSection/ServicesSection'
+import { StackSection } from '../src/components/StackSection/StackSection'
 import { copy, type Language } from '../src/data/i18n/i18n'
 import { navItems } from '../src/data/links/navigation'
 import {
@@ -57,6 +59,60 @@ describe('page render contracts', () => {
         ),
       ].map((match) => `#${match[1]}`),
     ).toEqual(navItems.map((item) => item.href))
+  })
+
+  it.each(languages)('renders the heading hierarchy in %s', (language) => {
+    const pageCopy = copy[language]
+    const hero = renderToStaticMarkup(createElement(Hero, { language }))
+    expect(hero).toContain(
+      `<h1 class="hero__title"><span class="hero__name">${renderToStaticMarkup(pageCopy.hero.name)}</span></h1>`,
+    )
+    expect(hero).toContain(
+      `<h2 class="hero__heading">${renderToStaticMarkup(pageCopy.hero.role)}</h2>`,
+    )
+    expect(hero).not.toContain('hero__role')
+    const sections = [
+      ServicesSection,
+      ProjectsSection,
+      StackSection,
+      AboutSection,
+      ContactSection,
+    ].map((section) =>
+      renderToStaticMarkup(createElement(section, { language })),
+    )
+    const titles = sections.map(
+      (html) =>
+        html.match(/<h2 class="section-title"[^>]*>([^<]*)<\/h2>/g) ?? [],
+    )
+    // The "01 /" prefix comes from a CSS counter on .section-title, one per section.
+    expect(titles.map((matches) => matches.length)).toEqual([1, 1, 1, 1, 1])
+    expect(titles.map((matches) => matches[0].replace(/<[^>]+>/g, ''))).toEqual(
+      [
+        pageCopy.services.heading,
+        pageCopy.projects.heading,
+        pageCopy.stack.heading,
+        pageCopy.about.heading,
+        pageCopy.contact.heading,
+      ].map((label) => renderToStaticMarkup(label)),
+    )
+    expect(pageCopy.stack.heading).toBe('Stack & skills')
+    expect(sections[0]).toContain('id="services-title"')
+    for (const html of sections) expect(html).not.toContain('eyebrow')
+    const [, , , about, contact] = sections
+    expect(about).toContain(
+      `<h3 class="about-content__subtitle">${renderToStaticMarkup(pageCopy.about.subheading)}</h3>`,
+    )
+    expect(about).toContain(
+      `aria-label="${renderToStaticMarkup(pageCopy.about.heading)}"`,
+    )
+    expect(about).toContain(
+      '<h3 id="about-journey-title">My Coding Journey</h3>',
+    )
+    expect(about.match(/<h4 class="about-journey__title">/g)).toHaveLength(12)
+    expect(about).not.toMatch(/<h2(?! class="section-title")/)
+    expect(contact).toContain(
+      `<h3 class="contact-panel__title">${renderToStaticMarkup(pageCopy.contact.subheading)}</h3>`,
+    )
   })
 
   it.each(
