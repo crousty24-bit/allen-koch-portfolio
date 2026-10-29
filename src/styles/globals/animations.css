@@ -12,7 +12,8 @@
     transform 600ms var(--ease-out);
 }
 
-.section--scroll-fade.section--scroll-visible {
+.section--scroll-fade.section--scroll-visible,
+.section--scroll-fade:focus-within {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }

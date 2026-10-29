@@ -53,8 +53,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
 | RUN-002 | P1 | Alertes de dépendances de développement | Codex ; compétence Security | RUN-013 | done |
-| RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | RUN-013 | planned |
-| RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | RUN-013 | planned |
+| RUN-003 | P1 | Visibilité des sections en fenêtre courte | Codex ; Frontend et Test/QA | RUN-013 | done |
+| RUN-004 | P2 | Activation du typage strict | Codex ; Frontend | RUN-013 | done |
 | RUN-005 | P1 | Offres, contenu et preuves réelles | Allen + Codex | RUN-013 | planned |
 | RUN-011 | P1 | Architecture des sections et ancres | Codex ; SEO ; contenu Allen | RUN-005, RUN-010 | planned |
 | RUN-012 | P1 | Navigation par ancres et socle one-page | Codex ; Claude UI | RUN-011, RUN-013 | planned |
@@ -109,8 +109,10 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : section invisible, régression clavier/ancres ou effets mobile/desktop.
 - Acceptation : reproduction avant/après à 1440 × 300 et 1440 × 900 px ; mobile,
   reduced-motion, ancres/clavier et contrôles applicatifs vérifiés.
-- Dette reportée de RUN-013 : A04 reste reproduit sur Projets à 1440 × 500 px.
-  Sa résolution relève de ce RUN ; RUN-007 en vérifiera l'intégration avant release.
+- Clôture locale le 29 octobre 2026 : A04 reproduit puis corrigé à 1440 × 300/500 ;
+  témoin à 1440 × 900 et mobile vérifiés. 19 scénarios Chrome réussis, contrôles
+  applicatifs verts et revue indépendante sans constat actionnable ; preuves au
+  journal. RUN-007 en vérifiera l’intégration avant release.
 - Relais : Frontend → Test/QA → Codex avec preuve navigateur et limites.
 
 ## RUN-004 — TypeScript strict
@@ -119,7 +121,10 @@ Le formulaire reste une maquette sans envoi à ce stade.
   et tests ; corriger les erreurs éventuelles sans refactorisation hors sujet.
 - Risques : assertions ou exceptions de configuration masquant de vraies erreurs.
 - Acceptation : build, lint, Biome et tests réussis ; aucune erreur ignorée pour
-  obtenir le résultat. L'audit n'a vérifié strict ponctuellement que pour l'application.
+  obtenir le résultat.
+- Clôture locale le 29 octobre 2026 : `strict: true` dans les trois tsconfig,
+  aucun correctif de code nécessaire ; build/lint/Biome et 13 tests réussis.
+  Preuves et limites au journal ; aucun RUN suivant lancé automatiquement.
 
 ## RUN-005 — Offres et cas
 
@@ -228,6 +233,8 @@ Le formulaire reste une maquette sans envoi à ce stade.
   navigation et pied de page cohérents.
 - Passe B : intégrer la navigation desktop/mobile, les états actifs et liens internes,
   le focus, l'accès direct et le rechargement avec fragment.
+  Cas observé pendant RUN-003 : chargement initial de `/#projects` à scrollY=0 ;
+  les liens après montage fonctionnent. Reproduire et traiter ici l’accès initial.
 - Passe C : mettre à jour les liens/ancres selon RUN-011 et vérifier les parcours
   clavier et navigateur, sans publication automatique.
 - Risques : régression de navigation, section inaccessible, préférences incohérentes.

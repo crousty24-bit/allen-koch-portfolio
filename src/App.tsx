@@ -54,7 +54,10 @@ function App() {
   }, [language])
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      !('IntersectionObserver' in window)
+    ) {
       return
     }
 
@@ -78,8 +81,7 @@ function App() {
         })
       },
       {
-        rootMargin: '0px 0px -18%',
-        threshold: 0.12,
+        threshold: 0,
       },
     )
 
@@ -87,7 +89,15 @@ function App() {
       sectionObserver.observe(section)
     })
 
-    return () => sectionObserver.disconnect()
+    return () => {
+      sectionObserver.disconnect()
+      scrollSections.forEach((section) => {
+        section.classList.remove(
+          'section--scroll-fade',
+          'section--scroll-visible',
+        )
+      })
+    }
   }, [])
 
   return (

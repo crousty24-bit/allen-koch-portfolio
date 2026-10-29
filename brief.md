@@ -75,7 +75,10 @@ complet et production ne signalent aucune vulnérabilité, et les contrôles pas
 y compris Biome global avec la configuration d’exclusion des exports Stitch déjà
 présente au départ de ce RUN. Les preuves datées sont au journal.
 Les nouvelles sections, contenus définitifs, ancres cibles et traitement du
-formulaire restent à réaliser. A04 demeure une dette de RUN-003. Aucun RUN
+formulaire restent à réaliser. RUN-003 et RUN-004 sont également clôturés
+localement le 29 octobre : A04 corrigé et vérifié en navigateur, typage strict
+activé pour l’application, l’outillage et les tests. L’accès initial avec fragment
+reste à traiter en RUN-012 ; RUN-007 vérifiera l’intégration globale. Aucun RUN
 suivant n’est lancé automatiquement.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).

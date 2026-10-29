@@ -490,3 +490,84 @@ copier de secret, donnée client ou résultat supposé.
   aucune modification de sa configuration dans RUN-002.
 - Relais : RUN-002 `done` localement ; RUN-003 reste `planned`. Aucun commit,
   push, déploiement ou release effectué ; aucun autre RUN exécuté.
+
+## RUN-003 : visibilité des longues sections (29 octobre 2026)
+
+- Mandat : Allen valide RUN-002, indique l’avoir commité et demande RUN-003,
+  puis RUN-004 sur la même branche si son coût reste borné. Départ vérifié :
+  `feature/run-002-dependencies` propre, `75dbce1`.
+- Périmètre : observateur dans `src/App.tsx`, visibilité clavier dans
+  `animations.css`, suivi documentaire ; aucun contenu, asset, thème, dépendance
+  ou nouvelle ancre. Contrats : fondu 600 ms/16 px/une fois, mobile et
+  reduced-motion directement visibles, préférences FR/EN et sombre/clair.
+- Cause : seuil de 12 % appliqué à une section de 3432 px, avec une marge
+  d’observation négative ; le ratio requis ne tient pas dans une fenêtre courte.
+  Reproduction sur build du code de `75dbce1`, servi séparément : après molette,
+  Projets garde une opacité de 0 à 1440×300 et 1440×500, contre 1 à 1440×900.
+- Correction : seuil 0 sans marge, apparition dès l’intersection, visibilité
+  préservée si `IntersectionObserver` est absent, nettoyage des classes lors du
+  démontage de l’effet. `:focus-within` évite de garder une section transparente
+  lorsqu’un de ses éléments reçoit le focus. Effet desktop attendu : déclenchement
+  plus tôt ; composition inchangée. Styles mobile/reduced-motion inchangés.
+- Premières preuves après correction : opacité 1 à 1440×300/500/900,
+  390×844 et 667×375 après molette ; captures comparées et inspectées.
+  Build, ESLint, Biome (64 fichiers) et 13 tests réussis. Un premier Biome a
+  signalé le format du nettoyage des classes ; corrigé avant le passage réussi.
+- Vérification navigateur : Chrome 156.0.8078.47 avec interface, profil isolé,
+  contrôle par Playwright déjà disponible dans le cache, sans dépendance ajoutée.
+  Les assertions et captures sont conservées hors dépôt dans
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a186ed-3611-71f1-a7fa-5368c12b732f/run003/`.
+- Protocole corrigé avant les mesures retenues : le premier chargement direct
+  avec hash restait à scrollY=0, sans atteindre la section. La reproduction
+  retenue utilise la molette ; les ancres sont testées après montage React.
+  Le premier contrôle mobile lisait la géométrie avant le défilement doux :
+  il attend désormais à la fois l’intersection avec l’écran et l’opacité finale.
+- Intervenants : Codex main pour diagnostic, correction, intégration et tests ;
+  sous-agent `review_scroll`, `gpt-6-luna`, effort demandé medium, revue
+  indépendante en lecture seule de App/CSS et styles mobile/reduced-motion.
+  Bénéfice attendu : contrôle borné des cas de cycle de vie et d’accessibilité.
+  Retour : aucun défaut actionnable, pas de test navigateur par le relecteur ;
+  retour confronté au diff par le main. Aucune économie de tokens mesurée.
+- Limite distincte observée : chargement initial d’une URL `/#projects` sans
+  défilement vers la cible ; traitement de navigation réservé à RUN-012.
+  Ni téléphone physique, ni lecteur d’écran, ni nouvel audit Lighthouse.
+  Avertissement de build préexistant : `responsive-430.css` vide.
+- Matrice finale : 19 scénarios réussis (5 tailles avec/sans réduction des
+  animations, 8 combinaisons FR/EN et clair/sombre à 1440×300 et 390×844,
+  et 1 cas sans observateur à 1440×300). Ancres Projets/Stack/About/Contact
+  après montage, défilement à la molette, activation clavier et focus dans About
+  vérifiés ; aucune erreur JavaScript/console ni débordement horizontal détectés.
+  Assertions : `regression.mjs`, résultats `regression-results.json`, comparaison
+  `check.mjs`, `before.json`/`after.json` et captures dans le dossier ci-dessus.
+  Ces contrôles ne sont pas une commande portable du dépôt.
+- État : `done` localement. Aucun commit, push ou déploiement. RUN-004 suit
+  sur la même branche conformément au mandat, sans autre RUN actif.
+
+
+## RUN-004 : activation TypeScript strict (29 octobre 2026)
+
+- Mandat : suite de RUN-003 autorisée par Allen sur la même branche si le coût
+  reste borné. Le contrôle préalable `tsc -p … --strict` avec caches temporaires
+  distincts réussissait pour les trois configurations avant modification : aucun
+  motif de report, bénéfice immédiat avant les ajouts de phase 2.
+- RUN-003 clôturé avant activation de RUN-004 ; transitions `in_progress`,
+  `verify`, puis `done`. Périmètre : une option `strict: true` ajoutée à
+  `tsconfig.app.json`, `tsconfig.node.json`, `tsconfig.test.json`.
+  Aucun changement de code, test, dépendance, assertion ou directive d’ignorance ;
+  aucun contournement ajouté. Les autres réglages existants restent inchangés.
+- Vérification : build (compilation des trois projets référencés), lint, Biome
+  (64 fichiers), 13/13 tests réussis après activation. Options strict effectives
+  contrôlées via l’API du compilateur installé (`parseJsonConfigFileContent` et
+  `getStrictOptionValue`) pour les trois projets. La première assertion utilisait
+  à tort `tsc --showConfig` comme s’il développait toutes les options implicites :
+  ce contrôle a été corrigé pour interroger leur valeur effective.
+- Build final : mêmes fichiers CSS/JS et mêmes tailles que RUN-003 ; l’activation
+  du typage ne change pas le bundle généré. Aucun nouveau passage navigateur
+  pour ces seules options de compilation ; les 19 scénarios de RUN-003 couvrent
+  ce même code livré. Avertissement CSS vide préexistant conservé.
+- Intervenant : Codex main, relecture par l’implémenteur. Pas de sous-agent pour
+  ces trois lignes de configuration : transfert et intégration sans bénéfice
+  attendu. La revue indépendante de RUN-003 ne porte pas sur RUN-004.
+- État : `done` localement sur `feature/run-002-dependencies`. Aucun commit,
+  push, déploiement ou nouveau RUN exécuté. RUN-005 reste planifié et nécessitera
+  les arbitrages de contenu d’Allen ; limites navigateur consignées dans RUN-003.
