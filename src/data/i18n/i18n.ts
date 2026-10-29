@@ -25,7 +25,7 @@ export const copy = {
       linksHeading: 'Liens',
     },
     hero: {
-      title: 'Allen Koch | Développeur Web | Alsace, France',
+      title: 'Allen Koch | Développeur Fullstack & IA | Alsace, France',
       name: 'Allen Koch',
       role: 'Développeur Web / Alsace, France',
       heading:
@@ -72,7 +72,7 @@ export const copy = {
       showAllLabel: 'Afficher tous les projets personnels',
       hideExtraLabel: 'Masquer les projets personnels supplémentaires',
       ctaText: 'Une idée de projet ?',
-      ctaLink: 'Se connecter',
+      ctaLink: 'Me contacter',
       viewProject: 'Voir le projet',
       github: 'GitHub',
       view: 'Voir',
@@ -112,7 +112,7 @@ export const copy = {
       linksHeading: 'Links',
     },
     hero: {
-      title: 'Allen Koch | Web Developer | Alsace, France',
+      title: 'Allen Koch | Fullstack & AI Developer | Alsace, France',
       name: 'Allen Koch',
       role: 'Web Developer / Alsace, France',
       heading:

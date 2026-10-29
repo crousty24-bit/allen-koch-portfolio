@@ -1168,3 +1168,83 @@ copier de secret, donnée client ou résultat supposé.
 
 - Clôture : RUN-021 done, 45 liens documentaires locaux valides et diff-check
   réussi ; aucun RUN actif. La passe est terminée, sans lancement de RUN-007.
+
+
+## RUN-007 : intégration technique et relais visuel Claude (29 octobre 2026)
+
+- Mandat : nouvelle branche feature commune à RUN-007, RUN-008 puis aux correctifs
+  et RUN supplémentaires donnés par Allen. Commencer par RUN-007 ; préparer un
+  contrat Claude utile qu’Allen exécutera à part. Départ propre sur develop,
+  commit e6261e6 ; création de `feature/refonte-integration-visuelle`, sans copie
+  de changements ni autre worktree. RUN-007 seul actif, maintenant verify ;
+  RUN-008 reste planned. Aucun mandat de publication.
+- Périmètre : vérifier l’assemblage déjà présent, les six ancres, FR/EN et thèmes,
+  catalogue et contact email ; harmoniser les métadonnées et isoler la revue
+  graphique. Préservés : contenu About, deux prestations, neuf projets dont un
+  jeu, clients masqués sans cas autorisé, préférences et CSS natif. Aucune
+  dépendance ni nouveau composant de base/shadcn, formulaire ou fonctionnalité.
+- Corrections minimales : titres HTML/OG/Twitter et runtime FR/EN alignés sur
+  Fullstack & IA ; jobTitle JSON-LD cohérent. CTA Projets français « Se connecter »
+  remplacé par « Me contacter », destination #contact inchangée. Description,
+  canonical racine et métadonnées sociales FR conservées conformément à RUN-011.
+- Relecture ciblée indépendante : `seo_run007`, gpt-6-luna, effort demandé medium,
+  lecture seule index/i18n/projets/assets/brief. Bénéfice attendu : inventaire SEO
+  borné parallélisable et second avis ; pas d’économie mesurée. Titres, ancien
+  asset OG et date sitemap signalés ; constats confrontés aux fichiers par Codex.
+  Pas de navigateur/réseau ni d’édition par le sous-agent. Le main applique et
+  relit ses corrections ; aucune revue indépendante globale de cette refonte.
+- Image OG inspectée : ancien fond bleu/violet, mention « junior », 1200×630.
+  Relais dans `docs/handoffs/run-007-claude-coherence-visuelle.md` : revue intégrée
+  et corrections graphiques ciblées à la direction existante, nouvelle image
+  sociale avec nouvelle URL et références OG/Twitter/JSON-LD concordantes.
+  Contrat préparé, aucun message envoyé à Claude, aucun retour reçu ; Allen
+  exécute à part. Fichiers et limites d’écriture explicites, retour dans un fichier
+  distinct ; Codex reprend ensuite pour QA/intégration et statut final.
+- Sitemap : lastmod 2026-07-01 conservé en attendant de connaître la publication,
+  comme prévu par RUN-011 ; RUN-008 devra confirmer/actualiser ou retirer cette
+  date. Aucun changement de date prétendant une publication de la refonte.
+- Contrôles après correctifs : build, lint, Biome (71 fichiers), 47/47 tests et
+  git diff --check réussis. Avertissement préexistant responsive-430.css vide.
+  Node v24.22.1, npm 11.19.1. Pas de nouveau test de logique pour ces textes
+  statiques ; contrats de rendu existants et contrôle navigateur exécutés.
+- Skill browser-testing-with-devtools lu et appliqué pour guider la vérification ;
+  MCP DevTools indisponible. Repli sur Playwright en cache hors projet et Chrome
+  local, sans installation. Preview production port 4174 : 4173 déjà occupé,
+  processus existant préservé. Chrome 156.0.8078.47, version aussi dans results.json.
+- Matrice Chrome avec interface : 12 cas, 320×740, 390×844, 768×1024, 1440×900,
+  667×375 et 1440×300, chacun en FR clair/animations normales puis EN sombre/reduce.
+  Ordre des sections, projets 4→9→4, absence clients, six ancres directes/rechargées,
+  contenu visible et absence de débordement global, focus cible, fragments encodés
+  ou invalides sans pageerror, lien email, menu Escape/focus, CTA Services au
+  clavier puis Tab dans la section : réussis. Dans chaque cas, bascule vers
+  l’autre langue/thème puis reload : préférence conservée.
+- Deux défauts du premier script exploratoire corrigés sans modification app :
+  initialisation des préférences à chaque reload (remplacée par initialisation
+  unique), navigation fragmentaire pendant un défilement existant (accès direct
+  isolé par navigation de document). Les premiers échecs ne sont pas retenus
+  comme preuve de régression. Matrice finale entièrement réussie.
+- Compléments Chrome headless à 390×844 : stockage normal puis bloqué avec
+  observateur absent ; réglages utilisables, valeurs par défaut après reload si
+  bloqué, menu se ferme sur ancre, Précédent/Suivant natifs, 12 étapes et bouton
+  timeline, aucune animation en reduce. Titres HTML/OG/Twitter concordants après
+  décodage HTML, canonical et JSON-LD vérifiés sur le build. Aucun pageerror.
+- Preuves hors dépôt : check.mjs/results.json, edge-check.mjs/edge-results.json,
+  captures.mjs et PNG dans
+  /mnt/c/Users/allen/.codex/visualizations/2026/10/29/01a18818-6097-76b3-b043-519137ec56be/run007/.
+  Les premières captures full-page comportent des zones lazy hors écran et des
+  artefacts d’animation/en-tête ; privilégier les captures viewport nommées avec
+  largeur-langue-thème-section. Captures destinées au relais, pas une validation
+  graphique finale ni une preuve exhaustive de contraste/accessibilité.
+- Limites : pas de Safari/Firefox, lecteur d’écran ni téléphone physique ; pas de
+  Lighthouse, audit npm ou contrôle d’hébergement/cache effectif dans cette passe.
+  Ces preuves locales ne valident pas une release. Aucun commit, push, merge,
+  déploiement, changement de version ou envoi email. Suite : retour Claude,
+  intégration/QA Codex puis clôture RUN-007 avant démarrage de RUN-008.
+
+- Captures complémentaires terminées : 24 vues écran (six sections à 1440×900
+  FR clair/EN sombre et 390×844 FR sombre/EN clair), Chrome headless avec animations
+  normales. Opacité finale vérifiée avant capture ; inspection visuelle ciblée
+  Services desktop/mobile et Projets desktop, sans anomalie de composition prouvée.
+  Ce contrôle ne remplace pas la revue design Claude prévue. Vérification finale
+  de 71 liens documentaires locaux et git diff --check réussie, nouveau contrat
+  non suivi inclus dans la lecture. Preview 4174 arrêtée après contrôles.

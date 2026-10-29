@@ -150,8 +150,11 @@ automatique mise en place. Un futur test de réception du formulaire est autoris
 vers cette même adresse, mais aucun envoi n'est effectué maintenant. Le formulaire
 reste une évolution future, sans bloquer l'itération visuelle et son assemblage.
 RUN-021 est clôturé localement après correctifs et contrôles ; présentation
-About inchangée. Suite planifiée : RUN-007 pour la cohérence globale.
-Aucun RUN suivant n’est lancé automatiquement.
+About inchangée. Allen lance RUN-007 le 29 octobre sur la nouvelle branche
+`feature/refonte-integration-visuelle`, commune à RUN-008 et aux correctifs/RUN
+supplémentaires qu’il donnera. Le [contrat Claude](docs/handoffs/run-007-claude-coherence-visuelle.md)
+prépare la revue visuelle et la mise à jour de l’image sociale en session séparée.
+RUN-008 reste planifié jusqu’à clôture de RUN-007 ; aucune publication autorisée.
 Le statut et le périmètre de chaque tâche sont dans [runs-workflow.md](runs-workflow.md),
 les preuves d'exécution dans [runs-journal.md](runs-journal.md).
 

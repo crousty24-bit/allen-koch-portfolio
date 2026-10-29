@@ -65,7 +65,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | done |
 | RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
 | RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | done |
-| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | planned |
+| RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | verify |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -180,10 +180,20 @@ Le formulaire reste une maquette sans envoi à ce stade.
 
 ## RUN-007 — Assemblage de la refonte
 
+- Mandat du 29 octobre : Allen demande une nouvelle branche feature pour RUN-007,
+  RUN-008 puis les correctifs/RUN supplémentaires qu’il donnera. Branche commune :
+  `feature/refonte-integration-visuelle`. Commencer par RUN-007 ; relais Claude
+  préparé pour exécution séparée par Allen si nécessaire. RUN-008 reste planned
+  tant que RUN-007 n’est pas terminé. Aucun mandat de publication.
+
 - Périmètre actuel après RUN-016 : contact par email seul. RUN-017 reporté ne
   conditionne pas cet assemblage ; aucune intégration ou validation d'envoi de
   formulaire à prétendre réalisée. Ses critères seront repris si le formulaire est relancé.
 
+- Relais courant : contrôles techniques Codex réussis ; revue visuelle et asset OG
+  confiés au [contrat Claude](docs/handoffs/run-007-claude-coherence-visuelle.md),
+  préparé pour Allen, sans retour reçu. RUN-007 reste verify jusqu’à intégration
+  et contrôles du retour. Preuves et limites dans le journal.
 - Passe A : intégrer les passes visuelles, services, projets et contact sur une page ;
   réserver les fichiers communs, vérifier les préférences globales et ancres.
 - Passe B : harmoniser FR/EN, sombre/clair, contenus, métadonnées/OG/sitemap et assets.

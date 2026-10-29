@@ -77,7 +77,10 @@ et son CTA email actuels, sans formulaire factice. Demandes sans suite : durée
 retenue de 30 jours, sans automatisation de messagerie. L'[étude contact](contact-form-contract.md)
 est conservée pour une éventuelle reprise explicitement mandatée.
 RUN-021 est intégré et contrôlé : rail horizontal, fondu à l’entrée dans l’écran,
-bornes accessibles ; texte About conservé. RUN-007 reste planifié.
+bornes accessibles ; texte About conservé. RUN-007 est lancé le 29 octobre sur
+`feature/refonte-integration-visuelle` ; le [contrat Claude](handoffs/run-007-claude-coherence-visuelle.md)
+porte la revue de cohérence intégrée et l’image sociale. Relais manuel à exécuter
+par Allen, sans contribution Claude encore reçue pour ce RUN.
 
 ## Mission initiale
 
