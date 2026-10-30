@@ -1,70 +1,33 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AboutSection } from './components/AboutSection/AboutSection'
 import { BackToTopButton } from './components/BackToTopButton/BackToTopButton'
 import { ContactSection } from './components/ContactSection/ContactSection'
-import { DecorativeErrorBoundary } from './components/DecorativeErrorBoundary/DecorativeErrorBoundary'
 import { Footer } from './components/Footer/Footer'
 import { Hero } from './components/Hero/Hero'
+import { LegalNotices } from './components/LegalNotices/LegalNotices'
 import { Navbar } from './components/Navbar/Navbar'
 import { ProjectsSection } from './components/ProjectsSection/ProjectsSection'
+import { ServicesSection } from './components/ServicesSection/ServicesSection'
 import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
+import { type LegalPage, legalCopy, legalPaths } from './data/legal/legal'
+import {
+  getSectionCover,
+  getSectionPins,
+  type SectionPin,
+} from './utils/sectionStack'
 import { readStoredPreference, writeStoredPreference } from './utils/storage'
-
-const backgroundParticleColors = ['#2e5bff', '#54d5ff', '#6c04de']
-const desktopParticlesQuery = '(min-width: 761px)'
-const reducedMotionQuery = '(prefers-reduced-motion: reduce)'
-let supportsWebGL: boolean | null = null
-
-const Particles = lazy(() =>
-  import('./components/Particles/Particles').then((module) => ({
-    default: module.Particles,
-  })),
-)
-
-const shouldRenderParticles = () => {
-  if (typeof window === 'undefined') {
-    return false
-  }
-
-  return (
-    window.matchMedia(desktopParticlesQuery).matches &&
-    !window.matchMedia(reducedMotionQuery).matches &&
-    canUseWebGL()
-  )
-}
-
-const canUseWebGL = () => {
-  if (typeof document === 'undefined') {
-    return false
-  }
-
-  if (supportsWebGL !== null) {
-    return supportsWebGL
-  }
-
-  try {
-    const canvas = document.createElement('canvas')
-    supportsWebGL = Boolean(
-      canvas.getContext('webgl2') ?? canvas.getContext('webgl'),
-    )
-  } catch {
-    supportsWebGL = false
-  }
-
-  return supportsWebGL
-}
 
 const getStoredTheme = (): Theme => {
   if (typeof window === 'undefined') {
-    return 'dark'
+    return 'light'
   }
 
   return readStoredPreference(
     () => window.localStorage,
     'theme',
     (value): value is Theme => value === 'dark' || value === 'light',
-    'dark',
+    'light',
   )
 }
 
@@ -81,13 +44,25 @@ const getStoredLanguage = (): Language => {
   )
 }
 
+// Legal links are plain page loads, so the path never changes while mounted.
+const getLegalPage = (): LegalPage | undefined => {
+  if (typeof window === 'undefined') {
+    return undefined
+  }
+
+  const path = window.location.pathname.replace(/\/$/, '')
+  return (Object.keys(legalPaths) as LegalPage[]).find(
+    (page) => legalPaths[page] === path,
+  )
+}
+
+const legalPage = getLegalPage()
+
 function App() {
   const [theme, setTheme] = useState<Theme>(getStoredTheme)
   const [language, setLanguage] = useState<Language>(getStoredLanguage)
-  const [canRenderParticles, setCanRenderParticles] = useState(
-    shouldRenderParticles,
-  )
   const pageCopy = copy[language]
+  const sectionsBase = legalPage ? '/' : ''
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -97,34 +72,45 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = language
-    document.title = copy[language].hero.title
+    const legalText = legalCopy[language]
+    document.title = legalPage
+      ? `${legalPage === 'legal' ? legalText.legalTitle : legalText.privacyTitle} | Allen Koch`
+      : copy[language].hero.title
     writeStoredPreference(() => window.localStorage, 'language', language)
   }, [language])
 
   useEffect(() => {
-    const desktopMedia = window.matchMedia(desktopParticlesQuery)
-    const reducedMotionMedia = window.matchMedia(reducedMotionQuery)
-    const updateParticleSupport = () => {
-      setCanRenderParticles(shouldRenderParticles())
+    // A noindexed page must not point search engines at the home page.
+    if (legalPage) document.querySelector('link[rel="canonical"]')?.remove()
+  }, [])
+
+  useEffect(() => {
+    let id: string
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1))
+    } catch {
+      return
     }
 
-    desktopMedia.addEventListener('change', updateParticleSupport)
-    reducedMotionMedia.addEventListener('change', updateParticleSupport)
-    updateParticleSupport()
-
-    return () => {
-      desktopMedia.removeEventListener('change', updateParticleSupport)
-      reducedMotionMedia.removeEventListener('change', updateParticleSupport)
+    // React creates the anchor targets after the browser's initial fragment lookup.
+    if (id) {
+      const target = document.getElementById(id)
+      target?.scrollIntoView({ behavior: 'instant' })
+      target?.focus({ preventScroll: true })
     }
   }, [])
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      !('IntersectionObserver' in window)
+    ) {
       return
     }
 
+    // Sections now transition through the scroll stack below; only the rail keeps its one-time fade.
     const scrollSections = document.querySelectorAll<HTMLElement>(
-      'main > .section:not(.hero)',
+      '.about-journey__list',
     )
 
     scrollSections.forEach((section) => {
@@ -143,8 +129,7 @@ function App() {
         })
       },
       {
-        rootMargin: '0px 0px -18%',
-        threshold: 0.12,
+        threshold: 0,
       },
     )
 
@@ -152,35 +137,133 @@ function App() {
       sectionObserver.observe(section)
     })
 
-    return () => sectionObserver.disconnect()
+    return () => {
+      sectionObserver.disconnect()
+      scrollSections.forEach((section) => {
+        section.classList.remove(
+          'section--scroll-fade',
+          'section--scroll-visible',
+        )
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    const main = document.querySelector('main')
+    if (
+      !main ||
+      legalPage ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      !('ResizeObserver' in window) ||
+      !CSS.supports('selector(:has(*))')
+    ) {
+      return
+    }
+
+    const sections = Array.from(
+      main.querySelectorAll<HTMLElement>(':scope > .section'),
+    )
+    const covers: number[] = []
+    let pins: SectionPin[] = []
+    let mainTop = 0
+    let frameId = 0
+
+    const update = () => {
+      frameId = 0
+      const scrollOffset = window.scrollY - mainTop
+      pins.forEach((pin, index) => {
+        const cover =
+          Math.round(getSectionCover(pin, scrollOffset) * 1000) / 1000
+        if (cover === covers[index]) return
+        covers[index] = cover
+        sections[index].style.setProperty('--section-cover', String(cover))
+        // Near-transparent (opacity under 5 %) sections stop catching clicks.
+        sections[index].classList.toggle('section--covered', cover >= 0.95)
+      })
+    }
+
+    const scheduleUpdate = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(update)
+    }
+
+    // Reads first, then writes: runs on size changes only, never per scroll frame.
+    const measure = () => {
+      mainTop = main.getBoundingClientRect().top + window.scrollY
+      pins = getSectionPins(
+        sections.map((section) => section.offsetHeight),
+        window.innerHeight,
+        Number.parseFloat(
+          window.getComputedStyle(document.documentElement).scrollPaddingTop,
+        ),
+        // A section's last content scrolls a quarter screen up before it gets covered.
+        window.innerHeight / 4,
+      )
+      pins.forEach((pin, index) => {
+        sections[index].style.setProperty('--section-pin-top', `${pin.top}px`)
+      })
+      // Sticky boxes report their pinned offset, so slots add up from the heights.
+      let slotTop = 0
+      sections.forEach((section) => {
+        main.style.setProperty(`--${section.id}-top`, `${slotTop}px`)
+        slotTop += section.offsetHeight
+      })
+      update()
+    }
+
+    // Fragment scrolling (links and history traversal) aims at a pinned box's
+    // current spot; unpin the target while the browser resolves where to scroll.
+    const unpinTarget = (hash: string | undefined) => {
+      const target = sections.find((section) => hash === `#${section.id}`)
+      if (!target) return
+      target.classList.add('section--unpinned')
+      window.requestAnimationFrame(() =>
+        target.classList.remove('section--unpinned'),
+      )
+    }
+    const unpinLinkTarget = (event: MouseEvent) => {
+      if (event.target instanceof Element) {
+        unpinTarget(
+          event.target.closest<HTMLAnchorElement>('a[href^="#"]')?.hash,
+        )
+      }
+    }
+    const unpinHistoryTarget = () => unpinTarget(window.location.hash)
+
+    main.classList.add('section-stack')
+    const resizeObserver = new ResizeObserver(measure)
+    sections.forEach((section) => {
+      resizeObserver.observe(section)
+    })
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', measure)
+    document.addEventListener('click', unpinLinkTarget)
+    window.addEventListener('popstate', unpinHistoryTarget)
+
+    return () => {
+      resizeObserver.disconnect()
+      window.cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', measure)
+      document.removeEventListener('click', unpinLinkTarget)
+      window.removeEventListener('popstate', unpinHistoryTarget)
+      main.classList.remove('section-stack')
+      sections.forEach((section) => {
+        section.classList.remove('section--covered', 'section--unpinned')
+        section.style.removeProperty('--section-pin-top')
+        section.style.removeProperty('--section-cover')
+        main.style.removeProperty(`--${section.id}-top`)
+      })
+    }
   }, [])
 
   return (
     <>
-      {canRenderParticles ? (
-        <DecorativeErrorBoundary>
-          <Suspense fallback={null}>
-            <Particles
-              alphaParticles
-              cameraDistance={22}
-              moveParticlesOnHover
-              particleBaseSize={88}
-              particleColors={backgroundParticleColors}
-              particleCount={170}
-              particleHoverFactor={0.35}
-              particleSpread={12}
-              pixelRatio={Math.min(window.devicePixelRatio || 1, 2)}
-              sizeRandomness={0.8}
-              speed={0.06}
-            />
-          </Suspense>
-        </DecorativeErrorBoundary>
-      ) : null}
       <a className="skip-link" href="#main-content">
         {pageCopy.skipLink}
       </a>
       <Navbar
         language={language}
+        linkBase={sectionsBase}
         onToggleLanguage={() =>
           setLanguage((currentLanguage) =>
             currentLanguage === 'fr' ? 'en' : 'fr',
@@ -193,14 +276,21 @@ function App() {
         }
         theme={theme}
       />
-      <main id="main-content">
-        <Hero language={language} />
-        <ProjectsSection language={language} />
-        <StackSection language={language} />
-        <AboutSection language={language} />
-        <ContactSection language={language} />
+      <main id="main-content" tabIndex={-1}>
+        {legalPage ? (
+          <LegalNotices language={language} page={legalPage} />
+        ) : (
+          <>
+            <Hero language={language} />
+            <ServicesSection language={language} />
+            <ProjectsSection language={language} />
+            <StackSection language={language} />
+            <AboutSection language={language} />
+            <ContactSection language={language} theme={theme} />
+          </>
+        )}
       </main>
-      <Footer language={language} />
+      <Footer language={language} linkBase={sectionsBase} />
       <BackToTopButton language={language} />
     </>
   )

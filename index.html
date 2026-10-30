@@ -4,59 +4,57 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href="https://allenkoch.dev/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&display=swap"
-      media="(min-width: 761px)"
-    />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Portfolio d'Allen Koch, développeur web en Alsace : produits web utiles, maintenables, solutions IA et workflows modernes avec React, Rails et TypeScript."
     />
-    <meta name="theme-color" content="#10131a" />
+    <meta
+      name="theme-color"
+      content="#f8f7f3"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171715"
+      media="(prefers-color-scheme: dark)"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Allen Koch" />
     <meta
       property="og:title"
-      content="Allen Koch | Développeur Web | Alsace, France"
+      content="Allen Koch | Développeur Fullstack &amp; IA | Alsace, France"
     />
     <meta
       property="og:description"
       content="Portfolio d'Allen Koch, développeur web en Alsace : produits web utiles, maintenables, solutions IA et workflows modernes avec React, Rails et TypeScript."
     />
     <meta property="og:url" content="https://allenkoch.dev/" />
-    <meta property="og:image" content="https://allenkoch.dev/og-image.png" />
+    <meta property="og:image" content="https://allenkoch.dev/og-image-refonte.png" />
     <meta property="og:locale" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Allen Koch | Développeur Web | Alsace, France"
+      content="Allen Koch | Développeur Fullstack &amp; IA | Alsace, France"
     />
     <meta
       name="twitter:description"
       content="Portfolio d'Allen Koch, développeur web en Alsace : produits web utiles, maintenables, solutions IA et workflows modernes avec React, Rails et TypeScript."
     />
-    <meta name="twitter:image" content="https://allenkoch.dev/og-image.png" />
+    <meta name="twitter:image" content="https://allenkoch.dev/og-image-refonte.png" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Allen Koch",
         "url": "https://allenkoch.dev/",
-        "jobTitle": "Développeur Web",
+        "jobTitle": "Développeur Fullstack et IA",
         "email": "mailto:allen.kch24@gmail.com",
-        "image": "https://allenkoch.dev/og-image.png",
+        "image": "https://allenkoch.dev/og-image-refonte.png",
         "sameAs": [
           "https://github.com/crousty24-bit",
-          "https://www.linkedin.com/in/allen-koch-41290417b",
-          "https://x.com/crousty24"
+          "https://www.linkedin.com/in/allen-koch-41290417b"
         ],
         "knowsAbout": [
           "React",
@@ -71,15 +69,15 @@
     </script>
     <script>
       try {
-        if (window.localStorage.getItem('theme') === 'light') {
-          document.documentElement.dataset.theme = 'light'
-          document.documentElement.style.colorScheme = 'light'
+        if (window.localStorage.getItem('theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark'
+          document.documentElement.style.colorScheme = 'dark'
         }
       } catch {
-        // Keep the default dark theme when storage is unavailable.
+        // Keep the default light theme when storage is unavailable.
       }
     </script>
-    <title>Allen Koch | Développeur Web | Alsace, France</title>
+    <title>Allen Koch | Développeur Fullstack &amp; IA | Alsace, France</title>
   </head>
   <body>
     <div id="root"></div>

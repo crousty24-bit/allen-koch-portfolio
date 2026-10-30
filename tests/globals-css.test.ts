@@ -54,9 +54,6 @@ describe('global CSS organization', () => {
       '@import "./responsive-760.css" (max-width: 760px)',
     )
     expect(responsiveCss).toContain(
-      '@import "./responsive-430.css" (max-width: 430px)',
-    )
-    expect(responsiveCss).toContain(
       '@import "./reduced-motion.css" (prefers-reduced-motion: reduce)',
     )
   })

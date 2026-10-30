@@ -1,38 +1,35 @@
-:root {
+/* Light is the default theme (DESIGN.md R3, R8). Dark applies with data-theme="dark". */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #f8f7f3;
+  --surface: #eceae4;
+  --outline: #e2dfd7;
+  --outline-strong: #85827a;
+  --text: #191919;
+  --text-muted: #66645f;
+}
+
+:root[data-theme="dark"] {
   color-scheme: dark;
-  --background: #10131a;
-  --surface: #10131a;
-  --surface-lowest: #0b0e14;
-  --surface-low: #191c22;
-  --surface-container: #1d2026;
-  --surface-high: #272a31;
-  --surface-highest: #32353c;
-  --surface-bright: #363940;
-  --text: #e1e2eb;
-  --text-muted: #c4c5d9;
-  --text-soft: rgba(225, 226, 235, 0.68);
-  --outline: #434656;
-  --primary: #b8c3ff;
-  --primary-strong: #2e5bff;
-  --secondary: #d4bbff;
-  --secondary-strong: #6c04de;
-  --tertiary: #54d5ff;
-  --chip-accent-1: #6f86c4;
-  --chip-accent-2: #4f96a7;
-  --chip-accent-3: #8a72b5;
-  --chip-accent-4: #ad667d;
-  --chip-accent-5: #aa8b45;
-  --container: 1280px;
-  --gutter: clamp(1.25rem, 3vw, 1.5rem);
-  --section-gap: clamp(5rem, 10vw, 7.5rem);
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --background: #171715;
+  --surface: #232320;
+  --outline: #31302c;
+  --outline-strong: #76736c;
+  --text: #f5f2eb;
+  --text-muted: #a5a29a;
+}
+
+:root {
+  --band: #171715;
+  --band-raised: #232320;
+  --container: 1440px;
+  --gutter: 3.5rem;
+  --section-gap: 7rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --font-sans:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --font-display: "Plus Jakarta Sans", var(--font-sans);
+    "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
     monospace;
@@ -40,32 +37,8 @@
   background: var(--background);
   font-family: var(--font-sans);
   font-synthesis: none;
-  line-height: 1.5;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-:root[data-theme="light"] {
-  color-scheme: light;
-  --background: #f4f7fb;
-  --surface: #f8fbff;
-  --surface-lowest: #eef3f8;
-  --surface-low: #ffffff;
-  --surface-container: #f4f7fb;
-  --surface-high: #e7edf5;
-  --surface-highest: #dce5ef;
-  --surface-bright: #d3deeb;
-  --text: #111827;
-  --text-muted: #46576c;
-  --text-soft: rgba(17, 24, 39, 0.68);
-  --outline: #c7d3e2;
-  --primary: #335dff;
-  --secondary: #7a38d8;
-  --tertiary: #007fb8;
-  --chip-accent-1: #526aa8;
-  --chip-accent-2: #347f8e;
-  --chip-accent-3: #765aa2;
-  --chip-accent-4: #9a536b;
-  --chip-accent-5: #8c7335;
 }

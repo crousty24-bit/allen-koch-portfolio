@@ -1,4 +1,5 @@
-import { projects } from '../projects/projects'
+import type { Language } from '../i18n/i18n'
+import { isProjectPublished, projects } from '../projects/projects'
 import { githubStats } from './githubStats'
 
 export type HeroStatId = 'profile' | 'contributions' | 'projects'
@@ -11,7 +12,7 @@ export type NumericHeroStat = {
 
 export type TextHeroStat = {
   id: 'profile'
-  value: string
+  value: Record<Language, string>
 }
 
 export type HeroStat = NumericHeroStat | TextHeroStat
@@ -19,7 +20,10 @@ export type HeroStat = NumericHeroStat | TextHeroStat
 export const heroStats: HeroStat[] = [
   {
     id: 'profile',
-    value: 'Fullstack Developer / AI Builder',
+    value: {
+      fr: 'Développeur Fullstack & IA',
+      en: 'Fullstack & AI Developer',
+    },
   },
   {
     id: 'contributions',
@@ -29,6 +33,6 @@ export const heroStats: HeroStat[] = [
   {
     id: 'projects',
     prefix: '',
-    value: projects.length,
+    value: projects.filter(isProjectPublished).length,
   },
 ]

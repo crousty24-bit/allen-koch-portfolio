@@ -1,4 +1,5 @@
-html:root {
+html:root,
+.about-journey__list {
   scroll-behavior: auto;
 }
 
@@ -10,34 +11,35 @@ html:root {
   transition-duration: 1ms;
 }
 
-.ambient,
-.hero::after,
 .hero__scroll,
 .reveal,
-.about-content h2,
+.about-journey__list.section--scroll-visible .about-journey__item,
 .skills-tree__content:not([hidden]),
 .about-accordion__panel:not([hidden]) {
   animation: none;
   animation-delay: 0ms;
 }
 
-.about-content h2 {
-  width: auto;
-  overflow: visible;
-  white-space: normal;
-  border-right: 0;
-}
-
-:root .about-journey__content,
-:root .about-journey__card,
-:root .about-journey__chevron,
-:root .about-journey__toggle,
-:root .about-journey__toggle-icon {
-  transition: none;
-}
-
 .section--scroll-fade {
   opacity: 1;
   transform: none;
+  transition: none;
+}
+
+/* Preference switched after load: the stack stops pinning, fading and receding. */
+.section-stack > .section {
+  position: relative;
+  top: auto;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Preference switched during a click: no edge fade. */
+.about-journey__list[data-moving] {
+  mask-image: none;
+}
+
+.projects-features__track {
   transition: none;
 }

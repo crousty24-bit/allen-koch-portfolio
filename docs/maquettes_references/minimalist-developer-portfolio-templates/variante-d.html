@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>Allen Koch — Artisan Numérique &amp; Ingénieur Web Indépendant [Variante D — Experimental Typography]</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    ::selection {
+      background-color: #191919;
+      color: #F8F7F3;
+    }
+    .dark ::selection {
+      background-color: #F5F2EB;
+      color: #171715;
+    }
+    .vertical-lr {
+      writing-mode: vertical-lr;
+    }
+    .text-outline-stroke {
+      -webkit-text-stroke: 1px currentColor;
+      color: transparent;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "light-bg": "#F8F7F3",
+            "light-surface": "#ECEAE4",
+            "light-border": "#E2DFD7",
+            "light-text-primary": "#191919",
+            "light-text-secondary": "#73716D",
+            "dark-bg": "#171715",
+            "dark-surface": "#232320",
+            "dark-border": "#31302C",
+            "dark-text-primary": "#F5F2EB",
+            "dark-text-secondary": "#A5A29A",
+            "primary": "#000000"
+          },
+          fontFamily: {
+            "display": ["Geist", "sans-serif"],
+            "mono": ["Space Mono", "monospace"],
+            "body": ["Geist", "sans-serif"]
+          },
+          letterSpacing: {
+            'tightest': '-0.07em',
+            'tighter': '-0.04em',
+            'editorial': '0.18em',
+            'superwide': '0.28em'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg text-light-text-primary dark:text-dark-text-primary font-body antialiased transition-colors duration-300 overflow-x-hidden">
+<!-- ========================================================================= -->
+<!-- 00 / AVANT-GARDE EDITORIAL MINIMAL HEADER -->
+<!-- ========================================================================= -->
+<header class="fixed top-0 left-0 w-full z-50 bg-light-bg/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-light-border dark:border-dark-border transition-colors duration-300">
+<div class="max-w-[1720px] mx-auto flex items-stretch justify-between h-16 md:h-20 px-6 lg:px-12">
+<!-- Monogram & Label -->
+<a class="flex items-center gap-4 group" href="#">
+<span class="font-mono text-xs font-bold px-2.5 py-1 bg-black text-white dark:bg-white dark:text-black tracking-widest transition-transform duration-300 group-hover:scale-95">AK</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display font-medium text-base tracking-tight uppercase">Allen Koch</span>
+<span class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary hidden sm:inline-block">/ ATELIER 2025</span>
+</div>
+</a>
+<!-- Center Avant-Garde Navigation -->
+<nav class="hidden lg:flex items-center gap-8 font-mono text-[11px] tracking-widest uppercase">
+<a class="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 group" href="#services">
+<span class="opacity-40 group-hover:opacity-100 transition-opacity">[01]</span>
+<span>Services</span>
+</a>
+<a class="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 group" href="#projets">
+<span class="opacity-40 group-hover:opacity-100 transition-opacity">[02]</span>
+<span>Travaux</span>
+</a>
+<a class="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 group" href="#philosophie">
+<span class="opacity-40 group-hover:opacity-100 transition-opacity">[03]</span>
+<span>Philosophie</span>
+</a>
+<a class="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 group" href="#methode">
+<span class="opacity-40 group-hover:opacity-100 transition-opacity">[04]</span>
+<span>Méthode</span>
+</a>
+<a class="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 group" href="#contact">
+<span class="opacity-40 group-hover:opacity-100 transition-opacity">[05]</span>
+<span>Contact</span>
+</a>
+</nav>
+<!-- Right Control Center -->
+<div class="flex items-center gap-5 sm:gap-6 font-mono text-[11px]">
+<!-- Atelier Availability Pill -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-1 border border-light-border dark:border-dark-border">
+<span class="w-1.5 h-1.5 bg-black dark:bg-white rounded-full animate-ping"></span>
+<span class="text-[10px] uppercase tracking-wider text-light-text-secondary dark:text-dark-text-secondary">OUVERT T2 2025</span>
+</div>
+<!-- FR / EN -->
+<div class="flex items-center border border-light-border dark:border-dark-border text-[10px]">
+<span class="px-2 py-0.5 bg-black text-white dark:bg-white dark:text-black font-semibold">FR</span>
+<span class="px-2 py-0.5 text-light-text-secondary dark:text-dark-text-secondary hover:text-black dark:hover:text-white cursor-pointer transition-colors">EN</span>
+</div>
+<!-- Theme Switcher -->
+<button aria-label="Basculer le mode sombre/clair" class="w-8 h-8 flex items-center justify-center border border-light-border dark:border-dark-border hover:bg-light-surface dark:hover:bg-dark-surface transition-colors" id="theme-toggle" type="button">
+<span class="material-symbols-outlined text-[17px] dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined text-[17px] hidden dark:inline">light_mode</span>
+</button>
+<!-- Action Brief Button -->
+<a class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white dark:bg-white dark:text-black tracking-editorial text-[10px] uppercase hover:opacity-80 transition-opacity" href="#contact">
+<span>INITIER</span>
+<span class="material-symbols-outlined text-[14px]">north_east</span>
+</a>
+</div>
+</div>
+</header>
+<main class="w-full pt-20 md:pt-28">
+<!-- ========================================================================= -->
+<!-- 01 / HERO : EXPERIMENTAL TYPOGRAPHY & DECONSTRUCTED MONUMENTAL SIGNATURE -->
+<!-- ========================================================================= -->
+<section class="relative w-full border-b border-light-border dark:border-dark-border overflow-hidden pt-8 pb-16 md:pt-16 md:pb-28">
+<!-- Micro Coordinates Bar -->
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12 mb-8 md:mb-12 flex flex-wrap items-center justify-between gap-4 font-mono text-[10px] tracking-superwide text-light-text-secondary dark:text-dark-text-secondary uppercase">
+<div class="flex items-center gap-3">
+<span class="w-2 h-0.5 bg-black dark:bg-white inline-block"></span>
+<span>VARIANTE D // ÉDITION AVANT-GARDE</span>
+</div>
+<div>PARIS, FRANCE [48.8566° N / 2.3522° E]</div>
+<div class="hidden sm:block">CODE_SOURCE : TS • PYTHON • NEXT15</div>
+</div>
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12">
+<!-- Deconstructed Staggered Hero Typography -->
+<div class="relative">
+<!-- Row 1: ALLEN with inline displaced meta badge -->
+<div class="flex flex-col lg:flex-row lg:items-baseline justify-between gap-4">
+<h1 class="font-display font-light text-[5.8rem] sm:text-[9.5rem] md:text-[13rem] xl:text-[17rem] leading-[0.8] tracking-tightest uppercase text-black dark:text-[#F5F2EB] select-none">
+              ALLEN
+            </h1>
+<div class="lg:max-w-xs font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary pb-4 lg:pb-8 border-b lg:border-b-0 border-light-border dark:border-dark-border">
+<span class="text-black dark:text-white font-medium uppercase tracking-wider block mb-1">[ POSITIONNEMENT SINGULIER ]</span>
+              Direction technique indépendante, design de code chirurgical et intégrations d'intelligence artificielle sans intermédiaire.
+            </div>
+</div>
+<!-- Row 2: KOCH with creative offset & text overlap -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between -mt-2 sm:-mt-6 md:-mt-10 gap-6">
+<div class="order-2 lg:order-1 max-w-lg">
+<p class="font-display text-xl sm:text-2xl md:text-3xl font-light tracking-tight leading-snug text-black dark:text-white">
+                Artisanat logiciel &amp; Architecture web sans compromis.
+              </p>
+<div class="mt-4 flex items-center gap-4 font-mono text-[11px] text-light-text-secondary dark:text-dark-text-secondary">
+<span class="px-2 py-1 bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border">EXP. 12+ ANS</span>
+<span>•</span>
+<span>FULLSTACK STRICT</span>
+<span>•</span>
+<span>SOLO CRAFT</span>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<span class="font-display font-light text-[5.8rem] sm:text-[9.5rem] md:text-[13rem] xl:text-[17rem] leading-[0.8] tracking-tightest uppercase text-black dark:text-[#F5F2EB] select-none text-right block">
+                KOCH
+              </span>
+</div>
+</div>
+</div>
+<!-- Asymmetric Kinetic Strip & Spatial Metrics -->
+<div class="mt-16 md:mt-24 pt-10 border-t border-light-border dark:border-dark-border grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+<!-- Metric 01 -->
+<div class="md:col-span-3 border-l border-light-border dark:border-dark-border pl-6">
+<span class="font-mono text-[10px] tracking-editorial uppercase text-light-text-secondary dark:text-dark-text-secondary block mb-1">
+              [ 01 // CORE SPEED ]
+            </span>
+<div class="font-display text-4xl sm:text-5xl font-light tracking-tighter text-black dark:text-white">
+              &lt; 45<span class="text-xl font-mono ml-1 text-light-text-secondary dark:text-dark-text-secondary">ms</span>
+</div>
+<p class="font-mono text-[11px] text-light-text-secondary dark:text-dark-text-secondary mt-1">Latence médiane d'exécution</p>
+</div>
+<!-- Metric 02 -->
+<div class="md:col-span-3 border-l border-light-border dark:border-dark-border pl-6">
+<span class="font-mono text-[10px] tracking-editorial uppercase text-light-text-secondary dark:text-dark-text-secondary block mb-1">
+              [ 02 // GOOGLE VITALS ]
+            </span>
+<div class="font-display text-4xl sm:text-5xl font-light tracking-tighter text-black dark:text-white">
+              99.8<span class="text-xl font-mono ml-1 text-light-text-secondary dark:text-dark-text-secondary">%</span>
+</div>
+<p class="font-mono text-[11px] text-light-text-secondary dark:text-dark-text-secondary mt-1">Score Lighthouse moyen</p>
+</div>
+<!-- Metric 03 -->
+<div class="md:col-span-3 border-l border-light-border dark:border-dark-border pl-6">
+<span class="font-mono text-[10px] tracking-editorial uppercase text-light-text-secondary dark:text-dark-text-secondary block mb-1">
+              [ 03 // LIVRAISONS ]
+            </span>
+<div class="font-display text-4xl sm:text-5xl font-light tracking-tighter text-black dark:text-white">
+              40<span class="text-xl font-mono ml-1 text-light-text-secondary dark:text-dark-text-secondary">+</span>
+</div>
+<p class="font-mono text-[11px] text-light-text-secondary dark:text-dark-text-secondary mt-1">Systèmes SaaS &amp; flux IA déployés</p>
+</div>
+<!-- CTA Button -->
+<div class="md:col-span-3 flex flex-col sm:flex-row md:flex-col gap-3 justify-end">
+<a class="inline-flex items-center justify-between px-6 py-4 bg-black text-white dark:bg-white dark:text-black font-mono text-xs uppercase tracking-editorial hover:opacity-85 transition-opacity" href="#contact">
+<span>INITIER UN PROJET</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+<a class="inline-flex items-center justify-between px-6 py-3 border border-light-border dark:border-dark-border font-mono text-xs uppercase tracking-editorial hover:border-black dark:hover:border-white transition-colors" href="#projets">
+<span>VOIR LES ARCHIVES</span>
+<span class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary">↓</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 02 / SECTION 01 : SERVICES (LISTE ÉDITORIALE GÉANTE AVEC CHIFFRES DÉMESURÉS) -->
+<!-- ========================================================================= -->
+<section class="w-full border-b border-light-border dark:border-dark-border py-20 md:py-32" id="services">
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12">
+<!-- Editorial Section Header with Massive Contrast -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between pb-8 mb-16 border-b border-light-border dark:border-dark-border gap-6">
+<div>
+<span class="font-mono text-xs uppercase tracking-superwide text-light-text-secondary dark:text-dark-text-secondary block mb-2">
+            // DISCIPLINE 01 — CHAMP D'ACTION
+          </span>
+<h2 class="font-display text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-black dark:text-white leading-[0.95]">
+            SERVICES &amp; ARCHITECTURES
+          </h2>
+</div>
+<p class="font-body text-sm sm:text-base text-light-text-secondary dark:text-dark-text-secondary max-w-md font-light leading-relaxed">
+          Quatre champs d'intervention rigoureux, menés sans délégation. Du code épuré, structuré pour la durabilité et l'impact opérationnel.
+        </p>
+</div>
+<!-- Stacked Monumental Editorial List -->
+<div class="divide-y divide-light-border dark:divide-dark-border">
+<!-- Service Item 01 -->
+<div class="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-light-surface/30 dark:hover:bg-dark-surface/30 transition-colors px-2 md:px-4">
+<div class="lg:col-span-2">
+<span class="font-display font-light text-6xl sm:text-8xl lg:text-9xl tracking-tighter text-black/20 dark:text-white/20 group-hover:text-black dark:group-hover:text-white transition-colors block leading-none">
+              01
+            </span>
+<span class="font-mono text-[10px] uppercase tracking-editorial text-light-text-secondary dark:text-dark-text-secondary mt-2 block">
+              FRONT-END &amp; ÉDITORIAL
+            </span>
+</div>
+<div class="lg:col-span-6">
+<h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-black dark:text-white mb-4 group-hover:translate-x-1 transition-transform">
+              Création de Sites Vitrines &amp; E-Commerce d'Exception
+            </h3>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed max-w-xl">
+              Direction artistique radicale, temps de chargement instantanés et micro-interactions millimétrées. Expériences sur-mesure conçues pour valoriser votre positionnement de marque sans compromis d'accessibilité.
+            </p>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-between h-full pt-2">
+<div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">NEXT.JS 15</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">TAILWIND CSS</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">THREE.JS / WEBGL</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">SHOPIFY HEADLESS</span>
+</div>
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary flex items-center justify-between border-t border-light-border/60 dark:border-dark-border/60 pt-3">
+<span>PERFORMANCE : 99+ LIGHTHOUSE</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Item 02 -->
+<div class="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-light-surface/30 dark:hover:bg-dark-surface/30 transition-colors px-2 md:px-4">
+<div class="lg:col-span-2">
+<span class="font-display font-light text-6xl sm:text-8xl lg:text-9xl tracking-tighter text-black/20 dark:text-white/20 group-hover:text-black dark:group-hover:text-white transition-colors block leading-none">
+              02
+            </span>
+<span class="font-mono text-[10px] uppercase tracking-editorial text-light-text-secondary dark:text-dark-text-secondary mt-2 block">
+              SYSTEMS &amp; SAAS
+            </span>
+</div>
+<div class="lg:col-span-6">
+<h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-black dark:text-white mb-4 group-hover:translate-x-1 transition-transform">
+              Applications Web Métier &amp; Plateformes SaaS
+            </h3>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed max-w-xl">
+              Architecture distribuée, typage strict TypeScript et haute fiabilité. Modélisation relationnelle rigoureuse, contrôle d'accès multi-tenant et interfaces temps réel haute cadence pour usages critiques.
+            </p>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-between h-full pt-2">
+<div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">REACT / TYPESCRIPT</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">POSTGRESQL</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">NODE.JS / BUN</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">WEBSOCKETS</span>
+</div>
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary flex items-center justify-between border-t border-light-border/60 dark:border-dark-border/60 pt-3">
+<span>ROBUSTESSE : TEST COVERAGE 90%+</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Item 03 -->
+<div class="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-light-surface/30 dark:hover:bg-dark-surface/30 transition-colors px-2 md:px-4">
+<div class="lg:col-span-2">
+<span class="font-display font-light text-6xl sm:text-8xl lg:text-9xl tracking-tighter text-black/20 dark:text-white/20 group-hover:text-black dark:group-hover:text-white transition-colors block leading-none">
+              03
+            </span>
+<span class="font-mono text-[10px] uppercase tracking-editorial text-light-text-secondary dark:text-dark-text-secondary mt-2 block">
+              AI &amp; RAG PIPELINES
+            </span>
+</div>
+<div class="lg:col-span-6">
+<h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-black dark:text-white mb-4 group-hover:translate-x-1 transition-transform">
+              Ingénierie IA, Pipelines RAG &amp; Modèles Locaux
+            </h3>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed max-w-xl">
+              Extraction sémantique, bases vectorielles et orchestration LangChain. Valorisation de données documentaires privées avec garde-fous hermétiques, vérifiabilité et latences d'inférence minimales.
+            </p>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-between h-full pt-2">
+<div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">PYTHON FASTAPI</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">PINECONE / PGVECTOR</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">CLAUDE 3.5 SONNET</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">LANGCHAIN</span>
+</div>
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary flex items-center justify-between border-t border-light-border/60 dark:border-dark-border/60 pt-3">
+<span>SÉCURITÉ : PROTOCOLE ZÉRO-HALLUCINATION</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Item 04 -->
+<div class="group py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-light-surface/30 dark:hover:bg-dark-surface/30 transition-colors px-2 md:px-4">
+<div class="lg:col-span-2">
+<span class="font-display font-light text-6xl sm:text-8xl lg:text-9xl tracking-tighter text-black/20 dark:text-white/20 group-hover:text-black dark:group-hover:text-white transition-colors block leading-none">
+              04
+            </span>
+<span class="font-mono text-[10px] uppercase tracking-editorial text-light-text-secondary dark:text-dark-text-secondary mt-2 block">
+              AUTOMATION &amp; CONNECTEURS
+            </span>
+</div>
+<div class="lg:col-span-6">
+<h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-black dark:text-white mb-4 group-hover:translate-x-1 transition-transform">
+              Automatisation de Workflows &amp; Intégrations API
+            </h3>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed max-w-xl">
+              Connecteurs résilients, synchronisation multi-outils et suppression des tâches manuelles. Orchestration d'événements critiques (CRM, facturation, passerelles bancaires) sans perte de données.
+            </p>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-between h-full pt-2">
+<div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">N8N SELF-HOSTED</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">WEBHOOKS CHIFFRÉS</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">STRIPE &amp; CRM API</span>
+<span class="px-2.5 py-1 border border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50">WORKERS SERVERLESS</span>
+</div>
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary flex items-center justify-between border-t border-light-border/60 dark:border-dark-border/60 pt-3">
+<span>FIABILITÉ : RE-EXECUTION &amp; AUDIT TRAIL</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 03 / SECTION 02 : TRAVAUX SÉLECTIONNÉS (COMPOSITION ASYMÉTRIQUE RADICALE) -->
+<!-- ========================================================================= -->
+<section class="w-full border-b border-light-border dark:border-dark-border py-20 md:py-32" id="projets">
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12">
+<!-- Section Tracker Header -->
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-20 gap-4 pb-6 border-b border-light-border dark:border-dark-border">
+<div class="flex items-center gap-4">
+<span class="font-mono text-xs uppercase tracking-superwide text-black dark:text-white font-bold">// ARCHIVE 02 — TRAVAUX</span>
+<span class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary">[ 2024 — 2025 ]</span>
+</div>
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary">
+          TROIS ÉTUDES DE CAS EMBLÉMATIQUES
+        </div>
+</div>
+<!-- CASE 01: KONTROL OS (Asymmetric Hero Layout with Overlapping Typography) -->
+<article class="mb-32 lg:mb-44 relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left Typography Block with Staggered Subtitle -->
+<div class="lg:col-span-5 z-10 order-2 lg:order-1">
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary uppercase mb-3 flex items-center gap-3">
+<span class="px-2 py-0.5 bg-black text-white dark:bg-white dark:text-black font-semibold">01 / 03</span>
+<span>FINTECH &amp; SAAS TEMPS RÉEL</span>
+</div>
+<h3 class="font-display text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-black dark:text-white leading-[0.95] mb-6">
+              KONTROL<br/>
+<span class="italic font-light">OS</span>
+</h3>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed mb-6">
+              Terminal d'analyse quantitative en temps réel destiné aux gestionnaires d'actifs. Refonte complète du flux de rendu milliseconde, réduisant la charge cognitive et améliorant la réactivité d'exécution des ordres.
+            </p>
+<!-- Key Metric Badge -->
+<div class="p-5 border border-light-border dark:border-dark-border bg-light-surface/40 dark:bg-dark-surface/40 mb-8 max-w-md">
+<div class="flex justify-between items-baseline font-mono text-xs mb-1">
+<span class="text-light-text-secondary dark:text-dark-text-secondary uppercase">LATENCE MOYENNE D'ÉCRAN</span>
+<span class="text-xl font-bold text-black dark:text-white">&lt; 45ms</span>
+</div>
+<div class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary flex justify-between pt-2 border-t border-light-border/60 dark:border-dark-border/60">
+<span>STACK: NEXT.JS • RUST WEBSOCKETS</span>
+<span>DISPONIBILITÉ: 99.99%</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-editorial text-black dark:text-white group" href="#contact">
+<span class="underline underline-offset-8">EXPLORER L'ARCHITECTURE DE KONTROL OS</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Right Visual Mockup Frame (Preserved Image) -->
+<div class="lg:col-span-7 order-1 lg:order-2">
+<div class="relative border border-light-border dark:border-dark-border bg-black overflow-hidden group shadow-2xl">
+<div class="aspect-[16/10] overflow-hidden">
+<img alt="KONTROL OS - Interface de trading haute fréquence épurée" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC43XNQs9UEKQMV_dawdJ1Wl3q91wz4NEOgjwRJoOTWnJhREF7ByOTlSFjb4ym7Y4X31qnkMpLH9Tfp6hazKXkSz9S-v-Rh5hAn8eqM-gHybyqYacxqLt86SWSNVa7znWE1fFWlAsojxCvlu83-QekWsv5z6mb9QUlMBVabNGecjP88CAgf4qEO5vlHwmdX-n-LColzMXFnydQnC629EV_e0FS-9NYa6sRJ1cvhPZd02ZEphWrF7ui3"/>
+</div>
+<div class="absolute bottom-4 left-4 bg-black/90 text-white font-mono text-[10px] tracking-widest px-3 py-1 border border-white/20 uppercase">
+                PRODUCTION PARIS 2024
+              </div>
+</div>
+</div>
+</div>
+</article>
+<!-- CASE 02: KONSOL STUDIO (Inverted Diagonal Staggering) -->
+<article class="mb-32 lg:mb-44 relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left Visual Mockup Frame (Preserved Image) -->
+<div class="lg:col-span-7">
+<div class="relative border border-light-border dark:border-dark-border bg-black overflow-hidden group shadow-2xl">
+<div class="aspect-[16/10] overflow-hidden">
+<img alt="KONSOL STUDIO - E-commerce brutaliste mobilier minimaliste" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3eazOXEDfYk5fWc3ZK7VpQggngwg9s75E8f27K1xzUH9J_m_FAOy-H4D8rmXW16dvYCMjirTbwC7wrp3vF8eqCxNxavYah57OWmEwS-HwoA4r4Clnl9T6DfMO5hfc5jtcAUV2TIf5LMoXbpyINoeLCpjGK-imTgoZfgChgAEV0sw-kbLbtW7w_uXkrXJhp2p-cDfWQtzRPpbQYWACvEC9GxfU223M2K9oiRmW7GcgPx8SMRCtWzlp"/>
+</div>
+<div class="absolute bottom-4 left-4 bg-black/90 text-white font-mono text-[10px] tracking-widest px-3 py-1 border border-white/20 uppercase">
+                BERLIN / PARIS 2024
+              </div>
+</div>
+</div>
+<!-- Right Typography Block with Staggered Subtitle -->
+<div class="lg:col-span-5 z-10">
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary uppercase mb-3 flex items-center gap-3">
+<span class="px-2 py-0.5 bg-black text-white dark:bg-white dark:text-black font-semibold">02 / 03</span>
+<span>COMMERCE ÉDITORIAL &amp; WEBGL 3D</span>
+</div>
+<h3 class="font-display text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-black dark:text-white leading-[0.95] mb-6">
+              KONSOL<br/>
+<span class="italic font-light">STUDIO</span>
+</h3>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed mb-6">
+              Plateforme de commerce immersif pour mobilier monolithique en béton coulé. Alliance d'une direction artistique radicale, de rendus 3D configurables en temps réel et d'un score de performance Google Lighthouse irréprochable.
+            </p>
+<!-- Key Metric Badge -->
+<div class="p-5 border border-light-border dark:border-dark-border bg-light-surface/40 dark:bg-dark-surface/40 mb-8 max-w-md">
+<div class="flex justify-between items-baseline font-mono text-xs mb-1">
+<span class="text-light-text-secondary dark:text-dark-text-secondary uppercase">PERFORMANCE LIGHTHOUSE</span>
+<span class="text-xl font-bold text-black dark:text-white">99 / 100</span>
+</div>
+<div class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary flex justify-between pt-2 border-t border-light-border/60 dark:border-dark-border/60">
+<span>TAILLE PAGE: 420 KB</span>
+<span>VENTES: +32% CONVERSION</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-editorial text-black dark:text-white group" href="#contact">
+<span class="underline underline-offset-8">EXPLORER L'ARCHITECTURE DE KONSOL STUDIO</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- CASE 03: SYNAPSE LABS (Topological Blueprint Frame) -->
+<article class="relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left Typography Block -->
+<div class="lg:col-span-5 z-10 order-2 lg:order-1">
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary uppercase mb-3 flex items-center gap-3">
+<span class="px-2 py-0.5 bg-black text-white dark:bg-white dark:text-black font-semibold">03 / 03</span>
+<span>PIPELINE RAG &amp; INGÉNIERIE IA</span>
+</div>
+<h3 class="font-display text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-black dark:text-white leading-[0.95] mb-6">
+              SYNAPSE<br/>
+<span class="italic font-light">LABS</span>
+</h3>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed mb-6">
+              Système autonome d'analyse juridique et de conformité documentaire. Ingestion multi-formats, vectorisation contextuelle et génération d'analyses certifiées éliminant les tâches de lecture fastidieuses.
+            </p>
+<!-- Key Metric Badge -->
+<div class="p-5 border border-light-border dark:border-dark-border bg-light-surface/40 dark:bg-dark-surface/40 mb-8 max-w-md">
+<div class="flex justify-between items-baseline font-mono text-xs mb-1">
+<span class="text-light-text-secondary dark:text-dark-text-secondary uppercase">GAIN OPÉRATIONNEL</span>
+<span class="text-xl font-bold text-black dark:text-white">+85%</span>
+</div>
+<div class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary flex justify-between pt-2 border-t border-light-border/60 dark:border-dark-border/60">
+<span>TEMPS MOYEN : 1.2S / ACTE</span>
+<span>PRÉCISION D'EXTRACTION: 99.8%</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-editorial text-black dark:text-white group" href="#contact">
+<span class="underline underline-offset-8">EXPLORER L'ARCHITECTURE DE SYNAPSE LABS</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Right Blueprint Frame -->
+<div class="lg:col-span-7 order-1 lg:order-2">
+<div class="border border-light-border dark:border-dark-border bg-light-surface/60 dark:bg-dark-surface/60 p-6 sm:p-10 flex flex-col justify-between">
+<div class="flex items-center justify-between pb-4 border-b border-light-border/60 dark:border-dark-border/60 font-mono text-xs">
+<span class="uppercase tracking-editorial text-light-text-secondary dark:text-dark-text-secondary">SCHÉMA TOPOLOGIQUE PIPELINE RAG</span>
+<div class="flex items-center gap-2 text-black dark:text-white text-[11px]">
+<span class="w-2 h-2 bg-emerald-500 inline-block animate-pulse"></span>
+<span>PRODUCTION ACTIVE</span>
+</div>
+</div>
+<!-- SVG Topological Graph -->
+<div class="my-8 flex justify-center">
+<svg class="w-full max-w-xl h-44 text-black dark:text-white" fill="none" viewbox="0 0 520 160" xmlns="http://www.w3.org/2000/svg">
+<path d="M50 80 H170 M230 80 H350 M410 80 H470" stroke="currentColor" stroke-dasharray="3 3" stroke-opacity="0.3" stroke-width="1.5"></path>
+<path d="M200 40 L380 120" stroke="currentColor" stroke-opacity="0.2" stroke-width="1"></path>
+<rect fill="none" height="40" stroke="currentColor" stroke-width="1.5" width="40" x="20" y="60"></rect>
+<circle cx="40" cy="80" fill="currentColor" r="4"></circle>
+<text fill="currentColor" font-family="Space Mono" font-size="9" letter-spacing="1" text-anchor="middle" x="40" y="122">INGESTION</text>
+<text fill="currentColor" font-family="Space Mono" font-size="8" opacity="0.5" text-anchor="middle" x="40" y="135">PDF/CONTRATS</text>
+<circle cx="200" cy="80" r="24" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1"></circle>
+<circle cx="200" cy="80" fill="currentColor" fill-opacity="0.1" r="14" stroke="currentColor" stroke-width="1.5"></circle>
+<circle cx="200" cy="80" fill="currentColor" r="4"></circle>
+<text fill="currentColor" font-family="Space Mono" font-size="9" letter-spacing="1" text-anchor="middle" x="200" y="122">INDEXATION</text>
+<text fill="currentColor" font-family="Space Mono" font-size="8" opacity="0.5" text-anchor="middle" x="200" y="135">PINECONE 1536D</text>
+<circle cx="380" cy="80" r="28" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1"></circle>
+<circle cx="380" cy="80" fill="currentColor" fill-opacity="0.1" r="16" stroke="currentColor" stroke-width="1.5"></circle>
+<circle cx="380" cy="80" fill="currentColor" r="5"></circle>
+<text fill="currentColor" font-family="Space Mono" font-size="9" letter-spacing="1" text-anchor="middle" x="380" y="122">RAISONNEMENT</text>
+<text fill="currentColor" font-family="Space Mono" font-size="8" opacity="0.5" text-anchor="middle" x="380" y="135">CLAUDE 3.5 SONNET</text>
+<rect fill="none" height="40" stroke="currentColor" stroke-width="1.5" width="40" x="470" y="60"></rect>
+<circle cx="490" cy="80" fill="currentColor" r="4"></circle>
+<text fill="currentColor" font-family="Space Mono" font-size="9" letter-spacing="1" text-anchor="middle" x="490" y="122">REST API</text>
+<text fill="currentColor" font-family="Space Mono" font-size="8" opacity="0.5" text-anchor="middle" x="490" y="135">STREAMING JSON</text>
+</svg>
+</div>
+<div class="pt-4 border-t border-light-border/60 dark:border-dark-border/60 flex flex-wrap items-center justify-between font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary">
+<span>DÉBIT : 50,000+ ACTES / MOIS</span>
+<span>SÉCURITÉ : ON-PREM COMPLIANT</span>
+<span>PRÉCISION D'EXTRACTION : 99.8%</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 04 / SECTION 03 : PHILOSOPHIE & ATELIER (MANIFESTE ÉDITORIAL IMPOSANT) -->
+<!-- ========================================================================= -->
+<section class="w-full border-b border-light-border dark:border-dark-border py-20 md:py-32" id="philosophie">
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12">
+<!-- Section Header Tracker -->
+<div class="flex items-center justify-between pb-6 mb-16 border-b border-light-border dark:border-dark-border font-mono text-xs">
+<div class="flex items-center gap-3">
+<span class="uppercase tracking-superwide text-black dark:text-white font-bold">// MANIFESTE 03 — PHILOSOPHIE</span>
+<span class="text-light-text-secondary dark:text-dark-text-secondary">L'ATELIER</span>
+</div>
+<span class="text-light-text-secondary dark:text-dark-text-secondary">PARIS • FONDÉ EN 2018</span>
+</div>
+<!-- Monumental Statement in Avant-Garde Scale -->
+<div class="mb-20">
+<span class="font-mono text-xs uppercase tracking-superwide text-light-text-secondary dark:text-dark-text-secondary block mb-4">
+          [ ÉTHIQUE DE L'ARTISAN NUMÉRIQUE ]
+        </span>
+<blockquote class="font-display text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-light text-black dark:text-white leading-[1.08] tracking-tight">
+          « L'élégance technique ne réside pas dans l'accumulation d'abstractions complexes, mais dans la précision du geste : un code lisible, prévisible et taillé pour durer. »
+        </blockquote>
+</div>
+<!-- Split Composition: Studio Portrait & Technical Stack Registry -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pt-12 border-t border-light-border dark:border-dark-border">
+<!-- Studio Portrait Column (Preserved Image) -->
+<div class="lg:col-span-4">
+<div class="border border-light-border dark:border-dark-border p-2 bg-light-surface dark:bg-dark-surface">
+<div class="relative aspect-[4/5] bg-black overflow-hidden">
+<img alt="Allen Koch - Portrait développeur indépendant" class="w-full h-full object-cover grayscale contrast-125 filter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX9lhVUMwrI2OlPV7nTwD1NwLMqA-L-90O1w_xbZ-kgDqz-jVI_SSyzHV5eyb41H2qOK2PyqYFE7IHc61d4rzSXcdXp31J9ufZFyxRlNLG8G6-nzBTmw7cmHlDOCJz_4uI_sF3GR2zP0W8cLt7a-287PQ8f0ArFtV37y4wqja855CFhEYrcdseaeHHA53XTNgmO9KTyA7BBKy7BXMLXGQnaEXRwu65tuypmBBrm3Y8FlMWxv9Yx6-k"/>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between font-mono text-[11px] text-light-text-secondary dark:text-dark-text-secondary">
+<span class="text-black dark:text-white font-medium">ALLEN KOCH</span>
+<span>INGÉNIEUR WEB INDÉPENDANT</span>
+</div>
+</div>
+<!-- Commentary and Stack Tables -->
+<div class="lg:col-span-8 flex flex-col justify-between h-full">
+<div class="max-w-2xl mb-12">
+<p class="font-body text-lg text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed mb-6">
+            Travailler directement avec moi signifie zéro intermédiaire, zéro dilution de responsabilité : je prends en charge la réflexion architecturale, l’écriture rigoureuse du code et le déploiement sécurisé. Chaque projet bénéficie d'une attention sur-mesure digne d'un atelier d'artisan.
+          </p>
+<p class="font-body text-base text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed">
+            Pas d'équipes pléthoriques ni de réunions superflues. Une cadence d'exécution claire, des livrables tangibles chaque semaine et un transfert de compétences sans rétention de propriété.
+          </p>
+</div>
+<!-- Technical Stack Modular Registry -->
+<div class="pt-8 border-t border-light-border dark:border-dark-border">
+<span class="font-mono text-xs uppercase tracking-superwide text-black dark:text-white font-bold block mb-6">
+            // SOCLE TECHNIQUE DE RÉFÉRENCE (ACTIF)
+          </span>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<!-- Front-end -->
+<div class="p-5 border border-light-border dark:border-dark-border bg-light-surface/30 dark:bg-dark-surface/30">
+<div class="font-mono text-xs text-black dark:text-white font-bold pb-2 border-b border-light-border/60 dark:border-dark-border/60 mb-3 flex justify-between">
+<span>FRONT-END</span>
+<span>01</span>
+</div>
+<ul class="font-mono text-xs space-y-1.5 text-light-text-secondary dark:text-dark-text-secondary">
+<li>Next.js 15 / React 19</li>
+<li>TypeScript Strict</li>
+<li>Tailwind CSS</li>
+<li>Three.js / WebGL</li>
+</ul>
+</div>
+<!-- Back-end -->
+<div class="p-5 border border-light-border dark:border-dark-border bg-light-surface/30 dark:bg-dark-surface/30">
+<div class="font-mono text-xs text-black dark:text-white font-bold pb-2 border-b border-light-border/60 dark:border-dark-border/60 mb-3 flex justify-between">
+<span>BACK-END &amp; DB</span>
+<span>02</span>
+</div>
+<ul class="font-mono text-xs space-y-1.5 text-light-text-secondary dark:text-dark-text-secondary">
+<li>Python FastAPI</li>
+<li>Node.js / Bun</li>
+<li>PostgreSQL / pgvector</li>
+<li>Redis / Upstash</li>
+</ul>
+</div>
+<!-- AI & Data -->
+<div class="p-5 border border-light-border dark:border-dark-border bg-light-surface/30 dark:bg-dark-surface/30">
+<div class="font-mono text-xs text-black dark:text-white font-bold pb-2 border-b border-light-border/60 dark:border-dark-border/60 mb-3 flex justify-between">
+<span>IA &amp; AUTOMATION</span>
+<span>03</span>
+</div>
+<ul class="font-mono text-xs space-y-1.5 text-light-text-secondary dark:text-dark-text-secondary">
+<li>Anthropic Claude 3.5</li>
+<li>Pinecone Vector DB</li>
+<li>LangChain / RAG</li>
+<li>n8n Orchestration</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 05 / SECTION 04 : MÉTHODOLOGIE EN 4 TEMPS (CYCLE DE VIE RYTHMÉ) -->
+<!-- ========================================================================= -->
+<section class="w-full border-b border-light-border dark:border-dark-border py-20 md:py-32 bg-light-surface/20 dark:bg-dark-surface/20" id="methode">
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12">
+<!-- Tracker Header -->
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-16 gap-4 pb-6 border-b border-light-border dark:border-dark-border">
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs uppercase tracking-superwide text-black dark:text-white font-bold">// CADRE OPÉRATOIRE 04</span>
+<span class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary">[ MÉTHODOLOGIE CONTRACTUELLE ]</span>
+</div>
+<div class="font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary">
+          CYCLE STRICT EN 4 ÉTAPES
+        </div>
+</div>
+<!-- 4 Rythmic Steps -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Step 01 -->
+<div class="p-8 border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg flex flex-col justify-between min-h-[360px] group hover:border-black dark:hover:border-white transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-light-border/60 dark:border-dark-border/60 mb-6">
+<span class="font-mono text-sm font-bold text-black dark:text-white">[ 01 ]</span>
+<span class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary uppercase">SEMAINE 01</span>
+</div>
+<h3 class="font-display text-2xl font-light text-black dark:text-white mb-3">
+              Comprendre
+            </h3>
+<p class="font-body text-sm text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed">
+              Immersion dans les exigences métiers, cartographie des flux d'utilisateurs, modélisation des entités de données et sélection stricte de la pile technique sans dépendance superflue.
+            </p>
+</div>
+<div class="pt-6 border-t border-light-border/60 dark:border-dark-border/60 font-mono text-[11px]">
+<span class="text-light-text-secondary dark:text-dark-text-secondary block text-[10px] uppercase">Livrable :</span>
+<span class="text-black dark:text-white font-medium">Dossier d'Architecture &amp; Roadmap</span>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="p-8 border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg flex flex-col justify-between min-h-[360px] group hover:border-black dark:hover:border-white transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-light-border/60 dark:border-dark-border/60 mb-6">
+<span class="font-mono text-sm font-bold text-black dark:text-white">[ 02 ]</span>
+<span class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary uppercase">SEMAINE 02-03</span>
+</div>
+<h3 class="font-display text-2xl font-light text-black dark:text-white mb-3">
+              Concevoir
+            </h3>
+<p class="font-body text-sm text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed">
+              Élaboration des design tokens, hiérarchie typographique éditoriale, maquettes interactives haute fidélité et validation des principes d'expérience utilisateur.
+            </p>
+</div>
+<div class="pt-6 border-t border-light-border/60 dark:border-dark-border/60 font-mono text-[11px]">
+<span class="text-light-text-secondary dark:text-dark-text-secondary block text-[10px] uppercase">Livrable :</span>
+<span class="text-black dark:text-white font-medium">Design Tokens &amp; Prototype Validé</span>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="p-8 border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg flex flex-col justify-between min-h-[360px] group hover:border-black dark:hover:border-white transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-light-border/60 dark:border-dark-border/60 mb-6">
+<span class="font-mono text-sm font-bold text-black dark:text-white">[ 03 ]</span>
+<span class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary uppercase">SEMAINE 04-06</span>
+</div>
+<h3 class="font-display text-2xl font-light text-black dark:text-white mb-3">
+              Développer
+            </h3>
+<p class="font-body text-sm text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed">
+              Développement modulaire avec typage strict TypeScript, tests automatisés unitaires et de bout en bout, et déploiement continu sur environnement de staging privé.
+            </p>
+</div>
+<div class="pt-6 border-t border-light-border/60 dark:border-dark-border/60 font-mono text-[11px]">
+<span class="text-light-text-secondary dark:text-dark-text-secondary block text-[10px] uppercase">Livrable :</span>
+<span class="text-black dark:text-white font-medium">Code Source Typé &amp; Staging Actif</span>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="p-8 border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg flex flex-col justify-between min-h-[360px] group hover:border-black dark:hover:border-white transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-light-border/60 dark:border-dark-border/60 mb-6">
+<span class="font-mono text-sm font-bold text-black dark:text-white">[ 04 ]</span>
+<span class="font-mono text-[10px] text-light-text-secondary dark:text-dark-text-secondary uppercase">SEMAINE 07+</span>
+</div>
+<h3 class="font-display text-2xl font-light text-black dark:text-white mb-3">
+              Déployer &amp; Garantir
+            </h3>
+<p class="font-body text-sm text-light-text-secondary dark:text-dark-text-secondary font-light leading-relaxed">
+              Audit de sécurité exhaustif, vérification Core Web Vitals, mise en production sans interruption de service et garantie contractuelle de correction de 90 jours incluse.
+            </p>
+</div>
+<div class="pt-6 border-t border-light-border/60 dark:border-dark-border/60 font-mono text-[11px]">
+<span class="text-light-text-secondary dark:text-dark-text-secondary block text-[10px] uppercase">Livrable :</span>
+<span class="text-black dark:text-white font-medium">Production &amp; Garantie 90 Jours</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 06 / SECTION 05 : CONTACT (GRAND APPEL TYPOGRAPHIQUE & BRIEF DIRECT) -->
+<!-- ========================================================================= -->
+<section class="w-full py-20 md:py-36" id="contact">
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12">
+<!-- Section Tracker -->
+<div class="flex items-center justify-between pb-6 mb-16 border-b border-light-border dark:border-dark-border font-mono text-xs">
+<div class="flex items-center gap-3">
+<span class="uppercase tracking-superwide text-black dark:text-white font-bold">// INITIATION 05 — CONTACT</span>
+<span class="text-light-text-secondary dark:text-dark-text-secondary">RÉPONSE DIRECTE SOUS 24H OUVRÉES</span>
+</div>
+<span class="text-light-text-secondary dark:text-dark-text-secondary">ACCÈS DIRECT SANS INTERMÉDIAIRE</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+<!-- Massive Callout & Direct Channels -->
+<div class="lg:col-span-6 flex flex-col justify-between">
+<div>
+<h2 class="font-display text-4xl sm:text-6xl md:text-7xl xl:text-8xl font-light text-black dark:text-white tracking-tighter leading-[0.92] mb-8">
+              CONSTRUISONS<br/>
+              VOTRE PROCHAIN<br/>
+<span class="italic font-light">SYSTÈME.</span>
+</h2>
+<p class="font-body text-base sm:text-lg text-light-text-secondary dark:text-dark-text-secondary font-light max-w-lg mb-10 leading-relaxed">
+              Vous préparez une refonte stratégique, un nouveau produit ou souhaitez intégrer des flux d'intelligence artificielle sur-mesure ? Mon calendrier est ouvert pour les missions démarrant au deuxième trimestre 2025.
+            </p>
+<!-- One-Click Direct Email Copy Box -->
+<div class="mb-8 p-6 border border-light-border dark:border-dark-border bg-light-surface/40 dark:bg-dark-surface/40">
+<span class="font-mono text-[10px] uppercase tracking-wider text-light-text-secondary dark:text-dark-text-secondary block mb-2">CANAL DIRECT SANS INTERMÉDIAIRE</span>
+<div class="flex items-center justify-between gap-4">
+<a class="font-mono text-lg sm:text-xl text-black dark:text-white font-normal hover:underline underline-offset-4" href="mailto:bonjour@allenkoch.dev">
+                  bonjour@allenkoch.dev
+                </a>
+<button class="px-3.5 py-1.5 border border-light-border dark:border-dark-border hover:bg-light-surface dark:hover:bg-dark-surface font-mono text-[11px] uppercase transition-colors flex items-center gap-1.5" id="copy-email-btn" title="Copier l'adresse" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>COPIER</span>
+</button>
+</div>
+<div class="hidden font-mono text-[11px] text-emerald-500 mt-2" id="copy-toast">
+                ✓ Adresse copiée dans le presse-papier
+              </div>
+</div>
+<!-- Cal.com Direct Booking Link -->
+<div class="flex flex-wrap gap-4 font-mono text-xs uppercase tracking-wider">
+<a class="inline-flex items-center gap-2.5 px-6 py-3.5 border border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" href="https://cal.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>RÉSERVER UN CRÉNEAU DIRECT (CAL.COM)</span>
+</a>
+</div>
+</div>
+<!-- Social Archive Links -->
+<div class="pt-8 mt-12 border-t border-light-border/60 dark:border-dark-border/60 flex flex-wrap gap-6 font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary uppercase">
+<a class="hover:text-black dark:hover:text-white transition-colors" href="https://github.com" rel="noreferrer" target="_blank">GITHUB // DEV</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="https://linkedin.com" rel="noreferrer" target="_blank">LINKEDIN // RÉSEAU</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="https://read.cv" rel="noreferrer" target="_blank">READ.CV // DOSSIER</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="https://x.com" rel="noreferrer" target="_blank">TWITTER / X</a>
+</div>
+</div>
+<!-- Avant-Garde Briefing Form -->
+<div class="lg:col-span-6 bg-light-surface/20 dark:bg-dark-surface/30 p-8 sm:p-10 border border-light-border dark:border-dark-border">
+<form class="space-y-6" id="inquiry-form">
+<!-- System Typology Selector -->
+<div>
+<label class="font-mono text-xs uppercase tracking-wider text-light-text-secondary dark:text-dark-text-secondary block mb-3">
+                01 // TYPOLOGIE DU SYSTÈME
+              </label>
+<div class="grid grid-cols-2 gap-2 text-xs font-mono">
+<label class="border border-light-border dark:border-dark-border p-3 text-center cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:bg-black has-[:checked]:text-white dark:has-[:checked]:bg-white dark:has-[:checked]:text-black transition-colors">
+<input checked="" class="sr-only" name="project_type" type="radio" value="showcase"/>
+                  Site d'Exception
+                </label>
+<label class="border border-light-border dark:border-dark-border p-3 text-center cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:bg-black has-[:checked]:text-white dark:has-[:checked]:bg-white dark:has-[:checked]:text-black transition-colors">
+<input class="sr-only" name="project_type" type="radio" value="saas"/>
+                  App Web &amp; SaaS
+                </label>
+<label class="border border-light-border dark:border-dark-border p-3 text-center cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:bg-black has-[:checked]:text-white dark:has-[:checked]:bg-white dark:has-[:checked]:text-black transition-colors">
+<input class="sr-only" name="project_type" type="radio" value="ai"/>
+                  Ingénierie IA / RAG
+                </label>
+<label class="border border-light-border dark:border-dark-border p-3 text-center cursor-pointer hover:border-black dark:hover:border-white has-[:checked]:bg-black has-[:checked]:text-white dark:has-[:checked]:bg-white dark:has-[:checked]:text-black transition-colors">
+<input class="sr-only" name="project_type" type="radio" value="audit"/>
+                  Audit &amp; Refonte
+                </label>
+</div>
+</div>
+<!-- Name & Organization -->
+<div>
+<label class="font-mono text-xs uppercase tracking-wider text-light-text-secondary dark:text-dark-text-secondary block mb-2" for="form-name">
+                02 // IDENTITÉ &amp; ORGANISATION
+              </label>
+<input class="w-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border px-4 py-3 font-mono text-xs text-black dark:text-white placeholder:text-light-text-secondary/50 dark:placeholder:text-dark-text-secondary/50 focus:outline-none focus:border-black dark:focus:border-white rounded-none" id="form-name" placeholder="Ex: Hélène Moreau — Maison Blanche Studio" required="" type="text"/>
+</div>
+<!-- Email -->
+<div>
+<label class="font-mono text-xs uppercase tracking-wider text-light-text-secondary dark:text-dark-text-secondary block mb-2" for="form-email">
+                03 // ADRESSE DE CONTACT DIRECT
+              </label>
+<input class="w-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border px-4 py-3 font-mono text-xs text-black dark:text-white placeholder:text-light-text-secondary/50 dark:placeholder:text-dark-text-secondary/50 focus:outline-none focus:border-black dark:focus:border-white rounded-none" id="form-email" placeholder="helene@maisonblanche.com" required="" type="email"/>
+</div>
+<!-- Scope & Deadlines -->
+<div>
+<label class="font-mono text-xs uppercase tracking-wider text-light-text-secondary dark:text-dark-text-secondary block mb-2" for="form-message">
+                04 // PÉRIMÈTRE TECHNIQUE &amp; DÉLAIS SOUHAITÉS
+              </label>
+<textarea class="w-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border px-4 py-3 font-mono text-xs text-black dark:text-white placeholder:text-light-text-secondary/50 dark:placeholder:text-dark-text-secondary/50 focus:outline-none focus:border-black dark:focus:border-white resize-none rounded-none" id="form-message" placeholder="Décrivez les objectifs opérationnels, fonctionnalités souhaitées et contraintes calendaires..." required="" rows="4"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-4 bg-black text-white dark:bg-white dark:text-black font-mono text-xs uppercase tracking-editorial hover:opacity-85 transition-opacity flex items-center justify-center gap-2" id="submit-inquiry" type="submit">
+<span>TRANSMETTRE LA DEMANDE DE CADRAGE</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<div class="hidden p-4 border border-emerald-500/50 bg-emerald-500/10 font-mono text-xs text-black dark:text-white text-center" id="form-success-alert">
+              ✓ Demande de cadrage transmise avec succès. Accusé de réception sous 24h ouvrées.
+            </div>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ========================================================================= -->
+<!-- 07 / FOOTER (MINIMAL MONOCHROME ARCHIVE COLOPHON) -->
+<!-- ========================================================================= -->
+<footer class="w-full border-t border-light-border dark:border-dark-border py-12 bg-light-bg dark:bg-dark-bg">
+<div class="max-w-[1720px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 font-mono text-xs text-light-text-secondary dark:text-dark-text-secondary">
+<div>
+<p class="text-black dark:text-white font-medium">© 2025 ALLEN KOCH. ARTISANAT NUMÉRIQUE &amp; INGÉNIERIE INDÉPENDANTE.</p>
+<p class="text-[11px] mt-1">VARIANTE D // EXPERIMENTAL TYPOGRAPHY &amp; AVANT-GARDE EDITORIAL</p>
+</div>
+<div class="flex flex-wrap items-center gap-6">
+<span class="text-black dark:text-white font-medium" id="footer-live-paris-time">PARIS GMT+1</span>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="#services">Services</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="#projets">Travaux</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="#philosophie">Philosophie</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="#methode">Méthode</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="#contact">Contact</a>
+<a class="hover:text-black dark:hover:text-white transition-colors" href="#">Haut de page ↑</a>
+</div>
+</div>
+</footer>
+<!-- ========================================================================= -->
+<!-- SCRIPTS : THEME TOGGLE, HORLOGE TEMPS RÉEL & INTERACTIONS FORMULAIRE -->
+<!-- ========================================================================= -->
+<script>
+    (function() {
+      // 1. Theme Toggle
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          document.documentElement.classList.toggle('dark');
+        });
+      }
+
+      // 2. Real-time Paris Clock
+      function updateParisClock() {
+        const now = new Date();
+        const options = {
+          timeZone: 'Europe/Paris',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        };
+        const formatter = new Intl.DateTimeFormat('fr-FR', options);
+        const timeString = formatter.format(now);
+        const footerClock = document.getElementById('footer-live-paris-time');
+        if (footerClock) {
+          footerClock.textContent = `PARIS GMT+1 [${timeString}]`;
+        }
+      }
+      setInterval(updateParisClock, 1000);
+      updateParisClock();
+
+      // 3. One-Click Copy Email
+      const copyBtn = document.getElementById('copy-email-btn');
+      const copyToast = document.getElementById('copy-toast');
+      if (copyBtn && copyToast) {
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText('bonjour@allenkoch.dev').then(() => {
+            copyToast.classList.remove('hidden');
+            setTimeout(() => {
+              copyToast.classList.add('hidden');
+            }, 3000);
+          });
+        });
+      }
+
+      // 4. Briefing Form Handler
+      const inquiryForm = document.getElementById('inquiry-form');
+      const submitBtn = document.getElementById('submit-inquiry');
+      const successAlert = document.getElementById('form-success-alert');
+      if (inquiryForm && submitBtn && successAlert) {
+        inquiryForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>TRANSMISSION EN COURS...</span>';
+          setTimeout(() => {
+            inquiryForm.reset();
+            submitBtn.classList.add('hidden');
+            successAlert.classList.remove('hidden');
+          }, 600);
+        });
+      }
+    })();
+  </script>
+</body></html>

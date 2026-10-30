@@ -1,15 +1,35 @@
 # Allen Koch - Portfolio Développeur
 
-![Version](https://img.shields.io/badge/version-1.3.2-blue)
-![Status](https://img.shields.io/badge/status-release%201.3.2-success)
+> Release 1.4.0 : refonte Fullstack & IA, services, projets et formulaire
+> Web3Forms/hCaptcha. Fusion `develop` → `main` autorisée par Allen le
+> 30 octobre 2026 dans RUN-008. Voir les [preuves et limites](runs-journal.md)
+> et les [points de suivi contractuels](docs/legal-release-checklist.md).
+
+L’itération actuelle présente Allen comme développeur Fullstack & IA : services,
+projets personnels, client autorisé et game dev, Stack, À propos et contact
+sur une page avec ancres. FR/EN, thèmes clair/sombre et responsive sont conservés.
+Le formulaire Web3Forms (RUN-017) est intégré localement avec une clé publique
+de test ; Allen a confirmé l'envoi et la réception réels. Le lien email
+reste disponible. La section
+« Ils m’ont fait confiance » (RUN-018) reste future et exige des références autorisées.
+Le [brief](brief.md) définit le périmètre courant ; les descriptions de maintenance
+ci-dessous restent celles de la baseline historique 1.3.2.
+
+Le suivi agentique sépare le [brief produit](brief.md), les
+[RUN planifiés et leurs responsables](runs-workflow.md), le
+[journal d'exécution](runs-journal.md) et les
+[règles de délégation](docs/handoff-contracts.md). Un RUN actif au maximum ;
+le design reste confié à Claude et l'intégration à Codex.
+
+![Version](https://img.shields.io/badge/version-1.4.0-blue)
+![Status](https://img.shields.io/badge/status-release%201.4.0-success)
 ![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)
 ![License](https://img.shields.io/badge/license-private-lightgrey)
 
-Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack junior, des projets sélectionnés, une stack technique et des liens de contact professionnels.
+Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack et IA, des projets sélectionnés, une stack technique et des liens de contact professionnels.
 
-Version `1.3.2` est l'état stable de production actuel. Le projet reste limité
-à de petites améliorations front/design, à des mises à jour ponctuelles de
-données et à l'hygiène de release.
+Version `1.4.0` est la release de la refonte. La version `1.3.2` reste
+la baseline historique des descriptions de maintenance ci-dessous.
 
 ## Aperçu
 
@@ -17,10 +37,10 @@ Ce projet est un site statique moderne, responsive et orienté présentation pro
 
 Objectifs principaux :
 
-- présenter un profil de développeur fullstack junior ;
+- présenter un profil de développeur fullstack et IA ;
 - mettre en avant des projets web et workflows IA ;
 - documenter une stack Rails / React / TypeScript ;
-- fournir des liens directs vers GitHub, LinkedIn, X et email professionnel ;
+- fournir des liens directs vers GitHub, LinkedIn et email professionnel ;
 - garder une base de code simple, maintenable et prête à déployer.
 
 Évolutions prévues après `1.3.2` :
@@ -58,9 +78,11 @@ Le projet ne contient pas :
 
 ## Design
 
-La direction visuelle est documentée dans [`DESIGN.md`](./DESIGN.md).
+La direction de refonte s'appuie sur les [quatre maquettes Stitch importées](./docs/maquettes_references/README.md)
+et leur système monochrome, à reproduire et à adapter. [`DESIGN.md`](./DESIGN.md)
+distingue cette cible de la baseline actuelle.
 
-Principes retenus :
+Principes de la version 1.3.2 actuellement livrée :
 
 - thème sombre par défaut ;
 - style premium, sobre et technique ;
@@ -138,6 +160,14 @@ npm run dev
 Le projet utilise Node 24 et npm 11. Le fichier `.nvmrc`, les contraintes
 `engines` et les workflows CI partagent cette même base. Le site est ensuite
 disponible sur l'URL locale indiquée par Vite.
+
+## Formulaire de contact
+
+Copier `.env.example` vers `.env.local` et renseigner la clé **publique**
+Web3Forms dans `VITE_WEB3FORMS_ACCESS_KEY`. Sans clé, la section Contact affiche
+uniquement le lien email. En déploiement, définir cette variable dans
+l'environnement de l'hébergeur après les [vérifications de réception et de
+conservation](docs/contact-form-contract.md). Ne pas y placer de clé privée.
 
 ## Ajouter un projet
 

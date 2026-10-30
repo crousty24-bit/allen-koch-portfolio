@@ -46,9 +46,9 @@ export function BackToTopButton({ language }: BackToTopButtonProps) {
         <path
           d="M10 15V5M10 5L5.5 9.5M10 5L14.5 9.5"
           stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="1.8"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+          strokeWidth="1.5"
         />
       </svg>
     </button>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Space+Mono:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-background":"#1b1c1a","tertiary-container":"#1c1b1a","on-surface-variant":"#444748","on-error-container":"#93000a","light-surface":"#ECEAE4","primary-container":"#1c1b1b","light-bg":"#F8F7F3","light-border":"#E2DFD7","secondary":"#605e5a","secondary-fixed":"#e6e2dd","dark-text-primary":"#F5F2EB","outline":"#747878","light-text-primary":"#191919","surface-bright":"#faf9f5","surface-container-low":"#f4f4f0","background":"#faf9f5","primary-fixed":"#e5e2e1","secondary-fixed-dim":"#c9c6c1","on-primary-container":"#858383","on-secondary-fixed":"#1c1c19","surface":"#faf9f5","surface-container-lowest":"#ffffff","surface-tint":"#5f5e5e","primary":"#000000","on-tertiary-container":"#868382","surface-dim":"#dbdad6","tertiary-fixed":"#e6e2df","error":"#ba1a1a","dark-text-secondary":"#A5A29A","dark-border":"#31302C","secondary-container":"#e3dfda","on-surface":"#1b1c1a","on-error":"#ffffff","on-primary":"#ffffff","inverse-on-surface":"#f2f1ed","surface-container-highest":"#e3e2df","primary-fixed-dim":"#c8c6c5","surface-container":"#efeeea","tertiary-fixed-dim":"#cac6c4","dark-surface":"#232320","on-secondary":"#ffffff","surface-container-high":"#e9e8e4","outline-variant":"#c4c7c7","inverse-primary":"#c8c6c5","on-tertiary-fixed":"#1c1b1a","dark-bg":"#171715","tertiary":"#000000","error-container":"#ffdad6","surface-variant":"#e3e2df","on-primary-fixed-variant":"#474746","on-tertiary":"#ffffff","light-text-secondary":"#73716D","on-primary-fixed":"#1c1b1b","on-secondary-container":"#64625f","on-tertiary-fixed-variant":"#484645","on-secondary-fixed-variant":"#484743","inverse-surface":"#2f312e"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","margin":"1.25rem","space-xs":"0.25rem","margin-desktop":"3.5rem","space-xl":"4rem","gutter-desktop":"2.5rem","space-2xl":"7rem","gutter":"1.5rem","space-lg":"2rem","space-sm":"0.5rem"},"fontFamily":{"body-lg":["Geist"],"headline-xl-mobile":["Geist"],"headline-sm":["Geist"],"headline-xl":["Geist"],"body-md":["Geist"],"display-hero":["Geist"],"label-code":["Space Mono"],"headline-md":["Geist"],"body-sm":["Geist"],"display-hero-mobile":["Geist"],"headline-lg":["Geist"],"label-caps":["Geist"]},"fontSize":{"body-lg":["1.125rem",{"lineHeight":"1.75rem","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-xl-mobile":["2.25rem",{"lineHeight":"2.5rem","letterSpacing":"-0.025em","fontWeight":"400"}],"headline-sm":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-xl":["3.5rem",{"lineHeight":"3.75rem","letterSpacing":"-0.035em","fontWeight":"400"}],"body-md":["1rem",{"lineHeight":"1.6rem","letterSpacing":"0em","fontWeight":"400"}],"display-hero":["5.5rem",{"lineHeight":"5.5rem","letterSpacing":"-0.04em","fontWeight":"400"}],"label-code":["0.75rem",{"lineHeight":"1.125rem","letterSpacing":"0.06em","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"500"}],"body-sm":["0.875rem",{"lineHeight":"1.4rem","letterSpacing":"0.005em","fontWeight":"400"}],"display-hero-mobile":["3rem",{"lineHeight":"3.25rem","letterSpacing":"-0.03em","fontWeight":"400"}],"headline-lg":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"500"}],"label-caps":["0.6875rem",{"lineHeight":"1rem","letterSpacing":"0.08em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface/85 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="AK Monogram" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XZwvT1yhLcqJIXJ05waFciVMa9gGVRD927avW5WlrfezqYncG9FDHs-H4UTFnCKaY9maIR-TAQzuctnE26z-4anZ1lOBfiD5Ejb63i4VPX-tJ1efU95Q314ECXW7lf-564VY4-CfCjxuROL_ZAvOgaE8JI7YOTUTlJOaCuyeMSpV4BS1spg_qTTN4nnh1rod3q3YoRmsBOUr8kgle438p87MByskBAkMGYNzt9yQYWN-BtH6VBxVsw2M8"/><a class="font-headline-sm text-headline-sm text-on-surface tracking-tight uppercase" data-path="portfolio" href="#">Allen Koch</a><span class="hidden sm:inline font-label-code text-label-code text-secondary tracking-wider pl-space-xs">/ Dev</span></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-on-surface underline underline-offset-4 decoration-primary"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="services" href="#services">Services</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="projets" href="#projets">Projets</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="a-propos" href="#a-propos">À propos</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="processus" href="#processus">Processus</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#contact">Contact</a></nav><div class="flex items-center gap-space-md"><div class="flex items-center bg-surface-container rounded-full p-0.5"><button class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-code text-label-code" type="button">FR</button><button class="px-2 py-0.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-code text-label-code" type="button">EN</button></div><button aria-label="Basculer le thème" class="p-1.5 text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full text-light-text-primary dark:text-dark-text-primary transition-colors duration-500 selection:bg-primary selection:text-surface">
+<!-- ========================================================================= -->
+<!-- 01 / HERO SECTION -->
+<!-- ========================================================================= -->
+<section class="relative w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop pt-12 md:pt-20 pb-20 md:pb-28">
+<!-- Live Availability Status Pill -->
+<div class="flex items-center gap-space-sm mb-10 md:mb-14">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-label-code text-label-code uppercase tracking-widest text-light-text-secondary dark:text-dark-text-secondary">
+        Disponible pour missions & collaborations — Q2 2025
+      </span>
+</div>
+<!-- Monumental Typography -->
+<div class="mb-10 md:mb-16">
+<h1 class="font-display-hero text-[3.8rem] sm:text-[5.5rem] lg:text-[7.5rem] leading-[0.92] tracking-tighter uppercase font-light text-on-surface">
+        ALLEN KOCH
+      </h1>
+<div class="mt-4 md:mt-6 flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+<p class="font-headline-md text-headline-md tracking-tight text-light-text-secondary dark:text-dark-text-secondary">
+          Développeur Web Indépendant & Artisan Numérique
+        </p>
+<span class="font-label-code text-label-code text-secondary tracking-widest uppercase">
+          PARIS / CODE & ARCHITECTURE
+        </span>
+</div>
+</div>
+<!-- Manifesto & CTAs Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-end pt-8">
+<div class="lg:col-span-8">
+<p class="font-body-lg text-body-lg md:text-[1.35rem] md:leading-[2.1rem] max-w-3xl text-on-surface font-light">
+          Je conçois et développe des expériences web sur mesure, des applications réactives et des automatisations intelligentes qui allient rigueur architecturale, clarté conceptuelle et distinction visuelle.
+        </p>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-space-md lg:items-end">
+<a class="w-full sm:w-auto text-center px-8 py-3.5 bg-primary text-on-primary font-label-code text-label-code uppercase tracking-wider hover:bg-secondary transition-colors duration-200" href="#contact">
+          Discutons de votre projet
+        </a>
+<a class="inline-flex items-center justify-center gap-space-xs font-label-code text-label-code text-on-surface hover:text-secondary tracking-wider uppercase group" href="#projets">
+<span>Voir mes réalisations</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="mt-20 md:mt-24 flex items-center justify-between font-label-code text-label-code text-secondary">
+<span>INDEX NO. 2025 // EDITION 04</span>
+<div class="flex items-center gap-space-sm">
+<span>DÉFILER</span>
+<div class="w-12 h-[1px] bg-secondary opacity-30"></div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 02 / SERVICES SECTION (#services) -->
+<!-- ========================================================================= -->
+<section class="w-full bg-light-surface dark:bg-dark-surface py- space-xl md:py-space-2xl transition-colors duration-300" id="services">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop">
+<!-- Section Header Tracker -->
+<div class="flex flex-col md:flex-row md:items-baseline justify-between mb-12 md:mb-20 gap-4">
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary tracking-widest uppercase">01 / SERVICES</span>
+<span class="h-px w-10 bg-secondary/30"></span>
+</div>
+<span class="font-label-code text-label-code text-light-text-secondary dark:text-dark-text-secondary uppercase">
+          CAPACITÉS & INGENIERIE LOGICIELLE
+        </span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop mb-16">
+<h2 class="lg:col-span-8 font-headline-lg text-headline-lg md:text-headline-xl text-on-surface font-light tracking-tight">
+          Expertises ciblées pour produits numériques d’exception.
+        </h2>
+<div class="lg:col-span-4 flex items-end">
+<p class="font-body-sm text-body-sm text-light-text-secondary dark:text-dark-text-secondary">
+            Chaque ligne de code vise la clarté opérationnelle, la résilience technique et la valeur mesurable apportée à votre écosystème.
+          </p>
+</div>
+</div>
+<!-- Services Interactive List / Accordion -->
+<div class="flex flex-col space-y-3" id="services-container">
+<!-- Item 01 -->
+<div class="service-item bg-surface dark:bg-dark-bg p-6 md:p-10 cursor-pointer transition-all duration-300 hover:shadow-md" data-index="0">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-baseline gap-6 md:gap-12">
+<span class="font-label-code text-headline-sm text-secondary font-light">01</span>
+<h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">Création de sites web vitrines & e-commerce</h3>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary uppercase hidden sm:inline">Perfs • Direction Artistique</span>
+<span class="material-symbols-outlined text-secondary transform transition-transform duration-300 service-icon">expand_more</span>
+</div>
+</div>
+<div class="service-content max-h-0 overflow-hidden transition-all duration-300 opacity-0 pt-0">
+<p class="font-body-md text-body-md text-light-text-secondary dark:text-dark-text-secondary mt-6 max-w-3xl">
+              Vitrines d’exception, direction artistique éditoriale, optimisation drastique des Core Web Vitals, SEO sémantique et accessibilité rigoureuse (RGAA / WCAG 2.1).
+            </p>
+<div class="flex flex-wrap gap-2 mt-6">
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Next.js</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Tailwind CSS</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">WebGL</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Headless CMS</span>
+</div>
+</div>
+</div>
+<!-- Item 02 -->
+<div class="service-item bg-surface dark:bg-dark-bg p-6 md:p-10 cursor-pointer transition-all duration-300 hover:shadow-md" data-index="1">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-baseline gap-6 md:gap-12">
+<span class="font-label-code text-headline-sm text-secondary font-light">02</span>
+<h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">Applications web & SaaS sur-mesure</h3>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary uppercase hidden sm:inline">React • TypeScript • Cloud</span>
+<span class="material-symbols-outlined text-secondary transform transition-transform duration-300 service-icon">expand_more</span>
+</div>
+</div>
+<div class="service-content max-h-0 overflow-hidden transition-all duration-300 opacity-0 pt-0">
+<p class="font-body-md text-body-md text-light-text-secondary dark:text-dark-text-secondary mt-6 max-w-3xl">
+              Architectures modernes et modulaires, interfaces utilisateurs réactives sans latence, logique métier complexe, modélisation de données transactionnelles et sécurisation bancaire.
+            </p>
+<div class="flex flex-wrap gap-2 mt-6">
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">React</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">TypeScript</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">PostgreSQL</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Supabase</span>
+</div>
+</div>
+</div>
+<!-- Item 03 -->
+<div class="service-item bg-surface dark:bg-dark-bg p-6 md:p-10 cursor-pointer transition-all duration-300 hover:shadow-md" data-index="2">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-baseline gap-6 md:gap-12">
+<span class="font-label-code text-headline-sm text-secondary font-light">03</span>
+<h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">Intégration d’Intelligence Artificielle & RAG</h3>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary uppercase hidden sm:inline">LLM • Vector DB • Agents</span>
+<span class="material-symbols-outlined text-secondary transform transition-transform duration-300 service-icon">expand_more</span>
+</div>
+</div>
+<div class="service-content max-h-0 overflow-hidden transition-all duration-300 opacity-0 pt-0">
+<p class="font-body-md text-body-md text-light-text-secondary dark:text-dark-text-secondary mt-6 max-w-3xl">
+              Systèmes d'assistance contextuelle, modèles génératifs sur mesure, pipelines de recherche vectorielle (RAG) et interfaces conversationnelles augmentées avec streaming bidirectionnel.
+            </p>
+<div class="flex flex-wrap gap-2 mt-6">
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">OpenAI API</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">LangChain</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Pinecone</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Python</span>
+</div>
+</div>
+</div>
+<!-- Item 04 -->
+<div class="service-item bg-surface dark:bg-dark-bg p-6 md:p-10 cursor-pointer transition-all duration-300 hover:shadow-md" data-index="3">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-baseline gap-6 md:gap-12">
+<span class="font-label-code text-headline-sm text-secondary font-light">04</span>
+<h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">Automatisation de workflows métier</h3>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary uppercase hidden sm:inline">Webhooks • Scripts • n8n</span>
+<span class="material-symbols-outlined text-secondary transform transition-transform duration-300 service-icon">expand_more</span>
+</div>
+</div>
+<div class="service-content max-h-0 overflow-hidden transition-all duration-300 opacity-0 pt-0">
+<p class="font-body-md text-body-md text-light-text-secondary dark:text-dark-text-secondary mt-6 max-w-3xl">
+              Interconnexion transparente d’outils tiers, synchronisation bidirectionnelle de données critiques, webhooks fiables avec mécanismes de reprise sur erreur et suppression définitive des goulots d’étranglement manuels.
+            </p>
+<div class="flex flex-wrap gap-2 mt-6">
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">n8n</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Node.js</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Webhooks</span>
+<span class="px-2.5 py-1 bg-surface-container font-label-code text-label-code text-on-surface">Serverless</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 03 / SELECTED WORK (#projets) -->
+<!-- ========================================================================= -->
+<section class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop py-space-xl md:py-space-2xl" id="projets">
+<div class="flex flex-col md:flex-row md:items-baseline justify-between mb-16 md:mb-24 gap-4">
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary tracking-widest uppercase">02 / TRAVAUX SÉLECTIONNÉS</span>
+<span class="h-px w-10 bg-secondary/30"></span>
+</div>
+<span class="font-label-code text-label-code text-secondary">ARCHIVE 2024 — 2025</span>
+</div>
+<!-- Case Study 01: KONTROL OS -->
+<article class="mb-28 md:mb-40">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+<!-- Left: Image Preview -->
+<div class="lg:col-span-8 bg-surface-container overflow-hidden group">
+<div class="relative overflow-hidden aspect-[16/10]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] filter contrast-[1.05]" data-alt="Monochrome dark UI dashboard interface on a matte black high-end studio monitor showing high-frequency financial analytics, linear trend charts, structured minimal data cards and brutalist typography in warm sand and graphite tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC43XNQs9UEKQMV_dawdJ1Wl3q91wz4NEOgjwRJoOTWnJhREF7ByOTlSFjb4ym7Y4X31qnkMpLH9Tfp6hazKXkSz9S-v-Rh5hAn8eqM-gHybyqYacxqLt86SWSNVa7znWE1fFWlAsojxCvlu83-QekWsv5z6mb9QUlMBVabNGecjP88CAgf4qEO5vlHwmdX-n-LColzMXFnydQnC629EV_e0FS-9NYa6sRJ1cvhPZd02ZEphWrF7ui3"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-code text-label-code uppercase tracking-wider">
+              Fintech OS
+            </div>
+</div>
+</div>
+<!-- Right: Editorial Details -->
+<div class="lg:col-span-4 flex flex-col justify-between h-full pt-2">
+<div>
+<div class="flex items-center gap-3 font-label-code text-label-code text-secondary uppercase mb-3">
+<span>01</span>
+<span>/</span>
+<span>PARIS, FR</span>
+<span>/</span>
+<span>2024</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg tracking-tight text-on-surface mb-4">
+              KONTROL OS
+            </h3>
+<p class="font-body-md text-body-md text-light-text-secondary dark:text-dark-text-secondary mb-6 leading-relaxed">
+              Conception intégrale d’un tableau de bord de trading haute fréquence épuré, réduisant le temps de prise de décision de 40% pour un fonds d’investissement indépendant. Rendu milliseconde et interfaces modulaires.
+            </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">Next.js 15</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">TypeScript</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">Data Viz</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">WebSockets</span>
+</div>
+</div>
+<!-- Micro Metric Graphic -->
+<div class="bg-surface-container-low p-5 mb-8">
+<div class="flex justify-between items-baseline mb-2">
+<span class="font-label-code text-label-code uppercase text-secondary">Vitesse d’exécution</span>
+<span class="font-label-code text-label-code text-on-surface font-medium">< 45ms</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 overflow-hidden">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 font-label-code text-label-code uppercase tracking-wider text-on-surface hover:text-secondary group" href="#contact">
+<span>Explorer le cas d’étude</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Case Study 02: KONSOL STUDIO -->
+<article class="mb-28 md:mb-40">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+<!-- Left: Image Preview -->
+<div class="lg:col-span-8 bg-surface-container overflow-hidden group">
+<div class="relative overflow-hidden aspect-[16/10]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] filter contrast-[1.05]" data-alt="Brutalist architectural minimalist e-commerce web platform showcasing cast-concrete monolithic chairs and furniture, high-contrast black and white photography, bold Swiss typography grid and clean asymmetric sections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3eazOXEDfYk5fWc3ZK7VpQggngwg9s75E8f27K1xzUH9J_m_FAOy-H4D8rmXW16dvYCMjirTbwC7wrp3vF8eqCxNxavYah57OWmEwS-HwoA4r4Clnl9T6DfMO5hfc5jtcAUV2TIf5LMoXbpyINoeLCpjGK-imTgoZfgChgAEV0sw-kbLbtW7w_uXkrXJhp2p-cDfWQtzRPpbQYWACvEC9GxfU223M2K9oiRmW7GcgPx8SMRCtWzlp"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-code text-label-code uppercase tracking-wider">
+              E-Commerce Éditorial
+            </div>
+</div>
+</div>
+<!-- Right: Editorial Details -->
+<div class="lg:col-span-4 flex flex-col justify-between h-full pt-2">
+<div>
+<div class="flex items-center gap-3 font-label-code text-label-code text-secondary uppercase mb-3">
+<span>02</span>
+<span>/</span>
+<span>BERLIN / PARIS</span>
+<span>/</span>
+<span>2024</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg tracking-tight text-on-surface mb-4">
+              KONSOL STUDIO
+            </h3>
+<p class="font-body-md text-body-md text-light-text-secondary dark:text-dark-text-secondary mb-6 leading-relaxed">
+              Direction technique d’une boutique digitale à l’esthétique brutaliste radicale. Conjuguant chargement instantané (<800ms) et fluidité cinématique lors de la navigation 3D interactive des pièces de collection.
+            </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">Headless Shopify</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">Three.js</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">WebGL</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">Tailwind</span>
+</div>
+</div>
+<!-- Micro Metric Graphic -->
+<div class="bg-surface-container-low p-5 mb-8">
+<div class="flex justify-between items-baseline mb-2">
+<span class="font-label-code text-label-code uppercase text-secondary">Performance Core Web Vitals</span>
+<span class="font-label-code text-label-code text-on-surface font-medium">99 / 100</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 overflow-hidden">
+<div class="bg-primary h-full w-[99%]"></div>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 font-label-code text-label-code uppercase tracking-wider text-on-surface hover:text-secondary group" href="#contact">
+<span>Voir le site en direct</span>
+<span class="material-symbols-outlined text-[16px] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform">north_east</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Case Study 03: SYNAPSE LABS -->
+<article class="mb-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+<!-- Left: Image Preview (Visual Data Layout) -->
+<div class="lg:col-span-8 bg-surface-container-high p-8 md:p-14 flex flex-col justify-between min-h-[380px] md:min-h-[440px]">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code uppercase text-secondary">Intelligence Artificielle • Extraction Sémantique</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-code text-label-code text-on-surface">SYSTÈME ACTIF</span>
+</div>
+</div>
+<!-- SVG Vector Network Visual -->
+<div class="my-8 flex justify-center">
+<svg class="w-full max-w-lg h-40 text-on-surface" fill="none" viewbox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+<path d="M40 75 H160 M220 75 H340 M400 75 H460" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.25" stroke-width="1"></path>
+<path d="M190 40 L310 110" stroke="currentColor" stroke-opacity="0.2" stroke-width="1"></path>
+<circle cx="40" cy="75" fill="currentColor" r="8"></circle>
+<circle cx="190" cy="75" fill="currentColor" fill-opacity="0.1" r="14" stroke="currentColor" stroke-width="1"></circle>
+<circle cx="190" cy="75" fill="currentColor" r="5"></circle>
+<circle cx="370" cy="75" fill="currentColor" fill-opacity="0.05" r="18" stroke="currentColor" stroke-width="1"></circle>
+<circle cx="370" cy="75" fill="currentColor" r="6"></circle>
+<circle cx="460" cy="75" fill="currentColor" r="8"></circle>
+<text fill="currentColor" font-family="Space Mono" font-size="9" opacity="0.6" x="35" y="105">INGESTION</text>
+<text fill="currentColor" font-family="Space Mono" font-size="9" opacity="0.6" x="175" y="105">VECTORISATION</text>
+<text fill="currentColor" font-family="Space Mono" font-size="9" opacity="0.6" x="355" y="105">SYNTHÈSE</text>
+</svg>
+</div>
+<div class="flex items-baseline justify-between font-label-code text-label-code text-secondary">
+<span>FLUX: 50,000+ ACTES / MOIS</span>
+<span>PRÉCISION RAG: 99.8%</span>
+</div>
+</div>
+<!-- Right: Editorial Details -->
+<div class="lg:col-span-4 flex flex-col justify-between h-full pt-2">
+<div>
+<div class="flex items-center gap-3 font-label-code text-label-code text-secondary uppercase mb-3">
+<span>03</span>
+<span>/</span>
+<span>GENÈVE, CH</span>
+<span>/</span>
+<span>2024</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg tracking-tight text-on-surface mb-4">
+              SYNAPSE LABS
+            </h3>
+<p class="font-body-md text-body-md text-light-text-secondary dark:text-dark-text-secondary mb-6 leading-relaxed">
+              Pipeline d’extraction, d'indexation vectorielle et de synthèse documentaire autonome traitant plus de 50 000 documents juridiques mensuels sans intervention humaine.
+            </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">LLM fine-tuning</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">Python FastAPI</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">LangChain</span>
+<span class="px-2 py-1 bg-surface-container-high font-label-code text-label-code text-on-surface">Pinecone</span>
+</div>
+</div>
+<!-- Micro Metric Graphic -->
+<div class="bg-surface-container-low p-5 mb-8">
+<div class="flex justify-between items-baseline mb-2">
+<span class="font-label-code text-label-code uppercase text-secondary">Économie de temps opérationnel</span>
+<span class="font-label-code text-label-code text-on-surface font-medium">85%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 font-label-code text-label-code uppercase tracking-wider text-on-surface hover:text-secondary group" href="#contact">
+<span>Étude d’impact</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</section>
+<!-- ========================================================================= -->
+<!-- 04 / ABOUT SECTION (#a-propos) -->
+<!-- ========================================================================= -->
+<section class="w-full bg-light-surface dark:bg-dark-surface py-space-xl md:py-space-2xl transition-colors duration-300" id="a-propos">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-baseline justify-between mb-16 md:mb-20 gap-4">
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary tracking-widest uppercase">03 / À PROPOS</span>
+<span class="h-px w-10 bg-secondary/30"></span>
+</div>
+<span class="font-label-code text-label-code text-light-text-secondary dark:text-dark-text-secondary uppercase">
+          PHILOSOPHIE & STACK TECHNIQUE
+        </span>
+</div>
+<!-- Asymmetric Two-Column -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
+<!-- Left: Portrait -->
+<div class="lg:col-span-5">
+<div class="overflow-hidden bg-surface-container">
+<img alt="Allen Koch portrait" class="w-full aspect-square object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX9lhVUMwrI2OlPV7nTwD1NwLMqA-L-90O1w_xbZ-kgDqz-jVI_SSyzHV5eyb41H2qOK2PyqYFE7IHc61d4rzSXcdXp31J9ufZFyxRlNLG8G6-nzBTmw7cmHlDOCJz_4uI_sF3GR2zP0W8cLt7a-287PQ8f0ArFtV37y4wqja855CFhEYrcdseaeHHA53XTNgmO9KTyA7BBKy7BXMLXGQnaEXRwu65tuypmBBrm3Y8FlMWxv9Yx6-k"/>
+</div>
+<div class="mt-4 flex items-center justify-between font-label-code text-label-code text-secondary">
+<span>ALLEN KOCH — PARIS, FR</span>
+<span>FONDÉ EN 2018</span>
+</div>
+</div>
+<!-- Right: Manifesto & Skills -->
+<div class="lg:col-span-7 flex flex-col justify-between">
+<div class="space-y-6">
+<p class="font-headline-md text-headline-md md:text-headline-lg font-light leading-snug tracking-tight text-on-surface">
+              « L’élégance réside dans la soustraction. Je ne conçois pas le code comme un empilement de modules opaques, mais comme une discipline d’artisanat où chaque milliseconde et chaque alignement comptent. »
+            </p>
+<div class="p-6 bg-surface dark:bg-dark-bg">
+<span class="font-label-code text-label-code uppercase tracking-wider text-secondary block mb-2">Posture Produit</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Une approche résolument orientée produit : la technologie n'est qu’un instrument au service de l'autonomie stratégique de votre organisation et de l’expérience finale de vos utilisateurs.
+              </p>
+</div>
+</div>
+<!-- Discrete Tabular Technical Stack -->
+<div class="mt-12 pt-8 space-y-6">
+<span class="font-label-code text-label-code uppercase tracking-wider text-secondary">
+              STACK TECHNIQUE PRINCIPALE
+            </span>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="p-4 bg-surface dark:bg-dark-bg">
+<span class="font-label-code text-label-code text-secondary uppercase block mb-3">01 / Front-End</span>
+<ul class="font-body-sm text-body-sm space-y-1.5 text-on-surface">
+<li>Next.js / React</li>
+<li>TypeScript</li>
+<li>Tailwind CSS</li>
+<li>WebGL / Three.js</li>
+</ul>
+</div>
+<div class="p-4 bg-surface dark:bg-dark-bg">
+<span class="font-label-code text-label-code text-secondary uppercase block mb-3">02 / Back-End & DB</span>
+<ul class="font-body-sm text-body-sm space-y-1.5 text-on-surface">
+<li>Node.js / Bun</li>
+<li>Python FastAPI</li>
+<li>PostgreSQL / Supabase</li>
+<li>Redis • Vercel</li>
+</ul>
+</div>
+<div class="p-4 bg-surface dark:bg-dark-bg">
+<span class="font-label-code text-label-code text-secondary uppercase block mb-3">03 / IA & Flow</span>
+<ul class="font-body-sm text-body-sm space-y-1.5 text-on-surface">
+<li>OpenAI • Anthropic API</li>
+<li>LangChain / Vector RAG</li>
+<li>n8n Workflows</li>
+<li>Webhooks & ETL</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 05 / PROCESS SECTION (#processus) -->
+<!-- ========================================================================= -->
+<section class="w-full max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop py-space-xl md:py-space-2xl" id="processus">
+<div class="flex flex-col md:flex-row md:items-baseline justify-between mb-16 md:mb-20 gap-4">
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary tracking-widest uppercase">04 / MÉTHODOLOGIE</span>
+<span class="h-px w-10 bg-secondary/30"></span>
+</div>
+<span class="font-label-code text-label-code text-secondary uppercase">CADRE OPÉRATIONNEL EN 4 ÉTAPES</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Phase 01 -->
+<div class="bg-surface-container-low p-8 flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="font-label-code text-headline-sm text-secondary block mb-4">PHASE 01</span>
+<h3 class="font-headline-md text-headline-md tracking-tight text-on-surface mb-3">Comprendre</h3>
+<p class="font-body-sm text-body-sm text-light-text-secondary dark:text-dark-text-secondary leading-relaxed">
+            Cadrage des objectifs d'affaires, analyse de l'existant, définition du périmètre fonctionnel et des exigences strictes de performance.
+          </p>
+</div>
+<div class="pt-6 font-label-code text-label-code text-secondary uppercase">
+          Livrable: Specs & Roadmap
+        </div>
+</div>
+<!-- Phase 02 -->
+<div class="bg-surface-container p-8 flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="font-label-code text-headline-sm text-secondary block mb-4">PHASE 02</span>
+<h3 class="font-headline-md text-headline-md tracking-tight text-on-surface mb-3">Concevoir</h3>
+<p class="font-body-sm text-body-sm text-light-text-secondary dark:text-dark-text-secondary leading-relaxed">
+            Prototypage technique, choix des briques d’architecture, modélisation des entités de données et validation des principes d'interaction.
+          </p>
+</div>
+<div class="pt-6 font-label-code text-label-code text-secondary uppercase">
+          Livrable: Schéma d'archi & UI
+        </div>
+</div>
+<!-- Phase 03 -->
+<div class="bg-surface-container-high p-8 flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="font-label-code text-headline-sm text-secondary block mb-4">PHASE 03</span>
+<h3 class="font-headline-md text-headline-md tracking-tight text-on-surface mb-3">Développer</h3>
+<p class="font-body-sm text-body-sm text-light-text-secondary dark:text-dark-text-secondary leading-relaxed">
+            Écriture de code modulaire, typé et testé. Déploiements continus et revues hebdomadaires en environnement de pré-production.
+          </p>
+</div>
+<div class="pt-6 font-label-code text-label-code text-secondary uppercase">
+          Livrable: Code source & CI/CD
+        </div>
+</div>
+<!-- Phase 04 -->
+<div class="bg-surface-container-highest p-8 flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="font-label-code text-headline-sm text-secondary block mb-4">PHASE 04</span>
+<h3 class="font-headline-md text-headline-md tracking-tight text-on-surface mb-3">Livrer & Suivre</h3>
+<p class="font-body-sm text-body-sm text-light-text-secondary dark:text-dark-text-secondary leading-relaxed">
+            Audit de sécurité, optimisation extrême de la latence, transfert d'autonomie avec documentation complète et support post-mise en ligne.
+          </p>
+</div>
+<div class="pt-6 font-label-code text-label-code text-secondary uppercase">
+          Livrable: Production & Garantie
+        </div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 06 / CONTACT SECTION (#contact) -->
+<!-- ========================================================================= -->
+<section class="w-full bg-light-surface dark:bg-dark-surface py-space-xl md:py-space-2xl transition-colors duration-300" id="contact">
+<div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop">
+<!-- Tracker -->
+<div class="flex flex-col md:flex-row md:items-baseline justify-between mb-16 md:mb-20 gap-4">
+<div class="flex items-center gap-space-md">
+<span class="font-label-code text-label-code text-secondary tracking-widest uppercase">05 / CONTACT & COLLABORATION</span>
+<span class="h-px w-10 bg-secondary/30"></span>
+</div>
+<span class="font-label-code text-label-code text-light-text-secondary dark:text-dark-text-secondary uppercase">
+          RÉPONSE SOUS 24 HEURES OUVRÉES
+        </span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop">
+<!-- Left: Direct Action & Manifesto -->
+<div class="lg:col-span-6 flex flex-col justify-between">
+<div>
+<h2 class="font-headline-xl text-headline-xl md:text-[3.75rem] font-light leading-[1.05] tracking-tight text-on-surface mb-8">
+              Donnons vie à vos ambitions numériques.
+            </h2>
+<p class="font-body-lg text-body-lg text-light-text-secondary dark:text-dark-text-secondary mb-10 max-w-xl">
+              Un nouveau projet, une refonte stratégique ou une intégration technique complexe ? Mon calendrier est ouvert pour les missions démarrant au deuxième trimestre 2025.
+            </p>
+<!-- Direct Email Link with Copy Micro-interaction -->
+<div class="mb-10">
+<span class="font-label-code text-label-code uppercase tracking-wider text-secondary block mb-2">Canal direct</span>
+<div class="flex items-center gap-3">
+<a class="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md text-on-surface hover:text-secondary underline underline-offset-8 transition-colors" href="mailto:bonjour@allenkoch.dev">
+                  bonjour@allenkoch.dev
+                </a>
+<button class="p-2 bg-surface dark:bg-dark-bg text-secondary hover:text-on-surface transition-colors" id="copy-email-btn" title="Copier l'adresse email" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+<span class="font-label-code text-label-code text-secondary opacity-0 transition-opacity duration-300 block mt-1.5" id="copy-feedback">
+                Copié dans le presse-papier ✓
+              </span>
+</div>
+<!-- Alternative Quick Actions -->
+<div class="flex flex-col sm:flex-row gap-4 mb-10">
+<a class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-surface dark:bg-dark-bg text-on-surface font-label-code text-label-code uppercase tracking-wider hover:bg-surface-container transition-colors" href="https://cal.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Prendre RDV via Cal.com</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-transparent text-secondary hover:text-on-surface font-label-code text-label-code uppercase tracking-wider transition-colors" href="#contact">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Grille tarifaire (PDF)</span>
+</a>
+</div>
+</div>
+<!-- Socials / Channels -->
+<div class="pt-8 flex flex-wrap gap-6 font-label-code text-label-code uppercase text-secondary">
+<a class="hover:text-on-surface transition-colors" href="https://github.com" rel="noreferrer" target="_blank">GitHub</a>
+<a class="hover:text-on-surface transition-colors" href="https://linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a>
+<a class="hover:text-on-surface transition-colors" href="https://read.cv" rel="noreferrer" target="_blank">Read.cv</a>
+<a class="hover:text-on-surface transition-colors" href="https://x.com" rel="noreferrer" target="_blank">Twitter / X</a>
+</div>
+</div>
+<!-- Right: Minimalist Contact Form -->
+<div class="lg:col-span-6 bg-surface dark:bg-dark-bg p-8 md:p-12">
+<form class="space-y-6" id="contact-form">
+<div>
+<label class="font-label-caps text-label-caps uppercase text-secondary block mb-2" for="name">01. Votre nom & société</label>
+<input class="w-full bg-surface-container-low px-4 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-secondary/40 focus:outline-none focus:bg-surface-container-high transition-colors" id="name" placeholder="Ex: Jean Dupont — Atelier Forma" required="" type="text"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps uppercase text-secondary block mb-2" for="email">02. Adresse électronique</label>
+<input class="w-full bg-surface-container-low px-4 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-secondary/40 focus:outline-none focus:bg-surface-container-high transition-colors" id="email" placeholder="jean@atelierforma.com" required="" type="email"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps uppercase text-secondary block mb-2" for="project-type">03. Type d'intervention</label>
+<select class="w-full bg-surface-container-low px-4 py-3 font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-high transition-colors" id="project-type">
+<option value="site">Création de site vitrine / e-commerce</option>
+<option value="saas">Développement SaaS ou application complexe</option>
+<option value="ai">Intégration d'IA / Agents & RAG</option>
+<option value="audit">Audit technique & Optimisation de performance</option>
+<option value="autre">Autre collaboration</option>
+</select>
+</div>
+<div>
+<label class="font-label-caps text-label-caps uppercase text-secondary block mb-2" for="message">04. Détails de votre projet & échéance</label>
+<textarea class="w-full bg-surface-container-low px-4 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-secondary/40 focus:outline-none focus:bg-surface-container-high transition-colors resize-none" id="message" placeholder="Décrivez succinctement les objectifs, contraintes et délais envisagés..." required="" rows="4"></textarea>
+</div>
+<div class="pt-2">
+<button class="w-full py-4 bg-primary text-on-primary font-label-code text-label-code uppercase tracking-widest hover:bg-secondary transition-colors duration-200 flex items-center justify-center gap-2" id="submit-btn" type="submit">
+<span>Envoyer la demande</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<div class="hidden mt-4 p-4 bg-surface-container text-on-surface font-label-code text-label-code text-center" id="form-success">
+                Demande transmise avec succès. Je reviens vers vous sous 24h.
+              </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Vanilla Interactive Scripts -->
+<script>
+  (function() {
+    // 1. Accordion for Services section
+    const serviceItems = document.querySelectorAll('.service-item');
+    serviceItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const content = item.querySelector('.service-content');
+        const icon = item.querySelector('.service-icon');
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+        // Close other items
+        serviceItems.forEach(otherItem => {
+          const otherContent = otherItem.querySelector('.service-content');
+          const otherIcon = otherItem.querySelector('.service-icon');
+          otherContent.style.maxHeight = '0px';
+          otherContent.classList.remove('opacity-100');
+          otherContent.classList.add('opacity-0');
+          otherIcon.style.transform = 'rotate(0deg)';
+        });
+
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.classList.remove('opacity-0');
+          content.classList.add('opacity-100');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // 2. Email Copy Button
+    const copyBtn = document.getElementById('copy-email-btn');
+    const feedback = document.getElementById('copy-feedback');
+    if (copyBtn && feedback) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('bonjour@allenkoch.dev').then(() => {
+          feedback.classList.remove('opacity-0');
+          feedback.classList.add('opacity-100');
+          setTimeout(() => {
+            feedback.classList.remove('opacity-100');
+            feedback.classList.add('opacity-0');
+          }, 2400);
+        });
+      });
+    }
+
+    // 3. Contact Form Submission Micro-interaction
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+    if (form && successMsg && submitBtn) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Transmission...</span>';
+        setTimeout(() => {
+          form.reset();
+          submitBtn.classList.add('hidden');
+          successMsg.classList.remove('hidden');
+        }, 800);
+      });
+    }
+
+    // 4. Connect with Shell Theme & Language Toggles if available
+    const themeBtn = document.querySelector('button[aria-label="Basculer le thème"]');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-low"><div class="max-w-[1440px] mx-auto px-margin md:px-gutter-desktop lg:px-margin-desktop py-space-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg"><div class="flex flex-col gap-space-xs"><span class="font-label-code text-label-code text-on-surface">© 2025 Allen Koch. Tous droits réservés.</span><div class="flex items-center gap-space-xs font-label-code text-label-code text-secondary"><span class="inline-block w-2 h-2 rounded-full bg-on-surface"></span><span>Paris (UTC+1) — Disponible pour de nouveaux projets Q2 2025</span></div></div><div class="flex items-center gap-space-lg font-label-code text-label-code"><a class="text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="https://github.com" rel="noreferrer" target="_blank">GitHub</a><a class="text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="https://linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a><a class="text-on-surface-variant hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="https://x.com" rel="noreferrer" target="_blank">X</a></div></div></footer></body></html>
