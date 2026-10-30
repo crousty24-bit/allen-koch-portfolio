@@ -2004,3 +2004,16 @@ copier de secret, donnée client ou résultat supposé.
 - Build réussi sans cet avertissement ; lint et Biome (78 fichiers) réussis.
   Aucun test ajouté pour cette suppression sans logique ; pas de vérification
   visuelle navigateur ni du déploiement distant. Aucun commit/push/déploiement.
+
+## RUN-008 — Correction du test CSS après échec Quality (30 octobre 2026)
+
+- Allen confirme la disparition de l’avertissement Vercel et signale l’échec
+  Vitest de Quality. Codex reproduit localement : le test d’organisation CSS
+  exigeait toujours l’import supprimé. Cette référence avait été manquée dans
+  le correctif précédent, dont la suite Vitest n’avait pas été exécutée.
+- Suppression de la seule assertion obsolète dans `tests/globals-css.test.ts` ;
+  contrôles des imports restants et de centralisation des media queries conservés.
+  Aucun changement applicatif ni du workflow, pas de délégation utile.
+- 59/59 tests Vitest, build sans avertissement CSS, lint et Biome réussis.
+  Pas de relance navigateur/audit pour cette seule assertion supprimée.
+  Aucun commit/push ; nouvelle exécution GitHub Actions non vérifiée.
