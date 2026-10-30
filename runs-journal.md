@@ -1928,3 +1928,19 @@ copier de secret, donnée client ou résultat supposé.
 - Vérifications : build, lint, Biome, 59/59 Vitest, 16/16 Chrome ; captures relues
   (1440 FR clair, 1440 EN sombre, 320 FR clair). En-tête et rewrites Vercel contrôlés
   par test de contrat seulement : à vérifier sur un déploiement. Aucun commit ni push.
+
+
+## RUN-008 — Décisions de release confirmées par Allen (30 octobre 2026)
+
+- Commit Claude vérifié : `9cea909`, pages `/mentions-legales` et
+  `/confidentialite` avec liens footer. Allen valide cet agencement ; aucun
+  changement applicatif dans cette mise à jour. Dépôt propre au départ.
+- Adresse et téléphone de l’éditeur différés jusqu’à création officielle de
+  l’entreprise ; Allen demande explicitement que ce report ne bloque pas la
+  release. Décision consignée sans déclaration de conformité juridique et sans
+  effacer la réserve de l’audit. Aucun renseignement personnel ajouté.
+- Coordonnées Vercel validées par Allen : point de suivi clos. Pas de nouvelle
+  vérification indépendante revendiquée. Checklist, contrat contact et workflow
+  alignés ; les questions Web3Forms/hCaptcha de durée et transferts restent ouvertes.
+- Vérification documentaire : `git diff --check`. Pas de relance des tests
+  applicatifs pour cette seule mise à jour de suivi ; aucun commit/push/déploiement.

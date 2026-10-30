@@ -99,7 +99,8 @@ en tenant compte de Web3Forms/hCaptcha. Les mentions locales (`/mentions-legales
 et la politique (`/confidentialite`) sont deux pages dédiées, servies par la même
 application et exclues de l'indexation (`noindex`, hors sitemap) ; aucune
 dépendance ajoutée. Hébergeur Vercel confirmé par Allen ; coordonnées publiques
-d’éditeur en attente de sa communication. Aucune adresse personnelle déduite.
+d’éditeur différées jusqu’à création officielle de l’entreprise, non bloquantes
+pour la release sur décision d’Allen du 30 octobre. Coordonnées Vercel validées. Aucune adresse personnelle déduite.
 
 Allen confirme avoir pris connaissance du DPA et l’avoir téléchargé depuis son
 tableau de bord Web3Forms. Cela ne prouve pas à lui seul toutes les garanties

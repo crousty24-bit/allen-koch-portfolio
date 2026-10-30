@@ -19,7 +19,8 @@ il ne confirme ni la conformité juridique ni l'acceptation d'un contrat.
 
 ## À faire avant publication
 
-- [ ] **Identité et mentions légales :** confirmer le nom légal de l'éditeur, son statut au jour de publication, l'adresse postale de contact requise et les coordonnées à publier. Le nom commercial ou « entreprise en cours de création » ne suffit pas à compléter ces champs. Confirmer aussi l'identité et les coordonnées de l'hébergeur du site. Ne pas publier de coordonnées supposées.
+- **Coordonnées d’éditeur différées — non bloquantes sur décision d’Allen du 30 octobre :** adresse et téléphone ne seront pas renseignés avant la création officielle de l’entreprise. Les champs restent vides ; ne pas demander leur publication à chaque reprise. Cette décision de release ne vaut pas constat de conformité juridique et ne supprime pas la réserve de l’audit sur l’identification de l’éditeur.
+- [x] **Hébergeur :** coordonnées Vercel validées par Allen le 30 octobre. Ne plus les présenter comme un blocage de release.
 - [x] **Politique de confidentialité FR/EN implémentée localement :** contenu distinct des mentions légales, accessible via la page `/confidentialite` depuis le formulaire et le pied de page. Publication distante et validation du contenu contre les contrats encore requises. Décrire les champs et données captcha, les finalités et bases effectivement retenues, le caractère facultatif/obligatoire, les destinataires et prestataires, les durées connues et encore à fixer, les droits applicables, la façon de les exercer et le contact du responsable. La version locale décrit les lieux annoncés par les prestataires, sans attester l’acceptation ni l’efficacité de leurs garanties ; vérifier les mécanismes contractuels avant publication. Ne pas reprendre la FAQ Web3Forms comme référence de durée : utiliser sa politique actuelle et le réglage réellement confirmé.
 - [ ] **Contrats et transferts :** obtenir et conserver une preuve que les conditions de traitement des données ont été examinées et acceptées lorsqu'elles s'appliquent : [DPA Web3Forms](https://web3forms.com/dpa), [conditions/DPA hCaptcha](https://www.hcaptcha.com/terms), conditions de l'hébergeur du site et du fournisseur de messagerie. Vérifier sous-traitants ultérieurs, lieux de traitement, mécanisme de transfert hors EEE et, si nécessaire, garanties supplémentaires/TIA. À ce jour, aucun accès aux tableaux de bord ni preuve d'acceptation n'est consigné ; ne pas indiquer que ces DPA sont signés ou acceptés.
 - [ ] **Durées et suppression :** clarifier auprès du fournisseur la durée physique réelle (réglage annoncé un an / DPA trois ans) avant publication. Définir et appliquer une durée pour les demandes converties en projet et vérifier les durées des journaux chez les prestataires ; ne pas inventer de durée pour ces données. Mettre en place ou documenter la suppression manuelle à 30 jours des demandes sans suite dans la messagerie ; ce délai n'est pas une suppression Web3Forms.
@@ -41,11 +42,10 @@ La politique publique de Web3Forms peut évoluer : [politique de confidentialit�
   de la chaîne restent à vérifier. Le téléchargement n’est pas une signature
   observée ; le texte prévoit aussi des modalités d’acceptation par usage.
 - Coordonnées Vercel vérifiées dans sa politique et son DPA : 440 N Barranca
-  Avenue #4133, Covina, CA 91723, United States. Téléphone hébergeur non
-  trouvé dans ces sources officielles : à obtenir auprès du support, pas de
-  numéro recopié d’un autre site.
-- Allen fournira des coordonnées publiables ; aucun domicile/téléphone personnel
-  recherché ni supposé. `publisher.address` et `publisher.phone` restent vides.
+  Avenue #4133, Covina, CA 91723, United States. Coordonnées de l’hébergeur validées par Allen le 30 octobre ; point clos
+  dans le suivi de release, sans nouvelle vérification indépendante revendiquée.
+- Allen diffère les coordonnées publiables jusqu’à la création officielle de
+  son entreprise ; ce report ne bloque pas la release sur sa décision. `publisher.address` et `publisher.phone` restent vides.
 - Implémentation locale : `/mentions-legales`, `/confidentialite`, notice de proximité et
   autorisation hCaptcha avant chargement, retrait par rechargement et email
   alternatif. L’interface ne résout pas les vérifications contractuelles.
