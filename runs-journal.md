@@ -1800,3 +1800,10 @@ copier de secret, donnée client ou résultat supposé.
   responsive-430.css vide. Codex main réalise ces contrôles, sans délégation ni
   revue indépendante ; pas de Safari/Firefox ou appareil physique vérifié.
   Validations humaines RUN-008/017 toujours ouvertes ; aucune publication.
+
+## RUN-008 — Mise à jour des cartes Projets (30 octobre 2026)
+
+- Mandat d'Allen : SnipStack et Sokwak AI affichent « MVP (contributeur) » et « Projet collaboratif. » ; ordre compact 04 Sokwak AI, 05 Portfolio AK, 06 Questonaut, 07 Mission Control, 08 Kane ; sept images fournies remplacent les visuels de Diff Impact Analyzer, Code Quality Guardian et de ces cinq cartes.
+- Données FR/EN, textes alternatifs et test d'ordre/statut mis à jour dans le tableau des projets. Nouveaux chemins PNG/WebP pour éviter les anciens caches ; anciennes URL publiques conservées. Aucun composant, style, dépendance ni autre projet modifié.
+- Contrôles finaux : build, lint, Biome, 55 tests Vitest, 14 tests Chrome et `git diff --check` réussis. Contrôle Chrome ciblé à 390 et 1440 px : 10 images décodées, ordre 04–08 conforme, captures relues. Un premier test de présence des assets avait échoué après une suppression de WebP trop large ; fichiers régénérés puis test réussi. Avertissement Vite existant sur `responsive-430.css` vide.
+- Codex main a réalisé l'intégration et la vérification ; pas de revue indépendante ni délégation utile pour ce lot de données/assets. Aucun commit, push ou déploiement. RUN-008 reste en `verify` pour la validation humaine et les critères de release déjà consignés.
