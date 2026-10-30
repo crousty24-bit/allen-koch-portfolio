@@ -173,7 +173,7 @@ test('contact form reports provider results and keeps failed input', async (t) =
         window.contactCalls.push(Object.fromEntries(options.body));
         return new Promise((resolve) => {
           window.finishContact = (success) => resolve(new Response(
-            JSON.stringify({ success }),
+            JSON.stringify({ success, message: '<img src=x onerror=window.__injected=1>' }),
             { status: success ? 200 : 400, headers: { 'Content-Type': 'application/json' } },
           ));
         });
@@ -189,13 +189,14 @@ test('contact form reports provider results and keeps failed input', async (t) =
     return
   }
 
-  await page.evaluate(() => {
+  const injectionProbe = '<img src=x onerror=window.__injected=1>'
+  await page.evaluate((injectionProbe) => {
     const form = document.querySelector('.contact-panel__form')
     form.elements.namedItem('email').value = 'visitor@example.com'
-    form.elements.namedItem('message').value = 'A project enquiry'
+    form.elements.namedItem('message').value = injectionProbe
     form.requestSubmit()
     form.requestSubmit()
-  })
+  }, injectionProbe)
   await page.waitFor(() => window.contactCalls.length === 1)
   assert.equal(
     await page.evaluate(
@@ -205,7 +206,11 @@ test('contact form reports provider results and keeps failed input', async (t) =
   )
   assert.equal(
     await page.evaluate(() => window.contactCalls[0].message),
-    'A project enquiry',
+    injectionProbe,
+  )
+  assert.deepEqual(
+    await page.evaluate(() => Object.keys(window.contactCalls[0]).sort()),
+    ['access_key', 'email', 'message', 'name'],
   )
   assert.equal(
     await page.evaluate(() => Boolean(window.contactCalls[0].access_key)),
@@ -219,7 +224,16 @@ test('contact form reports provider results and keeps failed input', async (t) =
   )
   assert.equal(
     await page.evaluate(() => document.querySelector('#contact-message').value),
-    'A project enquiry',
+    injectionProbe,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(
+        window.__injected ||
+          document.querySelector('.contact-panel__status img'),
+      ),
+    ),
+    false,
   )
 
   await page.evaluate(() =>
@@ -236,6 +250,7 @@ test('contact form reports provider results and keeps failed input', async (t) =
     await page.evaluate(() => document.querySelector('#contact-message').value),
     '',
   )
+  assert.equal(await page.evaluate(() => Boolean(window.__injected)), false)
 })
 
 test('section stack: no motion or ResizeObserver keeps content visible', async (t) => {

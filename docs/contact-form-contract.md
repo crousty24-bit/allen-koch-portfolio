@@ -33,6 +33,12 @@ HTML comme une validation serveur garantie. Web3Forms annonce un [filtrage anti-
 Si des abus apparaissent, activer et tester hCaptcha dans le compte ; la clé
 publique seule ne bloque pas toute requête automatisée. Le honeypot Web3Forms
 est actuellement déconseillé par sa [documentation](https://docs.web3forms.com/getting-started/customizations/spam-protection/spam-protection).
+Le formulaire ne construit ni HTML ni en-tête email à partir des saisies ; React
+affiche ses messages fixes et ignore le texte renvoyé par l'API. Un test navigateur
+avec une chaîne HTML et un message API hostiles confirme qu'ils ne sont pas
+exécutés dans la page. Cela ne prouve pas comment Web3Forms échappe le contenu
+dans l'email reçu : aucune règle d'injection configurable côté service n'a été
+identifiée dans sa [référence API](https://docs.web3forms.com/getting-started/api-reference).
 
 Le navigateur transmet les champs à Web3Forms pour notification par email.
 Une courte notice FR/EN et un lien vers sa [politique de confidentialité](https://web3forms.com/privacy)
@@ -43,6 +49,8 @@ Web3Forms indique une conservation des soumissions configurable de 7 jours à
 compte de test est inconnu. La visibilité de 30 jours dans le tableau de bord
 gratuit n'est pas une suppression des données au bout de 30 jours. Vérifier et
 fixer le paramètre de conservation avant publication ; ajuster alors la notice.
+La [politique Web3Forms](https://web3forms.com/privacy) annonce une conservation
+maximale de trois ans, sauf durée plus courte configurée ou suppression anticipée.
 
 ## Vérification et publication
 
@@ -58,6 +66,12 @@ fixer le paramètre de conservation avant publication ; ajuster alors la notice.
 - Avant déploiement : confirmer destinataire de la clé, réglage de conservation,
   anti-spam effectif et coût/quotas du plan choisi ; ajouter la clé publique à
   l'environnement du site. Un nouvel essai sur le déploiement vérifiera ce contexte.
+- Audit ciblé du 30 octobre : les sources publiques confirment la possibilité
+  d'une durée plus courte et le filtrage serveur par défaut, mais aucun accès au
+  tableau de bord Web3Forms n'a permis de lire le réglage de ce formulaire.
+  hCaptcha n'est pas intégré dans le site ; son activation dans le compte n'est
+  pas établie. Tests locaux avec API simulée réussis, sans test d'injection de
+  l'email final ni essai de contournement du filtre du fournisseur.
 
 Sources : [installation et clé publique](https://docs.web3forms.com/getting-started/installation),
 [API](https://docs.web3forms.com/getting-started/api-reference),

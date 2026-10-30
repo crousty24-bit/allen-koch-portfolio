@@ -1730,6 +1730,26 @@ copier de secret, donnée client ou résultat supposé.
 - Restent à vérifier avant publication : réglage de conservation Web3Forms,
   anti-spam du compte, configuration de la clé sur l'hébergeur et essai du site
   déployé. RUN-017 reste en `verify` pour ces points.
+
+### RUN-017 — Vérification conservation, spam et injection (30 octobre 2026)
+
+- Sources officielles revérifiées : Web3Forms annonce 30 jours d'historique
+  visible en Free, une conservation réglable par formulaire de 7 jours à 3 ans,
+  et un filtre anti-spam serveur sur toutes les soumissions. hCaptcha Free est
+  disponible mais requiert une activation dans le compte et du code sur la page.
+- Aucun accès au tableau de bord du formulaire dans cette session : durée
+  réellement configurée et éventuelle activation hCaptcha inconnues. Aucun
+  changement distant ni envoi de charge hostile à la boîte d'Allen.
+- Audit du code : seuls nom, email, message et clé publique sont transmis ; les
+  messages affichés proviennent des traductions locales, jamais de la réponse
+  Web3Forms. Nouveau test Chrome avec chaîne HTML hostile dans le message et
+  dans la réponse simulée : aucune exécution ni insertion DOM ; la chaîne est
+  transmise telle quelle au fournisseur. Le rendu de l'email par Web3Forms n'a
+  pas été inspecté.
+- Vérifications : build, lint, Biome, 55 tests Vitest et 14 tests navigateur
+  réussis ; audit npm : 0 vulnérabilité, `git diff --check` réussi. RUN-017
+  reste `verify` pour les paramètres réels du compte et la validation sur le
+  déploiement.
 ## RUN-008 — Correctif de crop de l'index Projets (30 octobre 2026)
 
 - Mandat d'Allen : diagnostiquer la vidéo/capture et corriger l'index tronqué
