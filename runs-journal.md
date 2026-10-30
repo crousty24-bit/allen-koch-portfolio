@@ -1993,3 +1993,14 @@ copier de secret, donnée client ou résultat supposé.
 - Aucun commit, push ni déploiement. RUN-008 reste verify pour les validations
   restantes, dont la réponse contractuelle hCaptcha. Pas de Safari/Firefox,
   appareil réel ni comportement du cache de l’hébergement vérifiés dans ce lot.
+
+## RUN-008 — Avertissement CSS du déploiement preview (30 octobre 2026)
+
+- Allen signale l’avertissement PostCSS `responsive-430.css is empty` après
+  redéploiement de develop. Fichier vérifié à 0 octet, un seul import dans
+  `responsive.css` : suppression de cet import et du fichier vide par Codex.
+- Aucun changement de rendu attendu desktop/mobile : aucune règle supprimée.
+  Pas de dépendance, de modification du formulaire ni de délégation utile.
+- Build réussi sans cet avertissement ; lint et Biome (78 fichiers) réussis.
+  Aucun test ajouté pour cette suppression sans logique ; pas de vérification
+  visuelle navigateur ni du déploiement distant. Aucun commit/push/déploiement.
