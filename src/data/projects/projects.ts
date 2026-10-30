@@ -41,9 +41,9 @@ export const projects: Project[] = [
       fr: 'Rapport de Diff Impact Analyzer montrant les fichiers modifiés, le score de risque et les signaux expliqués.',
       en: 'Diff Impact Analyzer report showing changed files, risk score and explained signals.',
     },
-    imageSrc: '/projects/diff-impact-analyzer-v2.png',
+    imageSrc: '/projects/diff-impact-analyzer-v3.png',
     imageWebpSrcSet:
-      '/projects/generated/diff-impact-analyzer-v2-384.webp 384w, /projects/generated/diff-impact-analyzer-v2-512.webp 512w, /projects/generated/diff-impact-analyzer-v2-960.webp 960w, /projects/generated/diff-impact-analyzer-v2-1280.webp 1280w',
+      '/projects/generated/diff-impact-analyzer-v3-384.webp 384w, /projects/generated/diff-impact-analyzer-v3-512.webp 512w, /projects/generated/diff-impact-analyzer-v3-960.webp 960w, /projects/generated/diff-impact-analyzer-v3-1280.webp 1280w',
     repositoryHref: 'https://github.com/crousty24-bit/diff-impact-analyzer',
     stack: ['Node.js', 'TypeScript', 'React', 'Express'],
     status: { fr: 'MVP', en: 'MVP' },
