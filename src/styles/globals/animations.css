@@ -36,9 +36,21 @@
   transform-origin: 50% max(0px, calc(-1 * var(--section-pin-top, 0px)));
 }
 
-/* Opaque so the rising section hides the pinned one; zero specificity keeps the Stack band. */
+/* Opaque so the rising section hides the pinned one; zero specificity keeps the dark bands. */
 :where(.section-stack > .section) {
   background: var(--background);
+}
+
+/* A pinned section fades and shrinks over the slot it left: App sets the slot
+   offsets so the same color shows through instead of the page background. */
+.section-stack {
+  background: linear-gradient(
+    to bottom,
+    var(--background) var(--services-top),
+    var(--band) var(--services-top) var(--stack-top),
+    var(--band-raised) var(--stack-top) var(--about-top),
+    var(--background) var(--about-top)
+  );
 }
 
 /* Near-transparent once covered: back in flow so fragment and focus scrolling

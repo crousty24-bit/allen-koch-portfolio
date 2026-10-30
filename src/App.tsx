@@ -175,6 +175,12 @@ function App() {
       pins.forEach((pin, index) => {
         sections[index].style.setProperty('--section-pin-top', `${pin.top}px`)
       })
+      // Sticky boxes report their pinned offset, so slots add up from the heights.
+      let slotTop = 0
+      sections.forEach((section) => {
+        main.style.setProperty(`--${section.id}-top`, `${slotTop}px`)
+        slotTop += section.offsetHeight
+      })
       update()
     }
 
@@ -219,6 +225,7 @@ function App() {
         section.classList.remove('section--covered', 'section--unpinned')
         section.style.removeProperty('--section-pin-top')
         section.style.removeProperty('--section-cover')
+        main.style.removeProperty(`--${section.id}-top`)
       })
     }
   }, [])

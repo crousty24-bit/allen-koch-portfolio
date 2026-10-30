@@ -379,6 +379,67 @@ for (const width of [760, 761, 1040, 1041, 1440]) {
   })
 }
 
+test('project index: no internal crop while resizing the viewport', async (t) => {
+  const page = await browser.page()
+  t.after(() => page.close())
+  await page.motion('reduce')
+  await page.open(`${url}/#projects`)
+  for (const [width, height] of [
+    [1440, 900],
+    [1280, 720],
+    [1100, 600],
+    [1041, 300],
+    [1040, 600],
+    [761, 300],
+    [760, 600],
+    [390, 844],
+    [320, 568],
+    [1440, 300],
+  ]) {
+    await page.viewport(width, height)
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    )
+    const geometry = await page.evaluate(() => {
+      const index = document.querySelector('.projects-features__index')
+      const window = index.querySelector('.projects-features__window')
+      const number = index.querySelector('.projects-features__number')
+      const range = document.createRange()
+      range.selectNodeContents(number)
+      return {
+        shared: getComputedStyle(index).display !== 'none',
+        textWidth: range.getBoundingClientRect().width,
+        windowWidth: window.getBoundingClientRect().width,
+        end: Math.max(
+          ...[...index.children].map((el) => el.getBoundingClientRect().right),
+        ),
+        cardsLeft: document
+          .querySelector('.projects-features__cards')
+          .getBoundingClientRect().left,
+        overflow: document.documentElement.scrollWidth > innerWidth,
+      }
+    })
+    if (geometry.shared) {
+      assert.ok(
+        geometry.textWidth <= geometry.windowWidth + 1,
+        `${width}×${height}: digits must fit inside the animation window: ${JSON.stringify(geometry)}`,
+      )
+      assert.ok(
+        geometry.end <= geometry.cardsLeft,
+        `${width}×${height}: index must not overlap cards`,
+      )
+    }
+    assert.equal(
+      geometry.overflow,
+      false,
+      `${width}×${height}: no page overflow`,
+    )
+  }
+})
+
 for (const width of [390, 1440]) {
   test(`timeline: rapid clicks, reverse, keyboard and reduced motion (${width}px)`, async (t) => {
     const page = await browser.page()

@@ -1721,3 +1721,34 @@ copier de secret, donnée client ou résultat supposé.
   à la clé, la durée de conservation dans le compte Web3Forms et la validation
   visuelle. Configurer ensuite la variable publique de déploiement. Aucun push,
   merge ou déploiement effectué.
+## RUN-008 — Correctif de crop de l'index Projets (30 octobre 2026)
+
+- Mandat d'Allen : diagnostiquer la vidéo/capture et corriger l'index tronqué
+  pendant la réduction de la fenêtre, avec un garde-fou responsive. Lot local
+  borné dans RUN-008 ; les validations humaines de RUN-008/017 restent ouvertes.
+- Vidéo et capture lues depuis leurs chemins Windows montés sous `/mnt/c`.
+  Cause : taille de chiffres fixe, colonne rétrécissante, fenêtre flex comprimée
+  et `overflow: hidden` nécessaire à l'animation. Reproduction automatisée avant
+  correction à 761×300 : texte de 72,125 px dans une fenêtre de 57,141 px,
+  sans débordement horizontal global. L'ancien test ne détectait pas ce crop.
+- Correction limitée à `projects.css` : conteneur de taille inline sur l'index,
+  chiffres plafonnés selon cette largeur via cqi, fenêtre non compressible et
+  total autorisé à passer dessous. Taille maximale desktop de 192 px préservée,
+  taille adaptée aux colonnes plus étroites ; index individuels mobiles conservés.
+  Aucun composant, état React, contenu, dépendance ou configuration ajouté.
+- Garde-fou dans la suite Chrome existante : dix tailles successives de 1440 à
+  320 px puis retour, hauteurs de 300 à 900 px ; texte entièrement contenu dans
+  la fenêtre, absence de chevauchement et de débordement global. Attente de deux
+  frames après resize pour laisser les effets existants recalculer la page ;
+  la première passe sans cette attente observait un débordement transitoire mobile.
+- Vérifications : build, lint, Biome, 55 tests Vitest et 14 tests navigateur
+  réussis. Contrôle complémentaire avec Schibsted Grotesk réellement chargée à
+  1440, 1135, 1041, 761 et 390 px ; captures 1041 et 761 px relues dans
+  `/tmp/portfolio-crop/`. Avertissement Vite existant : responsive-430.css vide.
+- Codex main implémente et relit ; pas de revue indépendante ni délégation utile
+  pour ce lot CSS local. Des modifications concurrentes dans App, animations,
+  layout, stack et tokens sont apparues pendant la session et sont préservées,
+  hors attribution de ce correctif. Pas de commit, push ou publication.
+- Limites : Chrome local, pas de Safari/Firefox ni appareil physique. Le test
+  cible le crop de l'index et le débordement global ; il ne prouve pas l'absence
+  de tout crop interne sur chaque élément du site. Aucun masquage global retiré.

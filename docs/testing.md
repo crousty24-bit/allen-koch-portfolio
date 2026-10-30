@@ -53,6 +53,7 @@ Chrome sont temporaires ; contextes, navigateur et serveur sont fermés en fin d
 | Sections à 390 et 1440 px | Fondu aller/retour, ancres du menu, recalcul après dépliage/repli des projets, désactivation dynamique en mouvement réduit |
 | Mouvement réduit au chargement et absence de `ResizeObserver` | Pas d'empilement ; contenu visible |
 | Index à 760, 761, 1040, 1041 et 1440 px | Index individuels/partagé selon largeur, `01 → 02 → 03 → 01`, déplacement visuel réel, position sticky, taille, absence de chevauchement et de débordement, transition désactivée en mouvement réduit |
+| Redimensionnement de 1440 à 320 px puis retour, hauteurs de 300 à 900 px | Chiffres entièrement contenus dans la fenêtre animée, aucun chevauchement des cartes ni débordement horizontal de la page ; le seul contrôle du scrollWidth global ne détecte pas un crop interne |
 | Timeline à 390 et 1440 px | Masque pendant le mouvement, clics rapprochés, marche arrière, retrait du masque à l'arrêt, flèches clavier et mouvement réduit |
 
 Les attentes attendent un état observable avec délai maximal, sans durée fixe de

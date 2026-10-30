@@ -21,6 +21,8 @@
 }
 
 :root {
+  --band: #171715;
+  --band-raised: #232320;
   --container: 1440px;
   --gutter: 3.5rem;
   --section-gap: 7rem;

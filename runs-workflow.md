@@ -230,6 +230,9 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
   d’Allen et contrôle des en-têtes sur hébergement avant release.
 - Publication : vérifier le mandat et la cible avant push/merge/déploiement ;
   préparer un transfert Production si la publication est demandée.
+- Correctif demandé le 30 octobre : index Projets dimensionné selon sa colonne,
+  total repliable et test de crop interne pendant redimensionnement. Correctif
+  vérifié localement ; RUN-008 reste `verify` pour ses critères de release.
 
 ## RUN-009 — Custom agents et efficacité de délégation
 
