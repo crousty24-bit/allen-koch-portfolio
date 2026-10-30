@@ -49,7 +49,7 @@ dans l'email reçu : aucune règle d'injection configurable côté service n'a �
 identifiée dans sa [référence API](https://docs.web3forms.com/getting-started/api-reference).
 
 Le navigateur transmet les champs à Web3Forms pour notification par email.
-Une politique locale FR/EN (`#privacy`) accessible depuis le formulaire et le
+Une politique locale FR/EN (`/confidentialite`, ouverte dans un nouvel onglet depuis le formulaire pour conserver la saisie) accessible depuis le formulaire et le
 footer décrit le traitement et les droits. Une courte notice renvoie vers la politique locale et vers celle de
 [hCaptcha](https://www.hcaptcha.com/privacy), près du bouton. La politique locale
 lie également les documents Web3Forms et leurs contrats. Allen a retenu 30 jours de conservation **dans sa
@@ -95,8 +95,9 @@ Sources : [installation et clé publique](https://docs.web3forms.com/getting-sta
 ## Complément juridique — 30 octobre 2026
 
 Mandat d’Allen : implémenter les must fix 1/2/3 de l’audit juridique dans RUN-008,
-en tenant compte de Web3Forms/hCaptcha. Les mentions locales (`#legal-notice`)
-et la politique (`#privacy`) restent dans la page unique ; aucune route ni
+en tenant compte de Web3Forms/hCaptcha. Les mentions locales (`/mentions-legales`)
+et la politique (`/confidentialite`) sont deux pages dédiées, servies par la même
+application et exclues de l'indexation (`noindex`, hors sitemap) ; aucune
 dépendance ajoutée. Hébergeur Vercel confirmé par Allen ; coordonnées publiques
 d’éditeur en attente de sa communication. Aucune adresse personnelle déduite.
 

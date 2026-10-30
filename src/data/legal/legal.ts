@@ -1,5 +1,12 @@
 import type { Language } from '../i18n/i18n'
 
+export const legalPaths = {
+  legal: '/mentions-legales',
+  privacy: '/confidentialite',
+} as const
+
+export type LegalPage = keyof typeof legalPaths
+
 // Public coordinates must be confirmed by Allen before release.
 export const publisher = {
   email: 'allen.kch24@gmail.com',

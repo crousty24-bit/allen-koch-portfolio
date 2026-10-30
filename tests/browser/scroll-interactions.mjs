@@ -689,7 +689,7 @@ for (const width of [390, 1440]) {
 }
 
 for (const width of [320, 1440]) {
-  test(`legal and privacy anchors are readable in both languages (${width}px)`, async (t) => {
+  test(`legal pages are readable, noindexed and link home (${width}px)`, async (t) => {
     const page = await browser.page()
     t.after(() => page.close())
     await page.viewport(width)
@@ -699,44 +699,57 @@ for (const width of [320, 1440]) {
         localStorage.setItem('language', language)
         localStorage.setItem('theme', language === 'fr' ? 'light' : 'dark')
       }, language)
-      await page.command('Page.reload')
-      await page.waitFor(
-        (language) =>
-          document.documentElement.lang === language &&
-          document.readyState === 'complete',
-        language,
-      )
-      for (const id of ['legal-notice', 'privacy']) {
-        await page.open(`${url}/#${id}`)
+      for (const [path, titleId] of [
+        ['/mentions-legales', 'legal-title'],
+        ['/confidentialite', 'privacy-title'],
+      ]) {
+        // page.open waits for home-only content.
+        await page.command('Page.navigate', { url: `${url}${path}` })
         await page.waitFor(
-          (id) =>
-            document.activeElement.id === id &&
-            Math.abs(
-              document.getElementById(id).getBoundingClientRect().top - 80,
-            ) < 2,
-          id,
+          ({ language, titleId }) =>
+            document.documentElement.lang === language &&
+            document.getElementById(titleId) &&
+            !document.querySelector('link[rel="canonical"]'),
+          { language, titleId },
         )
-        assert.equal(
-          await page.evaluate(() => document.documentElement.lang),
-          language,
-        )
-        assert.equal(
-          await page.evaluate(
-            () => document.documentElement.scrollWidth > innerWidth,
+        const state = await page.evaluate(() => ({
+          robots: document.head.querySelector('meta[name="robots"]')?.content,
+          overflow: document.documentElement.scrollWidth > innerWidth,
+          titleBelowHeader:
+            document.querySelector('h1').getBoundingClientRect().top >=
+            document.querySelector('.site-header').getBoundingClientRect()
+              .bottom,
+          titleMatchesTab: document.title.startsWith(
+            document.querySelector('h1').textContent,
           ),
-          false,
-        )
-        assert.equal(
-          await page.evaluate(() =>
-            Boolean(
-              document.querySelector(
-                '.site-footer__legal-links a[href="#privacy"]',
-              ),
-            ),
-          ),
-          true,
-        )
+          home: document.querySelector('.navbar__links a').getAttribute('href'),
+          current: document.querySelectorAll('[aria-current]').length,
+          stacked: document
+            .querySelector('main')
+            .classList.contains('section-stack'),
+          contact: Boolean(document.getElementById('contact')),
+        }))
+        assert.deepEqual(state, {
+          robots: 'noindex',
+          overflow: false,
+          titleBelowHeader: true,
+          titleMatchesTab: true,
+          home: '/#home',
+          current: 0,
+          stacked: false,
+          contact: false,
+        })
       }
+      await page.evaluate(() =>
+        document.querySelector('.navbar__links a[href="/#services"]').click(),
+      )
+      await page.waitFor(() =>
+        document.querySelector('main')?.classList.contains('section-stack'),
+      )
+      assert.equal(
+        await page.evaluate(() => location.pathname + location.hash),
+        '/#services',
+      )
     }
   })
 }

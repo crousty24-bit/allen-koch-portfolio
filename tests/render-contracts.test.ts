@@ -6,12 +6,14 @@ import { AboutSection } from '../src/components/AboutSection/AboutSection'
 import { ContactSection } from '../src/components/ContactSection/ContactSection'
 import { Footer } from '../src/components/Footer/Footer'
 import { Hero } from '../src/components/Hero/Hero'
+import { LegalNotices } from '../src/components/LegalNotices/LegalNotices'
 import { Navbar } from '../src/components/Navbar/Navbar'
 import { ProjectCard } from '../src/components/ProjectCard/ProjectCard'
 import { ProjectsSection } from '../src/components/ProjectsSection/ProjectsSection'
 import { ServicesSection } from '../src/components/ServicesSection/ServicesSection'
 import { StackSection } from '../src/components/StackSection/StackSection'
 import { copy, type Language } from '../src/data/i18n/i18n'
+import { legalPaths } from '../src/data/legal/legal'
 import { navItems } from '../src/data/links/navigation'
 import {
   isProjectPublished,
@@ -252,6 +254,9 @@ describe('page render contracts', () => {
     expect(footer).toContain(
       renderToStaticMarkup(copy[language].footer.linksHeading),
     )
+    expect(footer).toContain(
+      renderToStaticMarkup(copy[language].footer.legalHeading),
+    )
     const about = renderToStaticMarkup(
       createElement(AboutSection, { language }),
     )
@@ -324,14 +329,32 @@ describe('legal information and optional captcha', () => {
   it.each(
     languages,
   )('makes legal information reachable in %s without loading a captcha', (language) => {
-    const html = renderToStaticMarkup(createElement(Footer, { language }))
-    for (const id of ['legal-notice', 'privacy']) {
-      expect(html).toContain(`href="#${id}"`)
-      expect(html).toContain(`id="${id}" tabindex="-1"`)
-    }
-    expect(html).toContain('https://web3forms.com/dpa')
-    expect(html).toContain('https://www.hcaptcha.com/terms')
-    expect(html).toContain('mailto:allen.kch24@gmail.com')
-    expect(html).not.toContain('<iframe')
+    const footer = renderToStaticMarkup(createElement(Footer, { language }))
+    const legal = renderToStaticMarkup(
+      createElement(LegalNotices, { language, page: 'legal' }),
+    )
+    const privacy = renderToStaticMarkup(
+      createElement(LegalNotices, { language, page: 'privacy' }),
+    )
+    expect(footer).toContain(`href="${legalPaths.legal}"`)
+    expect(footer).toContain(`href="${legalPaths.privacy}"`)
+    expect(footer).not.toContain('mailto:')
+    expect(legal).toContain('<meta name="robots" content="noindex"/>')
+    expect(legal).toContain('id="legal-title"')
+    expect(legal).toContain('mailto:allen.kch24@gmail.com')
+    expect(legal).not.toContain('id="privacy-title"')
+    expect(privacy).toContain('<meta name="robots" content="noindex"/>')
+    expect(privacy).toContain('id="privacy-title"')
+    expect(privacy).toContain('https://web3forms.com/dpa')
+    expect(privacy).toContain('https://www.hcaptcha.com/terms')
+    expect(privacy).not.toContain('id="legal-title"')
+    expect(footer + legal + privacy).not.toContain('<iframe')
+  })
+
+  it('points the footer back at the home sections from a legal page', () => {
+    const footer = renderToStaticMarkup(
+      createElement(Footer, { language: 'fr', linkBase: '/' }),
+    )
+    expect(footer).toContain('href="/#services"')
   })
 })

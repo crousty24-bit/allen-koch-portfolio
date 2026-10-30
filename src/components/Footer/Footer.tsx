@@ -1,14 +1,14 @@
 import { copy, type Language } from '../../data/i18n/i18n'
-import { legalCopy } from '../../data/legal/legal'
+import { legalCopy, legalPaths } from '../../data/legal/legal'
 import { links } from '../../data/links/links'
 import { navItems } from '../../data/links/navigation'
-import { LegalNotices } from '../LegalNotices/LegalNotices'
 
 type FooterProps = {
   language: Language
+  linkBase?: string
 }
 
-export function Footer({ language }: FooterProps) {
+export function Footer({ language, linkBase = '' }: FooterProps) {
   const socialLinks = links.filter((link) => link.kind === 'social')
   const pageCopy = copy[language]
   const footerCopy = pageCopy.footer
@@ -28,7 +28,9 @@ export function Footer({ language }: FooterProps) {
             <ul>
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href}>{pageCopy.nav[item.key]}</a>
+                  <a href={`${linkBase}${item.href}`}>
+                    {pageCopy.nav[item.key]}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -50,19 +52,29 @@ export function Footer({ language }: FooterProps) {
               ))}
             </ul>
           </nav>
+          <nav
+            aria-labelledby="footer-legal-heading"
+            className="site-footer__column"
+          >
+            <h2 className="site-footer__heading" id="footer-legal-heading">
+              {footerCopy.legalHeading}
+            </h2>
+            <ul>
+              <li>
+                <a href={legalPaths.legal}>{legalCopy[language].legalTitle}</a>
+              </li>
+              <li>
+                <a href={legalPaths.privacy}>
+                  {legalCopy[language].privacyTitle}
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
         <p aria-hidden="true" className="site-footer__name">
           Allen Koch
         </p>
         <p className="site-footer__legal">{footerCopy.copyright}</p>
-        <nav
-          className="site-footer__legal-links"
-          aria-label={legalCopy[language].legalTitle}
-        >
-          <a href="#legal-notice">{legalCopy[language].legalTitle}</a>
-          <a href="#privacy">{legalCopy[language].privacyTitle}</a>
-        </nav>
-        <LegalNotices language={language} />
       </div>
     </footer>
   )

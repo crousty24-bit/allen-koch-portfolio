@@ -1913,3 +1913,18 @@ copier de secret, donnée client ou résultat supposé.
   ils sont préservés, hors attribution de ce lot juridique.
 - RUN-008 reste `verify`. Allen a choisi de fournir les coordonnées publiables,
   sans encore donner adresse/téléphone. Aucun commit, push ni déploiement.
+
+## 2026-10-30 — Pages légales dédiées (RUN-008, Claude)
+
+- Mandat d’Allen : sortir mentions légales et confidentialité du footer vers deux
+  pages dédiées non référencées, sans modifier le contenu rédigé par Codex.
+- `/mentions-legales` et `/confidentialite` sont rendues par `App` selon le chemin ;
+  `legal.ts` ne gagne que `legalPaths`. Les textes sont inchangés ; les titres de
+  section passent de `h2` à `h1`. Navbar et footer renvoient vers `/#section`.
+- Non-référencement : `X-Robots-Tag: noindex` (vercel.json), meta robots, retrait
+  du canonical à l’exécution, absence du sitemap, pas de blocage robots.txt.
+- Le lien du formulaire ouvre la politique dans un nouvel onglet pour conserver la
+  saisie et le consentement hCaptcha limité à la page ouverte.
+- Vérifications : build, lint, Biome, 59/59 Vitest, 16/16 Chrome ; captures relues
+  (1440 FR clair, 1440 EN sombre, 320 FR clair). En-tête et rewrites Vercel contrôlés
+  par test de contrat seulement : à vérifier sur un déploiement. Aucun commit ni push.

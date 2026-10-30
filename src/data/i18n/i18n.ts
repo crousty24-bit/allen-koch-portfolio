@@ -43,6 +43,7 @@ export const copy = {
       copyright: '© 2026 Allen Koch. Tous droits réservés.',
       navHeading: 'Navigation',
       linksHeading: 'Liens',
+      legalHeading: 'Légal',
     },
     hero: {
       title: 'Allen Koch | Développeur Fullstack & IA | Alsace, France',
@@ -142,6 +143,7 @@ export const copy = {
       copyright: '© 2026 Allen Koch. All rights reserved.',
       navHeading: 'Navigation',
       linksHeading: 'Links',
+      legalHeading: 'Legal',
     },
     hero: {
       title: 'Allen Koch | Fullstack & AI Developer | Alsace, France',

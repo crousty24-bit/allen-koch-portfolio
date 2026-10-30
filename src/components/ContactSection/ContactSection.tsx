@@ -1,6 +1,7 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { type FormEvent, useRef, useState } from 'react'
 import { copy, type Language, type Theme } from '../../data/i18n/i18n'
+import { legalPaths } from '../../data/legal/legal'
 import { links } from '../../data/links/links'
 
 type ContactSectionProps = {
@@ -118,7 +119,14 @@ export function ContactSection({
             />
             <p className="contact-panel__privacy">
               {contactCopy.privacy}{' '}
-              <a href="#privacy">{contactCopy.privacyLink}</a>
+              {/* A new tab keeps the typed message and the page-scoped captcha consent. */}
+              <a
+                href={legalPaths.privacy}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {contactCopy.privacyLink}
+              </a>
               {' · '}
               <a href="https://www.hcaptcha.com/privacy">
                 {contactCopy.captchaPrivacyLink}

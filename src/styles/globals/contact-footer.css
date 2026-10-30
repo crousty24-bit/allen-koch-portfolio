@@ -142,7 +142,7 @@
 }
 
 .site-footer__brand {
-  grid-column: 1 / span 6;
+  grid-column: 1 / span 3;
   margin: 0;
   color: var(--text-muted);
 }
@@ -204,14 +204,6 @@
   letter-spacing: 0.04em;
 }
 
-.site-footer__legal-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-  margin-top: 1rem;
-}
-
-.site-footer__legal-links a,
 .legal-notices a {
   text-decoration: underline;
   text-underline-offset: 0.2em;
@@ -219,18 +211,15 @@
 
 .legal-notices {
   max-width: 75ch;
+  padding-top: calc(5rem + var(--section-gap));
   overflow-wrap: anywhere;
   line-height: 1.65;
 }
 
-.legal-notices section {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--outline);
-}
-
-.legal-notices h2 {
-  font-size: 1.5rem;
+.legal-notices h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.1;
 }
 
 .legal-notices h3 {
