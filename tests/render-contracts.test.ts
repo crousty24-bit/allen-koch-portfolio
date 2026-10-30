@@ -319,3 +319,19 @@ for (const language of languages) {
     })
   })
 }
+
+describe('legal information and optional captcha', () => {
+  it.each(
+    languages,
+  )('makes legal information reachable in %s without loading a captcha', (language) => {
+    const html = renderToStaticMarkup(createElement(Footer, { language }))
+    for (const id of ['legal-notice', 'privacy']) {
+      expect(html).toContain(`href="#${id}"`)
+      expect(html).toContain(`id="${id}" tabindex="-1"`)
+    }
+    expect(html).toContain('https://web3forms.com/dpa')
+    expect(html).toContain('https://www.hcaptcha.com/terms')
+    expect(html).toContain('mailto:allen.kch24@gmail.com')
+    expect(html).not.toContain('<iframe')
+  })
+})

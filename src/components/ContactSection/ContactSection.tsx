@@ -18,12 +18,17 @@ export function ContactSection({
   const [status, setStatus] = useState<
     'idle' | 'sending' | 'success' | 'error' | 'captcha'
   >('idle')
+  const [captchaAllowed, setCaptchaAllowed] = useState(false)
   const sending = useRef(false)
   const captcha = useRef<HCaptcha>(null)
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (sending.current || !accessKey) return
+    if (!captchaAllowed) {
+      setStatus('captcha')
+      return
+    }
     const token = captcha.current?.isReady()
       ? captcha.current.getResponse()
       : ''
@@ -113,29 +118,46 @@ export function ContactSection({
             />
             <p className="contact-panel__privacy">
               {contactCopy.privacy}{' '}
-              <a href="https://web3forms.com/privacy">
-                {contactCopy.privacyLink}
-              </a>
+              <a href="#privacy">{contactCopy.privacyLink}</a>
               {' · '}
               <a href="https://www.hcaptcha.com/privacy">
                 {contactCopy.captchaPrivacyLink}
               </a>
             </p>
-            <HCaptcha
-              key={`${language}-${theme}`}
-              ref={captcha}
-              sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-              size="compact"
-              theme={theme}
-              languageOverride={language}
-              reCaptchaCompat={false}
-              onVerify={() =>
-                setStatus((current) =>
-                  current === 'captcha' ? 'idle' : current,
-                )
-              }
-              onError={() => setStatus('error')}
-            />
+            <p className="contact-panel__privacy" id="captcha-choice">
+              {contactCopy.captchaChoice}
+            </p>
+            <button
+              className="button button--secondary contact-panel__captcha-choice"
+              type="button"
+              aria-describedby="captcha-choice"
+              disabled={status === 'sending'}
+              onClick={() => {
+                if (captchaAllowed) window.location.reload()
+                else setCaptchaAllowed(true)
+              }}
+            >
+              {captchaAllowed
+                ? contactCopy.captchaWithdraw
+                : contactCopy.captchaLoad}
+            </button>
+            {captchaAllowed ? (
+              <HCaptcha
+                key={`${language}-${theme}`}
+                ref={captcha}
+                sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                size="compact"
+                theme={theme}
+                languageOverride={language}
+                reCaptchaCompat={false}
+                onVerify={() =>
+                  setStatus((current) =>
+                    current === 'captcha' ? 'idle' : current,
+                  )
+                }
+                onError={() => setStatus('error')}
+              />
+            ) : null}
             <button
               className="button button--primary"
               type="submit"

@@ -1,6 +1,8 @@
 import { copy, type Language } from '../../data/i18n/i18n'
+import { legalCopy } from '../../data/legal/legal'
 import { links } from '../../data/links/links'
 import { navItems } from '../../data/links/navigation'
+import { LegalNotices } from '../LegalNotices/LegalNotices'
 
 type FooterProps = {
   language: Language
@@ -53,6 +55,14 @@ export function Footer({ language }: FooterProps) {
           Allen Koch
         </p>
         <p className="site-footer__legal">{footerCopy.copyright}</p>
+        <nav
+          className="site-footer__legal-links"
+          aria-label={legalCopy[language].legalTitle}
+        >
+          <a href="#legal-notice">{legalCopy[language].legalTitle}</a>
+          <a href="#privacy">{legalCopy[language].privacyTitle}</a>
+        </nav>
+        <LegalNotices language={language} />
       </div>
     </footer>
   )

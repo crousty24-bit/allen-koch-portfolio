@@ -189,6 +189,20 @@ test('contact form reports provider results and keeps failed input', async (t) =
     return
   }
 
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(document.querySelector('iframe[src*="hcaptcha"]')),
+    ),
+    false,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      performance
+        .getEntriesByType('resource')
+        .some((entry) => /hcaptcha\.com/.test(entry.name)),
+    ),
+    false,
+  )
   const solveCaptcha = async () => {
     await page.waitFor(() =>
       Boolean(
@@ -227,6 +241,9 @@ test('contact form reports provider results and keeps failed input', async (t) =
     ),
     true,
   )
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__captcha-choice').click(),
+  )
   await solveCaptcha()
   await page.evaluate(() => {
     const form = document.querySelector('.contact-panel__form')
@@ -236,7 +253,9 @@ test('contact form reports provider results and keeps failed input', async (t) =
   await page.waitFor(() => window.contactCalls.length === 1)
   assert.equal(
     await page.evaluate(
-      () => document.querySelector('.contact-panel__form button').disabled,
+      () =>
+        document.querySelector('.contact-panel__form button[type="submit"]')
+          .disabled,
     ),
     true,
   )
@@ -307,6 +326,27 @@ test('contact form reports provider results and keeps failed input', async (t) =
       () => document.documentElement.scrollWidth > innerWidth,
     ),
     false,
+  )
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__captcha-choice').click(),
+  )
+  await page.waitFor(
+    () =>
+      document.readyState === 'complete' &&
+      Boolean(document.querySelector('.contact-panel__captcha-choice')) &&
+      !document.querySelector('iframe[src*="hcaptcha"]'),
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      performance
+        .getEntriesByType('resource')
+        .some((entry) => /hcaptcha\.com/.test(entry.name)),
+    ),
+    false,
+  )
+  assert.deepEqual(
+    await page.evaluate(() => Object.keys(localStorage).sort()),
+    ['language', 'theme'],
   )
 })
 
@@ -645,5 +685,58 @@ for (const width of [390, 1440]) {
       ),
       'auto',
     )
+  })
+}
+
+for (const width of [320, 1440]) {
+  test(`legal and privacy anchors are readable in both languages (${width}px)`, async (t) => {
+    const page = await browser.page()
+    t.after(() => page.close())
+    await page.viewport(width)
+    for (const language of ['fr', 'en']) {
+      await page.open(url)
+      await page.evaluate((language) => {
+        localStorage.setItem('language', language)
+        localStorage.setItem('theme', language === 'fr' ? 'light' : 'dark')
+      }, language)
+      await page.command('Page.reload')
+      await page.waitFor(
+        (language) =>
+          document.documentElement.lang === language &&
+          document.readyState === 'complete',
+        language,
+      )
+      for (const id of ['legal-notice', 'privacy']) {
+        await page.open(`${url}/#${id}`)
+        await page.waitFor(
+          (id) =>
+            document.activeElement.id === id &&
+            Math.abs(
+              document.getElementById(id).getBoundingClientRect().top - 80,
+            ) < 2,
+          id,
+        )
+        assert.equal(
+          await page.evaluate(() => document.documentElement.lang),
+          language,
+        )
+        assert.equal(
+          await page.evaluate(
+            () => document.documentElement.scrollWidth > innerWidth,
+          ),
+          false,
+        )
+        assert.equal(
+          await page.evaluate(() =>
+            Boolean(
+              document.querySelector(
+                '.site-footer__legal-links a[href="#privacy"]',
+              ),
+            ),
+          ),
+          true,
+        )
+      }
+    }
   })
 }

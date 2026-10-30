@@ -28,8 +28,13 @@ export const copy = {
         "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
       captcha: "Complétez le contrôle anti-spam avant l'envoi.",
       privacy:
-        'Les informations saisies sont transmises à Web3Forms, qui les conserve un an, pour me parvenir par email. Le contrôle anti-spam utilise hCaptcha.',
-      privacyLink: 'Confidentialité Web3Forms',
+        'Les informations saisies et des données techniques sont transmises à Web3Forms pour me parvenir par email. Son DPA prévoit une conservation physique pouvant atteindre trois ans. Les demandes sans suite sont supprimées de ma messagerie après 30 jours. Le contrôle anti-spam utilise hCaptcha après votre autorisation.',
+      privacyLink: 'Politique de confidentialité',
+      captchaLoad: 'J’autorise le chargement de hCaptcha',
+      captchaWithdraw:
+        'Retirer mon autorisation et recharger (efface la saisie)',
+      captchaChoice:
+        'hCaptcha (Intuition Machines, États-Unis) analyse votre IP, votre navigateur et vos interactions pour détecter les robots et peut utiliser des cookies. Ce chargement est facultatif ; vous pouvez écrire par email sans l’autoriser. Aucun message n’est envoyé avant votre clic sur Envoyer.',
       captchaPrivacyLink: 'Confidentialité hCaptcha',
       emailAlternative: 'Ou écrivez-moi directement :',
     },
@@ -123,8 +128,12 @@ export const copy = {
       error: 'Sending failed. Please try again or email me directly.',
       captcha: 'Complete the anti-spam check before sending.',
       privacy:
-        'The information you enter is sent to Web3Forms, which retains it for one year, so it can reach me by email. The anti-spam check uses hCaptcha.',
-      privacyLink: 'Web3Forms privacy policy',
+        'Your entries and technical data are sent to Web3Forms to reach me by email. Its DPA provides for physical retention of up to three years. Enquiries that do not lead to a project are deleted from my mailbox after 30 days. The anti-spam check uses hCaptcha after you allow it.',
+      privacyLink: 'Privacy policy',
+      captchaLoad: 'I allow hCaptcha to load',
+      captchaWithdraw: 'Withdraw permission and reload (clears your draft)',
+      captchaChoice:
+        'hCaptcha (Intuition Machines, United States) analyses your IP, browser and interactions to detect bots and may use cookies. Loading it is optional; you can email without allowing it. No message is sent before you click Send.',
       captchaPrivacyLink: 'hCaptcha privacy policy',
       emailAlternative: 'Or email me directly:',
     },

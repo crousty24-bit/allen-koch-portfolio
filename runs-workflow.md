@@ -228,6 +228,10 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
   README actualisé et ancienne date sitemap retirée. Baseline 1.3.2 conservée,
   nouvelle version à décider ; statut `verify` pour validation visuelle/contenu
   d’Allen et contrôle des en-têtes sur hébergement avant release.
+- Complément juridique autorisé le 30 octobre : mentions et confidentialité FR/EN,
+  information Web3Forms/hCaptcha et choix de chargement du CAPTCHA. Coordonnées
+  d’éditeur et garanties contractuelles/transferts restent à compléter avant
+  clôture ; voir `docs/legal-release-checklist.md`.
 - Publication : vérifier le mandat et la cible avant push/merge/déploiement ;
   préparer un transfert Production si la publication est demandée.
 - Correctif demandé le 30 octobre : index Projets dimensionné selon sa colonne,

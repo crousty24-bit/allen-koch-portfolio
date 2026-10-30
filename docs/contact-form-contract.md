@@ -32,8 +32,11 @@ accepte des champs arbitraires ; aucune règle personnalisée de longueur ou de
 présence côté service n'est établie pour cette clé. Ne pas présenter ces contrôles
 HTML comme une validation serveur garantie. Web3Forms annonce un [filtrage anti-spam côté serveur](https://docs.web3forms.com/getting-started/customizations/spam-protection).
 Allen confirme avoir activé hCaptcha, Advanced Spam Filter et le niveau Strict
-dans le compte le 30 octobre. Le composant React officiel hCaptcha utilise la
-clé de site gratuite indiquée par Web3Forms ; le formulaire exige un jeton avant
+dans le compte le 30 octobre. Le composant React officiel hCaptcha ne se monte qu’après le choix explicite
+du visiteur. L’email reste disponible sans ce choix. Le retrait recharge la page
+(et efface le brouillon, annoncé dans le bouton) pour arrêter le service ; il
+ne supprime pas les cookies tiers déjà déposés. Aucun choix n’est persisté.
+Le widget utilise la clé de site gratuite indiquée par Web3Forms ; le formulaire exige un jeton avant
 l'appel API et le réinitialise après chaque tentative. Ces réglages du compte
 sont rapportés par Allen, sans lecture indépendante du tableau de bord. Le
 honeypot Web3Forms
@@ -46,16 +49,21 @@ dans l'email reçu : aucune règle d'injection configurable côté service n'a �
 identifiée dans sa [référence API](https://docs.web3forms.com/getting-started/api-reference).
 
 Le navigateur transmet les champs à Web3Forms pour notification par email.
-Une courte notice FR/EN et des liens vers les politiques de
-[Web3Forms](https://web3forms.com/privacy) et de [hCaptcha](https://www.hcaptcha.com/privacy)
-sont affichés près du bouton. Allen a retenu 30 jours de conservation **dans sa
+Une politique locale FR/EN (`#privacy`) accessible depuis le formulaire et le
+footer décrit le traitement et les droits. Une courte notice renvoie vers la politique locale et vers celle de
+[hCaptcha](https://www.hcaptcha.com/privacy), près du bouton. La politique locale
+lie également les documents Web3Forms et leurs contrats. Allen a retenu 30 jours de conservation **dans sa
 messagerie** pour les demandes sans suite, sans suppression automatique autorisée.
-Web3Forms indique une conservation des soumissions configurable de 7 jours à
+Web3Forms affiche un réglage de conservation de 7 jours à
 3 ans selon son [offre](https://web3forms.com/pricing). Allen confirme avoir
 réglé ce formulaire sur **un an** dans Web3Forms le 30 octobre. La visibilité
 de 30 jours dans le tableau de bord gratuit n'est pas une suppression des
-données au bout de 30 jours. La notice publique indique un an ; une durée plus courte reste possible
-si Allen le souhaite. La politique de 30 jours en messagerie est distincte.
+données au bout de 30 jours. Le DPA téléchargé depuis le dashboard et lu par Codex indique toutefois un TTL
+physique de trois ans (section 8, point 17), avec visibilité dashboard selon le
+plan. Le réglage d’un an ne suffit donc pas à prouver une suppression physique
+à un an : clarification fournisseur requise avant publication. La notice
+publique retient prudemment le plafond de trois ans, sans attester la durée
+effective du compte. La politique de 30 jours en messagerie est distincte.
 La [politique Web3Forms](https://web3forms.com/privacy) annonce une conservation
 maximale de trois ans, sauf durée plus courte configurée ou suppression anticipée.
 
@@ -83,3 +91,17 @@ maximale de trois ans, sauf durée plus courte configurée ou suppression antici
 Sources : [installation et clé publique](https://docs.web3forms.com/getting-started/installation),
 [API](https://docs.web3forms.com/getting-started/api-reference),
 [tarifs](https://web3forms.com/pricing), [confidentialité](https://web3forms.com/privacy).
+
+## Complément juridique — 30 octobre 2026
+
+Mandat d’Allen : implémenter les must fix 1/2/3 de l’audit juridique dans RUN-008,
+en tenant compte de Web3Forms/hCaptcha. Les mentions locales (`#legal-notice`)
+et la politique (`#privacy`) restent dans la page unique ; aucune route ni
+dépendance ajoutée. Hébergeur Vercel confirmé par Allen ; coordonnées publiques
+d’éditeur en attente de sa communication. Aucune adresse personnelle déduite.
+
+Allen confirme avoir pris connaissance du DPA et l’avoir téléchargé depuis son
+tableau de bord Web3Forms. Cela ne prouve pas à lui seul toutes les garanties
+applicables aux transferts ni les conditions hCaptcha sous clé partagée.
+La [liste de publication juridique](legal-release-checklist.md) conserve ces
+points ouverts ; ne pas déclarer la conformité ni le must fix 3 entièrement clos.

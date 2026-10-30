@@ -1838,3 +1838,78 @@ copier de secret, donnée client ou résultat supposé.
   formulaire a affiché le succès et l'email est arrivé. Cette vérification
   humaine complète le test automatisé à API simulée ; Codex n'a pas lu la
   messagerie. L'essai sur le site déployé reste distinct et non effectué ici.
+
+## RUN-008 — Mentions, confidentialité et traitement Web3Forms/hCaptcha (30 octobre 2026)
+
+- Mandat direct d’Allen : implémenter les must fix 1, 2 et 3 de l’audit juridique,
+  en tenant compte du formulaire Web3Forms et de hCaptcha désormais intégrés.
+  Branche existante `feature/run-008-validation-release`, départ propre `daa698d`.
+  Contrats préservés : design courant, FR/EN, thèmes, page unique sans routeur,
+  saisie conservée après échec d’envoi et email alternatif ; aucun nouveau paquet.
+- Main Codex : notices publiques et raccordement, choix hCaptcha et vérification.
+  Sous-agent `legal_release_contract`, gpt-6-luna medium : propriété exclusive
+  initiale de `docs/legal-release-checklist.md`, puis relecture indépendante des
+  notices et du formulaire. Bénéfice attendu : préparer le dossier contractuel
+  borné pendant l’intégration. Retour relu par le main ; pas d’avis juridique
+  certifié ni d’accès aux tableaux de bord revendiqué.
+- Deux contenus publics FR/EN ajoutés au footer : `#legal-notice` et `#privacy`,
+  également liés depuis le formulaire. Paragraphes et ancres HTML simples,
+  styles natifs et boutons existants réutilisés ; pas de nouveau composant UI
+  de base, aucune migration shadcn/Tailwind ni choix visuel général.
+- La politique décrit responsable/finalités/bases, champs requis et facultatifs,
+  données techniques/antispam, destinataires, durées distinctes, hCaptcha,
+  préférences locales, Google Fonts, transferts, droits/contact et réclamation
+  CNIL. Sources prestataires consultées au 30 octobre. Le contenu reflète les
+  traitements connus, sans attester les contrats non vérifiés.
+- Le widget hCaptcha ne se monte qu’après autorisation explicite, limitée à la
+  page et non persistée ; le refus conserve l’email. Le bouton de retrait
+  annonce le rechargement et l’effacement de la saisie avant de l’exécuter.
+  Ce rechargement arrête le widget sans prétendre supprimer les cookies déjà
+  déposés. Vérification de l’absence de requête/iframe hCaptcha avant accord.
+- Allen confirme Vercel comme hébergeur. Adresse vérifiée dans les sources
+  officielles : 440 N Barranca Avenue #4133, Covina, CA 91723, United States.
+  Aucun téléphone Vercel confirmé dans ces sources ; ne pas recopier un numéro
+  trouvé sur un autre portfolio. Coordonnées d’éditeur : Allen fournira une
+  adresse et un téléphone publiables ; champs correspondants laissés vides,
+  sans rechercher ni publier de données privées. Les mentions restent donc
+  incomplètes pour une publication professionnelle.
+- Allen confirme avoir lu et téléchargé le DPA Web3Forms depuis le dashboard.
+  PDF local trouvé et lu : `/mnt/c/Users/allen/Downloads/Web3Forms-DPA.pdf`,
+  version 1.0, « Effective upon acceptance ». Extraction via pdfjs-dist du
+  runtime fourni par l’app ; aucun fichier de contrat copié dans le dépôt.
+  `pdftotext` et PyMuPDF étaient absents ; repli sur le runtime Node fourni.
+- Découverte : section 8, point 17 du PDF = TTL physique de trois ans et
+  visibilité dashboard selon le plan, contrairement à l’interprétation du réglage
+  d’un an. La notice courte et la politique ne promettent plus l’effacement
+  physique à un an. Question fournisseur et comparaison avec politique en ligne
+  dans `docs/legal-release-checklist.md`. La section 10 du DPA incorpore les CCT
+  2021/914 par référence ; module/annexes et garanties réellement applicables,
+  notamment hCaptcha sous clé partagée, restent à vérifier. Le téléchargement
+  n’est pas présenté comme une preuve de toutes les acceptations/garanties.
+- Must fix 3 reste ouvert sur cette clarification et les garanties de transfert ;
+  les documents et le code ne peuvent remplacer une confirmation contractuelle.
+  Aucune requête au fournisseur, acceptation de contrat ni modification distante.
+- Vérifications finales : build, lint, Biome (78 fichiers), 57/57 tests Vitest,
+  16/16 tests Chrome, audit npm zéro vulnérabilité et `git diff --check` réussis.
+  Avertissement Vite préexistant : responsive-430.css vide. Premier Biome refusé
+  pour ordre d’imports Footer, corrigé ; premiers tests d’ancres légales échoués
+  car le scénario changeait localStorage puis faisait une navigation de fragment
+  sans recharger React. Test corrigé par vrai reload après réglage, suite réussie.
+- Les tests versionnés couvrent les liens/ancres et rendu juridique FR/EN,
+  hCaptcha absent avant autorisation, jeton requis, succès/rejet et double envoi,
+  retrait avec reload et choix non persisté. API de soumission simulée : aucun
+  email envoyé par Codex. L’API/widget hCaptcha réel est utilisé pour le rendu,
+  sa réponse est substituée pour la soumission de test.
+- Contrôle exploratoire Chrome : 320/1440 px × FR/EN × clair/sombre (8 cas),
+  ancres stabilisées et pas de débordement ; Axe sur les notices juridiques ne
+  relève pas de violation WCAG2A/AA et WCAG2.1A/AA. Captures 320 FR/clair et
+  1440 EN/sombre relues. Preuves hors dépôt dans le dossier de session RUN-008 :
+  `legal-ui.mjs`, `legal-ui.json`, `legal-*.png`. Pas de lecteur d’écran ni
+  certification RGAA/conformité juridique ; contrats et données manquants ouverts.
+- Relecture finale indépendante Luna : pas d’autre défaut concret ; remarque de
+  checklist sur la durée physique intégrée. La relecture ne valide pas les
+  contrats. Des modifications concurrentes dans `src/data/projects/projects.ts`
+  et de nouveaux assets Diff Impact Analyzer v3 sont apparus pendant le travail ;
+  ils sont préservés, hors attribution de ce lot juridique.
+- RUN-008 reste `verify`. Allen a choisi de fournir les coordonnées publiables,
+  sans encore donner adresse/téléphone. Aucun commit, push ni déploiement.
