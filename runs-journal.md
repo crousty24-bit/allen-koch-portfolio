@@ -1721,6 +1721,15 @@ copier de secret, donnée client ou résultat supposé.
   à la clé, la durée de conservation dans le compte Web3Forms et la validation
   visuelle. Configurer ensuite la variable publique de déploiement. Aucun push,
   merge ou déploiement effectué.
+
+### RUN-017 — Confirmation d'Allen (30 octobre 2026)
+
+- Allen confirme avoir effectué un test réel d'envoi et de réception du formulaire.
+  La réception est établie par son témoignage ; Codex n'a pas lu la messagerie.
+  L'échec Cloudflare dans l'environnement Codex reste un constat distinct.
+- Restent à vérifier avant publication : réglage de conservation Web3Forms,
+  anti-spam du compte, configuration de la clé sur l'hébergeur et essai du site
+  déployé. RUN-017 reste en `verify` pour ces points.
 ## RUN-008 — Correctif de crop de l'index Projets (30 octobre 2026)
 
 - Mandat d'Allen : diagnostiquer la vidéo/capture et corriger l'index tronqué

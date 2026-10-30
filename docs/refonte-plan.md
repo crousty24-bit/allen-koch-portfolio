@@ -291,9 +291,9 @@ ne conditionne pas la première release de la refonte.
 Après la décision temporaire email seul de RUN-016, Allen a repris RUN-017 le
 30 octobre et choisi Web3Forms. Le formulaire contact/devis est intégré localement
 avec une clé publique de test ; le lien vers allen.kch24@gmail.com reste visible.
-L'envoi réel n'est pas encore vérifié à cause d'une réponse Cloudflare inattendue
-dans l'environnement local. La réception, le réglage de conservation chez
-Web3Forms, l'anti-spam et la configuration de déploiement restent à contrôler.
+Allen a confirmé l'envoi et la réception réels depuis son environnement. Le
+réglage de conservation chez Web3Forms, l'anti-spam et la configuration de
+déploiement restent à contrôler.
 Les demandes sans suite sont conservées 30 jours dans la messagerie selon la
 décision d'Allen, sans automatisation. Le [contrat RUN-017](contact-form-contract.md)
 décrit les champs, le traitement, la confidentialité et les vérifications.

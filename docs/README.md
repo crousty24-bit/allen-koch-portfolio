@@ -67,4 +67,4 @@ recopier des statuts, preuves ou décisions dans chaque fichier.
 
 La synthèse validée et ses adaptations sont consignées dans DESIGN.md R8 à R19.
 Les services et l'espace projets clients sont intégrés ; le formulaire Web3Forms
-est intégré localement et attend une validation de réception avant publication.
+est intégré localement ; Allen a confirmé l'envoi et la réception réels.

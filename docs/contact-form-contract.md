@@ -53,11 +53,11 @@ fixer le paramètre de conservation avant publication ; ajuster alors la notice.
   pas la livraison de l'email.
 - Le test direct depuis cet environnement a rencontré une page de vérification
   Cloudflare, et le test Chrome local a affiché l'échec d'envoi ; aucune réponse
-  JSON d'acceptation ni réception effective n'est donc établie. À confirmer
-  depuis le navigateur et le réseau d'Allen avant publication.
+  JSON d'acceptation n'a été observée ici. Allen a ensuite confirmé un envoi et
+  une réception réels depuis son environnement le 30 octobre 2026.
 - Avant déploiement : confirmer destinataire de la clé, réglage de conservation,
   anti-spam effectif et coût/quotas du plan choisi ; ajouter la clé publique à
-  l'environnement du site puis effectuer un envoi de contrôle reçu en messagerie.
+  l'environnement du site. Un nouvel essai sur le déploiement vérifiera ce contexte.
 
 Sources : [installation et clé publique](https://docs.web3forms.com/getting-started/installation),
 [API](https://docs.web3forms.com/getting-started/api-reference),

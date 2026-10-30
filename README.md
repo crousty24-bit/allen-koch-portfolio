@@ -11,7 +11,7 @@ L’itération actuelle présente Allen comme développeur Fullstack & IA : serv
 projets personnels, client autorisé et game dev, Stack, À propos et contact
 sur une page avec ancres. FR/EN, thèmes clair/sombre et responsive sont conservés.
 Le formulaire Web3Forms (RUN-017) est intégré localement avec une clé publique
-de test ; sa réception réelle reste à confirmer avant publication. Le lien email
+de test ; Allen a confirmé l'envoi et la réception réels. Le lien email
 reste disponible. La section
 « Ils m’ont fait confiance » (RUN-018) reste future et exige des références autorisées.
 Le [brief](brief.md) définit le périmètre courant ; les descriptions de maintenance

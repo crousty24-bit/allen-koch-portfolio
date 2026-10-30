@@ -430,8 +430,8 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 ## RUN-017 — Formulaire et envoi contact / devis
 
 - Mandat du 30 octobre : Allen choisit Web3Forms et fournit une clé publique de
-  test. Formulaire intégré localement ; lien email conservé. La réception réelle
-  et la configuration du compte restent à confirmer avant publication.
+  test. Formulaire intégré localement ; lien email conservé. Allen a confirmé
+  l'envoi et la réception réels ; configuration du compte à vérifier avant publication.
 
 - Passe A — Claude UI : formulaire selon design, labels/aides accessibles, champs
   contact/prestation/devis selon contrat, navigation clavier et validations client.
