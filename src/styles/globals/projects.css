@@ -217,7 +217,6 @@
 .projects-group__header {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 2.5rem;
 }
