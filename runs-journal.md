@@ -1958,3 +1958,38 @@ copier de secret, donnée client ou résultat supposé.
   à Allen ni nouveau compte à créer en attendant cette réponse.
 - Correction de contenu ciblée par Codex, sans délégation utile ni test ajouté
   pour du texte statique. Aucun envoi au support ni modification distante.
+
+## RUN-008 — Auto-hébergement des polices (30 octobre 2026)
+
+- Mandat explicite d’Allen : traiter le point 4 de l’audit juridique, supprimer
+  les connexions Google Fonts en hébergeant les polices et leurs licences.
+  Départ propre sur `feature/run-008-validation-release` ; aucun paquet ajouté.
+- Téléchargement des WOFF2 distribués par Google Fonts CSS2 : Schibsted Grotesk
+  variable 400–700, normal/italique, et IBM Plex Mono normal 400/500. Quatorze
+  fichiers/plages Unicode, binaires non modifiés et signature WOFF2 vérifiée.
+  Sources exactes et SHA-256 dans `public/fonts/README.md`, licences SIL OFL 1.1
+  issues du dépôt officiel google/fonts distribuées dans le même dossier.
+- Feuille locale commune `/fonts/fonts.css` liée par index.html et le modèle
+  public og-image-refonte.html. Préconnexions et CSS Google distants retirés.
+  Les familles/variantes/plages Unicode et `font-display: swap` sont conservés.
+  IBM Plex Mono reste sélectionnée par desktop-fonts.css seulement au-delà de
+  760 px : déclarer une face ne télécharge pas un fichier inutilisé sur mobile.
+  Aucun changement d’apparence attendu sur desktop ni mobile.
+- Politique de confidentialité FR/EN alignée : polices servies par le site,
+  retrait de Google Fonts de la liste des transferts et liens fournisseur.
+  Gmail reste correctement mentionné ; aucun changement hCaptcha/Web3Forms.
+- Main Codex réalise et relit ce lot lié HTML/CSS/ressources/notice ; pas de
+  délégation utile pour ce remplacement borné ni revue indépendante revendiquée.
+- Build/lint/Biome, 59 Vitest et contrôles navigateur effectués. Comparaison
+  avant/après Chrome local, 390/1440 px × FR/EN × clair/sombre (8 combinaisons),
+  mouvement réduit pour stabiliser les captures : géométrie et captures PNG
+  strictement identiques, polices réellement chargées, aucun débordement.
+  Sur le build final : aucune requête fonts.googleapis.com/fonts.gstatic.com,
+  et IBM Plex Mono non chargée sur mobile, chargée desktop.
+- Preuves exploratoires hors dépôt : `/tmp/portfolio-font-audit/` (script,
+  JSON avant/après et captures). Les tests existants sont réutilisés ; pas de
+  nouveau test unitaire pour des déclarations CSS statiques. Avertissement Vite
+  préexistant conservé : responsive-430.css vide.
+- Aucun commit, push ni déploiement. RUN-008 reste verify pour les validations
+  restantes, dont la réponse contractuelle hCaptcha. Pas de Safari/Firefox,
+  appareil réel ni comportement du cache de l’hébergement vérifiés dans ce lot.

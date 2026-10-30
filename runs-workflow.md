@@ -233,6 +233,9 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
   d’éditeur différées jusqu’à création de l’entreprise, sans blocage de release
   sur décision d’Allen ; coordonnées Vercel validées. Les garanties contractuelles/
   transferts restent à vérifier ; voir `docs/legal-release-checklist.md`.
+- Point 4 de l’audit juridique traité le 30 octobre : polices WOFF2 et licences
+  auto-hébergées, aucun appel Google Fonts ; rendu desktop/mobile préservé
+  selon les comparaisons consignées au journal.
 - Publication : vérifier le mandat et la cible avant push/merge/déploiement ;
   préparer un transfert Production si la publication est demandée.
 - Correctif demandé le 30 octobre : index Projets dimensionné selon sa colonne,

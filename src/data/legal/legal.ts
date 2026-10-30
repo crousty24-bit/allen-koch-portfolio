@@ -64,13 +64,13 @@ export const legalCopy: Record<Language, LegalText> = {
         title: 'Stockage local, polices et hébergement',
         paragraphs: [
           'Le site mémorise uniquement les préférences d’interface « theme » et « language » dans le stockage local de votre navigateur. Elles restent enregistrées jusqu’à leur effacement via les réglages du navigateur. Elles servent à retrouver votre thème et votre langue, sans publicité ni suivi d’audience ajouté par le site.',
-          'Les polices sont chargées depuis Google Fonts : une requête transmet notamment votre adresse IP et des informations de navigateur à Google dès l’ouverture de la page. Vercel, l’hébergeur, traite les informations techniques nécessaires à la fourniture et à la sécurité du site, sur le fondement de l’intérêt légitime à fournir un site fonctionnel et sécurisé (article 6.1.f). Le chargement des polices répond au même intérêt de présentation du site ; vous pouvez bloquer ces requêtes dans votre navigateur, qui utilisera alors les polices de remplacement. Les liens vers GitHub, LinkedIn et les projets ne chargent pas leurs services dans la page ; ils vous conduisent vers ces sites lorsque vous les ouvrez.',
+          'Les polices sont hébergées avec le site : leur chargement ne crée aucune connexion à Google Fonts. Vercel, l’hébergeur, traite les informations techniques nécessaires à la fourniture et à la sécurité du site, sur le fondement de l’intérêt légitime à fournir un site fonctionnel et sécurisé (article 6.1.f). Les liens vers GitHub, LinkedIn et les projets ne chargent pas leurs services dans la page ; ils vous conduisent vers ces sites lorsque vous les ouvrez.',
         ],
       },
       {
         title: 'Traitements hors de l’Espace économique européen',
         paragraphs: [
-          'Web3Creative opère depuis l’Inde ; son infrastructure et ses sous-traitants peuvent traiter des données hors de l’EEE. hCaptcha est exploité depuis les États-Unis. Gmail et Google Fonts peuvent également impliquer des traitements internationaux. Les pays et garanties dépendent des services et de leurs conditions applicables.',
+          'Web3Creative opère depuis l’Inde ; son infrastructure et ses sous-traitants peuvent traiter des données hors de l’EEE. hCaptcha est exploité depuis les États-Unis. Gmail peut également impliquer des traitements internationaux. Les pays et garanties dépendent des services et de leurs conditions applicables.',
           'Le contrat de traitement Web3Forms prévoit des clauses contractuelles types pour les transferts concernés. Les documents des fournisseurs décrivent leurs garanties ; vous pouvez demander à Allen Koch des informations sur les garanties applicables et une copie de celles-ci à l’adresse indiquée ci-dessous.',
         ],
       },
@@ -120,13 +120,13 @@ export const legalCopy: Record<Language, LegalText> = {
         title: 'Local storage, fonts and hosting',
         paragraphs: [
           'The website saves only the “theme” and “language” interface preferences in your browser’s local storage until you clear them through your browser settings. They restore your chosen appearance and language; the website adds no advertising or audience tracking.',
-          'Fonts load from Google Fonts: requests send data including your IP address and browser information to Google when the page opens. Vercel, the host, processes technical information needed to deliver and secure the website, based on the legitimate interest in providing a functional and secure website (Article 6(1)(f)). Fonts serve the same interest in presenting the website; you can block those requests in your browser, which will then use fallback fonts. GitHub, LinkedIn and project links do not embed those services; opening a link takes you to the relevant website.',
+          'Fonts are hosted with the website: loading them does not connect to Google Fonts. Vercel, the host, processes technical information needed to deliver and secure the website, based on the legitimate interest in providing a functional and secure website (Article 6(1)(f)). GitHub, LinkedIn and project links do not embed those services; opening a link takes you to the relevant website.',
         ],
       },
       {
         title: 'Processing outside the European Economic Area',
         paragraphs: [
-          'Web3Creative operates from India; its infrastructure and sub-processors may process data outside the EEA. hCaptcha operates from the United States. Gmail and Google Fonts may also involve international processing. Locations and safeguards depend on each service and its applicable terms.',
+          'Web3Creative operates from India; its infrastructure and sub-processors may process data outside the EEA. hCaptcha operates from the United States. Gmail may also involve international processing. Locations and safeguards depend on each service and its applicable terms.',
           'Web3Forms’ data processing agreement provides for standard contractual clauses for relevant transfers. Provider documents describe their safeguards; you may ask Allen Koch for information and a copy of the applicable safeguards using the contact below.',
         ],
       },
@@ -149,9 +149,5 @@ export const privacySources = [
   { label: 'Vercel', href: 'https://vercel.com/legal/privacy-notice' },
   { label: 'Vercel — contact', href: 'https://vercel.com/contact' },
   { label: 'Google', href: 'https://policies.google.com/privacy' },
-  {
-    label: 'Google Fonts',
-    href: 'https://fonts.googleblog.com/2022/11/your-privacy-and-google-fonts.html',
-  },
   { label: 'CNIL', href: 'https://www.cnil.fr/fr/plaintes' },
 ]
