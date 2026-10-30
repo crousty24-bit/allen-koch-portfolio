@@ -1588,3 +1588,136 @@ copier de secret, donnée client ou résultat supposé.
   FR/EN, clair/sombre de l'audit précédent complète ces tests, sans garantir
   Safari/Firefox, lecteur d'écran, appareil physique ou fluidité GPU. Aucun
   commit, push, déploiement ni nouvelle branche créé dans cette correction.
+
+
+## RUN-008 — Prise en charge (30 octobre 2026)
+
+- Mandat direct d’Allen : lancer RUN-008 sur une nouvelle branche feature.
+  Départ propre sur develop ; branche créée : feature/run-008-validation-release.
+- Périmètre : checks de release, build production, mesures locales mobile/desktop,
+  matrice FR/EN et clair/sombre, reduced-motion, clavier, ancres, SEO et contact.
+  Contrats préservés : page unique, design Claude, catalogue courant, email seul,
+  préférences locales ; aucun ajout de dépendance ni nouvelle fonctionnalité.
+- Acceptation : preuves techniques, cohérence des documents/version et validation
+  visuelle/contenu d’Allen ; rester verify si cette dernière manque. Aucun mandat
+  de push, merge, déploiement ou choix implicite d’une nouvelle version.
+- Main Codex : coordination, checks et navigateur. Sous-tâche SEO/release confiée
+  à run008_seo_review, gpt-6-luna medium, lecture seule ; bénéfice attendu : audit
+  indépendant borné parallélisable. Aucun fichier partagé en écriture.
+
+### RUN-008 — Résultats techniques et relais de validation
+
+- Base inspectée : `ba6921df687f0d6c92de4bde45d703dc7d351053` ; Node 24.22.1,
+  npm 11.19.1, Chrome 156.0.8078.47 headless Linux. Ponytail full appliqué :
+  tests/adaptateur existants réutilisés, aucune dépendance installée.
+- Contrôles réussis : `npm run build`, `npm run lint`, `npm run biome:check`
+  (76 fichiers), `npm run test` (55/55), `npm run test:browser` (12/12),
+  `npm audit --audit-level=moderate` et audit production (zéro vulnérabilité).
+  Build relancé après correction sitemap. Avertissement préexistant conservé :
+  import de `responsive-430.css` vide, sans échec de build.
+- Matrice exploratoire sur preview locale du build : 320×740, 390×844,
+  667×375, 768×1024 et 1440×900, chacune FR/EN et clair/sombre (20 combinaisons).
+  Six ancres : ouverture directe et rechargement, cible visible et absence de
+  débordement horizontal ; 120 couples ancre/rechargement contrôlés. Accordéon,
+  lien d'évitement avec Tab/Entrée, fermeture menu par Échap et retour du focus,
+  contact mailto et reduced-motion au chargement vérifiés dans cette matrice.
+  Axe, installé dans le cache existant, ne remonte aucune violation sur les tags
+  wcag2a/wcag2aa/wcag21aa dans les états scannés, projets/compétences dépliés.
+  Ces profils bloquent les polices Google et utilisent les polices de repli.
+- Compléments à 390 et 1440 px : fragment `%70rojects`, inconnu et mal encodé,
+  Précédent/Suivant, bascules effectives de langue/thème et persistance après
+  reload, utilisation avec Storage.getItem/setItem refusés et retour au défaut
+  après reload : réussis. Aucun JavaScript non intercepté observé.
+- Mesures séparées avec Lighthouse 13.4.1 présent dans le cache, sans installer
+  de paquet : une passe mobile simulée et une desktop, défaut FR/clair, sur
+  `http://127.0.0.1:4173/`. Polices Google effectivement reçues (HTTP 200).
+
+  | Profil | Performance | Accessibilité | Bonnes pratiques | SEO | FCP | LCP | TBT | CLS |
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  | Mobile | 99 | 100 | 100 | 100 | 1,7 s | 1,8 s | 0 ms | 0 |
+  | Desktop | 100 | 100 | 100 | 100 | 0,5 s | 0,7 s | 0 ms | 0 |
+
+- Mesures de laboratoire locales, pas de comparaison terrain ni preuve de
+  fluidité GPU. Restent des opportunités signalées par Lighthouse : JS inutilisé
+  estimé 29 Kio et ressources bloquantes ; aucun chantier d'optimisation ouvert
+  sans symptôme démontré. Une alerte expérimentale `label-content-name-mismatch`
+  vise la marque : `AK` est aria-hidden et « Allen Koch » figure dans le nom
+  « Allen Koch - accueil ». Pas de correction applicative déduite de ce signal ;
+  lecteur d'écran et commande vocale restent à contrôler humainement.
+- Revue SEO indépendante par run008_seo_review (gpt-6-luna medium), puis revue
+  des quatre premiers fichiers modifiés : canonical, robots, sitemap une page,
+  image sociale 1200×630 existante et contact alignés. Proposition de SEO EN
+  non retenue comme défaut : RUN-011 décide une URL unique et ne promet pas
+  de version EN indexable distincte. Aucun client fictif ou formulaire ajouté.
+- Changements ciblés par le main : README aligné sur refonte intégrée, email seul,
+  retrait de X et du positionnement junior ; `lastmod` ancien retiré du sitemap
+  sans inventer une date de publication. Suivi, brief et journal actualisés.
+  Version package/lockfile maintenue à 1.3.2 ; nouvelle version non décidée.
+  Le rendu desktop et mobile n'est pas modifié par ces changements.
+- Incidents d'outillage : premier Lighthouse n'a pas trouvé Chrome, reprise
+  réussie avec `CHROME_PATH=/usr/bin/google-chrome`. Premier contrôle historique
+  expiré ; deux relances complètes ensuite réussies sans changement applicatif.
+  Ne pas assimiler ces succès à une garantie d'absence de course transitoire.
+- Preuves locales (hors dépôt) :
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/30/01a18c06-cfe3-7190-8549-11b5008be5ce/run008/`
+  contient `matrix.mjs/json`, `edge-cases.mjs/json`, `visual.mjs/json`, captures et
+  `lighthouse-mobile.json` / `lighthouse-desktop.json`. Les scripts exploratoires
+  ne remplacent pas les tests versionnés, et leur chemin est propre à cette session.
+- Statut `verify` : validation visuelle/contenu finale d'Allen encore requise.
+  En-têtes cache effectifs à contrôler sur une preview hébergée autorisée avant
+  release (Vite ne reproduit pas vercel.json). Pas de Safari/Firefox, lecteur
+  d'écran, téléphone physique, test de réception email ni vérification exhaustive
+  des destinations externes. Les liens/ancres locaux et assets sont contrôlés ;
+  réception mail et accessibilité publique du domaine non affirmées.
+- Relais : Allen valide le visuel/contenu et décide la version ; publication
+  seulement sur mandat avec cible. Aucun commit, push, merge ou déploiement.
+
+- Incident final : Lighthouse/Chrome launcher a créé des profils temporaires
+  Windows mal résolus dans le dépôt (`undefined:` et chemins WSL littéraux).
+  Biome a alors échoué sur leurs JSON/liens symboliques. Ces seuls artefacts
+  générés ont été supprimés ; aucun fichier projet écarté du contrôle.
+- Après nettoyage : Biome (76 fichiers), `git diff --check` et état Git contrôlés ;
+  seuls README, brief, sitemap, workflow et journal sont modifiés. Captures
+  complémentaires FR/clair desktop et EN/sombre mobile avec polices réseau,
+  images visibles chargées et ancres stabilisées à 80 px ; exemples Home,
+  Projects, About et Contact relus. Le premier script de captures prenait
+  parfois la transition en cours : attente de position finale ajoutée, puis
+  relance réussie. Pas de changement applicatif requis.
+## RUN-017 — Web3Forms, intégration locale (30 octobre 2026)
+
+- Mandat direct d'Allen : reprendre le formulaire, choisir Web3Forms et utiliser
+  sa première clé publique pour les essais en développement. RUN-016 reste
+  clôturé sur sa décision historique ; ce nouveau mandat la remplace pour le
+  formulaire. RUN-008 demeure en `verify` pour validation visuelle/contenu humaine :
+  chevauchement explicite dû à la nouvelle instruction d'Allen, sans clôture
+  artificielle du RUN-008.
+- Périmètre : un formulaire contact/devis à trois champs dans Contact, le lien
+  email conservé, FR/EN, clair/sombre, mobile, traitement Web3Forms sans backend
+  ni dépendance. Clé publique dans `.env.local` ignoré par Git, variable d'exemple
+  et clé fictive pour le build CI ; aucun compte ou abonnement créé. Les
+  modifications locales préexistantes de RUN-008 sont conservées.
+- Shadcn MCP consulté : aucun registre configuré dans le projet. L'ajout d'une
+  première intégration shadcn demanderait de cadrer CSS natif et dépendances ;
+  les éléments HTML natifs ont été stylés dans les feuilles existantes pour ce RUN.
+- Implémentation : vérification `response.ok` et `success: true`, blocage des
+  soumissions simultanées, attente limitée à 15 secondes, saisie conservée en
+  échec et effacée en succès, alternative email et notice Web3Forms. Les règles
+  de validation personnalisées côté service ne sont pas démontrées ; le
+  fournisseur annonce son filtrage anti-spam côté serveur.
+- Contrôles : build, lint, 55 tests Vitest et 13 cas navigateur Chrome réussis ;
+  le nouveau test navigateur vérifie rejet, absence de double envoi, conservation
+  de saisie, acceptation et effacement. Biome a signalé du formatage et un ordre
+  de spécificité CSS, corrigés avant contrôle final ; Biome et `git diff --check`
+  réussis, `npm audit --audit-level=moderate` : 0 vulnérabilité. Captures
+  locales du formulaire à 390 et 1440 px inspectées. Pas de revue design Claude
+  ou de revue indépendante : implémentation et relecture par Codex main.
+- Envoi de contrôle vers l'adresse déjà autorisée tenté une fois en Node et
+  une fois dans Chrome local. L'appel Node a reçu un challenge Cloudflare HTML
+  au lieu d'un JSON ; dans Chrome, le formulaire a affiché l'échec d'envoi,
+  sans réponse API observée. Aucune acceptation Web3Forms ni livraison email
+  n'est vérifiée. Le diagnostic exact du filtrage réseau reste inconnu.
+- État `verify` : avant publication, confirmer depuis le navigateur/réseau
+  d'Allen la réponse réelle et la réception en messagerie, le destinataire lié
+  à la clé, la durée de conservation dans le compte Web3Forms et la validation
+  visuelle. Configurer ensuite la variable publique de déploiement. Aucun push,
+  merge ou déploiement effectué.

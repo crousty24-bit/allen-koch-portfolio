@@ -39,6 +39,8 @@ jobs:
         run: npm run biome:check
 
       - name: Build
+        env:
+          VITE_WEB3FORMS_ACCESS_KEY: ci-test-key
         run: npm run build
 
       - name: Browser interactions (Chrome)

@@ -159,6 +159,85 @@ for (const width of [390, 1440]) {
   })
 }
 
+test('contact form reports provider results and keeps failed input', async (t) => {
+  const page = await browser.page()
+  t.after(() => page.close())
+  await page.command('Page.addScriptToEvaluateOnNewDocument', {
+    source: `
+      window.contactCalls = [];
+      window.contactMode = 'pending';
+      const originalFetch = window.fetch.bind(window);
+      window.fetch = (url, options) => {
+        if (url !== 'https://api.web3forms.com/submit')
+          return originalFetch(url, options);
+        window.contactCalls.push(Object.fromEntries(options.body));
+        return new Promise((resolve) => {
+          window.finishContact = (success) => resolve(new Response(
+            JSON.stringify({ success }),
+            { status: success ? 200 : 400, headers: { 'Content-Type': 'application/json' } },
+          ));
+        });
+      };
+    `,
+  })
+  await page.open(url)
+  const configured = await page.evaluate(() =>
+    Boolean(document.querySelector('.contact-panel__form')),
+  )
+  if (!configured) {
+    t.skip('Build has no public Web3Forms key')
+    return
+  }
+
+  await page.evaluate(() => {
+    const form = document.querySelector('.contact-panel__form')
+    form.elements.namedItem('email').value = 'visitor@example.com'
+    form.elements.namedItem('message').value = 'A project enquiry'
+    form.requestSubmit()
+    form.requestSubmit()
+  })
+  await page.waitFor(() => window.contactCalls.length === 1)
+  assert.equal(
+    await page.evaluate(
+      () => document.querySelector('.contact-panel__form button').disabled,
+    ),
+    true,
+  )
+  assert.equal(
+    await page.evaluate(() => window.contactCalls[0].message),
+    'A project enquiry',
+  )
+  assert.equal(
+    await page.evaluate(() => Boolean(window.contactCalls[0].access_key)),
+    true,
+  )
+  await page.evaluate(() => window.finishContact(false))
+  await page.waitFor(
+    () =>
+      document.querySelector('.contact-panel__status').getAttribute('role') ===
+      'alert',
+  )
+  assert.equal(
+    await page.evaluate(() => document.querySelector('#contact-message').value),
+    'A project enquiry',
+  )
+
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__form').requestSubmit(),
+  )
+  await page.waitFor(() => window.contactCalls.length === 2)
+  await page.evaluate(() => window.finishContact(true))
+  await page.waitFor(() =>
+    document
+      .querySelector('.contact-panel__status')
+      .textContent.includes('transmise'),
+  )
+  assert.equal(
+    await page.evaluate(() => document.querySelector('#contact-message').value),
+    '',
+  )
+})
+
 test('section stack: no motion or ResizeObserver keeps content visible', async (t) => {
   for (const fallback of ['reduce', 'observer']) {
     await t.test(fallback, async (t) => {

@@ -19,13 +19,13 @@ must be decided before implementation; no provider, new dependency,
 general backend, database or authentication is selected by this planning request.
 Preserve accessibility, FR/EN, both themes and mobile performance requirements.
 
-## Contact decision — 2026-10-29
+## Contact decision — 2026-10-30
 
-Allen chooses the existing email link only for the current iteration. RUN-016 is
-closed on that decision; RUN-017 is deferred, not cancelled. Do not create a form,
-provider account or endpoint automatically. Earlier form requirements describe
-future scope. Keep allen.kch24@gmail.com; retain inquiries that do not lead to a project
-for 30 days, with no mailbox automation authorized. See docs/contact-form-contract.md.
+Allen resumed RUN-017 and chose Web3Forms, supplying a public key for local tests.
+Keep the email link to allen.kch24@gmail.com as an alternative. Retain inquiries
+that do not lead to a project for 30 days in the mailbox; no mailbox automation
+is authorized. See docs/contact-form-contract.md for configuration and remaining
+checks before publication.
 
 ## Run and delegation discipline
 
@@ -153,8 +153,8 @@ Global UI:
 - Add form-processing logic only within the scoped contact run after its
   service/endpoint decision; no general backend is authorized by default.
 - Do not add new global controls unless explicitly validated.
-- Keep the redesign on one page with anchor navigation and the existing email
-  contact for the current iteration; the form is deferred by the RUN-016 decision.
+- Keep the redesign on one page with anchor navigation, the Web3Forms contact
+  form when configured, and the existing email link as an alternative.
   No database or authentication by default.
 - Keep the existing theme and language state local to the frontend.
 - Keep dark and light themes coherent: any change to default dark-mode design,

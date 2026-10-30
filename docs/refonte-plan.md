@@ -288,29 +288,15 @@ ne conditionne pas la première release de la refonte.
 
 ## Formulaire contact / devis
 
-Décision ultérieure d'Allen (RUN-016, 29 octobre) : conserver le lien email seul
-pour l'instant, vers allen.kch24@gmail.com. Formulaire reporté, non annulé ; les
-paragraphes ci-dessous conservent le cadrage d'une évolution future. Les demandes
-sans suite seront conservées 30 jours en messagerie, sans suppression automatique
-configurée. Le contact email ne bloque pas l'assemblage de l'itération actuelle.
-
-
-La [décision RUN-016 et son étude antérieure](contact-form-contract.md) distinguent
-le contact email retenu du formulaire reporté ; aucun fournisseur n'est choisi.
-
-RUN-016 choisit le traitement (service externe ou endpoint minimal), le destinataire,
-les champs nécessaires et leur conservation. Nom/contact, type de demande,
-prestation et message sont des pistes ; budget et délai restent optionnels si retenus.
-Aucun fournisseur, coût ou engagement de réponse n'est inventé.
-
-RUN-017 inclut l'envoi réel : labels et validation accessible côté interface et
-validation à la frontière du service/endpoint, états en cours/succès/échec, prévention
-des doubles soumissions, protection anti-abus proportionnée et secret hors du bundle.
-Conserver la saisie en cas d'échec et prévoir une alternative de contact. Confirmer
-le succès seulement après acceptation par le traitement, sans promettre la livraison
-finale du mail. Définir une vérification de réception autorisée vers une boîte de
-contrôle ; aucun email à un tiers sans mandat. Vérifier la solution choisie et les
-informations de confidentialité avant publication ; aucun avis juridique implicite.
+Après la décision temporaire email seul de RUN-016, Allen a repris RUN-017 le
+30 octobre et choisi Web3Forms. Le formulaire contact/devis est intégré localement
+avec une clé publique de test ; le lien vers allen.kch24@gmail.com reste visible.
+L'envoi réel n'est pas encore vérifié à cause d'une réponse Cloudflare inattendue
+dans l'environnement local. La réception, le réglage de conservation chez
+Web3Forms, l'anti-spam et la configuration de déploiement restent à contrôler.
+Les demandes sans suite sont conservées 30 jours dans la messagerie selon la
+décision d'Allen, sans automatisation. Le [contrat RUN-017](contact-form-contract.md)
+décrit les champs, le traitement, la confidentialité et les vérifications.
 
 ## Architecture cible à décider puis implémenter
 

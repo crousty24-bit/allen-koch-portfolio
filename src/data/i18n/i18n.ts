@@ -18,6 +18,18 @@ export const copy = {
       heading: 'Contact',
       subheading: 'Parlons de votre projet.',
       text: "Disponible pour discuter d'un projet web, d'un MVP ou d'une base technique à structurer proprement.",
+      name: 'Nom (facultatif)',
+      email: 'Adresse email',
+      message: 'Votre message',
+      submit: 'Envoyer le message',
+      sending: 'Envoi en cours…',
+      success: 'Votre demande a été transmise.',
+      error:
+        "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
+      privacy:
+        'Les informations saisies sont transmises à Web3Forms pour me parvenir par email.',
+      privacyLink: 'Confidentialité Web3Forms',
+      emailAlternative: 'Ou écrivez-moi directement :',
     },
     footer: {
       brand: 'Allen Koch - Développeur Fullstack & IA',
@@ -100,6 +112,17 @@ export const copy = {
       heading: 'Contact',
       subheading: "Let's talk about your project.",
       text: 'Available to discuss a web project, an MVP, or a technical foundation to structure cleanly.',
+      name: 'Name (optional)',
+      email: 'Email address',
+      message: 'Your message',
+      submit: 'Send message',
+      sending: 'Sending…',
+      success: 'Your enquiry has been submitted.',
+      error: 'Sending failed. Please try again or email me directly.',
+      privacy:
+        'The information you enter is sent to Web3Forms so it can reach me by email.',
+      privacyLink: 'Web3Forms privacy policy',
+      emailAlternative: 'Or email me directly:',
     },
     footer: {
       brand: 'Allen Koch - Fullstack & AI Developer',

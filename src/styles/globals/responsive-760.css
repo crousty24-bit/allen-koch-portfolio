@@ -42,6 +42,10 @@
   margin-top: 2rem;
 }
 
+.contact-panel__form {
+  grid-column: 1;
+}
+
 .contact-panel__email {
   font-size: 1.25rem;
 }
@@ -162,6 +166,10 @@ html {
 
 .button {
   min-height: 3.15rem;
+}
+
+.contact-panel__form .button {
+  width: 100%;
 }
 
 .hero {
