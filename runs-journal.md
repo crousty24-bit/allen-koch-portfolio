@@ -1944,3 +1944,17 @@ copier de secret, donnée client ou résultat supposé.
   alignés ; les questions Web3Forms/hCaptcha de durée et transferts restent ouvertes.
 - Vérification documentaire : `git diff --check`. Pas de relance des tests
   applicatifs pour cette seule mise à jour de suivi ; aucun commit/push/déploiement.
+
+
+## RUN-008 — Clarification support Web3Forms (30 octobre 2026)
+
+- Allen transmet la réponse du support : suppression automatique au terme de
+  la durée appliquée au formulaire, plafond général trois ans, visibilité
+  dashboard distincte. Un an configuré reste une confirmation d’Allen, sans
+  inspection du compte. Notices FR/EN et documents contact alignés sur un an
+  puis suppression automatique ; journaux/sauvegardes non extrapolés.
+- hCaptcha sous clé partagée : question transmise à l’équipe du fournisseur,
+  couverture DPA/accord distinct non confirmés. Aucun autre document à demander
+  à Allen ni nouveau compte à créer en attendant cette réponse.
+- Correction de contenu ciblée par Codex, sans délégation utile ni test ajouté
+  pour du texte statique. Aucun envoi au support ni modification distante.

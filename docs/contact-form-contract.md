@@ -58,14 +58,17 @@ Web3Forms affiche un réglage de conservation de 7 jours à
 3 ans selon son [offre](https://web3forms.com/pricing). Allen confirme avoir
 réglé ce formulaire sur **un an** dans Web3Forms le 30 octobre. La visibilité
 de 30 jours dans le tableau de bord gratuit n'est pas une suppression des
-données au bout de 30 jours. Le DPA téléchargé depuis le dashboard et lu par Codex indique toutefois un TTL
-physique de trois ans (section 8, point 17), avec visibilité dashboard selon le
-plan. Le réglage d’un an ne suffit donc pas à prouver une suppression physique
-à un an : clarification fournisseur requise avant publication. La notice
-publique retient prudemment le plafond de trois ans, sans attester la durée
-effective du compte. La politique de 30 jours en messagerie est distincte.
-La [politique Web3Forms](https://web3forms.com/privacy) annonce une conservation
-maximale de trois ans, sauf durée plus courte configurée ou suppression anticipée.
+données au bout de 30 jours. La réponse du support transmise par Allen précise que la durée appliquée au
+formulaire entraîne une suppression automatique à son échéance, pas seulement
+un masquage ; trois ans est le plafond général. Sur la base du réglage d’un an
+confirmé par Allen, la notice FR/EN indique désormais un an puis suppression
+automatique. Le support n’a pas vérifié ici le réglage du compte ; les durées
+propres aux journaux et sauvegardes ne sont pas établies par cette réponse.
+Les 30 jours en messagerie restent distincts.
+
+La couverture de hCaptcha avec la clé partagée par le DPA Web3Forms est toujours
+en attente : le support a transmis la question à son équipe. Aucun accord
+séparé hCaptcha n’est présenté comme nécessaire ou inutile avant leur réponse.
 
 ## Vérification et publication
 

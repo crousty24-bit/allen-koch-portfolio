@@ -28,7 +28,7 @@ export const copy = {
         "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
       captcha: "Complétez le contrôle anti-spam avant l'envoi.",
       privacy:
-        'Les informations saisies et des données techniques sont transmises à Web3Forms pour me parvenir par email. Son DPA prévoit une conservation physique pouvant atteindre trois ans. Les demandes sans suite sont supprimées de ma messagerie après 30 jours. Le contrôle anti-spam utilise hCaptcha après votre autorisation.',
+        'Les informations saisies et des données techniques sont transmises à Web3Forms pour me parvenir par email. Les soumissions sont conservées un an, puis automatiquement supprimées par ce service. Les demandes sans suite sont supprimées de ma messagerie après 30 jours. Le contrôle anti-spam utilise hCaptcha après votre autorisation.',
       privacyLink: 'Politique de confidentialité',
       captchaLoad: 'J’autorise le chargement de hCaptcha',
       captchaWithdraw:
@@ -129,7 +129,7 @@ export const copy = {
       error: 'Sending failed. Please try again or email me directly.',
       captcha: 'Complete the anti-spam check before sending.',
       privacy:
-        'Your entries and technical data are sent to Web3Forms to reach me by email. Its DPA provides for physical retention of up to three years. Enquiries that do not lead to a project are deleted from my mailbox after 30 days. The anti-spam check uses hCaptcha after you allow it.',
+        'Your entries and technical data are sent to Web3Forms to reach me by email. The service retains submissions for one year, then automatically deletes them. Enquiries that do not lead to a project are deleted from my mailbox after 30 days. The anti-spam check uses hCaptcha after you allow it.',
       privacyLink: 'Privacy policy',
       captchaLoad: 'I allow hCaptcha to load',
       captchaWithdraw: 'Withdraw permission and reload (clears your draft)',

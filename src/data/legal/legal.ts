@@ -49,7 +49,7 @@ export const legalCopy: Record<Language, LegalText> = {
       {
         title: 'Durées de conservation',
         paragraphs: [
-          'Le DPA Web3Forms prévoit une conservation physique des soumissions pouvant atteindre trois ans. Le réglage d’un an du formulaire ne constitue pas, à lui seul, une garantie de suppression physique au bout d’un an. Les demandes sans suite sont supprimées de la messagerie d’Allen Koch après 30 jours ; cette suppression est manuelle. Ces deux durées sont distinctes et ne signifient pas que toutes les copies et sauvegardes des prestataires disparaissent au même moment.',
+          'Les soumissions de ce formulaire sont conservées un an par Web3Forms, puis automatiquement supprimées à l’échéance de cette durée. Les demandes sans suite sont supprimées de la messagerie d’Allen Koch après 30 jours ; cette suppression est manuelle. Ces deux durées sont distinctes et ne signifient pas que toutes les copies et sauvegardes des prestataires disparaissent au même moment.',
           'Si la demande devient un projet, les échanges nécessaires sont conservés pendant la relation, puis selon les obligations légales et les délais de prescription applicables. Les prestataires appliquent leurs propres règles aux journaux techniques et sauvegardes ; leurs politiques sont accessibles ci-dessous.',
         ],
       },
@@ -105,7 +105,7 @@ export const legalCopy: Record<Language, LegalText> = {
       {
         title: 'Retention periods',
         paragraphs: [
-          'Web3Forms’ DPA provides for physical retention of submissions for up to three years. The form’s one-year setting does not, by itself, guarantee physical deletion after one year. Enquiries that do not lead to a project are manually deleted from Allen Koch’s mailbox after 30 days. These are separate periods; they do not mean all provider copies and backups are deleted at the same time.',
+          'Web3Forms retains submissions from this form for one year, then automatically deletes them when that period expires. Enquiries that do not lead to a project are manually deleted from Allen Koch’s mailbox after 30 days. These are separate periods; they do not mean all provider copies and backups are deleted at the same time.',
           'If an enquiry becomes a project, necessary correspondence is kept for the relationship, then under applicable legal obligations and limitation periods. Providers apply their own rules to technical logs and backups; their policies are linked below.',
         ],
       },
