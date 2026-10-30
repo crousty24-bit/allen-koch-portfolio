@@ -255,7 +255,7 @@ function App() {
         <ProjectsSection language={language} />
         <StackSection language={language} />
         <AboutSection language={language} />
-        <ContactSection language={language} />
+        <ContactSection language={language} theme={theme} />
       </main>
       <Footer language={language} />
       <BackToTopButton language={language} />

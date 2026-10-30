@@ -189,6 +189,27 @@ test('contact form reports provider results and keeps failed input', async (t) =
     return
   }
 
+  const solveCaptcha = async () => {
+    await page.waitFor(() =>
+      Boolean(
+        window.hcaptcha?.getResponse &&
+          document.querySelector('iframe[title*="hCaptcha"]'),
+      ),
+    )
+    await page.evaluate(() => {
+      if (!window.contactCaptchaMocked) {
+        const reset = window.hcaptcha.reset.bind(window.hcaptcha)
+        window.hcaptcha.reset = (...args) => {
+          window.contactCaptchaToken = ''
+          return reset(...args)
+        }
+        window.hcaptcha.getResponse = () => window.contactCaptchaToken || ''
+        window.contactCaptchaMocked = true
+      }
+      window.contactCaptchaToken = 'ci-test-token'
+    })
+  }
+
   const injectionProbe = '<img src=x onerror=window.__injected=1>'
   await page.evaluate((injectionProbe) => {
     const form = document.querySelector('.contact-panel__form')
@@ -197,6 +218,21 @@ test('contact form reports provider results and keeps failed input', async (t) =
     form.requestSubmit()
     form.requestSubmit()
   }, injectionProbe)
+  assert.equal(await page.evaluate(() => window.contactCalls.length), 0)
+  assert.equal(
+    await page.evaluate(() =>
+      document
+        .querySelector('.contact-panel__status')
+        .textContent.includes('contrôle anti-spam'),
+    ),
+    true,
+  )
+  await solveCaptcha()
+  await page.evaluate(() => {
+    const form = document.querySelector('.contact-panel__form')
+    form.requestSubmit()
+    form.requestSubmit()
+  })
   await page.waitFor(() => window.contactCalls.length === 1)
   assert.equal(
     await page.evaluate(
@@ -210,7 +246,13 @@ test('contact form reports provider results and keeps failed input', async (t) =
   )
   assert.deepEqual(
     await page.evaluate(() => Object.keys(window.contactCalls[0]).sort()),
-    ['access_key', 'email', 'message', 'name'],
+    ['access_key', 'email', 'h-captcha-response', 'message', 'name'],
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(window.contactCalls[0]['h-captcha-response']),
+    ),
+    true,
   )
   assert.equal(
     await page.evaluate(() => Boolean(window.contactCalls[0].access_key)),
@@ -236,6 +278,7 @@ test('contact form reports provider results and keeps failed input', async (t) =
     false,
   )
 
+  await solveCaptcha()
   await page.evaluate(() =>
     document.querySelector('.contact-panel__form').requestSubmit(),
   )
@@ -251,6 +294,20 @@ test('contact form reports provider results and keeps failed input', async (t) =
     '',
   )
   assert.equal(await page.evaluate(() => Boolean(window.__injected)), false)
+  await page.evaluate(() => {
+    document.querySelector('.icon-toggle').click()
+    document.querySelector('.language-toggle').click()
+  })
+  await page.waitFor(() => {
+    const frame = document.querySelector('iframe[title*="hCaptcha"]')
+    return frame?.src.includes('hl=en') && frame.src.includes('theme=dark')
+  })
+  assert.equal(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth > innerWidth,
+    ),
+    false,
+  )
 })
 
 test('section stack: no motion or ResizeObserver keeps content visible', async (t) => {

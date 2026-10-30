@@ -26,9 +26,11 @@ export const copy = {
       success: 'Votre demande a été transmise.',
       error:
         "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
+      captcha: "Complétez le contrôle anti-spam avant l'envoi.",
       privacy:
-        'Les informations saisies sont transmises à Web3Forms pour me parvenir par email.',
+        'Les informations saisies sont transmises à Web3Forms, qui les conserve un an, pour me parvenir par email. Le contrôle anti-spam utilise hCaptcha.',
       privacyLink: 'Confidentialité Web3Forms',
+      captchaPrivacyLink: 'Confidentialité hCaptcha',
       emailAlternative: 'Ou écrivez-moi directement :',
     },
     footer: {
@@ -119,9 +121,11 @@ export const copy = {
       sending: 'Sending…',
       success: 'Your enquiry has been submitted.',
       error: 'Sending failed. Please try again or email me directly.',
+      captcha: 'Complete the anti-spam check before sending.',
       privacy:
-        'The information you enter is sent to Web3Forms so it can reach me by email.',
+        'The information you enter is sent to Web3Forms, which retains it for one year, so it can reach me by email. The anti-spam check uses hCaptcha.',
       privacyLink: 'Web3Forms privacy policy',
+      captchaPrivacyLink: 'hCaptcha privacy policy',
       emailAlternative: 'Or email me directly:',
     },
     footer: {

@@ -17,7 +17,8 @@ alternative. Aucun abonnement, compte supplémentaire ou déploiement n'est dema
   Sans clé, seul le lien email est affiché. Ne jamais mettre une clé privée dans
   une variable `VITE_` ni dans le bundle.
 - Champs transmis : `name` facultatif (100 caractères), `email` obligatoire
-  (254 caractères), `message` obligatoire (5 000 caractères), plus la clé d'accès.
+  (254 caractères), `message` obligatoire (5 000 caractères), plus la clé d'accès
+  publique et le jeton `h-captcha-response`.
   Pas de téléphone, budget, fichier, copie au visiteur ou catalogue de devis.
 - Envoi unique pendant l'attente, limite de 15 secondes, succès seulement sur
   réponse HTTP réussie avec `success: true`. En cas de rejet, panne, réponse
@@ -30,8 +31,12 @@ Les attributs HTML contrôlent les champs dans le navigateur. L'[API Web3Forms](
 accepte des champs arbitraires ; aucune règle personnalisée de longueur ou de
 présence côté service n'est établie pour cette clé. Ne pas présenter ces contrôles
 HTML comme une validation serveur garantie. Web3Forms annonce un [filtrage anti-spam côté serveur](https://docs.web3forms.com/getting-started/customizations/spam-protection).
-Si des abus apparaissent, activer et tester hCaptcha dans le compte ; la clé
-publique seule ne bloque pas toute requête automatisée. Le honeypot Web3Forms
+Allen confirme avoir activé hCaptcha, Advanced Spam Filter et le niveau Strict
+dans le compte le 30 octobre. Le composant React officiel hCaptcha utilise la
+clé de site gratuite indiquée par Web3Forms ; le formulaire exige un jeton avant
+l'appel API et le réinitialise après chaque tentative. Ces réglages du compte
+sont rapportés par Allen, sans lecture indépendante du tableau de bord. Le
+honeypot Web3Forms
 est actuellement déconseillé par sa [documentation](https://docs.web3forms.com/getting-started/customizations/spam-protection/spam-protection).
 Le formulaire ne construit ni HTML ni en-tête email à partir des saisies ; React
 affiche ses messages fixes et ignore le texte renvoyé par l'API. Un test navigateur
@@ -41,14 +46,16 @@ dans l'email reçu : aucune règle d'injection configurable côté service n'a �
 identifiée dans sa [référence API](https://docs.web3forms.com/getting-started/api-reference).
 
 Le navigateur transmet les champs à Web3Forms pour notification par email.
-Une courte notice FR/EN et un lien vers sa [politique de confidentialité](https://web3forms.com/privacy)
+Une courte notice FR/EN et des liens vers les politiques de
+[Web3Forms](https://web3forms.com/privacy) et de [hCaptcha](https://www.hcaptcha.com/privacy)
 sont affichés près du bouton. Allen a retenu 30 jours de conservation **dans sa
 messagerie** pour les demandes sans suite, sans suppression automatique autorisée.
 Web3Forms indique une conservation des soumissions configurable de 7 jours à
-3 ans selon son [offre](https://web3forms.com/pricing) ; le réglage effectif du
-compte de test est inconnu. La visibilité de 30 jours dans le tableau de bord
-gratuit n'est pas une suppression des données au bout de 30 jours. Vérifier et
-fixer le paramètre de conservation avant publication ; ajuster alors la notice.
+3 ans selon son [offre](https://web3forms.com/pricing). Allen confirme avoir
+réglé ce formulaire sur **un an** dans Web3Forms le 30 octobre. La visibilité
+de 30 jours dans le tableau de bord gratuit n'est pas une suppression des
+données au bout de 30 jours. La notice publique indique un an ; une durée plus courte reste possible
+si Allen le souhaite. La politique de 30 jours en messagerie est distincte.
 La [politique Web3Forms](https://web3forms.com/privacy) annonce une conservation
 maximale de trois ans, sauf durée plus courte configurée ou suppression anticipée.
 
@@ -63,15 +70,15 @@ maximale de trois ans, sauf durée plus courte configurée ou suppression antici
   Cloudflare, et le test Chrome local a affiché l'échec d'envoi ; aucune réponse
   JSON d'acceptation n'a été observée ici. Allen a ensuite confirmé un envoi et
   une réception réels depuis son environnement le 30 octobre 2026.
-- Avant déploiement : confirmer destinataire de la clé, réglage de conservation,
-  anti-spam effectif et coût/quotas du plan choisi ; ajouter la clé publique à
-  l'environnement du site. Un nouvel essai sur le déploiement vérifiera ce contexte.
+- Avant déploiement : confirmer destinataire de la clé et coût/quotas du plan
+  choisi ; ajouter la clé publique à l'environnement du site. Un nouvel essai
+  sur le déploiement vérifiera la présence du widget, l'envoi et la réception.
 - Audit ciblé du 30 octobre : les sources publiques confirment la possibilité
-  d'une durée plus courte et le filtrage serveur par défaut, mais aucun accès au
-  tableau de bord Web3Forms n'a permis de lire le réglage de ce formulaire.
-  hCaptcha n'est pas intégré dans le site ; son activation dans le compte n'est
-  pas établie. Tests locaux avec API simulée réussis, sans test d'injection de
-  l'email final ni essai de contournement du filtre du fournisseur.
+  d'une durée plus courte et le filtrage serveur par défaut. Allen a confirmé
+  les paramètres réels du compte ; hCaptcha est intégré au frontend. Les tests
+  locaux simulent le jeton et l'API. Allen confirme ensuite un envoi réel avec
+  hCaptcha activé, succès affiché et email reçu. Le rendu de l'email final n'a
+  pas été audité pour les charges hostiles.
 
 Sources : [installation et clé publique](https://docs.web3forms.com/getting-started/installation),
 [API](https://docs.web3forms.com/getting-started/api-reference),

@@ -1807,3 +1807,34 @@ copier de secret, donnée client ou résultat supposé.
 - Données FR/EN, textes alternatifs et test d'ordre/statut mis à jour dans le tableau des projets. Nouveaux chemins PNG/WebP pour éviter les anciens caches ; anciennes URL publiques conservées. Aucun composant, style, dépendance ni autre projet modifié.
 - Contrôles finaux : build, lint, Biome, 55 tests Vitest, 14 tests Chrome et `git diff --check` réussis. Contrôle Chrome ciblé à 390 et 1440 px : 10 images décodées, ordre 04–08 conforme, captures relues. Un premier test de présence des assets avait échoué après une suppression de WebP trop large ; fichiers régénérés puis test réussi. Avertissement Vite existant sur `responsive-430.css` vide.
 - Codex main a réalisé l'intégration et la vérification ; pas de revue indépendante ni délégation utile pour ce lot de données/assets. Aucun commit, push ou déploiement. RUN-008 reste en `verify` pour la validation humaine et les critères de release déjà consignés.
+
+## RUN-017 — hCaptcha et conservation confirmée (30 octobre 2026)
+
+- Allen confirme la configuration Web3Forms : domaine `https://allenkoch.dev/`,
+  hCaptcha activé, Advanced Spam Filter activé, protection Strict et conservation
+  des soumissions réglée sur un an. La politique de 30 jours dans sa messagerie
+  pour les demandes sans suite reste distincte. Paramètres rapportés par Allen,
+  sans accès de Codex au tableau de bord.
+- Frontend : composant React hCaptcha officiel `@hcaptcha/react-hcaptcha`
+  version 2.2.0, clé de site gratuite publiée par Web3Forms, jeton obligatoire
+  dans `h-captcha-response`, réinitialisation après chaque envoi. Widget compact,
+  langue FR/EN et thème clair/sombre suivis. La notice indique Web3Forms, hCaptcha
+  et la conservation d'un an ; alternative email conservée. Une première passe
+  navigateur a révélé une exception si l'envoi était demandé avant chargement du
+  widget ; contrôle `isReady()` ajouté puis vérifié.
+- Tests : build, lint, Biome, 55 Vitest, 14 Chrome et audit npm sans vulnérabilité.
+  Le test Chrome simule l'API du widget et celle de Web3Forms : aucun appel sans
+  jeton, jeton transmis, succès/rejet, réinitialisation et absence de double
+  envoi. L'intégration du widget réel a été inspectée en navigateur local ; la
+  vérification distante du jeton et la réception après activation hCaptcha
+  restaient alors à confirmer par Allen. Aucun envoi réel réalisé par Codex.
+- Codex main a implémenté et relu ce lot, sans revue indépendante ni délégation.
+  Modifications d'autres tâches présentes au début du tour préservées. Aucun
+  commit, push ou déploiement.
+
+### RUN-017 — Test réel après hCaptcha (30 octobre 2026)
+
+- Allen confirme avoir envoyé un nouveau message avec hCaptcha activé : le
+  formulaire a affiché le succès et l'email est arrivé. Cette vérification
+  humaine complète le test automatisé à API simulée ; Codex n'a pas lu la
+  messagerie. L'essai sur le site déployé reste distinct et non effectué ici.

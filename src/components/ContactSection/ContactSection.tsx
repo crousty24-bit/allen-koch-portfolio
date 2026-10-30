@@ -1,27 +1,40 @@
+import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { type FormEvent, useRef, useState } from 'react'
-import { copy, type Language } from '../../data/i18n/i18n'
+import { copy, type Language, type Theme } from '../../data/i18n/i18n'
 import { links } from '../../data/links/links'
 
 type ContactSectionProps = {
   language: Language
+  theme?: Theme
 }
 
-export function ContactSection({ language }: ContactSectionProps) {
+export function ContactSection({
+  language,
+  theme = 'light',
+}: ContactSectionProps) {
   const email = links.find((link) => link.kind === 'email')
   const contactCopy = copy[language].contact
   const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim()
   const [status, setStatus] = useState<
-    'idle' | 'sending' | 'success' | 'error'
+    'idle' | 'sending' | 'success' | 'error' | 'captcha'
   >('idle')
   const sending = useRef(false)
+  const captcha = useRef<HCaptcha>(null)
 
-  // shortcut: provider spam filtering only, add hCaptcha if inbox spam appears.
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (sending.current || !accessKey) return
+    const token = captcha.current?.isReady()
+      ? captcha.current.getResponse()
+      : ''
+    if (!token) {
+      setStatus('captcha')
+      return
+    }
     const form = event.currentTarget
     const formData = new FormData(form)
     formData.append('access_key', accessKey)
+    formData.set('h-captcha-response', token)
     sending.current = true
     setStatus('sending')
 
@@ -48,6 +61,7 @@ export function ContactSection({ language }: ContactSectionProps) {
       setStatus('error')
     } finally {
       sending.current = false
+      captcha.current?.resetCaptcha()
     }
   }
 
@@ -102,7 +116,26 @@ export function ContactSection({ language }: ContactSectionProps) {
               <a href="https://web3forms.com/privacy">
                 {contactCopy.privacyLink}
               </a>
+              {' · '}
+              <a href="https://www.hcaptcha.com/privacy">
+                {contactCopy.captchaPrivacyLink}
+              </a>
             </p>
+            <HCaptcha
+              key={`${language}-${theme}`}
+              ref={captcha}
+              sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+              size="compact"
+              theme={theme}
+              languageOverride={language}
+              reCaptchaCompat={false}
+              onVerify={() =>
+                setStatus((current) =>
+                  current === 'captcha' ? 'idle' : current,
+                )
+              }
+              onError={() => setStatus('error')}
+            />
             <button
               className="button button--primary"
               type="submit"
@@ -121,7 +154,9 @@ export function ContactSection({ language }: ContactSectionProps) {
                   ? contactCopy.success
                   : status === 'error'
                     ? contactCopy.error
-                    : ''}
+                    : status === 'captcha'
+                      ? contactCopy.captcha
+                      : ''}
             </p>
           </form>
         ) : null}
