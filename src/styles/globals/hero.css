@@ -1,4 +1,6 @@
+/* Fills the first screen: Services only shows from the first scroll. */
 .hero {
+  min-height: 100svh;
   padding-top: calc(4rem + 5rem);
   padding-bottom: 0;
 }

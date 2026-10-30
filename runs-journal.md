@@ -1752,3 +1752,22 @@ copier de secret, donnée client ou résultat supposé.
 - Limites : Chrome local, pas de Safari/Firefox ni appareil physique. Le test
   cible le crop de l'index et le débordement global ; il ne prouve pas l'absence
   de tout crop interne sur chaque élément du site. Aucun masquage global retiré.
+
+## RUN-008 — Vérification du fondu des bandes sombres (30 octobre 2026)
+
+- Mandat d'Allen : supprimer le fondu au blanc entre Services, Projets et Stack
+  en thème clair, en reprenant le comportement sombre. Contrats préservés :
+  animation existante, fonds des autres sections, responsive et reduced-motion.
+- Le correctif était déjà présent au début de cette session dans `edda284`,
+  postérieur à la vidéo fournie : fond du parent `.section-stack` découpé selon
+  les positions des sections mesurées par App, avec les tokens `--band` et
+  `--band-raised`. Aucun changement applicatif supplémentaire nécessaire.
+- Vérification Chrome locale à 390 et 1440 px, clair et sombre : couleurs des
+  trois sections et du fond parent contrôlées, opacité à mi-fondu contrôlée
+  (12 cas) ; captures Services mobile et Projets desktop relues. Script temporaire
+  hors dépôt ; sa première assertion supposait un arrêt de gradient distinct
+  pour Projets, corrigée pour tenir compte de la bande commune Services/Projets.
+- Build, lint, Biome et 14 tests navigateur réussis. Avertissement Vite existant :
+  responsive-430.css vide. Codex main réalise ces contrôles, sans délégation ni
+  revue indépendante ; pas de Safari/Firefox ou appareil physique vérifié.
+  Validations humaines RUN-008/017 toujours ouvertes ; aucune publication.
