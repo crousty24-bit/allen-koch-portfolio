@@ -1,11 +1,9 @@
 # Allen Koch - Portfolio Développeur
 
-> Refonte locale intégrée : RUN-007, RUN-022 et RUN-023 clôturés. RUN-008
-> vérifie le build de production et prépare la release sur
-> `feature/run-008-validation-release`. Validation visuelle/contenu d’Allen
-> encore requise ; baseline de production déclarée : 1.3.2. Aucune nouvelle
-> release ni publication annoncée. Voir le [suivi](runs-workflow.md) et les
-> [preuves et limites](runs-journal.md).
+> Release 1.4.0 : refonte Fullstack & IA, services, projets et formulaire
+> Web3Forms/hCaptcha. Fusion `develop` → `main` autorisée par Allen le
+> 30 octobre 2026 dans RUN-008. Voir les [preuves et limites](runs-journal.md)
+> et les [points de suivi contractuels](docs/legal-release-checklist.md).
 
 L’itération actuelle présente Allen comme développeur Fullstack & IA : services,
 projets personnels, client autorisé et game dev, Stack, À propos et contact
@@ -23,16 +21,15 @@ Le suivi agentique sépare le [brief produit](brief.md), les
 [règles de délégation](docs/handoff-contracts.md). Un RUN actif au maximum ;
 le design reste confié à Claude et l'intégration à Codex.
 
-![Version](https://img.shields.io/badge/version-1.3.2-blue)
-![Status](https://img.shields.io/badge/status-release%201.3.2-success)
+![Version](https://img.shields.io/badge/version-1.4.0-blue)
+![Status](https://img.shields.io/badge/status-release%201.4.0-success)
 ![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)
 ![License](https://img.shields.io/badge/license-private-lightgrey)
 
 Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack et IA, des projets sélectionnés, une stack technique et des liens de contact professionnels.
 
-Version `1.3.2` est l'état stable de production actuel. Le projet reste limité
-à de petites améliorations front/design, à des mises à jour ponctuelles de
-données et à l'hygiène de release.
+Version `1.4.0` est la release de la refonte. La version `1.3.2` reste
+la baseline historique des descriptions de maintenance ci-dessous.
 
 ## Aperçu
 

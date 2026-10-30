@@ -208,6 +208,12 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
 
 ## RUN-008 — Validation et préparation de release
 
+- Mandat de publication du 30 octobre 2026 : Allen demande la fusion de
+  `develop` vers `main` (production) avec mise à jour de version. Release
+  retenue : `1.4.0` pour la refonte et les nouvelles fonctionnalités. Les
+  réserves contractuelles documentées restent suivies séparément ; aucune
+  conformité ni réponse hCaptcha supplémentaire n’est présumée.
+
 - Décision d'Allen du 29 octobre, confirmée pendant l'audit de la branche :
   reste `planned` et sera exécuté sur une nouvelle branche. Les corrections
   post-audit de RUN-022/023 ne déclenchent pas RUN-008.

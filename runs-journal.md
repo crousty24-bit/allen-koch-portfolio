@@ -2017,3 +2017,24 @@ copier de secret, donnée client ou résultat supposé.
 - 59/59 tests Vitest, build sans avertissement CSS, lint et Biome réussis.
   Pas de relance navigateur/audit pour cette seule assertion supprimée.
   Aucun commit/push ; nouvelle exécution GitHub Actions non vérifiée.
+
+
+## RUN-008 — Release 1.4.0 autorisée (30 octobre 2026)
+
+- Mandat Allen : fusionner develop vers main (production) et mettre à jour la
+  version. Version mineure 1.4.0 retenue pour la refonte et les fonctionnalités.
+- Départ propre sur develop, b8d374e ; dernière CI Quality distante réussie.
+  Les sept commits propres à main ne modifient que les statistiques Hero ;
+  fusion de origin/main dans develop sans conflit pour les conserver.
+- Périmètre : package.json, lockfile, présentation de release README, suivi et
+  journal ; aucun changement applicatif, de dépendance ou de configuration.
+  Codex réalise et relit directement ; délégation sans bénéfice pour ce lot.
+- Vérification locale sur le contenu fusionné : build, lint, Biome, 59/59 Vitest,
+  16/16 tests Chrome et audit npm au seuil moderate réussis (0 vulnérabilité).
+- Publication autorisée via PR develop vers main après CI, sans suppression de
+  branche. La validation technique du déploiement sera contrôlée séparément.
+- Réserves conservées : réponse contractuelle hCaptcha attendue et autres points
+  de docs/legal-release-checklist.md ; aucun constat de conformité ajouté.
+  Pas de nouvelle vérification Safari/Firefox ni sur appareil réel.
+- Le connecteur Vercel demande une réauthentification ; vérification distante
+  prévue via les statuts GitHub et le site public, sans modifier le compte.
