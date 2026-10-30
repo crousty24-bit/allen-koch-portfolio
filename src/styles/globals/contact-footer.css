@@ -183,13 +183,16 @@
   text-decoration-color: currentColor;
 }
 
-/* Decorative repeat of the name: hidden from assistive technologies. */
+/* Decorative repeat of the name: hidden from assistive technologies.
+   Justified like the hero name; the margin offsets the final H side bearing. */
 .site-footer__name {
-  margin: 4rem 0 0;
+  margin: 4rem -0.04em 0 0;
   font-size: min(15vw, 13.5rem);
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 0.8;
+  text-align: justify;
+  text-align-last: justify;
   text-transform: uppercase;
   white-space: nowrap;
 }

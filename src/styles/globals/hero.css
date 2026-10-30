@@ -10,13 +10,16 @@
   font-weight: 500;
 }
 
-/* Sized to fill the container on one line, like the footer name. */
+/* Justified so the words sit flush with both edges of the container.
+   The negative margin offsets the side bearing of the final H. */
 .hero__name {
   display: block;
-  margin-left: -0.04em;
+  margin-right: -0.04em;
   font-size: min(15vw, 13.5rem);
   letter-spacing: -0.045em;
   line-height: 0.85;
+  text-align: justify;
+  text-align-last: justify;
   text-transform: uppercase;
   white-space: nowrap;
 }
