@@ -1,5 +1,13 @@
 {
+  "rewrites": [
+    { "source": "/mentions-legales", "destination": "/index.html" },
+    { "source": "/confidentialite", "destination": "/index.html" }
+  ],
   "headers": [
+    {
+      "source": "/(mentions-legales|confidentialite)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    },
     {
       "source": "/assets/(.*)",
       "headers": [

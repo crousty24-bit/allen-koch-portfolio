@@ -3,3 +3,33 @@
   padding: var(--section-gap) var(--gutter);
   margin: 0 auto;
 }
+
+/* Dark bands in both themes: tokens are re-scoped so every child flips with them. */
+.services-section,
+.projects-section,
+.stack-section {
+  --background: var(--band);
+  --surface: var(--band-raised);
+  --outline: #31302c;
+  --outline-strong: #76736c;
+  --text: #f5f2eb;
+  --text-muted: #a5a29a;
+  color-scheme: dark;
+  color: var(--text);
+}
+
+/* About too: it rises over the Stack band and must hide it past the container. */
+.services-section,
+.projects-section,
+.stack-section,
+.about-section {
+  --band-color: var(--background);
+  background: var(--band-color);
+  /* Full-bleed behind the container-width section. */
+  box-shadow: 0 0 0 100vmax var(--band-color);
+  clip-path: inset(0 -100vmax);
+}
+
+.stack-section {
+  --band-color: var(--band-raised);
+}

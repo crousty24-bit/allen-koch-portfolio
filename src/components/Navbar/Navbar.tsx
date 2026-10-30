@@ -4,6 +4,7 @@ import { navItems } from '../../data/links/navigation'
 
 type NavbarProps = {
   language: Language
+  linkBase?: string
   onToggleLanguage: () => void
   onToggleTheme: () => void
   theme: Theme
@@ -11,6 +12,7 @@ type NavbarProps = {
 
 export function Navbar({
   language,
+  linkBase = '',
   onToggleLanguage,
   onToggleTheme,
   theme,
@@ -103,7 +105,7 @@ export function Navbar({
       <div className={`navbar${isMenuOpen ? ' navbar--menu-open' : ''}`}>
         <a
           className="brand"
-          href={navItems[0].href}
+          href={`${linkBase}${navItems[0].href}`}
           aria-label={navCopy.homeLabel}
           onClick={() => setIsMenuOpen(false)}
         >
@@ -132,8 +134,10 @@ export function Navbar({
           <nav aria-label={navCopy.mainLabel} className="navbar__links">
             {navItems.map((item) => (
               <a
-                aria-current={activeHref === item.href ? 'location' : undefined}
-                href={item.href}
+                aria-current={
+                  !linkBase && activeHref === item.href ? 'location' : undefined
+                }
+                href={`${linkBase}${item.href}`}
                 key={item.href}
                 onClick={() => setIsMenuOpen(false)}
               >

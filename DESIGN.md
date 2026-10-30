@@ -566,11 +566,7 @@ Local assets:
 - `src/assets/images/generated/allen-portrait-360.webp`
 - `src/assets/images/generated/allen-portrait-640.webp`
 - `src/assets/images/generated/allen-portrait-900.webp`
-- `public/projects/kane.png`
-- `public/projects/mission-control.png`
-- `public/projects/portfolio-ak.png`
-- `public/projects/questonaut.png`
-- `public/projects/rubber-duck-ia.svg`
+- `public/projects/*.png`
 - `public/projects/generated/*.webp`
 
 Project visuals are local assets in the release baseline. Keep future project

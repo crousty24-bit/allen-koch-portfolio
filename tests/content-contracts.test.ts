@@ -3,6 +3,7 @@ import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { aboutAccordionItems, aboutJourneyItems } from '../src/data/about/about'
 import { copy, type Language } from '../src/data/i18n/i18n'
+import { legalPaths } from '../src/data/legal/legal'
 import { links } from '../src/data/links/links'
 import { projects } from '../src/data/projects/projects'
 import { services } from '../src/data/services/services'
@@ -107,5 +108,27 @@ describe('published content contracts', () => {
         ?.value
     expect(policy('/projects/generated/(.*)')).toBe('public, no-cache')
     expect(policy('/assets/(.*)')).toBe('public, max-age=31536000, immutable')
+  })
+
+  it('serves the legal pages without letting them reach search indexes', () => {
+    const { headers, rewrites } = JSON.parse(
+      readFileSync('vercel.json', 'utf8'),
+    ) as {
+      headers: { source: string; headers: { key: string; value: string }[] }[]
+      rewrites: { source: string; destination: string }[]
+    }
+    const robots = headers.find((rule) =>
+      rule.headers.some((header) => header.key === 'X-Robots-Tag'),
+    )
+    for (const path of Object.values(legalPaths)) {
+      expect(rewrites).toContainEqual({
+        source: path,
+        destination: '/index.html',
+      })
+      expect(robots?.source).toContain(path.slice(1))
+      expect(readFileSync('public/sitemap.xml', 'utf8')).not.toContain(path)
+      // A robots.txt block would hide the noindex from crawlers.
+      expect(readFileSync('public/robots.txt', 'utf8')).not.toContain(path)
+    }
   })
 })

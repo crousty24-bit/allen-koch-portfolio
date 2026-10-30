@@ -159,6 +159,197 @@ for (const width of [390, 1440]) {
   })
 }
 
+test('contact form reports provider results and keeps failed input', async (t) => {
+  const page = await browser.page()
+  t.after(() => page.close())
+  await page.command('Page.addScriptToEvaluateOnNewDocument', {
+    source: `
+      window.contactCalls = [];
+      window.contactMode = 'pending';
+      const originalFetch = window.fetch.bind(window);
+      window.fetch = (url, options) => {
+        if (url !== 'https://api.web3forms.com/submit')
+          return originalFetch(url, options);
+        window.contactCalls.push(Object.fromEntries(options.body));
+        return new Promise((resolve) => {
+          window.finishContact = (success) => resolve(new Response(
+            JSON.stringify({ success, message: '<img src=x onerror=window.__injected=1>' }),
+            { status: success ? 200 : 400, headers: { 'Content-Type': 'application/json' } },
+          ));
+        });
+      };
+    `,
+  })
+  await page.open(url)
+  const configured = await page.evaluate(() =>
+    Boolean(document.querySelector('.contact-panel__form')),
+  )
+  if (!configured) {
+    t.skip('Build has no public Web3Forms key')
+    return
+  }
+
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(document.querySelector('iframe[src*="hcaptcha"]')),
+    ),
+    false,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      performance
+        .getEntriesByType('resource')
+        .some((entry) => /hcaptcha\.com/.test(entry.name)),
+    ),
+    false,
+  )
+  const solveCaptcha = async () => {
+    await page.waitFor(() =>
+      Boolean(
+        window.hcaptcha?.getResponse &&
+          document.querySelector('iframe[title*="hCaptcha"]'),
+      ),
+    )
+    await page.evaluate(() => {
+      if (!window.contactCaptchaMocked) {
+        const reset = window.hcaptcha.reset.bind(window.hcaptcha)
+        window.hcaptcha.reset = (...args) => {
+          window.contactCaptchaToken = ''
+          return reset(...args)
+        }
+        window.hcaptcha.getResponse = () => window.contactCaptchaToken || ''
+        window.contactCaptchaMocked = true
+      }
+      window.contactCaptchaToken = 'ci-test-token'
+    })
+  }
+
+  const injectionProbe = '<img src=x onerror=window.__injected=1>'
+  await page.evaluate((injectionProbe) => {
+    const form = document.querySelector('.contact-panel__form')
+    form.elements.namedItem('email').value = 'visitor@example.com'
+    form.elements.namedItem('message').value = injectionProbe
+    form.requestSubmit()
+    form.requestSubmit()
+  }, injectionProbe)
+  assert.equal(await page.evaluate(() => window.contactCalls.length), 0)
+  assert.equal(
+    await page.evaluate(() =>
+      document
+        .querySelector('.contact-panel__status')
+        .textContent.includes('contrôle anti-spam'),
+    ),
+    true,
+  )
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__captcha-choice').click(),
+  )
+  await solveCaptcha()
+  await page.evaluate(() => {
+    const form = document.querySelector('.contact-panel__form')
+    form.requestSubmit()
+    form.requestSubmit()
+  })
+  await page.waitFor(() => window.contactCalls.length === 1)
+  assert.equal(
+    await page.evaluate(
+      () =>
+        document.querySelector('.contact-panel__form button[type="submit"]')
+          .disabled,
+    ),
+    true,
+  )
+  assert.equal(
+    await page.evaluate(() => window.contactCalls[0].message),
+    injectionProbe,
+  )
+  assert.deepEqual(
+    await page.evaluate(() => Object.keys(window.contactCalls[0]).sort()),
+    ['access_key', 'email', 'h-captcha-response', 'message', 'name'],
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(window.contactCalls[0]['h-captcha-response']),
+    ),
+    true,
+  )
+  assert.equal(
+    await page.evaluate(() => Boolean(window.contactCalls[0].access_key)),
+    true,
+  )
+  await page.evaluate(() => window.finishContact(false))
+  await page.waitFor(
+    () =>
+      document.querySelector('.contact-panel__status').getAttribute('role') ===
+      'alert',
+  )
+  assert.equal(
+    await page.evaluate(() => document.querySelector('#contact-message').value),
+    injectionProbe,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(
+        window.__injected ||
+          document.querySelector('.contact-panel__status img'),
+      ),
+    ),
+    false,
+  )
+
+  await solveCaptcha()
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__form').requestSubmit(),
+  )
+  await page.waitFor(() => window.contactCalls.length === 2)
+  await page.evaluate(() => window.finishContact(true))
+  await page.waitFor(() =>
+    document
+      .querySelector('.contact-panel__status')
+      .textContent.includes('transmise'),
+  )
+  assert.equal(
+    await page.evaluate(() => document.querySelector('#contact-message').value),
+    '',
+  )
+  assert.equal(await page.evaluate(() => Boolean(window.__injected)), false)
+  await page.evaluate(() => {
+    document.querySelector('.icon-toggle').click()
+    document.querySelector('.language-toggle').click()
+  })
+  await page.waitFor(() => {
+    const frame = document.querySelector('iframe[title*="hCaptcha"]')
+    return frame?.src.includes('hl=en') && frame.src.includes('theme=dark')
+  })
+  assert.equal(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth > innerWidth,
+    ),
+    false,
+  )
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__captcha-choice').click(),
+  )
+  await page.waitFor(
+    () =>
+      document.readyState === 'complete' &&
+      Boolean(document.querySelector('.contact-panel__captcha-choice')) &&
+      !document.querySelector('iframe[src*="hcaptcha"]'),
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      performance
+        .getEntriesByType('resource')
+        .some((entry) => /hcaptcha\.com/.test(entry.name)),
+    ),
+    false,
+  )
+  assert.deepEqual(
+    await page.evaluate(() => Object.keys(localStorage).sort()),
+    ['language', 'theme'],
+  )
+})
+
 test('section stack: no motion or ResizeObserver keeps content visible', async (t) => {
   for (const fallback of ['reduce', 'observer']) {
     await t.test(fallback, async (t) => {
@@ -300,6 +491,67 @@ for (const width of [760, 761, 1040, 1041, 1440]) {
   })
 }
 
+test('project index: no internal crop while resizing the viewport', async (t) => {
+  const page = await browser.page()
+  t.after(() => page.close())
+  await page.motion('reduce')
+  await page.open(`${url}/#projects`)
+  for (const [width, height] of [
+    [1440, 900],
+    [1280, 720],
+    [1100, 600],
+    [1041, 300],
+    [1040, 600],
+    [761, 300],
+    [760, 600],
+    [390, 844],
+    [320, 568],
+    [1440, 300],
+  ]) {
+    await page.viewport(width, height)
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    )
+    const geometry = await page.evaluate(() => {
+      const index = document.querySelector('.projects-features__index')
+      const window = index.querySelector('.projects-features__window')
+      const number = index.querySelector('.projects-features__number')
+      const range = document.createRange()
+      range.selectNodeContents(number)
+      return {
+        shared: getComputedStyle(index).display !== 'none',
+        textWidth: range.getBoundingClientRect().width,
+        windowWidth: window.getBoundingClientRect().width,
+        end: Math.max(
+          ...[...index.children].map((el) => el.getBoundingClientRect().right),
+        ),
+        cardsLeft: document
+          .querySelector('.projects-features__cards')
+          .getBoundingClientRect().left,
+        overflow: document.documentElement.scrollWidth > innerWidth,
+      }
+    })
+    if (geometry.shared) {
+      assert.ok(
+        geometry.textWidth <= geometry.windowWidth + 1,
+        `${width}×${height}: digits must fit inside the animation window: ${JSON.stringify(geometry)}`,
+      )
+      assert.ok(
+        geometry.end <= geometry.cardsLeft,
+        `${width}×${height}: index must not overlap cards`,
+      )
+    }
+    assert.equal(
+      geometry.overflow,
+      false,
+      `${width}×${height}: no page overflow`,
+    )
+  }
+})
+
 for (const width of [390, 1440]) {
   test(`timeline: rapid clicks, reverse, keyboard and reduced motion (${width}px)`, async (t) => {
     const page = await browser.page()
@@ -433,5 +685,71 @@ for (const width of [390, 1440]) {
       ),
       'auto',
     )
+  })
+}
+
+for (const width of [320, 1440]) {
+  test(`legal pages are readable, noindexed and link home (${width}px)`, async (t) => {
+    const page = await browser.page()
+    t.after(() => page.close())
+    await page.viewport(width)
+    for (const language of ['fr', 'en']) {
+      await page.open(url)
+      await page.evaluate((language) => {
+        localStorage.setItem('language', language)
+        localStorage.setItem('theme', language === 'fr' ? 'light' : 'dark')
+      }, language)
+      for (const [path, titleId] of [
+        ['/mentions-legales', 'legal-title'],
+        ['/confidentialite', 'privacy-title'],
+      ]) {
+        // page.open waits for home-only content.
+        await page.command('Page.navigate', { url: `${url}${path}` })
+        await page.waitFor(
+          ({ language, titleId }) =>
+            document.documentElement.lang === language &&
+            document.getElementById(titleId) &&
+            !document.querySelector('link[rel="canonical"]'),
+          { language, titleId },
+        )
+        const state = await page.evaluate(() => ({
+          robots: document.head.querySelector('meta[name="robots"]')?.content,
+          overflow: document.documentElement.scrollWidth > innerWidth,
+          titleBelowHeader:
+            document.querySelector('h1').getBoundingClientRect().top >=
+            document.querySelector('.site-header').getBoundingClientRect()
+              .bottom,
+          titleMatchesTab: document.title.startsWith(
+            document.querySelector('h1').textContent,
+          ),
+          home: document.querySelector('.navbar__links a').getAttribute('href'),
+          current: document.querySelectorAll('[aria-current]').length,
+          stacked: document
+            .querySelector('main')
+            .classList.contains('section-stack'),
+          contact: Boolean(document.getElementById('contact')),
+        }))
+        assert.deepEqual(state, {
+          robots: 'noindex',
+          overflow: false,
+          titleBelowHeader: true,
+          titleMatchesTab: true,
+          home: '/#home',
+          current: 0,
+          stacked: false,
+          contact: false,
+        })
+      }
+      await page.evaluate(() =>
+        document.querySelector('.navbar__links a[href="/#services"]').click(),
+      )
+      await page.waitFor(() =>
+        document.querySelector('main')?.classList.contains('section-stack'),
+      )
+      assert.equal(
+        await page.evaluate(() => location.pathname + location.hash),
+        '/#services',
+      )
+    }
   })
 }

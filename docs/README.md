@@ -51,7 +51,8 @@ preuves de clôture des dettes et des travaux de phase 2.
 | --- | --- |
 | [Audit daté](audit-2026-10-27.md) | Constats, priorités et limites des contrôles de RUN-000 |
 | [Plan de refonte](refonte-plan.md) | Périmètre one-page, ancres, services, projets et formulaire |
-| [Contrat contact/devis](contact-form-contract.md) | Décision email seul RUN-016 ; étude conservée pour le formulaire reporté |
+| [Contrôle juridique](legal-release-checklist.md) | Données de contact, contrats et points restant à valider avant publication |
+| [Contrat contact/devis](contact-form-contract.md) | RUN-017 Web3Forms : intégration locale, configuration et vérifications restantes |
 | [Brief Claude](claude-design-brief.md) | Direction design et relais des RUN UI |
 | [Contrat Claude RUN-023](handoffs/run-023-claude-hierarchie-titres-hero.md) | Nouvelle hiérarchie des titres et textes du Hero |
 | [Complément Claude RUN-022 : timeline](handoffs/run-022-claude-timeline-transition.md) | Fondu au clic synchronisé avec le défilement horizontal du parcours |
@@ -66,4 +67,5 @@ Mettre à jour le document propriétaire et lier depuis cet index, plutôt que
 recopier des statuts, preuves ou décisions dans chaque fichier.
 
 La synthèse validée et ses adaptations sont consignées dans DESIGN.md R8 à R19.
-Les services et l'espace projets clients sont intégrés ; le formulaire reste reporté.
+Les services et l'espace projets clients sont intégrés ; le formulaire Web3Forms
+est intégré localement ; Allen a confirmé l'envoi et la réception réels.

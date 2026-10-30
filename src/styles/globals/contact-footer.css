@@ -37,7 +37,9 @@
 }
 
 .contact-panel__aside {
-  grid-column: 9 / -1;
+  grid-column: 1 / span 4;
+  grid-row: 3;
+  align-self: start;
 }
 
 .contact-panel__aside p {
@@ -49,7 +51,7 @@
 
 .contact-panel__email {
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   font-size: 1.75rem;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -61,6 +63,65 @@
 
 .contact-panel__email:hover {
   text-decoration-thickness: 2px;
+}
+
+.contact-panel__aside .contact-panel__alternative {
+  margin-top: 2rem;
+}
+
+.contact-panel__form {
+  display: grid;
+  grid-column: 6 / -1;
+  grid-row: 3;
+  gap: 0.5rem;
+}
+
+.contact-panel__form label {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.contact-panel__form input,
+.contact-panel__form textarea {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  color: var(--text);
+  border: 1px solid var(--outline-strong);
+  border-radius: 0;
+  background: var(--surface);
+}
+
+.contact-panel__form textarea {
+  resize: vertical;
+}
+
+.contact-panel__form .button {
+  justify-self: start;
+  margin-top: 0.75rem;
+  cursor: pointer;
+}
+
+.contact-panel__form .button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.contact-panel__privacy,
+.contact-panel__status {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.contact-panel__privacy a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.contact-panel__status:not(:empty) {
+  margin-top: 0.5rem;
+  color: var(--text);
 }
 
 .site-footer {
@@ -81,7 +142,7 @@
 }
 
 .site-footer__brand {
-  grid-column: 1 / span 6;
+  grid-column: 1 / span 3;
   margin: 0;
   color: var(--text-muted);
 }
@@ -122,13 +183,16 @@
   text-decoration-color: currentColor;
 }
 
-/* Decorative repeat of the name: hidden from assistive technologies. */
+/* Decorative repeat of the name: hidden from assistive technologies.
+   Justified like the hero name; the margin offsets the final H side bearing. */
 .site-footer__name {
-  margin: 4rem 0 0;
+  margin: 4rem -0.04em 0 0;
   font-size: min(15vw, 13.5rem);
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 0.8;
+  text-align: justify;
+  text-align-last: justify;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -141,4 +205,27 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
+}
+
+.legal-notices a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.legal-notices {
+  max-width: 75ch;
+  padding-top: calc(5rem + var(--section-gap));
+  overflow-wrap: anywhere;
+  line-height: 1.65;
+}
+
+.legal-notices h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.1;
+}
+
+.legal-notices h3 {
+  margin-top: 1.75rem;
+  font-size: 1.125rem;
 }

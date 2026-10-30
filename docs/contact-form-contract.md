@@ -1,152 +1,112 @@
-# RUN-016 — Décision contact : lien email seul pour l'instant
+# RUN-017 — Contact par Web3Forms
 
-Décision validée par Allen le 29 octobre 2026 : conserver le contact par email,
-sans formulaire ni prestataire d'envoi pour l'itération actuelle. RUN-016 est
-clôturé sur ce périmètre révisé ; RUN-017 est reporté, sans être annulé.
+Le 30 octobre 2026, Allen a demandé la reprise du formulaire et choisi
+Web3Forms. Il a fourni une première clé publique pour les essais en développement.
+La décision RUN-016 du 29 octobre (lien email seul, formulaire reporté) est donc
+supplantée pour ce RUN. Le lien `mailto:allen.kch24@gmail.com` reste visible comme
+alternative. Aucun abonnement, compte supplémentaire ou déploiement n'est demandé.
 
-- Adresse confirmée : `allen.kch24@gmail.com`, déjà utilisée par le lien mailto.
-- Allen autorise un futur message de contrôle du formulaire vers cette même
-  adresse, lorsqu'un formulaire sera repris et configuré. Aucun envoi maintenant.
-- Demandes n'aboutissant pas à une mission : conservation retenue de 30 jours
-  dans la messagerie. Aucune suppression automatique ou intervention Gmail
-  n'est configurée/autorisée par ce RUN. Cette décision ne fixe pas une durée
-  pour les échanges liés à une mission ni pour les sauvegardes du fournisseur.
-- Aucun fournisseur, compte, abonnement, clé ou endpoint choisi/créé.
-- Conserver l'interface Contact actuelle : pas de champs désactivés, maquette
-  faussement opérationnelle, statut d'envoi ou nouveau traitement de données.
+## Mise en place
 
-La suite visuelle peut continuer avec RUN-021 (timeline About). Le formulaire
-n'est pas un préalable à l'assemblage de l'itération avec contact email seul.
-Sa reprise demandera un mandat et le choix réel du prestataire/configuration,
-ainsi que la notice adaptée au traitement effectivement mis en place.
+- Site statique React/Vite : le navigateur envoie `FormData` à
+  `https://api.web3forms.com/submit`. La [documentation API](https://docs.web3forms.com/getting-started/api-reference)
+  recommande l'appel côté navigateur et décrit la réponse JSON `success`.
+- Clé **publique** : `VITE_WEB3FORMS_ACCESS_KEY` dans `.env.local` pour les essais.
+  Ce fichier est ignoré par Git. Copier `.env.example` et renseigner une clé
+  publique dans la configuration du déploiement seulement après validation.
+  Sans clé, seul le lien email est affiché. Ne jamais mettre une clé privée dans
+  une variable `VITE_` ni dans le bundle.
+- Champs transmis : `name` facultatif (100 caractères), `email` obligatoire
+  (254 caractères), `message` obligatoire (5 000 caractères), plus la clé d'accès
+  publique et le jeton `h-captcha-response`.
+  Pas de téléphone, budget, fichier, copie au visiteur ou catalogue de devis.
+- Envoi unique pendant l'attente, limite de 15 secondes, succès seulement sur
+  réponse HTTP réussie avec `success: true`. En cas de rejet, panne, réponse
+  inattendue ou délai dépassé, la saisie est conservée et le lien email demeure.
+  Le formulaire efface la saisie uniquement après acceptation par l'API.
 
-## Étude antérieure, non retenue pour l'itération actuelle
+## Validation, abus et données
 
-Les sections suivantes conservent la proposition étudiée, pas une décision ni
-une autorisation d'intégration. Prix et capacités datés du 29 octobre 2026 devront
-être revérifiés lors d'une éventuelle reprise.
+Les attributs HTML contrôlent les champs dans le navigateur. L'[API Web3Forms](https://docs.web3forms.com/getting-started/api-reference)
+accepte des champs arbitraires ; aucune règle personnalisée de longueur ou de
+présence côté service n'est établie pour cette clé. Ne pas présenter ces contrôles
+HTML comme une validation serveur garantie. Web3Forms annonce un [filtrage anti-spam côté serveur](https://docs.web3forms.com/getting-started/customizations/spam-protection).
+Allen confirme avoir activé hCaptcha, Advanced Spam Filter et le niveau Strict
+dans le compte le 30 octobre. Le composant React officiel hCaptcha ne se monte qu’après le choix explicite
+du visiteur. L’email reste disponible sans ce choix. Le retrait recharge la page
+(et efface le brouillon, annoncé dans le bouton) pour arrêter le service ; il
+ne supprime pas les cookies tiers déjà déposés. Aucun choix n’est persisté.
+Le widget utilise la clé de site gratuite indiquée par Web3Forms ; le formulaire exige un jeton avant
+l'appel API et le réinitialise après chaque tentative. Ces réglages du compte
+sont rapportés par Allen, sans lecture indépendante du tableau de bord. Le
+honeypot Web3Forms
+est actuellement déconseillé par sa [documentation](https://docs.web3forms.com/getting-started/customizations/spam-protection/spam-protection).
+Le formulaire ne construit ni HTML ni en-tête email à partir des saisies ; React
+affiche ses messages fixes et ignore le texte renvoyé par l'API. Un test navigateur
+avec une chaîne HTML et un message API hostiles confirme qu'ils ne sont pas
+exécutés dans la page. Cela ne prouve pas comment Web3Forms échappe le contenu
+dans l'email reçu : aucune règle d'injection configurable côté service n'a été
+identifiée dans sa [référence API](https://docs.web3forms.com/getting-started/api-reference).
 
-## Option étudiée : traitement hébergé, site toujours statique
+Le navigateur transmet les champs à Web3Forms pour notification par email.
+Une politique locale FR/EN (`/confidentialite`, ouverte dans un nouvel onglet depuis le formulaire pour conserver la saisie) accessible depuis le formulaire et le
+footer décrit le traitement et les droits. Une courte notice renvoie vers la politique locale et vers celle de
+[hCaptcha](https://www.hcaptcha.com/privacy), près du bouton. La politique locale
+lie également les documents Web3Forms et leurs contrats. Allen a retenu 30 jours de conservation **dans sa
+messagerie** pour les demandes sans suite, sans suppression automatique autorisée.
+Web3Forms affiche un réglage de conservation de 7 jours à
+3 ans selon son [offre](https://web3forms.com/pricing). Allen confirme avoir
+réglé ce formulaire sur **un an** dans Web3Forms le 30 octobre. La visibilité
+de 30 jours dans le tableau de bord gratuit n'est pas une suppression des
+données au bout de 30 jours. La réponse du support transmise par Allen précise que la durée appliquée au
+formulaire entraîne une suppression automatique à son échéance, pas seulement
+un masquage ; trois ans est le plafond général. Sur la base du réglage d’un an
+confirmé par Allen, la notice FR/EN indique désormais un an puis suppression
+automatique. Le support n’a pas vérifié ici le réglage du compte ; les durées
+propres aux journaux et sauvegardes ne sont pas établies par cette réponse.
+Les 30 jours en messagerie restent distincts.
 
-Utiliser Formspree pour un premier essai : endpoint de formulaire public, envoi
-avec fetch natif, validation dans le service et notification vers la messagerie
-d'Allen. Aucun SDK, serveur applicatif, BDD ou authentification ajouté au portfolio.
-Le choix du fournisseur reste une proposition ; le site conserve son lien email.
+La couverture de hCaptcha avec la clé partagée par le DPA Web3Forms est toujours
+en attente : le support a transmis la question à son équipe. Aucun accord
+séparé hCaptcha n’est présenté comme nécessaire ou inutile avant leur réponse.
 
-| Option | Intérêt pour ce site | Limites et configuration à vérifier |
-| --- | --- | --- |
-| Formspree, recommandé pour l'essai | Endpoint direct, validation Workflow documentée sur tous les plans, réponses AJAX et filtrage de spam | Free : 50 soumissions/mois et archive accessible 30 jours, présenté pour tests/développement. Personal : 15 USD/mois en facturation mensuelle ou 120 USD/an. Aucun abonnement autorisé ; usage/plan de production à confirmer avant publication. |
-| Endpoint minimal avec Resend | Validation et traitement maîtrisés dans une fonction serveur | Ajoute du code serveur, clé secrète, configuration d'expéditeur et anti-abus à maintenir. Offre Resend Free : limite 100 emails/jour ; coût complet et adéquation de l'hébergement non établis. Pas retenu par défaut pour ce premier formulaire. |
+## Vérification et publication
 
-Prix et limites sont ceux publiés lors de la consultation, pas une estimation de
-facture ni une garantie future. L'archive visible de 30 jours ne signifie pas que
-toutes les copies techniques et les emails sont supprimés après 30 jours.
+- Tests locaux : rendu FR/EN, thèmes et écrans étroits, succès/rejet simulés,
+  double soumission et conservation de saisie après rejet.
+- Test réel autorisé vers `allen.kch24@gmail.com` : constater séparément
+  l'acceptation par l'API et la réception en messagerie. Un succès API ne prouve
+  pas la livraison de l'email.
+- Le test direct depuis cet environnement a rencontré une page de vérification
+  Cloudflare, et le test Chrome local a affiché l'échec d'envoi ; aucune réponse
+  JSON d'acceptation n'a été observée ici. Allen a ensuite confirmé un envoi et
+  une réception réels depuis son environnement le 30 octobre 2026.
+- Avant déploiement : confirmer destinataire de la clé et coût/quotas du plan
+  choisi ; ajouter la clé publique à l'environnement du site. Un nouvel essai
+  sur le déploiement vérifiera la présence du widget, l'envoi et la réception.
+- Audit ciblé du 30 octobre : les sources publiques confirment la possibilité
+  d'une durée plus courte et le filtrage serveur par défaut. Allen a confirmé
+  les paramètres réels du compte ; hCaptcha est intégré au frontend. Les tests
+  locaux simulent le jeton et l'API. Allen confirme ensuite un envoi réel avec
+  hCaptcha activé, succès affiché et email reçu. Le rendu de l'email final n'a
+  pas été audité pour les charges hostiles.
 
-Sources officielles consultées : [offres Formspree](https://formspree.io/plans/),
-[limites de compte](https://help.formspree.io/articles/account-management/account-limits),
-[Workflow et validation](https://help.formspree.io/articles/building-your-form/getting-started-with-workflow/),
-[exemple fetch natif](https://formspree.io/blog/formspree-ajax/),
-[offres Resend](https://resend.com/pricing).
-La documentation ancienne des projets Formspree distingue CLI/dashboard, tandis
-que Workflow documente maintenant des règles dans l'interface sur tous les plans :
-la configuration réellement disponible doit être contrôlée dans le compte choisi.
+Sources : [installation et clé publique](https://docs.web3forms.com/getting-started/installation),
+[API](https://docs.web3forms.com/getting-started/api-reference),
+[tarifs](https://web3forms.com/pricing), [confidentialité](https://web3forms.com/privacy).
 
-## Champs minimaux proposés
+## Complément juridique — 30 octobre 2026
 
-Un seul formulaire sert au contact et aux demandes de devis. Les prestations
-restant provisoires, ne pas ajouter de catalogue de choix ni de logique de devis.
+Mandat d’Allen : implémenter les must fix 1/2/3 de l’audit juridique dans RUN-008,
+en tenant compte de Web3Forms/hCaptcha. Les mentions locales (`/mentions-legales`)
+et la politique (`/confidentialite`) sont deux pages dédiées, servies par la même
+application et exclues de l'indexation (`noindex`, hors sitemap) ; aucune
+dépendance ajoutée. Hébergeur Vercel confirmé par Allen ; coordonnées publiques
+d’éditeur différées jusqu’à création officielle de l’entreprise, non bloquantes
+pour la release sur décision d’Allen du 30 octobre. Coordonnées Vercel validées. Aucune adresse personnelle déduite.
 
-| Champ transmis | Libellé FR / EN | Règle proposée |
-| --- | --- | --- |
-| name | Nom (facultatif) / Name (optional) | Texte, 100 caractères maximum |
-| email | Email / Email | Obligatoire, adresse valide, 254 caractères maximum |
-| message | Votre message / Your message | Obligatoire, non vide, 5 000 caractères maximum |
-
-Pas de téléphone, société, budget, délai, pièce jointe, abonnement marketing ou
-copie automatique au visiteur pour cette première version. Les besoins de devis
-peuvent être décrits dans le message. La langue sert à l'interface FR/EN, sans
-champ métier supplémentaire requis.
-
-Configurer les règles requises/type/longueur dans Workflow, en plus des contrôles
-HTML et React. Vérifier par requêtes directes à l'endpoint que les données
-manquantes/invalides sont refusées. Ne pas confondre contrôle navigateur et
-validation du traitement ; ne pas annoncer de liste blanche stricte des champs
-supplémentaires si le prestataire ne la garantit pas.
-
-## Destinataire, données et conservation
-
-Adresse confirmée par Allen : allen.kch24@gmail.com. Le futur test du formulaire
-vers cette même adresse est autorisé ; il n'est pas exécuté tant que le formulaire
-est reporté. Aucune lecture de messagerie n'est demandée.
-
-Flux proposé : navigateur → Formspree → messagerie d'Allen. Ne transmettre que
-les trois champs métier ; le service reçoit aussi les informations techniques de
-la requête. Sa politique et la configuration réelle doivent préciser ce qui est
-conservé, où et pour combien de temps. Formspree annonce un hébergement AWS aux
-États-Unis dans sa [page sécurité](https://formspree.io/security/).
-
-La conservation dans le service, ses éventuelles sauvegardes et les emails reçus
-sont distincts. Allen fixe à 30 jours la conservation en messagerie des demandes
-sans suite. La mise en œuvre de cette politique reste à sa charge ; aucune
-suppression automatique n'est configurée. Les durées du prestataire futur seront
-à vérifier lors de sa sélection.
-La notice FR/EN de RUN-017 indiquera la finalité de réponse, le prestataire choisi,
-les destinataires, les durées confirmées et le contact pour les demandes relatives
-aux données. Aucun engagement de conformité juridique n'est déduit de ces documents.
-
-## Configuration et anti-abus
-
-- Configuration frontend : VITE_CONTACT_FORM_ENDPOINT, URL HTTPS du formulaire
-  choisi. C'est une adresse publique, pas une clé secrète. Aucune clé d'administration,
-  de messagerie ou d'envoi privé dans une variable VITE_ ou dans le bundle.
-- Configurer et vérifier destinataire, notification, règles Workflow et quota dans
-  le compte. Un endpoint non configuré ne donne pas un formulaire opérationnel :
-  garder le contact email, sans faux succès ni envoi vers une adresse par défaut.
-- Activer le filtrage Formshield et les restrictions de domaine disponibles ;
-  autoriser explicitement les domaines de test nécessaires, sans laisser une
-  liste de prévisualisations arbitraires en production.
-- Choisir un réglage reCAPTCHA compatible avec l'envoi AJAX. Le
-  [guide officiel Vercel/Formspree](https://vercel.com/kb/guide/deploying-react-forms-using-formspree-with-vercel)
-  décrit soit la désactivation du challenge par défaut, soit une clé reCAPTCHA
-  propre. Ne pas promettre un captcha invisible sans configuration : le mode
-  minimal proposé repose sur filtrage + domaines, sans script captcha ajouté par
-  défaut. Son fonctionnement et ses limites restent à vérifier sur le compte.
-- Destinataire et sujet de notification sont fixes côté service ; l'email visiteur
-  sert à la réponse, sans saisie libre d'en-têtes, destinataire ou copie à un tiers.
-
-## Contrat d'interface pour RUN-017
-
-- Labels et erreurs FR/EN accessibles, focus utile, thème clair/sombre et responsive.
-  Claude conçoit l'interface ; consultation shadcn et cadrage CSS avant les nouveaux
-  composants de base, selon AGENTS.md. Aucune dépendance décidée ici.
-- Envoi POST à l'endpoint configuré, Accept application/json, avec fetch natif et
-  FormData ; bouton désactivé pendant l'attente pour éviter les doubles clics.
-- Succès seulement après réponse HTTP réussie et JSON conforme au format accepté
-  observé sur l'endpoint de contrôle. Ne pas traiter une page HTML/challenge comme
-  une confirmation. Le schéma de réponse réel reste à relever à la configuration.
-- Message utilisateur : « Votre demande a été transmise. » / “Your enquiry has
-  been submitted.” Cela ne promet pas la livraison finale de l'email.
-- Données invalides : erreurs associées aux champs. Quota dépassé, service arrêté,
-  réseau indisponible ou réponse inattendue : message d'échec et alternative email.
-  Conserver la saisie en cas d'échec ; la réinitialiser seulement après acceptation.
-- Prévoir une limite d'attente, sans renvoi automatique : une réponse absente ne
-  prouve pas que le traitement n'a pas accepté la première requête.
-
-## Vérifications à reprendre si le formulaire est relancé
-
-La décision email seul clôture RUN-016. Une reprise du formulaire nécessitera un
-cadrage complémentaire : fournisseur/plan, endpoint, validation, anti-abus et données.
-Les réponses success/erreurs doivent être confrontées à la documentation et à la
-configuration réelle. Aucune configuration réelle ni réponse fournisseur observée
-pour l'instant ; ce document ne les présente pas comme vérifiées.
-
-RUN-017 testera le rendu et les interactions avec réponses simulées : acceptation,
-rejet de validation, quota, panne réseau, attente, double clic et conservation de
-saisie. Une soumission réelle devra ensuite arriver dans une boîte de contrôle
-explicitement autorisée ; noter acceptation du service et réception constatée
-séparément. Aucun message à un tiers ni compte/abonnement créé sans mandat.
-
-Pour une éventuelle reprise : choisir fournisseur/coût et confirmer les champs,
-puis configurer l'endpoint. L'adresse de réception/test et les 30 jours pour les
-demandes sans suite sont déjà validés ; ne pas redemander ces arbitrages sauf
-changement du périmètre. Aucun secret dans le chat.
+Allen confirme avoir pris connaissance du DPA et l’avoir téléchargé depuis son
+tableau de bord Web3Forms. Cela ne prouve pas à lui seul toutes les garanties
+applicables aux transferts ni les conditions hCaptcha sous clé partagée.
+La [liste de publication juridique](legal-release-checklist.md) conserve ces
+points ouverts ; ne pas déclarer la conformité ni le must fix 3 entièrement clos.

@@ -42,7 +42,7 @@ Partir des quatre maquettes Stitch importées et de leur système monochrome :
 les reproduire et les adapter, puis appliquer la direction validée à la baseline.
 Les futures sections peuvent être représentées avec contenus de travail
 identifiés ; leur contenu final, ancres et fonctionnement viennent en phase 2.
-Le formulaire reste une maquette sans envoi à ce stade.
+Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
 
 | RUN | Priorité | Sujet | Responsable | Dépendances | Statut |
 | --- | --- | --- | --- | --- | --- |
@@ -63,12 +63,12 @@ Le formulaire reste une maquette sans envoi à ce stade.
 | RUN-014 | P1 | Sections services et prestations | Claude UI + Codex | RUN-005, RUN-012 | done |
 | RUN-015 | P1 | Projets personnels, clients et game dev | Claude UI + Codex ; preuves Allen | RUN-005, RUN-012 | done |
 | RUN-016 | P1 | Choix et contrat du traitement contact/devis | Codex ; Security ; Allen | RUN-005, RUN-010 | done |
-| RUN-017 | P3 — reporté | Formulaire contact/devis et envoi réel | Codex + Claude UI ; QA | RUN-012, RUN-016 | planned |
+| RUN-017 | P1 | Formulaire contact/devis Web3Forms et envoi réel | Codex ; QA | RUN-012, RUN-016 | verify |
 | RUN-021 | P2 | Timeline About horizontale | Claude UI + Codex QA | RUN-005, RUN-013 | done |
 | RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | done |
 | RUN-022 | P2 | Passe visuelle 1 — transitions de sections au scroll | Claude UI ; Codex QA ; validation Allen | RUN-007 | done |
 | RUN-023 | P2 | Passe structure — titres des sections et Hero | Claude UI ; Codex QA ; validation Allen | RUN-022 | done |
-| RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | planned |
+| RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | verify |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
 ## RUN-000 — Audit et préparation initiale
@@ -188,7 +188,7 @@ Le formulaire reste une maquette sans envoi à ce stade.
   préparé pour exécution séparée par Allen si nécessaire. RUN-008 reste planned
   tant que RUN-007 n’est pas terminé. Aucun mandat de publication.
 
-- Périmètre actuel après RUN-016 : contact par email seul. RUN-017 reporté ne
+- Périmètre de RUN-007 à sa clôture : contact par email seul. RUN-017 reporté ne
   conditionne pas cet assemblage ; aucune intégration ou validation d'envoi de
   formulaire à prétendre réalisée. Ses critères seront repris si le formulaire est relancé.
 
@@ -222,8 +222,25 @@ Le formulaire reste une maquette sans envoi à ce stade.
 - Risques : présenter un build local comme un déploiement ou un score comme un gain terrain.
 - Acceptation : preuves techniques et validation visuelle d'Allen consignées ;
   si une validation requise manque, rester en `verify`.
+- Exécution locale du 30 octobre sur `feature/run-008-validation-release` :
+  build/lint/Biome, 55 tests unitaires, 12 tests navigateur et audits npm réussis.
+  Matrice 20 combinaisons, mesures Lighthouse et limites consignées au journal.
+  README actualisé et ancienne date sitemap retirée. Baseline 1.3.2 conservée,
+  nouvelle version à décider ; statut `verify` pour validation visuelle/contenu
+  d’Allen et contrôle des en-têtes sur hébergement avant release.
+- Complément juridique autorisé le 30 octobre : mentions et confidentialité FR/EN,
+  information Web3Forms/hCaptcha et choix de chargement du CAPTCHA. Coordonnées
+  d’éditeur différées jusqu’à création de l’entreprise, sans blocage de release
+  sur décision d’Allen ; coordonnées Vercel validées. Les garanties contractuelles/
+  transferts restent à vérifier ; voir `docs/legal-release-checklist.md`.
+- Point 4 de l’audit juridique traité le 30 octobre : polices WOFF2 et licences
+  auto-hébergées, aucun appel Google Fonts ; rendu desktop/mobile préservé
+  selon les comparaisons consignées au journal.
 - Publication : vérifier le mandat et la cible avant push/merge/déploiement ;
   préparer un transfert Production si la publication est demandée.
+- Correctif demandé le 30 octobre : index Projets dimensionné selon sa colonne,
+  total repliable et test de crop interne pendant redimensionnement. Correctif
+  vérifié localement ; RUN-008 reste `verify` pour ses critères de release.
 
 ## RUN-009 — Custom agents et efficacité de délégation
 
@@ -415,24 +432,24 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
   validés ; conservation des demandes sans suite fixée à 30 jours, sans automatisation.
 - Contrat et étude antérieure dans docs/contact-form-contract.md. Aucun compte,
   abonnement, envoi, configuration distante ou suppression de messages effectué.
-- Relais : RUN-017 reste planned/reporté, non bloquant pour l'assemblage de
-  l'itération email seul. RUN-021 est la prochaine étape visuelle possible.
+- Relais historique : RUN-017 était reporté jusqu'au nouveau mandat d'Allen du
+  30 octobre. RUN-021 a depuis été clôturé.
 
 ## RUN-017 — Formulaire et envoi contact / devis
 
-- Reporté à la demande d'Allen : pas de formulaire pour l'itération actuelle.
-  Ne pas lancer ce RUN à la seule clôture de RUN-016. Reprise sur mandat explicite
-  avec choix/configuration du service ; contact email seul conservé entre-temps.
+- Mandat du 30 octobre : Allen choisit Web3Forms et fournit une clé publique de
+  test. Formulaire intégré localement ; lien email conservé. Allen a confirmé
+  l'envoi et la réception réels ; configuration du compte à vérifier avant publication.
 
 - Passe A — Claude UI : formulaire selon design, labels/aides accessibles, champs
   contact/prestation/devis selon contrat, navigation clavier et validations client.
-- Passe B — Codex : intégrer traitement choisi, validation serveur/service,
-  anti-abus proportionné, secrets hors bundle et configuration documentée.
+- Passe B — Codex : intégrer Web3Forms, documenter la validation réellement
+  disponible, l'anti-abus, la clé publique et la configuration.
 - Passe C — QA : attente/succès/échec, doubles soumissions, réseau/service indisponible,
   conservation de saisie après échec et test de réception de contrôle autorisé.
 - Risques : faux succès, injection/spam, perte de saisie ou fuite de coordonnées.
 - Acceptation : envoi réel vérifié dans le cadre autorisé, feedback accessible,
-  alternative contact et confidentialité ; aucune clé dans le navigateur. Pas de
+  alternative contact et confidentialité ; aucune clé privée dans le navigateur. Pas de
   backend généraliste, base de données ou authentification ajoutés par défaut.
 
 ## RUN-018 — Futur « Ils m'ont fait confiance »

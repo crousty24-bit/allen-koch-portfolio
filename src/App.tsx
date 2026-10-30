@@ -4,11 +4,13 @@ import { BackToTopButton } from './components/BackToTopButton/BackToTopButton'
 import { ContactSection } from './components/ContactSection/ContactSection'
 import { Footer } from './components/Footer/Footer'
 import { Hero } from './components/Hero/Hero'
+import { LegalNotices } from './components/LegalNotices/LegalNotices'
 import { Navbar } from './components/Navbar/Navbar'
 import { ProjectsSection } from './components/ProjectsSection/ProjectsSection'
 import { ServicesSection } from './components/ServicesSection/ServicesSection'
 import { StackSection } from './components/StackSection/StackSection'
 import { copy, type Language, type Theme } from './data/i18n/i18n'
+import { type LegalPage, legalCopy, legalPaths } from './data/legal/legal'
 import {
   getSectionCover,
   getSectionPins,
@@ -42,10 +44,25 @@ const getStoredLanguage = (): Language => {
   )
 }
 
+// Legal links are plain page loads, so the path never changes while mounted.
+const getLegalPage = (): LegalPage | undefined => {
+  if (typeof window === 'undefined') {
+    return undefined
+  }
+
+  const path = window.location.pathname.replace(/\/$/, '')
+  return (Object.keys(legalPaths) as LegalPage[]).find(
+    (page) => legalPaths[page] === path,
+  )
+}
+
+const legalPage = getLegalPage()
+
 function App() {
   const [theme, setTheme] = useState<Theme>(getStoredTheme)
   const [language, setLanguage] = useState<Language>(getStoredLanguage)
   const pageCopy = copy[language]
+  const sectionsBase = legalPage ? '/' : ''
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -55,9 +72,17 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = language
-    document.title = copy[language].hero.title
+    const legalText = legalCopy[language]
+    document.title = legalPage
+      ? `${legalPage === 'legal' ? legalText.legalTitle : legalText.privacyTitle} | Allen Koch`
+      : copy[language].hero.title
     writeStoredPreference(() => window.localStorage, 'language', language)
   }, [language])
+
+  useEffect(() => {
+    // A noindexed page must not point search engines at the home page.
+    if (legalPage) document.querySelector('link[rel="canonical"]')?.remove()
+  }, [])
 
   useEffect(() => {
     let id: string
@@ -127,6 +152,7 @@ function App() {
     const main = document.querySelector('main')
     if (
       !main ||
+      legalPage ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
       !('ResizeObserver' in window) ||
       !CSS.supports('selector(:has(*))')
@@ -175,6 +201,12 @@ function App() {
       pins.forEach((pin, index) => {
         sections[index].style.setProperty('--section-pin-top', `${pin.top}px`)
       })
+      // Sticky boxes report their pinned offset, so slots add up from the heights.
+      let slotTop = 0
+      sections.forEach((section) => {
+        main.style.setProperty(`--${section.id}-top`, `${slotTop}px`)
+        slotTop += section.offsetHeight
+      })
       update()
     }
 
@@ -219,6 +251,7 @@ function App() {
         section.classList.remove('section--covered', 'section--unpinned')
         section.style.removeProperty('--section-pin-top')
         section.style.removeProperty('--section-cover')
+        main.style.removeProperty(`--${section.id}-top`)
       })
     }
   }, [])
@@ -230,6 +263,7 @@ function App() {
       </a>
       <Navbar
         language={language}
+        linkBase={sectionsBase}
         onToggleLanguage={() =>
           setLanguage((currentLanguage) =>
             currentLanguage === 'fr' ? 'en' : 'fr',
@@ -243,14 +277,20 @@ function App() {
         theme={theme}
       />
       <main id="main-content" tabIndex={-1}>
-        <Hero language={language} />
-        <ServicesSection language={language} />
-        <ProjectsSection language={language} />
-        <StackSection language={language} />
-        <AboutSection language={language} />
-        <ContactSection language={language} />
+        {legalPage ? (
+          <LegalNotices language={language} page={legalPage} />
+        ) : (
+          <>
+            <Hero language={language} />
+            <ServicesSection language={language} />
+            <ProjectsSection language={language} />
+            <StackSection language={language} />
+            <AboutSection language={language} />
+            <ContactSection language={language} theme={theme} />
+          </>
+        )}
       </main>
-      <Footer language={language} />
+      <Footer language={language} linkBase={sectionsBase} />
       <BackToTopButton language={language} />
     </>
   )

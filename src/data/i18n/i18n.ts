@@ -18,12 +18,32 @@ export const copy = {
       heading: 'Contact',
       subheading: 'Parlons de votre projet.',
       text: "Disponible pour discuter d'un projet web, d'un MVP ou d'une base technique à structurer proprement.",
+      name: 'Nom (facultatif)',
+      email: 'Adresse email',
+      message: 'Votre message',
+      submit: 'Envoyer le message',
+      sending: 'Envoi en cours…',
+      success: 'Votre demande a été transmise.',
+      error:
+        "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
+      captcha: "Complétez le contrôle anti-spam avant l'envoi.",
+      privacy:
+        'Les informations saisies et des données techniques sont transmises à Web3Forms pour me parvenir par email. Les soumissions sont conservées un an, puis automatiquement supprimées par ce service. Les demandes sans suite sont supprimées de ma messagerie après 30 jours. Le contrôle anti-spam utilise hCaptcha après votre autorisation.',
+      privacyLink: 'Politique de confidentialité',
+      captchaLoad: 'J’autorise le chargement de hCaptcha',
+      captchaWithdraw:
+        'Retirer mon autorisation et recharger (efface la saisie)',
+      captchaChoice:
+        'hCaptcha (Intuition Machines, États-Unis) analyse votre IP, votre navigateur et vos interactions pour détecter les robots et peut utiliser des cookies. Ce chargement est facultatif ; vous pouvez écrire par email sans l’autoriser. Aucun message n’est envoyé avant votre clic sur Envoyer.',
+      captchaPrivacyLink: 'Confidentialité hCaptcha',
+      emailAlternative: 'Ou écrivez-moi directement :',
     },
     footer: {
       brand: 'Allen Koch - Développeur Fullstack & IA',
       copyright: '© 2026 Allen Koch. Tous droits réservés.',
       navHeading: 'Navigation',
       linksHeading: 'Liens',
+      legalHeading: 'Légal',
     },
     hero: {
       title: 'Allen Koch | Développeur Fullstack & IA | Alsace, France',
@@ -100,12 +120,30 @@ export const copy = {
       heading: 'Contact',
       subheading: "Let's talk about your project.",
       text: 'Available to discuss a web project, an MVP, or a technical foundation to structure cleanly.',
+      name: 'Name (optional)',
+      email: 'Email address',
+      message: 'Your message',
+      submit: 'Send message',
+      sending: 'Sending…',
+      success: 'Your enquiry has been submitted.',
+      error: 'Sending failed. Please try again or email me directly.',
+      captcha: 'Complete the anti-spam check before sending.',
+      privacy:
+        'Your entries and technical data are sent to Web3Forms to reach me by email. The service retains submissions for one year, then automatically deletes them. Enquiries that do not lead to a project are deleted from my mailbox after 30 days. The anti-spam check uses hCaptcha after you allow it.',
+      privacyLink: 'Privacy policy',
+      captchaLoad: 'I allow hCaptcha to load',
+      captchaWithdraw: 'Withdraw permission and reload (clears your draft)',
+      captchaChoice:
+        'hCaptcha (Intuition Machines, United States) analyses your IP, browser and interactions to detect bots and may use cookies. Loading it is optional; you can email without allowing it. No message is sent before you click Send.',
+      captchaPrivacyLink: 'hCaptcha privacy policy',
+      emailAlternative: 'Or email me directly:',
     },
     footer: {
       brand: 'Allen Koch - Fullstack & AI Developer',
       copyright: '© 2026 Allen Koch. All rights reserved.',
       navHeading: 'Navigation',
       linksHeading: 'Links',
+      legalHeading: 'Legal',
     },
     hero: {
       title: 'Allen Koch | Fullstack & AI Developer | Alsace, France',

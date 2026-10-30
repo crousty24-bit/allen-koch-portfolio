@@ -1,7 +1,7 @@
 # Sécurité et limites d'autorité
 
-La baseline est statique ; la cible conserve une page unique et ajoute un traitement de formulaire,
-dont le service/endpoint reste à choisir. Les surfaces actuelles sont les dépendances,
+La baseline est statique ; la cible conserve une page unique et ajoute le formulaire
+Web3Forms choisi par Allen. Les surfaces actuelles sont les dépendances,
 scripts et CI, liens externes, polices/icônes tierces, préférences locales et
 éventuels outils de délégation. Ne pas importer une politique d'API ou de base
 de données qui n'existe pas dans ce projet.
@@ -28,15 +28,13 @@ Préparer les éléments reviewables avant une éventuelle demande finale. Une
 absence d'accord n'empêche que l'action dépendante, pas le travail sûr et indépendant.
 Les instructions et permissions de la session restent prioritaires.
 
-## Traitement du formulaire prévu
+## Traitement du formulaire
 
-La [décision RUN-016](contact-form-contract.md) retient le lien email seul pour
-l’instant. Les règles ci-dessous concernent une future reprise du formulaire ;
-aucun service ni endpoint à configurer dans l’itération actuelle.
-RUN-016 définit destinataire, prestataire/endpoint, champs minimaux, conservation,
-coût et données transmises. RUN-017 doit vérifier validation côté interface et
-à la frontière de traitement, erreurs accessibles, anti-abus proportionné, secrets
-hors du bundle et absence de message de succès avant acceptation réelle.
+Le [contrat RUN-017](contact-form-contract.md) décrit le formulaire Web3Forms.
+Sa clé d'accès est publique selon le fournisseur et peut figurer dans le bundle ;
+aucune clé privée ne doit y entrer. Vérifier les erreurs accessibles, l'anti-abus
+et l'absence de message de succès avant acceptation réelle par l'API. Les règles
+de validation personnalisées côté service ne sont pas établies pour cette clé.
 Les tests ne doivent pas envoyer de messages à des tiers sans autorisation.
 
 ## Vérifications

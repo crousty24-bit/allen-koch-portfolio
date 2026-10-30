@@ -1588,3 +1588,408 @@ copier de secret, donnée client ou résultat supposé.
   FR/EN, clair/sombre de l'audit précédent complète ces tests, sans garantir
   Safari/Firefox, lecteur d'écran, appareil physique ou fluidité GPU. Aucun
   commit, push, déploiement ni nouvelle branche créé dans cette correction.
+
+
+## RUN-008 — Prise en charge (30 octobre 2026)
+
+- Mandat direct d’Allen : lancer RUN-008 sur une nouvelle branche feature.
+  Départ propre sur develop ; branche créée : feature/run-008-validation-release.
+- Périmètre : checks de release, build production, mesures locales mobile/desktop,
+  matrice FR/EN et clair/sombre, reduced-motion, clavier, ancres, SEO et contact.
+  Contrats préservés : page unique, design Claude, catalogue courant, email seul,
+  préférences locales ; aucun ajout de dépendance ni nouvelle fonctionnalité.
+- Acceptation : preuves techniques, cohérence des documents/version et validation
+  visuelle/contenu d’Allen ; rester verify si cette dernière manque. Aucun mandat
+  de push, merge, déploiement ou choix implicite d’une nouvelle version.
+- Main Codex : coordination, checks et navigateur. Sous-tâche SEO/release confiée
+  à run008_seo_review, gpt-6-luna medium, lecture seule ; bénéfice attendu : audit
+  indépendant borné parallélisable. Aucun fichier partagé en écriture.
+
+### RUN-008 — Résultats techniques et relais de validation
+
+- Base inspectée : `ba6921df687f0d6c92de4bde45d703dc7d351053` ; Node 24.22.1,
+  npm 11.19.1, Chrome 156.0.8078.47 headless Linux. Ponytail full appliqué :
+  tests/adaptateur existants réutilisés, aucune dépendance installée.
+- Contrôles réussis : `npm run build`, `npm run lint`, `npm run biome:check`
+  (76 fichiers), `npm run test` (55/55), `npm run test:browser` (12/12),
+  `npm audit --audit-level=moderate` et audit production (zéro vulnérabilité).
+  Build relancé après correction sitemap. Avertissement préexistant conservé :
+  import de `responsive-430.css` vide, sans échec de build.
+- Matrice exploratoire sur preview locale du build : 320×740, 390×844,
+  667×375, 768×1024 et 1440×900, chacune FR/EN et clair/sombre (20 combinaisons).
+  Six ancres : ouverture directe et rechargement, cible visible et absence de
+  débordement horizontal ; 120 couples ancre/rechargement contrôlés. Accordéon,
+  lien d'évitement avec Tab/Entrée, fermeture menu par Échap et retour du focus,
+  contact mailto et reduced-motion au chargement vérifiés dans cette matrice.
+  Axe, installé dans le cache existant, ne remonte aucune violation sur les tags
+  wcag2a/wcag2aa/wcag21aa dans les états scannés, projets/compétences dépliés.
+  Ces profils bloquent les polices Google et utilisent les polices de repli.
+- Compléments à 390 et 1440 px : fragment `%70rojects`, inconnu et mal encodé,
+  Précédent/Suivant, bascules effectives de langue/thème et persistance après
+  reload, utilisation avec Storage.getItem/setItem refusés et retour au défaut
+  après reload : réussis. Aucun JavaScript non intercepté observé.
+- Mesures séparées avec Lighthouse 13.4.1 présent dans le cache, sans installer
+  de paquet : une passe mobile simulée et une desktop, défaut FR/clair, sur
+  `http://127.0.0.1:4173/`. Polices Google effectivement reçues (HTTP 200).
+
+  | Profil | Performance | Accessibilité | Bonnes pratiques | SEO | FCP | LCP | TBT | CLS |
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  | Mobile | 99 | 100 | 100 | 100 | 1,7 s | 1,8 s | 0 ms | 0 |
+  | Desktop | 100 | 100 | 100 | 100 | 0,5 s | 0,7 s | 0 ms | 0 |
+
+- Mesures de laboratoire locales, pas de comparaison terrain ni preuve de
+  fluidité GPU. Restent des opportunités signalées par Lighthouse : JS inutilisé
+  estimé 29 Kio et ressources bloquantes ; aucun chantier d'optimisation ouvert
+  sans symptôme démontré. Une alerte expérimentale `label-content-name-mismatch`
+  vise la marque : `AK` est aria-hidden et « Allen Koch » figure dans le nom
+  « Allen Koch - accueil ». Pas de correction applicative déduite de ce signal ;
+  lecteur d'écran et commande vocale restent à contrôler humainement.
+- Revue SEO indépendante par run008_seo_review (gpt-6-luna medium), puis revue
+  des quatre premiers fichiers modifiés : canonical, robots, sitemap une page,
+  image sociale 1200×630 existante et contact alignés. Proposition de SEO EN
+  non retenue comme défaut : RUN-011 décide une URL unique et ne promet pas
+  de version EN indexable distincte. Aucun client fictif ou formulaire ajouté.
+- Changements ciblés par le main : README aligné sur refonte intégrée, email seul,
+  retrait de X et du positionnement junior ; `lastmod` ancien retiré du sitemap
+  sans inventer une date de publication. Suivi, brief et journal actualisés.
+  Version package/lockfile maintenue à 1.3.2 ; nouvelle version non décidée.
+  Le rendu desktop et mobile n'est pas modifié par ces changements.
+- Incidents d'outillage : premier Lighthouse n'a pas trouvé Chrome, reprise
+  réussie avec `CHROME_PATH=/usr/bin/google-chrome`. Premier contrôle historique
+  expiré ; deux relances complètes ensuite réussies sans changement applicatif.
+  Ne pas assimiler ces succès à une garantie d'absence de course transitoire.
+- Preuves locales (hors dépôt) :
+  `/mnt/c/Users/allen/.codex/visualizations/2026/10/30/01a18c06-cfe3-7190-8549-11b5008be5ce/run008/`
+  contient `matrix.mjs/json`, `edge-cases.mjs/json`, `visual.mjs/json`, captures et
+  `lighthouse-mobile.json` / `lighthouse-desktop.json`. Les scripts exploratoires
+  ne remplacent pas les tests versionnés, et leur chemin est propre à cette session.
+- Statut `verify` : validation visuelle/contenu finale d'Allen encore requise.
+  En-têtes cache effectifs à contrôler sur une preview hébergée autorisée avant
+  release (Vite ne reproduit pas vercel.json). Pas de Safari/Firefox, lecteur
+  d'écran, téléphone physique, test de réception email ni vérification exhaustive
+  des destinations externes. Les liens/ancres locaux et assets sont contrôlés ;
+  réception mail et accessibilité publique du domaine non affirmées.
+- Relais : Allen valide le visuel/contenu et décide la version ; publication
+  seulement sur mandat avec cible. Aucun commit, push, merge ou déploiement.
+
+- Incident final : Lighthouse/Chrome launcher a créé des profils temporaires
+  Windows mal résolus dans le dépôt (`undefined:` et chemins WSL littéraux).
+  Biome a alors échoué sur leurs JSON/liens symboliques. Ces seuls artefacts
+  générés ont été supprimés ; aucun fichier projet écarté du contrôle.
+- Après nettoyage : Biome (76 fichiers), `git diff --check` et état Git contrôlés ;
+  seuls README, brief, sitemap, workflow et journal sont modifiés. Captures
+  complémentaires FR/clair desktop et EN/sombre mobile avec polices réseau,
+  images visibles chargées et ancres stabilisées à 80 px ; exemples Home,
+  Projects, About et Contact relus. Le premier script de captures prenait
+  parfois la transition en cours : attente de position finale ajoutée, puis
+  relance réussie. Pas de changement applicatif requis.
+## RUN-017 — Web3Forms, intégration locale (30 octobre 2026)
+
+- Mandat direct d'Allen : reprendre le formulaire, choisir Web3Forms et utiliser
+  sa première clé publique pour les essais en développement. RUN-016 reste
+  clôturé sur sa décision historique ; ce nouveau mandat la remplace pour le
+  formulaire. RUN-008 demeure en `verify` pour validation visuelle/contenu humaine :
+  chevauchement explicite dû à la nouvelle instruction d'Allen, sans clôture
+  artificielle du RUN-008.
+- Périmètre : un formulaire contact/devis à trois champs dans Contact, le lien
+  email conservé, FR/EN, clair/sombre, mobile, traitement Web3Forms sans backend
+  ni dépendance. Clé publique dans `.env.local` ignoré par Git, variable d'exemple
+  et clé fictive pour le build CI ; aucun compte ou abonnement créé. Les
+  modifications locales préexistantes de RUN-008 sont conservées.
+- Shadcn MCP consulté : aucun registre configuré dans le projet. L'ajout d'une
+  première intégration shadcn demanderait de cadrer CSS natif et dépendances ;
+  les éléments HTML natifs ont été stylés dans les feuilles existantes pour ce RUN.
+- Implémentation : vérification `response.ok` et `success: true`, blocage des
+  soumissions simultanées, attente limitée à 15 secondes, saisie conservée en
+  échec et effacée en succès, alternative email et notice Web3Forms. Les règles
+  de validation personnalisées côté service ne sont pas démontrées ; le
+  fournisseur annonce son filtrage anti-spam côté serveur.
+- Contrôles : build, lint, 55 tests Vitest et 13 cas navigateur Chrome réussis ;
+  le nouveau test navigateur vérifie rejet, absence de double envoi, conservation
+  de saisie, acceptation et effacement. Biome a signalé du formatage et un ordre
+  de spécificité CSS, corrigés avant contrôle final ; Biome et `git diff --check`
+  réussis, `npm audit --audit-level=moderate` : 0 vulnérabilité. Captures
+  locales du formulaire à 390 et 1440 px inspectées. Pas de revue design Claude
+  ou de revue indépendante : implémentation et relecture par Codex main.
+- Envoi de contrôle vers l'adresse déjà autorisée tenté une fois en Node et
+  une fois dans Chrome local. L'appel Node a reçu un challenge Cloudflare HTML
+  au lieu d'un JSON ; dans Chrome, le formulaire a affiché l'échec d'envoi,
+  sans réponse API observée. Aucune acceptation Web3Forms ni livraison email
+  n'est vérifiée. Le diagnostic exact du filtrage réseau reste inconnu.
+- État `verify` : avant publication, confirmer depuis le navigateur/réseau
+  d'Allen la réponse réelle et la réception en messagerie, le destinataire lié
+  à la clé, la durée de conservation dans le compte Web3Forms et la validation
+  visuelle. Configurer ensuite la variable publique de déploiement. Aucun push,
+  merge ou déploiement effectué.
+
+### RUN-017 — Confirmation d'Allen (30 octobre 2026)
+
+- Allen confirme avoir effectué un test réel d'envoi et de réception du formulaire.
+  La réception est établie par son témoignage ; Codex n'a pas lu la messagerie.
+  L'échec Cloudflare dans l'environnement Codex reste un constat distinct.
+- Restent à vérifier avant publication : réglage de conservation Web3Forms,
+  anti-spam du compte, configuration de la clé sur l'hébergeur et essai du site
+  déployé. RUN-017 reste en `verify` pour ces points.
+
+### RUN-017 — Vérification conservation, spam et injection (30 octobre 2026)
+
+- Sources officielles revérifiées : Web3Forms annonce 30 jours d'historique
+  visible en Free, une conservation réglable par formulaire de 7 jours à 3 ans,
+  et un filtre anti-spam serveur sur toutes les soumissions. hCaptcha Free est
+  disponible mais requiert une activation dans le compte et du code sur la page.
+- Aucun accès au tableau de bord du formulaire dans cette session : durée
+  réellement configurée et éventuelle activation hCaptcha inconnues. Aucun
+  changement distant ni envoi de charge hostile à la boîte d'Allen.
+- Audit du code : seuls nom, email, message et clé publique sont transmis ; les
+  messages affichés proviennent des traductions locales, jamais de la réponse
+  Web3Forms. Nouveau test Chrome avec chaîne HTML hostile dans le message et
+  dans la réponse simulée : aucune exécution ni insertion DOM ; la chaîne est
+  transmise telle quelle au fournisseur. Le rendu de l'email par Web3Forms n'a
+  pas été inspecté.
+- Vérifications : build, lint, Biome, 55 tests Vitest et 14 tests navigateur
+  réussis ; audit npm : 0 vulnérabilité, `git diff --check` réussi. RUN-017
+  reste `verify` pour les paramètres réels du compte et la validation sur le
+  déploiement.
+## RUN-008 — Correctif de crop de l'index Projets (30 octobre 2026)
+
+- Mandat d'Allen : diagnostiquer la vidéo/capture et corriger l'index tronqué
+  pendant la réduction de la fenêtre, avec un garde-fou responsive. Lot local
+  borné dans RUN-008 ; les validations humaines de RUN-008/017 restent ouvertes.
+- Vidéo et capture lues depuis leurs chemins Windows montés sous `/mnt/c`.
+  Cause : taille de chiffres fixe, colonne rétrécissante, fenêtre flex comprimée
+  et `overflow: hidden` nécessaire à l'animation. Reproduction automatisée avant
+  correction à 761×300 : texte de 72,125 px dans une fenêtre de 57,141 px,
+  sans débordement horizontal global. L'ancien test ne détectait pas ce crop.
+- Correction limitée à `projects.css` : conteneur de taille inline sur l'index,
+  chiffres plafonnés selon cette largeur via cqi, fenêtre non compressible et
+  total autorisé à passer dessous. Taille maximale desktop de 192 px préservée,
+  taille adaptée aux colonnes plus étroites ; index individuels mobiles conservés.
+  Aucun composant, état React, contenu, dépendance ou configuration ajouté.
+- Garde-fou dans la suite Chrome existante : dix tailles successives de 1440 à
+  320 px puis retour, hauteurs de 300 à 900 px ; texte entièrement contenu dans
+  la fenêtre, absence de chevauchement et de débordement global. Attente de deux
+  frames après resize pour laisser les effets existants recalculer la page ;
+  la première passe sans cette attente observait un débordement transitoire mobile.
+- Vérifications : build, lint, Biome, 55 tests Vitest et 14 tests navigateur
+  réussis. Contrôle complémentaire avec Schibsted Grotesk réellement chargée à
+  1440, 1135, 1041, 761 et 390 px ; captures 1041 et 761 px relues dans
+  `/tmp/portfolio-crop/`. Avertissement Vite existant : responsive-430.css vide.
+- Codex main implémente et relit ; pas de revue indépendante ni délégation utile
+  pour ce lot CSS local. Des modifications concurrentes dans App, animations,
+  layout, stack et tokens sont apparues pendant la session et sont préservées,
+  hors attribution de ce correctif. Pas de commit, push ou publication.
+- Limites : Chrome local, pas de Safari/Firefox ni appareil physique. Le test
+  cible le crop de l'index et le débordement global ; il ne prouve pas l'absence
+  de tout crop interne sur chaque élément du site. Aucun masquage global retiré.
+
+## RUN-008 — Vérification du fondu des bandes sombres (30 octobre 2026)
+
+- Mandat d'Allen : supprimer le fondu au blanc entre Services, Projets et Stack
+  en thème clair, en reprenant le comportement sombre. Contrats préservés :
+  animation existante, fonds des autres sections, responsive et reduced-motion.
+- Le correctif était déjà présent au début de cette session dans `edda284`,
+  postérieur à la vidéo fournie : fond du parent `.section-stack` découpé selon
+  les positions des sections mesurées par App, avec les tokens `--band` et
+  `--band-raised`. Aucun changement applicatif supplémentaire nécessaire.
+- Vérification Chrome locale à 390 et 1440 px, clair et sombre : couleurs des
+  trois sections et du fond parent contrôlées, opacité à mi-fondu contrôlée
+  (12 cas) ; captures Services mobile et Projets desktop relues. Script temporaire
+  hors dépôt ; sa première assertion supposait un arrêt de gradient distinct
+  pour Projets, corrigée pour tenir compte de la bande commune Services/Projets.
+- Build, lint, Biome et 14 tests navigateur réussis. Avertissement Vite existant :
+  responsive-430.css vide. Codex main réalise ces contrôles, sans délégation ni
+  revue indépendante ; pas de Safari/Firefox ou appareil physique vérifié.
+  Validations humaines RUN-008/017 toujours ouvertes ; aucune publication.
+
+## RUN-008 — Mise à jour des cartes Projets (30 octobre 2026)
+
+- Mandat d'Allen : SnipStack et Sokwak AI affichent « MVP (contributeur) » et « Projet collaboratif. » ; ordre compact 04 Sokwak AI, 05 Portfolio AK, 06 Questonaut, 07 Mission Control, 08 Kane ; sept images fournies remplacent les visuels de Diff Impact Analyzer, Code Quality Guardian et de ces cinq cartes.
+- Données FR/EN, textes alternatifs et test d'ordre/statut mis à jour dans le tableau des projets. Nouveaux chemins PNG/WebP pour éviter les anciens caches ; anciennes URL publiques conservées. Aucun composant, style, dépendance ni autre projet modifié.
+- Contrôles finaux : build, lint, Biome, 55 tests Vitest, 14 tests Chrome et `git diff --check` réussis. Contrôle Chrome ciblé à 390 et 1440 px : 10 images décodées, ordre 04–08 conforme, captures relues. Un premier test de présence des assets avait échoué après une suppression de WebP trop large ; fichiers régénérés puis test réussi. Avertissement Vite existant sur `responsive-430.css` vide.
+- Codex main a réalisé l'intégration et la vérification ; pas de revue indépendante ni délégation utile pour ce lot de données/assets. Aucun commit, push ou déploiement. RUN-008 reste en `verify` pour la validation humaine et les critères de release déjà consignés.
+
+## RUN-017 — hCaptcha et conservation confirmée (30 octobre 2026)
+
+- Allen confirme la configuration Web3Forms : domaine `https://allenkoch.dev/`,
+  hCaptcha activé, Advanced Spam Filter activé, protection Strict et conservation
+  des soumissions réglée sur un an. La politique de 30 jours dans sa messagerie
+  pour les demandes sans suite reste distincte. Paramètres rapportés par Allen,
+  sans accès de Codex au tableau de bord.
+- Frontend : composant React hCaptcha officiel `@hcaptcha/react-hcaptcha`
+  version 2.2.0, clé de site gratuite publiée par Web3Forms, jeton obligatoire
+  dans `h-captcha-response`, réinitialisation après chaque envoi. Widget compact,
+  langue FR/EN et thème clair/sombre suivis. La notice indique Web3Forms, hCaptcha
+  et la conservation d'un an ; alternative email conservée. Une première passe
+  navigateur a révélé une exception si l'envoi était demandé avant chargement du
+  widget ; contrôle `isReady()` ajouté puis vérifié.
+- Tests : build, lint, Biome, 55 Vitest, 14 Chrome et audit npm sans vulnérabilité.
+  Le test Chrome simule l'API du widget et celle de Web3Forms : aucun appel sans
+  jeton, jeton transmis, succès/rejet, réinitialisation et absence de double
+  envoi. L'intégration du widget réel a été inspectée en navigateur local ; la
+  vérification distante du jeton et la réception après activation hCaptcha
+  restaient alors à confirmer par Allen. Aucun envoi réel réalisé par Codex.
+- Codex main a implémenté et relu ce lot, sans revue indépendante ni délégation.
+  Modifications d'autres tâches présentes au début du tour préservées. Aucun
+  commit, push ou déploiement.
+
+### RUN-017 — Test réel après hCaptcha (30 octobre 2026)
+
+- Allen confirme avoir envoyé un nouveau message avec hCaptcha activé : le
+  formulaire a affiché le succès et l'email est arrivé. Cette vérification
+  humaine complète le test automatisé à API simulée ; Codex n'a pas lu la
+  messagerie. L'essai sur le site déployé reste distinct et non effectué ici.
+
+## RUN-008 — Mentions, confidentialité et traitement Web3Forms/hCaptcha (30 octobre 2026)
+
+- Mandat direct d’Allen : implémenter les must fix 1, 2 et 3 de l’audit juridique,
+  en tenant compte du formulaire Web3Forms et de hCaptcha désormais intégrés.
+  Branche existante `feature/run-008-validation-release`, départ propre `daa698d`.
+  Contrats préservés : design courant, FR/EN, thèmes, page unique sans routeur,
+  saisie conservée après échec d’envoi et email alternatif ; aucun nouveau paquet.
+- Main Codex : notices publiques et raccordement, choix hCaptcha et vérification.
+  Sous-agent `legal_release_contract`, gpt-6-luna medium : propriété exclusive
+  initiale de `docs/legal-release-checklist.md`, puis relecture indépendante des
+  notices et du formulaire. Bénéfice attendu : préparer le dossier contractuel
+  borné pendant l’intégration. Retour relu par le main ; pas d’avis juridique
+  certifié ni d’accès aux tableaux de bord revendiqué.
+- Deux contenus publics FR/EN ajoutés au footer : `#legal-notice` et `#privacy`,
+  également liés depuis le formulaire. Paragraphes et ancres HTML simples,
+  styles natifs et boutons existants réutilisés ; pas de nouveau composant UI
+  de base, aucune migration shadcn/Tailwind ni choix visuel général.
+- La politique décrit responsable/finalités/bases, champs requis et facultatifs,
+  données techniques/antispam, destinataires, durées distinctes, hCaptcha,
+  préférences locales, Google Fonts, transferts, droits/contact et réclamation
+  CNIL. Sources prestataires consultées au 30 octobre. Le contenu reflète les
+  traitements connus, sans attester les contrats non vérifiés.
+- Le widget hCaptcha ne se monte qu’après autorisation explicite, limitée à la
+  page et non persistée ; le refus conserve l’email. Le bouton de retrait
+  annonce le rechargement et l’effacement de la saisie avant de l’exécuter.
+  Ce rechargement arrête le widget sans prétendre supprimer les cookies déjà
+  déposés. Vérification de l’absence de requête/iframe hCaptcha avant accord.
+- Allen confirme Vercel comme hébergeur. Adresse vérifiée dans les sources
+  officielles : 440 N Barranca Avenue #4133, Covina, CA 91723, United States.
+  Aucun téléphone Vercel confirmé dans ces sources ; ne pas recopier un numéro
+  trouvé sur un autre portfolio. Coordonnées d’éditeur : Allen fournira une
+  adresse et un téléphone publiables ; champs correspondants laissés vides,
+  sans rechercher ni publier de données privées. Les mentions restent donc
+  incomplètes pour une publication professionnelle.
+- Allen confirme avoir lu et téléchargé le DPA Web3Forms depuis le dashboard.
+  PDF local trouvé et lu : `/mnt/c/Users/allen/Downloads/Web3Forms-DPA.pdf`,
+  version 1.0, « Effective upon acceptance ». Extraction via pdfjs-dist du
+  runtime fourni par l’app ; aucun fichier de contrat copié dans le dépôt.
+  `pdftotext` et PyMuPDF étaient absents ; repli sur le runtime Node fourni.
+- Découverte : section 8, point 17 du PDF = TTL physique de trois ans et
+  visibilité dashboard selon le plan, contrairement à l’interprétation du réglage
+  d’un an. La notice courte et la politique ne promettent plus l’effacement
+  physique à un an. Question fournisseur et comparaison avec politique en ligne
+  dans `docs/legal-release-checklist.md`. La section 10 du DPA incorpore les CCT
+  2021/914 par référence ; module/annexes et garanties réellement applicables,
+  notamment hCaptcha sous clé partagée, restent à vérifier. Le téléchargement
+  n’est pas présenté comme une preuve de toutes les acceptations/garanties.
+- Must fix 3 reste ouvert sur cette clarification et les garanties de transfert ;
+  les documents et le code ne peuvent remplacer une confirmation contractuelle.
+  Aucune requête au fournisseur, acceptation de contrat ni modification distante.
+- Vérifications finales : build, lint, Biome (78 fichiers), 57/57 tests Vitest,
+  16/16 tests Chrome, audit npm zéro vulnérabilité et `git diff --check` réussis.
+  Avertissement Vite préexistant : responsive-430.css vide. Premier Biome refusé
+  pour ordre d’imports Footer, corrigé ; premiers tests d’ancres légales échoués
+  car le scénario changeait localStorage puis faisait une navigation de fragment
+  sans recharger React. Test corrigé par vrai reload après réglage, suite réussie.
+- Les tests versionnés couvrent les liens/ancres et rendu juridique FR/EN,
+  hCaptcha absent avant autorisation, jeton requis, succès/rejet et double envoi,
+  retrait avec reload et choix non persisté. API de soumission simulée : aucun
+  email envoyé par Codex. L’API/widget hCaptcha réel est utilisé pour le rendu,
+  sa réponse est substituée pour la soumission de test.
+- Contrôle exploratoire Chrome : 320/1440 px × FR/EN × clair/sombre (8 cas),
+  ancres stabilisées et pas de débordement ; Axe sur les notices juridiques ne
+  relève pas de violation WCAG2A/AA et WCAG2.1A/AA. Captures 320 FR/clair et
+  1440 EN/sombre relues. Preuves hors dépôt dans le dossier de session RUN-008 :
+  `legal-ui.mjs`, `legal-ui.json`, `legal-*.png`. Pas de lecteur d’écran ni
+  certification RGAA/conformité juridique ; contrats et données manquants ouverts.
+- Relecture finale indépendante Luna : pas d’autre défaut concret ; remarque de
+  checklist sur la durée physique intégrée. La relecture ne valide pas les
+  contrats. Des modifications concurrentes dans `src/data/projects/projects.ts`
+  et de nouveaux assets Diff Impact Analyzer v3 sont apparus pendant le travail ;
+  ils sont préservés, hors attribution de ce lot juridique.
+- RUN-008 reste `verify`. Allen a choisi de fournir les coordonnées publiables,
+  sans encore donner adresse/téléphone. Aucun commit, push ni déploiement.
+
+## 2026-10-30 — Pages légales dédiées (RUN-008, Claude)
+
+- Mandat d’Allen : sortir mentions légales et confidentialité du footer vers deux
+  pages dédiées non référencées, sans modifier le contenu rédigé par Codex.
+- `/mentions-legales` et `/confidentialite` sont rendues par `App` selon le chemin ;
+  `legal.ts` ne gagne que `legalPaths`. Les textes sont inchangés ; les titres de
+  section passent de `h2` à `h1`. Navbar et footer renvoient vers `/#section`.
+- Non-référencement : `X-Robots-Tag: noindex` (vercel.json), meta robots, retrait
+  du canonical à l’exécution, absence du sitemap, pas de blocage robots.txt.
+- Le lien du formulaire ouvre la politique dans un nouvel onglet pour conserver la
+  saisie et le consentement hCaptcha limité à la page ouverte.
+- Vérifications : build, lint, Biome, 59/59 Vitest, 16/16 Chrome ; captures relues
+  (1440 FR clair, 1440 EN sombre, 320 FR clair). En-tête et rewrites Vercel contrôlés
+  par test de contrat seulement : à vérifier sur un déploiement. Aucun commit ni push.
+
+
+## RUN-008 — Décisions de release confirmées par Allen (30 octobre 2026)
+
+- Commit Claude vérifié : `9cea909`, pages `/mentions-legales` et
+  `/confidentialite` avec liens footer. Allen valide cet agencement ; aucun
+  changement applicatif dans cette mise à jour. Dépôt propre au départ.
+- Adresse et téléphone de l’éditeur différés jusqu’à création officielle de
+  l’entreprise ; Allen demande explicitement que ce report ne bloque pas la
+  release. Décision consignée sans déclaration de conformité juridique et sans
+  effacer la réserve de l’audit. Aucun renseignement personnel ajouté.
+- Coordonnées Vercel validées par Allen : point de suivi clos. Pas de nouvelle
+  vérification indépendante revendiquée. Checklist, contrat contact et workflow
+  alignés ; les questions Web3Forms/hCaptcha de durée et transferts restent ouvertes.
+- Vérification documentaire : `git diff --check`. Pas de relance des tests
+  applicatifs pour cette seule mise à jour de suivi ; aucun commit/push/déploiement.
+
+
+## RUN-008 — Clarification support Web3Forms (30 octobre 2026)
+
+- Allen transmet la réponse du support : suppression automatique au terme de
+  la durée appliquée au formulaire, plafond général trois ans, visibilité
+  dashboard distincte. Un an configuré reste une confirmation d’Allen, sans
+  inspection du compte. Notices FR/EN et documents contact alignés sur un an
+  puis suppression automatique ; journaux/sauvegardes non extrapolés.
+- hCaptcha sous clé partagée : question transmise à l’équipe du fournisseur,
+  couverture DPA/accord distinct non confirmés. Aucun autre document à demander
+  à Allen ni nouveau compte à créer en attendant cette réponse.
+- Correction de contenu ciblée par Codex, sans délégation utile ni test ajouté
+  pour du texte statique. Aucun envoi au support ni modification distante.
+
+## RUN-008 — Auto-hébergement des polices (30 octobre 2026)
+
+- Mandat explicite d’Allen : traiter le point 4 de l’audit juridique, supprimer
+  les connexions Google Fonts en hébergeant les polices et leurs licences.
+  Départ propre sur `feature/run-008-validation-release` ; aucun paquet ajouté.
+- Téléchargement des WOFF2 distribués par Google Fonts CSS2 : Schibsted Grotesk
+  variable 400–700, normal/italique, et IBM Plex Mono normal 400/500. Quatorze
+  fichiers/plages Unicode, binaires non modifiés et signature WOFF2 vérifiée.
+  Sources exactes et SHA-256 dans `public/fonts/README.md`, licences SIL OFL 1.1
+  issues du dépôt officiel google/fonts distribuées dans le même dossier.
+- Feuille locale commune `/fonts/fonts.css` liée par index.html et le modèle
+  public og-image-refonte.html. Préconnexions et CSS Google distants retirés.
+  Les familles/variantes/plages Unicode et `font-display: swap` sont conservés.
+  IBM Plex Mono reste sélectionnée par desktop-fonts.css seulement au-delà de
+  760 px : déclarer une face ne télécharge pas un fichier inutilisé sur mobile.
+  Aucun changement d’apparence attendu sur desktop ni mobile.
+- Politique de confidentialité FR/EN alignée : polices servies par le site,
+  retrait de Google Fonts de la liste des transferts et liens fournisseur.
+  Gmail reste correctement mentionné ; aucun changement hCaptcha/Web3Forms.
+- Main Codex réalise et relit ce lot lié HTML/CSS/ressources/notice ; pas de
+  délégation utile pour ce remplacement borné ni revue indépendante revendiquée.
+- Build/lint/Biome, 59 Vitest et contrôles navigateur effectués. Comparaison
+  avant/après Chrome local, 390/1440 px × FR/EN × clair/sombre (8 combinaisons),
+  mouvement réduit pour stabiliser les captures : géométrie et captures PNG
+  strictement identiques, polices réellement chargées, aucun débordement.
+  Sur le build final : aucune requête fonts.googleapis.com/fonts.gstatic.com,
+  et IBM Plex Mono non chargée sur mobile, chargée desktop.
+- Preuves exploratoires hors dépôt : `/tmp/portfolio-font-audit/` (script,
+  JSON avant/après et captures). Les tests existants sont réutilisés ; pas de
+  nouveau test unitaire pour des déclarations CSS statiques. Avertissement Vite
+  préexistant conservé : responsive-430.css vide.
+- Aucun commit, push ni déploiement. RUN-008 reste verify pour les validations
+  restantes, dont la réponse contractuelle hCaptcha. Pas de Safari/Firefox,
+  appareil réel ni comportement du cache de l’hébergement vérifiés dans ce lot.

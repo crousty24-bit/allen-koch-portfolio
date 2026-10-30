@@ -38,12 +38,12 @@ export const projects: Project[] = [
       en: 'Local tool that analyzes Git changes and produces a deterministic, explainable assessment of their scope and risk.',
     },
     imageAlt: {
-      fr: "Landing page sombre de Diff Impact Analyzer avec son interface d'analyse de la portée et du score d'impact des changements Git.",
-      en: 'Dark Diff Impact Analyzer landing page showing its Git change scope and impact score interface.',
+      fr: 'Rapport de Diff Impact Analyzer montrant les fichiers modifiés, le score de risque et les signaux expliqués.',
+      en: 'Diff Impact Analyzer report showing changed files, risk score and explained signals.',
     },
-    imageSrc: '/projects/diff-impact-analyzer.png',
+    imageSrc: '/projects/diff-impact-analyzer-v3.png',
     imageWebpSrcSet:
-      '/projects/generated/diff-impact-analyzer-384.webp 384w, /projects/generated/diff-impact-analyzer-512.webp 512w, /projects/generated/diff-impact-analyzer-960.webp 960w, /projects/generated/diff-impact-analyzer-1280.webp 1280w',
+      '/projects/generated/diff-impact-analyzer-v3-384.webp 384w, /projects/generated/diff-impact-analyzer-v3-512.webp 512w, /projects/generated/diff-impact-analyzer-v3-960.webp 960w, /projects/generated/diff-impact-analyzer-v3-1280.webp 1280w',
     repositoryHref: 'https://github.com/crousty24-bit/diff-impact-analyzer',
     stack: ['Node.js', 'TypeScript', 'React', 'Express'],
     status: { fr: 'MVP', en: 'MVP' },
@@ -53,8 +53,8 @@ export const projects: Project[] = [
     category: 'personal',
     title: 'SnipStack',
     description: {
-      fr: 'Bibliothèque de snippets avec une source frontend et serveur unique, disponible comme application web React et Rails ou comme application desktop Tauri.',
-      en: 'Snippet library with one frontend and server-side source of truth, available as a React and Rails web app or a Tauri desktop app.',
+      fr: 'Projet collaboratif. Bibliothèque de snippets avec une source frontend et serveur unique, disponible comme application web React et Rails ou comme application desktop Tauri.',
+      en: 'Collaborative project. Snippet library with one frontend and server-side source of truth, available as a React and Rails web app or a Tauri desktop app.',
     },
     imageAlt: {
       fr: 'Interface sombre de SnipStack avec formulaire de création, recherche et bibliothèque de snippets de code.',
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       '/projects/generated/snipstack-384.webp 384w, /projects/generated/snipstack-512.webp 512w, /projects/generated/snipstack-960.webp 960w, /projects/generated/snipstack-1280.webp 1280w',
     repositoryHref: 'https://github.com/Naethr/SnipStack/tree/develop',
     stack: ['React', 'Rails', 'PostgreSQL', 'Tauri'],
-    status: { fr: 'MVP', en: 'MVP' },
+    status: { fr: 'MVP (contributeur)', en: 'MVP (contributor)' },
   },
   {
     category: 'personal',
@@ -75,17 +75,52 @@ export const projects: Project[] = [
       en: 'Agent Skill that guides coding agents to inspect first, limit scope, preserve behavior and report verification honestly. Change less, but better.',
     },
     imageAlt: {
-      fr: "Page d'accueil sombre de Code Quality Guardian avec le message « Make coding agents change less, but better ».",
-      en: 'Dark Code Quality Guardian homepage displaying the message “Make coding agents change less, but better”.',
+      fr: "Page d'accueil sombre de Code Quality Guardian avec le titre « Govern how coding agents change code » et une chouette bleue.",
+      en: 'Dark Code Quality Guardian homepage with the headline “Govern how coding agents change code” and a blue owl.',
     },
-    imageSrc: '/projects/code-quality-guardian.png',
+    imageSrc: '/projects/code-quality-guardian-v2.png',
     imageWebpSrcSet:
-      '/projects/generated/code-quality-guardian-384.webp 384w, /projects/generated/code-quality-guardian-768.webp 768w, /projects/generated/code-quality-guardian-960.webp 960w, /projects/generated/code-quality-guardian-1280.webp 1280w',
+      '/projects/generated/code-quality-guardian-v2-384.webp 384w, /projects/generated/code-quality-guardian-v2-768.webp 768w, /projects/generated/code-quality-guardian-v2-960.webp 960w, /projects/generated/code-quality-guardian-v2-1280.webp 1280w',
     repositoryHref:
       'https://github.com/crousty24-bit/code-quality-guardian-skill',
     stack: ['Agent Skill', 'AI Workflow', 'Code Quality'],
     status: { fr: 'MVP (deprecated)', en: 'MVP (deprecated)' },
     href: 'https://code-quality-guardian.vercel.app/',
+  },
+  {
+    category: 'personal',
+    title: 'Sokwak AI',
+    description: {
+      fr: 'Projet collaboratif. “AI-assisted learning without solution dumping”. Une IA qui n’écrit pas la solution à ta place, mais t’aide à apprendre à la trouver.',
+      en: 'Collaborative project. "AI-assisted learning without solution dumping". An AI that does not write the solution for you, but helps you learn how to find it.',
+    },
+    imageAlt: {
+      fr: 'Logo Sokwak avec un canard jaune barbu sur fond noir.',
+      en: 'Sokwak logo featuring a bearded yellow duck on a black background.',
+    },
+    imageSrc: '/projects/sokwak-ai-v2.png',
+    imageWebpSrcSet:
+      '/projects/generated/sokwak-ai-v2-384.webp 384w, /projects/generated/sokwak-ai-v2-512.webp 512w',
+    stack: ['React', 'TypeScript', 'Prisma', 'AI Workflow'],
+    status: { fr: 'MVP (contributeur)', en: 'MVP (contributor)' },
+  },
+  {
+    category: 'personal',
+    title: 'Portfolio AK',
+    description: {
+      fr: 'Le site portfolio actuel, conçu pour présenter clairement le profil, les projets et la progression technique avec une base React maintenable.',
+      en: 'This portfolio site, designed to clearly present the profile, projects and technical progression with a maintainable React base.',
+    },
+    imageAlt: {
+      fr: "Capture en thème clair de la page d'accueil du portfolio Allen Koch, avec le grand titre « ALLEN KOCH ».",
+      en: 'Light theme screenshot of the Allen Koch portfolio homepage with the large “ALLEN KOCH” headline.',
+    },
+    imageSrc: '/projects/portfolio-ak-v2.png',
+    imageWebpSrcSet:
+      '/projects/generated/portfolio-ak-v2-384.webp 384w, /projects/generated/portfolio-ak-v2-512.webp 512w',
+    repositoryHref: 'https://github.com/crousty24-bit/allen-koch-portfolio',
+    stack: ['React', 'Vite', 'TypeScript'],
+    status: { fr: 'En cours', en: 'In progress' },
   },
   {
     category: 'personal',
@@ -95,12 +130,12 @@ export const projects: Project[] = [
       en: 'Gamified habit tracker built with Ruby on Rails. The goal is to make progress readable, motivating and easy to maintain.',
     },
     imageAlt: {
-      fr: 'Interface dark mode de productivité avec cartes de suivi, barres de progression bleues et ambiance developer tool.',
-      en: 'Dark productivity interface with tracking cards, blue progress bars and a developer-tool atmosphere.',
+      fr: 'Page de présentation de Questonaut avec le titre « Become the Commander of Your Habits » et un tableau de progression.',
+      en: 'Questonaut landing page with the headline “Become the Commander of Your Habits” and a progress dashboard.',
     },
-    imageSrc: '/projects/questonaut.png',
+    imageSrc: '/projects/questonaut-v2.png',
     imageWebpSrcSet:
-      '/projects/generated/questonaut-384.webp 384w, /projects/generated/questonaut-512.webp 512w',
+      '/projects/generated/questonaut-v2-384.webp 384w, /projects/generated/questonaut-v2-512.webp 512w',
     repositoryHref:
       'https://github.com/crousty24-bit/questonaut_habit_tracker_app',
     stack: ['Rails', 'Hotwire', 'Product UX'],
@@ -114,30 +149,15 @@ export const projects: Project[] = [
       en: 'Linux desktop application to centralize development workflows, monitor the system and keep technical context in one place.',
     },
     imageAlt: {
-      fr: 'Interface terminal futuriste avec lignes de code, syntaxe cyan et violet, et ambiance de poste de travail technique.',
-      en: 'Futuristic terminal interface with code lines, cyan and violet syntax, and a technical workstation mood.',
+      fr: 'Tableau de bord Mission Control montrant les projets en cours, une liste de tâches et la répartition des statuts.',
+      en: 'Mission Control dashboard showing projects in progress, a task list and status distribution.',
     },
-    imageSrc: '/projects/mission-control.png',
+    imageSrc: '/projects/mission-control-v2.png',
     imageWebpSrcSet:
-      '/projects/generated/mission-control-384.webp 384w, /projects/generated/mission-control-512.webp 512w',
+      '/projects/generated/mission-control-v2-384.webp 384w, /projects/generated/mission-control-v2-512.webp 512w',
     repositoryHref: 'https://github.com/crousty24-bit/mission-control',
     stack: ['Tauri', 'TypeScript', 'Linux'],
     status: { fr: 'Prototype', en: 'Prototype' },
-  },
-  {
-    category: 'personal',
-    title: 'Sokwak AI',
-    description: {
-      fr: '“AI-assisted learning without solution dumping”. Une IA qui n’écrit pas la solution à ta place, mais t’aide à apprendre à la trouver.',
-      en: '"AI-assisted learning without solution dumping". An AI that does not write the solution for you, but helps you learn how to find it.',
-    },
-    imageAlt: {
-      fr: 'Interface sombre de mentor IA avec code, bulles de guidance et signaux de workflow.',
-      en: 'Dark AI mentor interface with code, guidance bubbles and workflow signals.',
-    },
-    imageSrc: '/projects/rubber-duck-ia.svg',
-    stack: ['React', 'TypeScript', 'Prisma', 'AI Workflow'],
-    status: { fr: 'MVP', en: 'MVP' },
   },
   {
     category: 'personal',
@@ -147,32 +167,14 @@ export const projects: Project[] = [
       en: 'Local privacy-oriented AI assistant designed to automate sorting, analysis and repetitive tasks without losing technical control.',
     },
     imageAlt: {
-      fr: 'Visualisation abstraite de reseaux IA avec filaments bleus lumineux sur un fond sombre.',
-      en: 'Abstract AI network visualization with luminous blue filaments on a dark background.',
+      fr: 'Logo pixel art de Kane, profil robotique bleu et violet sur fond noir.',
+      en: 'Kane pixel art logo featuring a blue and purple robotic profile on a black background.',
     },
-    imageSrc: '/projects/kane.png',
+    imageSrc: '/projects/kane-v2.png',
     imageWebpSrcSet:
-      '/projects/generated/kane-384.webp 384w, /projects/generated/kane-512.webp 512w',
+      '/projects/generated/kane-v2-384.webp 384w, /projects/generated/kane-v2-512.webp 512w',
     stack: ['AI Workflow', 'Automation', 'Privacy'],
     status: { fr: 'Exploration', en: 'Exploration' },
-  },
-  {
-    category: 'personal',
-    title: 'Portfolio AK',
-    description: {
-      fr: 'Le site portfolio actuel, conçu pour présenter clairement le profil, les projets et la progression technique avec une base React maintenable.',
-      en: 'This portfolio site, designed to clearly present the profile, projects and technical progression with a maintainable React base.',
-    },
-    imageAlt: {
-      fr: 'Vue de bureau moderne avec clavier mécanique et écran affichant une interface portfolio dark mode.',
-      en: 'Modern desk view with a mechanical keyboard and a screen showing a dark-mode portfolio interface.',
-    },
-    imageSrc: '/projects/portfolio-ak.png',
-    imageWebpSrcSet:
-      '/projects/generated/portfolio-ak-384.webp 384w, /projects/generated/portfolio-ak-512.webp 512w',
-    repositoryHref: 'https://github.com/crousty24-bit/allen-koch-portfolio',
-    stack: ['React', 'Vite', 'TypeScript'],
-    status: { fr: 'En cours', en: 'In progress' },
   },
   {
     category: 'client',

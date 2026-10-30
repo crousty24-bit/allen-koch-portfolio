@@ -48,7 +48,7 @@ describe('projects data', () => {
     })
     expect(snipStack).toMatchObject({
       title: 'SnipStack',
-      status: { fr: 'MVP', en: 'MVP' },
+      status: { fr: 'MVP (contributeur)', en: 'MVP (contributor)' },
       repositoryHref: 'https://github.com/Naethr/SnipStack/tree/develop',
     })
     expect(snipStack.href).toBeUndefined()
@@ -57,6 +57,21 @@ describe('projects data', () => {
       'SnipStack',
       'Code Quality Guardian',
     ])
+    expect(projects.slice(3, 8).map((project) => project.title)).toEqual([
+      'Sokwak AI',
+      'Portfolio AK',
+      'Questonaut',
+      'Mission Control',
+      'Kane',
+    ])
+    expect(projects[3].status).toEqual({
+      fr: 'MVP (contributeur)',
+      en: 'MVP (contributor)',
+    })
+    for (const project of [snipStack, projects[3]]) {
+      expect(project.description.fr).toContain('Projet collaboratif.')
+      expect(project.description.en).toContain('Collaborative project.')
+    }
   })
 
   it("presents Milady's Knight as a Godot game project", () => {

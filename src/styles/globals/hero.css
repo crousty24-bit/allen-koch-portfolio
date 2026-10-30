@@ -1,4 +1,6 @@
+/* Fills the first screen: Services only shows from the first scroll. */
 .hero {
+  min-height: 100svh;
   padding-top: calc(4rem + 5rem);
   padding-bottom: 0;
 }
@@ -8,13 +10,16 @@
   font-weight: 500;
 }
 
-/* Sized to fill the container on one line, like the footer name. */
+/* Justified so the words sit flush with both edges of the container.
+   The negative margin offsets the side bearing of the final H. */
 .hero__name {
   display: block;
-  margin-left: -0.04em;
+  margin-right: -0.04em;
   font-size: min(15vw, 13.5rem);
   letter-spacing: -0.045em;
   line-height: 0.85;
+  text-align: justify;
+  text-align-last: justify;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -87,8 +92,7 @@
   align-items: center;
   gap: 1.5rem;
   margin-top: 5rem;
-  border-top: 1px solid var(--outline);
-  border-bottom: 1px solid var(--outline);
+  border-top: 1px solid var(--text);
 }
 
 .hero__stats {
@@ -99,12 +103,10 @@
 
 .hero__stat {
   padding: 1.5rem 1.5rem 1.75rem;
-  border-left: 1px solid var(--outline);
 }
 
 .hero__stat:first-child {
   padding-left: 0;
-  border-left: 0;
 }
 
 .hero__stat dt {
