@@ -2329,3 +2329,6 @@ copier de secret, donnée client ou résultat supposé.
   Correction ciblée du writer : git pull --rebase entre commit et push pour
   conserver les nouveaux commits distants. Un conflit éventuel échouera sans
   forcer le push. Nouvelle exécution distante requise avant publication.
+- Après fusion et correction CI : 64/64 tests, build, lint et Biome réussis.
+  Run 41493731701 lancé sur cee16d2. Ce compte rendu avance ensuite develop :
+  le writer devra effectivement réintégrer un commit distant pendant son rebase.
