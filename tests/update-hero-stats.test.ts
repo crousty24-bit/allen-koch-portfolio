@@ -61,19 +61,17 @@ async function runCommand(
 describe('update-hero-stats command', () => {
   it('creates the expected stats file from a valid response', async () => {
     const { root, result } = await runCommand({ token: 'test-token' })
-    const year = new Date().getUTCFullYear()
 
     expect(result.status).toBe(0)
     expect(
       await readFile(join(root, 'src/data/hero/githubStats.ts'), 'utf8'),
     ).toBe(
-      `export const githubStats = {\n  commitContributions: 42,\n  contributionYear: ${year},\n} as const\n`,
+      `export const githubStats = {\n  totalContributions: 42,\n} as const\n`,
     )
   })
 
   it('leaves an up-to-date file unchanged', async () => {
-    const year = new Date().getUTCFullYear()
-    const content = `export const githubStats = {\n  commitContributions: 42,\n  contributionYear: ${year},\n} as const\n`
+    const content = `export const githubStats = {\n  totalContributions: 42,\n} as const\n`
     const { root, result } = await runCommand({
       token: 'test-token',
       initialContent: content,
@@ -81,7 +79,7 @@ describe('update-hero-stats command', () => {
 
     expect(result.status).toBe(0)
     expect(result.stdout).toContain(
-      `already up to date: 42 commit contributions for ${year}`,
+      `already up to date: 42 contributions in the last year`,
     )
     expect(
       await readFile(join(root, 'src/data/hero/githubStats.ts'), 'utf8'),
@@ -91,12 +89,8 @@ describe('update-hero-stats command', () => {
   it.each([
     ['HTTP error', 'http-error', 'GitHub GraphQL request failed'],
     ['GraphQL error', 'graphql-error', 'GitHub GraphQL returned errors'],
-    [
-      'invalid count',
-      'invalid-count',
-      'Invalid totalCommitContributions value',
-    ],
-    ['missing user', 'missing-user', 'Invalid totalCommitContributions value'],
+    ['invalid count', 'invalid-count', 'Invalid totalContributions value'],
+    ['missing user', 'missing-user', 'Invalid totalContributions value'],
   ])('preserves the existing file on %s', async (_label, mode, message) => {
     const { root, result } = await runCommand({
       mode,

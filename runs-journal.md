@@ -2081,3 +2081,27 @@ copier de secret, donnée client ou résultat supposé.
 - Build, lint, Biome, 61/61 Vitest et 16/16 Chrome réussis. Index 04 à 08 mesurés
   au-dessus de l'image à 390, 900 et 1440 px, sans débordement.
 - Pas de capture relue, Safari/Firefox et appareil réel non testés. Aucun commit ni push.
+
+
+## RUN-025 — Contributions GitHub du Hero (2 novembre 2026)
+
+- Mandat Allen : total « contributions in the last year » du profil, deux
+  actualisations par mois et libellé « contributions GitHub ». Réalisé et relu
+  par Codex ; pas de délégation utile pour ce changement local.
+- Requête `contributionCalendar.totalContributions` sans dates : fenêtre annuelle
+  glissante par défaut de GitHub, remplaçant les commits de l’année civile.
+  Source consultée : https://docs.github.com/en/graphql/reference/users.
+- Donnée générée renommée `totalContributions`, champ annuel obsolète supprimé,
+  consommateur Hero raccordé. Valeur initiale 1492 fournie par Allen, sans
+  confirmation par une requête authentifiée. Préfixe et animation conservés.
+- Cron `17 5 1,16 * *` : 1er et 16 de chaque mois à 05 h 17 UTC ; deux fois par
+  mois, avec des intervalles dépendant de la longueur du mois. Déclenchement
+  manuel, contrôles avant commit et séparation des permissions conservés.
+- Libellés FR « contributions GitHub » et EN « GitHub contributions ». Aucun
+  changement CSS, composant de base, dépendance ou rendu structurel.
+- Vérification : 62/62 tests Vitest, build, lint, Biome (78 fichiers) réussis ;
+  diff sans erreur d’espaces. Tests CLI adaptés avec contrat de requête sur la
+  fenêtre par défaut et total calendrier distinct du total de commits.
+- Limites : pas de contrôle navigateur, d’appel authentifié à GitHub ni de
+  workflow distant exécuté. Aucun commit, push ou déploiement. RUN terminé
+  localement ; les vérifications des autres RUN restent à leurs responsables.

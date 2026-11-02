@@ -28,7 +28,7 @@ export const heroStats: HeroStat[] = [
   {
     id: 'contributions',
     prefix: '+',
-    value: githubStats.commitContributions,
+    value: githubStats.totalContributions,
   },
   {
     id: 'projects',

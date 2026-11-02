@@ -56,7 +56,7 @@ export const copy = {
       statsLabel: 'Statistiques du hero',
       statLabels: {
         profile: 'Profile',
-        contributions: 'Contributions',
+        contributions: 'contributions GitHub',
         projects: 'Projets',
       },
     },
@@ -156,7 +156,7 @@ export const copy = {
       statsLabel: 'Hero stats',
       statLabels: {
         profile: 'Profile',
-        contributions: 'Contributions',
+        contributions: 'GitHub contributions',
         projects: 'Projects',
       },
     },

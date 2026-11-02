@@ -585,3 +585,17 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
 - Préservé : contenus et ordre des projets, publication client, mobile, thèmes.
 - Acceptation : contrôles applicatifs et navigateur réussis ; validation visuelle
   d’Allen attendue. Preuves et limites au journal.
+
+
+## RUN-025 — Contributions GitHub du Hero
+
+- Mandat Allen du 2 novembre 2026 : afficher le total du profil sur l’année
+  écoulée, actualiser deux fois par mois et préciser le libellé GitHub.
+- Périmètre : requête GraphQL, donnée générée, consommateur Hero, libellés FR/EN,
+  cron et tests existants. Réalisation et relecture Codex, sans délégation utile.
+- Préservé : frontend statique, animation/accessibilité, thèmes, styles et contrôles
+  du workflow avant écriture ; aucune dépendance ni publication.
+- Acceptation : total du calendrier GitHub sur la fenêtre annuelle par défaut,
+  cron les 1er et 16 à 05 h 17 UTC, libellés explicites FR/EN et contrôles verts.
+- Statut : done localement ; preuves et limites dans le journal. Les vérifications
+  humaines/des services des RUN précédents ne sont pas reprises dans ce lot.
