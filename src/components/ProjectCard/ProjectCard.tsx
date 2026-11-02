@@ -85,12 +85,10 @@ export function ProjectCard({
       className={`project-card project-card--${variant} reveal`}
       style={{ '--index': index } as CSSProperties}
     >
-      {variant === 'feature' ? (
-        <p aria-hidden="true" className="project-card__index">
-          {position}
-          <span className="project-card__total">/ {formatIndex(total)}</span>
-        </p>
-      ) : null}
+      <p aria-hidden="true" className="project-card__index">
+        {position}
+        <span className="project-card__total">/ {formatIndex(total)}</span>
+      </p>
 
       <div className="project-card__main">
         {hasDemoLink ? (
@@ -110,7 +108,6 @@ export function ProjectCard({
         <div className="project-card__body">
           <div className="project-card__summary">
             <p className="project-card__meta">
-              {variant === 'compact' ? `${position} / ` : null}
               {project.category === 'client'
                 ? `${project.client.name} / `
                 : null}

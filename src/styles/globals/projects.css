@@ -73,6 +73,17 @@
   display: none;
 }
 
+.project-card--compact .project-card__index {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.project-card--compact .project-card__total {
+  display: inline;
+  margin: 0 0 0 0.75rem;
+}
+
 .project-card__media {
   display: block;
   aspect-ratio: 16 / 10;

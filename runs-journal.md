@@ -2072,3 +2072,12 @@ copier de secret, donnée client ou résultat supposé.
 - Build, lint, Biome, 60/60 Vitest et 16/16 Chrome réussis. Position du bouton
   identique après dépliage à 390 et 1440 px, ordre bouton/grille testé.
 - Pas de capture relue, Safari/Firefox et appareil réel non testés. Aucun commit ni push.
+
+## RUN-024 — Index des projets de la grille (2 novembre 2026)
+
+- Demande Allen : index 04/08, 05/08… au-dessus de l'image des cartes de grille,
+  sans animation. Réalisé par Claude : index rendu pour les deux variantes, retiré
+  de la méta, taille 3 rem, total sur la même ligne.
+- Build, lint, Biome, 61/61 Vitest et 16/16 Chrome réussis. Index 04 à 08 mesurés
+  au-dessus de l'image à 390, 900 et 1440 px, sans débordement.
+- Pas de capture relue, Safari/Firefox et appareil réel non testés. Aucun commit ni push.

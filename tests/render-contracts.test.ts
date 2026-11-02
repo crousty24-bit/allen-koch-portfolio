@@ -162,6 +162,27 @@ describe('page render contracts', () => {
     )
   })
 
+  it('shows the category index above compact cards, not in their meta', () => {
+    const html = renderToStaticMarkup(
+      createElement(ProjectCard, {
+        project: fixture,
+        language: 'fr',
+        index: 3,
+        total: 8,
+        variant: 'compact',
+      }),
+    )
+    expect(html).toContain(
+      '04<span class="project-card__total">/ 08</span></p>',
+    )
+    expect(html.indexOf('project-card__index')).toBeLessThan(
+      html.indexOf('project-card__media'),
+    )
+    expect(html).toContain(
+      `<p class="project-card__meta">${fixture.status.fr}</p>`,
+    )
+  })
+
   it('limits every category to three scroll cards and a toggle', () => {
     const originalLength = projects.length
     try {
