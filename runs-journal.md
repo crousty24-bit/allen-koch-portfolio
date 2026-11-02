@@ -2347,3 +2347,12 @@ copier de secret, donnée client ou résultat supposé.
 - Avertissements GitHub observés : actions v4 utilisant le runtime Node 20
   désormais forcé en Node 24, et évolution de ubuntu-latest. Jobs réussis ;
   migration d'actions non ajoutée à cette release corrective.
+
+### Blocage Quality PR — diagnostic du débordement
+
+- Quality push 41493938686 réussit sur la tête 893f42a. Quality PR 41493944310
+  échoue deux fois sur le test existant à 1100×600 (overflow horizontal).
+  Les suites locales et le contrôle ciblé passent ; cause non établie.
+- Fusion suspendue. Ajout du détail des éléments débordants dans le message
+  d'échec, sans modifier le critère ni masquer le débordement. Revue ciblée
+  complémentaire déléguée en lecture seule à review_standards.

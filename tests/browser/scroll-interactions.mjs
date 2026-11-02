@@ -801,6 +801,17 @@ test('project index: no internal crop while resizing the viewport', async (t) =>
           .querySelector('.projects-features__cards')
           .getBoundingClientRect().left,
         overflow: document.documentElement.scrollWidth > innerWidth,
+        overflowingElements:
+          document.documentElement.scrollWidth > innerWidth
+            ? [...document.querySelectorAll('body *')]
+                .filter((el) => el.getBoundingClientRect().right > innerWidth)
+                .slice(0, 20)
+                .map((el) => ({
+                  tag: el.tagName,
+                  class: el.className,
+                  right: el.getBoundingClientRect().right,
+                }))
+            : [],
       }
     })
     if (geometry.shared) {
@@ -816,7 +827,7 @@ test('project index: no internal crop while resizing the viewport', async (t) =>
     assert.equal(
       geometry.overflow,
       false,
-      `${width}×${height}: no page overflow`,
+      `${width}×${height}: no page overflow: ${JSON.stringify(geometry)}`,
     )
   }
 })
