@@ -50,6 +50,7 @@ preuves de clôture des dettes et des travaux de phase 2.
 | Document | Usage |
 | --- | --- |
 | [Audit daté](audit-2026-10-27.md) | Constats, priorités et limites des contrôles de RUN-000 |
+| [Suivi SEO](seo-follow-up.md) | Corrections après refonte, ciblage commercial différé et contrôle Search Console |
 | [Plan de refonte](refonte-plan.md) | Périmètre one-page, ancres, services, projets et formulaire |
 | [Contrôle juridique](legal-release-checklist.md) | Données de contact, contrats et points restant à valider avant publication |
 | [Contrat contact/devis](contact-form-contract.md) | RUN-017 Web3Forms : intégration locale, configuration et vérifications restantes |

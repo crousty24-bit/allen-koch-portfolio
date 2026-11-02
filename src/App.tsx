@@ -76,6 +76,9 @@ function App() {
     document.title = legalPage
       ? `${legalPage === 'legal' ? legalText.legalTitle : legalText.privacyTitle} | Allen Koch`
       : copy[language].hero.title
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', copy[language].seo.description)
     writeStoredPreference(() => window.localStorage, 'language', language)
   }, [language])
 
@@ -213,7 +216,9 @@ function App() {
     // Fragment scrolling (links and history traversal) aims at a pinned box's
     // current spot; unpin the target while the browser resolves where to scroll.
     const unpinTarget = (hash: string | undefined) => {
-      const target = sections.find((section) => hash === `#${section.id}`)
+      const target = document
+        .getElementById(hash?.slice(1) ?? '')
+        ?.closest('main > .section')
       if (!target) return
       target.classList.add('section--unpinned')
       window.requestAnimationFrame(() =>

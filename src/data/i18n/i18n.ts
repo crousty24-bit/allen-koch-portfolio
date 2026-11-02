@@ -3,6 +3,10 @@ export type Theme = 'dark' | 'light'
 
 export const copy = {
   fr: {
+    seo: {
+      description:
+        "Portfolio d'Allen Koch, développeur web en Alsace : produits web utiles, maintenables, solutions IA et workflows modernes avec React, Rails et TypeScript.",
+    },
     about: {
       alt: "Portrait professionnel d'Allen Koch",
       heading: 'About',
@@ -23,18 +27,24 @@ export const copy = {
       message: 'Votre message',
       submit: 'Envoyer le message',
       sending: 'Envoi en cours…',
-      success: 'Votre demande a été transmise.',
+      success: 'Merci, votre message a été transmis.',
+      successDetail:
+        'Je prendrai connaissance de votre demande et vous répondrai à l’adresse email indiquée.',
+      viewProjects: 'Voir mes projets',
+      sendAnother: 'Envoyer un autre message',
       error:
         "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
-      captcha: "Complétez le contrôle anti-spam avant l'envoi.",
+      captcha:
+        "Autorisez hCaptcha, puis complétez le contrôle anti-spam avant l'envoi.",
       privacy:
-        'Les informations saisies et des données techniques sont transmises à Web3Forms pour me parvenir par email. Les soumissions sont conservées un an, puis automatiquement supprimées par ce service. Les demandes sans suite sont supprimées de ma messagerie après 30 jours. Le contrôle anti-spam utilise hCaptcha après votre autorisation.',
+        'Votre message est transmis par Web3Forms. hCaptcha détecte les robots et peut utiliser des cookies après votre autorisation. Vous pouvez préférer l’email sans l’activer.',
       privacyLink: 'Politique de confidentialité',
+      captchaError:
+        'Le contrôle anti-spam a rencontré une erreur. Réessayez le contrôle ou écrivez-moi par email.',
+      captchaRetry: 'Réessayer le contrôle anti-spam',
       captchaLoad: 'J’autorise le chargement de hCaptcha',
       captchaWithdraw:
         'Retirer mon autorisation et recharger (efface la saisie)',
-      captchaChoice:
-        'hCaptcha (Intuition Machines, États-Unis) analyse votre IP, votre navigateur et vos interactions pour détecter les robots et peut utiliser des cookies. Ce chargement est facultatif ; vous pouvez écrire par email sans l’autoriser. Aucun message n’est envoyé avant votre clic sur Envoyer.',
       captchaPrivacyLink: 'Confidentialité hCaptcha',
       emailAlternative: 'Ou écrivez-moi directement :',
     },
@@ -56,7 +66,7 @@ export const copy = {
       statsLabel: 'Statistiques du hero',
       statLabels: {
         profile: 'Profile',
-        contributions: 'Contributions',
+        contributions: 'contributions GitHub',
         projects: 'Projets',
       },
     },
@@ -80,14 +90,15 @@ export const copy = {
       personalHeading: 'Projets personnels',
       clientHeading: 'Projets clients',
       gameHeading: 'Projets game dev',
+      jumpLabel: 'Aller à une autre catégorie de projets',
       missionLabel: 'Mission',
       roleLabel: 'Rôle',
       deliverablesLabel: 'Livrables',
       resultsLabel: 'Résultats',
       heading: 'Portfolio',
       text: 'Des projets concrets conçus pour répondre à des besoins réels, avec une approche produit, une structure claire et un code maintenable.',
-      showAllLabel: 'Afficher tous les projets personnels',
-      hideExtraLabel: 'Masquer les projets personnels supplémentaires',
+      showAllLabel: 'Afficher tous les projets',
+      hideExtraLabel: 'Masquer les projets supplémentaires',
       ctaText: 'Une idée de projet ?',
       ctaLink: 'Me contacter',
       viewProject: 'Voir le projet',
@@ -105,6 +116,10 @@ export const copy = {
     topButtonLabel: 'Remonter en haut de la page',
   },
   en: {
+    seo: {
+      description:
+        'Allen Koch’s portfolio, web developer based in Alsace: useful, maintainable web products, AI solutions and modern workflows with React, Rails and TypeScript.',
+    },
     about: {
       alt: 'Professional portrait of Allen Koch',
       heading: 'About',
@@ -125,16 +140,22 @@ export const copy = {
       message: 'Your message',
       submit: 'Send message',
       sending: 'Sending…',
-      success: 'Your enquiry has been submitted.',
+      success: 'Thank you, your message has been submitted.',
+      successDetail:
+        'I will review your enquiry and reply to the email address you provided.',
+      viewProjects: 'View my projects',
+      sendAnother: 'Send another message',
       error: 'Sending failed. Please try again or email me directly.',
-      captcha: 'Complete the anti-spam check before sending.',
+      captcha:
+        'Allow hCaptcha, then complete the anti-spam check before sending.',
       privacy:
-        'Your entries and technical data are sent to Web3Forms to reach me by email. The service retains submissions for one year, then automatically deletes them. Enquiries that do not lead to a project are deleted from my mailbox after 30 days. The anti-spam check uses hCaptcha after you allow it.',
+        'Your message is sent through Web3Forms. hCaptcha detects bots and may use cookies after you allow it. You can email instead without enabling it.',
       privacyLink: 'Privacy policy',
+      captchaError:
+        'The anti-spam check encountered an error. Retry the check or email me directly.',
+      captchaRetry: 'Retry the anti-spam check',
       captchaLoad: 'I allow hCaptcha to load',
       captchaWithdraw: 'Withdraw permission and reload (clears your draft)',
-      captchaChoice:
-        'hCaptcha (Intuition Machines, United States) analyses your IP, browser and interactions to detect bots and may use cookies. Loading it is optional; you can email without allowing it. No message is sent before you click Send.',
       captchaPrivacyLink: 'hCaptcha privacy policy',
       emailAlternative: 'Or email me directly:',
     },
@@ -156,7 +177,7 @@ export const copy = {
       statsLabel: 'Hero stats',
       statLabels: {
         profile: 'Profile',
-        contributions: 'Contributions',
+        contributions: 'GitHub contributions',
         projects: 'Projects',
       },
     },
@@ -180,14 +201,15 @@ export const copy = {
       personalHeading: 'Personal projects',
       clientHeading: 'Client projects',
       gameHeading: 'Game development projects',
+      jumpLabel: 'Jump to another project category',
       missionLabel: 'Mission',
       roleLabel: 'Role',
       deliverablesLabel: 'Deliverables',
       resultsLabel: 'Results',
       heading: 'Portfolio',
       text: 'Concrete projects designed to meet real needs, with a product-minded approach, clear structure and maintainable code.',
-      showAllLabel: 'Show all personal projects',
-      hideExtraLabel: 'Hide extra personal projects',
+      showAllLabel: 'Show all projects',
+      hideExtraLabel: 'Hide extra projects',
       ctaText: 'Have a project idea?',
       ctaLink: 'Get in touch',
       viewProject: 'View project',

@@ -27,6 +27,74 @@ after(async () => {
   }
 })
 
+test('SEO: project content exists before interaction and description follows language', async (t) => {
+  const page = await browser.page()
+  t.after(() => page.close())
+  await page.open(url)
+  const read = () =>
+    page.evaluate(() => ({
+      cards: document.querySelectorAll('.project-card').length,
+      extra: document.querySelectorAll('.projects-grid .project-card').length,
+      hidden: document.querySelector('.projects-grid').hidden,
+      display: getComputedStyle(document.querySelector('.projects-grid'))
+        .display,
+      lang: document.documentElement.lang,
+      title: document.title,
+      description: document.querySelector('meta[name="description"]').content,
+    }))
+  const initial = await read()
+  assert.equal(initial.cards, 10)
+  assert.equal(initial.extra, 5)
+  assert.equal(initial.hidden, true)
+  assert.equal(initial.display, 'none')
+  assert.equal(
+    await page.evaluate(() => {
+      const grid = document.querySelector('.projects-grid')
+      grid.querySelector('a').focus()
+      return grid.contains(document.activeElement)
+    }),
+    false,
+  )
+  assert.equal(initial.lang, 'fr')
+  assert.match(initial.description, /^Portfolio d'Allen Koch/)
+  for (const width of [390, 1440]) {
+    await page.viewport(width)
+    for (const expanded of [true, false]) {
+      await page.evaluate(() =>
+        document.querySelector('.projects-toggle').click(),
+      )
+      await page.waitFor(
+        (expanded) =>
+          document
+            .querySelector('.projects-toggle')
+            .getAttribute('aria-expanded') === String(expanded),
+        expanded,
+      )
+      const state = await read()
+      assert.equal(state.cards, 10)
+      assert.equal(state.hidden, !expanded)
+      assert.equal(state.display, expanded ? 'grid' : 'none')
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth,
+        ),
+        false,
+      )
+    }
+  }
+  await page.evaluate(() => document.querySelector('.language-toggle').click())
+  await page.waitFor(() => document.documentElement.lang === 'en')
+  const english = await read()
+  assert.match(english.title, /Fullstack & AI Developer/)
+  assert.match(english.description, /^Allen Koch’s portfolio/)
+  assert.notEqual(english.description, initial.description)
+  await page.open(url)
+  assert.equal((await read()).description, english.description)
+  await page.evaluate(() => document.querySelector('.language-toggle').click())
+  await page.waitFor(() => document.documentElement.lang === 'fr')
+  assert.equal((await read()).description, initial.description)
+})
+
 for (const width of [390, 1440]) {
   test(`section stack: reversible, anchors and height changes (${width}px)`, async (t) => {
     const page = await browser.page()
@@ -115,7 +183,14 @@ for (const width of [390, 1440]) {
           .getElementById('projects')
           .style.getPropertyValue('--section-pin-top'),
       )
+    const toggleTop = () =>
+      page.evaluate(
+        () =>
+          document.querySelector('.projects-toggle').getBoundingClientRect()
+            .top,
+      )
     const before = await pin()
+    const closedTop = await toggleTop()
     await page.evaluate(() =>
       document.querySelector('.projects-toggle').click(),
     )
@@ -126,6 +201,7 @@ for (const width of [390, 1440]) {
           .style.getPropertyValue('--section-pin-top') !== before,
       before,
     )
+    assert.equal(await toggleTop(), closedTop)
     assert.equal(
       await page.evaluate(() =>
         document
@@ -246,6 +322,50 @@ test('contact form reports provider results and keeps failed input', async (t) =
   )
   await solveCaptcha()
   await page.evaluate(() => {
+    const render = window.hcaptcha.render.bind(window.hcaptcha)
+    window.hcaptcha.render = (container, options) => {
+      window.failContactCaptcha = options['error-callback']
+      window.verifyContactCaptcha = options.callback
+      return render(container, options)
+    }
+    document.querySelector('.language-toggle').click()
+  })
+  await page.waitFor(() => typeof window.failContactCaptcha === 'function')
+  await page.evaluate(() => window.failContactCaptcha('network-error'))
+  await page.waitFor(() =>
+    Boolean(document.querySelector('.contact-panel__captcha-error')),
+  )
+  assert.equal(await page.evaluate(() => window.contactCalls.length), 0)
+  assert.equal(
+    await page.evaluate(() => document.querySelector('#contact-message').value),
+    injectionProbe,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      document
+        .querySelector('.contact-panel__form')
+        .textContent.includes('Sending failed'),
+    ),
+    false,
+  )
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__captcha-error button').click(),
+  )
+  await page.waitFor(
+    () => !document.querySelector('.contact-panel__captcha-error'),
+  )
+  await solveCaptcha()
+  await page.evaluate(() => window.failContactCaptcha('challenge-error'))
+  await page.waitFor(() =>
+    Boolean(document.querySelector('.contact-panel__captcha-error')),
+  )
+  await page.evaluate(() => window.verifyContactCaptcha('ci-test-token'))
+  await page.waitFor(
+    () => !document.querySelector('.contact-panel__captcha-error'),
+  )
+  await page.evaluate(() => document.querySelector('.language-toggle').click())
+  await solveCaptcha()
+  await page.evaluate(() => {
     const form = document.querySelector('.contact-panel__form')
     form.requestSubmit()
     form.requestSubmit()
@@ -305,9 +425,44 @@ test('contact form reports provider results and keeps failed input', async (t) =
   await page.evaluate(() => window.finishContact(true))
   await page.waitFor(() =>
     document
-      .querySelector('.contact-panel__status')
-      .textContent.includes('transmise'),
+      .querySelector('.contact-panel__confirmation')
+      ?.textContent.includes('transmis'),
   )
+  assert.equal(
+    await page.evaluate(
+      () =>
+        document.activeElement ===
+        document.querySelector('.contact-panel__confirmation h4'),
+    ),
+    true,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(document.querySelector('#contact-message')),
+    ),
+    false,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      document
+        .querySelector('.contact-panel__confirmation a')
+        .getAttribute('href'),
+    ),
+    '#projects',
+  )
+  for (const width of [390, 1440]) {
+    await page.viewport(width)
+    assert.equal(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+      false,
+    )
+  }
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__confirmation button').click(),
+  )
+  await page.waitFor(() => document.activeElement?.id === 'contact-name')
   assert.equal(
     await page.evaluate(() => document.querySelector('#contact-message').value),
     '',
@@ -349,6 +504,120 @@ test('contact form reports provider results and keeps failed input', async (t) =
     ['language', 'theme'],
   )
 })
+
+for (const width of [390, 1440]) {
+  test(`project category shortcuts reach every group (${width}px)`, async (t) => {
+    const page = await browser.page()
+    t.after(() => page.close())
+    await page.viewport(width)
+    await page.open(url)
+    await page.waitFor(() =>
+      document.querySelector('main').classList.contains('section-stack'),
+    )
+
+    await page.evaluate(() =>
+      document
+        .getElementById('personal-projects')
+        .scrollIntoView({ behavior: 'instant' }),
+    )
+
+    for (const [from, to] of [
+      ['personal', 'game-dev'],
+      ['game-dev', 'client'],
+      ['client', 'personal'],
+      ['personal', 'client'],
+      ['client', 'game-dev'],
+      ['game-dev', 'personal'],
+    ]) {
+      await page.evaluate(
+        (from) =>
+          document.querySelector(`#${from}-projects-title button`).click(),
+        from,
+      )
+      await page.waitFor(
+        (from, to) => {
+          const link = document.querySelector(
+            `#${from}-projects a[href="#${to}-projects"]`,
+          )
+          const box = link.getBoundingClientRect()
+          // Hit-testing proves the sticky index and the cards stay underneath.
+          return (
+            box.height > 0 &&
+            document.elementFromPoint(box.x + 8, box.y + box.height / 2) ===
+              link
+          )
+        },
+        from,
+        to,
+      )
+      await page.evaluate(
+        (from, to) =>
+          document
+            .querySelector(`#${from}-projects a[href="#${to}-projects"]`)
+            .click(),
+        from,
+        to,
+      )
+      await page.waitFor(async (to) => {
+        const group = document.getElementById(`${to}-projects`)
+        const top = () => group.getBoundingClientRect().top
+        if (Math.abs(top() - 80) >= 2) return false
+        const y = scrollY
+        await new Promise((resolve) => setTimeout(resolve, 100))
+        return (
+          scrollY === y &&
+          Math.abs(top() - 80) < 2 &&
+          getComputedStyle(document.getElementById('projects')).opacity === '1'
+        )
+      }, to)
+      assert.equal(
+        await page.evaluate(
+          (from) => document.getElementById(`${from}-projects-menu`).hidden,
+          from,
+        ),
+        true,
+      )
+    }
+    assert.equal(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+      false,
+    )
+
+    const toggle = () =>
+      page.evaluate(() =>
+        document.querySelector('#personal-projects-title button').click(),
+      )
+    const menuHidden = () =>
+      document.getElementById('personal-projects-menu').hidden
+    await toggle()
+    await page.waitFor(
+      () => !document.getElementById('personal-projects-menu').hidden,
+    )
+    await page.evaluate(() =>
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })),
+    )
+    await page.waitFor(menuHidden)
+    assert.equal(
+      await page.evaluate(() => document.activeElement.textContent),
+      await page.evaluate(
+        () =>
+          document.querySelector('#personal-projects-title button').textContent,
+      ),
+    )
+    await toggle()
+    await page.waitFor(
+      () => !document.getElementById('personal-projects-menu').hidden,
+    )
+    await page.evaluate(() =>
+      document.body.dispatchEvent(
+        new PointerEvent('pointerdown', { bubbles: true }),
+      ),
+    )
+    await page.waitFor(menuHidden)
+  })
+}
 
 test('section stack: no motion or ResizeObserver keeps content visible', async (t) => {
   for (const fallback of ['reduce', 'observer']) {

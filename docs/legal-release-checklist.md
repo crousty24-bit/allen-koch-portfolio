@@ -65,7 +65,14 @@ la version du DPA/annexes de transfert qui le confirme ? »
 - Notice courte et politique FR/EN mises à jour en conséquence. Cette précision
   ne fixe pas de nouvelles durées pour les journaux ou sauvegardes.
 - La question hCaptcha/clé partagée est transmise à l’équipe du fournisseur.
-  La couverture par le DPA et l’éventuelle nécessité d’un accord distinct restent
-  non confirmées ; aucune autre démarche demandée en attendant leur réponse.
+  Cette attente historique est levée par la réponse du 2 novembre ci-dessous.
 - La question conservation ci-dessus est historique et ne doit pas être renvoyée
   à l’identique. Aucun message envoyé par Codex.
+
+## Réponse hCaptcha transmise par Allen — 2 novembre 2026
+
+Le support confirme que le traitement avec la clé partagée Web3Forms, utilisée
+actuellement dans le composant, est couvert par le DPA Web3Forms. Un DPA
+hCaptcha distinct est à examiner le cas échéant pour une clé personnelle.
+Cette question de couverture est levée ; les autres contrôles de contrats et
+transferts ci-dessus restent distincts. Aucun ticket ni nouveau contrat lu ici.

@@ -1,9 +1,18 @@
+import assert from 'node:assert/strict'
+
 const mode = process.env.HERO_STATS_FETCH_MODE
 
-globalThis.fetch = async (url) => {
+globalThis.fetch = async (url, options) => {
   if (url !== 'https://api.github.com/graphql') {
     throw new Error(`Unexpected fetch URL: ${url}`)
   }
+
+  const { query, variables } = JSON.parse(options.body)
+  assert.deepEqual(variables, { login: 'test-user' })
+  assert.match(
+    query,
+    /contributionsCollection\s*\{\s*contributionCalendar\s*\{\s*totalContributions/,
+  )
 
   if (mode === 'http-error') {
     return new Response('unavailable', {
@@ -15,13 +24,22 @@ globalThis.fetch = async (url) => {
   const payload = {
     success: {
       data: {
-        user: { contributionsCollection: { totalCommitContributions: 42 } },
+        user: {
+          contributionsCollection: {
+            totalCommitContributions: 7,
+            contributionCalendar: { totalContributions: 42 },
+          },
+        },
       },
     },
     'graphql-error': { errors: [{ message: 'denied' }] },
     'invalid-count': {
       data: {
-        user: { contributionsCollection: { totalCommitContributions: '42' } },
+        user: {
+          contributionsCollection: {
+            contributionCalendar: { totalContributions: '42' },
+          },
+        },
       },
     },
     'missing-user': { data: { user: null } },

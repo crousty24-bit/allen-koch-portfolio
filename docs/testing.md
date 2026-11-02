@@ -1,5 +1,21 @@
 # Vérification du socle et des nouvelles sections
 
+## RUN-026 — Découvrabilité et description bilingue
+
+Les contrats de rendu vérifient dix cartes publiées dès le rendu React initial,
+avec titres, descriptions et liens ; les cinq cartes supplémentaires restent
+dans la grille repliée. Ce contrat remplace le montage conditionnel historique
+de RUN-015/024, sans modifier la présentation attendue.
+
+Le scénario Chrome « SEO » vérifie grille masquée et non focalisable au départ,
+dépliage/repli à 390/1440 px sans retrait des cartes ni débordement, description
+FR/EN, persistance EN au rechargement et retour FR. Le contrat de contenu garde
+la description FR de `index.html` alignée avec les données de langue.
+
+Ce contrôle du build local ne constitue pas une inspection de l'index Google.
+La procédure et le ciblage commercial différé sont dans le
+[suivi SEO](seo-follow-up.md).
+
 ## Suite versionnée
 
 Depuis RUN-020, `npm run test` exécute Vitest en environnement Node :

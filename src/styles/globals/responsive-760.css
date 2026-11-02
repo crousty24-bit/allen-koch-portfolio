@@ -187,7 +187,7 @@ html {
 }
 
 .hero__heading {
-  font-size: 1.75rem;
+  --hero-heading-size: 1.75rem;
 }
 
 .hero__subtitle {
@@ -289,10 +289,6 @@ html {
 
 .projects-grid {
   grid-template-columns: minmax(0, 1fr);
-}
-
-.projects-grid:not(:empty) {
-  margin-top: 4rem;
 }
 
 .projects-section__cta {
