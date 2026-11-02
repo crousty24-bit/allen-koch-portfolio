@@ -235,6 +235,15 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
 
 ## RUN-008 — Validation et préparation de release
 
+- Mandat du 2 novembre 2026 : revue globale de `develop` après PR #28,
+  contrôles locaux et GitHub, puis fusion et release `1.4.1` sur `main`.
+  Périmètre : validation du lot projets/contact/SEO/statistiques, version,
+  README et preuves ; correction uniquement si régression démontrée.
+  Préservé : FR/EN, thèmes, responsive, accessibilité, catalogue et contact.
+  Acceptation : checks locaux et distants verts, tag/release GitHub et
+  déploiement de production contrôlés. Réserves externes inchangées :
+  Search Console après publication, hCaptcha et matrice appareils/navigateurs.
+
 - Mandat de publication du 30 octobre 2026 : Allen demande la fusion de
   `develop` vers `main` (production) avec mise à jour de version. Release
   retenue : `1.4.0` pour la refonte et les nouvelles fonctionnalités. Les

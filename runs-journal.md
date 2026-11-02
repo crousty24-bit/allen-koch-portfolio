@@ -2287,3 +2287,32 @@ copier de secret, donnée client ou résultat supposé.
   règle partagée par Projets et Stack. Écart mesuré 0 px à 1041/1440 px ; à
   1040 px et moins, texte sous le titre inchangé. Build, lint, Biome, 64/64 Vitest
   et 19/19 Chrome réussis.
+
+## RUN-008 — Revue globale et préparation 1.4.1 (2 novembre 2026)
+
+- Mandat Allen : vérifier develop après fusion de la feature (#28), puis fusionner
+  sur main et publier la release 1.4.1 pour production. Départ propre 863ab7a,
+  identique à origin/develop ; comparaison avec origin/main ebcebbe.
+- Périmètre relu : projets et raccourcis, contact/confirmation/CAPTCHA, description
+  SEO FR/EN, statistiques GitHub et workflows. Aucun correctif applicatif justifié.
+- Codex coordonne et vérifie ; deux sous-agents gpt-6-luna, effort high, lecture
+  seule : review_standards (conventions/logique/CI) et review_spec (contrats
+  RUN-024/026/027 et contact). Bénéfice attendu : revue indépendante avant release.
+  Aucun constat bloquant ; pas de dérive de périmètre relevée.
+- Hypothèse de revue sur le focus des raccourcis contrôlée dans Chrome : après
+  Entrée vers #client-projects, Tab atteint le bouton de la catégorie cible.
+  Le navigateur conserve donc le point de navigation séquentiel ; pas de
+  correction ajoutée pour une perte de parcours non reproduite. Le premier
+  script exploratoire a échoué car le focus était demandé avant le rendu du menu ;
+  attente de son ouverture ajoutée dans l'exploration, aucun changement produit.
+- npm ci, 64/64 Vitest, 19/19 Chrome, build, lint, Biome et audit moderate réussis,
+  zéro vulnérabilité. Build/lint/Biome répétés après passage à 1.4.1 ; diff-check vert.
+- Quality sur develop 863ab7a : succès, run 41492591961 ; statut Vercel succès.
+  Update hero stats lancé sur develop (41493201200) pour vérifier la nouvelle
+  requête avec le secret GitHub réel, sans exposer sa valeur.
+- Version package/lock et README actualisés. Publication via PR develop → main
+  après contrôles distants ; tag/release et déploiement à contrôler ensuite.
+- Connecteur Vercel : réauthentification requise. Repli prévu : statuts GitHub,
+  métadonnées du déploiement accessibles par GitHub et site public.
+- Limites conservées : Safari/Firefox, appareil réel et lecteur d'écran non testés,
+  pas d'envoi réel de message ; Search Console et réserves hCaptcha restent suivis.
