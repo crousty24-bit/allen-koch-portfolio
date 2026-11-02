@@ -140,3 +140,15 @@ remonte le widget sans recharger la page ni effacer la saisie, avec l’autorisa
 existante. Aucun envoi automatique ni contournement du jeton n’est ajouté.
 La vidéo d’Allen montre une erreur initiale puis un rétablissement ; le code
 réseau exact du fournisseur n’est pas connu à partir de cette vidéo.
+
+### Point à surveiller — erreur persistante en local
+
+Le 2 novembre 2026, Allen confirme que l’erreur hCaptcha apparaît encore après
+le correctif du feedback. Un lien avec l’exécution sur localhost est une
+hypothèse non confirmée ; la cause reste inconnue. Allen accepte de différer
+l’investigation : aucune correction supplémentaire demandée pour le moment.
+
+À reprendre lors d’un essai sur une URL hébergée : vérifier le premier chargement,
+la récupération après erreur et l’envoi. Si l’erreur persiste, relever le code
+hCaptcha et les erreurs console/réseau pour identifier la cause avant de modifier
+l’intégration. La disparition de l’erreur en production n’est pas établie.
