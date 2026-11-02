@@ -291,10 +291,6 @@ html {
   grid-template-columns: minmax(0, 1fr);
 }
 
-.projects-grid:not(:empty) {
-  margin-top: 4rem;
-}
-
 .projects-section__cta {
   margin-top: 4rem;
 }

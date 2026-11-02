@@ -166,7 +166,7 @@
 }
 
 .projects-grid:not(:empty) {
-  margin-top: 6rem;
+  margin-top: 4rem;
   padding-top: 2.5rem;
   border-top: 1px solid var(--outline);
 }

@@ -2063,3 +2063,12 @@ copier de secret, donnée client ou résultat supposé.
 - Mesures Chrome FR de 320 à 1440 px : une ligne, 14 px à 320 px, 16,75 px à 390 px,
   36 px à 1440 px. Débordement de 15 px à 320 px identique avant correctif, non traité.
 - Build, lint, Biome, 60/60 Vitest et 16/16 Chrome réussis. Aucun commit ni push.
+
+## RUN-024 — Bouton Projets fixe au-dessus de la grille (2 novembre 2026)
+
+- Demande Allen : le bouton garde sa place une fois les projets dépliés. Réalisé
+  par Claude : bouton placé avant la grille, écart bouton/grille fixé à 4 rem
+  sur desktop et mobile, surcharge mobile retirée.
+- Build, lint, Biome, 60/60 Vitest et 16/16 Chrome réussis. Position du bouton
+  identique après dépliage à 390 et 1440 px, ordre bouton/grille testé.
+- Pas de capture relue, Safari/Firefox et appareil réel non testés. Aucun commit ni push.

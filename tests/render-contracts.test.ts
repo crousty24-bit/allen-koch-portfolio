@@ -157,6 +157,9 @@ describe('page render contracts', () => {
     expect(page).toContain(
       'aria-controls="personal-projects-grid" aria-expanded="false"',
     )
+    expect(personal.indexOf('projects-toggle')).toBeLessThan(
+      personal.indexOf('id="personal-projects-grid"'),
+    )
   })
 
   it('limits every category to three scroll cards and a toggle', () => {

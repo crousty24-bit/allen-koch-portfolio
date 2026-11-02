@@ -106,18 +106,6 @@ function ProjectsGroup({
       </div>
       {total > visibleProjectsCount ? (
         <>
-          <div className="projects-grid" id={gridId}>
-            {compact.map((project, index) => (
-              <ProjectCard
-                index={visibleProjectsCount + index}
-                key={project.title}
-                language={language}
-                project={project}
-                total={total}
-                variant="compact"
-              />
-            ))}
-          </div>
           <div className="projects-section__more">
             <button
               aria-controls={gridId}
@@ -135,6 +123,18 @@ function ProjectsGroup({
                 {showAllProjects ? '−' : '+'}
               </span>
             </button>
+          </div>
+          <div className="projects-grid" id={gridId}>
+            {compact.map((project, index) => (
+              <ProjectCard
+                index={visibleProjectsCount + index}
+                key={project.title}
+                language={language}
+                project={project}
+                total={total}
+                variant="compact"
+              />
+            ))}
           </div>
         </>
       ) : null}

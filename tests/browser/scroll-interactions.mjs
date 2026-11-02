@@ -115,7 +115,14 @@ for (const width of [390, 1440]) {
           .getElementById('projects')
           .style.getPropertyValue('--section-pin-top'),
       )
+    const toggleTop = () =>
+      page.evaluate(
+        () =>
+          document.querySelector('.projects-toggle').getBoundingClientRect()
+            .top,
+      )
     const before = await pin()
+    const closedTop = await toggleTop()
     await page.evaluate(() =>
       document.querySelector('.projects-toggle').click(),
     )
@@ -126,6 +133,7 @@ for (const width of [390, 1440]) {
           .style.getPropertyValue('--section-pin-top') !== before,
       before,
     )
+    assert.equal(await toggleTop(), closedTop)
     assert.equal(
       await page.evaluate(() =>
         document
