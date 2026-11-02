@@ -28,9 +28,7 @@ function ProjectsGroup({
   const projectsCopy = copy[language].projects
   const total = groupProjects.length
   const featured = groupProjects.slice(0, visibleProjectsCount)
-  const compact = showAllProjects
-    ? groupProjects.slice(visibleProjectsCount)
-    : []
+  const compact = groupProjects.slice(visibleProjectsCount)
   const titleId = `${category}-projects-title`
   const gridId = `${category}-projects-grid`
 
@@ -124,7 +122,7 @@ function ProjectsGroup({
               </span>
             </button>
           </div>
-          <div className="projects-grid" id={gridId}>
+          <div className="projects-grid" hidden={!showAllProjects} id={gridId}>
             {compact.map((project, index) => (
               <ProjectCard
                 index={visibleProjectsCount + index}

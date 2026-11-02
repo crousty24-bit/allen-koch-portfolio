@@ -27,6 +27,74 @@ after(async () => {
   }
 })
 
+test('SEO: project content exists before interaction and description follows language', async (t) => {
+  const page = await browser.page()
+  t.after(() => page.close())
+  await page.open(url)
+  const read = () =>
+    page.evaluate(() => ({
+      cards: document.querySelectorAll('.project-card').length,
+      extra: document.querySelectorAll('.projects-grid .project-card').length,
+      hidden: document.querySelector('.projects-grid').hidden,
+      display: getComputedStyle(document.querySelector('.projects-grid'))
+        .display,
+      lang: document.documentElement.lang,
+      title: document.title,
+      description: document.querySelector('meta[name="description"]').content,
+    }))
+  const initial = await read()
+  assert.equal(initial.cards, 10)
+  assert.equal(initial.extra, 5)
+  assert.equal(initial.hidden, true)
+  assert.equal(initial.display, 'none')
+  assert.equal(
+    await page.evaluate(() => {
+      const grid = document.querySelector('.projects-grid')
+      grid.querySelector('a').focus()
+      return grid.contains(document.activeElement)
+    }),
+    false,
+  )
+  assert.equal(initial.lang, 'fr')
+  assert.match(initial.description, /^Portfolio d'Allen Koch/)
+  for (const width of [390, 1440]) {
+    await page.viewport(width)
+    for (const expanded of [true, false]) {
+      await page.evaluate(() =>
+        document.querySelector('.projects-toggle').click(),
+      )
+      await page.waitFor(
+        (expanded) =>
+          document
+            .querySelector('.projects-toggle')
+            .getAttribute('aria-expanded') === String(expanded),
+        expanded,
+      )
+      const state = await read()
+      assert.equal(state.cards, 10)
+      assert.equal(state.hidden, !expanded)
+      assert.equal(state.display, expanded ? 'grid' : 'none')
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth,
+        ),
+        false,
+      )
+    }
+  }
+  await page.evaluate(() => document.querySelector('.language-toggle').click())
+  await page.waitFor(() => document.documentElement.lang === 'en')
+  const english = await read()
+  assert.match(english.title, /Fullstack & AI Developer/)
+  assert.match(english.description, /^Allen Koch’s portfolio/)
+  assert.notEqual(english.description, initial.description)
+  await page.open(url)
+  assert.equal((await read()).description, english.description)
+  await page.evaluate(() => document.querySelector('.language-toggle').click())
+  await page.waitFor(() => document.documentElement.lang === 'fr')
+  assert.equal((await read()).description, initial.description)
+})
+
 for (const width of [390, 1440]) {
   test(`section stack: reversible, anchors and height changes (${width}px)`, async (t) => {
     const page = await browser.page()

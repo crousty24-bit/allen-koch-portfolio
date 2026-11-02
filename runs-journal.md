@@ -2167,3 +2167,100 @@ copier de secret, donnée client ou résultat supposé.
 - Référence consultée : https://docs.hcaptcha.com/configuration#error-codes.
   Aucun envoi réel, déploiement ou reproduction indépendante de la panne réseau
   d’Allen. Relecture par l’implémenteur ; aucun autre RUN exécuté.
+
+
+## RUN-026 — Découvrabilité et description anglaise (2 novembre 2026)
+
+- Mandat Allen après audit SEO : traiter le point 1, différer et documenter le
+  point 2, traiter le point 3 et contrôler le rendu indexé.
+- Réalisation et relecture Codex ; pas de délégation, périmètre partagé réduit
+  ne justifiant pas le transfert. Aucune revue indépendante revendiquée.
+- Les cinq cartes de grille sont désormais montées dès le premier rendu React,
+  avec descriptions/liens. Attribut hidden et CSS ciblé conservent le repli,
+  la navigation clavier et les trois cartes personnelles mises en avant.
+- Description traduite dans les données FR/EN et synchronisée par l'effet
+  existant de langue. Texte FR, offre, canonical et partage social inchangés.
+- Point 2 consigné dans docs/seo-follow-up.md comme différé par Allen ;
+  aucune réécriture commerciale ni ajout de route, paquet ou prérendu.
+- Contrôles : 63/63 Vitest, build, lint, Biome réussis ; 17/17 tests Chrome
+  réussis. Après ajout de l'assertion de focus masqué, scénario SEO ciblé
+  réussi : dix cartes avant clic, grille display:none non focalisable,
+  dépliage/repli à 390/1440 px, description EN persistante et retour FR.
+- Premier Biome échoué sur le format du nouveau test navigateur ; format
+  corrigé avec Biome puis contrôle réussi. Aucun échec applicatif observé.
+- Allen confirme l'accès Search Console ; aucun connecteur disponible dans
+  cette session. Inspection de l'index Google non réalisée, procédure fournie
+  dans le suivi SEO ; dépend d'une publication puis d'une nouvelle exploration.
+- Attendu visuel : présentation desktop/mobile conservée. Géométrie et
+  interactions contrôlées en Chrome ; pas de captures relues, Safari/Firefox
+  ou appareil réel. Aucun commit, push, déploiement ou réindexation demandé.
+- État : verify pour l'inspection Google restante ; implémentation locale finie.
+
+
+### RUN-026 — Retour Search Console fourni par Allen
+
+- Lecture des quatre CSV Coverage et des trois captures du 2 novembre via
+  leurs chemins WSL ; aucun accès direct au compte Google.
+- Indexation confirmée dans la capture, canonical choisie = URL inspectée ;
+  dernière exploration le 28 octobre à 16:31:38, smartphone, récupération réussie.
+- Test en direct du 2 novembre à 17:31:46 positif ; HTML exploré non fourni.
+- Export graphique arrêté au 23 octobre : 1 URL indexée, 3 redirigées ;
+  URL sources absentes de l'export. Aucun défaut de redirection déduit du libellé.
+- Message sitemap temporaire visible ; sitemap public revérifié HTTP 200
+  et XML cohérent. Cause Google inconnue, aucun correctif technique justifié.
+- Suivi SEO actualisé. RUN reste verify : contenu rendu par Google non inspecté,
+  correctifs non publiés par ce lot. Aucun test applicatif relancé pour cette
+  mise à jour documentaire ; git diff --check réussi.
+
+
+### RUN-026 — HTML de la page testée fourni par Allen
+
+- HTML joint analysé avec HTMLParser : cinq articles project-card, titres
+  Diff Impact Analyzer, SnipStack, Code Quality Guardian, SEOS, Milady's Knight.
+  Aucune carte pour les cinq projets supplémentaires ; défaut avant correction
+  confirmé dans le rendu fourni. Titre, canonical, description et JSON-LD présents.
+- L'export est annoncé comme page testée : aucune assimilation à la version
+  indexée. Suivi SEO actualisé ; validation après publication encore nécessaire.
+- Documentation seule, git diff --check réussi ; aucun test applicatif relancé.
+
+
+### RUN-026 — Vérification avant fusion/publication
+
+- Demande Allen : confirmer la préparation de la fusion et de la production.
+- Diff relu, build/lint/Biome, 63/63 Vitest et 17/17 Chrome réussis ;
+  git diff --check réussi. Aucun changement de code dans cette vérification.
+- Audit release exécuté : échec, 12 entrées modérées liées à minimatch
+  et à ses consommateurs ESLint/TypeScript-ESLint ; version locale 10.2.5.
+  Référence npm : GHSA-g3hv-75wg-m249. Il ne s'agit pas de 12 causes distinctes.
+- Audit --omit=dev : zéro vulnérabilité. Alerte située dans l'outillage,
+  pas dans les dépendances frontend de production auditées.
+- Quality exécute npm audit --audit-level=moderate sans exception :
+  le résultat actuel bloque son passage au vert. Aucun audit fix --force
+  ni changement de dépendance effectué ; correction ciblée restant à traiter.
+- Lot SEO validé localement ; pas de feu vert global release tant que cet
+  audit échoue. Contrôle Search Console après publication toujours requis.
+- Aucune fusion, push ou publication exécutée.
+
+
+### RUN-026 — Blocage audit corrigé à la demande d'Allen
+
+- Périmètre autorisé : corriger la dépendance vulnérable avant fusion. Codex
+  réalise et relit ; pas de délégation utile pour la résolution ciblée.
+- Avis GitHub GHSA-g3hv-75wg-m249 vérifié : versions <11.0.1 affectées,
+  y compris la série 10 requise par les consommateurs. Dernier ESLint consulté
+  (10.14.0) demande encore ^10.2.6 : une mise à jour ESLint ne suffit pas.
+- Override minimatch fixé à 11.0.4, compatible moteur Node 24 ; lockfile
+  ciblé : une version modifiée et une dépendance transitive ajoutée. Aucun
+  audit fix --force, ajout direct de dépendance ou seuil CI abaissé.
+- npm ci réussi (182 paquets) ; audit complet et --omit=dev : zéro vulnérabilité.
+- Build, lint, Biome, 63/63 Vitest et 17/17 Chrome réussis après réinstallation.
+  Bundle frontend : mêmes noms hashés CSS/JS que le build SEO précédent.
+- Contrôle ponctuel ESLint : règles TS actives sur App.tsx et test TypeScript,
+  variable inutilisée effectivement détectée, dist ignoré. Premier auto-contrôle
+  trop large échoué car il attendait aussi des règles sur le test .mjs ;
+  eslint.config.js configure historiquement les règles sur ts/tsx seulement.
+  Assertion corrigée pour vérifier le contrat réel ; pas de changement ESLint.
+- Dérogation et retrait futur documentés dans docs/tooling.md. Le blocage local
+  audit est levé ; CI distante non exécutée, aucune fusion/push/publication.
+- Inspection Google après publication toujours restante, RUN-026 en verify
+  pour cette seule vérification externe. Aucun défaut applicatif observé.

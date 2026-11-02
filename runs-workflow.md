@@ -4,6 +4,32 @@ Source de vérité du suivi : objectifs, responsables, dépendances et état des
 Les preuves vont dans [runs-journal.md](runs-journal.md). Le cycle d'exécution est
 défini dans [docs/agentic-workflow.md](docs/agentic-workflow.md).
 
+## RUN-026 — Corrections SEO après refonte (2 novembre 2026)
+
+- Mandat Allen : rendre tous les projets découvrables, synchroniser la description
+  anglaise, contrôler le rendu ; documenter le ciblage commercial sans le modifier.
+- Périmètre : ProjectsSection, CSS de repli, description FR/EN, effet App,
+  contrats de rendu/contenu et tests Chrome. Aucun nouveau composant ou paquet.
+- Préservé : trois projets personnels mis en avant, grille dépliable, ordre,
+  publication client, thèmes, langues, images différées et URL unique.
+- Acceptation : dix cartes avec descriptions et liens présentes avant clic,
+  grille repliée inaccessible au clavier, dépliage/repli conservé à 390/1440 px,
+  description EN persistante au rechargement et retour FR correct ; checks verts.
+- Rendu indexé : nécessite Search Console et une version publiée. Le contrôle
+  local du DOM ne prouve ni l'indexation ni une réexploration par Google.
+- Statut : verify. Implémentation et contrôles locaux terminés ; inspection
+  Search Console après publication encore requise. Les validations humaines
+  des anciens RUN ne sont pas reprises ou déclarées closes par cette intervention.
+
+### Complément autorisé — audit des dépendances
+
+Allen mandate ensuite la correction du blocage npm audit découvert avant fusion.
+Périmètre : résolution minimatch dans package.json/package-lock.json, sans
+changement des dépendances applicatives ou baisse du seuil de sécurité CI.
+Acceptation : installation reproductible, audit complet sans vulnérabilité,
+build/lint/Biome et suites unitaires/navigateur réussis. Compatibilité de la
+résolution majeure à vérifier ; aucun audit fix --force autorisé par défaut.
+
 ## Règles de suivi
 
 - Identifiants stables `RUN-000`, `RUN-001`, etc. Ne pas renuméroter l'historique.

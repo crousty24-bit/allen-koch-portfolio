@@ -136,9 +136,19 @@ describe('page render contracts', () => {
     }
   })
 
-  it('initially renders featured projects without mounting the extra cards', () => {
+  it('initially renders all published projects with the extra cards collapsed', () => {
     expect(page.match(/project-card--feature/g)).toHaveLength(5)
-    expect(page).not.toContain('project-card--compact')
+    expect(page.match(/project-card--compact/g)).toHaveLength(5)
+    expect(page).toContain(
+      'class="projects-grid" hidden="" id="personal-projects-grid"',
+    )
+    for (const project of projects.filter(isProjectPublished)) {
+      expect(page).toContain(renderToStaticMarkup(project.title))
+      expect(page).toContain(renderToStaticMarkup(project.description.fr))
+      for (const href of [project.href, project.repositoryHref]) {
+        if (href) expect(page).toContain(`href="${href}"`)
+      }
+    }
     expect(page).toContain('client-projects-title')
     const personal =
       page.match(

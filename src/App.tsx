@@ -76,6 +76,9 @@ function App() {
     document.title = legalPage
       ? `${legalPage === 'legal' ? legalText.legalTitle : legalText.privacyTitle} | Allen Koch`
       : copy[language].hero.title
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', copy[language].seo.description)
     writeStoredPreference(() => window.localStorage, 'language', language)
   }, [language])
 

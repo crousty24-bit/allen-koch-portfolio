@@ -3,6 +3,10 @@ export type Theme = 'dark' | 'light'
 
 export const copy = {
   fr: {
+    seo: {
+      description:
+        "Portfolio d'Allen Koch, développeur web en Alsace : produits web utiles, maintenables, solutions IA et workflows modernes avec React, Rails et TypeScript.",
+    },
     about: {
       alt: "Portrait professionnel d'Allen Koch",
       heading: 'About',
@@ -111,6 +115,10 @@ export const copy = {
     topButtonLabel: 'Remonter en haut de la page',
   },
   en: {
+    seo: {
+      description:
+        'Allen Koch’s portfolio, web developer based in Alsace: useful, maintainable web products, AI solutions and modern workflows with React, Rails and TypeScript.',
+    },
     about: {
       alt: 'Professional portrait of Allen Koch',
       heading: 'About',

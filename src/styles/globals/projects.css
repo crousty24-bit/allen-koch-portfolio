@@ -176,6 +176,10 @@
   gap: 4rem 2.5rem;
 }
 
+.projects-grid[hidden] {
+  display: none;
+}
+
 .projects-grid:not(:empty) {
   margin-top: 4rem;
   padding-top: 2.5rem;
