@@ -216,7 +216,9 @@ function App() {
     // Fragment scrolling (links and history traversal) aims at a pinned box's
     // current spot; unpin the target while the browser resolves where to scroll.
     const unpinTarget = (hash: string | undefined) => {
-      const target = sections.find((section) => hash === `#${section.id}`)
+      const target = document
+        .getElementById(hash?.slice(1) ?? '')
+        ?.closest('main > .section')
       if (!target) return
       target.classList.add('section--unpinned')
       window.requestAnimationFrame(() =>

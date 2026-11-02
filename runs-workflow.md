@@ -625,3 +625,18 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
   cron les 1er et 16 à 05 h 17 UTC, libellés explicites FR/EN et contrôles verts.
 - Statut : done localement ; preuves et limites dans le journal. Les vérifications
   humaines/des services des RUN précédents ne sont pas reprises dans ce lot.
+
+
+## RUN-027 — Raccourcis entre catégories de projets
+
+- Mandat Allen du 2 novembre 2026 : depuis chaque groupe Projets, accéder par
+  ancre aux autres catégories publiées (personnels, clients, game dev).
+- Périmètre : ProjectsSection, styles Projets, libellé FR/EN, levée du pin pour
+  une ancre interne à une section (App), tests. Aucun paquet ni composant de base.
+- Préservé : contenus, ordre, index au scroll, dépliage, ancres et pile de sections.
+- Acceptation : six trajets entre groupes arrêtés sous la navigation à 390/1440 px,
+  sans débordement à 320 px ; contrôles verts ; validation visuelle d'Allen attendue.
+- Révision Allen du même jour : boutons de droite retirés ; le titre du groupe
+  ouvre un menu déroulant des autres catégories. Exception shadcn/ui : aucun
+  composant intégré à ce jour, intégration non validée ; divulgation native.
+- Statut : verify. Preuves et limites au journal.

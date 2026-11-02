@@ -230,8 +230,9 @@
 }
 
 .projects-group__header {
+  position: relative;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 2.5rem;
 }
@@ -250,6 +251,59 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
+}
+
+.projects-group__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.projects-group__toggle:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.projects-group__chevron {
+  line-height: 1;
+}
+
+.projects-group__toggle[aria-expanded="true"] .projects-group__chevron {
+  transform: rotate(180deg);
+}
+
+/* Above the sticky index and first card, which come later in the group. */
+.projects-group__jumps {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+  width: max-content;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--outline-strong);
+  background: var(--surface);
+  list-style: none;
+}
+
+.projects-group__jump {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  font-size: 0.75rem;
+  justify-content: flex-start;
 }
 
 .project-card__facts {

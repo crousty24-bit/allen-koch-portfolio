@@ -9,8 +9,110 @@ import { ProjectCard } from '../ProjectCard/ProjectCard'
 
 const visibleProjectsCount = 3
 
+type JumpTarget = { category: Project['category']; label: string }
+
+type ProjectsGroupHeaderProps = {
+  category: Project['category']
+  jumpLabel: string
+  jumpTargets: JumpTarget[]
+  label: string
+  titleId: string
+  total: number
+}
+
+function ProjectsGroupHeader({
+  category,
+  jumpLabel,
+  jumpTargets,
+  label,
+  titleId,
+  total,
+}: ProjectsGroupHeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const menuId = `${category}-projects-menu`
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+        toggleRef.current?.focus()
+      }
+    }
+    const closeOutside = (event: Event) => {
+      if (
+        event.target instanceof Node &&
+        !headerRef.current?.contains(event.target)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', closeOnEscape)
+    document.addEventListener('focusin', closeOutside)
+    document.addEventListener('pointerdown', closeOutside)
+
+    return () => {
+      window.removeEventListener('keydown', closeOnEscape)
+      document.removeEventListener('focusin', closeOutside)
+      document.removeEventListener('pointerdown', closeOutside)
+    }
+  }, [isMenuOpen])
+
+  return (
+    <header className="projects-group__header" ref={headerRef}>
+      <h3 className="projects-group__title" id={titleId}>
+        {jumpTargets.length ? (
+          <button
+            aria-controls={menuId}
+            aria-expanded={isMenuOpen}
+            className="projects-group__toggle"
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+            ref={toggleRef}
+            type="button"
+          >
+            {label}
+            <span aria-hidden="true" className="projects-group__chevron">
+              ▾
+            </span>
+          </button>
+        ) : (
+          label
+        )}
+      </h3>
+      <span className="projects-group__count">
+        {String(total).padStart(2, '0')}
+      </span>
+      {jumpTargets.length ? (
+        <ul
+          aria-label={jumpLabel}
+          className="projects-group__jumps"
+          hidden={!isMenuOpen}
+          id={menuId}
+        >
+          {jumpTargets.map((target) => (
+            <li key={target.category}>
+              <a
+                className="button button--secondary projects-group__jump"
+                href={`#${target.category}-projects`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {target.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </header>
+  )
+}
+
 type ProjectsGroupProps = {
   category: Project['category']
+  jumpTargets: JumpTarget[]
   label: string
   language: Language
   projects: Project[]
@@ -18,6 +120,7 @@ type ProjectsGroupProps = {
 
 function ProjectsGroup({
   category,
+  jumpTargets,
   label,
   language,
   projects: groupProjects,
@@ -59,15 +162,19 @@ function ProjectsGroup({
   }, [])
 
   return (
-    <section className="projects-group" aria-labelledby={titleId}>
-      <header className="projects-group__header">
-        <h3 className="projects-group__title" id={titleId}>
-          {label}
-        </h3>
-        <span className="projects-group__count">
-          {String(total).padStart(2, '0')}
-        </span>
-      </header>
+    <section
+      className="projects-group"
+      aria-labelledby={titleId}
+      id={`${category}-projects`}
+    >
+      <ProjectsGroupHeader
+        category={category}
+        jumpLabel={projectsCopy.jumpLabel}
+        jumpTargets={jumpTargets}
+        label={label}
+        titleId={titleId}
+        total={total}
+      />
       <div className="projects-features" ref={featuresRef}>
         <p
           aria-hidden="true"
@@ -148,10 +255,17 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
   const projectsCopy = copy[language].projects
   const publishedProjects = projects.filter(isProjectPublished)
   const groups = [
-    { category: 'personal', label: projectsCopy.personalHeading },
-    { category: 'client', label: projectsCopy.clientHeading },
-    { category: 'game-dev', label: projectsCopy.gameHeading },
-  ] as const
+    { category: 'personal' as const, label: projectsCopy.personalHeading },
+    { category: 'client' as const, label: projectsCopy.clientHeading },
+    { category: 'game-dev' as const, label: projectsCopy.gameHeading },
+  ]
+    .map((group) => ({
+      ...group,
+      projects: publishedProjects.filter(
+        (project) => project.category === group.category,
+      ),
+    }))
+    .filter((group) => group.projects.length)
 
   return (
     <section className="section projects-section" id="projects" tabIndex={-1}>
@@ -161,22 +275,16 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
           <p>{projectsCopy.text}</p>
         </div>
       </div>
-      {groups.map((group) => {
-        const groupProjects = publishedProjects.filter(
-          (project) => project.category === group.category,
-        )
-        if (!groupProjects.length) return null
-
-        return (
-          <ProjectsGroup
-            category={group.category}
-            key={group.category}
-            label={group.label}
-            language={language}
-            projects={groupProjects}
-          />
-        )
-      })}
+      {groups.map((group) => (
+        <ProjectsGroup
+          category={group.category}
+          jumpTargets={groups.filter((other) => other !== group)}
+          key={group.category}
+          label={group.label}
+          language={language}
+          projects={group.projects}
+        />
+      ))}
       <div className="projects-section__cta reveal">
         <p>{projectsCopy.ctaText}</p>
         <a className="button button--primary" href="#contact">

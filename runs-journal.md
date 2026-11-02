@@ -2264,3 +2264,26 @@ copier de secret, donnée client ou résultat supposé.
   audit est levé ; CI distante non exécutée, aucune fusion/push/publication.
 - Inspection Google après publication toujours restante, RUN-026 en verify
   pour cette seule vérification externe. Aucun défaut applicatif observé.
+
+
+### RUN-027 — Raccourcis entre catégories de projets
+
+- Réalisation et relecture Claude Opus 5.5, sans délégation utile ni revue indépendante.
+- Ancres personal-projects, client-projects et game-dev-projects ; liens dans
+  l'en-tête de chaque groupe, limités aux catégories publiées.
+- Build, lint, Biome, 64/64 Vitest et 19/19 Chrome réussis ; git diff --check réussi.
+- Accès direct à #client-projects à 80 px du haut (sous la navigation), FR/EN,
+  sombre/clair, 320/390/1440 px, sans débordement. Captures contrôlées à 320 et 1440 px.
+- Limites : raccourcis visibles seulement en haut de chaque groupe, pas au milieu
+  d'un groupe ; lecteur d'écran non testé. Aucun commit, push ou publication.
+
+- Révision Allen : titre de groupe devenu bouton de divulgation (h3 > button)
+  ouvrant une liste de liens ; fermeture au choix, Échap (focus rendu), clic ou
+  focus extérieur, comme le menu Navbar. Exception shadcn justifiée dans le suivi.
+- Après révision : build, lint, Biome, 64/64 Vitest et 19/19 Chrome réussis. Menu
+  au-dessus de l'index et des cartes vérifié par hit-testing à 390/1440 px ;
+  captures relues à 320 et 1440 px en sombre. Lecteur d'écran toujours non testé.
+- Complément Allen : paragraphe d'en-tête aligné sur la ligne de base du titre,
+  règle partagée par Projets et Stack. Écart mesuré 0 px à 1041/1440 px ; à
+  1040 px et moins, texte sous le titre inchangé. Build, lint, Biome, 64/64 Vitest
+  et 19/19 Chrome réussis.

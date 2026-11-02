@@ -193,6 +193,31 @@ describe('page render contracts', () => {
     )
   })
 
+  it('links each project category to the other published ones', () => {
+    const jumps = (category: string) =>
+      page
+        .slice(page.indexOf(`id="${category}-projects"`))
+        .match(/projects-group__jumps[\s\S]*?<\/ul>/)?.[0]
+        .match(/href="[^"]+"/g)
+    expect(page).toContain('id="personal-projects"')
+    expect(page).toContain(
+      'aria-controls="personal-projects-menu" aria-expanded="false"',
+    )
+    expect(page).toMatch(/hidden="" id="personal-projects-menu"/)
+    expect(jumps('personal')).toEqual([
+      'href="#client-projects"',
+      'href="#game-dev-projects"',
+    ])
+    expect(jumps('client')).toEqual([
+      'href="#personal-projects"',
+      'href="#game-dev-projects"',
+    ])
+    expect(jumps('game-dev')).toEqual([
+      'href="#personal-projects"',
+      'href="#client-projects"',
+    ])
+  })
+
   it('limits every category to three scroll cards and a toggle', () => {
     const originalLength = projects.length
     try {

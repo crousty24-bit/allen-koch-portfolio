@@ -505,6 +505,120 @@ test('contact form reports provider results and keeps failed input', async (t) =
   )
 })
 
+for (const width of [390, 1440]) {
+  test(`project category shortcuts reach every group (${width}px)`, async (t) => {
+    const page = await browser.page()
+    t.after(() => page.close())
+    await page.viewport(width)
+    await page.open(url)
+    await page.waitFor(() =>
+      document.querySelector('main').classList.contains('section-stack'),
+    )
+
+    await page.evaluate(() =>
+      document
+        .getElementById('personal-projects')
+        .scrollIntoView({ behavior: 'instant' }),
+    )
+
+    for (const [from, to] of [
+      ['personal', 'game-dev'],
+      ['game-dev', 'client'],
+      ['client', 'personal'],
+      ['personal', 'client'],
+      ['client', 'game-dev'],
+      ['game-dev', 'personal'],
+    ]) {
+      await page.evaluate(
+        (from) =>
+          document.querySelector(`#${from}-projects-title button`).click(),
+        from,
+      )
+      await page.waitFor(
+        (from, to) => {
+          const link = document.querySelector(
+            `#${from}-projects a[href="#${to}-projects"]`,
+          )
+          const box = link.getBoundingClientRect()
+          // Hit-testing proves the sticky index and the cards stay underneath.
+          return (
+            box.height > 0 &&
+            document.elementFromPoint(box.x + 8, box.y + box.height / 2) ===
+              link
+          )
+        },
+        from,
+        to,
+      )
+      await page.evaluate(
+        (from, to) =>
+          document
+            .querySelector(`#${from}-projects a[href="#${to}-projects"]`)
+            .click(),
+        from,
+        to,
+      )
+      await page.waitFor(async (to) => {
+        const group = document.getElementById(`${to}-projects`)
+        const top = () => group.getBoundingClientRect().top
+        if (Math.abs(top() - 80) >= 2) return false
+        const y = scrollY
+        await new Promise((resolve) => setTimeout(resolve, 100))
+        return (
+          scrollY === y &&
+          Math.abs(top() - 80) < 2 &&
+          getComputedStyle(document.getElementById('projects')).opacity === '1'
+        )
+      }, to)
+      assert.equal(
+        await page.evaluate(
+          (from) => document.getElementById(`${from}-projects-menu`).hidden,
+          from,
+        ),
+        true,
+      )
+    }
+    assert.equal(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+      false,
+    )
+
+    const toggle = () =>
+      page.evaluate(() =>
+        document.querySelector('#personal-projects-title button').click(),
+      )
+    const menuHidden = () =>
+      document.getElementById('personal-projects-menu').hidden
+    await toggle()
+    await page.waitFor(
+      () => !document.getElementById('personal-projects-menu').hidden,
+    )
+    await page.evaluate(() =>
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })),
+    )
+    await page.waitFor(menuHidden)
+    assert.equal(
+      await page.evaluate(() => document.activeElement.textContent),
+      await page.evaluate(
+        () =>
+          document.querySelector('#personal-projects-title button').textContent,
+      ),
+    )
+    await toggle()
+    await page.waitFor(
+      () => !document.getElementById('personal-projects-menu').hidden,
+    )
+    await page.evaluate(() =>
+      document.body.dispatchEvent(
+        new PointerEvent('pointerdown', { bubbles: true }),
+      ),
+    )
+    await page.waitFor(menuHidden)
+  })
+}
+
 test('section stack: no motion or ResizeObserver keeps content visible', async (t) => {
   for (const fallback of ['reduce', 'observer']) {
     await t.test(fallback, async (t) => {
