@@ -2054,3 +2054,12 @@ copier de secret, donnée client ou résultat supposé.
   sticky sur desktop, index en ligne sur mobile, sans débordement horizontal.
 - Limites : aucune capture relue ; grille dépliée vérifiée dans le navigateur pour
   les projets personnels seulement, Safari/Firefox et appareil réel non testés.
+
+## RUN-024 — Titre Hero sur une ligne (2 novembre 2026)
+
+- Demande Allen : `hero__heading` sur une seule ligne. Réalisé par Claude.
+- Taille fluide selon la colonne (`5cqi`, plafonds 2,25 rem et 1,75 rem), `nowrap`,
+  `max-width` retiré. Largeur du texte FR mesurée à 19,31 em, EN à 18,19 em.
+- Mesures Chrome FR de 320 à 1440 px : une ligne, 14 px à 320 px, 16,75 px à 390 px,
+  36 px à 1440 px. Débordement de 15 px à 320 px identique avant correctif, non traité.
+- Build, lint, Biome, 60/60 Vitest et 16/16 Chrome réussis. Aucun commit ni push.
