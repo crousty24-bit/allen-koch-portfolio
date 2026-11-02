@@ -2332,3 +2332,18 @@ copier de secret, donnée client ou résultat supposé.
 - Après fusion et correction CI : 64/64 tests, build, lint et Biome réussis.
   Run 41493731701 lancé sur cee16d2. Ce compte rendu avance ensuite develop :
   le writer devra effectivement réintégrer un commit distant pendant son rebase.
+
+### Validation de la correction CI
+
+- Relecture indépendante complémentaire par review_standards (gpt-6-luna high) :
+  upstream develop vérifié dans les logs ; pas de force-push ni écrasement,
+  conflit éventuel arrêté par le rebase. Aucun défaut détecté.
+- Run 41493731701 : succès des deux jobs update-hero-stats et write-hero-stats.
+  Le writer a bien réintégré le commit documentaire arrivé après son lancement
+  et publié les statistiques actualisées. Cas de concurrence reproduit et corrigé.
+- Le commit généré est récupéré localement ; ce journal déclenche Quality sur
+  la tête complète, car un push par GITHUB_TOKEN ne relance pas automatiquement
+  tous les workflows GitHub. La fusion attendra ces nouveaux contrôles.
+- Avertissements GitHub observés : actions v4 utilisant le runtime Node 20
+  désormais forcé en Node 24, et évolution de ubuntu-latest. Jobs réussis ;
+  migration d'actions non ajoutée à cette release corrective.
