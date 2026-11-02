@@ -117,7 +117,7 @@ export function ContactSection({
               disabled={status === 'sending'}
               required
             />
-            <p className="contact-panel__privacy">
+            <p className="contact-panel__privacy" id="captcha-choice">
               {contactCopy.privacy}{' '}
               {/* A new tab keeps the typed message and the page-scoped captcha consent. */}
               <a
@@ -131,9 +131,6 @@ export function ContactSection({
               <a href="https://www.hcaptcha.com/privacy">
                 {contactCopy.captchaPrivacyLink}
               </a>
-            </p>
-            <p className="contact-panel__privacy" id="captcha-choice">
-              {contactCopy.captchaChoice}
             </p>
             <button
               className="button button--secondary contact-panel__captcha-choice"

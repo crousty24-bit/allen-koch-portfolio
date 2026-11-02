@@ -2105,3 +2105,20 @@ copier de secret, donnée client ou résultat supposé.
 - Limites : pas de contrôle navigateur, d’appel authentifié à GitHub ni de
   workflow distant exécuté. Aucun commit, push ou déploiement. RUN terminé
   localement ; les vérifications des autres RUN restent à leurs responsables.
+
+
+## RUN-017 — Notice courte et clarification hCaptcha (2 novembre 2026)
+
+- Mandat Allen : évaluer les doublons privacy/captcha-choice et alléger le
+  formulaire ; intégrer la réponse du support sur la couverture DPA.
+- Réalisation et relecture Codex, sans délégation : changement local ne justifiant
+  pas de transfert. Deux paragraphes fusionnés, libellé inutilisé retiré FR/EN.
+- Contrats préservés : liens vers les deux politiques, description accessible du
+  bouton, autorisation préalable, retrait et alternative email. Les durées et
+  détails existent dans la politique locale et n’y sont pas supprimés.
+- Acceptation locale : notice unique, détails accessibles et confirmation du
+  support attribuée à Allen dans les deux documents propriétaires. La couverture
+  de la clé partagée est clarifiée, sans clore les autres contrôles juridiques.
+- Build, lint, Biome et 62/62 tests réussis ; git diff --check réussi.
+- Pas de contrôle visuel navigateur, d’envoi réel ni de déploiement. Les autres
+  vérifications RUN-017 restent ouvertes ; aucune revue indépendante revendiquée.

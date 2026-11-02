@@ -61,14 +61,16 @@ de 30 jours dans le tableau de bord gratuit n'est pas une suppression des
 données au bout de 30 jours. La réponse du support transmise par Allen précise que la durée appliquée au
 formulaire entraîne une suppression automatique à son échéance, pas seulement
 un masquage ; trois ans est le plafond général. Sur la base du réglage d’un an
-confirmé par Allen, la notice FR/EN indique désormais un an puis suppression
+confirmé par Allen, la politique FR/EN indique un an puis suppression
 automatique. Le support n’a pas vérifié ici le réglage du compte ; les durées
 propres aux journaux et sauvegardes ne sont pas établies par cette réponse.
 Les 30 jours en messagerie restent distincts.
 
-La couverture de hCaptcha avec la clé partagée par le DPA Web3Forms est toujours
-en attente : le support a transmis la question à son équipe. Aucun accord
-séparé hCaptcha n’est présenté comme nécessaire ou inutile avant leur réponse.
+Le 2 novembre 2026, Allen transmet la réponse du support Web3Forms : le
+traitement hCaptcha avec leur clé partagée est couvert par leur DPA. Le code
+utilise actuellement cette clé partagée. Avec une clé personnelle, le support
+demande de consulter les conditions hCaptcha et d’obtenir un DPA distinct le
+cas échéant. Cette confirmation est rapportée par Allen, sans accès au ticket.
 
 ## Vérification et publication
 
@@ -107,6 +109,14 @@ pour la release sur décision d’Allen du 30 octobre. Coordonnées Vercel valid
 
 Allen confirme avoir pris connaissance du DPA et l’avoir téléchargé depuis son
 tableau de bord Web3Forms. Cela ne prouve pas à lui seul toutes les garanties
-applicables aux transferts ni les conditions hCaptcha sous clé partagée.
+applicables aux transferts ; la couverture hCaptcha sous clé partagée est confirmée par le support ci-dessus.
 La [liste de publication juridique](legal-release-checklist.md) conserve ces
 points ouverts ; ne pas déclarer la conformité ni le must fix 3 entièrement clos.
+
+## Allègement de la notice — 2 novembre 2026
+
+Les deux paragraphes du formulaire sont fusionnés en une notice courte FR/EN :
+Web3Forms, finalité antispam hCaptcha, cookies possibles et alternative email.
+Les liens local/hCaptcha et le retrait restent accessibles ; durées, données
+analysées et détails restent dans la politique locale. Aucun chargement anticipé
+ni changement du traitement. Référence : [information à deux niveaux, CNIL](https://www.cnil.fr/fr/cookies-et-autres-traceurs/que-dit-la-loi).
