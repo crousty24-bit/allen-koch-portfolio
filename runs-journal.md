@@ -2356,3 +2356,8 @@ copier de secret, donnée client ou résultat supposé.
 - Fusion suspendue. Ajout du détail des éléments débordants dans le message
   d'échec, sans modifier le critère ni masquer le débordement. Revue ciblée
   complémentaire déléguée en lecture seule à review_standards.
+- Run diagnostic PR 41494586430 : contrôle overflow réussi, mais échec timeline
+  mobile. Cause de test identifiable : fade et masque lus dans deux commandes
+  CDP séparées, alors que le composant retire le masque après 100 ms immobile.
+  Regroupement des trois conditions (mouvement, fade, masque) dans une même
+  attente observable, sans retirer d'exigence ni changer le code applicatif.

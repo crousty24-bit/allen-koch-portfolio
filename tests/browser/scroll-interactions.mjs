@@ -846,22 +846,15 @@ for (const width of [390, 1440]) {
         .querySelector('.about-journey__list')
         .hasAttribute('data-moving'),
     )
-    await page.waitFor(
-      () =>
-        Number(
-          document
-            .querySelector('.about-journey__list')
-            .style.getPropertyValue('--journey-edge'),
-        ) < 0.99,
-    )
-    assert.notEqual(
-      await page.evaluate(
-        () =>
-          getComputedStyle(document.querySelector('.about-journey__list'))
-            .maskImage,
-      ),
-      'none',
-    )
+    // Sample the fade and mask together before the short animation ends.
+    await page.waitFor(() => {
+      const rail = document.querySelector('.about-journey__list')
+      return (
+        rail.hasAttribute('data-moving') &&
+        Number(rail.style.getPropertyValue('--journey-edge')) < 0.99 &&
+        getComputedStyle(rail).maskImage !== 'none'
+      )
+    })
     await page.evaluate(() =>
       document.querySelectorAll('.about-journey__arrow')[1].click(),
     )
