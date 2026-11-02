@@ -2316,3 +2316,16 @@ copier de secret, donnée client ou résultat supposé.
   métadonnées du déploiement accessibles par GitHub et site public.
 - Limites conservées : Safari/Firefox, appareil réel et lecteur d'écran non testés,
   pas d'envoi réel de message ; Search Console et réserves hCaptcha restent suivis.
+
+### Complément — statistiques et fusion de main
+
+- PR de release #29 créée via gh : le connecteur GitHub ne dispose pas du droit
+  de création (403), sans blocage avec les droits CLI existants.
+- Conflit de fusion limité à githubStats.ts : main conserve l'ancien schéma
+  commitContributions/contributionYear ; develop attend totalContributions.
+  Fusion de main dans develop en conservant le schéma et la valeur de develop.
+- Run 41493201200 : calcul réel, tests, build, lint et Biome réussis ; écriture
+  rejetée (fetch first) parce que develop a avancé pendant le run. Aucun écrasement.
+  Correction ciblée du writer : git pull --rebase entre commit et push pour
+  conserver les nouveaux commits distants. Un conflit éventuel échouera sans
+  forcer le push. Nouvelle exécution distante requise avant publication.
