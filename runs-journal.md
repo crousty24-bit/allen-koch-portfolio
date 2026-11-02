@@ -2038,3 +2038,326 @@ copier de secret, donnée client ou résultat supposé.
   Pas de nouvelle vérification Safari/Firefox ni sur appareil réel.
 - Le connecteur Vercel demande une réauthentification ; vérification distante
   prévue via les statuts GitHub et le site public, sans modifier le compte.
+
+
+## RUN-024 — Uniformisation des groupes Projets (2 novembre 2026)
+
+- Mandat Allen sur `feature/new_design_and_fixes` ; réalisé par Claude sans
+  délégation. Aucune dépendance ajoutée, aucun commit ni push.
+- `ProjectsGroup` porte l’état de chaque catégorie : index sticky, numérotation
+  et total par catégorie, trois cartes au scroll, bouton et grille au-delà.
+  Libellés du bouton rendus génériques FR/EN, identifiants de grille par catégorie
+  (`personal-projects-grid` remplace `projects-grid`), règle CSS `--group` retirée.
+- Build, lint, Biome (78 fichiers), 60/60 Vitest et 16/16 Chrome réussis, dont un
+  test couvrant une catégorie de quatre projets par injection de données.
+- Mesures Chrome à 1440 et 390 px : clients et game dev affichent 01 / 01, index
+  sticky sur desktop, index en ligne sur mobile, sans débordement horizontal.
+- Limites : aucune capture relue ; grille dépliée vérifiée dans le navigateur pour
+  les projets personnels seulement, Safari/Firefox et appareil réel non testés.
+
+## RUN-024 — Titre Hero sur une ligne (2 novembre 2026)
+
+- Demande Allen : `hero__heading` sur une seule ligne. Réalisé par Claude.
+- Taille fluide selon la colonne (`5cqi`, plafonds 2,25 rem et 1,75 rem), `nowrap`,
+  `max-width` retiré. Largeur du texte FR mesurée à 19,31 em, EN à 18,19 em.
+- Mesures Chrome FR de 320 à 1440 px : une ligne, 14 px à 320 px, 16,75 px à 390 px,
+  36 px à 1440 px. Débordement de 15 px à 320 px identique avant correctif, non traité.
+- Build, lint, Biome, 60/60 Vitest et 16/16 Chrome réussis. Aucun commit ni push.
+
+## RUN-024 — Bouton Projets fixe au-dessus de la grille (2 novembre 2026)
+
+- Demande Allen : le bouton garde sa place une fois les projets dépliés. Réalisé
+  par Claude : bouton placé avant la grille, écart bouton/grille fixé à 4 rem
+  sur desktop et mobile, surcharge mobile retirée.
+- Build, lint, Biome, 60/60 Vitest et 16/16 Chrome réussis. Position du bouton
+  identique après dépliage à 390 et 1440 px, ordre bouton/grille testé.
+- Pas de capture relue, Safari/Firefox et appareil réel non testés. Aucun commit ni push.
+
+## RUN-024 — Index des projets de la grille (2 novembre 2026)
+
+- Demande Allen : index 04/08, 05/08… au-dessus de l'image des cartes de grille,
+  sans animation. Réalisé par Claude : index rendu pour les deux variantes, retiré
+  de la méta, taille 3 rem, total sur la même ligne.
+- Build, lint, Biome, 61/61 Vitest et 16/16 Chrome réussis. Index 04 à 08 mesurés
+  au-dessus de l'image à 390, 900 et 1440 px, sans débordement.
+- Pas de capture relue, Safari/Firefox et appareil réel non testés. Aucun commit ni push.
+
+
+## RUN-025 — Contributions GitHub du Hero (2 novembre 2026)
+
+- Mandat Allen : total « contributions in the last year » du profil, deux
+  actualisations par mois et libellé « contributions GitHub ». Réalisé et relu
+  par Codex ; pas de délégation utile pour ce changement local.
+- Requête `contributionCalendar.totalContributions` sans dates : fenêtre annuelle
+  glissante par défaut de GitHub, remplaçant les commits de l’année civile.
+  Source consultée : https://docs.github.com/en/graphql/reference/users.
+- Donnée générée renommée `totalContributions`, champ annuel obsolète supprimé,
+  consommateur Hero raccordé. Valeur initiale 1492 fournie par Allen, sans
+  confirmation par une requête authentifiée. Préfixe et animation conservés.
+- Cron `17 5 1,16 * *` : 1er et 16 de chaque mois à 05 h 17 UTC ; deux fois par
+  mois, avec des intervalles dépendant de la longueur du mois. Déclenchement
+  manuel, contrôles avant commit et séparation des permissions conservés.
+- Libellés FR « contributions GitHub » et EN « GitHub contributions ». Aucun
+  changement CSS, composant de base, dépendance ou rendu structurel.
+- Vérification : 62/62 tests Vitest, build, lint, Biome (78 fichiers) réussis ;
+  diff sans erreur d’espaces. Tests CLI adaptés avec contrat de requête sur la
+  fenêtre par défaut et total calendrier distinct du total de commits.
+- Limites : pas de contrôle navigateur, d’appel authentifié à GitHub ni de
+  workflow distant exécuté. Aucun commit, push ou déploiement. RUN terminé
+  localement ; les vérifications des autres RUN restent à leurs responsables.
+
+
+## RUN-017 — Notice courte et clarification hCaptcha (2 novembre 2026)
+
+- Mandat Allen : évaluer les doublons privacy/captcha-choice et alléger le
+  formulaire ; intégrer la réponse du support sur la couverture DPA.
+- Réalisation et relecture Codex, sans délégation : changement local ne justifiant
+  pas de transfert. Deux paragraphes fusionnés, libellé inutilisé retiré FR/EN.
+- Contrats préservés : liens vers les deux politiques, description accessible du
+  bouton, autorisation préalable, retrait et alternative email. Les durées et
+  détails existent dans la politique locale et n’y sont pas supprimés.
+- Acceptation locale : notice unique, détails accessibles et confirmation du
+  support attribuée à Allen dans les deux documents propriétaires. La couverture
+  de la clé partagée est clarifiée, sans clore les autres contrôles juridiques.
+- Build, lint, Biome et 62/62 tests réussis ; git diff --check réussi.
+- Pas de contrôle visuel navigateur, d’envoi réel ni de déploiement. Les autres
+  vérifications RUN-017 restent ouvertes ; aucune revue indépendante revendiquée.
+
+## RUN-017 — Feedback du formulaire (2 novembre 2026)
+
+- Mandat Allen : implémenter la recommandation acceptée, sans redirection.
+  Codex réalise et relit le lot ; aucune délégation utile pour ce périmètre.
+- Périmètre : ContactSection, textes FR/EN, CSS Contact/mouvement réduit, test
+  navigateur existant et contrat contact. Aucun changement API ou dépendance.
+- Confirmation remplaçant les champs après succès, coche et explication,
+  focus sur le titre, lien projets et nouveau message avec focus dans le nom.
+  Retrait hCaptcha disponible après succès ; consentement de page conservé
+  au nouveau message, widget remonté avec un jeton neuf nécessaire.
+- Envoi avec spinner et aria-busy ; erreur visuellement encadrée, aide captcha
+  près du contrôle. Saisie conservée après échec et protection double envoi.
+- Consultation MCP shadcn Alert effectuée ; exception : réutilisation des
+  boutons/styles natifs existants, aucune première intégration nécessaire.
+- Contrôles : build, lint, Biome et 62/62 Vitest réussis. Premier Vitest échoué
+  sur une media query hors fichier dédié ; déplacée dans reduced-motion.css,
+  puis suite réussie. Suite Chrome 16/16 réussie ; après ce déplacement CSS et
+  ajout de mesures 390/1440, scénario Contact ciblé réussi sur le build final.
+- Acceptation locale : focus confirmation/reprise, champs absents après succès,
+  saisie vide à la reprise, lien #projects, absence de débordement 390/1440,
+  rejet et double soumission testés avec API et jeton simulés.
+- Limites : pas de capture visuelle relue, pas de nouvel envoi réel,
+  Safari/Firefox et appareil réel non vérifiés. Pas de commit ni déploiement.
+
+## RUN-017 — Erreur initiale hCaptcha (2 novembre 2026)
+
+- Allen valide le feedback précédent, puis signale une erreur initiale captcha
+  avec vidéo. Codex examine des images extraites de la vidéo : widget en erreur,
+  rétablissement et message d’échec d’envoi persistant avant envoi effectif.
+- Cause vérifiée dans le frontend : onError hCaptcha utilisait le même état
+  que le rejet Web3Forms ; onVerify ne l’effaçait pas. La cause réseau initiale
+  du fournisseur reste inconnue sans logs ; aucune correction réseau prétendue.
+- Correction ciblée Codex, sans délégation : état d’erreur captcha indépendant,
+  effacement au chargement/vérification et relance manuelle par remontage du
+  widget. Textes FR/EN, test navigateur et contrat mis à jour ; aucun CSS ajouté.
+- Contrats : saisie, consentement préalable/retrait, jeton obligatoire, retour
+  Web3Forms, absence de double envoi et confirmation validée préservés.
+- Vérification : build, lint, Biome, 62/62 Vitest et scénario Chrome Contact
+  ciblé réussis. Ce dernier déclenche les callbacks réels avec network-error et
+  challenge-error simulés, vérifie zéro appel API prématuré, saisie conservée,
+  relance, effacement après vérification puis rejet/succès API simulés.
+- Référence consultée : https://docs.hcaptcha.com/configuration#error-codes.
+  Aucun envoi réel, déploiement ou reproduction indépendante de la panne réseau
+  d’Allen. Relecture par l’implémenteur ; aucun autre RUN exécuté.
+
+
+## RUN-026 — Découvrabilité et description anglaise (2 novembre 2026)
+
+- Mandat Allen après audit SEO : traiter le point 1, différer et documenter le
+  point 2, traiter le point 3 et contrôler le rendu indexé.
+- Réalisation et relecture Codex ; pas de délégation, périmètre partagé réduit
+  ne justifiant pas le transfert. Aucune revue indépendante revendiquée.
+- Les cinq cartes de grille sont désormais montées dès le premier rendu React,
+  avec descriptions/liens. Attribut hidden et CSS ciblé conservent le repli,
+  la navigation clavier et les trois cartes personnelles mises en avant.
+- Description traduite dans les données FR/EN et synchronisée par l'effet
+  existant de langue. Texte FR, offre, canonical et partage social inchangés.
+- Point 2 consigné dans docs/seo-follow-up.md comme différé par Allen ;
+  aucune réécriture commerciale ni ajout de route, paquet ou prérendu.
+- Contrôles : 63/63 Vitest, build, lint, Biome réussis ; 17/17 tests Chrome
+  réussis. Après ajout de l'assertion de focus masqué, scénario SEO ciblé
+  réussi : dix cartes avant clic, grille display:none non focalisable,
+  dépliage/repli à 390/1440 px, description EN persistante et retour FR.
+- Premier Biome échoué sur le format du nouveau test navigateur ; format
+  corrigé avec Biome puis contrôle réussi. Aucun échec applicatif observé.
+- Allen confirme l'accès Search Console ; aucun connecteur disponible dans
+  cette session. Inspection de l'index Google non réalisée, procédure fournie
+  dans le suivi SEO ; dépend d'une publication puis d'une nouvelle exploration.
+- Attendu visuel : présentation desktop/mobile conservée. Géométrie et
+  interactions contrôlées en Chrome ; pas de captures relues, Safari/Firefox
+  ou appareil réel. Aucun commit, push, déploiement ou réindexation demandé.
+- État : verify pour l'inspection Google restante ; implémentation locale finie.
+
+
+### RUN-026 — Retour Search Console fourni par Allen
+
+- Lecture des quatre CSV Coverage et des trois captures du 2 novembre via
+  leurs chemins WSL ; aucun accès direct au compte Google.
+- Indexation confirmée dans la capture, canonical choisie = URL inspectée ;
+  dernière exploration le 28 octobre à 16:31:38, smartphone, récupération réussie.
+- Test en direct du 2 novembre à 17:31:46 positif ; HTML exploré non fourni.
+- Export graphique arrêté au 23 octobre : 1 URL indexée, 3 redirigées ;
+  URL sources absentes de l'export. Aucun défaut de redirection déduit du libellé.
+- Message sitemap temporaire visible ; sitemap public revérifié HTTP 200
+  et XML cohérent. Cause Google inconnue, aucun correctif technique justifié.
+- Suivi SEO actualisé. RUN reste verify : contenu rendu par Google non inspecté,
+  correctifs non publiés par ce lot. Aucun test applicatif relancé pour cette
+  mise à jour documentaire ; git diff --check réussi.
+
+
+### RUN-026 — HTML de la page testée fourni par Allen
+
+- HTML joint analysé avec HTMLParser : cinq articles project-card, titres
+  Diff Impact Analyzer, SnipStack, Code Quality Guardian, SEOS, Milady's Knight.
+  Aucune carte pour les cinq projets supplémentaires ; défaut avant correction
+  confirmé dans le rendu fourni. Titre, canonical, description et JSON-LD présents.
+- L'export est annoncé comme page testée : aucune assimilation à la version
+  indexée. Suivi SEO actualisé ; validation après publication encore nécessaire.
+- Documentation seule, git diff --check réussi ; aucun test applicatif relancé.
+
+
+### RUN-026 — Vérification avant fusion/publication
+
+- Demande Allen : confirmer la préparation de la fusion et de la production.
+- Diff relu, build/lint/Biome, 63/63 Vitest et 17/17 Chrome réussis ;
+  git diff --check réussi. Aucun changement de code dans cette vérification.
+- Audit release exécuté : échec, 12 entrées modérées liées à minimatch
+  et à ses consommateurs ESLint/TypeScript-ESLint ; version locale 10.2.5.
+  Référence npm : GHSA-g3hv-75wg-m249. Il ne s'agit pas de 12 causes distinctes.
+- Audit --omit=dev : zéro vulnérabilité. Alerte située dans l'outillage,
+  pas dans les dépendances frontend de production auditées.
+- Quality exécute npm audit --audit-level=moderate sans exception :
+  le résultat actuel bloque son passage au vert. Aucun audit fix --force
+  ni changement de dépendance effectué ; correction ciblée restant à traiter.
+- Lot SEO validé localement ; pas de feu vert global release tant que cet
+  audit échoue. Contrôle Search Console après publication toujours requis.
+- Aucune fusion, push ou publication exécutée.
+
+
+### RUN-026 — Blocage audit corrigé à la demande d'Allen
+
+- Périmètre autorisé : corriger la dépendance vulnérable avant fusion. Codex
+  réalise et relit ; pas de délégation utile pour la résolution ciblée.
+- Avis GitHub GHSA-g3hv-75wg-m249 vérifié : versions <11.0.1 affectées,
+  y compris la série 10 requise par les consommateurs. Dernier ESLint consulté
+  (10.14.0) demande encore ^10.2.6 : une mise à jour ESLint ne suffit pas.
+- Override minimatch fixé à 11.0.4, compatible moteur Node 24 ; lockfile
+  ciblé : une version modifiée et une dépendance transitive ajoutée. Aucun
+  audit fix --force, ajout direct de dépendance ou seuil CI abaissé.
+- npm ci réussi (182 paquets) ; audit complet et --omit=dev : zéro vulnérabilité.
+- Build, lint, Biome, 63/63 Vitest et 17/17 Chrome réussis après réinstallation.
+  Bundle frontend : mêmes noms hashés CSS/JS que le build SEO précédent.
+- Contrôle ponctuel ESLint : règles TS actives sur App.tsx et test TypeScript,
+  variable inutilisée effectivement détectée, dist ignoré. Premier auto-contrôle
+  trop large échoué car il attendait aussi des règles sur le test .mjs ;
+  eslint.config.js configure historiquement les règles sur ts/tsx seulement.
+  Assertion corrigée pour vérifier le contrat réel ; pas de changement ESLint.
+- Dérogation et retrait futur documentés dans docs/tooling.md. Le blocage local
+  audit est levé ; CI distante non exécutée, aucune fusion/push/publication.
+- Inspection Google après publication toujours restante, RUN-026 en verify
+  pour cette seule vérification externe. Aucun défaut applicatif observé.
+
+
+### RUN-027 — Raccourcis entre catégories de projets
+
+- Réalisation et relecture Claude Opus 5.5, sans délégation utile ni revue indépendante.
+- Ancres personal-projects, client-projects et game-dev-projects ; liens dans
+  l'en-tête de chaque groupe, limités aux catégories publiées.
+- Build, lint, Biome, 64/64 Vitest et 19/19 Chrome réussis ; git diff --check réussi.
+- Accès direct à #client-projects à 80 px du haut (sous la navigation), FR/EN,
+  sombre/clair, 320/390/1440 px, sans débordement. Captures contrôlées à 320 et 1440 px.
+- Limites : raccourcis visibles seulement en haut de chaque groupe, pas au milieu
+  d'un groupe ; lecteur d'écran non testé. Aucun commit, push ou publication.
+
+- Révision Allen : titre de groupe devenu bouton de divulgation (h3 > button)
+  ouvrant une liste de liens ; fermeture au choix, Échap (focus rendu), clic ou
+  focus extérieur, comme le menu Navbar. Exception shadcn justifiée dans le suivi.
+- Après révision : build, lint, Biome, 64/64 Vitest et 19/19 Chrome réussis. Menu
+  au-dessus de l'index et des cartes vérifié par hit-testing à 390/1440 px ;
+  captures relues à 320 et 1440 px en sombre. Lecteur d'écran toujours non testé.
+- Complément Allen : paragraphe d'en-tête aligné sur la ligne de base du titre,
+  règle partagée par Projets et Stack. Écart mesuré 0 px à 1041/1440 px ; à
+  1040 px et moins, texte sous le titre inchangé. Build, lint, Biome, 64/64 Vitest
+  et 19/19 Chrome réussis.
+
+## RUN-008 — Revue globale et préparation 1.4.1 (2 novembre 2026)
+
+- Mandat Allen : vérifier develop après fusion de la feature (#28), puis fusionner
+  sur main et publier la release 1.4.1 pour production. Départ propre 863ab7a,
+  identique à origin/develop ; comparaison avec origin/main ebcebbe.
+- Périmètre relu : projets et raccourcis, contact/confirmation/CAPTCHA, description
+  SEO FR/EN, statistiques GitHub et workflows. Aucun correctif applicatif justifié.
+- Codex coordonne et vérifie ; deux sous-agents gpt-6-luna, effort high, lecture
+  seule : review_standards (conventions/logique/CI) et review_spec (contrats
+  RUN-024/026/027 et contact). Bénéfice attendu : revue indépendante avant release.
+  Aucun constat bloquant ; pas de dérive de périmètre relevée.
+- Hypothèse de revue sur le focus des raccourcis contrôlée dans Chrome : après
+  Entrée vers #client-projects, Tab atteint le bouton de la catégorie cible.
+  Le navigateur conserve donc le point de navigation séquentiel ; pas de
+  correction ajoutée pour une perte de parcours non reproduite. Le premier
+  script exploratoire a échoué car le focus était demandé avant le rendu du menu ;
+  attente de son ouverture ajoutée dans l'exploration, aucun changement produit.
+- npm ci, 64/64 Vitest, 19/19 Chrome, build, lint, Biome et audit moderate réussis,
+  zéro vulnérabilité. Build/lint/Biome répétés après passage à 1.4.1 ; diff-check vert.
+- Quality sur develop 863ab7a : succès, run 41492591961 ; statut Vercel succès.
+  Update hero stats lancé sur develop (41493201200) pour vérifier la nouvelle
+  requête avec le secret GitHub réel, sans exposer sa valeur.
+- Version package/lock et README actualisés. Publication via PR develop → main
+  après contrôles distants ; tag/release et déploiement à contrôler ensuite.
+- Connecteur Vercel : réauthentification requise. Repli prévu : statuts GitHub,
+  métadonnées du déploiement accessibles par GitHub et site public.
+- Limites conservées : Safari/Firefox, appareil réel et lecteur d'écran non testés,
+  pas d'envoi réel de message ; Search Console et réserves hCaptcha restent suivis.
+
+### Complément — statistiques et fusion de main
+
+- PR de release #29 créée via gh : le connecteur GitHub ne dispose pas du droit
+  de création (403), sans blocage avec les droits CLI existants.
+- Conflit de fusion limité à githubStats.ts : main conserve l'ancien schéma
+  commitContributions/contributionYear ; develop attend totalContributions.
+  Fusion de main dans develop en conservant le schéma et la valeur de develop.
+- Run 41493201200 : calcul réel, tests, build, lint et Biome réussis ; écriture
+  rejetée (fetch first) parce que develop a avancé pendant le run. Aucun écrasement.
+  Correction ciblée du writer : git pull --rebase entre commit et push pour
+  conserver les nouveaux commits distants. Un conflit éventuel échouera sans
+  forcer le push. Nouvelle exécution distante requise avant publication.
+- Après fusion et correction CI : 64/64 tests, build, lint et Biome réussis.
+  Run 41493731701 lancé sur cee16d2. Ce compte rendu avance ensuite develop :
+  le writer devra effectivement réintégrer un commit distant pendant son rebase.
+
+### Validation de la correction CI
+
+- Relecture indépendante complémentaire par review_standards (gpt-6-luna high) :
+  upstream develop vérifié dans les logs ; pas de force-push ni écrasement,
+  conflit éventuel arrêté par le rebase. Aucun défaut détecté.
+- Run 41493731701 : succès des deux jobs update-hero-stats et write-hero-stats.
+  Le writer a bien réintégré le commit documentaire arrivé après son lancement
+  et publié les statistiques actualisées. Cas de concurrence reproduit et corrigé.
+- Le commit généré est récupéré localement ; ce journal déclenche Quality sur
+  la tête complète, car un push par GITHUB_TOKEN ne relance pas automatiquement
+  tous les workflows GitHub. La fusion attendra ces nouveaux contrôles.
+- Avertissements GitHub observés : actions v4 utilisant le runtime Node 20
+  désormais forcé en Node 24, et évolution de ubuntu-latest. Jobs réussis ;
+  migration d'actions non ajoutée à cette release corrective.
+
+### Blocage Quality PR — diagnostic du débordement
+
+- Quality push 41493938686 réussit sur la tête 893f42a. Quality PR 41493944310
+  échoue deux fois sur le test existant à 1100×600 (overflow horizontal).
+  Les suites locales et le contrôle ciblé passent ; cause non établie.
+- Fusion suspendue. Ajout du détail des éléments débordants dans le message
+  d'échec, sans modifier le critère ni masquer le débordement. Revue ciblée
+  complémentaire déléguée en lecture seule à review_standards.
+- Run diagnostic PR 41494586430 : contrôle overflow réussi, mais échec timeline
+  mobile. Cause de test identifiable : fade et masque lus dans deux commandes
+  CDP séparées, alors que le composant retire le masque après 100 ms immobile.
+  Regroupement des trois conditions (mouvement, fade, masque) dans une même
+  attente observable, sans retirer d'exigence ni changer le code applicatif.

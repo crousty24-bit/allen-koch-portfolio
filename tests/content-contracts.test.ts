@@ -37,6 +37,7 @@ describe('published content contracts', () => {
 
   it.each(languages)('has nonempty published text in %s', (language) => {
     const strings = [
+      copy[language].seo.description,
       copy[language].hero.role,
       copy[language].hero.subtitle,
       copy[language].about.subheading,
@@ -65,6 +66,12 @@ describe('published content contracts', () => {
       ]),
     ]
     for (const value of strings) expect(value.trim()).not.toBe('')
+  })
+
+  it('keeps the initial French description aligned with the language data', () => {
+    expect(readFileSync('index.html', 'utf8')).toContain(
+      `content="${copy.fr.seo.description}"`,
+    )
   })
 
   it('references existing, nonempty project images and responsive candidates', () => {

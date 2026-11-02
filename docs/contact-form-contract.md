@@ -61,14 +61,16 @@ de 30 jours dans le tableau de bord gratuit n'est pas une suppression des
 données au bout de 30 jours. La réponse du support transmise par Allen précise que la durée appliquée au
 formulaire entraîne une suppression automatique à son échéance, pas seulement
 un masquage ; trois ans est le plafond général. Sur la base du réglage d’un an
-confirmé par Allen, la notice FR/EN indique désormais un an puis suppression
+confirmé par Allen, la politique FR/EN indique un an puis suppression
 automatique. Le support n’a pas vérifié ici le réglage du compte ; les durées
 propres aux journaux et sauvegardes ne sont pas établies par cette réponse.
 Les 30 jours en messagerie restent distincts.
 
-La couverture de hCaptcha avec la clé partagée par le DPA Web3Forms est toujours
-en attente : le support a transmis la question à son équipe. Aucun accord
-séparé hCaptcha n’est présenté comme nécessaire ou inutile avant leur réponse.
+Le 2 novembre 2026, Allen transmet la réponse du support Web3Forms : le
+traitement hCaptcha avec leur clé partagée est couvert par leur DPA. Le code
+utilise actuellement cette clé partagée. Avec une clé personnelle, le support
+demande de consulter les conditions hCaptcha et d’obtenir un DPA distinct le
+cas échéant. Cette confirmation est rapportée par Allen, sans accès au ticket.
 
 ## Vérification et publication
 
@@ -107,6 +109,46 @@ pour la release sur décision d’Allen du 30 octobre. Coordonnées Vercel valid
 
 Allen confirme avoir pris connaissance du DPA et l’avoir téléchargé depuis son
 tableau de bord Web3Forms. Cela ne prouve pas à lui seul toutes les garanties
-applicables aux transferts ni les conditions hCaptcha sous clé partagée.
+applicables aux transferts ; la couverture hCaptcha sous clé partagée est confirmée par le support ci-dessus.
 La [liste de publication juridique](legal-release-checklist.md) conserve ces
 points ouverts ; ne pas déclarer la conformité ni le must fix 3 entièrement clos.
+
+## Allègement de la notice — 2 novembre 2026
+
+Les deux paragraphes du formulaire sont fusionnés en une notice courte FR/EN :
+Web3Forms, finalité antispam hCaptcha, cookies possibles et alternative email.
+Les liens local/hCaptcha et le retrait restent accessibles ; durées, données
+analysées et détails restent dans la politique locale. Aucun chargement anticipé
+ni changement du traitement. Référence : [information à deux niveaux, CNIL](https://www.cnil.fr/fr/cookies-et-autres-traceurs/que-dit-la-loi).
+
+## Confirmation après envoi — 2 novembre 2026
+
+Après acceptation HTTP/JSON, les champs sont remplacés par une confirmation
+FR/EN avec focus sur le titre. Les actions permettent de consulter `#projects`
+ou de saisir un nouveau message ; aucune redirection automatique. Le retrait
+hCaptcha reste accessible sur la confirmation. Un nouveau message conserve
+l’autorisation de la page mais nécessite un nouveau jeton. Pendant l’envoi :
+indicateur de chargement, champs désactivés et `aria-busy`. Les erreurs sont
+encadrées, la saisie conservée ; l’aide captcha apparaît près du contrôle.
+
+## Incident captcha — 2 novembre 2026
+
+Une erreur du widget n’est pas une erreur d’envoi : elle possède désormais
+son propre état et message FR/EN près du contrôle. La réussite du chargement ou
+de la vérification efface cette alerte. « Réessayer le contrôle anti-spam »
+remonte le widget sans recharger la page ni effacer la saisie, avec l’autorisation
+existante. Aucun envoi automatique ni contournement du jeton n’est ajouté.
+La vidéo d’Allen montre une erreur initiale puis un rétablissement ; le code
+réseau exact du fournisseur n’est pas connu à partir de cette vidéo.
+
+### Point à surveiller — erreur persistante en local
+
+Le 2 novembre 2026, Allen confirme que l’erreur hCaptcha apparaît encore après
+le correctif du feedback. Un lien avec l’exécution sur localhost est une
+hypothèse non confirmée ; la cause reste inconnue. Allen accepte de différer
+l’investigation : aucune correction supplémentaire demandée pour le moment.
+
+À reprendre lors d’un essai sur une URL hébergée : vérifier le premier chargement,
+la récupération après erreur et l’envoi. Si l’erreur persiste, relever le code
+hCaptcha et les erreurs console/réseau pour identifier la cause avant de modifier
+l’intégration. La disparition de l’erreur en production n’est pas établie.

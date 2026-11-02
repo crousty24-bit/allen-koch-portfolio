@@ -4,6 +4,32 @@ Source de vérité du suivi : objectifs, responsables, dépendances et état des
 Les preuves vont dans [runs-journal.md](runs-journal.md). Le cycle d'exécution est
 défini dans [docs/agentic-workflow.md](docs/agentic-workflow.md).
 
+## RUN-026 — Corrections SEO après refonte (2 novembre 2026)
+
+- Mandat Allen : rendre tous les projets découvrables, synchroniser la description
+  anglaise, contrôler le rendu ; documenter le ciblage commercial sans le modifier.
+- Périmètre : ProjectsSection, CSS de repli, description FR/EN, effet App,
+  contrats de rendu/contenu et tests Chrome. Aucun nouveau composant ou paquet.
+- Préservé : trois projets personnels mis en avant, grille dépliable, ordre,
+  publication client, thèmes, langues, images différées et URL unique.
+- Acceptation : dix cartes avec descriptions et liens présentes avant clic,
+  grille repliée inaccessible au clavier, dépliage/repli conservé à 390/1440 px,
+  description EN persistante au rechargement et retour FR correct ; checks verts.
+- Rendu indexé : nécessite Search Console et une version publiée. Le contrôle
+  local du DOM ne prouve ni l'indexation ni une réexploration par Google.
+- Statut : verify. Implémentation et contrôles locaux terminés ; inspection
+  Search Console après publication encore requise. Les validations humaines
+  des anciens RUN ne sont pas reprises ou déclarées closes par cette intervention.
+
+### Complément autorisé — audit des dépendances
+
+Allen mandate ensuite la correction du blocage npm audit découvert avant fusion.
+Périmètre : résolution minimatch dans package.json/package-lock.json, sans
+changement des dépendances applicatives ou baisse du seuil de sécurité CI.
+Acceptation : installation reproductible, audit complet sans vulnérabilité,
+build/lint/Biome et suites unitaires/navigateur réussis. Compatibilité de la
+résolution majeure à vérifier ; aucun audit fix --force autorisé par défaut.
+
 ## Règles de suivi
 
 - Identifiants stables `RUN-000`, `RUN-001`, etc. Ne pas renuméroter l'historique.
@@ -68,6 +94,7 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
 | RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | done |
 | RUN-022 | P2 | Passe visuelle 1 — transitions de sections au scroll | Claude UI ; Codex QA ; validation Allen | RUN-007 | done |
 | RUN-023 | P2 | Passe structure — titres des sections et Hero | Claude UI ; Codex QA ; validation Allen | RUN-022 | done |
+| RUN-024 | P2 | Uniformisation des groupes Projets | Claude ; validation Allen | RUN-015 | verify |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | verify |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -207,6 +234,15 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
   applicatifs/navigateur et revue finale ; docs alignées avec l'état livré.
 
 ## RUN-008 — Validation et préparation de release
+
+- Mandat du 2 novembre 2026 : revue globale de `develop` après PR #28,
+  contrôles locaux et GitHub, puis fusion et release `1.4.1` sur `main`.
+  Périmètre : validation du lot projets/contact/SEO/statistiques, version,
+  README et preuves ; correction uniquement si régression démontrée.
+  Préservé : FR/EN, thèmes, responsive, accessibilité, catalogue et contact.
+  Acceptation : checks locaux et distants verts, tag/release GitHub et
+  déploiement de production contrôlés. Réserves externes inchangées :
+  Search Console après publication, hCaptcha et matrice appareils/navigateurs.
 
 - Mandat de publication du 30 octobre 2026 : Allen demande la fusion de
   `develop` vers `main` (production) avec mise à jour de version. Release
@@ -573,3 +609,43 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
   confirmation d'Allen. La hiérarchie des titres, ARIA et ancres ont été contrôlés ;
   responsive, thèmes, langues et animations préservés selon les preuves du journal.
   RUN-008 reste planifié pour la validation finale de release.
+
+
+## RUN-024 — Uniformisation des groupes Projets
+
+- Mandat d’Allen du 2 novembre 2026, branche `feature/new_design_and_fixes` :
+  index et total propres à chaque catégorie (01/08, 01/01, 01/01), même affichage
+  au scroll pour les trois catégories, trois projets au scroll au maximum, puis
+  bouton « Afficher tous les projets » et grille pour le reste.
+- Préservé : contenus et ordre des projets, publication client, mobile, thèmes.
+- Acceptation : contrôles applicatifs et navigateur réussis ; validation visuelle
+  d’Allen attendue. Preuves et limites au journal.
+
+
+## RUN-025 — Contributions GitHub du Hero
+
+- Mandat Allen du 2 novembre 2026 : afficher le total du profil sur l’année
+  écoulée, actualiser deux fois par mois et préciser le libellé GitHub.
+- Périmètre : requête GraphQL, donnée générée, consommateur Hero, libellés FR/EN,
+  cron et tests existants. Réalisation et relecture Codex, sans délégation utile.
+- Préservé : frontend statique, animation/accessibilité, thèmes, styles et contrôles
+  du workflow avant écriture ; aucune dépendance ni publication.
+- Acceptation : total du calendrier GitHub sur la fenêtre annuelle par défaut,
+  cron les 1er et 16 à 05 h 17 UTC, libellés explicites FR/EN et contrôles verts.
+- Statut : done localement ; preuves et limites dans le journal. Les vérifications
+  humaines/des services des RUN précédents ne sont pas reprises dans ce lot.
+
+
+## RUN-027 — Raccourcis entre catégories de projets
+
+- Mandat Allen du 2 novembre 2026 : depuis chaque groupe Projets, accéder par
+  ancre aux autres catégories publiées (personnels, clients, game dev).
+- Périmètre : ProjectsSection, styles Projets, libellé FR/EN, levée du pin pour
+  une ancre interne à une section (App), tests. Aucun paquet ni composant de base.
+- Préservé : contenus, ordre, index au scroll, dépliage, ancres et pile de sections.
+- Acceptation : six trajets entre groupes arrêtés sous la navigation à 390/1440 px,
+  sans débordement à 320 px ; contrôles verts ; validation visuelle d'Allen attendue.
+- Révision Allen du même jour : boutons de droite retirés ; le titre du groupe
+  ouvre un menu déroulant des autres catégories. Exception shadcn/ui : aucun
+  composant intégré à ce jour, intégration non validée ; divulgation native.
+- Statut : verify. Preuves et limites au journal.

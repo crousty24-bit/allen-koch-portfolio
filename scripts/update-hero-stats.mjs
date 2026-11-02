@@ -8,9 +8,6 @@ const statsFilePath = resolve(rootDir, 'src/data/hero/githubStats.ts')
 
 const githubLogin = process.env.GITHUB_LOGIN || 'crousty24-bit'
 const githubToken = process.env.GH_PROFILE_TOKEN
-const currentYear = new Date().getUTCFullYear()
-const from = `${currentYear}-01-01T00:00:00Z`
-const to = new Date().toISOString()
 
 if (!githubToken) {
   console.error('Missing GH_PROFILE_TOKEN. Set it before running stats:update.')
@@ -18,10 +15,12 @@ if (!githubToken) {
 }
 
 const query = `
-  query UserCommitContributions($login: String!, $from: DateTime!, $to: DateTime!) {
+  query UserContributions($login: String!) {
     user(login: $login) {
-      contributionsCollection(from: $from, to: $to) {
-        totalCommitContributions
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+        }
       }
     }
   }
@@ -37,8 +36,6 @@ const response = await fetch('https://api.github.com/graphql', {
     query,
     variables: {
       login: githubLogin,
-      from,
-      to,
     },
   }),
 })
@@ -57,18 +54,16 @@ if (payload.errors?.length) {
   )
 }
 
-const commitContributions =
-  payload.data?.user?.contributionsCollection?.totalCommitContributions
+const totalContributions =
+  payload.data?.user?.contributionsCollection?.contributionCalendar
+    ?.totalContributions
 
-if (!Number.isInteger(commitContributions) || commitContributions < 0) {
-  throw new Error(
-    `Invalid totalCommitContributions value: ${commitContributions}`,
-  )
+if (!Number.isInteger(totalContributions) || totalContributions < 0) {
+  throw new Error(`Invalid totalContributions value: ${totalContributions}`)
 }
 
 const nextContent = `export const githubStats = {
-  commitContributions: ${commitContributions},
-  contributionYear: ${currentYear},
+  totalContributions: ${totalContributions},
 } as const
 `
 
@@ -84,7 +79,7 @@ try {
 
 if (currentContent === nextContent) {
   console.log(
-    `Hero GitHub stats already up to date: ${commitContributions} commit contributions for ${currentYear}.`,
+    `Hero GitHub stats already up to date: ${totalContributions} contributions in the last year.`,
   )
   process.exit(0)
 }
@@ -93,5 +88,5 @@ await mkdir(dirname(statsFilePath), { recursive: true })
 await writeFile(statsFilePath, nextContent)
 
 console.log(
-  `Updated hero GitHub stats: ${commitContributions} commit contributions for ${currentYear}.`,
+  `Updated hero GitHub stats: ${totalContributions} contributions in the last year.`,
 )

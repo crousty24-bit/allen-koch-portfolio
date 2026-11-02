@@ -43,3 +43,7 @@ html:root,
 .projects-features__track {
   transition: none;
 }
+
+.contact-panel__spinner {
+  animation: none;
+}

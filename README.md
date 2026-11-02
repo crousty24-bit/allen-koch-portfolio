@@ -1,8 +1,8 @@
 # Allen Koch - Portfolio Développeur
 
-> Release 1.4.0 : refonte Fullstack & IA, services, projets et formulaire
-> Web3Forms/hCaptcha. Fusion `develop` → `main` autorisée par Allen le
-> 30 octobre 2026 dans RUN-008. Voir les [preuves et limites](runs-journal.md)
+> Release 1.4.1 : navigation et présentation des projets, SEO bilingue,
+> confirmation du formulaire et statistiques GitHub. Fusion `develop` → `main`
+> autorisée par Allen le 2 novembre 2026 dans RUN-008. Voir les [preuves et limites](runs-journal.md)
 > et les [points de suivi contractuels](docs/legal-release-checklist.md).
 
 L’itération actuelle présente Allen comme développeur Fullstack & IA : services,
@@ -21,14 +21,14 @@ Le suivi agentique sépare le [brief produit](brief.md), les
 [règles de délégation](docs/handoff-contracts.md). Un RUN actif au maximum ;
 le design reste confié à Claude et l'intégration à Codex.
 
-![Version](https://img.shields.io/badge/version-1.4.0-blue)
-![Status](https://img.shields.io/badge/status-release%201.4.0-success)
+![Version](https://img.shields.io/badge/version-1.4.1-blue)
+![Status](https://img.shields.io/badge/status-release%201.4.1-success)
 ![Stack](https://img.shields.io/badge/stack-React%20%7C%20Vite%20%7C%20TypeScript-2e5bff)
 ![License](https://img.shields.io/badge/license-private-lightgrey)
 
 Portfolio développeur one-page d'Allen Koch, conçu pour présenter un profil fullstack et IA, des projets sélectionnés, une stack technique et des liens de contact professionnels.
 
-Version `1.4.0` est la release de la refonte. La version `1.3.2` reste
+Version `1.4.1` complète la refonte livrée en `1.4.0`. La version `1.3.2` reste
 la baseline historique des descriptions de maintenance ci-dessous.
 
 ## Aperçu

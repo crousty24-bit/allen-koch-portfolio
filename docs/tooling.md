@@ -56,6 +56,22 @@ avant la première intégration.
 
 ## Tests et matrice navigateur
 
+### Résolution minimatch — 2 novembre 2026
+
+`package.json` impose temporairement `minimatch@11.0.4` via `overrides` pour
+corriger [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249).
+Les trois consommateurs installés (ESLint, @eslint/config-array et
+@typescript-eslint/typescript-estree) demandent encore la série 10 ; la dernière
+version ESLint consultée demande aussi cette série, affectée selon l'avis.
+Node 24 respecte le moteur requis par la série 11. Le lockfile ne modifie que
+minimatch et ajoute sa dépendance transitive @isaacs/nonrecursive-glob-match.
+
+Compatibilité vérifiée avec installation `npm ci`, lint réel et contrôle de
+sélection des fichiers application/tests et exclusion de `dist`. Retirer cette
+dérogation lorsque les versions parentes retenues résolvent nativement une
+version corrigée ; relancer les contrôles et l'audit complet avant retrait.
+Le seuil d'audit CI et les dépendances frontend restent inchangés.
+
 La [procédure de vérification](testing.md) décrit la suite Vitest versionnée, ses
 limites, les tests de statistiques isolés et la matrice navigateur sur build
 production. Elle documente aussi le cache des images et le contrôle de release.

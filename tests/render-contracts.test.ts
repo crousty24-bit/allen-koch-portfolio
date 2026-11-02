@@ -136,9 +136,19 @@ describe('page render contracts', () => {
     }
   })
 
-  it('initially renders featured projects without mounting the extra cards', () => {
-    expect(page.match(/project-card--feature/g)).toHaveLength(3)
-    expect(page.match(/project-card--compact/g)).toHaveLength(2)
+  it('initially renders all published projects with the extra cards collapsed', () => {
+    expect(page.match(/project-card--feature/g)).toHaveLength(5)
+    expect(page.match(/project-card--compact/g)).toHaveLength(5)
+    expect(page).toContain(
+      'class="projects-grid" hidden="" id="personal-projects-grid"',
+    )
+    for (const project of projects.filter(isProjectPublished)) {
+      expect(page).toContain(renderToStaticMarkup(project.title))
+      expect(page).toContain(renderToStaticMarkup(project.description.fr))
+      for (const href of [project.href, project.repositoryHref]) {
+        if (href) expect(page).toContain(`href="${href}"`)
+      }
+    }
     expect(page).toContain('client-projects-title')
     const personal =
       page.match(
@@ -151,10 +161,83 @@ describe('page render contracts', () => {
     const gameTitle = renderToStaticMarkup("Milady's Knight")
     expect(personal).not.toContain(gameTitle)
     expect(game).toContain(`<h4>${gameTitle}</h4>`)
-    expect(game).toContain('10 / en développement')
+    expect(personal).toContain('/ 08')
+    expect(game).toContain('/ 01')
+    expect(game).not.toContain('projects-toggle')
     expect(page).toContain(
-      'aria-controls="projects-grid" aria-expanded="false"',
+      'aria-controls="personal-projects-grid" aria-expanded="false"',
     )
+    expect(personal.indexOf('projects-toggle')).toBeLessThan(
+      personal.indexOf('id="personal-projects-grid"'),
+    )
+  })
+
+  it('shows the category index above compact cards, not in their meta', () => {
+    const html = renderToStaticMarkup(
+      createElement(ProjectCard, {
+        project: fixture,
+        language: 'fr',
+        index: 3,
+        total: 8,
+        variant: 'compact',
+      }),
+    )
+    expect(html).toContain(
+      '04<span class="project-card__total">/ 08</span></p>',
+    )
+    expect(html.indexOf('project-card__index')).toBeLessThan(
+      html.indexOf('project-card__media'),
+    )
+    expect(html).toContain(
+      `<p class="project-card__meta">${fixture.status.fr}</p>`,
+    )
+  })
+
+  it('links each project category to the other published ones', () => {
+    const jumps = (category: string) =>
+      page
+        .slice(page.indexOf(`id="${category}-projects"`))
+        .match(/projects-group__jumps[\s\S]*?<\/ul>/)?.[0]
+        .match(/href="[^"]+"/g)
+    expect(page).toContain('id="personal-projects"')
+    expect(page).toContain(
+      'aria-controls="personal-projects-menu" aria-expanded="false"',
+    )
+    expect(page).toMatch(/hidden="" id="personal-projects-menu"/)
+    expect(jumps('personal')).toEqual([
+      'href="#client-projects"',
+      'href="#game-dev-projects"',
+    ])
+    expect(jumps('client')).toEqual([
+      'href="#personal-projects"',
+      'href="#game-dev-projects"',
+    ])
+    expect(jumps('game-dev')).toEqual([
+      'href="#personal-projects"',
+      'href="#client-projects"',
+    ])
+  })
+
+  it('limits every category to three scroll cards and a toggle', () => {
+    const originalLength = projects.length
+    try {
+      projects.push(
+        ...['A', 'B', 'C'].map(
+          (title): Project => ({ ...fixture, category: 'game-dev', title }),
+        ),
+      )
+      const html = renderToStaticMarkup(
+        createElement(ProjectsSection, { language: 'fr' }),
+      )
+      const game = html.slice(html.indexOf('game-dev-projects-title'))
+      expect(game.match(/project-card--feature/g)).toHaveLength(3)
+      expect(game).toContain('/ 04')
+      expect(game).toContain(
+        'aria-controls="game-dev-projects-grid" aria-expanded="false"',
+      )
+    } finally {
+      projects.splice(originalLength)
+    }
   })
 
   it.each(

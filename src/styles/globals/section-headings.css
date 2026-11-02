@@ -35,12 +35,12 @@ main {
   content: counter(section-index, decimal-leading-zero) " / ";
 }
 
-/* Title on columns 1-7, intro text on 9-12, sharing one row. */
+/* Title on columns 1-7, intro text on 9-12; its first line sits on the title baseline. */
 .section-heading--split > div {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: 2.5rem;
-  align-items: end;
+  align-items: first baseline;
 }
 
 .section-heading--split > div > h2 {
