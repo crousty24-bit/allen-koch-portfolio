@@ -2038,3 +2038,19 @@ copier de secret, donnée client ou résultat supposé.
   Pas de nouvelle vérification Safari/Firefox ni sur appareil réel.
 - Le connecteur Vercel demande une réauthentification ; vérification distante
   prévue via les statuts GitHub et le site public, sans modifier le compte.
+
+
+## RUN-024 — Uniformisation des groupes Projets (2 novembre 2026)
+
+- Mandat Allen sur `feature/new_design_and_fixes` ; réalisé par Claude sans
+  délégation. Aucune dépendance ajoutée, aucun commit ni push.
+- `ProjectsGroup` porte l’état de chaque catégorie : index sticky, numérotation
+  et total par catégorie, trois cartes au scroll, bouton et grille au-delà.
+  Libellés du bouton rendus génériques FR/EN, identifiants de grille par catégorie
+  (`personal-projects-grid` remplace `projects-grid`), règle CSS `--group` retirée.
+- Build, lint, Biome (78 fichiers), 60/60 Vitest et 16/16 Chrome réussis, dont un
+  test couvrant une catégorie de quatre projets par injection de données.
+- Mesures Chrome à 1440 et 390 px : clients et game dev affichent 01 / 01, index
+  sticky sur desktop, index en ligne sur mobile, sans débordement horizontal.
+- Limites : aucune capture relue ; grille dépliée vérifiée dans le navigateur pour
+  les projets personnels seulement, Safari/Firefox et appareil réel non testés.

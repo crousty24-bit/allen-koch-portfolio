@@ -68,6 +68,7 @@ Cette phase historique précédait le choix de Web3Forms du 30 octobre 2026.
 | RUN-007 | P1 | Assemblage et cohérence globale de la refonte | Codex + Claude | RUN-002 à RUN-004, RUN-020, RUN-012 à RUN-015, RUN-021 | done |
 | RUN-022 | P2 | Passe visuelle 1 — transitions de sections au scroll | Claude UI ; Codex QA ; validation Allen | RUN-007 | done |
 | RUN-023 | P2 | Passe structure — titres des sections et Hero | Claude UI ; Codex QA ; validation Allen | RUN-022 | done |
+| RUN-024 | P2 | Uniformisation des groupes Projets | Claude ; validation Allen | RUN-015 | verify |
 | RUN-008 | P1 | Validation finale et préparation de release | Codex ; validation Allen | RUN-007 | verify |
 | RUN-018 | P3 — futur | « Ils m'ont fait confiance » | Allen + Claude + Codex | RUN-008, RUN-015 ; références autorisées | planned |
 
@@ -573,3 +574,14 @@ Condition d'arrêt et reprise : retour transmis ; Claude reprend les constats
   confirmation d'Allen. La hiérarchie des titres, ARIA et ancres ont été contrôlés ;
   responsive, thèmes, langues et animations préservés selon les preuves du journal.
   RUN-008 reste planifié pour la validation finale de release.
+
+
+## RUN-024 — Uniformisation des groupes Projets
+
+- Mandat d’Allen du 2 novembre 2026, branche `feature/new_design_and_fixes` :
+  index et total propres à chaque catégorie (01/08, 01/01, 01/01), même affichage
+  au scroll pour les trois catégories, trois projets au scroll au maximum, puis
+  bouton « Afficher tous les projets » et grille pour le reste.
+- Préservé : contenus et ordre des projets, publication client, mobile, thèmes.
+- Acceptation : contrôles applicatifs et navigateur réussis ; validation visuelle
+  d’Allen attendue. Preuves et limites au journal.

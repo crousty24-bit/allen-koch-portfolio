@@ -137,8 +137,8 @@ describe('page render contracts', () => {
   })
 
   it('initially renders featured projects without mounting the extra cards', () => {
-    expect(page.match(/project-card--feature/g)).toHaveLength(3)
-    expect(page.match(/project-card--compact/g)).toHaveLength(2)
+    expect(page.match(/project-card--feature/g)).toHaveLength(5)
+    expect(page).not.toContain('project-card--compact')
     expect(page).toContain('client-projects-title')
     const personal =
       page.match(
@@ -151,10 +151,34 @@ describe('page render contracts', () => {
     const gameTitle = renderToStaticMarkup("Milady's Knight")
     expect(personal).not.toContain(gameTitle)
     expect(game).toContain(`<h4>${gameTitle}</h4>`)
-    expect(game).toContain('10 / en développement')
+    expect(personal).toContain('/ 08')
+    expect(game).toContain('/ 01')
+    expect(game).not.toContain('projects-toggle')
     expect(page).toContain(
-      'aria-controls="projects-grid" aria-expanded="false"',
+      'aria-controls="personal-projects-grid" aria-expanded="false"',
     )
+  })
+
+  it('limits every category to three scroll cards and a toggle', () => {
+    const originalLength = projects.length
+    try {
+      projects.push(
+        ...['A', 'B', 'C'].map(
+          (title): Project => ({ ...fixture, category: 'game-dev', title }),
+        ),
+      )
+      const html = renderToStaticMarkup(
+        createElement(ProjectsSection, { language: 'fr' }),
+      )
+      const game = html.slice(html.indexOf('game-dev-projects-title'))
+      expect(game.match(/project-card--feature/g)).toHaveLength(3)
+      expect(game).toContain('/ 04')
+      expect(game).toContain(
+        'aria-controls="game-dev-projects-grid" aria-expanded="false"',
+      )
+    } finally {
+      projects.splice(originalLength)
+    }
   })
 
   it.each(

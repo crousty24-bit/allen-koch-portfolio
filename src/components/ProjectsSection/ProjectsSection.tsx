@@ -1,30 +1,38 @@
 import { useEffect, useRef, useState } from 'react'
 import { copy, type Language } from '../../data/i18n/i18n'
-import { isProjectPublished, projects } from '../../data/projects/projects'
+import {
+  isProjectPublished,
+  type Project,
+  projects,
+} from '../../data/projects/projects'
 import { ProjectCard } from '../ProjectCard/ProjectCard'
 
 const visibleProjectsCount = 3
 
-type ProjectsSectionProps = {
+type ProjectsGroupProps = {
+  category: Project['category']
+  label: string
   language: Language
+  projects: Project[]
 }
 
-export function ProjectsSection({ language }: ProjectsSectionProps) {
+function ProjectsGroup({
+  category,
+  label,
+  language,
+  projects: groupProjects,
+}: ProjectsGroupProps) {
   const [showAllProjects, setShowAllProjects] = useState(false)
   const [activeFeature, setActiveFeature] = useState(0)
   const featuresRef = useRef<HTMLDivElement>(null)
   const projectsCopy = copy[language].projects
-  const publishedProjects = projects.filter(isProjectPublished)
-  const groups = [
-    { category: 'personal', label: projectsCopy.personalHeading },
-    { category: 'client', label: projectsCopy.clientHeading },
-    { category: 'game-dev', label: projectsCopy.gameHeading },
-  ].map((group) => ({
-    ...group,
-    projects: publishedProjects.filter(
-      (project) => project.category === group.category,
-    ),
-  }))
+  const total = groupProjects.length
+  const featured = groupProjects.slice(0, visibleProjectsCount)
+  const compact = showAllProjects
+    ? groupProjects.slice(visibleProjectsCount)
+    : []
+  const titleId = `${category}-projects-title`
+  const gridId = `${category}-projects-grid`
 
   useEffect(() => {
     const cards = Array.from(
@@ -53,6 +61,101 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
   }, [])
 
   return (
+    <section className="projects-group" aria-labelledby={titleId}>
+      <header className="projects-group__header">
+        <h3 className="projects-group__title" id={titleId}>
+          {label}
+        </h3>
+        <span className="projects-group__count">
+          {String(total).padStart(2, '0')}
+        </span>
+      </header>
+      <div className="projects-features" ref={featuresRef}>
+        <p
+          aria-hidden="true"
+          className="project-card__index projects-features__index"
+        >
+          <span className="projects-features__window">
+            <span
+              className="projects-features__track"
+              style={{ transform: `translateY(-${activeFeature}em)` }}
+            >
+              {featured.map((project, index) => (
+                <span className="projects-features__number" key={project.title}>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              ))}
+            </span>
+          </span>
+          <span className="project-card__total">
+            / {String(total).padStart(2, '0')}
+          </span>
+        </p>
+        <div className="projects-features__cards">
+          {featured.map((project, index) => (
+            <ProjectCard
+              index={index}
+              key={project.title}
+              language={language}
+              project={project}
+              total={total}
+              variant="feature"
+            />
+          ))}
+        </div>
+      </div>
+      {total > visibleProjectsCount ? (
+        <>
+          <div className="projects-grid" id={gridId}>
+            {compact.map((project, index) => (
+              <ProjectCard
+                index={visibleProjectsCount + index}
+                key={project.title}
+                language={language}
+                project={project}
+                total={total}
+                variant="compact"
+              />
+            ))}
+          </div>
+          <div className="projects-section__more">
+            <button
+              aria-controls={gridId}
+              aria-expanded={showAllProjects}
+              className="button button--secondary projects-toggle"
+              onClick={() =>
+                setShowAllProjects((isShowingAll) => !isShowingAll)
+              }
+              type="button"
+            >
+              {showAllProjects
+                ? projectsCopy.hideExtraLabel
+                : projectsCopy.showAllLabel}
+              <span aria-hidden="true" className="projects-toggle__sign">
+                {showAllProjects ? '−' : '+'}
+              </span>
+            </button>
+          </div>
+        </>
+      ) : null}
+    </section>
+  )
+}
+
+type ProjectsSectionProps = {
+  language: Language
+}
+
+export function ProjectsSection({ language }: ProjectsSectionProps) {
+  const projectsCopy = copy[language].projects
+  const publishedProjects = projects.filter(isProjectPublished)
+  const groups = [
+    { category: 'personal', label: projectsCopy.personalHeading },
+    { category: 'client', label: projectsCopy.clientHeading },
+    { category: 'game-dev', label: projectsCopy.gameHeading },
+  ] as const
+
+  return (
     <section className="section projects-section" id="projects" tabIndex={-1}>
       <div className="section-heading section-heading--split reveal">
         <div>
@@ -60,111 +163,20 @@ export function ProjectsSection({ language }: ProjectsSectionProps) {
           <p>{projectsCopy.text}</p>
         </div>
       </div>
-      {groups.map((group, groupIndex) => {
-        if (!group.projects.length) return null
-        const isPersonal = group.category === 'personal'
-        const featured = isPersonal
-          ? group.projects.slice(0, visibleProjectsCount)
-          : []
-        const compact = isPersonal
-          ? showAllProjects
-            ? group.projects.slice(visibleProjectsCount)
-            : []
-          : group.projects
-        const offset = groups
-          .slice(0, groupIndex)
-          .reduce((total, item) => total + item.projects.length, 0)
-        const titleId = `${group.category}-projects-title`
+      {groups.map((group) => {
+        const groupProjects = publishedProjects.filter(
+          (project) => project.category === group.category,
+        )
+        if (!groupProjects.length) return null
 
         return (
-          <section
-            className="projects-group"
-            aria-labelledby={titleId}
+          <ProjectsGroup
+            category={group.category}
             key={group.category}
-          >
-            <header className="projects-group__header">
-              <h3 className="projects-group__title" id={titleId}>
-                {group.label}
-              </h3>
-              <span className="projects-group__count">
-                {String(group.projects.length).padStart(2, '0')}
-              </span>
-            </header>
-            {featured.length ? (
-              <div className="projects-features" ref={featuresRef}>
-                <p
-                  aria-hidden="true"
-                  className="project-card__index projects-features__index"
-                >
-                  <span className="projects-features__window">
-                    <span
-                      className="projects-features__track"
-                      style={{ transform: `translateY(-${activeFeature}em)` }}
-                    >
-                      {featured.map((project, index) => (
-                        <span
-                          className="projects-features__number"
-                          key={project.title}
-                        >
-                          {String(offset + index + 1).padStart(2, '0')}
-                        </span>
-                      ))}
-                    </span>
-                  </span>
-                  <span className="project-card__total">
-                    / {String(publishedProjects.length).padStart(2, '0')}
-                  </span>
-                </p>
-                <div className="projects-features__cards">
-                  {featured.map((project, index) => (
-                    <ProjectCard
-                      index={offset + index}
-                      key={project.title}
-                      language={language}
-                      project={project}
-                      total={publishedProjects.length}
-                      variant="feature"
-                    />
-                  ))}
-                </div>
-              </div>
-            ) : null}
-            <div
-              className={`projects-grid${isPersonal ? '' : ' projects-grid--group'}`}
-              id={isPersonal ? 'projects-grid' : undefined}
-            >
-              {compact.map((project, index) => (
-                <ProjectCard
-                  index={offset + featured.length + index}
-                  key={project.title}
-                  language={language}
-                  project={project}
-                  total={publishedProjects.length}
-                  variant="compact"
-                />
-              ))}
-            </div>
-            {isPersonal && group.projects.length > visibleProjectsCount ? (
-              <div className="projects-section__more">
-                <button
-                  aria-controls="projects-grid"
-                  aria-expanded={showAllProjects}
-                  className="button button--secondary projects-toggle"
-                  onClick={() =>
-                    setShowAllProjects((isShowingAll) => !isShowingAll)
-                  }
-                  type="button"
-                >
-                  {showAllProjects
-                    ? projectsCopy.hideExtraLabel
-                    : projectsCopy.showAllLabel}
-                  <span aria-hidden="true" className="projects-toggle__sign">
-                    {showAllProjects ? '−' : '+'}
-                  </span>
-                </button>
-              </div>
-            ) : null}
-          </section>
+            label={group.label}
+            language={language}
+            projects={groupProjects}
+          />
         )
       })}
       <div className="projects-section__cta reveal">
