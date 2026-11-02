@@ -254,6 +254,50 @@ test('contact form reports provider results and keeps failed input', async (t) =
   )
   await solveCaptcha()
   await page.evaluate(() => {
+    const render = window.hcaptcha.render.bind(window.hcaptcha)
+    window.hcaptcha.render = (container, options) => {
+      window.failContactCaptcha = options['error-callback']
+      window.verifyContactCaptcha = options.callback
+      return render(container, options)
+    }
+    document.querySelector('.language-toggle').click()
+  })
+  await page.waitFor(() => typeof window.failContactCaptcha === 'function')
+  await page.evaluate(() => window.failContactCaptcha('network-error'))
+  await page.waitFor(() =>
+    Boolean(document.querySelector('.contact-panel__captcha-error')),
+  )
+  assert.equal(await page.evaluate(() => window.contactCalls.length), 0)
+  assert.equal(
+    await page.evaluate(() => document.querySelector('#contact-message').value),
+    injectionProbe,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      document
+        .querySelector('.contact-panel__form')
+        .textContent.includes('Sending failed'),
+    ),
+    false,
+  )
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__captcha-error button').click(),
+  )
+  await page.waitFor(
+    () => !document.querySelector('.contact-panel__captcha-error'),
+  )
+  await solveCaptcha()
+  await page.evaluate(() => window.failContactCaptcha('challenge-error'))
+  await page.waitFor(() =>
+    Boolean(document.querySelector('.contact-panel__captcha-error')),
+  )
+  await page.evaluate(() => window.verifyContactCaptcha('ci-test-token'))
+  await page.waitFor(
+    () => !document.querySelector('.contact-panel__captcha-error'),
+  )
+  await page.evaluate(() => document.querySelector('.language-toggle').click())
+  await solveCaptcha()
+  await page.evaluate(() => {
     const form = document.querySelector('.contact-panel__form')
     form.requestSubmit()
     form.requestSubmit()
@@ -313,9 +357,44 @@ test('contact form reports provider results and keeps failed input', async (t) =
   await page.evaluate(() => window.finishContact(true))
   await page.waitFor(() =>
     document
-      .querySelector('.contact-panel__status')
-      .textContent.includes('transmise'),
+      .querySelector('.contact-panel__confirmation')
+      ?.textContent.includes('transmis'),
   )
+  assert.equal(
+    await page.evaluate(
+      () =>
+        document.activeElement ===
+        document.querySelector('.contact-panel__confirmation h4'),
+    ),
+    true,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      Boolean(document.querySelector('#contact-message')),
+    ),
+    false,
+  )
+  assert.equal(
+    await page.evaluate(() =>
+      document
+        .querySelector('.contact-panel__confirmation a')
+        .getAttribute('href'),
+    ),
+    '#projects',
+  )
+  for (const width of [390, 1440]) {
+    await page.viewport(width)
+    assert.equal(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > innerWidth,
+      ),
+      false,
+    )
+  }
+  await page.evaluate(() =>
+    document.querySelector('.contact-panel__confirmation button').click(),
+  )
+  await page.waitFor(() => document.activeElement?.id === 'contact-name')
   assert.equal(
     await page.evaluate(() => document.querySelector('#contact-message').value),
     '',

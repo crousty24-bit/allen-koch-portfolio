@@ -23,13 +23,21 @@ export const copy = {
       message: 'Votre message',
       submit: 'Envoyer le message',
       sending: 'Envoi en cours…',
-      success: 'Votre demande a été transmise.',
+      success: 'Merci, votre message a été transmis.',
+      successDetail:
+        'Je prendrai connaissance de votre demande et vous répondrai à l’adresse email indiquée.',
+      viewProjects: 'Voir mes projets',
+      sendAnother: 'Envoyer un autre message',
       error:
         "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
-      captcha: "Complétez le contrôle anti-spam avant l'envoi.",
+      captcha:
+        "Autorisez hCaptcha, puis complétez le contrôle anti-spam avant l'envoi.",
       privacy:
         'Votre message est transmis par Web3Forms. hCaptcha détecte les robots et peut utiliser des cookies après votre autorisation. Vous pouvez préférer l’email sans l’activer.',
       privacyLink: 'Politique de confidentialité',
+      captchaError:
+        'Le contrôle anti-spam a rencontré une erreur. Réessayez le contrôle ou écrivez-moi par email.',
+      captchaRetry: 'Réessayer le contrôle anti-spam',
       captchaLoad: 'J’autorise le chargement de hCaptcha',
       captchaWithdraw:
         'Retirer mon autorisation et recharger (efface la saisie)',
@@ -123,12 +131,20 @@ export const copy = {
       message: 'Your message',
       submit: 'Send message',
       sending: 'Sending…',
-      success: 'Your enquiry has been submitted.',
+      success: 'Thank you, your message has been submitted.',
+      successDetail:
+        'I will review your enquiry and reply to the email address you provided.',
+      viewProjects: 'View my projects',
+      sendAnother: 'Send another message',
       error: 'Sending failed. Please try again or email me directly.',
-      captcha: 'Complete the anti-spam check before sending.',
+      captcha:
+        'Allow hCaptcha, then complete the anti-spam check before sending.',
       privacy:
         'Your message is sent through Web3Forms. hCaptcha detects bots and may use cookies after you allow it. You can email instead without enabling it.',
       privacyLink: 'Privacy policy',
+      captchaError:
+        'The anti-spam check encountered an error. Retry the check or email me directly.',
+      captchaRetry: 'Retry the anti-spam check',
       captchaLoad: 'I allow hCaptcha to load',
       captchaWithdraw: 'Withdraw permission and reload (clears your draft)',
       captchaPrivacyLink: 'hCaptcha privacy policy',

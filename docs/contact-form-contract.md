@@ -120,3 +120,23 @@ Web3Forms, finalité antispam hCaptcha, cookies possibles et alternative email.
 Les liens local/hCaptcha et le retrait restent accessibles ; durées, données
 analysées et détails restent dans la politique locale. Aucun chargement anticipé
 ni changement du traitement. Référence : [information à deux niveaux, CNIL](https://www.cnil.fr/fr/cookies-et-autres-traceurs/que-dit-la-loi).
+
+## Confirmation après envoi — 2 novembre 2026
+
+Après acceptation HTTP/JSON, les champs sont remplacés par une confirmation
+FR/EN avec focus sur le titre. Les actions permettent de consulter `#projects`
+ou de saisir un nouveau message ; aucune redirection automatique. Le retrait
+hCaptcha reste accessible sur la confirmation. Un nouveau message conserve
+l’autorisation de la page mais nécessite un nouveau jeton. Pendant l’envoi :
+indicateur de chargement, champs désactivés et `aria-busy`. Les erreurs sont
+encadrées, la saisie conservée ; l’aide captcha apparaît près du contrôle.
+
+## Incident captcha — 2 novembre 2026
+
+Une erreur du widget n’est pas une erreur d’envoi : elle possède désormais
+son propre état et message FR/EN près du contrôle. La réussite du chargement ou
+de la vérification efface cette alerte. « Réessayer le contrôle anti-spam »
+remonte le widget sans recharger la page ni effacer la saisie, avec l’autorisation
+existante. Aucun envoi automatique ni contournement du jeton n’est ajouté.
+La vidéo d’Allen montre une erreur initiale puis un rétablissement ; le code
+réseau exact du fournisseur n’est pas connu à partir de cette vidéo.

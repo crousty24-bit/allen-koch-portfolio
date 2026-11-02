@@ -2122,3 +2122,48 @@ copier de secret, donnée client ou résultat supposé.
 - Build, lint, Biome et 62/62 tests réussis ; git diff --check réussi.
 - Pas de contrôle visuel navigateur, d’envoi réel ni de déploiement. Les autres
   vérifications RUN-017 restent ouvertes ; aucune revue indépendante revendiquée.
+
+## RUN-017 — Feedback du formulaire (2 novembre 2026)
+
+- Mandat Allen : implémenter la recommandation acceptée, sans redirection.
+  Codex réalise et relit le lot ; aucune délégation utile pour ce périmètre.
+- Périmètre : ContactSection, textes FR/EN, CSS Contact/mouvement réduit, test
+  navigateur existant et contrat contact. Aucun changement API ou dépendance.
+- Confirmation remplaçant les champs après succès, coche et explication,
+  focus sur le titre, lien projets et nouveau message avec focus dans le nom.
+  Retrait hCaptcha disponible après succès ; consentement de page conservé
+  au nouveau message, widget remonté avec un jeton neuf nécessaire.
+- Envoi avec spinner et aria-busy ; erreur visuellement encadrée, aide captcha
+  près du contrôle. Saisie conservée après échec et protection double envoi.
+- Consultation MCP shadcn Alert effectuée ; exception : réutilisation des
+  boutons/styles natifs existants, aucune première intégration nécessaire.
+- Contrôles : build, lint, Biome et 62/62 Vitest réussis. Premier Vitest échoué
+  sur une media query hors fichier dédié ; déplacée dans reduced-motion.css,
+  puis suite réussie. Suite Chrome 16/16 réussie ; après ce déplacement CSS et
+  ajout de mesures 390/1440, scénario Contact ciblé réussi sur le build final.
+- Acceptation locale : focus confirmation/reprise, champs absents après succès,
+  saisie vide à la reprise, lien #projects, absence de débordement 390/1440,
+  rejet et double soumission testés avec API et jeton simulés.
+- Limites : pas de capture visuelle relue, pas de nouvel envoi réel,
+  Safari/Firefox et appareil réel non vérifiés. Pas de commit ni déploiement.
+
+## RUN-017 — Erreur initiale hCaptcha (2 novembre 2026)
+
+- Allen valide le feedback précédent, puis signale une erreur initiale captcha
+  avec vidéo. Codex examine des images extraites de la vidéo : widget en erreur,
+  rétablissement et message d’échec d’envoi persistant avant envoi effectif.
+- Cause vérifiée dans le frontend : onError hCaptcha utilisait le même état
+  que le rejet Web3Forms ; onVerify ne l’effaçait pas. La cause réseau initiale
+  du fournisseur reste inconnue sans logs ; aucune correction réseau prétendue.
+- Correction ciblée Codex, sans délégation : état d’erreur captcha indépendant,
+  effacement au chargement/vérification et relance manuelle par remontage du
+  widget. Textes FR/EN, test navigateur et contrat mis à jour ; aucun CSS ajouté.
+- Contrats : saisie, consentement préalable/retrait, jeton obligatoire, retour
+  Web3Forms, absence de double envoi et confirmation validée préservés.
+- Vérification : build, lint, Biome, 62/62 Vitest et scénario Chrome Contact
+  ciblé réussis. Ce dernier déclenche les callbacks réels avec network-error et
+  challenge-error simulés, vérifie zéro appel API prématuré, saisie conservée,
+  relance, effacement après vérification puis rejet/succès API simulés.
+- Référence consultée : https://docs.hcaptcha.com/configuration#error-codes.
+  Aucun envoi réel, déploiement ou reproduction indépendante de la panne réseau
+  d’Allen. Relecture par l’implémenteur ; aucun autre RUN exécuté.
